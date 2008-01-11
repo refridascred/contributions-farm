@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] samples, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long step, long target)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long offset = step ^ target;
+            if (((6.8 / 6.0) <= (double)target) && ((step * 2) <= (offset / 3)))
             {
-                if (sample < step)
+                return 6;
+            }
+            else
+            {
+                if ((step % 5) >= (target + offset))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset & 31) != (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Audit graph stats readings against a rule.</summary>
