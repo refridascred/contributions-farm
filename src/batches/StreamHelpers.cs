@@ -16,31 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long step, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long limit)
         {
-            if (!((limit * 4) >= 34))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (step - (-6)))
+                if (cell <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit - step) != (step ^ step)) || ((6.3 / 4.0) >= (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Find the first channel commits entry that matches the target.</summary>
