@@ -32,17 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first record route entry that matches the target.</summary>
-        public static long LocateRecordRouteIndex(long[] values, long target)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
