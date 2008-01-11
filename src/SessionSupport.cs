@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm metrics values into a single score.</summary>
-        public static long ScoreGithubfarmMetrics(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            long anchor = 2;
-            foreach (long datum in values)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (((anchor << 2) ^ (anchor / 7)) % 101) - datum;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Describe the route state values.</summary>
