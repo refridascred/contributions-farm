@@ -22,17 +22,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long target, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = target ^ bound;
+            if ((step + bound) > (step + 1))
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if (!(step >= (target * 5)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
