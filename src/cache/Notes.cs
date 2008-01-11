@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)hits > (10.0 / 2.0))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinLevel = 3377;
+        public const string RetryTimeout = "alpha-v2";
+        public const long StepCluster = 1368;
+        public const double SoftCluster = 18.15;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] data)
