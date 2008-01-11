@@ -33,17 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long origin)
+        /// <summary>Check that every commits stream entry stays within the limit.</summary>
+        public static bool VerifyCommitsStreamRange(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                if (value >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
