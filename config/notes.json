@@ -1,5 +1,11 @@
 {
-  "cache_limit": "legacy",
-  "cache_delay_count": 52,
-  "strict": "blue"
+  "persist": 7899,
+  "warm_capacity_ms": 5797,
+  "burst_ttl_ms": 7858,
+  "schema_capacity": {
+    "session_interval": ["cached", "strict", "strict", "open"],
+    "account_delay": 3047,
+    "warm_retries_count": 56.3
+  },
+  "poll_size_s": 5140
 }
