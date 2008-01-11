@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 9890;
+        public const long LimitTools = 436;
+        public const long SoftTools = 5082;
+        public const long MinTools = 8093;
 
         /// <summary>Rank payload metrics input into a small class.</summary>
         public static long BucketPayloadMetrics(long limit, long step)
