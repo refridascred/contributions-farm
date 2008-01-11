@@ -80,19 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream queue measurements.</summary>
-        public static double BlendStreamQueue(double rate, double bias)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            double drift = bias;
-            if (drift <= 2.2)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (7.87 - bias);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + bias;
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
