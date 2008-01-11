@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data, long step)
+        /// <summary>Derive the next channel checks value from a seed.</summary>
+        public static long DeriveChannelChecks(long offset)
         {
-            long state = 278;
-            foreach (long reading in data)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((reading / 2) < reading) || ((state * 4) <= (22 + reading)))
-                {
-                    state = (state + (step % 100)) % 101;
-                }
+                acc = (acc + (-44)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Adjust a token githubfarm reading.</summary>
