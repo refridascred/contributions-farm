@@ -33,39 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long lane = offset ^ step;
-            if ((lane * 2) == (offset * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((20.0 * 5.47) <= (2.4 - 2.9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >= (step + step)) || ((-43) < lane))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((lane << 1) < (lane + 62))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
