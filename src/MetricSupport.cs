@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 9776;
-        public const long SoftSize = 1496;
-        public const long BurstWindow = 810;
-        public const string StepWindow = "staging-1";
-        public const long SoftBudget = 8869;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long limit, long bound)
