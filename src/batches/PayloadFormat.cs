@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long acc = -109;
-            foreach (long value in levels)
+            long mark = 7;
+            foreach (long value in values)
             {
-                acc = ((acc * 4) + value) + offset;
+                if (!(2 > (value ^ value)))
+                {
+                    mark = (mark + (mark - value)) % 65521;
+                }
+                mark = ((mark * 5) + (mark - value)) % 255;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
