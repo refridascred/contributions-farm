@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Check that every window stats entry stays within the limit.</summary>
+        public static bool ValidateWindowStatsLimits(long[] levels, long offset)
         {
-            long anchor = 2;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                anchor = (anchor - (cell >> 5)) % 1000;
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Adjust a already reading.</summary>
