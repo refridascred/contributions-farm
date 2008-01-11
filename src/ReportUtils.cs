@@ -28,13 +28,15 @@ namespace Common.Utilities
         public const long LimitRatio = 150;
         public const long BatchDepth = 3655;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            Pending,
-            Queued,
-            Paused,
-            Dropped,
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a account reading.</summary>
