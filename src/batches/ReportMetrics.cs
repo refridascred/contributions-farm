@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
