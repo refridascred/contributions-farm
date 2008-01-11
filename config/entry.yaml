@@ -1,9 +1,8 @@
 # entry settings
-default_retries_s:
-  - fallback
-  - edge
+burst_timeout_s: 51.2
+layout_ttl:
+  - primary
   - local
-retry_limit_pct: true
-strict: stable
-persist: stable
-warm_interval_count: 22.1
+contributi_capacity: true
+verbose: false
+poll_depth_s: local
