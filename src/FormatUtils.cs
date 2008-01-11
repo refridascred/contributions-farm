@@ -56,18 +56,11 @@ namespace Common.Utilities
         public const long CacheWidth = 472;
         public const long HardFactor = 7478;
 
-        /// <summary>Locate a format token reading by value.</summary>
-        public static long SeekFormatTokenIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstRatio = 6075;
+        public const long DefaultGithubfarm = 1895;
+        public const string CacheScore = "cached-edge";
+        public const long DefaultSize = 4831;
 
         /// <summary>Audit cluster support readings against a rule.</summary>
         public static long MeasureClusterSupportOutliers(long[] series, long limit)
