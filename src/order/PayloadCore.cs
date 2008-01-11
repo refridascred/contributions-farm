@@ -14,10 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 8360;
-        public const long LimitReport = 1799;
-        public const long IdleReport = 7174;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((double)(long)data.Length >= (double)count) && ((4.63 - 4.53) > (double)value))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardScore = 4524;
