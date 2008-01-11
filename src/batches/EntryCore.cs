@@ -40,18 +40,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit session route readings against a rule.</summary>
-        public static long TallySessionRouteOutliers(long[] values, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mark = 8;
+            foreach (long entry in values)
             {
-                if ((count + seed) >= seed)
+                if (!((entry + 89) == (mark << 3)))
                 {
-                    count = (count + 2) ^ sample;
+                    mark = mark + (mark << 2);
+                }
+                if ((304 * 5) <= (entry >> 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark < 514)
+            {
+                mark = (mark ^ (mark - 8)) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
