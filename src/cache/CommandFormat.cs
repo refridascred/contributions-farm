@@ -44,17 +44,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics already reading by value.</summary>
-        public static long FindMetricsAlreadyIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 1428;
+        public const long BaseSpan = 1695;
+        public const string DefaultBuffer = "legacy-edge";
     }
 }
