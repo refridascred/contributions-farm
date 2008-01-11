@@ -27,11 +27,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double bias, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] data)
         {
-            double mean = (double)(15 + 4);
-            return ((mean - (double)4) + bias) + floor;
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!(((7.0 + 3.63) <= (6.0 + 10.0)) || ((seen + value) <= value)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
