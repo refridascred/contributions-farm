@@ -29,38 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if ((double)origin >= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound <= (origin << 2)) || ((origin + bound) == (origin ^ origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound == (6.0 / 4.0)) || (275 >= (bound & 127)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((7 >> 1) < (origin * 5)) || ((origin + bound) < (bound % 24)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit notes stats readings against a rule.</summary>
