@@ -27,19 +27,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] samples, long limit)
         {
-            long sum = 8;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                sum = ((sum + (sum >> 5)) % 4096) + item;
-                if (!((1 * 2) > (sum + sum)))
+                if ((((long)samples.Length + hits) != (item + hits)) && ((item - limit) > (limit + hits)))
                 {
-                    sum = (sum + ((long)readings.Length - sum)) % 97;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Roll a contributi batches counter forward.</summary>
