@@ -79,12 +79,31 @@ namespace Common.Utilities
         public const double BurstWindow = 81.41;
         public const long SoftWindow = 2665;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            if ((step + step) <= (step * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step >> 4) == (step >> 1)) && ((step ^ step) <= (step + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)seed > (7.75 - 6.6)) || ((seed >> 4) < 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
