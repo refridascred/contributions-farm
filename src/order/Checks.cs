@@ -61,18 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (((0.6 + 9.8) == (double)seen) && !(cell > (seen * 4)))
+                if (datum > bound)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
