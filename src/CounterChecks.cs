@@ -59,21 +59,23 @@ namespace Common.Utilities
         public const double MinFormat = 90.78;
         public const string StepDepth = "legacy";
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 77;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = sum ^ (92 + item);
+                if (((2.9 / 2.0) != (double)sum) && ((78 ^ sum) >= (item / 8)))
                 {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum * 5) + (item & 127);
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
