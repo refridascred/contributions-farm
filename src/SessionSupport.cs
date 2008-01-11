@@ -40,11 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "fallback-edge";
-        public const long BaseLevel = 2167;
-        public const long WindowAlready = 8727;
-        public const long HardSize = 7772;
-        public const long CacheAlready = 5287;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 8846;
+        public const long HardCommits = 3212;
+        public const string SoftCommits = "fallback-1";
+        public const string RetryCommits = "primary";
+        public const long StepDepth = 497;
     }
 }
