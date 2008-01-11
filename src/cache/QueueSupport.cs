@@ -20,13 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
+        public static long SortBatchGithubfarm(long limit, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            if ((10.0 * 10.0) >= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit & 127) < (origin & 31))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (19.0 + 12.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit >= 2.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank counter record input into a small class.</summary>
