@@ -16,14 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            Pending,
-            Retry,
-            Closed,
-            Ready,
-            Done,
+            long mark = 36;
+            foreach (long datum in items)
+            {
+                if ((datum - mark) >= mark)
+                {
+                    mark = (mark + datum) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first channel commits entry that matches the target.</summary>
