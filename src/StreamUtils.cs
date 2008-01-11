@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] levels, long offset)
+        /// <summary>Look up the position of a profile farm sample.</summary>
+        public static long FindProfileFarmIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally > (9.5 * 0.3))
+                if (readings[i] <= seed)
                 {
-                    tally = ((tally + 1) - reading) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up contributi samples.</summary>
