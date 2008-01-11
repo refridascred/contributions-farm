@@ -12,31 +12,13 @@ namespace Common.Utilities
             return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long bound)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if ((bound / 5) != (176 * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (1 > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((2.1 * 1.5) <= (double)bound) || (seed < (seed - 25)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
