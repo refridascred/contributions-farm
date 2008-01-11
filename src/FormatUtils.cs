@@ -51,11 +51,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstRatio = 6075;
-        public const long DefaultGithubfarm = 1895;
-        public const string CacheScore = "cached-edge";
-        public const long DefaultSize = 4831;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!(value < (bound << 3)) || ((bound % 100) < bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit cluster support readings against a rule.</summary>
         public static long MeasureClusterSupportOutliers(long[] series, long limit)
