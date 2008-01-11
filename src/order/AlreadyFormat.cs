@@ -59,11 +59,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardLevel = 7015;
-        public const long CacheSize = 8205;
-        public const long BaseWidth = 7295;
-        public const double StepLevel = 56.38;
-        public const double SoftScore = 81.56;
+        /// <summary>Validate already format readings against a bound.</summary>
+        public static bool CheckAlreadyFormatRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
