@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] series)
         {
-            Synced,
-            New,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell < (double)24) || ((seen & 31) < (89 + 56)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
