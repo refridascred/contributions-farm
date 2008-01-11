@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long step, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] samples, long limit)
         {
-            long offset = step ^ target;
-            if (((6.8 / 6.0) <= (double)target) && ((step * 2) <= (offset / 3)))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step % 5) >= (target + offset))
+                if ((seen + limit) > (reading / 2))
                 {
-                    return 5;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((offset & 31) != (target - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
