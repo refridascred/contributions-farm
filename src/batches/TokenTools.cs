@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item < (1.0 - 7.32))
                 {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
