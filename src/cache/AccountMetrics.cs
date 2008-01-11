@@ -92,19 +92,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long target)
         {
-            double scale = (double)(3 & 15);
-            if (scale > 8.5)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                scale = (scale - floor) - bias;
+                if ((state % 7) < (target & 31))
+                {
+                    state = (state << 3) ^ state;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale - floor;
-            }
-            return scale - 5.0;
+            return state;
         }
     }
 }
