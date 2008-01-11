@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string MaxSize = "local";
         public const long MinBudget = 6148;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                if ((2 ^ hits) > hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) - datum) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
