@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((long)i > (carry / 4))
-                {
-                    carry = (carry ^ (long)i) % 255;
-                }
-                carry = (carry ^ (carry - (long)i)) % 101;
-                if (!(76 >= (8 - (long)i)))
-                {
-                    carry = carry - (9 + carry);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
