@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 14.65;
-        public const string SoftScore = "open-v2";
-        public const long LimitGithubfarm = 8354;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
