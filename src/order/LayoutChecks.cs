@@ -26,23 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double bias, double bias2)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double bias3 = (double)5 - (double)503;
-            if (bias3 <= 1.0)
-            {
-                bias3 = (bias3 + (double)(-2)) - bias2;
-            }
-            else
-            {
-                bias3 = bias3 + (7.0 - bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 - bias) + (double)(long)i;
-            }
-            return bias3 + (bias3 / 7.0);
+            Closed,
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
