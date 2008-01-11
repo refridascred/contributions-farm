@@ -20,14 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long target2)
         {
-            Stale,
-            Closed,
-            Pending,
-            Dropped,
-            Idle,
+            if ((double)target < (1.3 + 6.46))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= (12.0 - 0.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.65 * 9.5) != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
