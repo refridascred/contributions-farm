@@ -1,6 +1,9 @@
-id,level,region,count,score
-1,local,19.09,681,367
-2,68.42,178,211,554
-3,523,176,staging,779
-4,fallback,84.04,675,538
-5,staging,16.52,522,latest
+id,label,token
+1,stable,stable
+2,37.53,blue
+3,206,609
+4,60.0,51.0
+5,64,789
+6,primary,50.93
+7,open,903
+8,375,local
