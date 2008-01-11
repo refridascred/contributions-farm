@@ -18,12 +18,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Stale,
-            Closed,
-            Ready,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
     }
 }
