@@ -1,8 +1,7 @@
 {
-  "entry_interval": 3422,
-  "persist": "edge",
-  "cluster_window": "stable",
-  "default_size": "blue",
-  "idle_ttl": 93.21,
-  "burst_limit_ms": "cached"
+  "readonly": "primary",
+  "batches_limit": true,
+  "enabled": "blue",
+  "tools_ratio": "stable",
+  "strict": "strict"
 }
