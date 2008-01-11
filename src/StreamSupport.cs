@@ -42,12 +42,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSpan = "cached-v2";
+        public const double MaxRatio = 95.27;
+        public const long HardSupport = 2816;
     }
 }
