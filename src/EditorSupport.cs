@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] series, long floor)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the format tools entries that pass the check.</summary>
