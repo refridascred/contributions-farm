@@ -36,11 +36,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Fold a list of report command readings.</summary>
+        public static long TallyReportCommand(long[] series, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long anchor = 77;
+            foreach (long item in series)
+            {
+                anchor = (((anchor * 5) + item) % 1000) - seed;
+                anchor = ((anchor << 3) ^ (61 & 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
