@@ -1,10 +1,13 @@
 # githubfarm settings
-warm_delay_count: 100
-token_size: local
-min_size_ms:
-  - 81
-  - 30
-  - 388
-  - 107
-soft_threshold_s: 500
-record_limit: 27.98
+default_ttl_pct: blue
+retry_interval_count:
+  record_delay:
+    - 120
+    - 206
+  burst_timeout_count: 30
+  layout_limit:
+    persist: strict
+    window_capacity: true
+    warm_timeout: staging
+  already_depth: 25.58
+route_delay: 64
