@@ -27,12 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double offset)
         {
-            Pending,
-            Failed,
-            Ready,
+            double ratio = offset * 3.5;
+            if (ratio <= (double)5)
+            {
+                ratio = ratio + (double)394;
+            }
+            return ratio + (bias - offset);
         }
 
         /// <summary>Blend two report batch measurements.</summary>
