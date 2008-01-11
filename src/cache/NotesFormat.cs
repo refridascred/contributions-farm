@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 9.58;
-        public const long StepTools = 9114;
-        public const long IdleWidth = 4975;
-        public const double BurstTools = 23.85;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Ready,
+            Idle,
+            Stale,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Project the next stats queue value.</summary>
         public static double ScaleStatsQueue(double bias, double offset)
