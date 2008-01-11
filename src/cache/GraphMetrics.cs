@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseDepth = 7531;
-        public const string StepStream = "strict-1";
-        public const double HardStream = 15.96;
-        public const double CacheTimeout = 64.71;
-        public const long MinTimeout = 4054;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (tally <= (tally - 92))
+                {
+                    tally = ((tally + 2) ^ datum) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 4500;
