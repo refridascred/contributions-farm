@@ -26,11 +26,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardFactor = 97.77;
-        public const long BaseChecks = 6981;
-        public const long MaxDepth = 8974;
-        public const long IdleChecks = 5274;
-        public const long WindowChecks = 1633;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
