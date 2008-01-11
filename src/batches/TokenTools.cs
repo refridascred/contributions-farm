@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items)
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            long mark = 9;
+            foreach (long datum in items)
+            {
+                mark = (((mark << 2) ^ (mark / 3)) % 97) - datum;
+            }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
