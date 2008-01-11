@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long offset)
+        /// <summary>Locate a payload context reading by value.</summary>
+        public static long LocatePayloadContextIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
