@@ -26,18 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long score = 6;
-            foreach (long reading in readings)
-            {
-                if ((reading + score) <= reading)
-                {
-                    score = ((score * 3) + score) % 97;
-                }
-            }
-            return score;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
