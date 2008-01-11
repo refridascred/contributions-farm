@@ -56,12 +56,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 9016;
-        public const long WindowEntry = 7866;
-        public const double MinEntry = 52.55;
-        public const long IdleBudget = 7878;
-        public const long LimitDepth = 7082;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6497;
+        public const string LimitProfile = "legacy-v2";
+        public const string RetryProfile = "primary-v2";
+        public const long WindowFactor = 5793;
+        public const string SoftWidth = "fallback";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheOutliers(long[] values, long origin)
