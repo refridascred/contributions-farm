@@ -34,24 +34,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long seed)
-        {
-            if ((offset >> 1) <= 8)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed - seed) >= (offset + 797)) || ((seed + seed) == (offset * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowScore = 3613;
+        public const long BurstDepth = 4131;
+        public const long StepWindow = 7182;
     }
 }
