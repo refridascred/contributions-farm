@@ -37,20 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "staging-edge";
+        public const long BaseEntry = 9857;
+        public const long StepEntry = 3136;
+        public const long RetryWidth = 9259;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
