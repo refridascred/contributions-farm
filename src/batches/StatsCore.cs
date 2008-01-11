@@ -23,32 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support format input into a small class.</summary>
-        public static long BucketSupportFormat(long target, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long step = target + limit;
-            if (57 < step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (4.0 / 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - limit) != (target + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every payload context entry stays within the limit.</summary>
