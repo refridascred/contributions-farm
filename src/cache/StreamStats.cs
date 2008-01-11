@@ -33,32 +33,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long floor, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            long gap = floor ^ origin;
-            if ((double)floor == (double)(-64))
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((gap + gap) <= (floor % 97)) && (gap <= (gap / 6)))
+                if (((long)i ^ limit) > (carry - limit))
                 {
-                    return 7;
+                    carry = carry - (long)i;
                 }
                 else
                 {
-                    if ((origin >= (origin % 60)) || (origin > (origin % 8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = carry + (long)i;
                 }
+                if ((double)carry > (7.7 + 0.05))
+                {
+                    carry = (carry ^ ((-5) * 2)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Hold a contributi header.</summary>
