@@ -15,25 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank counter stream input into a small class.</summary>
-        public static long ClassifyCounterStream(long origin, long offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long prev = origin ^ offset;
-            if ((origin ^ prev) < origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev - origin) < prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
