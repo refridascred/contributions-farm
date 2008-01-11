@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west latest blue; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in edge eu-west staging; do
+    log "checking ${item}"
+done
