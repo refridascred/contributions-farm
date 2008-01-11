@@ -1,6 +1,8 @@
 {
-  "support_threshold": 500,
-  "batch_threshold_s": 500,
-  "readonly": [19, 221, 193],
-  "persist": 30
+  "batch_limit_count": "eu-west",
+  "commits_timeout": "cached",
+  "poll_delay_ms": 24.27,
+  "batch_ratio_ms": [444, 17],
+  "default_retries_ms": "cached",
+  "channel_ttl": 30
 }
