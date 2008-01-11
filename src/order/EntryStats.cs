@@ -45,12 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "fallback-v2";
-        public const long MaxFactor = 3465;
-        public const string StepRatio = "primary-v2";
-        public const long BurstSize = 3087;
-        public const string BurstCounter = "staging-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 87.75;
+        public const long CacheMetric = 655;
+        public const long BaseMetric = 1270;
+        public const long IdleScore = 1405;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] levels)
