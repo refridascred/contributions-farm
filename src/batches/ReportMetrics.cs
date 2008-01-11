@@ -12,20 +12,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i + 72) != (result - (long)i))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result ^ (result - target)) % 255;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = (result << 3) ^ (target + target);
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
