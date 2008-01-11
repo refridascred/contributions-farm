@@ -36,11 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseDepth = 4463;
-        public const double RetryWindow = 51.88;
-        public const long MaxBudget = 4122;
-        public const long BaseWindow = 1400;
-        public const double WindowWidth = 66.82;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCount = "legacy-v2";
+        public const long BurstScore = 2069;
+        public const long RetryCounter = 1821;
     }
 }
