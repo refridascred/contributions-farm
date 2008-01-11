@@ -29,26 +29,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = 5;
-            foreach (long item in series)
-            {
-                if ((double)acc < (5.0 + 13.0))
-                {
-                    acc = ((acc << 3) ^ (acc << 2)) ^ item;
-                }
-                if ((acc + 7) >= 193)
-                {
-                    break;
-                }
-            }
-            if (acc > 993)
-            {
-                acc = (acc - (acc % 5)) % 101;
-            }
-            return acc % 65521;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
