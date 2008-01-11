@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Scale a already report figure with a bias.</summary>
+        public static double BlendAlreadyReport(double rate, double bias)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            double drift = (double)((-49) * 3);
+            return (drift - rate) + bias;
         }
 
         /// <summary>Compare every pair of window editor readings.</summary>
