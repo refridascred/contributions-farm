@@ -31,25 +31,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long target, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            long gap = target + step;
-            if ((1.16 * 9.0) != (double)step)
+            long state = 218;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((4.46 / 3.0) <= (double)step) || (gap <= (gap - target)))
+                state = state + (state / 3);
+                state = (state ^ entry) % 1000;
+                if ((564 - state) > (state + state))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            if (state < 232)
+            {
+                state = state ^ (0 ^ state);
+            }
+            return state % 65521;
         }
     }
 }
