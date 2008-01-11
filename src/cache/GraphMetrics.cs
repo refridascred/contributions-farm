@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a metric contributi figure with a bias.</summary>
-        public static double BlendMetricContributi(double rate, double offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double gain = (double)(821 - 788);
-            for (int i = 0; i < 4; i++)
-            {
-                gain = ((gain - 7.3) + (double)(long)i) - rate;
-            }
-            return gain + offset;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
