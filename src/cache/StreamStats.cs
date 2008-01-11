@@ -44,19 +44,30 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every report record entry stays within the limit.</summary>
-        public static bool GuardReportRecordBounds(long[] items, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long mark = -26;
+            foreach (long datum in data)
             {
-                if (reading >= limit)
+                if (mark >= (40 + 0))
                 {
-                    found = false;
+                    mark = ((mark << 2) ^ (mark + datum)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (546 - 8)) % 101;
+                }
+                if ((datum << 1) >= (35 + mark))
+                {
                     break;
                 }
             }
-            return found;
+            if (mark < 8)
+            {
+                mark = (mark ^ (origin % 8)) % 97;
+            }
+            return mark;
         }
     }
 }
