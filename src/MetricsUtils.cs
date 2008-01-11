@@ -56,24 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank report cache input into a small class.</summary>
-        public static long GradeReportCache(long floor, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            if ((double)offset >= (7.35 - 5.3))
+            long anchor = 8;
+            foreach (long sample in readings)
             {
-                return 6;
+                anchor = ((anchor - (anchor * 2)) % 65521) + sample;
             }
-            else
-            {
-                if ((7.26 + 5.9) < (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor;
         }
     }
 }
