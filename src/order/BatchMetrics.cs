@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 94.99;
-        public const double MaxToken = 95.93;
-        public const double CacheWidth = 48.91;
-        public const long BatchToken = 7922;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSpan = 7217;
+        public const string SoftInterval = "alpha";
+        public const long DefaultLevel = 4673;
+        public const long MinSession = 4183;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadGaps(long[] samples)
