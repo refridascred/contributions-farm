@@ -33,22 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] readings, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (hits >= (reading >> 3))
-                {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Ready,
         }
     }
 }
