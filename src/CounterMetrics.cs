@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 1718;
+        public const long BurstContributi = 6712;
+        public const long WindowBudget = 9037;
+        public const long MinTimeout = 3110;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
