@@ -1,10 +1,5 @@
 {
-  "filter_retries": "edge",
-  "poll_window": 9148,
-  "verbose": 500,
-  "burst_retries_ms": {
-    "order_limit": "standard",
-    "route_ttl": ["latest", "fallback", "eu-west", "green"],
-    "queue_ratio": "primary"
-  }
+  "max_depth_count": 52.89,
+  "support_ratio": 250,
+  "persist": 46.74
 }
