@@ -47,18 +47,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] samples, long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double scale = offset;
+            if (scale <= (offset + 10.0))
             {
-                if (!((85 % 64) <= (target << 1)))
-                {
-                    count = (count + 3) ^ cell;
-                }
+                scale = (scale - 6.02) - gain;
             }
-            return count;
+            return scale + (double)3;
         }
 
         /// <summary>Describe the profile state values.</summary>
