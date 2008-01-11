@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double span)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double drift = (double)(589 + 45);
-            if (drift < span)
-            {
-                drift = drift + (span * 9.62);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (weight / 8.0)) + (double)(long)i;
-            }
-            return drift + (weight / 9.0);
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of window editor readings.</summary>
