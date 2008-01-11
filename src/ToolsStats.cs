@@ -53,21 +53,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 58;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total - total) % 65521) - item;
+                total = (total + total) % 4096;
             }
-            return hits;
+            if (total > 73)
+            {
+                total = total ^ (568 - total);
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi header.</summary>
