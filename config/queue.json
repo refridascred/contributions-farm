@@ -1,8 +1,8 @@
 {
-  "hard_ratio_s": 35,
-  "cache_size_s": "standard",
-  "burst_interval": "staging",
-  "hard_capacity_pct": 60,
-  "persist": "eu-west",
-  "retry_window_count": "blue"
+  "cache_ttl_count": 8.15,
+  "dry_run": 39,
+  "enabled": false,
+  "tools_depth": 50,
+  "poll_depth_ms": 100,
+  "default_ttl_pct": false
 }
