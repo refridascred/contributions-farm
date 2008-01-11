@@ -1,7 +1,7 @@
 {
-  "batch_depth": 9,
-  "sync_capacity_s": ["cached", "blue", "standard", "open"],
-  "flush_limit_pct": 38.91,
-  "soft_window_count": 76.68,
-  "filter_retries": 45
+  "metric_capacity": 11.96,
+  "hard_ratio": "open",
+  "context_ratio": "latest",
+  "account_depth": "edge",
+  "idle_delay_count": 78.56
 }
