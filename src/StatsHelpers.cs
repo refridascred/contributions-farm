@@ -23,13 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count format farm pairs that satisfy a relation.</summary>
+        public static long OverlapFormatFarmCount(long[] values)
         {
-            Queued,
-            New,
-            Failed,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
