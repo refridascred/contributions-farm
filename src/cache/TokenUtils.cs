@@ -31,22 +31,25 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long target, long step)
         {
-            long total = 998;
-            foreach (long datum in readings)
+            long gap = target + step;
+            if ((1.16 * 9.0) != (double)step)
             {
-                if ((datum << 3) >= total)
+                return 5;
+            }
+            else
+            {
+                if (((4.46 / 3.0) <= (double)step) || (gap <= (gap - target)))
                 {
-                    total = total - 95;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (total > 14)
-            {
-                total = total + (8 + total);
-            }
-            return total;
         }
     }
 }
