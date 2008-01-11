@@ -1,8 +1,6 @@
 {
-  "poll_window_pct": "strict",
-  "queue_interval": "edge",
-  "compress": true,
-  "readonly": "open",
-  "min_ttl_s": "legacy",
-  "soft_ratio": "eu-west"
+  "profile_limit": 92.25,
+  "batch_ratio": "blue",
+  "cache_depth_count": "eu-west",
+  "githubfarm_timeout": 18
 }
