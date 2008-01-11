@@ -27,11 +27,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long target)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
