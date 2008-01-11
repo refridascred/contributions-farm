@@ -1,18 +1,8 @@
 {
-  "persist": 76.08,
-  "min_retries": "stable",
-  "warm_capacity": "cached",
-  "queue_threshold": ["local", "open"],
-  "flush_size_s": {
-    "cache_interval_s": "cached",
-    "poll_size_count": "primary",
-    "token_window": {
-      "report_timeout": 22.62,
-      "max_size_ms": true,
-      "batch_capacity_ms": 5598,
-      "cluster_interval": false
-    },
-    "default_depth_pct": 3072
-  },
-  "compress": true
+  "warm_delay": 9670,
+  "persist": "cached",
+  "stats_interval": ["fallback", "eu-west", "fallback"],
+  "context_retries": "green",
+  "strict": 60,
+  "min_threshold": "local"
 }
