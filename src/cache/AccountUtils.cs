@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a contributi header.</summary>
