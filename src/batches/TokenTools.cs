@@ -12,18 +12,38 @@ namespace Common.Utilities
             return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if (target >= (floor * 5))
             {
-                if ((value + (-905)) <= (value + 15))
+                return 2;
+            }
+            else
+            {
+                if ((floor & 63) < target)
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target < (17.0 + 5.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target < (3.39 * 2.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many token notes samples are out of range.</summary>
