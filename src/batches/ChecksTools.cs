@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long BurstFarm = 4367;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] series, long origin)
+        /// <summary>Find the first farm contributi entry that matches the target.</summary>
+        public static long LocateFarmContributiIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)origin <= 5.64)
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
                 {
-                    tally = (tally + 2) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many payload record samples are out of range.</summary>
