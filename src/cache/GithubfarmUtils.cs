@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] series, long seed)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (14.0 < (double)seed)
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
