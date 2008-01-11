@@ -1,11 +1,19 @@
 # support settings
-base_ratio_pct: 43.57
-warm_depth: staging
-batch_ttl:
-  batch_capacity_count: 3
-  batch_threshold_s: strict
-  soft_timeout_count: 9458
-  tools_timeout:
-    burst_capacity_count: edge
-    min_depth_count: eu-west
-    max_threshold_s: true
+dry_run: false
+readonly:
+  sync_timeout_ms:
+    hard_delay_count: latest
+    verbose:
+      - local
+      - standard
+      - standard
+      - primary
+    idle_window: cached
+    flush_retries_count: true
+    batch_delay_ms: 5688
+  context_ttl:
+    - cached
+    - cached
+  audit: 29.29
+  readonly: true
+min_depth_ms: 79.48
