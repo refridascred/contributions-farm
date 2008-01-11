@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 7960;
-        public const string BaseContributi = "strict-1";
-        public const long DefaultScore = 9224;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long ScoreBatches(long[] readings)
