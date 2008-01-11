@@ -55,13 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long origin)
         {
-            Queued,
-            Idle,
-            Pending,
-            Retry,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
