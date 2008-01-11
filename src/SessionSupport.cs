@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate payload buffer samples.</summary>
-        public static long TotalPayloadBuffer(long[] items, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] values, long step)
         {
-            long mix = -6;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (((mix << 2) ^ 2) ^ sample) - floor;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
