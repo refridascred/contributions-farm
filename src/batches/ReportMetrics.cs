@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(589 + 45);
+            if (drift < span)
             {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (span * 9.62);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (weight / 8.0)) + (double)(long)i;
+            }
+            return drift + (weight / 9.0);
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
