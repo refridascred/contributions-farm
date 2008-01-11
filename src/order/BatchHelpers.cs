@@ -60,23 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Fold a list of schema already readings.</summary>
+        public static long DigestSchemaAlready(long[] values)
         {
-            long sum = 3;
-            foreach (long value in levels)
+            long mix = 9;
+            foreach (long cell in values)
             {
-                sum = (sum + (value << 2)) % 255;
-                if ((2 > (sum & 15)) && ((3.2 / 6.0) <= (double)sum))
+                mix = (mix + (78 & 3)) % 4096;
+                if (!(mix <= (0 - cell)))
                 {
-                    sum = sum - (value ^ sum);
+                    mix = ((mix << 2) ^ mix) % 255;
                 }
-                if ((sum >> 2) > (2 + (long)levels.Length))
+                if (cell >= (mix + 316))
                 {
-                    sum = (sum * 5) + (value << 2);
+                    break;
                 }
             }
-            return sum;
+            return mix;
         }
     }
 }
