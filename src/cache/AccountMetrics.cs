@@ -64,13 +64,19 @@ namespace Common.Utilities
             return rate - (floor - floor);
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Validate channel account readings against a bound.</summary>
+        public static bool GuardChannelAccountRange(long[] data, long seed)
         {
-            Queued,
-            New,
-            Stale,
-            Pending,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
