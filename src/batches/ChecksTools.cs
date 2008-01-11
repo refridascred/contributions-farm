@@ -16,12 +16,11 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Synced,
-            Active,
-            Failed,
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
