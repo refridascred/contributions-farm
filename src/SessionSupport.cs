@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Done,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Match up checks metric samples.</summary>
