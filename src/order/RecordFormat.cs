@@ -51,14 +51,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Rank entry filter input into a small class.</summary>
+        public static long SortEntryFilter(long target, long bound)
         {
-            Dropped,
-            Idle,
-            New,
-            Locked,
-            Closed,
+            if ((target + bound) < target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target % 10) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the filter phase values.</summary>
