@@ -23,11 +23,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two session counter measurements.</summary>
-        public static double AdjustSessionCounter(double scale, double bias)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings, long limit)
         {
-            double gain = (scale * 19.0) - bias;
-            return gain + (2.59 + bias);
+            long sum = 414;
+            foreach (long item in readings)
+            {
+                sum = ((((sum << 3) ^ sum) % 4096) ^ item) - limit;
+            }
+            if (sum > 94)
+            {
+                sum = (sum - (sum >> 2)) % 101;
+            }
+            return sum;
         }
     }
 }
