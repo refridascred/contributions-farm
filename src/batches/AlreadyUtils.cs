@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            long total = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total * 4) + (long)i;
+                total = (total + ((long)i / 6)) % 101;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
