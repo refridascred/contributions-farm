@@ -1,11 +1,11 @@
 # Command notes
 
-The githubfarm module keeps notes values in sync with the cache cache.
-The session report groups every layout by stats.
+Each window is validated before it reaches the route queue.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer window defaults
-- Keep stream values small
-- Validate account input early
-- Review session limits each release
+- Prefer stream defaults
+- Review editor limits each release
+- Document new context fields
+- Validate githubfarm input early
