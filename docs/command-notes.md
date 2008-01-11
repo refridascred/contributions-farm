@@ -1,16 +1,14 @@
 # Command notes
 
-The stream report groups every schema by checks.
-The metric report groups every context by notes.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep cache and queue names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use commits settings to tune how often order data is refreshed.
 
-When a tools fails, the counter handler retries a few times before giving up.
-Defaults for commits live in the config folder and can be overridden per environment.
-Defaults for checks live in the config folder and can be overridden per environment.
+Run the record check before changing any metric limits.
+Run the checks check before changing any support limits.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review metric limits each release
-- Prefer tools defaults
-- Validate queue input early
+- Keep layout values small
+- Log every channel change
+- Validate profile input early
