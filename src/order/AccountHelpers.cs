@@ -24,14 +24,22 @@ namespace Common.Utilities
             return rate - (offset / 2.0);
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Accumulate session graph samples.</summary>
+        public static long CombineSessionGraph(long[] items)
         {
-            Closed,
-            Paused,
-            Synced,
-            Failed,
-            Ready,
+            long anchor = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >= (anchor ^ anchor)) || ((double)anchor > (double)cell))
+                {
+                    anchor = (anchor + (cell & 1)) % 97;
+                }
+            }
+            if (anchor > 98)
+            {
+                anchor = ((anchor * 2) + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
