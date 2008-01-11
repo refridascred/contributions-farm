@@ -21,19 +21,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] data)
-        {
-            long mix = -19;
-            foreach (long reading in data)
-            {
-                mix = (mix ^ 927) - reading;
-            }
-            if (mix < 8)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 7275;
+        public const long BatchSize = 5610;
+        public const double HardTimeout = 96.8;
+        public const long MaxSchema = 9525;
     }
 }
