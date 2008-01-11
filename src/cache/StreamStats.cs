@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepDepth = 4075;
-        public const long BatchFormat = 9197;
-        public const double MinFormat = 93.14;
-        public const long SoftRatio = 2533;
-        public const double HardFormat = 12.54;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long seed, long target)
+        {
+            if (!((17.0 - 3.17) > (double)seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)target < (double)54) && ((55 - target) != (target - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] series, long step)
