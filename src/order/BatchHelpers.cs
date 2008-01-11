@@ -34,11 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultSize = 7301;
-        public const long LimitChannel = 1242;
-        public const string BatchChannel = "fallback-edge";
-        public const long LimitTimeout = 9064;
-        public const long MinChannel = 1630;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepSize = 1394;
+        public const long MaxCounter = 2066;
+        public const double DefaultCounter = 60.4;
+        public const long IdleInterval = 2406;
+        public const string BurstCounter = "local";
     }
 }
