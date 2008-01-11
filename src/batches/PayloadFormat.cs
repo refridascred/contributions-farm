@@ -30,14 +30,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitWidth = 85.16;
+        public const long BatchBudget = 7624;
+        public const long MinBudget = 6249;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryChecks = 1543;
