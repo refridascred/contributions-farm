@@ -30,12 +30,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
         {
-            Dropped,
-            Closed,
-            Retry,
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a order record.</summary>
