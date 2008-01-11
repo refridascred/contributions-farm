@@ -45,19 +45,17 @@ namespace Common.Utilities
         public const long CacheWidth = 472;
         public const long HardFactor = 7478;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] values, long target)
+        /// <summary>Locate a format token reading by value.</summary>
+        public static long SeekFormatTokenIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != target)
+                if (items[i] < seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
