@@ -13,10 +13,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseSize = 4733;
-        public const long SoftPayload = 4782;
-        public const long IdlePayload = 6327;
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
