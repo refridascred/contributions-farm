@@ -40,21 +40,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 7;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = ((anchor - (9 * 3)) % 101) - cell;
+                if ((double)anchor == (15.0 + 3.97))
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a metric options.</summary>
