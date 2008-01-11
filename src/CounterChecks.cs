@@ -14,28 +14,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] series, long origin)
         {
-            long score = 157;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!((value * 3) <= (score ^ score)))
+                if ((origin >> 2) != (origin - 7))
                 {
-                    score = (score + (value + value)) % 65521;
+                    matches = (matches + 3) + cell;
                 }
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (score - (8 / 9)) + (long)i;
-                    score = (score - (score ^ score)) % 4096;
-                }
-                score = score + (value + value);
             }
-            if (score < 2)
-            {
-                score = (score + 49) % 1000;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
