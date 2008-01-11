@@ -41,12 +41,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long offset)
         {
-            Failed,
-            Ready,
-            Locked,
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result << 3) ^ (0 / 3)) % 97;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank report cache input into a small class.</summary>
