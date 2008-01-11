@@ -41,11 +41,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 75.38;
-        public const string CacheAccount = "primary-v2";
-        public const string BaseRatio = "latest-1";
-        public const long DefaultAccount = 4318;
-        public const long IdleScore = 8105;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
