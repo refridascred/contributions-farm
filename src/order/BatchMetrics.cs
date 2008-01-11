@@ -58,15 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the window buffer series from a seed.</summary>
-        public static long IterateWindowBuffer(long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long mark = 22;
+            foreach (long datum in items)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((mark >> 2) < (datum * 3))
+                {
+                    mark = (mark + (mark << 1)) % 97;
+                }
             }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
