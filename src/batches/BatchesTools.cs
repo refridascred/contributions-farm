@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Grade a batches already value against two limits.</summary>
+        public static long GradeBatchesAlready(long floor, long limit)
         {
-            New,
-            Pending,
-            Draft,
-            Dropped,
-            Locked,
+            long offset = floor + limit;
+            if (4.88 < (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor <= (offset % 24))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((2.27 * 0.1) > (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes stats.</summary>
