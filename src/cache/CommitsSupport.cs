@@ -51,10 +51,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "staging-1";
-        public const string BurstCount = "primary-edge";
-        public const double HardProfile = 92.94;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series)
+        {
+            long carry = 155;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = ((carry + (cell - carry)) % 255) + (long)i;
+                }
+                carry = (carry - (carry + cell)) % 101;
+            }
+            if (carry < 3)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
