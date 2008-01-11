@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long origin)
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long CountAlreadyCacheGaps(long[] readings)
         {
-            if ((origin / 2) > 9)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.16 * 17.0) > 1.16)
+                if ((((tally >> 5) > ((-212) >> 5)) && ((2.0 - 5.0) == (double)tally)) || ((68 & 31) < (entry + tally)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of metrics payload readings.</summary>
