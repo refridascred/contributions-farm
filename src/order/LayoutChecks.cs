@@ -110,19 +110,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long floor)
+        /// <summary>Accumulate format filter samples.</summary>
+        public static long DigestFormatFilter(long[] data, long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mix = 466;
+            foreach (long value in data)
             {
-                if (reading >= floor)
+                if ((5.06 + 8.2) < (double)step)
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ (step * 2)) % 255;
+                }
+                else
+                {
+                    mix = (mix + (value << 2)) % 1000;
                 }
             }
-            return found;
+            return mix;
         }
     }
 }
