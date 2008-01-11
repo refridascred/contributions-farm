@@ -1,10 +1,4 @@
 # entry settings
-contributi_ttl: legacy
-base_depth_ms: staging
-soft_ratio_s:
-  - local
-  - green
-  - green
-  - staging
-flush_delay_pct: latest
-readonly: false
+soft_window_count: 500
+sync_window_ms: open
+session_depth: staging
