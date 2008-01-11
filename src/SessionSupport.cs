@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the notes report series from a seed.</summary>
-        public static long StepNotesReport(long offset)
+        /// <summary>Accumulate payload buffer samples.</summary>
+        public static long TotalPayloadBuffer(long[] items, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = -6;
+            foreach (long sample in items)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                mix = (((mix << 2) ^ 2) ^ sample) - floor;
             }
-            return total;
+            return mix % 1000;
         }
 
         /// <summary>Hold a buffer record.</summary>
