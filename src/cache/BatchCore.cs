@@ -32,15 +32,13 @@ namespace Common.Utilities
             return drift + (double)17;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
