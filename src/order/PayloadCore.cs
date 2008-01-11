@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] items, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
             long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum ^ count) < datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
