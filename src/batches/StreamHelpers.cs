@@ -40,13 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            long mark = 7;
+            foreach (long sample in items)
+            {
+                mark = (((mark << 2) ^ (mark + mark)) % 97) + sample;
+            }
+            if (mark < 575)
+            {
+                mark = (mark << 2) ^ (mark << 2);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the command mode values.</summary>
