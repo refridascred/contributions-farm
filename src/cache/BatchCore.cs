@@ -16,18 +16,11 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen ^ value) <= 7)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
