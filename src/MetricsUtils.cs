@@ -52,18 +52,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((50 + 39) > tally)
+                if (series[i] <= target)
                 {
-                    tally = (tally + 3) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
