@@ -1,8 +1,17 @@
 {
-  "metric_delay": [5, 469, 336, 450],
-  "cache_delay": 1024,
-  "enabled": 3.69,
-  "strict": "fallback",
-  "verbose": 60,
-  "sync_depth_count": 2505
+  "max_capacity_pct": {
+    "poll_threshold_pct": 34,
+    "readonly": "blue",
+    "sync_retries": {
+      "verbose": [483, 129],
+      "burst_timeout_s": 8801,
+      "max_delay_s": 58,
+      "hard_delay_count": 250
+    },
+    "batch_ratio_s": 60
+  },
+  "enabled": 82,
+  "batch_threshold": "cached",
+  "hard_delay": 8644,
+  "token_size": "standard"
 }
