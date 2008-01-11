@@ -1,5 +1,7 @@
 # entry settings
-dry_run: 88
-flush_capacity: blue
-sync_window_s: false
-base_threshold_pct: latest
+layout_interval: legacy
+persist: eu-west
+min_limit:
+  - 204
+  - 393
+  - 226
