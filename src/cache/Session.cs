@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] values)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry ^ tally) < 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of command already readings.</summary>
