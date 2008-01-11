@@ -1,5 +1,8 @@
 {
-  "contributi_timeout": true,
-  "hard_depth_pct": "green",
-  "idle_capacity_count": "eu-west"
+  "dry_run": "local",
+  "context_capacity": 71,
+  "poll_delay": [304, 250, 37, 483],
+  "max_size": true,
+  "hard_timeout_ms": 98.22,
+  "readonly": "open"
 }
