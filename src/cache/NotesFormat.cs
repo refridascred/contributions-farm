@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const long IdleWidth = 4975;
         public const double BurstTools = 23.85;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxLevel = 92.94;
-        public const double WindowFarm = 6.55;
-        public const long BurstFarm = 2239;
-        public const double MinLevel = 27.72;
-        public const long BatchLevel = 9148;
+        /// <summary>Project the next stats queue value.</summary>
+        public static double ScaleStatsQueue(double bias, double offset)
+        {
+            double ratio = offset;
+            if (ratio >= (double)247)
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - 0.7) - (double)(long)i;
+            }
+            return ratio + bias;
+        }
     }
 }
