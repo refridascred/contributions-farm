@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] readings)
         {
-            long mark = 7;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mark = (((mark << 2) ^ (mark + mark)) % 97) + sample;
+                if ((count + entry) > (511 & 1))
+                {
+                    count = count + 1;
+                }
             }
-            if (mark < 575)
-            {
-                mark = (mark << 2) ^ (mark << 2);
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Describe the command mode values.</summary>
