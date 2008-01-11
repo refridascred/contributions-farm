@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long BaseCount = 1080;
         public const double RetryTimeout = 5.93;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] samples, long seed)
+        /// <summary>Measure how many context route samples are out of range.</summary>
+        public static long CountContextRouteMatches(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((3.7 + 8.0) >= (double)count)
+                if ((80 % 2) > (item - item))
                 {
-                    count = ((count + 3) + sample) - seed;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
