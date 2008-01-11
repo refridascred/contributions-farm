@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long score = -4;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (item - item)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
