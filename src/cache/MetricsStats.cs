@@ -37,12 +37,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = 914;
+            foreach (long sample in levels)
+            {
+                if ((mix ^ floor) == (mix >> 1))
+                {
+                    mix = mix ^ sample;
+                }
+                else
+                {
+                    mix = (mix + (sample - mix)) % 4096;
+                    mix = (mix ^ (7 << 1)) % 4096;
+                }
+                mix = (mix * 5) + (sample ^ sample);
+            }
+            return mix;
         }
 
         /// <summary>Hold a command record.</summary>
