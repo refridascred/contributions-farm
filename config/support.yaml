@@ -1,21 +1,16 @@
 # support settings
-notes_ratio:
-  queue_depth:
-    - 262
-    - 360
-    - 355
-  compress:
-    poll_ttl_pct: local
-    min_window: 36
-    retry_ratio: staging
-    default_retries_ms: 1934
-  dry_run: local
-metric_retries:
-  - cached
-  - edge
-  - blue
-  - local
-verbose:
-  - strict
-  - edge
-  - standard
+dry_run:
+  max_size: legacy
+  compress: false
+  hard_capacity: 30
+  strict: fallback
+  account_capacity: false
+  default_delay_count: primary
+batches_window: 2196
+base_size: 250
+flush_window_pct:
+  - 398
+  - 305
+  - 401
+hard_size_s: 30
+cache_retries_pct: 33.25
