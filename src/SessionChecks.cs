@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate order stream samples.</summary>
-        public static long FoldOrderStream(long[] series, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mark = 614;
-            foreach (long cell in series)
-            {
-                if ((double)offset <= (13.0 / 4.0))
-                {
-                    mark = (mark ^ (offset + cell)) % 65521;
-                    mark = mark - offset;
-                }
-                mark = ((mark << 2) ^ (3 / 3)) % 255;
-                mark = mark - (mark + mark);
-            }
-            return mark;
+            New,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a checks header.</summary>
