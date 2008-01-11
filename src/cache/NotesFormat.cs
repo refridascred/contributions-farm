@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a commits context reading.</summary>
-        public static double AdjustCommitsContext(double weight, double bias)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double drift = 17.0 * 20.0;
-            if (drift <= (weight - drift))
-            {
-                drift = drift - bias;
-            }
-            return drift + 4.0;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
