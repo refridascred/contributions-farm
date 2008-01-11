@@ -39,13 +39,24 @@ namespace Common.Utilities
         public const long MaxPayload = 2828;
         public const string IdleFactor = "strict-edge";
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long floor, long limit)
         {
-            Stale,
-            Dropped,
-            Active,
-            Idle,
+            if ((double)limit <= (3.0 / 3.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit << 3) != (1 + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
