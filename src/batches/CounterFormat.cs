@@ -20,21 +20,14 @@ namespace Common.Utilities
             return weight2 - (offset - weight2);
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the graph kind values.</summary>
