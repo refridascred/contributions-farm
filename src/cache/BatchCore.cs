@@ -16,14 +16,18 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values, long limit)
         {
-            Stale,
-            Active,
-            Dropped,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen ^ value) <= 7)
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
