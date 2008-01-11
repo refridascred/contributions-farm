@@ -23,5 +23,16 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Adjust a token window reading.</summary>
+        public static double SmoothTokenWindow(double ratio, double span)
+        {
+            double scale = (span - span) * 3.51;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (ratio / 9.0)) + (double)(long)i;
+            }
+            return scale + (span + 6.6);
+        }
     }
 }
