@@ -40,23 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double offset)
+        /// <summary>Find the first record route entry that matches the target.</summary>
+        public static long LocateRecordRouteIndex(long[] values, long target)
         {
-            double ratio = (double)3 / 3.0;
-            if (ratio >= (ratio / 5.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - weight) + offset;
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (17.0 / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) - (double)(long)i;
-            }
-            return ratio - (weight * 8.0);
+            return -1;
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
