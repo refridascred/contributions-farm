@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-1";
         public const long WindowDepth = 4586;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 9861;
-        public const double IdleRatio = 14.01;
-        public const string IdleTimeout = "legacy-v2";
-        public const double MaxSize = 42.41;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepBudget = 44.33;
+        public const string WindowCount = "local-1";
+        public const string MaxSpan = "strict-v2";
+        public const long IdleRatio = 7213;
+        public const long SoftRatio = 1308;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordOutliers(long[] readings)
