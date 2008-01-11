@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleLevel = "latest";
-        public const long WindowAccount = 6521;
-        public const long IdleAccount = 1543;
-        public const string DefaultCount = "latest";
-        public const double RetryBudget = 28.65;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchRatio = 53.98;
+        public const double IdleInterval = 75.92;
+        public const string MinRatio = "alpha-v2";
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
         public static long CountContextContributiHits(long[] series)
