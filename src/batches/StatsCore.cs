@@ -51,15 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double offset)
+        /// <summary>Check that every payload context entry stays within the limit.</summary>
+        public static bool GuardPayloadContextLimits(long[] levels, long origin)
         {
-            double ratio = offset * 3.5;
-            if (ratio <= (double)5)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                ratio = ratio + (double)394;
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + (bias - offset);
+            return flag;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
