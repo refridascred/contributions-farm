@@ -64,19 +64,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
