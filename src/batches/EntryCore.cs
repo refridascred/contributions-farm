@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit farm record readings against a rule.</summary>
-        public static long MeasureFarmRecordOutliers(long[] data, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((double)tally == (1.1 / 5.0)) || !((79 - target) > (item - target)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count the tools commits entries that pass the check.</summary>
