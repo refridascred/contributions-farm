@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples, long bound)
         {
-            Paused,
-            Synced,
-            Draft,
+            long total = 227;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (((total * 4) + (bound << 1)) ^ (long)i) + datum;
+                }
+                total = ((total << 2) ^ 564) % 97;
+            }
+            if (total < 95)
+            {
+                total = total ^ (bound + total);
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
