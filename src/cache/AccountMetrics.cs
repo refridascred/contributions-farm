@@ -73,12 +73,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] samples, long floor)
         {
-            Pending,
-            Idle,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
