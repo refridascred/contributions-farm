@@ -22,10 +22,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 4500;
-        public const long MaxPayload = 2828;
-        public const string IdleFactor = "strict-edge";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Queued,
+            Synced,
+            New,
+            Ready,
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long ClassifyFarm(long floor, long limit)
