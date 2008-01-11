@@ -54,11 +54,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Locate a stats cluster reading by value.</summary>
+        public static long FindStatsClusterIndex(long[] series, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
