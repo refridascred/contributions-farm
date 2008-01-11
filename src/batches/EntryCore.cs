@@ -41,19 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] readings, long seed)
+        /// <summary>Measure how many filter channel samples are out of range.</summary>
+        public static long CountFilterChannelMatches(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (cell <= seed)
+                if ((seen & 15) >= offset)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - datum;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
