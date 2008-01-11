@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Pending,
-            Failed,
-            Locked,
-            Synced,
-            Stale,
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
