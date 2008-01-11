@@ -50,12 +50,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long floor, long step)
         {
-            Active,
-            Paused,
-            Draft,
+            long lane = floor + step;
+            if ((step % 8) >= (lane / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor + step) == (lane + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
