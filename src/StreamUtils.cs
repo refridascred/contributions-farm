@@ -16,11 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxFactor = 2693;
-        public const long SoftFactor = 6586;
-        public const long SoftChecks = 7985;
-        public const string RetryChecks = "standard-1";
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Draft,
+            Idle,
+            New,
+            Synced,
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
