@@ -16,19 +16,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate farm metrics readings against a bound.</summary>
-        public static bool CheckFarmMetricsRange(long[] items, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            if ((floor - floor) >= floor)
             {
-                if (datum > limit)
+                return 3;
+            }
+            else
+            {
+                if (!((step * 3) > floor))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor >= (6.1 - 2.7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)step >= (1.8 * 2.4)) || ((0.34 - 17.0) < (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the schema mode values.</summary>
