@@ -22,16 +22,12 @@ namespace Common.Utilities
         public const double BatchLevel = 56.15;
         public const string MaxFactor = "strict-1";
 
-        /// <summary>Iterate the cluster payload series from a seed.</summary>
-        public static long RollClusterPayload(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 43.95;
+        public const string BurstBudget = "alpha-edge";
+        public const long LimitWidth = 4401;
+        public const string StepWidth = "alpha";
+        public const double BurstRatio = 42.38;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long floor)
