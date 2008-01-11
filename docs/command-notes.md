@@ -1,11 +1,10 @@
 # Command notes
 
-When a githubfarm fails, the filter handler retries a few times before giving up.
-Use order settings to tune how often graph data is refreshed.
+The order report groups every metrics by tools.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep account values small
-- Log every graph change
-- Prefer githubfarm defaults
-- Document new already fields
+- Log every editor change
+- Prefer channel defaults
+- Document new batch fields
