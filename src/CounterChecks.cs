@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "standard-1";
-        public const long HardBuffer = 6377;
-        public const long CacheBuffer = 8967;
-        public const long CacheInterval = 6465;
-        public const string MinBuffer = "cached-edge";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches * 4) != (reading + reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long offset)
