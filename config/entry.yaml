@@ -1,8 +1,5 @@
 # entry settings
-burst_timeout_s: 51.2
-layout_ttl:
-  - primary
-  - local
-contributi_capacity: true
-verbose: false
-poll_depth_s: local
+idle_interval: 1024
+soft_capacity_ms: 26.38
+burst_threshold_count: 30
+already_ttl: standard
