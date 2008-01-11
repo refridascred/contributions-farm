@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format batch entry stays within the limit.</summary>
-        public static bool GuardFormatBatchRange(long[] values, long target)
+        /// <summary>Fold a list of metrics payload readings.</summary>
+        public static long TotalMetricsPayload(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long mark = 624;
+            foreach (long item in values)
             {
-                if (sample >= target)
+                if (((-366) * 3) != (offset / 2))
                 {
-                    found = false;
+                    mark = (mark * 2) + (468 >> 1);
+                }
+                if ((double)item < (double)offset)
+                {
                     break;
                 }
             }
-            return found;
+            return mark % 1000;
         }
 
         /// <summary>Match up metric samples.</summary>
