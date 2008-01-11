@@ -35,18 +35,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit payload metric readings against a rule.</summary>
-        public static long AuditPayloadMetricHits(long[] values)
+        /// <summary>Measure how many context stream samples are out of range.</summary>
+        public static long AuditContextStreamHits(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((reading - reading) <= (count - count))
+                if (!((1.0 + 7.0) > (double)tally))
                 {
-                    count = count + 3;
+                    tally = ((tally + 3) - item) + bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
