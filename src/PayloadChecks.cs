@@ -23,11 +23,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 1298;
-        public const double BatchProfile = 20.66;
-        public const long HardTimeout = 7083;
-        public const double BurstProfile = 3.47;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the layout metrics entries that pass the check.</summary>
         public static long CountLayoutMetricsMatches(long[] values)
