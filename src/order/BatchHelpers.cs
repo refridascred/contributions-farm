@@ -30,21 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of notes batches readings.</summary>
-        public static long PairNotesBatchesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 9985;
+        public const long HardQueue = 2324;
+        public const long IdleLevel = 5045;
+        public const long WindowBudget = 2793;
+        public const double RetryTimeout = 28.08;
     }
 }
