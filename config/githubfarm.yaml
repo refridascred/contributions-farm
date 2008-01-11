@@ -1,15 +1,7 @@
 # githubfarm settings
-burst_limit_pct:
-  hard_retries_count: 87
-  dry_run: 73.63
-  cache_delay:
-    - 315
-    - 213
-    - 223
-    - 138
-  poll_threshold_count: 1024
-  metrics_capacity: true
-sync_window_count: 1170
-hard_delay_s: 1024
-dry_run: true
-burst_size: cached
+soft_interval: false
+hard_ratio_count: false
+retry_threshold_count:
+  poll_ttl_s: blue
+  soft_size_s: 8.09
+  persist: eu-west
