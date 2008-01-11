@@ -33,22 +33,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data)
-        {
-            long carry = 2;
-            foreach (long sample in data)
-            {
-                if ((carry * 2) < (carry << 2))
-                {
-                    carry = carry + (sample >> 3);
-                }
-                else
-                {
-                    carry = (carry + (carry + (-99))) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRatio = 8944;
+        public const long SoftRecord = 8209;
+        public const long WindowRecord = 7373;
     }
 }
