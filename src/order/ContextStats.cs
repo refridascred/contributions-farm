@@ -38,17 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score - (score ^ score)) % 97;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 9987;
+        public const double BaseCount = 61.48;
+        public const long CacheFactor = 201;
+        public const long IdleTools = 9321;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BurstToken = 24.57;
