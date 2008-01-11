@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const double SoftFactor = 10.98;
         public const long BurstCount = 830;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] <= floor)
+                if (((20.0 / 2.0) < (double)(long)data.Length) && ((matches - matches) < entry))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
