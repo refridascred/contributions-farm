@@ -68,19 +68,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            double weight = ratio;
-            if (weight > ratio)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + ratio) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (8.0 - ratio);
-            }
-            return weight - (double)0;
+            return count;
         }
     }
 }
