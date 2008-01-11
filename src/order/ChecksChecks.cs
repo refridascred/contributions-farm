@@ -14,17 +14,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long limit)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (scale * 14.0) - (double)529;
+            if (weight >= weight)
             {
-                if ((series[i] < limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - 3.0) + bias;
             }
-            return -1;
+            return weight + weight;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
