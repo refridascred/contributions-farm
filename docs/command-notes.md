@@ -1,11 +1,16 @@
 # Command notes
 
-Each window is validated before it reaches the route queue.
-The route helpers are pure functions, so they are safe to call from any thread.
+The session module keeps already values in sync with the githubfarm cache.
+Use context settings to tune how often queue data is refreshed.
+Keep schema and report names short and lowercase.
+
+Use context settings to tune how often queue data is refreshed.
+Defaults for graph live in the config folder and can be overridden per environment.
+Use metric settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Review editor limits each release
-- Document new context fields
-- Validate githubfarm input early
+- Validate notes input early
+- Review entry limits each release
+- Prefer layout defaults
+- Document new tools fields
