@@ -43,25 +43,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long step, long step2)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            long diff = step ^ step2;
-            if ((double)step != (double)step2)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff >> 3) > (step2 - 775))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
