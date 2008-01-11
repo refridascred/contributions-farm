@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
