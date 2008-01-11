@@ -40,18 +40,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] data, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long anchor = 873;
-            foreach (long entry in data)
-            {
-                if (18 <= (anchor * 5))
-                {
-                    anchor = ((anchor - (limit + limit)) % 4096) + entry;
-                }
-            }
-            return anchor;
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the batches status values.</summary>
