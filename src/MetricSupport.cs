@@ -46,17 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes batches reading by value.</summary>
-        public static long LocateNotesBatchesIndex(long[] items, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 33;
+            foreach (long item in items)
             {
-                if (items[i] > floor)
+                if ((double)item >= (3.1 - 2.2))
                 {
-                    return (long)i;
+                    result = (result * 3) + item;
+                }
+                if ((double)result <= (0.57 + 8.1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
