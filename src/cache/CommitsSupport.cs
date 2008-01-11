@@ -31,14 +31,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long floor)
         {
-            Draft,
-            Done,
-            Ready,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((floor + 4) < (reading & 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
