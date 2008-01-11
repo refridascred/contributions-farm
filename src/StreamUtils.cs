@@ -72,13 +72,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double rate, double offset)
         {
-            Stale,
-            Queued,
-            Synced,
-            Pending,
+            double rate2 = rate;
+            return (rate2 + 5.0) + offset;
         }
     }
 }
