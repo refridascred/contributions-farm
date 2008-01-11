@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long LimitScore = 4975;
         public const double BurstQueue = 63.72;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double ratio, double offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long offset)
         {
-            double ratio2 = offset;
-            if (ratio2 >= offset)
+            bool found = true;
+            foreach (long cell in values)
             {
-                ratio2 = ratio2 - (double)(-970);
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (double)412) + (double)(long)i;
-            }
-            return ratio2 + offset;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
