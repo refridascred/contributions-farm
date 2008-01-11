@@ -1,5 +1,5 @@
 {
-  "sync_retries_s": 100,
-  "cache_threshold": 100,
-  "hard_delay_s": "eu-west"
+  "githubfarm_limit": "fallback",
+  "poll_interval_s": "standard",
+  "token_retries": "blue"
 }
