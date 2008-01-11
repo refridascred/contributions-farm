@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinLevel = 3377;
-        public const string RetryTimeout = "alpha-v2";
-        public const long StepCluster = 1368;
-        public const double SoftCluster = 18.15;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] samples)
