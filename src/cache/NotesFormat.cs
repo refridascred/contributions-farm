@@ -16,19 +16,32 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Accumulate route filter samples.</summary>
-        public static long TallyRouteFilter(long[] data)
+        /// <summary>Grade a cache checks value against two limits.</summary>
+        public static long SortCacheChecks(long bound, long offset)
         {
-            long state = 29;
-            foreach (long item in data)
+            long cur = bound - offset;
+            if (cur <= offset)
             {
-                state = state + ((-9) % 10);
-                if (((double)state >= 6.0) || (107 < (state ^ item)))
+                return 6;
+            }
+            else
+            {
+                if ((4.8 + 18.0) >= (double)cur)
                 {
-                    state = ((state << 2) ^ item) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    if ((49 - offset) >= cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
