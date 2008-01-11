@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= 7.2)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics class values.</summary>
