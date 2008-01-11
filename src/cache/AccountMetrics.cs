@@ -25,12 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            long total = 887;
+            foreach (long entry in series)
+            {
+                if ((total & 31) <= (total / 9))
+                {
+                    total = ((total * 3) + (total - total)) % 101;
+                    total = (total << 2) ^ ((-8) + entry);
+                }
+                total = (total ^ (967 / 9)) % 101;
+            }
+            if (total > 9)
+            {
+                total = total - (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
