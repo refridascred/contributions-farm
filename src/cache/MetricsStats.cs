@@ -13,18 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] items)
         {
-            long total = 583;
+            long seen = 0;
             foreach (long datum in items)
             {
-                if ((double)origin >= (1.6 / 8.0))
+                if ((994 & 127) <= (seen - datum))
                 {
-                    total = (((total * 5) + origin) % 4096) + datum;
+                    seen = seen + 3;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
