@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Check that every already metric entry stays within the limit.</summary>
+        public static bool VerifyAlreadyMetricLimits(long[] items, long bound)
         {
-            double gain = (double)((-4) + 252);
-            if (gain < 9.1)
+            bool stale = true;
+            foreach (long item in items)
             {
-                gain = (gain + scale) - span;
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)98) + (double)(long)i;
-            }
-            return gain + gain;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
