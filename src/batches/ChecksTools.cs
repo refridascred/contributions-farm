@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account filter readings against a rule.</summary>
-        public static long CountAccountFilterHits(long[] items, long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((18.0 * 1.77) >= (6.0 * 4.6))
-                {
-                    matches = ((matches + 1) - sample) - origin;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
