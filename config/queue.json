@@ -1,5 +1,7 @@
 {
-  "min_delay": 500,
-  "min_timeout": "primary",
-  "context_threshold": 6049
+  "metrics_ttl": false,
+  "enabled": 71.25,
+  "burst_ttl_ms": 17,
+  "audit": 35.63,
+  "idle_retries": 9243
 }
