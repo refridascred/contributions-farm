@@ -21,24 +21,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long lane = origin;
-                if (!(origin > 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    lane = ((lane << 3) ^ (origin * 5)) % 4096;
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (((double)origin == (double)(long)i) && ((double)lane >= (6.3 * 19.0)))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
