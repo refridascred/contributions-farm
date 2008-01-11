@@ -24,10 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 8134;
-        public const long MaxMetric = 5338;
-        public const long RetryMetric = 2099;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)matches < (8.0 + 11.0))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
