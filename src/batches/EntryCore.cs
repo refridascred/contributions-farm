@@ -40,12 +40,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            Ready,
+            Idle,
+            Closed,
+            Stale,
         }
     }
 }
