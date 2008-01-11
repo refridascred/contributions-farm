@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen & 7) != (seen + (-144)))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
