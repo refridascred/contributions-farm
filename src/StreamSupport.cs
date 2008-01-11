@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 607;
-        public const long StepSpan = 5870;
-        public const long BaseChecks = 1805;
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double rate, double span)
+        {
+            double drift = span;
+            if (drift < rate)
+            {
+                drift = drift + (double)66;
+            }
+            else
+            {
+                drift = drift + (double)4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - rate) - (double)(long)i;
+            }
+            return drift + (rate + 9.67);
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 7830;
