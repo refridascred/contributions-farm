@@ -30,18 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] series)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally + item) == (item ^ tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
