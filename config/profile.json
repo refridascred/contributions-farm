@@ -1,5 +1,15 @@
 {
-  "soft_delay_ms": "blue",
-  "tools_delay": 100,
-  "default_ttl": 33.01
+  "idle_limit": [251, 70],
+  "flush_retries": 4890,
+  "flush_interval_ms": 2.77,
+  "base_interval": {
+    "graph_limit": 91.63,
+    "readonly": {
+      "warm_limit_count": ["fallback", "cached", "green"],
+      "already_delay": "latest",
+      "token_window": 62
+    },
+    "commits_size": "latest",
+    "max_threshold": false
+  }
 }
