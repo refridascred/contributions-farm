@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const long CacheSize = 5788;
         public const long StepWidth = 6158;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            Locked,
-            Draft,
-            Failed,
-            New,
+            double scale = floor + weight;
+            if (scale < scale)
+            {
+                scale = scale + (double)78;
+            }
+            return scale - weight;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
