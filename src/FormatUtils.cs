@@ -67,15 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long MeasureClusterSupportOutliers(long[] series, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((double)hits == (9.57 + 7.16))
+                {
+                    hits = ((hits + 3) ^ sample) + limit;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
