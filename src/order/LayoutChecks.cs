@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long floor, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] levels, long bound)
         {
-            long bound = floor + limit;
-            if (84 < bound)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor & 31) != (6 >> 4))
+                if (sample > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the layout status values.</summary>
