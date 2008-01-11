@@ -45,22 +45,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit channel contributi readings against a rule.</summary>
-        public static long TallyChannelContributiHits(long[] levels)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)tally < (4.31 + 9.0))
+                if (((long)i + state) >= state)
                 {
-                    tally = (tally + 1) - item;
+                    state = (state ^ 58) % 101;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
