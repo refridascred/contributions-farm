@@ -47,13 +47,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Retry,
-            Synced,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardWidth = 5864;
+        public const double MaxCount = 85.19;
+        public const long LimitSupport = 7950;
+        public const long LimitRatio = 3661;
     }
 }
