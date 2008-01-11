@@ -67,18 +67,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] samples, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (floor > (sample - sample))
+                if ((double)cell <= (1.61 + 5.0))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
