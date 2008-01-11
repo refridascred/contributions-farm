@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long bound, long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long edge = bound - target;
-            if ((bound & 31) != (bound / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target - bound) != (edge * 3)) && ((double)bound < (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target >= ((-2) - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)edge != (double)0) || ((double)edge >= (8.0 + 9.69)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Grade a payload githubfarm value against two limits.</summary>
