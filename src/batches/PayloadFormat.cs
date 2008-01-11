@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            New,
+            Locked,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
