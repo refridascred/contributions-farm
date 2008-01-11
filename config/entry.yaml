@@ -1,7 +1,15 @@
 # entry settings
-layout_interval: legacy
-persist: eu-west
-min_limit:
-  - 204
-  - 393
-  - 226
+batch_ttl: 30.6
+warm_interval_ms: 61.37
+cluster_timeout:
+  - 428
+  - 442
+  - 449
+  - 199
+cache_threshold: 2254
+metrics_ttl: 3.07
+farm_capacity:
+  - primary
+  - eu-west
+  - strict
+  - fallback
