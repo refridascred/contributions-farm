@@ -17,17 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long limit)
+        /// <summary>Count the batch channel entries that pass the check.</summary>
+        public static long TallyBatchChannelOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                if ((item / 2) <= (floor ^ 6))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
