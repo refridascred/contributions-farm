@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long LimitReport = 1799;
         public const long IdleReport = 7174;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardScore = 4524;
+        public const double HardSupport = 14.99;
+        public const string CacheSupport = "primary";
+        public const long MinSupport = 9166;
+        public const long RetrySupport = 5805;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
