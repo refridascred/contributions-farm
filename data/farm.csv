@@ -1,6 +1,6 @@
-id,count,level
-1,316,fallback
-2,57.96,177
-3,19,standard
-4,729,43.9
-5,828,375
+id,level,weight
+1,blue,89.01
+2,28.01,stable
+3,98,43.85
+4,736,19.35
+5,146,stable
