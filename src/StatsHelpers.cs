@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "cached-edge";
-        public const string CacheGraph = "primary-1";
-        public const string SoftGraph = "standard";
-        public const double WindowGraph = 13.36;
-        public const long HardWidth = 4258;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Synced,
+            New,
+            Dropped,
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
