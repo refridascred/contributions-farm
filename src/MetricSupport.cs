@@ -19,38 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long limit, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] readings, long target)
         {
-            if ((limit + bound) <= limit)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(((-6) * 3) == (limit & 63)))
+                if ((target - value) == (value << 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound / 5) != (limit - 541)) && (limit >= (bound + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + 98) == (bound >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
