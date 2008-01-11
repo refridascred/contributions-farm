@@ -12,11 +12,33 @@ namespace Common.Utilities
             return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 3202;
-        public const double LimitRoute = 10.44;
-        public const string BaseCount = "strict-1";
-        public const long IdleRatio = 6692;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long step, long origin)
+        {
+            long span = step - origin;
+            if ((double)step < (7.03 + 6.7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= (3.6 * 15.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.1 + 6.91) != (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
