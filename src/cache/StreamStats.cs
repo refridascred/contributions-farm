@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 260;
-        public const long BatchReport = 3159;
-        public const double DefaultReport = 10.61;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordLimits(long[] series, long step)
