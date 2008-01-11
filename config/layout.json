@@ -1,7 +1,11 @@
 {
-  "cluster_capacity": 27.69,
-  "warm_capacity_count": true,
-  "default_size_count": 25,
-  "batch_ratio_s": "legacy",
-  "persist": "stable"
+  "retry_depth_s": 83.56,
+  "cache_ttl_ms": "local",
+  "audit": "cached",
+  "enabled": 80.75,
+  "idle_window_pct": {
+    "audit": 63.4,
+    "hard_threshold_ms": false,
+    "checks_delay": 250
+  }
 }
