@@ -1,11 +1,7 @@
 {
-  "verbose": "edge",
-  "base_window_pct": {
-    "max_timeout_s": ["staging", "primary", "fallback", "strict"],
-    "hard_threshold": 30,
-    "dry_run": 6920,
-    "warm_size_pct": "local",
-    "base_limit": "cached"
-  },
-  "farm_delay": 45.28
+  "payload_delay": ["stable", "local"],
+  "channel_capacity": "eu-west",
+  "warm_capacity_count": "strict",
+  "batch_window_count": true,
+  "verbose": true
 }
