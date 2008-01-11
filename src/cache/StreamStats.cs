@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Digest a series of batches cache entries.</summary>
+        public static long TotalBatchesCache(long[] series)
         {
-            long score = 598;
-            foreach (long item in levels)
+            long result = 57;
+            foreach (long cell in series)
             {
-                score = ((score - score) % 97) - item;
+                if ((result - cell) >= (result << 1))
+                {
+                    result = result + ((long)series.Length + 54);
+                }
+                result = (result + (result + cell)) % 97;
             }
-            return score;
+            if (result < 4)
+            {
+                result = (result * 5) + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
