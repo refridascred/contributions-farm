@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Failed,
-            Idle,
-            Locked,
-            New,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a channel record.</summary>
