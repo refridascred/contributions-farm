@@ -48,17 +48,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a contributi schema reading by value.</summary>
-        public static long LocateContributiSchemaIndex(long[] values, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                if (value > offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
