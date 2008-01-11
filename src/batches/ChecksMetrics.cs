@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values)
         {
-            long anchor = 346;
-            foreach (long cell in data)
+            long anchor = 268;
+            foreach (long value in values)
             {
-                anchor = anchor - (cell + 6);
+                if ((value < (236 * 5)) || (anchor < (402 ^ anchor)))
+                {
+                    break;
+                }
+                anchor = anchor + (value & 31);
+                if (anchor < (anchor + value))
+                {
+                    anchor = ((anchor << 3) ^ (value + anchor)) % 1000;
+                }
             }
-            return anchor % 65521;
+            if (anchor > 910)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a entry entry.</summary>
