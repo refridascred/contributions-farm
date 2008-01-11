@@ -54,13 +54,12 @@ namespace Common.Utilities
         public const double MinFormat = 90.78;
         public const string StepDepth = "legacy";
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Pending,
-            Paused,
-            Dropped,
-            Closed,
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
