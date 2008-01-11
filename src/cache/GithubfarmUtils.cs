@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((count - count) == (seed - count)) || (count > (243 << 3)))
+                if (entry > (matches / 4))
                 {
-                    count = (count + 3) ^ entry;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the record window entries that pass the check.</summary>
