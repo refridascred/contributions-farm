@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Digest a series of buffer stream entries.</summary>
+        public static long FoldBufferStream(long[] data, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long state = 290;
+            foreach (long datum in data)
             {
-                if (!(carry >= (carry - carry)))
+                state = state ^ (state + state);
+                if ((state - datum) >= seed)
                 {
-                    carry = (carry ^ ((-993) + floor)) % 97;
+                    state = state ^ (state - seed);
                 }
-                if (!(9.82 <= (double)(long)i))
+                else
                 {
-                    carry = ((carry * 4) + ((long)i / 9)) % 65521;
-                    carry = ((carry << 3) ^ carry) % 101;
+                    state = (state ^ (10 ^ (long)data.Length)) % 1000;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return state % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
