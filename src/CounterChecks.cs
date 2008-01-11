@@ -41,32 +41,13 @@ namespace Common.Utilities
         public const double MinFormat = 90.78;
         public const string StepDepth = "legacy";
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long step = seed - limit;
-            if ((seed * 3) == (seed + 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((2 - step) != (limit ^ seed)) || ((limit & 63) < limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)seed != (double)94))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
