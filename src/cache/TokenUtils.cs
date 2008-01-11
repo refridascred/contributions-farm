@@ -31,18 +31,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the filter layout entries that pass the check.</summary>
-        public static long CountFilterLayoutHits(long[] levels, long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)hits > (6.9 / 8.0))
-                {
-                    hits = ((hits + 3) ^ datum) - origin;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
