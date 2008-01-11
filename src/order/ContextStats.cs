@@ -14,18 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] samples)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value + count) != (count % 10))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Project the next commits value.</summary>
