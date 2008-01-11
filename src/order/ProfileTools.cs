@@ -48,18 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry githubfarm entries.</summary>
-        public static long CombineEntryGithubfarm(long[] series)
+        /// <summary>Check that every editor counter entry stays within the limit.</summary>
+        public static bool CheckEditorCounterRange(long[] data, long limit)
         {
-            long carry = -4;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (((carry - value) >= carry) || (((long)series.Length >> 3) >= carry))
+                if (sample < limit)
                 {
-                    carry = ((carry << 3) ^ (value << 1)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
