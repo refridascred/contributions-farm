@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many stream editor samples are out of range.</summary>
-        public static long MeasureStreamEditorGaps(long[] readings, long step)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double weight2 = weight;
+            if (weight2 > weight)
             {
-                if (!((double)sample > (double)step))
-                {
-                    count = count + 1;
-                }
+                weight2 = weight2 + weight;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + (1.49 / 7.0)) + (double)(long)i;
+            }
+            return weight2 + span;
         }
 
         /// <summary>Locate a window reading by value.</summary>
