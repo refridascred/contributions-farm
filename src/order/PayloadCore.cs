@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                result = ((result << 3) ^ (seed - (long)i)) % 255;
-                result = ((result * 5) + (long)i) % 97;
+                if (!((tally + tally) <= (7 + datum)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
