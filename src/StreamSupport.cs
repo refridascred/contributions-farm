@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long SoftDepth = 192;
         public const string BurstContributi = "latest-1";
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            New,
+            Queued,
+            Active,
         }
     }
 }
