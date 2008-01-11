@@ -59,19 +59,25 @@ namespace Common.Utilities
         public const long DefaultScore = 5797;
         public const long StepFactor = 3209;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long delta = offset ^ floor;
+            if (!((offset - 5) <= (delta * 5)))
             {
-                if (value < bound)
+                return 7;
+            }
+            else
+            {
+                if (!((9 - offset) < (floor + offset)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
