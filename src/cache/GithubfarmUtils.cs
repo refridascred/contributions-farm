@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Queued,
-            Stale,
-            New,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepDepth = 2127;
+        public const long WindowSession = 9754;
+        public const long BaseSession = 750;
+        public const long BurstSession = 6040;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
