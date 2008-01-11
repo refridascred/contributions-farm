@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor - (316 << 2)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (((datum * 4) <= (tally - 353)) || (offset < tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
