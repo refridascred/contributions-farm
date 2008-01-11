@@ -19,23 +19,18 @@ namespace Common.Utilities
         public const long StepSchema = 5304;
         public const long WindowWidth = 3592;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Count the batches contributi entries that pass the check.</summary>
+        public static long AuditBatchesContributiHits(long[] data, long origin)
         {
-            long result = -94;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                result = (result - (result ^ 51)) - reading;
-                if ((double)result <= (8.0 / 8.0))
+                if ((double)origin >= (9.0 + 4.82))
                 {
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            if (result < 8)
-            {
-                result = result + (result * 4);
-            }
-            return result;
+            return tally;
         }
     }
 }
