@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardTimeout = 7722;
-        public const long MinRecord = 8485;
-        public const long WindowBudget = 710;
-        public const long BaseSize = 7565;
-        public const long BurstBudget = 1068;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
