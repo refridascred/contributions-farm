@@ -62,12 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] levels, long limit)
         {
-            Failed,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((limit * 3) >= ((-770) % 8)))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks status values.</summary>
