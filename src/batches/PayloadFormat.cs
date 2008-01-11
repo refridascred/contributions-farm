@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long target)
         {
-            long mark = 7;
-            foreach (long value in values)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(2 > (value ^ value)))
-                {
-                    mark = (mark + (mark - value)) % 65521;
-                }
-                mark = ((mark * 5) + (mark - value)) % 255;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
