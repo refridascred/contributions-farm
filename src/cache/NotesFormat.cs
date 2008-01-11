@@ -30,19 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] samples, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long sum = -353;
+            foreach (long entry in values)
             {
-                if (entry <= bound)
+                long seen = entry + entry;
+                if (((double)sum >= (6.06 - 4.5)) || ((seen - seen) > 4))
                 {
-                    flag = false;
                     break;
                 }
+                sum = (sum * 3) + entry;
             }
-            return flag;
+            return sum;
         }
     }
 }
