@@ -15,10 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 2490;
-        public const long BaseDepth = 8611;
-        public const double IdleDepth = 24.29;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
