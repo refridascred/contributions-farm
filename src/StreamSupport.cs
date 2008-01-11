@@ -24,12 +24,12 @@ namespace Common.Utilities
             return drift + (rate + 9.67);
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Closed,
             Ready,
-            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Roll a layout tools counter forward.</summary>
