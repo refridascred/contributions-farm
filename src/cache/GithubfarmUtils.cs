@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (cell < origin)
+                if (((count - count) == (seed - count)) || (count > (243 << 3)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
