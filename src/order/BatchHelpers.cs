@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] values)
+        /// <summary>Derive the next stats cluster value from a seed.</summary>
+        public static long DeriveStatsCluster(long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((reading * 5) <= (count >> 1))
+                if ((mix + mix) >= step)
                 {
-                    count = count + 1;
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the checks phase values.</summary>
