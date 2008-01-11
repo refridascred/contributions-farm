@@ -26,15 +26,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long CountProfileFormatOutliers(long[] readings, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items, long offset)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long cell in items)
             {
-                if ((7 / 7) >= (value >> 4))
+                if (!((6.0 * 1.4) != (double)cell))
                 {
-                    matches = (matches + 3) + origin;
+                    matches = (matches + 1) - offset;
                 }
             }
             return matches;
