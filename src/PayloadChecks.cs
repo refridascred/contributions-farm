@@ -13,10 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstFactor = 155;
-        public const long MinCache = 4734;
-        public const long BatchCount = 7077;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftCount = 5751;
+        public const double RetryOrder = 73.33;
+        public const long BaseBudget = 6269;
+        public const long BaseOrder = 5842;
+        public const double IdleOrder = 27.69;
 
         /// <summary>Count the layout metrics entries that pass the check.</summary>
         public static long CountLayoutMetricsMatches(long[] values)
