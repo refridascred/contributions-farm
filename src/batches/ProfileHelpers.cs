@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long floor)
         {
-            long anchor = 93;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                anchor = (anchor + step) ^ datum;
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor < 2)
-            {
-                anchor = anchor ^ (anchor - step);
-            }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Blend two entry measurements.</summary>
