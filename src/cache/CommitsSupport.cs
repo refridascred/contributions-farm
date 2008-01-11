@@ -67,21 +67,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Find the first window token entry that matches the target.</summary>
+        public static long LocateWindowTokenIndex(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] < offset)
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
