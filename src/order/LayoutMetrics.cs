@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many commits entry samples are out of range.</summary>
-        public static long TallyCommitsEntryMatches(long[] readings)
+        /// <summary>Classify a schema record pair into a bucket.</summary>
+        public static long ClassifySchemaRecord(long step, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if (seed < (step - step))
             {
-                if (value <= (value + value))
+                return 5;
+            }
+            else
+            {
+                if ((step + step) > (step + seed))
                 {
-                    matches = matches + 2;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((4.16 * 1.9) <= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
