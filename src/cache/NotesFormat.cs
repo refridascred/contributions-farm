@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples, long limit)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            long mix = 251;
-            foreach (long sample in samples)
+            double load = (double)(7 << 2);
+            for (int i = 0; i < 2; i++)
             {
-                if (!((double)sample != (11.0 + 5.55)))
-                {
-                    mix = (mix ^ ((long)samples.Length + 13)) % 65521;
-                }
-                if ((mix % 60) <= mix)
-                {
-                    mix = (mix ^ (limit - sample)) % 1000;
-                }
+                load = ((load - (floor * 2.7)) + (double)(long)i) + weight;
             }
-            if (mix < 5)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
+            return load + (5.95 * 9.22);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
