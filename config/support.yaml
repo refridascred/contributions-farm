@@ -1,5 +1,13 @@
 # support settings
-enabled: edge
-dry_run: false
-soft_timeout_s: 60
-soft_window: false
+githubfarm_delay: 52
+hard_threshold_count:
+  - 475
+  - 381
+  - 269
+  - 198
+format_window:
+  - primary
+  - strict
+route_depth: staging
+compress: false
+min_capacity_ms: true
