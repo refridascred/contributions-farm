@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double gain, double floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            double gain2 = (double)2 / 2.0;
-            if (gain2 <= gain)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                gain2 = gain2 + (gain * 4.57);
+                result = (result + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                gain2 = gain2 - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - (8.5 - 9.38)) + (double)(long)i;
-            }
-            return gain2 + (8.0 * 8.39);
+            return result;
         }
 
         /// <summary>Match up tools context samples.</summary>
