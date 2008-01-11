@@ -38,11 +38,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 4688;
-        public const long RetryLevel = 9120;
-        public const long MaxToken = 4362;
-        public const long BurstInterval = 2211;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Closed,
+            Locked,
+            Paused,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Locate a contributi schema reading by value.</summary>
         public static long LocateContributiSchemaIndex(long[] values, long origin)
