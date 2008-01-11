@@ -79,13 +79,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Classify a record githubfarm pair into a bucket.</summary>
+        public static long ClassifyRecordGithubfarm(long step, long bound)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            if (step <= (step + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound >> 3) == (70 - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 3) < (bound + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
