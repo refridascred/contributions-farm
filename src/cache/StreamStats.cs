@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Failed,
-            Ready,
-            Locked,
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
