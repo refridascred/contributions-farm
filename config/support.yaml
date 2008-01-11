@@ -1,21 +1,5 @@
 # support settings
-enabled:
-  audit: 7872
-  max_limit_s: edge
-  poll_ratio_pct:
-    cache_ttl: 250
-    strict: false
-    max_window: 30
-    min_timeout_s: 4549
-    poll_depth_count: true
-  poll_size_ms: local
-  base_ratio_ms:
-    - stable
-    - standard
-    - strict
-    - latest
-route_window: fallback
-context_delay: 87
-verbose: 500
-sync_threshold_count: cached
-compress: true
+window_limit: fallback
+warm_size_pct: 2001
+dry_run: local
+hard_ratio_s: standard
