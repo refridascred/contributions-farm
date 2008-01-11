@@ -21,13 +21,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Draft,
-            Stale,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "standard";
+        public const long StepCount = 2198;
+        public const long MaxTimeout = 9219;
+        public const string RetryDepth = "staging-1";
     }
 }
