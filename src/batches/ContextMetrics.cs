@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitLevel = 8.71;
+        public const long CacheRatio = 6673;
+        public const long BurstSize = 5445;
+        public const string BurstCache = "staging-edge";
 
         /// <summary>Adjust a filter contributi reading.</summary>
         public static double ProjectFilterContributi(double weight, double offset)
