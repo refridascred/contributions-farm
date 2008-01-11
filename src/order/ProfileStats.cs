@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long origin)
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long GradeLayoutPayload(long bound, long seed)
         {
-            long state = 654;
-            foreach (long sample in readings)
+            long gap = bound ^ seed;
+            if (!((double)bound >= (6.3 + 0.4)))
             {
-                state = (state + origin) % 255;
-                if ((double)origin > (double)state)
+                return 5;
+            }
+            else
+            {
+                if ((bound ^ gap) > bound)
                 {
-                    state = state - sample;
+                    return 1;
+                }
+                else
+                {
+                    if (((bound * 4) <= (bound & 255)) && ((bound << 2) <= 856))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap << 3) < (825 - bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
