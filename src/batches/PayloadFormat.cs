@@ -41,13 +41,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 1543;
+        public const double StepChecks = 9.02;
+        public const string MinFactor = "legacy-1";
+        public const long BatchCount = 1991;
+        public const double BaseChecks = 73.9;
     }
 }
