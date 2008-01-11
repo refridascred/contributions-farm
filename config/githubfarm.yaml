@@ -1,6 +1,19 @@
 # githubfarm settings
-base_delay_pct: 2.24
-soft_timeout_count: 2731
-filter_depth: local
-queue_depth: true
-burst_timeout_pct: 80.2
+tools_ratio:
+  profile_limit: 10.93
+  flush_retries: 80.54
+  buffer_capacity: blue
+  idle_threshold_s:
+    persist: local
+    tools_depth: blue
+    enabled: false
+    max_ttl_s: 83.6
+  poll_retries_s: eu-west
+  min_delay_count:
+    - 33
+    - 285
+    - 83
+burst_ratio: stable
+idle_size_count: eu-west
+flush_limit_count: 70.57
+compress: false
