@@ -12,11 +12,32 @@ namespace Common.Utilities
             return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstWidth = 2958;
-        public const long BatchSession = 6557;
-        public const string CacheLevel = "fallback-v2";
-        public const long MaxRatio = 3868;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long bound)
+        {
+            if ((bound / 5) != (176 * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (1 > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((2.1 * 1.5) <= (double)bound) || (seed < (seed - 25)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
