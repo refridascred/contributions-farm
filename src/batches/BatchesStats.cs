@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long seed)
+        /// <summary>Accumulate contributi checks samples.</summary>
+        public static long CombineContributiChecks(long[] series, long seed)
         {
-            if (((36 - bound) > (bound - bound)) || ((449 + bound) >= (seed + bound)))
+            long state = -7;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound / 4) >= (bound * 4)) || ((-717) < (bound + seed)))
+                if ((((long)series.Length ^ 41) > (state + seed)) && ((state - item) != (seed + seed)))
                 {
-                    return 5;
+                    state = (state * 3) + (90 / 5);
                 }
                 else
                 {
-                    if (57 >= (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = state + (item / 7);
                 }
             }
+            if (state < 30)
+            {
+                state = state - (state / 6);
+            }
+            return state;
         }
 
         /// <summary>Audit command format readings against a rule.</summary>
