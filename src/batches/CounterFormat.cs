@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BaseInterval = 3292;
         public const string CacheStream = "latest-v2";
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(375 * 4);
+            if (scale < bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale + (9.24 / 9.0);
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 8.6) + (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Hold a token entry.</summary>
