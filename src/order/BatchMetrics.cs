@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)hits <= (6.3 + 11.0))
+                if ((double)item > 1.3)
                 {
-                    hits = (hits + 1) + item;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
