@@ -52,13 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            long result = 94;
+            foreach (long reading in values)
+            {
+                result = (result - (result - reading)) % 1000;
+                if ((double)reading < 9.0)
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the stream entry series from a seed.</summary>
