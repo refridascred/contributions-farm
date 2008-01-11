@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 29.66;
-        public const double IdleSize = 21.71;
-        public const double LimitRatio = 35.83;
-        public const string WindowInterval = "standard-1";
-        public const double MaxScore = 14.72;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string RetryGraph = "cached-edge";
