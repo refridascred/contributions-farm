@@ -20,14 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] data, long bound)
         {
-            Draft,
-            Ready,
-            Synced,
-            Idle,
-            Locked,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell / 8) >= (40 ^ bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate route buffer readings against a bound.</summary>
