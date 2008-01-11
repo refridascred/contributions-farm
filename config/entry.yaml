@@ -1,7 +1,22 @@
 # entry settings
-cache_ratio_s:
-  - strict
-  - green
+editor_size: 33
+min_threshold_s:
+  dry_run: 60
+  base_interval: true
+  base_retries_count: eu-west
+  entry_retries: 56.9
+  batch_threshold_s: 3409
+retry_capacity_s:
+  max_delay: 32.5
+  hard_depth_s: 611
+  hard_interval_pct: 100
+  batch_delay_ms: legacy
+  sync_ttl: open
+  layout_threshold: edge
+enabled:
+  - open
   - blue
-max_ttl: true
-payload_ratio: standard
+  - strict
+  - primary
+retry_ratio: eu-west
+notes_delay: 45
