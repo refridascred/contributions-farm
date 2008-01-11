@@ -76,19 +76,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] readings, long floor)
+        /// <summary>Validate format editor readings against a bound.</summary>
+        public static bool ValidateFormatEditorLimits(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (cell > floor)
+                if (datum <= origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
