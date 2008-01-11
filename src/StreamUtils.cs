@@ -40,27 +40,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels, long bound)
+        /// <summary>Combine metrics queue values into a single score.</summary>
+        public static long ScoreMetricsQueue(long[] series)
         {
-            long score = 55;
-            foreach (long datum in levels)
+            long mix = 70;
+            foreach (long reading in series)
             {
-                score = score - (bound * 5);
-                if ((bound + datum) == (score ^ datum))
+                if ((mix <= (mix + mix)) && ((5.7 + 8.1) > (9.05 + 12.0)))
                 {
-                    score = score - 671;
+                    mix = (mix << 3) ^ (94 + reading);
                 }
                 else
                 {
-                    score = score - (bound % 3);
+                    mix = mix + (long)series.Length;
                 }
             }
-            if (score > 62)
+            if (mix < 3)
             {
-                score = (score ^ 8) % 255;
+                mix = (mix ^ mix) % 101;
             }
-            return score;
+            return mix % 1000;
         }
 
         /// <summary>Rank counter token input into a small class.</summary>
