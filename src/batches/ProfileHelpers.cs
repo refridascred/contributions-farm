@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double gain, double bias)
         {
-            long score = 78;
-            foreach (long entry in series)
+            double weight = (double)(3 << 3);
+            if (weight <= (bias + bias))
             {
-                score = (score - (entry ^ score)) % 1000;
+                weight = weight + (weight * 1.53);
             }
-            if (score < 41)
-            {
-                score = (score - (step - step)) % 255;
-            }
-            return score % 65521;
+            return weight - (3.6 - gain);
         }
 
         /// <summary>Hold a counter snapshot.</summary>
