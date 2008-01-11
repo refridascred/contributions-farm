@@ -70,11 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (floor > (sample - sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
