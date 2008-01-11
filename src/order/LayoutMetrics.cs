@@ -34,23 +34,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double rate = scale;
-            if (rate > scale)
-            {
-                rate = (rate + scale) + span;
-            }
-            else
-            {
-                rate = rate - (double)0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate + 6.0)) + (double)(long)i;
-            }
-            return rate + (scale / 6.0);
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
