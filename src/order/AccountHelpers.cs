@@ -50,20 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)step < (double)0)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryInterval = 5986;
+        public const string RetryStats = "alpha-edge";
+        public const double BaseStats = 87.75;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheEntry = 9016;
