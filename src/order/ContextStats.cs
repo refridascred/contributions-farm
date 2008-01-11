@@ -40,15 +40,11 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Iterate the report metrics series from a seed.</summary>
-        public static long DeriveReportMetrics(long limit)
+        /// <summary>Adjust a window commits reading.</summary>
+        public static double ScaleWindowCommits(double ratio, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            double ratio2 = 4.17;
+            return (ratio2 + ratio) + floor;
         }
     }
 }
