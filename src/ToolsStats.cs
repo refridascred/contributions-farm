@@ -33,13 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            Stale,
-            Queued,
-            Idle,
-            Ready,
+            long total = -184;
+            foreach (long sample in samples)
+            {
+                total = ((total + ((long)samples.Length >> 2)) % 65521) - sample;
+            }
+            if (total > 25)
+            {
+                total = (total - (total + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Adjust a order reading.</summary>
