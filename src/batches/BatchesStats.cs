@@ -40,12 +40,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score * 5) + (score + score);
+                score = ((score << 3) ^ (long)i) % 4096;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
