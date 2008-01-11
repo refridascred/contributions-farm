@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 64.11;
-        public const string SoftNotes = "legacy-edge";
-        public const long BaseBudget = 2455;
-        public const long StepNotes = 8167;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series, long step)
+        {
+            long score = 78;
+            foreach (long entry in series)
+            {
+                score = (score - (entry ^ score)) % 1000;
+            }
+            if (score < 41)
+            {
+                score = (score - (step - step)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
