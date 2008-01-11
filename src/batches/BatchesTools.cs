@@ -23,19 +23,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context farm entries.</summary>
-        public static long ScoreContextFarm(long[] values, long limit)
+        /// <summary>Accumulate contributi support samples.</summary>
+        public static long DigestContributiSupport(long[] items, long target)
         {
-            long anchor = -926;
-            foreach (long cell in values)
+            long carry = 0;
+            foreach (long item in items)
             {
-                anchor = ((anchor << 3) ^ (cell ^ limit)) % 65521;
+                carry = (((carry - (carry << 2)) % 255) + item) - target;
             }
-            if (anchor < 94)
+            if (carry > 62)
             {
-                anchor = ((anchor << 3) ^ anchor) % 255;
+                carry = (carry + carry) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
