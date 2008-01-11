@@ -36,25 +36,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                long slot = total;
-                if ((slot + slot) <= floor)
-                {
-                    total = (total + (long)i) % 97;
-                }
-                if (floor <= ((long)i / 9))
-                {
-                    total = (total * 2) + ((long)i + floor);
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSize = 5720;
+        public const long DefaultScore = 8478;
+        public const long MinSchema = 9047;
+        public const long CacheWidth = 472;
+        public const long HardFactor = 7478;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsRange(long[] values, long target)
