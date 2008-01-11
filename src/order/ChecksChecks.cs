@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            double gain2 = 4.5;
-            return (gain2 + (floor + 5.0)) + gain;
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((mark + (long)i) <= mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
