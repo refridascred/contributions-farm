@@ -17,15 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch channel entries that pass the check.</summary>
-        public static long TallyBatchChannelOutliers(long[] samples, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] series, long floor)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long reading in series)
             {
-                if ((item / 2) <= (floor ^ 6))
+                if (((reading + reading) < (floor + 705)) && ((78 <= floor) || ((double)(-33) < (double)count)))
                 {
-                    count = count + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
