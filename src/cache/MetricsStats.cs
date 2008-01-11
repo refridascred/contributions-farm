@@ -27,11 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCount = 9539;
-        public const double StepLevel = 6.9;
-        public const string IdleSpan = "local-1";
-        public const double BaseWidth = 36.36;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((5.1 + 7.9) != (double)floor)
+                {
+                    break;
+                }
+                result = (result - 94) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
