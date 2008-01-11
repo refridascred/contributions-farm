@@ -78,21 +78,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up metrics format samples.</summary>
-        public static long MatchMetricsFormatCount(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Stale,
         }
     }
 }
