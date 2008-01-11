@@ -1,5 +1,8 @@
 {
-  "cache_limit": 228,
-  "compress": 8.28,
-  "sync_timeout_count": [442, 409, 412, 500]
+  "contributi_interval": 9284,
+  "hard_ratio_pct": 63,
+  "compress": 25.17,
+  "retry_depth_s": "latest",
+  "profile_ratio": 3.37,
+  "cache_size": ["latest", "legacy"]
 }
