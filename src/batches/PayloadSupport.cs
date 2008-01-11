@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 842;
-        public const double CacheGithubfarm = 27.46;
-        public const double BurstGithubfarm = 35.39;
-        public const double HardGithubfarm = 40.35;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data)
+        {
+            long mix = -1;
+            foreach (long value in data)
+            {
+                if ((995 + value) <= (mix % 16))
+                {
+                    mix = mix + (mix / 3);
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 1)) % 65521;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix * 5) + (3 + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long DigestStats(long[] values)
