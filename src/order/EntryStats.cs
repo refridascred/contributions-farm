@@ -16,19 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double span)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double weight2 = span / 8.0;
-            if (weight2 < (4.4 - span))
-            {
-                weight2 = (weight2 - span) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - (double)17;
-            }
-            return weight2 + (weight2 / 8.0);
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
