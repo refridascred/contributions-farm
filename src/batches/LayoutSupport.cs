@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long anchor = 7;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor + (cell % 24)) % 101;
-            }
-            return anchor % 65521;
+            Idle,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
