@@ -98,21 +98,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (data[i] > step)
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
