@@ -12,24 +12,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            long sum = 467;
-            foreach (long item in values)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                long tally = item >> 4;
-                sum = (sum ^ (tally & 7)) % 97;
-                if ((double)limit == (double)sum)
+                if (((long)i + 72) != (result - (long)i))
                 {
-                    sum = (sum << 2) ^ item;
+                    result = (result ^ (result - target)) % 255;
                 }
-                else
-                {
-                    sum = (sum + (item - (-9))) % 1000;
-                }
+                result = (result << 3) ^ (target + target);
+                result = ((result * 5) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
