@@ -59,13 +59,19 @@ namespace Common.Utilities
         public const long DefaultScore = 5797;
         public const long StepFactor = 3209;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long bound)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
