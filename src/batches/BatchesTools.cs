@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] values, long target)
         {
-            Queued,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 2) != (entry << 3))
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
