@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            double load = scale;
-            if (load <= (double)184)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                load = (load - scale) + span;
+                if (!((datum & 127) > (datum * 3)) && ((seen ^ 45) >= (seen - 900)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                load = load - (1.73 + scale);
-            }
-            return load - (1.0 + 8.1);
+            return seen;
         }
 
         /// <summary>Roll a route counter forward.</summary>
