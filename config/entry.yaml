@@ -1,23 +1,9 @@
 # entry settings
-session_ttl:
-  hard_size_pct: primary
-  default_size:
-    hard_interval_pct:
-      - local
-      - latest
-      - strict
-      - edge
-    burst_size: standard
-    schema_limit: 3760
-    compress:
-      - eu-west
-      - strict
-      - strict
-    default_timeout_ms: false
-    editor_interval: open
-  audit: eu-west
-  burst_delay_s: 49
-burst_threshold: legacy
-queue_ttl: legacy
-contributi_size: true
-compress: 60
+warm_depth_count: eu-west
+flush_window_pct:
+  - staging
+  - strict
+sync_timeout_ms: eu-west
+min_depth_pct: 25.92
+compress: staging
+persist: 81
