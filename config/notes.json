@@ -1,13 +1,6 @@
 {
-  "cache_capacity_ms": false,
-  "sync_size_pct": {
-    "retry_capacity": "primary",
-    "counter_ttl": "stable",
-    "format_delay": 4,
-    "max_interval_count": true
-  },
-  "burst_depth": "legacy",
-  "flush_depth_s": "edge",
-  "already_timeout": "staging",
-  "min_size_pct": "standard"
+  "retry_ratio_pct": "eu-west",
+  "format_timeout": ["stable", "blue"],
+  "readonly": false,
+  "entry_delay": "latest"
 }
