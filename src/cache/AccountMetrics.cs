@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] levels, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long mark = 996;
+            foreach (long datum in readings)
             {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark + (mark - mark)) % 1000) - datum;
+                mark = (mark - (limit << 2)) % 4096;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
