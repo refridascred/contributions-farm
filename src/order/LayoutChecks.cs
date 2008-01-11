@@ -42,22 +42,20 @@ namespace Common.Utilities
             return bias3 + (bias3 / 7.0);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] readings)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((0.4 / 8.0) >= (double)reading)
+                if (!((932 << 2) <= score))
                 {
-                    seen = seen + 3;
+                    score = ((score << 3) ^ (-6)) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = score - 491;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
