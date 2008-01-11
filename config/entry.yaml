@@ -1,13 +1,5 @@
 # entry settings
-notes_interval:
-  - 301
-  - 460
-  - 115
-  - 272
-graph_depth: standard
-base_ttl_pct:
-  - staging
-  - primary
-  - staging
-retry_interval: primary
-min_size_pct: true
+base_interval_count: open
+default_timeout_s: 810
+batch_threshold: latest
+soft_threshold_s: 954
