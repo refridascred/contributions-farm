@@ -65,9 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchRatio = 5070;
-        public const string LimitContext = "stable-edge";
-        public const string BaseContext = "latest-1";
+        /// <summary>Accumulate metric cache samples.</summary>
+        public static long TallyMetricCache(long[] series, long floor)
+        {
+            long score = -73;
+            foreach (long sample in series)
+            {
+                score = (((score * 5) + (score + 47)) % 101) - floor;
+                if ((double)sample < (9.65 + 5.0))
+                {
+                    score = score - (sample + sample);
+                }
+            }
+            return score % 1000;
+        }
     }
 }
