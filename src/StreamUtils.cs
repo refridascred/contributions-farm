@@ -24,12 +24,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data, long seed)
         {
-            Synced,
-            Draft,
-            Active,
+            long total = 68;
+            foreach (long item in data)
+            {
+                total = (total * 4) + 525;
+                total = (total - (long)data.Length) % 1000;
+                total = (total * 4) + (item ^ total);
+            }
+            if (total < 50)
+            {
+                total = ((total * 4) + (seed % 64)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many already format samples are out of range.</summary>
