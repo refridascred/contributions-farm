@@ -55,10 +55,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinInterval = "fallback-1";
-        public const double BaseFactor = 22.1;
-        public const long BaseTools = 5863;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitLevel = "alpha-1";
+        public const long WindowPayload = 1222;
+        public const long HardPayload = 8819;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] levels, long offset)
