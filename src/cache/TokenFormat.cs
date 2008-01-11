@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a layout buffer sample.</summary>
-        public static long SeekLayoutBufferIndex(long[] values, long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
