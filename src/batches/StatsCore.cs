@@ -41,22 +41,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (total < ((long)i >> 1))
-                {
-                    total = ((total * 3) + ((long)i ^ 6)) % 1000;
-                    total = (total + (total << 3)) % 101;
-                }
-                total = (total + (-5)) % 97;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 6022;
+        public const string SoftInterval = "cached";
+        public const long MinChecks = 3133;
+        public const string MaxRatio = "alpha-v2";
+        public const long BatchScore = 8661;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long seed, long floor)
