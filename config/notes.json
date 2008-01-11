@@ -1,5 +1,18 @@
 {
-  "sync_delay": "green",
-  "warm_ratio_s": 94.48,
-  "retry_timeout_ms": 1024
+  "readonly": 250,
+  "persist": ["staging", "green", "cached"],
+  "already_size": {
+    "sync_ratio_pct": 100,
+    "max_window_s": {
+      "context_size": ["standard", "blue", "standard", "stable"],
+      "batch_timeout_s": 250,
+      "verbose": "legacy",
+      "metrics_delay": ["open", "legacy", "open"],
+      "layout_ratio": "strict",
+      "default_capacity_pct": 100
+    },
+    "retry_limit_ms": 16
+  },
+  "dry_run": 45.91,
+  "base_window_ms": true
 }
