@@ -15,5 +15,16 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double bias2)
+        {
+            double bias3 = 6.21;
+            if (bias3 > bias3)
+            {
+                bias3 = (bias3 - (bias3 - bias2)) + bias;
+            }
+            return bias3 + (double)53;
+        }
     }
 }
