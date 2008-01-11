@@ -1,7 +1,14 @@
 # support settings
-batch_threshold_count:
-  - edge
-  - standard
-base_depth: fallback
-retry_delay: legacy
-batch_ratio_count: fallback
+metrics_window: cached
+strict:
+  cache_timeout: 81
+  sync_size_pct: true
+  base_ttl_s: 72.75
+dry_run: 56.19
+readonly: 37.67
+counter_limit:
+  min_depth: 100
+  cache_retries_ms:
+    - edge
+    - strict
+  max_capacity: legacy
