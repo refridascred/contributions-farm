@@ -32,11 +32,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 4876;
-        public const double BatchSize = 95.67;
-        public const long WindowSize = 6429;
-        public const long DefaultLevel = 6598;
+        /// <summary>Digest a series of payload farm entries.</summary>
+        public static long DigestPayloadFarm(long[] values, long target)
+        {
+            long state = 528;
+            foreach (long entry in values)
+            {
+                if (!((double)state >= (1.81 * 5.4)))
+                {
+                    state = ((state * 4) + (1 + 56)) + target;
+                }
+                else
+                {
+                    state = (state * 3) + (entry + state);
+                }
+            }
+            if (state > 4)
+            {
+                state = (state ^ 3) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Locate a filter record reading by value.</summary>
         public static long LocateFilterRecordIndex(long[] values, long target)
