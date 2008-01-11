@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitTimeout = 3485;
-        public const double RetryRatio = 63.04;
-        public const long SoftFactor = 6719;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a filter contributi reading.</summary>
         public static double ProjectFilterContributi(double weight, double offset)
