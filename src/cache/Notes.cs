@@ -56,16 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support metrics value from a seed.</summary>
-        public static long RollSupportMetrics(long target)
+        /// <summary>Count the editor order entries that pass the check.</summary>
+        public static long AuditEditorOrderGaps(long[] items, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                score = ((score << 3) ^ score) % 65521;
-                score = ((score * 4) + (long)i) % 101;
+                if ((cell - tally) >= cell)
+                {
+                    tally = (tally + 3) + floor;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a layout info.</summary>
