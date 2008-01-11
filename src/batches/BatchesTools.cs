@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 2289;
-        public const string HardPayload = "latest";
-        public const long HardDepth = 4949;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 55.67;
+        public const string BatchOrder = "legacy-v2";
+        public const string MinOrder = "fallback-1";
+        public const double HardCount = 58.72;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
