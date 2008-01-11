@@ -14,20 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((seed ^ seed) >= (733 + seed)) || ((double)27 != (double)seed))
+                if ((tally + datum) > (tally - tally))
                 {
-                    carry = carry ^ carry;
+                    tally = tally + 3;
                 }
-                carry = (carry - (seed & 1)) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a context entry.</summary>
