@@ -1,8 +1,7 @@
 # support settings
-retry_limit_s: 95
-base_retries: 8960
-burst_depth:
-  - 348
-  - 382
-  - 428
-  - 71
+verbose: false
+poll_size_pct:
+  retry_retries: 250
+  strict: 77
+  contributi_size: 2
+editor_timeout: 250
