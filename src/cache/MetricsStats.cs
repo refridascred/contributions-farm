@@ -18,21 +18,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
