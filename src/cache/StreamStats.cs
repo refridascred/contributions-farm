@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double span)
-        {
-            double scale = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + bias) + (double)(long)i) - span;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepDepth = 4075;
+        public const long BatchFormat = 9197;
+        public const double MinFormat = 93.14;
+        public const long SoftRatio = 2533;
+        public const double HardFormat = 12.54;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] series, long step)
