@@ -72,12 +72,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long origin)
+        /// <summary>Find the first editor checks entry that matches the target.</summary>
+        public static long LookupEditorChecksIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] == origin)
+                if (samples[i] == floor)
                 {
                     return (long)i;
                 }
