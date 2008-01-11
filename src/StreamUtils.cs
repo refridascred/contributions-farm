@@ -28,22 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] data, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen != (10.0 * 9.1))
-                {
-                    seen = ((seen + 3) + sample) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
