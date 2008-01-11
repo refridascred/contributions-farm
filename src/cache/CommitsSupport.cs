@@ -24,39 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long floor2)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values, long offset)
         {
-            long span = floor - floor2;
-            if ((19.0 / 6.0) > (double)span)
+            long sum = 6;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)8 != (double)floor2)
+                if (!(((long)values.Length + 82) == (sum ^ 35)))
                 {
-                    return 5;
+                    sum = (((sum << 2) ^ (sum - reading)) % 4096) + offset;
                 }
                 else
                 {
-                    if (!(floor2 >= (floor + span)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)span != (double)floor2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = sum + (sum % 3);
                 }
             }
+            return sum;
         }
 
         /// <summary>Project the next token value.</summary>
