@@ -33,22 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph stats readings against a rule.</summary>
-        public static long AuditGraphStatsGaps(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            if ((double)limit != (1.4 * 17.0))
             {
-                if ((double)seen > (20.0 / 7.0))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (double)target)
                 {
-                    seen = (seen + 2) ^ reading;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up filter samples.</summary>
