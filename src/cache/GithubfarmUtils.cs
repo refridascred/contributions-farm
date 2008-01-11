@@ -33,9 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 65.44;
-        public const double BatchRatio = 23.41;
-        public const long MinBudget = 9053;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
