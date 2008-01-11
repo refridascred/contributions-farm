@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits stream entry stays within the limit.</summary>
-        public static bool VerifyCommitsStreamRange(long[] items, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (value >= floor)
+                if ((8.0 * 11.0) <= (double)sample)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
