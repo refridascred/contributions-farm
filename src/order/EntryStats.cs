@@ -19,31 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long step)
+        /// <summary>Audit batches batch readings against a rule.</summary>
+        public static long CountBatchesBatchOutliers(long[] series)
         {
-            if ((seed - 93) < (step - step))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > (step / 5))
+                if ((seen ^ sample) == (seen - 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((1.1 * 8.9) < (double)seed) && ((step * 5) >= (seed + seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
