@@ -46,18 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster report readings against a rule.</summary>
-        public static long CountClusterReportOutliers(long[] values)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + hits) != (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
