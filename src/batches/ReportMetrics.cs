@@ -37,11 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxSize = 40.38;
-        public const long StepSpan = 2034;
-        public const string LimitFormat = "open-1";
-        public const long IdleLevel = 7609;
-        public const double IdleFormat = 89.27;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
