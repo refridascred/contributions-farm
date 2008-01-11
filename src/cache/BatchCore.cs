@@ -37,11 +37,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Look up the position of a batches cache sample.</summary>
+        public static long SeekBatchesCacheIndex(long[] items, long limit)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
