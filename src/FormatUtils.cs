@@ -51,19 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!(value < (bound << 3)) || ((bound % 100) < bound))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8833;
+        public const long SoftWidth = 5467;
+        public const string StepContext = "alpha-1";
+        public const long StepDepth = 5595;
 
         /// <summary>Audit cluster support readings against a rule.</summary>
         public static long MeasureClusterSupportOutliers(long[] series, long limit)
