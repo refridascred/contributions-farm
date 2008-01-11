@@ -45,18 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)tally < 2.8) || (limit > 94))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) ^ reading;
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
