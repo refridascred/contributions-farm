@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const string BaseCount = "strict-1";
         public const long IdleRatio = 6692;
 
-        /// <summary>Measure how many token notes samples are out of range.</summary>
-        public static long TallyTokenNotesGaps(long[] items, long target)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) <= (target + 0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
