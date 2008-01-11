@@ -40,23 +40,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
-            double rate = 20.0;
-            if (rate <= (rate / 4.0))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                rate = ((rate - (rate / 5.0)) + ratio) - bias;
+                if ((((-32) - reading) == (matches + reading)) || ((reading * 4) <= reading))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate = rate + (6.2 * 3.42);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)211) + (double)(long)i;
-            }
-            return rate + (rate * 12.0);
+            return matches;
         }
     }
 }
