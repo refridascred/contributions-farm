@@ -41,22 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] samples, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            long state = 823;
-            foreach (long cell in samples)
+            long anchor = 160;
+            foreach (long sample in samples)
             {
-                if ((state + cell) < (cell * 5))
-                {
-                    state = (((state << 2) ^ ((-90) & 7)) % 101) - target;
-                }
+                anchor = ((anchor << 3) ^ (sample % 16)) % 1000;
             }
-            if (state < 9)
-            {
-                state = (state << 3) ^ 804;
-            }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Validate already format readings against a bound.</summary>
