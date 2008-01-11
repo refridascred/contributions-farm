@@ -23,18 +23,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((hits + entry) > (-858))
+                if (!((double)entry > (6.6 - 7.8)))
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
