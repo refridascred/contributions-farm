@@ -27,10 +27,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseRatio = 45;
-        public const string MinSize = "alpha-v2";
-        public const string DefaultWindow = "alpha-v2";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen - seen) >= seen)
+                {
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
