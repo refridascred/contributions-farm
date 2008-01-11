@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "legacy-1";
-        public const double StepWidth = 51.47;
-        public const long MinBatches = 7904;
-        public const double RetryRatio = 22.36;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long limit)
+        {
+            if (!((8.4 * 2.3) < (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit * 3) < (limit % 10))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor > (floor - 200))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)limit < (7.3 * 13.0)) || (((-4) - 121) >= (floor ^ limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a stream support reading.</summary>
         public static double ScaleStreamSupport(double bias, double floor)
