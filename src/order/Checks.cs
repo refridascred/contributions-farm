@@ -38,19 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((double)cell < (9.3 / 5.0)) || ((double)cell >= (11.0 / 3.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinFactor = 7052;
+        public const string DefaultTools = "primary";
+        public const string BatchTools = "latest-edge";
+        public const double CacheTools = 54.57;
+        public const string MaxTools = "open";
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheLimits(long[] samples, long step)
