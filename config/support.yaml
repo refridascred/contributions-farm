@@ -1,13 +1,12 @@
 # support settings
-githubfarm_delay: 52
-hard_threshold_count:
-  - 475
-  - 381
-  - 269
-  - 198
-format_window:
+burst_ratio_ms: standard
+verbose:
+  - open
+  - fallback
+entry_capacity: 7621
+context_window:
+  - edge
+  - stable
   - primary
-  - strict
-route_depth: staging
-compress: false
-min_capacity_ms: true
+default_depth_ms: 100
+enabled: 27
