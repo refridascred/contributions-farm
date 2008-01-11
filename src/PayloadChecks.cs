@@ -13,18 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstFactor = 155;
+        public const long MinCache = 4734;
+        public const long BatchCount = 7077;
 
         /// <summary>Count the layout metrics entries that pass the check.</summary>
         public static long CountLayoutMetricsMatches(long[] values)
