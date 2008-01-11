@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 1242;
         public const long IdleInterval = 183;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
+        public static bool VerifyContributiMetricsBounds(long[] readings, long limit)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
