@@ -1,11 +1,10 @@
 {
-  "max_capacity_count": {
-    "record_timeout": 500,
-    "default_retries": 250,
-    "sync_depth_count": 7280,
-    "cache_size": false,
-    "sync_retries": 3470
-  },
-  "readonly": "stable",
-  "warm_depth_s": 67.38
+  "filter_retries": "edge",
+  "poll_window": 9148,
+  "verbose": 500,
+  "burst_retries_ms": {
+    "order_limit": "standard",
+    "route_ttl": ["latest", "fallback", "eu-west", "green"],
+    "queue_ratio": "primary"
+  }
 }
