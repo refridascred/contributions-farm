@@ -27,24 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long floor, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            if ((floor / 4) < floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-87) + bound) >= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
