@@ -41,15 +41,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long seed, long step)
         {
-            long anchor = 160;
-            foreach (long sample in samples)
+            long offset = seed + step;
+            if ((step + (-90)) <= (step / 7))
             {
-                anchor = ((anchor << 3) ^ (sample % 16)) % 1000;
+                return 7;
             }
-            return anchor % 65521;
+            else
+            {
+                if (offset <= (seed - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate already format readings against a bound.</summary>
