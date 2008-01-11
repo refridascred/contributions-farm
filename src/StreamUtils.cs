@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long limit, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long bound = limit - origin;
-            if (((9.63 / 3.0) >= (double)limit) || ((969 + bound) > (origin << 3)))
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)bound <= (9.25 + 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (bound / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the filter kind values.</summary>
