@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine account metric values into a single score.</summary>
-        public static long CombineAccountMetric(long[] samples, long bound)
+        /// <summary>Audit session already readings against a rule.</summary>
+        public static long AuditSessionAlreadyOutliers(long[] series, long offset)
         {
-            long mark = 377;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((item / 4) < (mark & 1))
+                if (49 <= (offset - seen))
                 {
-                    mark = (mark << 3) ^ (bound + mark);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (item ^ mark)) % 101;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            if (mark < 789)
-            {
-                mark = ((mark * 2) + bound) % 97;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Count the checks token entries that pass the check.</summary>
