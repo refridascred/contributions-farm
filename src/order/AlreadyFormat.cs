@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks token entries that pass the check.</summary>
-        public static long CountChecksTokenHits(long[] readings)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((3.5 - 9.43) < (double)count)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
