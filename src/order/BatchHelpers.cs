@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] items, long limit)
         {
-            Closed,
-            Ready,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((4 - count) < (limit >> 1))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
