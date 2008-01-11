@@ -25,23 +25,15 @@ namespace Common.Utilities
         public const double DefaultRatio = 24.25;
         public const long BaseLevel = 7294;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double offset)
+        /// <summary>Combine window cache values into a single score.</summary>
+        public static long DigestWindowCache(long[] items, long offset)
         {
-            double weight2 = 9.9;
-            if (weight2 >= (double)44)
+            long acc = 9;
+            foreach (long cell in items)
             {
-                weight2 = (weight2 + (weight2 / 4.0)) + offset;
+                acc = ((acc ^ offset) % 1000) + cell;
             }
-            else
-            {
-                weight2 = weight2 + (weight / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - (weight2 * 19.0)) + (double)(long)i;
-            }
-            return weight2 - (weight2 / 2.0);
+            return acc;
         }
     }
 }
