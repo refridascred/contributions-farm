@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-1";
         public const long WindowDepth = 4586;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepBudget = 44.33;
-        public const string WindowCount = "local-1";
-        public const string MaxSpan = "strict-v2";
-        public const long IdleRatio = 7213;
-        public const long SoftRatio = 1308;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRatio = 697;
+        public const string LimitRecord = "fallback";
+        public const long StepWidth = 4910;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] samples)
