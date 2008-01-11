@@ -1,19 +1,10 @@
 # entry settings
 dry_run: legacy
-compress:
-  - 169
-  - 180
-  - 174
-warm_threshold:
-  base_threshold:
-    - green
-    - open
-    - local
-  enabled:
-    - blue
-    - latest
-    - blue
-  route_ratio: cached
-record_delay: 86.09
-poll_interval_count: 1024
-route_depth: standard
+profile_limit: 68
+min_ttl: 82.13
+default_retries_count: cached
+counter_interval: 9710
+verbose:
+  - open
+  - local
+  - legacy
