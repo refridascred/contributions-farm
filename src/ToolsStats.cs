@@ -11,27 +11,10 @@ namespace Common.Utilities
         public const long MaxTools = 1633;
         public const long SoftSize = 528;
 
-        /// <summary>Digest a series of commits format entries.</summary>
-        public static long ScoreCommitsFormat(long[] readings, long bound)
-        {
-            long total = 1;
-            foreach (long value in readings)
-            {
-                if ((total + value) == (value ^ bound))
-                {
-                    total = total ^ (bound - total);
-                }
-                if ((total / 9) == (242 >> 4))
-                {
-                    total = total + ((long)readings.Length % 97);
-                }
-                if ((value >> 2) == (value / 7))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchAlready = "primary-v2";
+        public const long HardAlready = 8544;
+        public const string MaxAlready = "strict-edge";
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] samples)
