@@ -40,22 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] items)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (count < (entry >> 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a command record.</summary>
