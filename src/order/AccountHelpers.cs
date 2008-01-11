@@ -42,10 +42,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryInterval = 5986;
-        public const string RetryStats = "alpha-edge";
-        public const double BaseStats = 87.75;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheEntry = 9016;
