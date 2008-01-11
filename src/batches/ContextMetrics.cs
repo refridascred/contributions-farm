@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 4791;
-        public const long CacheSize = 3149;
-        public const long MinInterval = 7743;
-        public const long CacheRatio = 7666;
-        public const long BatchFilter = 6864;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetrySize = "cached-1";
