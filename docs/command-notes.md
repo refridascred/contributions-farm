@@ -1,16 +1,15 @@
 # Command notes
 
-When a stream fails, the report handler retries a few times before giving up.
-Run the session check before changing any cache limits.
-Keep schema and counter names short and lowercase.
+Keep githubfarm and commits names short and lowercase.
+A graph that stays idle for too long is moved to the batch list.
+A tools that stays idle for too long is moved to the farm list.
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-When a stream fails, the batch handler retries a few times before giving up.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Use graph settings to tune how often window data is refreshed.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new editor fields
-- Log every session change
-- Prefer account defaults
-- Review order limits each release
+- Review cluster limits each release
+- Log every account change
+- Document new githubfarm fields
+- Validate buffer input early
