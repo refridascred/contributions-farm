@@ -16,18 +16,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long step, long limit)
         {
-            long mark = 36;
-            foreach (long datum in items)
+            if (!((limit * 4) >= 34))
             {
-                if ((datum - mark) >= mark)
+                return 5;
+            }
+            else
+            {
+                if (limit >= (step - (-6)))
                 {
-                    mark = (mark + datum) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if (((limit - step) != (step ^ step)) || ((6.3 / 4.0) >= (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Find the first channel commits entry that matches the target.</summary>
