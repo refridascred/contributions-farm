@@ -1,11 +1,6 @@
 # support settings
-verbose: 4.97
-readonly:
-  dry_run: open
-  contributi_interval: 65
-  min_interval_s: true
-token_threshold:
-  - 396
-  - 281
-  - 105
-  - 426
+persist: 52.18
+counter_timeout: 30
+readonly: legacy
+batch_ttl: 5717
+support_capacity: true
