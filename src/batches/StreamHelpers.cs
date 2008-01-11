@@ -26,21 +26,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Find the first channel commits entry that matches the target.</summary>
+        public static long SeekChannelCommitsIndex(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] == offset)
                 {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every report window entry stays within the limit.</summary>
