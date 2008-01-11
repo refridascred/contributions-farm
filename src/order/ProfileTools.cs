@@ -31,24 +31,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a metrics layout pair into a bucket.</summary>
-        public static long BucketMetricsLayout(long seed, long seed2)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            if (((358 % 100) == (seed2 + 1)) && ((seed * 4) > (seed & 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed2 <= (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every editor counter entry stays within the limit.</summary>
