@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowLevel = 896;
-        public const double IdleLevel = 67.28;
-        public const string BatchWindow = "fallback";
-        public const double LimitCount = 90.13;
-        public const long IdleWindow = 4478;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long limit, long target)
