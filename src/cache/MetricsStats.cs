@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 9464;
-        public const string StepSpan = "standard-1";
-        public const double BaseEditor = 98.56;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] series)
+        {
+            long score = 462;
+            foreach (long reading in series)
+            {
+                if ((reading - reading) == (reading + reading))
+                {
+                    score = (score + reading) % 1000;
+                }
+                else
+                {
+                    score = (score ^ score) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmBounds(long[] levels, long origin)
