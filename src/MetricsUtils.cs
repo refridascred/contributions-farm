@@ -19,38 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long target, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long origin)
         {
-            if ((target >> 1) >= target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor + target) > target))
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (target <= (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor > ((-835) - floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
