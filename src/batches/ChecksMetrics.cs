@@ -66,13 +66,18 @@ namespace Common.Utilities
         public const double WindowChecks = 52.22;
         public const string IdleChecks = "legacy-edge";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Audit cluster report readings against a rule.</summary>
+        public static long CountClusterReportOutliers(long[] values)
         {
-            Stale,
-            Retry,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + hits) != (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
