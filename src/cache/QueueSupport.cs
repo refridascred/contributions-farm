@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double gain = 2.63 - offset;
-            if (gain <= 7.7)
-            {
-                gain = (gain + (double)576) - bias;
-            }
-            else
-            {
-                gain = gain + (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - 15.0;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of layout profile entries.</summary>
