@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Locked,
-            Dropped,
-            Done,
-            New,
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
