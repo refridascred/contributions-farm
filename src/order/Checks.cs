@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double scale, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] samples, long target)
         {
-            double ratio = scale;
-            if (ratio >= span)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                ratio = ratio + ratio;
+                if (((value > (long)samples.Length) || (tally < target)) || ((target + value) > (value << 1)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (2.07 + ratio)) + (double)(long)i;
-            }
-            return ratio - (double)70;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
