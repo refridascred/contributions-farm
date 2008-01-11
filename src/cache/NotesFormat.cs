@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long StepSchema = 5304;
         public const long WindowWidth = 3592;
 
-        /// <summary>Count the batches contributi entries that pass the check.</summary>
-        public static long AuditBatchesContributiHits(long[] data, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)origin >= (9.0 + 4.82))
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
