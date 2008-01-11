@@ -27,12 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Roll a account order counter forward.</summary>
+        public static long RollAccountOrder(long floor)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (mix >> 1)) % 255;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
