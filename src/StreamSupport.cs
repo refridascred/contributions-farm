@@ -24,14 +24,15 @@ namespace Common.Utilities
             return drift + (rate + 9.67);
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double bias)
         {
-            Done,
-            Retry,
-            New,
-            Idle,
-            Queued,
+            double gain2 = (double)(175 - 175);
+            if (gain2 < 9.0)
+            {
+                gain2 = ((gain2 + (gain2 * 3.0)) - gain) - bias;
+            }
+            return gain2 + (double)6;
         }
 
         /// <summary>Roll a layout tools counter forward.</summary>
