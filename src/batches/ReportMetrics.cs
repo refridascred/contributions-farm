@@ -37,17 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] items, long origin)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(199 * 2);
+            return (weight - (weight - bias)) + offset;
         }
     }
 }
