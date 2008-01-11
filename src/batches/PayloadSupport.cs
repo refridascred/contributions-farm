@@ -27,22 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter buffer readings against a rule.</summary>
-        public static long MeasureCounterBufferGaps(long[] readings)
+        /// <summary>Check that every editor entry entry stays within the limit.</summary>
+        public static bool VerifyEditorEntryRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((2.9 + 9.3) >= (double)count)
+                if (item > origin)
                 {
-                    count = (count + 1) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the command state values.</summary>
