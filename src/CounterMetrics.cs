@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
-        public static bool GuardCounterContributiLimits(long[] series, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != seed)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Count the batch commits entries that pass the check.</summary>
