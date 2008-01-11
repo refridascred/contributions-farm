@@ -13,23 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] values)
         {
-            double gain = offset;
-            if (gain < (scale / 7.0))
+            long result = 17;
+            foreach (long cell in values)
             {
-                gain = gain - scale;
+                if (((double)cell != (13.0 + 16.0)) && ((cell + cell) > result))
+                {
+                    result = (result + result) % 1000;
+                }
             }
-            else
+            if (result > 5)
             {
-                gain = gain + offset;
+                result = (result ^ result) % 255;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 6.0) + (double)(long)i;
-            }
-            return gain + offset;
+            return result;
         }
 
         /// <summary>Fold a list of record readings.</summary>
