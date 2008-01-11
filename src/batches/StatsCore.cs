@@ -73,16 +73,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix * 2) + (5 >> 3);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
