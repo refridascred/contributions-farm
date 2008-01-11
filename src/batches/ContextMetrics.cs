@@ -59,20 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter stream reading.</summary>
-        public static double SmoothFilterStream(double rate, double bias)
-        {
-            double scale = rate / 5.0;
-            if (scale <= bias)
-            {
-                scale = scale + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (rate / 2.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftInterval = 8170;
+        public const string IdleRoute = "local-edge";
+        public const long DefaultDepth = 9570;
+        public const long MaxFactor = 2861;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
