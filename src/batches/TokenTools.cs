@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] series, long step)
         {
-            double mean = (double)(492 << 2);
-            return ((mean + (0.6 / 2.0)) + scale) + floor;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value % 5) > (seen - step))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format entry.</summary>
