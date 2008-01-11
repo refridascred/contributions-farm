@@ -14,18 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 508;
+        public const long StepSpan = 4755;
+        public const long BaseFarm = 1677;
 
         /// <summary>Roll a account order counter forward.</summary>
         public static long RollAccountOrder(long floor)
