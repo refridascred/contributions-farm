@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long target)
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long IterateBufferRecord(long offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum != target)
+                if (offset < (offset << 1))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry ^ offset) % 101;
+                    carry = (carry - (84 & 7)) % 65521;
                 }
+                carry = (carry ^ ((long)i & 255)) % 101;
+                if (!((0.14 + 0.6) <= (double)carry))
+                {
+                    carry = (carry - (carry - 928)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
