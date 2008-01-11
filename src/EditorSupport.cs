@@ -71,15 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double bias)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double scale = bias - (double)23;
-            if (scale >= scale)
-            {
-                scale = (scale + 13.0) - rate;
-            }
-            return scale + (bias * 6.64);
+            Active,
+            Pending,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a already snapshot.</summary>
