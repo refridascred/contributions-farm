@@ -30,19 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double gain, double span)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double drift = 2.53;
-            if (drift <= 1.9)
-            {
-                drift = (drift + (drift + drift)) - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + span) - (double)(long)i;
-            }
-            return drift - (double)682;
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
