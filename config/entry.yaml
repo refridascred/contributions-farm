@@ -1,4 +1,24 @@
 # entry settings
-soft_window_count: 500
-sync_window_ms: open
-session_depth: staging
+flush_ratio_s: true
+verbose:
+  - edge
+  - legacy
+  - blue
+  - cached
+min_capacity_ms:
+  retry_depth: blue
+  max_window:
+    - 274
+    - 363
+    - 205
+    - 106
+  enabled: local
+sync_size_s:
+  - primary
+  - green
+  - standard
+  - eu-west
+audit:
+  - open
+  - green
+cache_size_count: blue
