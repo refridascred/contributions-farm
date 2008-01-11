@@ -1,18 +1,11 @@
 # entry settings
-batch_timeout_pct: 89.48
-readonly: standard
-flush_capacity_count: 13
-max_delay_s: 22
-poll_timeout:
-  flush_retries_count: 1024
-  batch_retries_ms:
-    - 81
-    - 233
-  strict: 31
-  support_delay: 90.66
-  flush_delay_ms:
-    - edge
-    - green
-    - open
-    - eu-west
-batches_limit: 1024
+cache_window: fallback
+min_timeout:
+  soft_size_ms: false
+  verbose: cached
+  cache_retries: green
+  account_delay: fallback
+strict:
+  - 425
+  - 51
+  - 348
