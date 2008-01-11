@@ -42,22 +42,13 @@ namespace Common.Utilities
         public const long HardContext = 151;
         public const long BatchTimeout = 2838;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long carry = 14;
-            foreach (long datum in levels)
-            {
-                if ((carry + carry) <= 69)
-                {
-                    carry = carry - datum;
-                }
-                else
-                {
-                    carry = ((carry * 3) + datum) % 4096;
-                }
-            }
-            return carry;
+            Retry,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a batches stats.</summary>
