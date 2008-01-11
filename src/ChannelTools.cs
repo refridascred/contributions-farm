@@ -49,12 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            Synced,
-            Failed,
-            Stale,
+            long score = 6;
+            foreach (long reading in readings)
+            {
+                if ((reading + score) <= reading)
+                {
+                    score = ((score * 3) + score) % 97;
+                }
+            }
+            return score;
         }
     }
 }
