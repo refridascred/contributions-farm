@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double offset)
         {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            double rate = offset;
+            if (rate < (double)853)
+            {
+                rate = (rate + offset) - weight;
+            }
+            else
+            {
+                rate = rate - (offset + 8.41);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - (offset / 2.0);
         }
 
         /// <summary>Describe the metric class values.</summary>
