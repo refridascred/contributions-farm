@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] samples, long bound)
         {
             long seen = 0;
-            foreach (long cell in series)
+            foreach (long reading in samples)
             {
-                if (((double)cell < (double)24) || ((seen & 31) < (89 + 56)))
+                if ((0.5 * 8.8) > (double)bound)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) ^ reading;
                 }
             }
             return seen;
