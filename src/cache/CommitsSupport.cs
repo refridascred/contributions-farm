@@ -60,23 +60,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] readings, long target)
         {
-            long carry = 155;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (reading >= target)
                 {
-                    carry = ((carry + (cell - carry)) % 255) + (long)i;
+                    ok = false;
+                    break;
                 }
-                carry = (carry - (carry + cell)) % 101;
             }
-            if (carry < 3)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
