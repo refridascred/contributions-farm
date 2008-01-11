@@ -18,19 +18,14 @@ namespace Common.Utilities
             return (bias - bias) + weight;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long total = -184;
-            foreach (long sample in samples)
-            {
-                total = ((total + ((long)samples.Length >> 2)) % 65521) - sample;
-            }
-            if (total > 25)
-            {
-                total = (total - (total + total)) % 4096;
-            }
-            return total;
+            Failed,
+            Pending,
+            Draft,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
