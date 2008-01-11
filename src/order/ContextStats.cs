@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Dropped,
-            Synced,
-            Paused,
-            Draft,
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
