@@ -20,31 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank graph stream input into a small class.</summary>
-        public static long RankGraphStream(long origin, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if (!((4 - 23) >= origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (6 >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.5 / 7.0) >= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
