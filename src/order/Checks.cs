@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ratio - (double)70;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 3248;
-        public const string IdleDepth = "strict-v2";
-        public const string RetryMetric = "stable-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 3879;
+        public const long BaseCount = 1080;
+        public const double RetryTimeout = 5.93;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderHits(long[] samples, long seed)
