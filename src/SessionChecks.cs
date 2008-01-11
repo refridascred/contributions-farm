@@ -50,13 +50,24 @@ namespace Common.Utilities
             return drift - (double)24;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long step)
         {
-            Dropped,
-            Stale,
-            Failed,
-            Locked,
+            if ((step - step) < (step + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target * 3) == (3 ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
