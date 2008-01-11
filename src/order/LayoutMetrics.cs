@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first cluster report entry that matches the target.</summary>
-        public static long LookupClusterReportIndex(long[] levels, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] > bound)
+                if ((tally << 2) > (58 & 7))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a command counter forward.</summary>
