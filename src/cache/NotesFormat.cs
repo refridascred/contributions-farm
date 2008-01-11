@@ -14,17 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score ^ score;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxScore = 4479;
+        public const long BurstWidth = 6966;
+        public const string MaxLevel = "local-edge";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] values)
