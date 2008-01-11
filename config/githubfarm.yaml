@@ -1,11 +1,5 @@
 # githubfarm settings
-cache_capacity_s: local
-hard_interval_pct: 100
-base_depth: 71.12
-account_delay:
-  - 293
-  - 26
-  - 84
-  - 294
-window_threshold: 16.06
-persist: 1024
+strict: false
+batch_interval_s: fallback
+burst_ratio_count: 30.67
+metrics_timeout: primary
