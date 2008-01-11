@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Idle,
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
