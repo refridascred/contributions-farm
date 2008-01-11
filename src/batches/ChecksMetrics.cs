@@ -60,18 +60,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 593;
+            foreach (long datum in values)
             {
-                if ((datum % 2) > (tally + tally))
+                if (((double)carry > (5.66 / 5.0)) && ((double)datum >= (double)seed))
                 {
-                    tally = tally + 1;
+                    carry = (carry - (seed % 16)) % 97;
+                }
+                else
+                {
+                    carry = (carry * 3) + (datum * 3);
+                }
+                if ((carry + carry) < 59)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 84)
+            {
+                carry = (carry ^ (seed >> 1)) % 1000;
+            }
+            return carry;
         }
     }
 }
