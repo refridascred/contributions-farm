@@ -19,40 +19,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long step)
-        {
-            long edge = floor + step;
-            if ((floor + floor) > (floor + (-61)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((55 % 12) > (floor ^ floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge & 31) == (74 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step < (edge << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 73.4;
+        public const long MinLayout = 4249;
+        public const long BaseLayout = 4667;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] items, long offset)
