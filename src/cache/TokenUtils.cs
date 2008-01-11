@@ -29,18 +29,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] data, long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= hits)
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            Draft,
         }
     }
 }
