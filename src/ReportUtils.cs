@@ -40,12 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
