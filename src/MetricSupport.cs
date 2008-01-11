@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 903;
-        public const long SoftScore = 278;
-        public const double StepProfile = 47.03;
+        /// <summary>Combine report token values into a single score.</summary>
+        public static long WeighReportToken(long[] values)
+        {
+            long acc = 78;
+            foreach (long item in values)
+            {
+                acc = (acc * 2) + (item * 4);
+            }
+            return acc;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BatchFormat = 12.53;
