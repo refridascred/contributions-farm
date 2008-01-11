@@ -31,18 +31,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 81.4;
+        public const long HardBudget = 1866;
+        public const string BaseContributi = "open-edge";
+        public const double IdleLevel = 47.43;
 
         /// <summary>Check that every editor counter entry stays within the limit.</summary>
         public static bool CheckEditorCounterRange(long[] data, long limit)
