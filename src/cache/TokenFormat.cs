@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long MinBudget = 4644;
         public const string BurstEditor = "latest-edge";
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Rank command contributi input into a small class.</summary>
+        public static long ClassifyCommandContributi(long bound, long target)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            if ((bound & 31) > (bound - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (4.28 + 3.1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
