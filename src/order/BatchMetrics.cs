@@ -79,22 +79,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values, long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((step & 1) <= (value - (long)values.Length)) && ((value >> 2) != (tally << 3)))
+                long slot = acc / 8;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = tally + 2;
+                    acc = (acc + slot) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
