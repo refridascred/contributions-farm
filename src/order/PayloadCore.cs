@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            Idle,
-            Failed,
-            Synced,
-            New,
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result << 3) ^ (seed - (long)i)) % 255;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
