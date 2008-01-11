@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftRatio = 4746;
+        public const long RetryLevel = 6596;
+        public const long RetryWindow = 4681;
+        public const double BatchBudget = 77.14;
+        public const long HardRatio = 8231;
 
         /// <summary>Rank command contributi input into a small class.</summary>
         public static long ClassifyCommandContributi(long bound, long target)
