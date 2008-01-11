@@ -54,10 +54,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheCount = 6574;
-        public const long MinChannel = 8717;
-        public const long IdleChannel = 4469;
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long MeasureQueuePayloadHits(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)target <= 2.0)
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] data, long origin)
