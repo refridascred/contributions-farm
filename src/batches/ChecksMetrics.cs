@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double offset)
-        {
-            double mean = (double)888 + (9.16 - 1.4);
-            if (mean >= (mean + ratio))
-            {
-                mean = mean - offset;
-            }
-            return mean - (9.12 - offset);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "local-v2";
+        public const long StepScore = 9946;
+        public const string IdleBudget = "stable-v2";
+        public const long MaxCount = 8602;
+        public const string HardLevel = "legacy";
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
