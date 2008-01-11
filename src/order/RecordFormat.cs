@@ -55,22 +55,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate payload stats samples.</summary>
-        public static long WeighPayloadStats(long[] data)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long carry = 7;
-            foreach (long cell in data)
-            {
-                if (!((9.45 - 2.3) == (double)carry))
-                {
-                    carry = (((carry * 2) + (long)data.Length) % 101) - cell;
-                }
-                if ((double)(long)data.Length >= (9.2 * 9.0))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            Dropped,
+            Idle,
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Accumulate layout samples.</summary>
