@@ -23,13 +23,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinScore = 4759;
+        public const double BurstTimeout = 35.61;
+        public const double CacheRoute = 47.96;
+        public const double DefaultRoute = 83.54;
     }
 }
