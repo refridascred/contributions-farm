@@ -22,15 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] data, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Project the next metric value.</summary>
