@@ -56,12 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Active,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardLevel = 7015;
+        public const long CacheSize = 8205;
+        public const long BaseWidth = 7295;
+        public const double StepLevel = 56.38;
+        public const double SoftScore = 81.56;
     }
 }
