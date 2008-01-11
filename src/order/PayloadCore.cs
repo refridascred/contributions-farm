@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((tally + tally) <= (7 + datum)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
