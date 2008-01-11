@@ -47,15 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long entry in levels)
             {
-                if ((matches + matches) > matches)
+                if ((offset - offset) <= 517)
                 {
-                    matches = (matches + 3) ^ reading;
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
