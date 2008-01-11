@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            long mark = 812;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((mark * 3) >= value)
+                if ((entry + 248) < seen)
                 {
-                    mark = (mark + (value + 4)) % 97;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every batch already entry stays within the limit.</summary>
