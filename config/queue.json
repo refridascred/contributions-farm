@@ -1,17 +1,8 @@
 {
-  "burst_limit_s": {
-    "flush_timeout_s": 71.1,
-    "channel_capacity": 18,
-    "min_interval_s": {
-      "graph_ratio": 60,
-      "hard_retries_count": "green",
-      "idle_capacity_ms": "edge",
-      "min_window": [479, 386, 497],
-      "window_capacity": ["latest", "fallback", "green", "edge"]
-    },
-    "contributi_retries": "open",
-    "session_window": "latest"
-  },
-  "poll_depth_ms": 250,
-  "readonly": true
+  "report_retries": "open",
+  "command_timeout": 30,
+  "order_timeout": "cached",
+  "burst_delay_s": "edge",
+  "entry_depth": 50,
+  "token_ratio": ["fallback", "blue", "strict"]
 }
