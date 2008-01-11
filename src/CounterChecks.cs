@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
