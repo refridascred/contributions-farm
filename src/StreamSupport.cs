@@ -42,19 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long total = 8;
-            foreach (long sample in series)
-            {
-                total = ((total - (total + sample)) % 97) + bound;
-            }
-            if (total > 23)
-            {
-                total = total + (total * 4);
-            }
-            return total % 65521;
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
