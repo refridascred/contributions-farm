@@ -1,43 +1,29 @@
 {
-  "soft_retries": {
-    "retry_retries_pct": "open",
-    "metric_interval": false,
-    "cluster_timeout": 500,
-    "batch_delay": {
-      "verbose": 60,
-      "compress": 100,
-      "base_size_ms": false,
-      "strict": false,
-      "poll_retries_pct": "cached",
-      "readonly": "staging"
-    },
-    "format_capacity": true,
-    "channel_depth": {
-      "default_threshold_count": 500,
-      "strict": "fallback",
-      "retry_delay": "primary",
-      "idle_retries": "staging"
-    }
+  "base_size_ms": "edge",
+  "stats_ttl": {
+    "cluster_size": [169, 44, 454],
+    "strict": 1024,
+    "retry_window_ms": ["stable", "staging", "blue"]
   },
-  "compress": true,
-  "channel_depth": false,
-  "retry_ratio_ms": 44,
-  "audit": {
-    "max_ratio_count": 96,
-    "checks_window": [428, 493, 152],
-    "buffer_window": 30,
-    "base_timeout": {
-      "record_ratio": false,
-      "default_threshold_pct": true,
-      "audit": false,
-      "hard_window": false,
-      "schema_ttl": "blue"
+  "cache_depth_pct": 25,
+  "batch_interval_s": {
+    "default_threshold_pct": 9947,
+    "audit": 64.54,
+    "base_delay_count": {
+      "strict": 36.62,
+      "persist": ["eu-west", "strict"],
+      "channel_threshold": 5802,
+      "stats_size": "legacy"
     },
-    "persist": {
-      "record_interval": false,
-      "retry_interval": 100,
-      "idle_limit": 25.97
-    }
+    "cache_retries_s": {
+      "strict": 40.1,
+      "min_ttl": "staging",
+      "retry_ttl": 250,
+      "farm_delay": 74.94,
+      "max_threshold_pct": false,
+      "warm_interval": 98
+    },
+    "batch_retries": true
   },
-  "record_timeout": 100
+  "metric_capacity": 28.14
 }
