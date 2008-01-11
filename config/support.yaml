@@ -1,16 +1,7 @@
 # support settings
-dry_run:
-  max_size: legacy
-  compress: false
-  hard_capacity: 30
-  strict: fallback
-  account_capacity: false
-  default_delay_count: primary
-batches_window: 2196
-base_size: 250
-flush_window_pct:
-  - 398
-  - 305
-  - 401
-hard_size_s: 30
-cache_retries_pct: 33.25
+batch_threshold_count:
+  - edge
+  - standard
+base_depth: fallback
+retry_delay: legacy
+batch_ratio_count: fallback
