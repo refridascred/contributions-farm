@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (ratio + (bias * 9.25)) + gain;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long limit)
+        /// <summary>Audit context tools readings against a rule.</summary>
+        public static long CountContextToolsOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (cell <= limit)
+                if ((double)hits == (double)entry)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
