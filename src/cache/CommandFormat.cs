@@ -55,22 +55,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache notes values into a single score.</summary>
-        public static long CombineCacheNotes(long[] items)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long sum = -7;
-            foreach (long cell in items)
-            {
-                if ((double)sum != (2.82 - 3.0))
-                {
-                    sum = (sum ^ (95 * 2)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (cell >> 3);
-                }
-            }
-            return sum % 65521;
+            Dropped,
+            Idle,
+            Stale,
+            Active,
+            Failed,
         }
     }
 }
