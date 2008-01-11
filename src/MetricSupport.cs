@@ -42,15 +42,28 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double weight, double offset)
+        /// <summary>Combine batches profile values into a single score.</summary>
+        public static long CombineBatchesProfile(long[] items)
         {
-            double gain = (weight - offset) + (offset + offset);
-            if (gain >= (offset - gain))
+            long carry = 0;
+            foreach (long item in items)
             {
-                gain = gain + weight;
+                carry = (carry ^ (long)items.Length) % 97;
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (carry - (item << 1)) % 1000;
+                    carry = (carry * 5) + (long)i;
+                }
+                if ((carry > item) && (372 <= (item << 2)))
+                {
+                    carry = (carry ^ (carry >> 2)) % 255;
+                }
             }
-            return gain + (offset * 5.64);
+            if (carry < 19)
+            {
+                carry = (carry * 2) + (9 + carry);
+            }
+            return carry;
         }
     }
 }
