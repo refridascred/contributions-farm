@@ -1,8 +1,6 @@
 {
-  "cache_ttl_count": 8.15,
-  "dry_run": 39,
-  "enabled": false,
-  "tools_depth": 50,
-  "poll_depth_ms": 100,
-  "default_ttl_pct": false
+  "token_delay": 10.51,
+  "burst_capacity_ms": 23.83,
+  "max_window_s": 4,
+  "commits_interval": 72.04
 }
