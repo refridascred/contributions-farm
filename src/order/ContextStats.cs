@@ -40,18 +40,15 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] items)
+        /// <summary>Iterate the report metrics series from a seed.</summary>
+        public static long DeriveReportMetrics(long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)reading < (double)(long)items.Length) && (((double)reading < (4.0 / 4.0)) && ((count - 894) >= reading)))
-                {
-                    count = count + 2;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
