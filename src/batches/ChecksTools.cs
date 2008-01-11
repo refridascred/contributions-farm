@@ -40,19 +40,16 @@ namespace Common.Utilities
         public const long CacheCounter = 5968;
         public const double StepSpan = 53.43;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            double ratio2 = floor;
-            if (ratio2 <= (20.0 + ratio))
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                ratio2 = ratio2 + (floor / 3.0);
+                acc = (acc ^ (80 / 4)) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (ratio / 9.0)) + (double)(long)i;
-            }
-            return ratio2 + (ratio * 12.0);
+            return acc;
         }
     }
 }
