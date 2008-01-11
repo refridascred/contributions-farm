@@ -31,18 +31,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] data)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double bias = scale + (scale - offset);
+            if (bias <= (double)(-63))
             {
-                if (!(((7.0 + 3.63) <= (6.0 + 10.0)) || ((seen + value) <= value)))
-                {
-                    seen = seen + 1;
-                }
+                bias = bias - offset;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (offset / 7.0);
         }
     }
 }
