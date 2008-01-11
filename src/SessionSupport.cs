@@ -31,21 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
