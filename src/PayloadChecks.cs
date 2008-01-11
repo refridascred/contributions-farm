@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double bias)
         {
-            long total = 227;
-            foreach (long datum in samples)
+            double load = (bias * 7.0) / 6.0;
+            if (load < (double)8)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (((total * 4) + (bound << 1)) ^ (long)i) + datum;
-                }
-                total = ((total << 2) ^ 564) % 97;
+                load = load - load;
             }
-            if (total < 95)
+            else
             {
-                total = total ^ (bound + total);
+                load = load + weight;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)(-3)) + (double)(long)i;
+            }
+            return load - (double)92;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
