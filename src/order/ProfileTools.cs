@@ -48,17 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values, long limit)
+        /// <summary>Digest a series of entry githubfarm entries.</summary>
+        public static long CombineEntryGithubfarm(long[] series)
         {
-            long mix = 542;
-            foreach (long reading in values)
+            long carry = -4;
+            foreach (long value in series)
             {
-                mix = (mix - limit) % 1000;
-                mix = ((mix << 2) ^ (reading << 3)) % 65521;
-                mix = ((mix * 3) + (mix << 3)) % 1000;
+                if (((carry - value) >= carry) || (((long)series.Length >> 3) >= carry))
+                {
+                    carry = ((carry << 3) ^ (value << 1)) % 65521;
+                }
             }
-            return mix % 97;
+            return carry;
         }
     }
 }
