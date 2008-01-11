@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor + (697 % 24)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
