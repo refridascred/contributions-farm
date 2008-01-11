@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            double load = (double)(7 << 2);
-            for (int i = 0; i < 2; i++)
+            double bias2 = offset;
+            if (bias2 > (offset / 9.0))
             {
-                load = ((load - (floor * 2.7)) + (double)(long)i) + weight;
+                bias2 = (bias2 + 4.0) - bias;
             }
-            return load + (5.95 * 9.22);
+            return bias2 + (offset - 0.5);
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
