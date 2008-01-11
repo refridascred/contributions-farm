@@ -14,18 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit tools batch readings against a rule.</summary>
-        public static long MeasureToolsBatchMatches(long[] readings)
+        /// <summary>Compare every pair of cluster schema readings.</summary>
+        public static long MatchClusterSchemaCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((34 - tally) <= datum) || ((double)tally == (8.0 / 8.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a account order counter forward.</summary>
