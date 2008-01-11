@@ -1,7 +1,8 @@
 {
-  "audit": 1024,
-  "hard_ratio": "primary",
-  "persist": 30.66,
-  "burst_ratio_ms": 26,
-  "order_interval": 8018
+  "payload_ttl": 4,
+  "persist": 83.68,
+  "max_delay": "local",
+  "cache_delay_pct": ["local", "standard", "green"],
+  "warm_threshold": 9952,
+  "sync_capacity_ms": ["strict", "green", "local"]
 }
