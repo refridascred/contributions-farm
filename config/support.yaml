@@ -1,7 +1,11 @@
 # support settings
-verbose: false
-poll_size_pct:
-  retry_retries: 250
-  strict: 77
-  contributi_size: 2
-editor_timeout: 250
+idle_window: 100
+enabled:
+  - blue
+  - latest
+  - stable
+  - strict
+readonly:
+  - 382
+  - 265
+  - 128
