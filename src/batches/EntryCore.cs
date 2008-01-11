@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "latest-edge";
-        public const long MinSpan = 9887;
-        public const long BaseBuffer = 6093;
-        public const long RetryWidth = 9890;
-        public const double BurstBuffer = 8.18;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterRange(long[] values, long seed)
