@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Retry,
+            New,
+            Pending,
+            Locked,
             Idle,
             Paused,
         }
