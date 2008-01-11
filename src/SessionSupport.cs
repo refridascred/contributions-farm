@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Check that every batch already entry stays within the limit.</summary>
+        public static bool CheckBatchAlreadyLimits(long[] samples, long bound)
         {
-            long acc = 76;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (168 <= (sample % 64))
+                if (datum < bound)
                 {
-                    acc = acc ^ (acc * 5);
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Describe the route state values.</summary>
