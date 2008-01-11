@@ -26,18 +26,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading * 4) > reading)
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
