@@ -61,10 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "local-1";
-        public const double WindowChecks = 52.22;
-        public const string IdleChecks = "legacy-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepDepth = 41.97;
+        public const double BaseScore = 5.82;
+        public const long MinSize = 6816;
+        public const string BaseInterval = "alpha";
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long CountClusterReportOutliers(long[] values)
