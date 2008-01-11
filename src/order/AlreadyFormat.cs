@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit session already readings against a rule.</summary>
-        public static long AuditSessionAlreadyOutliers(long[] series, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (49 <= (offset - seen))
-                {
-                    seen = (seen + 3) ^ value;
-                }
+                carry = carry ^ (target + carry);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
