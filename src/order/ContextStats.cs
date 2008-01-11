@@ -46,11 +46,22 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 24.57;
-        public const double RetryToken = 74.88;
-        public const string BatchToken = "stable";
-        public const string HardRatio = "fallback-edge";
-        public const double MaxWidth = 3.87;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((5.26 * 11.0) <= (double)seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
