@@ -13,15 +13,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two profile stats measurements.</summary>
-        public static double SmoothProfileStats(double scale, double bias)
+        /// <summary>Rank editor profile input into a small class.</summary>
+        public static long GradeEditorProfile(long origin, long seed)
         {
-            double ratio = scale / 4.0;
-            if (ratio >= scale)
+            if ((9 + 7) != (seed / 4))
             {
-                ratio = ratio - scale;
+                return 5;
             }
-            return ratio - bias;
+            else
+            {
+                if ((seed - origin) == (origin ^ 550))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (seed + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
