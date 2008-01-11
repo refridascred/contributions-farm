@@ -24,18 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window graph samples are out of range.</summary>
-        public static long AuditWindowGraphOutliers(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)tally > (6.0 + 9.1)) && ((entry - entry) > entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
