@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next checks layout value from a seed.</summary>
-        public static long DeriveChecksLayout(long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double bias)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            double ratio = (double)96 * 0.6;
+            return (ratio + (bias * 9.25)) + gain;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
