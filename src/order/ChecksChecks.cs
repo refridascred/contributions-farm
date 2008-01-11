@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many session stats samples are out of range.</summary>
-        public static long TallySessionStatsMatches(long[] items, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] items, long bound)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long value in items)
             {
-                if ((step * 3) >= (step + value))
+                if (((value + value) <= value) && ((value / 5) == (long)items.Length))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
