@@ -45,15 +45,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a account format counter forward.</summary>
-        public static long SeriesAccountFormat(long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
     }
 }
