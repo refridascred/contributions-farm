@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double span)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            double load = span;
-            if (load > (load + span))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (span - rate)) + (double)(long)i;
-            }
-            return load - load;
+            return count;
         }
 
         /// <summary>Hold a editor info.</summary>
