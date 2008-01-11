@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Find the first cluster report entry that matches the target.</summary>
+        public static long LookupClusterReportIndex(long[] levels, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (limit << 3)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a cache stats.</summary>
