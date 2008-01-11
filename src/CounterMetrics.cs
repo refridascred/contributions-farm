@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long target)
         {
-            Synced,
-            Draft,
-            New,
-            Pending,
+            long acc = 495;
+            foreach (long value in levels)
+            {
+                acc = (((acc * 3) + target) % 4096) + value;
+                if ((acc + 553) > (acc & 7))
+                {
+                    acc = ((acc * 3) + (target + acc)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter level values.</summary>
