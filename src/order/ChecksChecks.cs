@@ -29,17 +29,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long mix = 158;
+            foreach (long entry in samples)
             {
-                if (!(floor >= ((long)i - floor)))
+                if (((entry & 15) <= (70 + 56)) && ((entry + mix) >= (mix ^ mix)))
                 {
-                    mix = (mix * 5) + 72;
+                    mix = mix ^ (9 * 3);
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            if (mix < 6)
+            {
+                mix = (mix << 3) ^ (995 + mix);
             }
             return mix;
         }
