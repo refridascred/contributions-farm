@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Ready,
-            Locked,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowScore = 5723;
+        public const double CacheEditor = 54.59;
+        public const long BaseBudget = 6888;
+        public const long SoftScore = 1019;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
