@@ -26,19 +26,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a format githubfarm figure with a bias.</summary>
-        public static double BlendFormatGithubfarm(double rate, double offset)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            double gain = rate;
-            if (gain >= (20.0 + offset))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (double)9;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            return gain + (9.11 / 2.0);
+            return tally;
         }
 
         /// <summary>Check that every report window entry stays within the limit.</summary>
