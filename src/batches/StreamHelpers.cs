@@ -56,16 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi commits entries.</summary>
-        public static long TallyContributiCommits(long[] series)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long score = 5;
-            foreach (long cell in series)
-            {
-                score = (score + score) + cell;
-                score = (score * 3) + (score + 7);
-            }
-            return score % 65521;
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
