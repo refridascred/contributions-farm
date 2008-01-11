@@ -44,12 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            Paused,
-            Locked,
-            Closed,
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many cluster entry samples are out of range.</summary>
