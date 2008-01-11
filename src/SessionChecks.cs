@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long offset, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] series, long seed)
         {
-            long lane = offset - origin;
-            if (3.5 > (double)offset)
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((origin >> 5) >= (offset >> 1)))
+                if (!(433 <= (seed - matches)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (lane >= (262 / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
