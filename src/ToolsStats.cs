@@ -25,13 +25,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double rate, double bias)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            double bias2 = rate;
+            return (bias2 - bias2) + bias;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
