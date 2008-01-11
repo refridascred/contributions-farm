@@ -30,32 +30,12 @@ namespace Common.Utilities
         public const long SoftDepth = 192;
         public const string BurstContributi = "latest-1";
 
-        /// <summary>Classify a command cache pair into a bucket.</summary>
-        public static long GradeCommandCache(long step, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long lane = step ^ bound;
-            if ((lane << 1) < lane)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(step < (step / 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound < (step - 105)) && ((lane + step) > 28))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
