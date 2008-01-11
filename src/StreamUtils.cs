@@ -41,13 +41,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many already format samples are out of range.</summary>
+        public static long AuditAlreadyFormatHits(long[] data)
         {
-            Closed,
-            New,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count % 16) == (item % 24))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm info.</summary>
