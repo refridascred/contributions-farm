@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "local-v2";
-        public const long StepScore = 9946;
-        public const string IdleBudget = "stable-v2";
-        public const long MaxCount = 8602;
-        public const string HardLevel = "legacy";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long origin, long seed)
+        {
+            long delta = origin ^ seed;
+            if (!(seed >= origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (delta >= (delta - seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed ^ origin) <= (seed - delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((delta * 3) >= (origin & 1)) && (delta < (delta + seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
