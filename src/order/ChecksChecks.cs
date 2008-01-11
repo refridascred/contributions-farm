@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((value + value) <= value) && ((value / 5) == (long)items.Length))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryCount = 6456;
+        public const string MaxSchema = "staging-v2";
+        public const long HardSpan = 2410;
+        public const long StepSchema = 9048;
+        public const string BatchSchema = "fallback-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheWindow = 7522;
