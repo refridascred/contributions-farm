@@ -1,27 +1,21 @@
 # support settings
-max_size: 500
-route_timeout: 1283
-sync_depth: eu-west
-graph_size: false
-soft_timeout: staging
-dry_run:
-  notes_depth: false
-  enabled: 250
-  default_timeout_count:
-    base_interval_pct: 62
-    batches_threshold: blue
-    max_interval_pct: false
-    cache_window_s: 76
-    compress: edge
-  burst_retries: 1
-  retry_capacity_count:
-    persist:
-      - 323
-      - 168
-      - 379
-      - 296
-    commits_ttl: true
-    default_window_ms: true
-    already_timeout: eu-west
-    warm_interval_ms: 28.98
-  batch_interval: 22.52
+token_limit: 776
+soft_size:
+  - 270
+  - 475
+  - 431
+  - 263
+persist: primary
+warm_ttl_ms: 2136
+idle_interval: true
+hard_timeout_count:
+  persist: 9
+  batch_limit: false
+  format_window:
+    audit: staging
+    enabled: 1024
+    githubfarm_interval: stable
+    buffer_timeout: 87
+  default_capacity_count: 98
+  enabled: true
+  default_ttl: green
