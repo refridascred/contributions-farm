@@ -28,15 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            double gain = (double)(0 + 0);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = ((gain - weight) - (double)(long)i) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain + weight;
+            return hits;
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
