@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstLevel = 4061;
+        public const string BatchBudget = "open-1";
+        public const string HardDepth = "staging-edge";
+        public const long RetrySession = 8976;
+        public const string BatchSession = "cached";
 
         /// <summary>Digest a series of payload farm entries.</summary>
         public static long DigestPayloadFarm(long[] values, long target)
