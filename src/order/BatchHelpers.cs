@@ -14,17 +14,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long lane = origin + target;
+            if (((double)origin == (17.0 / 4.0)) && ((double)origin <= (2.31 - 0.22)))
             {
-                result = ((result << 3) ^ (result % 5)) % 255;
-                result = ((result * 4) + (origin >> 3)) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (((double)origin > (double)target) && (origin >= (target % 97)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + target) >= (origin ^ lane))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(9.4 < (double)lane))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
