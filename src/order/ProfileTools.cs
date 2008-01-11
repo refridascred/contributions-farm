@@ -27,16 +27,18 @@ namespace Common.Utilities
         public const long SoftPayload = 4782;
         public const long IdlePayload = 6327;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mix = (mix - (280 + (long)i)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((tally >> 3) > (tally + sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
