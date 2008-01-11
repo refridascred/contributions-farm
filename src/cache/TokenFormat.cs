@@ -35,19 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = 738;
-            foreach (long cell in values)
-            {
-                carry = carry - (cell ^ carry);
-            }
-            if (carry > 42)
-            {
-                carry = ((carry * 5) + carry) % 1000;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
