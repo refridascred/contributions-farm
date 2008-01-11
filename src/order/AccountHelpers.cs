@@ -33,11 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)step < (double)0)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
