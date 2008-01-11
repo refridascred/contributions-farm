@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long LimitScore = 4975;
         public const double BurstQueue = 63.72;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] values, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double drift = (double)(5 - 952);
+            if (drift >= ratio)
             {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - (ratio / 8.0)) + span;
             }
-            return found;
+            return drift + drift;
         }
 
         /// <summary>Locate a window reading by value.</summary>
