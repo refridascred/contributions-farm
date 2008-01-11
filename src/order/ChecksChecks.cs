@@ -29,18 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double bias)
         {
-            long score = 8;
-            foreach (long reading in values)
+            double weight = rate;
+            if (weight > (7.0 + bias))
             {
-                if (!(origin > (origin + reading)))
-                {
-                    score = ((score << 3) ^ reading) % 97;
-                }
+                weight = weight + (bias * 2.8);
             }
-            return score;
+            return weight + bias;
         }
     }
 }
