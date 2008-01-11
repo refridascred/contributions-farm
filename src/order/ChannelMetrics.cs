@@ -36,9 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCount = "legacy-v2";
-        public const long BurstScore = 2069;
-        public const long RetryCounter = 1821;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSpan = 1266;
+        public const long CacheMetric = 5125;
+        public const long BaseFactor = 7056;
+        public const long SoftMetric = 343;
     }
 }
