@@ -39,22 +39,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long origin)
         {
-            long mix = 0;
-            foreach (long value in data)
+            if ((0.09 + 9.3) >= (double)origin)
             {
-                if (!((value - mix) == (14 >> 4)))
+                return 7;
+            }
+            else
+            {
+                if (!((1.05 * 4.0) == (double)seed))
                 {
-                    mix = (mix ^ (mix + value)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ mix;
+                    if (origin > (origin * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix % 4096;
         }
     }
 }
