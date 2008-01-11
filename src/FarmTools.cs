@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Locked,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Match up cluster schema samples.</summary>
