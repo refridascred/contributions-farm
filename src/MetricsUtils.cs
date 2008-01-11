@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] samples, long limit)
+        /// <summary>Adjust a token githubfarm reading.</summary>
+        public static double AdjustTokenGithubfarm(double gain, double offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((8.0 * 11.0) <= (double)sample)
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            double mean = 5.1;
+            return (mean - offset) + gain;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
