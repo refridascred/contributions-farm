@@ -52,18 +52,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count + floor) <= (4 + floor))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Queued,
+            Paused,
+            Closed,
         }
     }
 }
