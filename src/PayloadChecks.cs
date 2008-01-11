@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples)
-        {
-            long mark = 512;
-            foreach (long sample in samples)
-            {
-                if ((sample & 255) == (sample << 1))
-                {
-                    mark = (mark - (8 + mark)) % 97;
-                }
-                if (95 < (mark * 5))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4202;
+        public const string DefaultSpan = "alpha-1";
+        public const long StepQueue = 5649;
+        public const string BatchInterval = "open-1";
+        public const long DefaultBudget = 2678;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] levels, long step)
