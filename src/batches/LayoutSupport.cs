@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] readings, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((bound * 2) < (bound + reading))
+                if ((target <= value) && ((target & 15) <= (target * 4)))
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
