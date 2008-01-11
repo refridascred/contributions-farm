@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next schema githubfarm value from a seed.</summary>
-        public static long RollSchemaGithubfarm(long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor + (68 ^ anchor);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Closed,
+            Retry,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Grade a already entry value against two limits.</summary>
