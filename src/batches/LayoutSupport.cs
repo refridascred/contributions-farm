@@ -26,12 +26,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a order summary.</summary>
