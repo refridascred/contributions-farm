@@ -37,10 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultBudget = 8845;
-        public const long HardContext = 151;
-        public const long BatchTimeout = 2838;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardRatio = 94.42;
+        public const string CacheNotes = "stable-1";
+        public const long BaseNotes = 7344;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] items, long floor)
