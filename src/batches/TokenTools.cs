@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long mark = 9;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark << 2) ^ (mark / 3)) % 97) - datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
