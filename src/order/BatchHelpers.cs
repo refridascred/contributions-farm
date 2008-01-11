@@ -28,19 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate route buffer readings against a bound.</summary>
-        public static bool ValidateRouteBufferLimits(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (reading > floor)
+                if ((double)seen <= (double)item)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
