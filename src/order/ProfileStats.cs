@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            Stale,
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a batch header.</summary>
