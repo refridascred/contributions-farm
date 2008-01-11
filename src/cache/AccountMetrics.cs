@@ -90,19 +90,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((state % 7) < (target & 31))
-                {
-                    state = (state << 3) ^ state;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
