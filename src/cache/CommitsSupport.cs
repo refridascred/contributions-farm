@@ -38,19 +38,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((floor + 4) < (reading & 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 4688;
+        public const long RetryLevel = 9120;
+        public const long MaxToken = 4362;
+        public const long BurstInterval = 2211;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
