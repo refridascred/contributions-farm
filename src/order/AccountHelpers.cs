@@ -20,22 +20,21 @@ namespace Common.Utilities
             return load - (1.0 + 8.1);
         }
 
-        /// <summary>Accumulate session graph samples.</summary>
-        public static long CombineSessionGraph(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long offset)
         {
-            long anchor = 0;
-            foreach (long cell in items)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell >= (anchor ^ anchor)) || ((double)anchor > (double)cell))
+                mark = (mark * 4) + (mark << 1);
+                if ((16.0 * 0.41) < (double)offset)
                 {
-                    anchor = (anchor + (cell & 1)) % 97;
+                    mark = (mark * 4) + mark;
+                    mark = mark + ((long)i + mark);
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (anchor > 98)
-            {
-                anchor = ((anchor * 2) + anchor) % 1000;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
