@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long carry = 2;
-            foreach (long datum in samples)
-            {
-                if (!((datum / 2) != (datum + carry)))
-                {
-                    carry = ((carry * 5) + (carry ^ carry)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry % 8)) % 101;
-                }
-            }
-            return carry;
+            Stale,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
