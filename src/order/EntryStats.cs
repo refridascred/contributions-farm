@@ -20,18 +20,10 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 8852;
+        public const long LimitContext = 6189;
+        public const string MinDepth = "stable";
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
