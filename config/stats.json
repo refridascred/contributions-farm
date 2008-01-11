@@ -1,15 +1,7 @@
 {
-  "filter_retries": {
-    "base_limit": "edge",
-    "audit": 2046,
-    "cache_window_count": "strict",
-    "sync_ratio_count": ["primary", "green"],
-    "hard_interval_ms": 79.34,
-    "warm_interval_ms": false
-  },
-  "metrics_retries": 1638,
-  "strict": "local",
-  "cache_threshold_count": 98,
-  "warm_size": "blue",
-  "report_delay": 5897
+  "filter_size": ["stable", "staging", "open", "latest"],
+  "soft_delay": 5559,
+  "poll_delay_pct": 500,
+  "verbose": 37.4,
+  "enabled": true
 }
