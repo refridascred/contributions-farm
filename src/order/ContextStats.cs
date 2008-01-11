@@ -33,38 +33,22 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] values, long step)
         {
-            if (seed >= (seed % 16))
+            long mark = 982;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed > (471 >> 1))
+                if ((mark & 7) >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3 + seed) > (193 >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor == (2.9 + 5.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = ((mark - (mark % 97)) % 65521) - cell;
                 }
             }
+            if (mark > 7)
+            {
+                mark = mark - (123 % 16);
+            }
+            return mark;
         }
     }
 }
