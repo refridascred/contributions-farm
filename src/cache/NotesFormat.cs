@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "local-edge";
-        public const string BatchTimeout = "staging-1";
-        public const long WindowScore = 9087;
-        public const long BaseWidth = 6849;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double MaxTools = 9.58;
