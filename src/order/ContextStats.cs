@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long seed)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the account state values.</summary>
