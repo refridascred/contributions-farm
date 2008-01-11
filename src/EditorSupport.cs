@@ -29,19 +29,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] items, long bound)
+        /// <summary>Count the format tools entries that pass the check.</summary>
+        public static long AuditFormatToolsGaps(long[] items)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (reading <= bound)
+                if (((hits <= (hits ^ 657)) && ((hits + hits) < item)) && (((hits & 255) > (item + item)) || ((item ^ item) != (658 + (-8)))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
