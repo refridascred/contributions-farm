@@ -48,13 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Locked,
-            Closed,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinLevel = "alpha";
+        public const string DefaultRecord = "legacy";
+        public const long BurstBudget = 489;
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] readings)
