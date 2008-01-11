@@ -34,12 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
