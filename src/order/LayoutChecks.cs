@@ -36,18 +36,22 @@ namespace Common.Utilities
             return bias3 + (bias3 / 7.0);
         }
 
-        /// <summary>Measure how many stream queue samples are out of range.</summary>
-        public static long CountStreamQueueOutliers(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((tally * 4) <= tally)
+                if ((0.4 / 8.0) >= (double)reading)
                 {
-                    tally = (tally + 3) - cell;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of already entry entries.</summary>
