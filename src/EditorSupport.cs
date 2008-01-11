@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] readings, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                if (levels[i] == target)
                 {
                     return (long)i;
                 }
