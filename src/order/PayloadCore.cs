@@ -14,18 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] data, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long anchor = -2;
+            foreach (long cell in values)
             {
-                if ((origin + 1) <= (origin & 63))
+                if ((2.8 * 4.85) <= (double)target)
                 {
-                    seen = (seen + 1) + reading;
+                    anchor = ((anchor + (target << 3)) % 65521) ^ cell;
                 }
             }
-            return seen;
+            if (anchor > 374)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
