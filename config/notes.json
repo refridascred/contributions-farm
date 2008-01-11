@@ -1,6 +1,13 @@
 {
-  "soft_ratio": true,
-  "graph_delay": 5915,
-  "max_interval_s": false,
-  "farm_capacity": "blue"
+  "cache_capacity_ms": false,
+  "sync_size_pct": {
+    "retry_capacity": "primary",
+    "counter_ttl": "stable",
+    "format_delay": 4,
+    "max_interval_count": true
+  },
+  "burst_depth": "legacy",
+  "flush_depth_s": "edge",
+  "already_timeout": "staging",
+  "min_size_pct": "standard"
 }
