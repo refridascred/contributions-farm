@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] values, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 428;
+            foreach (long datum in data)
             {
-                if (values[i] == limit)
+                if ((mix >> 4) > datum)
                 {
-                    return (long)i;
+                    mix = (mix ^ (12 * 5)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix & 3)) % 4096;
                 }
             }
-            return -1;
+            if (mix < 131)
+            {
+                mix = ((mix * 2) + mix) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
