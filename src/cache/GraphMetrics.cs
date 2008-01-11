@@ -51,31 +51,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long limit, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            if ((double)limit < (9.1 + 0.92))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(target >= limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - target) > (limit + limit))
+                    if ((readings[i] ^ readings[j]) > 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
