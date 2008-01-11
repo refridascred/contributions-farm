@@ -23,21 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Locate a account schema reading by value.</summary>
+        public static long LookupAccountSchemaIndex(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit window githubfarm readings against a rule.</summary>
