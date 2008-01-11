@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] items, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
