@@ -1,6 +1,7 @@
 {
-  "warm_capacity_pct": "blue",
-  "batch_ratio": "primary",
-  "flush_interval_ms": false,
-  "poll_timeout": 28
+  "max_ttl": 30,
+  "poll_window_count": "blue",
+  "compress": 31.86,
+  "flush_capacity": false,
+  "persist": 7424
 }
