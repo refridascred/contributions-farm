@@ -24,12 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] readings, long step)
         {
-            Idle,
-            Synced,
-            Locked,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (step <= (step / 4))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
