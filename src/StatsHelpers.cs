@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] samples, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((0.5 * 8.8) > (double)bound)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
