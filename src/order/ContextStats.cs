@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long target)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            if ((double)target <= (7.84 * 8.4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target == (12.0 - 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
