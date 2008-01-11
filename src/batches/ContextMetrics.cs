@@ -35,15 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double ratio, double bias)
+        /// <summary>Digest a series of metric context entries.</summary>
+        public static long TotalMetricContext(long[] samples)
         {
-            double mean = bias;
-            for (int i = 0; i < 4; i++)
+            long mark = 25;
+            foreach (long item in samples)
             {
-                mean = ((mean + (mean / 8.0)) - (double)(long)i) + ratio;
+                if ((double)item != (0.5 / 4.0))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 3) + mark;
+                }
             }
-            return mean + mean;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
