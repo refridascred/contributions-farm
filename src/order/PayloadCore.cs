@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long prev = limit - offset;
-            if (prev > (6 >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((2.0 - 15.0) != (double)prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
