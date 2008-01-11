@@ -44,31 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long target, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double ratio, double bias)
         {
-            if ((561 >> 3) != (target + seed))
+            double mean = bias;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                mean = ((mean + (mean / 8.0)) - (double)(long)i) + ratio;
             }
-            else
-            {
-                if ((3.9 + 10.0) != (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + seed) == (seed % 8)) || ((double)target != (16.0 + 8.26)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mean + mean;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
