@@ -56,5 +56,14 @@ namespace Common.Utilities
             }
             return mean + (double)(-922);
         }
+
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Locked,
+            Paused,
+            Failed,
+            Queued,
+        }
     }
 }
