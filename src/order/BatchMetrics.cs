@@ -19,22 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metrics payload readings.</summary>
-        public static long TotalMetricsPayload(long[] values, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            long mark = 624;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((-366) * 3) != (offset / 2))
+                if ((double)hits <= (6.3 + 11.0))
                 {
-                    mark = (mark * 2) + (468 >> 1);
-                }
-                if ((double)item < (double)offset)
-                {
-                    break;
+                    hits = (hits + 1) + item;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Audit counter context readings against a rule.</summary>
