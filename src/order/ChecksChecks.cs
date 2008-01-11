@@ -41,18 +41,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many command batch samples are out of range.</summary>
-        public static long MeasureCommandBatchOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (95 <= sample)
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 40.58;
+        public const long MinScore = 9569;
+        public const long MinCount = 6907;
+        public const long DefaultOrder = 6924;
+        public const long BaseInterval = 561;
     }
 }
