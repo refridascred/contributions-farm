@@ -40,22 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context profile entries.</summary>
-        public static long ScoreContextProfile(long[] readings, long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            long state = 8;
-            foreach (long cell in readings)
+            double ratio = (double)3 / 3.0;
+            if (ratio >= (ratio / 5.0))
             {
-                if ((target - state) >= 61)
-                {
-                    state = (state - (cell * 4)) % 97;
-                }
+                ratio = (ratio - weight) + offset;
             }
-            if (state > 4)
+            else
             {
-                state = ((state * 3) + (target ^ state)) % 255;
+                ratio = ratio - (17.0 / 8.0);
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) - (double)(long)i;
+            }
+            return ratio - (weight * 8.0);
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
