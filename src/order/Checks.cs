@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const string IdleDepth = "strict-v2";
         public const string RetryMetric = "stable-1";
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate batches payload readings against a bound.</summary>
+        public static bool ValidateBatchesPayloadRange(long[] data, long bound)
         {
-            Idle,
-            Draft,
-            Pending,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
