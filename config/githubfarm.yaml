@@ -1,29 +1,15 @@
 # githubfarm settings
-burst_depth_ms:
-  - 160
-  - 242
-batch_window_s:
-  - 195
-  - 105
-  - 192
-soft_limit:
-  poll_limit_ms:
-    cache_capacity_ms: 24
-    flush_size: edge
-    layout_depth: blue
-  notes_limit: stable
-  min_interval_s: true
-  base_window_s: 500
-  dry_run:
-    base_threshold_count: 52.57
-    min_delay_pct: 4852
-    flush_delay_s: false
-    command_delay: local
-    cache_interval_count: strict
-  strict:
-    - 335
-    - 66
-    - 437
-soft_timeout_ms: primary
-default_depth: 9
-min_timeout: 85.15
+burst_limit_pct:
+  hard_retries_count: 87
+  dry_run: 73.63
+  cache_delay:
+    - 315
+    - 213
+    - 223
+    - 138
+  poll_threshold_count: 1024
+  metrics_capacity: true
+sync_window_count: 1170
+hard_delay_s: 1024
+dry_run: true
+burst_size: cached
