@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "stable";
-        public const string MaxTimeout = "local-edge";
-        public const long MaxRatio = 8690;
-        public const long MaxFilter = 6043;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowEditor = 30.78;
+        public const long IdleEditor = 4044;
+        public const long BatchEditor = 9179;
+        public const long MinBudget = 4644;
+        public const string BurstEditor = "latest-edge";
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
