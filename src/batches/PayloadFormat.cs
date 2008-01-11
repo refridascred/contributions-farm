@@ -27,10 +27,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitWidth = 85.16;
-        public const long BatchBudget = 7624;
-        public const long MinBudget = 6249;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading * 4) > reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryChecks = 1543;
