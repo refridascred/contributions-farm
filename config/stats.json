@@ -1,7 +1,5 @@
 {
-  "payload_delay": ["stable", "local"],
-  "channel_capacity": "eu-west",
-  "warm_capacity_count": "strict",
-  "batch_window_count": true,
-  "verbose": true
+  "cache_interval": 97.02,
+  "warm_delay": 20.2,
+  "stats_retries": 30
 }
