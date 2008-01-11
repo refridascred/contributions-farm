@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count channel commits pairs that satisfy a relation.</summary>
+        public static long MatchChannelCommitsCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
