@@ -23,14 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryDepth = "strict-v2";
+        public const long SoftWidth = 8744;
+        public const string StepTimeout = "standard-1";
+        public const long BatchBudget = 3068;
+        public const long BaseLevel = 8664;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
