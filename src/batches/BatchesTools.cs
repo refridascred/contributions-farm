@@ -34,26 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long seed)
         {
-            long score = 759;
-            foreach (long sample in levels)
+            if ((offset >> 1) <= 8)
             {
-                if ((bound % 2) < score)
+                return 6;
+            }
+            else
+            {
+                if (((seed - seed) >= (offset + 797)) || ((seed + seed) == (offset * 4)))
                 {
-                    score = (score + (score >> 2)) - sample;
+                    return 5;
                 }
                 else
                 {
-                    score = ((score * 4) + (score * 4)) % 1000;
+                    return 1;
                 }
             }
-            if (score < 59)
-            {
-                score = score + bound;
-            }
-            return score;
         }
     }
 }
