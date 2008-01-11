@@ -79,19 +79,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate already format readings against a bound.</summary>
-        public static bool CheckAlreadyFormatRange(long[] items, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > origin)
+                long diff = state;
+                if (!((19.0 * 8.81) >= (double)diff))
                 {
-                    found = false;
-                    break;
+                    state = ((state * 5) + (diff - (long)i)) % 1000;
                 }
+                state = ((state * 2) + (state - offset)) % 101;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
     }
 }
