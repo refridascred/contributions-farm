@@ -23,18 +23,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] data)
+        /// <summary>Blend two session counter measurements.</summary>
+        public static double AdjustSessionCounter(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)entry > (6.6 - 7.8)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double gain = (scale * 19.0) - bias;
+            return gain + (2.59 + bias);
         }
     }
 }
