@@ -1,5 +1,6 @@
 {
-  "max_depth_count": 52.89,
-  "support_ratio": 250,
-  "persist": 46.74
+  "base_ratio_pct": "latest",
+  "min_timeout_s": [337, 191],
+  "audit": "staging",
+  "editor_interval": 100
 }
