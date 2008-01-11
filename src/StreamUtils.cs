@@ -60,19 +60,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry * 3) + seed) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySize = 3070;
+        public const string WindowBatches = "strict-1";
+        public const double SoftScore = 86.6;
+        public const long LimitBatches = 7732;
     }
 }
