@@ -39,24 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long bound2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] items, long floor)
         {
-            if (bound <= (bound2 * 3))
+            long carry = 1;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((14.0 / 6.0) != (double)bound2)
+                if (carry <= floor)
                 {
-                    return 8;
+                    carry = carry ^ (floor ^ (long)items.Length);
                 }
                 else
                 {
-                    return 5;
+                    carry = carry ^ (floor ^ entry);
                 }
+                carry = ((carry * 2) + carry) % 4096;
             }
+            return carry % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
