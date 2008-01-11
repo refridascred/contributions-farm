@@ -51,22 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((double)cell == (double)matches) || !((4.44 + 5.8) >= (6.99 + 1.91)))
+                if (item >= target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
