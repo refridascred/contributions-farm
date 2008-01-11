@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryTimeout = 6421;
-        public const long SoftRatio = 8368;
-        public const long CacheRatio = 4090;
+        /// <summary>Audit farm record readings against a rule.</summary>
+        public static long MeasureFarmRecordOutliers(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((double)tally == (1.1 / 5.0)) || !((79 - target) > (item - target)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaGaps(long[] values, long floor)
