@@ -54,13 +54,19 @@ namespace Common.Utilities
         public const double BaseStream = 39.91;
         public const long LimitLevel = 7620;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long target)
         {
-            Synced,
-            Stale,
-            Ready,
-            New,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
