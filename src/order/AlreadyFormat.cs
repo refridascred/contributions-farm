@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] levels, long bound)
         {
-            Active,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!!(9.4 <= 9.0))
+                {
+                    tally = ((tally + 2) + sample) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the report metric entries that pass the check.</summary>
