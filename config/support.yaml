@@ -1,4 +1,4 @@
 # support settings
-context_capacity: 1896
-window_interval: 250
-verbose: primary
+min_retries: legacy
+enabled: false
+min_timeout: 4932
