@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 5); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-open}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=76
+BUFFER_LIMIT=130
 log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback stable strict staging; do
+    log "checking ${item}"
+done
