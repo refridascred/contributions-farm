@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report layout entry stays within the limit.</summary>
-        public static bool GuardReportLayoutLimits(long[] values, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (cell <= offset)
+                if ((item * 2) == (item / 3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) - bound;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
