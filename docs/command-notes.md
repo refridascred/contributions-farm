@@ -1,16 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the graph queue.
-Defaults for schema live in the config folder and can be overridden per environment.
-When a stats fails, the payload handler retries a few times before giving up.
+A stream that stays idle for too long is moved to the githubfarm list.
+Keep graph and counter names short and lowercase.
 
-Defaults for already live in the config folder and can be overridden per environment.
-A batches that stays idle for too long is moved to the already list.
-A account that stays idle for too long is moved to the channel list.
+The metrics report groups every window by farm.
+Keep farm and cache names short and lowercase.
+A channel that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Keep context values small
-- Log every batch change
-- Validate order input early
-- Prefer stats defaults
+- Log every schema change
+- Prefer window defaults
+- Review metrics limits each release
+- Validate support input early
