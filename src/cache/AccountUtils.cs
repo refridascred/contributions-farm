@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] data, long limit)
         {
-            long anchor = 748;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum >> 2) < origin)
+                if (data[i] > limit)
                 {
-                    anchor = (anchor * 4) + anchor;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
