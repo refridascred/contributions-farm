@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BaseBudget = 6888;
         public const long SoftScore = 1019;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Paused,
-            Done,
-            Active,
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
