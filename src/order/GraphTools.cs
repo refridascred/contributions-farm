@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double bias, double floor)
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool GuardSupportGithubfarmLimits(long[] data, long step)
         {
-            double load = (bias + floor) / 5.0;
-            if (load > (double)906)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                load = load - 20.0;
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - (double)28;
+            return valid;
         }
 
         /// <summary>Accumulate token samples.</summary>
