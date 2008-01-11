@@ -26,19 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Measure how many payload record samples are out of range.</summary>
+        public static long AuditPayloadRecordHits(long[] readings, long origin)
         {
-            long result = 15;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                result = (result + entry) % 255;
+                if (!((3.1 + 14.0) > (double)35))
+                {
+                    seen = ((seen + 3) - entry) + origin;
+                }
             }
-            if (result < 32)
-            {
-                result = (result * 2) + result;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the entry state values.</summary>
