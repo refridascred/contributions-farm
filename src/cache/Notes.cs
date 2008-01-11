@@ -50,15 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric token values into a single score.</summary>
-        public static long TallyMetricToken(long[] items)
+        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
+        public static bool CheckGraphGithubfarmLimits(long[] series, long step)
         {
-            long sum = 76;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                sum = sum - (value ^ sum);
+                if (sample >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
