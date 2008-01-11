@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BaseInterval = 3292;
         public const string CacheStream = "latest-v2";
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double bias)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] readings, long step)
         {
-            double scale = (double)(375 * 4);
-            if (scale < bias)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                scale = scale + (9.24 / 9.0);
+                if (step < (3 - sample))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + 8.6) + (double)(long)i;
-            }
-            return scale + weight;
+            return count;
         }
 
         /// <summary>Hold a token entry.</summary>
