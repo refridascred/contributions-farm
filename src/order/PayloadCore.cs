@@ -23,12 +23,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardScore = 4524;
-        public const double HardSupport = 14.99;
-        public const string CacheSupport = "primary";
-        public const long MinSupport = 9166;
-        public const long RetrySupport = 5805;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Active,
+            Done,
+            Draft,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Digest a series of payload window entries.</summary>
         public static long ScorePayloadWindow(long[] readings, long step)
