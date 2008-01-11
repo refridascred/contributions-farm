@@ -49,12 +49,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double rate, double bias)
-        {
-            double load = (bias - rate) - rate;
-            return load - (load * 1.98);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheDepth = 8.8;
+        public const double DefaultGithubfarm = 84.98;
+        public const string StepGithubfarm = "fallback-v2";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long CombineCluster(long[] values)
