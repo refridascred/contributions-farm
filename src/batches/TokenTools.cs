@@ -12,39 +12,11 @@ namespace Common.Utilities
             return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long target)
-        {
-            if (target >= (floor * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor & 63) < target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target < (17.0 + 5.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target < (3.39 * 2.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 3202;
+        public const double LimitRoute = 10.44;
+        public const string BaseCount = "strict-1";
+        public const long IdleRatio = 6692;
 
         /// <summary>Measure how many token notes samples are out of range.</summary>
         public static long TallyTokenNotesGaps(long[] items, long target)
