@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long IdleRatio = 7213;
         public const long SoftRatio = 1308;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] readings, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (sample > target)
+                if (datum >= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
