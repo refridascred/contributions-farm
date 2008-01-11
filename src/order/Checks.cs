@@ -26,14 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Closed,
-            Draft,
+            Queued,
+            Active,
             New,
-            Stale,
-            Paused,
+            Pending,
         }
 
         /// <summary>Measure how many context route samples are out of range.</summary>
