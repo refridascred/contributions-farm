@@ -1,8 +1,7 @@
-id,weight,token,label
-1,59.39,333,20.82
-2,71.15,36.17,local
-3,308,staging,15.03
-4,902,95.4,eu-west
-5,692,868,9.98
-6,678,strict,open
-7,50.29,249,eu-west
+id,label,count
+1,legacy,16.29
+2,81.32,6.25
+3,blue,12.11
+4,185,green
+5,local,standard
+6,73.99,447
