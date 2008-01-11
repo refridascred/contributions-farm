@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double weight, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            double weight2 = weight;
-            if (weight2 > weight)
+            long acc = 24;
+            foreach (long cell in readings)
             {
-                weight2 = weight2 + weight;
+                acc = ((acc * 2) + (acc + cell)) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + (1.49 / 7.0)) + (double)(long)i;
-            }
-            return weight2 + span;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
