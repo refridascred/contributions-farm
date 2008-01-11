@@ -30,14 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 203;
+        public const string BurstRoute = "cached-1";
+        public const long DefaultBudget = 8807;
+        public const string DefaultWidth = "cached-edge";
+        public const long MinSize = 7088;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] items, long offset)
