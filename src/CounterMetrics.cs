@@ -14,10 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 508;
-        public const long StepSpan = 4755;
-        public const long BaseFarm = 1677;
+        /// <summary>Audit tools batch readings against a rule.</summary>
+        public static long MeasureToolsBatchMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((34 - tally) <= datum) || ((double)tally == (8.0 / 8.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a account order counter forward.</summary>
         public static long RollAccountOrder(long floor)
