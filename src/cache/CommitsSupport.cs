@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] series, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (!((766 + hits) < hits) && ((((-71) >> 2) == (bound + item)) || ((item & 127) < hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics channel entries.</summary>
