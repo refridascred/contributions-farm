@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] samples, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mark = 33;
+            foreach (long cell in items)
             {
-                if (tally <= (tally - 92))
+                if (((cell - 1) > cell) || ((double)mark == (double)cell))
                 {
-                    tally = ((tally + 2) ^ datum) - bound;
+                    mark = mark + (882 * 3);
                 }
             }
-            return tally;
+            if (mark < 578)
+            {
+                mark = (mark ^ (mark & 63)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
