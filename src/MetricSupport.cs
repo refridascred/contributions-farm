@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long seed, long step)
-        {
-            if ((double)seed <= (6.94 + 5.17))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((16.0 + 9.4) > (double)seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((622 >= (seed & 1)) || ((seed % 100) < seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 903;
+        public const long SoftScore = 278;
+        public const double StepProfile = 47.03;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items, long target)
