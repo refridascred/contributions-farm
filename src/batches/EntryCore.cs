@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const long WindowSpan = 3912;
         public const long MaxWidth = 8779;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = 7;
+            foreach (long item in data)
             {
-                if (((seen >= (seen / 8)) && (0 <= seen)) || ((seen < cell) && ((seen - 1) <= cell)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score - (item + 43)) % 101;
             }
-            return seen;
+            if (score > 0)
+            {
+                score = (score + (score - score)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
