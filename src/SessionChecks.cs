@@ -23,20 +23,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] values, long limit)
         {
-            long carry = 7;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((datum + datum) < carry)
+                if (datum <= limit)
                 {
-                    carry = (carry - (carry >> 2)) % 1000;
-                    carry = (carry + (datum << 1)) % 4096;
+                    flag = false;
+                    break;
                 }
-                carry = (carry - (carry + 0)) % 255;
             }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Describe the stats class values.</summary>
