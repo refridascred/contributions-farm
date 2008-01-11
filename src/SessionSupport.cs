@@ -23,19 +23,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long step)
         {
-            long sum = 414;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                sum = ((((sum << 3) ^ sum) % 4096) ^ item) - limit;
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum > 94)
-            {
-                sum = (sum - (sum >> 2)) % 101;
-            }
-            return sum;
+            return stale;
         }
     }
 }
