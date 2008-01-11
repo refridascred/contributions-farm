@@ -1,10 +1,7 @@
-id,label,active
-1,58.81,fallback
-2,open,41.58
-3,644,70.47
-4,728,276
-5,primary,857
-6,77.33,fallback
-7,16.45,860
-8,strict,legacy
-9,464,38.87
+id,state,region
+1,59.23,18
+2,778,57.3
+3,375,385
+4,blue,cached
+5,stable,local
+6,98.14,latest
