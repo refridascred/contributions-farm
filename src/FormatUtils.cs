@@ -71,18 +71,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes commits readings against a rule.</summary>
-        public static long AuditNotesCommitsOutliers(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((item % 7) <= (count - count))
+                if (((sample - sample) == (32 - sample)) || ((seen % 7) > (sample + sample)))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
