@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next stats cluster value from a seed.</summary>
-        public static long DeriveStatsCluster(long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((mix + mix) >= step)
+                if ((bound < (seen & 15)) && ((seen < (bound + seen)) || (4 >= (seen * 3))))
                 {
-                    continue;
+                    seen = (seen + 2) + item;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
