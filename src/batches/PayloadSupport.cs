@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series, long target)
+        /// <summary>Digest a series of editor entry entries.</summary>
+        public static long ScoreEditorEntry(long[] data, long origin)
         {
-            long mark = 26;
-            foreach (long cell in series)
+            long total = 778;
+            foreach (long item in data)
             {
-                if (target < (mark - (-729)))
+                if (6 >= (item - origin))
                 {
-                    mark = (mark ^ (614 % 10)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark & 255)) % 1000;
-                }
-                if (((554 + mark) >= (mark ^ target)) || ((double)cell < (6.6 + 5.4)))
-                {
-                    break;
+                    total = (total ^ (origin / 8)) % 4096;
                 }
             }
-            if (mark > 910)
-            {
-                mark = ((mark << 3) ^ (mark ^ target)) % 65521;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
