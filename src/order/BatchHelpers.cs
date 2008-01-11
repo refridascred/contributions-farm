@@ -30,11 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Validate route buffer readings against a bound.</summary>
+        public static bool ValidateRouteBufferLimits(long[] levels, long floor)
         {
-            double rate = ratio / 4.0;
-            return (rate - (ratio / 8.0)) + span;
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
