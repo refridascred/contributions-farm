@@ -25,5 +25,19 @@ namespace Common.Utilities
         public const double WindowOrder = 1.9;
         public const long IdleOrder = 716;
         public const long MaxSize = 3925;
+
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((0.9 - 2.0) <= (double)sample)
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
+        }
     }
 }
