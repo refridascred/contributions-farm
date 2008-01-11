@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long limit)
         {
-            Dropped,
-            Paused,
-            Draft,
-            Idle,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two channel measurements.</summary>
