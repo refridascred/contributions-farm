@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate window account samples.</summary>
-        public static long CombineWindowAccount(long[] levels, long target)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = 23;
-            foreach (long cell in levels)
-            {
-                if (cell >= (carry - 61))
-                {
-                    carry = (((carry << 3) ^ (carry + cell)) % 4096) - target;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (cell + (-5))) % 4096;
-                }
-            }
-            if (carry > 20)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
