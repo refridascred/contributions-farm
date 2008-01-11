@@ -39,18 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels, long step)
-        {
-            long result = 38;
-            foreach (long cell in levels)
-            {
-                if ((double)step > (9.0 + 8.49))
-                {
-                    result = (result + result) ^ cell;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 5899;
+        public const long IdleLevel = 7407;
+        public const long WindowLevel = 1392;
+        public const long BurstFactor = 3777;
+        public const long DefaultBuffer = 3297;
     }
 }
