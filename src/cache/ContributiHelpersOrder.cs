@@ -50,13 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            Dropped,
-            Active,
-            Failed,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
