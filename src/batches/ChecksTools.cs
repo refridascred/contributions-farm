@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((2.91 / 9.0) < (double)step)
             {
-                if (data[i] == floor)
+                return 2;
+            }
+            else
+            {
+                if ((offset + (-724)) < (step >> 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
