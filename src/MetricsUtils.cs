@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((cell >> 5) >= (cell / 4))
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
