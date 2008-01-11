@@ -24,15 +24,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Roll a stats batch counter forward.</summary>
+        public static long DeriveStatsBatch(long step)
         {
-            double gain = 16.0;
-            for (int i = 0; i < 4; i++)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                gain = ((gain - (double)(long)i) - bias) - floor;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (((mark << 3) ^ step) % 4096) - (long)i2;
+                    mark = mark - (76 >> 3);
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mark = (((mark * 3) + (mark << 2)) % 4096) ^ (long)i3;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return gain - (gain - gain);
+            return mark;
         }
 
         /// <summary>Accumulate order samples.</summary>
