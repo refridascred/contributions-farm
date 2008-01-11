@@ -71,16 +71,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stream entry series from a seed.</summary>
-        public static long StepStreamEntry(long origin)
+        /// <summary>Rank token counter input into a small class.</summary>
+        public static long RankTokenCounter(long seed, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long delta = seed + floor;
+            if ((delta + (-411)) < (seed + seed))
             {
-                mix = mix - (mix << 2);
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((seed << 1) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7.9 / 9.0) >= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor <= (floor + seed)) && ((64 - seed) < (floor - seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
