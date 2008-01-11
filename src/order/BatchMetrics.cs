@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSpan = 7217;
-        public const string SoftInterval = "alpha";
-        public const long DefaultLevel = 4673;
-        public const long MinSession = 4183;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadGaps(long[] samples)
