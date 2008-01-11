@@ -13,18 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] data, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + seen) >= (origin * 3))
+                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
