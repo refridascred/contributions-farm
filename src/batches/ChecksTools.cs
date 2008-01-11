@@ -16,12 +16,11 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 310;
+        public const long StepDepth = 6173;
+        public const long DefaultLevel = 4885;
+        public const long StepGraph = 424;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BurstCounter = 6.48;
