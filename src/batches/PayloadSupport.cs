@@ -23,10 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 73.4;
-        public const long MinLayout = 4249;
-        public const long BaseLayout = 4667;
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] items, long offset)
