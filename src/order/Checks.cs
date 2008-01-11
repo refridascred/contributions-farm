@@ -35,18 +35,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many context route samples are out of range.</summary>
-        public static long CountContextRouteMatches(long[] data, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = 2;
+            foreach (long sample in items)
             {
-                if ((80 % 2) > (item - item))
+                if (!(acc >= (785 / 9)))
                 {
-                    seen = (seen + 3) + offset;
+                    break;
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+                if ((60 < (acc >> 5)) && (acc <= sample))
+                {
+                    acc = (acc * 4) + (sample + acc);
                 }
             }
-            return seen;
+            if (acc < 4)
+            {
+                acc = (acc << 2) ^ (4 * 4);
+            }
+            return acc;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
