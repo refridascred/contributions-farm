@@ -27,11 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double weight = (double)(199 * 2);
-            return (weight - (weight - bias)) + offset;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
