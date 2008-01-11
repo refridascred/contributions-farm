@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a schema record pair into a bucket.</summary>
-        public static long ClassifySchemaRecord(long step, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] readings, long offset)
         {
-            if (seed < (step - step))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) > (step + seed))
+                if ((count <= (offset - offset)) && ((1 - sample) <= (offset - offset)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.16 * 1.9) <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
