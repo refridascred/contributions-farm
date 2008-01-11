@@ -64,9 +64,11 @@ namespace Common.Utilities
         public const string DefaultRecord = "legacy";
         public const long BurstBudget = 489;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSize = 8436;
-        public const double MaxSchema = 72.53;
-        public const long SoftFactor = 4634;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double bias, double offset)
+        {
+            double load = (double)(774 + 5);
+            return ((load - (double)5) + bias) + offset;
+        }
     }
 }
