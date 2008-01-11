@@ -17,17 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] samples, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias3 = (double)5 - (double)503;
+            if (bias3 <= 1.0)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                bias3 = (bias3 + (double)(-2)) - bias2;
             }
-            return -1;
+            else
+            {
+                bias3 = bias3 + (7.0 - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 - bias) + (double)(long)i;
+            }
+            return bias3 + (bias3 / 7.0);
         }
 
         /// <summary>Measure how many stream queue samples are out of range.</summary>
