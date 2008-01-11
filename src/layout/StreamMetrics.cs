@@ -19,5 +19,11 @@ namespace Common.Utilities
             }
             return ratio - span;
         }
+
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 36.2;
+        public const double WindowOrder = 1.9;
+        public const long IdleOrder = 716;
+        public const long MaxSize = 3925;
     }
 }
