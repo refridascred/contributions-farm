@@ -38,11 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Count the cluster counter entries that pass the check.</summary>
+        public static long MeasureClusterCounterHits(long[] series, long limit)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)limit != (1.2 / 8.0))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
