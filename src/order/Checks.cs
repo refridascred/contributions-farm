@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long delta = bound - seed;
-            if ((seed & 7) > (bound + delta))
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed < (9 + 913)) && ((double)bound > (9.4 - 1.6)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 3;
+                    score = ((score - 1) % 101) - (long)i2;
                 }
-                else
+                if (!((418 + limit) > (73 + limit)))
                 {
-                    return 0;
+                    score = (score + 5) % 255;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Describe the order mode values.</summary>
