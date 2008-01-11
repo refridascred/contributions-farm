@@ -47,22 +47,18 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((5.26 * 11.0) <= (double)seen)
+                if (((double)reading < (double)(long)items.Length) && (((double)reading < (4.0 / 4.0)) && ((count - 894) >= reading)))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
