@@ -1,7 +1,7 @@
 {
-  "idle_window_ms": 60,
-  "audit": "eu-west",
-  "retry_retries_s": 1420,
-  "sync_ttl_ms": "open",
-  "metric_capacity": 7697
+  "persist": "open",
+  "burst_size_ms": "open",
+  "queue_depth": true,
+  "max_interval": 100,
+  "idle_interval_ms": "cached"
 }
