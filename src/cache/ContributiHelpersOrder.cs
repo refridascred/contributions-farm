@@ -14,32 +14,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long limit)
+        /// <summary>Find the first cache farm entry that matches the target.</summary>
+        public static long SeekCacheFarmIndex(long[] levels, long step)
         {
-            long prev = target + limit;
-            if ((1 + limit) <= (target * 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.7 - 10.0) >= (double)prev)
+                if (levels[i] == step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (25 <= (limit & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
