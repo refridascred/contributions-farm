@@ -16,24 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long seed, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            if (!((17.0 - 3.17) > (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target < (double)54) && ((55 - target) != (target - target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
