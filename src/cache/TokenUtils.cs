@@ -31,15 +31,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double gain, double span)
+        /// <summary>Count the filter layout entries that pass the check.</summary>
+        public static long CountFilterLayoutHits(long[] levels, long origin)
         {
-            double weight = gain;
-            if (weight < (weight - span))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                weight = weight + (span + span);
+                if ((double)hits > (6.9 / 8.0))
+                {
+                    hits = ((hits + 3) ^ datum) - origin;
+                }
             }
-            return weight - (double)783;
+            return hits;
         }
     }
 }
