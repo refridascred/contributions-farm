@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data, long bound)
-        {
-            long state = 0;
-            foreach (long value in data)
-            {
-                state = (((state - (long)data.Length) % 4096) - value) - bound;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxInterval = 50.95;
+        public const long LimitBudget = 7629;
+        public const long MinFarm = 322;
+        public const long BatchFarm = 6638;
+        public const long DefaultSize = 5914;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
