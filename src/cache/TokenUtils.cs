@@ -33,15 +33,17 @@ namespace Common.Utilities
             return load + (span - 1.0);
         }
 
-        /// <summary>Roll a support window counter forward.</summary>
-        public static long SeriesSupportWindow(long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
