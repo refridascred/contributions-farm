@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Done,
             New,
+            Draft,
+            Idle,
             Retry,
-            Dropped,
+            Done,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
