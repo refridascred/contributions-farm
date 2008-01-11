@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (drift - rate) + bias;
         }
 
-        /// <summary>Compare every pair of window editor readings.</summary>
-        public static long OverlapWindowEditorCount(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark - (mark - mark)) ^ value) + limit;
+                if (!(270 >= (mark - mark)))
                 {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Adjust a already reading.</summary>
