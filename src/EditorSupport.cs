@@ -25,15 +25,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            double scale = (double)24 + weight;
-            if (scale < (weight - scale))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - (double)933) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale - (double)393;
+            return tally;
         }
 
         /// <summary>Count the format tools entries that pass the check.</summary>
