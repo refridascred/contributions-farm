@@ -34,12 +34,23 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            double rate = scale;
+            if (rate > scale)
+            {
+                rate = (rate + scale) + span;
+            }
+            else
+            {
+                rate = rate - (double)0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate + 6.0)) + (double)(long)i;
+            }
+            return rate + (scale / 6.0);
         }
     }
 }
