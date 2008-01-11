@@ -61,18 +61,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit support graph readings against a rule.</summary>
-        public static long CountSupportGraphHits(long[] items)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >> 4) <= seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) ^ value;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
