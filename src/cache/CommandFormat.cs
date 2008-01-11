@@ -40,17 +40,16 @@ namespace Common.Utilities
         public const long HardScore = 39;
         public const long RetryEntry = 878;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                total = (total - (371 + origin)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
