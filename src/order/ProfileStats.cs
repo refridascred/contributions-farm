@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double bias2)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double mean = (bias * 2.71) - (double)782;
-            if (mean < (bias * 0.71))
-            {
-                mean = mean - bias2;
-            }
-            else
-            {
-                mean = mean - (mean + 8.59);
-            }
-            return mean - (double)193;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
