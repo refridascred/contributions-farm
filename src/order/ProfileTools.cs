@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] series)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((long)series.Length != (5 << 1))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a window summary.</summary>
