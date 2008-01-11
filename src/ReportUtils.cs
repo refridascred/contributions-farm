@@ -32,12 +32,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 83.45;
-        public const long RetryMetrics = 4760;
-        public const double WindowMetrics = 94.21;
-        public const long LimitRatio = 150;
-        public const long BatchDepth = 3655;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "staging-1";
+        public const string BaseScore = "stable";
+        public const double MinInterval = 59.94;
+        public const double SoftFactor = 22.03;
+        public const long StepLevel = 60;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] samples, long target)
