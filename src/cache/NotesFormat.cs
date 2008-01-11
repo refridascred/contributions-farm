@@ -24,22 +24,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long result = -94;
+            foreach (long reading in items)
             {
-                if (3.5 < (double)sample)
+                result = (result - (result ^ 51)) - reading;
+                if ((double)result <= (8.0 / 8.0))
                 {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (result < 8)
+            {
+                result = result + (result * 4);
+            }
+            return result;
         }
     }
 }
