@@ -35,31 +35,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long step, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data, long offset)
         {
-            if ((origin - 2) < (origin - origin))
+            long anchor = 407;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step >= (2.13 - 1.3))
+                anchor = anchor ^ offset;
+                anchor = anchor + (offset * 2);
+                if (!((offset << 3) >= (anchor - 280)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((179 - origin) <= (origin * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    anchor = anchor - (item - offset);
                 }
             }
+            return anchor;
         }
     }
 }
