@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 1367;
-        public const long MaxTimeout = 4995;
-        public const string RetryInterval = "fallback";
-        public const long LimitScore = 4975;
-        public const double BurstQueue = 63.72;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 498;
+        public const long RetryTimeout = 9901;
+        public const string BurstDepth = "standard";
+        public const double DefaultCluster = 68.48;
+        public const double StepBudget = 90.75;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double ratio, double span)
