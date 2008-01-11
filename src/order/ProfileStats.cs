@@ -29,13 +29,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Synced,
-            Pending,
-            Idle,
-            Draft,
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two already editor measurements.</summary>
