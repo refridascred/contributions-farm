@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long CacheSize = 5788;
         public const long StepWidth = 6158;
 
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long CountLayoutMetricsMatches(long[] values)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen > 0.48)
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    seen = (seen + 2) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
