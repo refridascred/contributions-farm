@@ -61,11 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepDepth = 41.97;
-        public const double BaseScore = 5.82;
-        public const long MinSize = 6816;
-        public const string BaseInterval = "alpha";
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long TallyPayloadToolsOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (6 >= (matches + matches))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long CountClusterReportOutliers(long[] values)
