@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const string StepTools = "stable-edge";
         public const string LimitWidth = "primary-v2";
 
-        /// <summary>Validate command commits readings against a bound.</summary>
-        public static bool CheckCommandCommitsBounds(long[] readings, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= offset)
+                if (levels[i] <= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
