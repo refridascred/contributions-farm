@@ -14,18 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] items, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((4 - count) < (limit >> 1))
-                {
-                    count = (count + 3) + datum;
-                }
+                result = ((result << 3) ^ (result % 5)) % 255;
+                result = ((result * 4) + (origin >> 3)) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
