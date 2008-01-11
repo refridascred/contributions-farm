@@ -13,21 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
