@@ -19,14 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels, long offset)
         {
-            New,
-            Locked,
-            Queued,
-            Closed,
-            Paused,
+            long acc = -109;
+            foreach (long value in levels)
+            {
+                acc = ((acc * 4) + value) + offset;
+            }
+            return acc;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
