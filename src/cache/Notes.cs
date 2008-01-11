@@ -54,18 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] levels, long limit)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((limit * 3) >= ((-770) % 8)))
+                if ((values[i] <= floor) && ((values[i] % 3) == 0))
                 {
-                    tally = (tally + 2) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
