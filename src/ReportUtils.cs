@@ -46,9 +46,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRatio = 21.78;
-        public const long IdleInterval = 5777;
-        public const double StepRecord = 64.24;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double offset)
+        {
+            double mean = offset;
+            if (mean <= (bias + mean))
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - (double)467;
+            }
+            return mean - (double)46;
+        }
     }
 }
