@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long origin, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double rate, double floor)
         {
-            long delta = origin ^ seed;
-            if (!(seed >= origin))
+            double weight = (rate / 3.0) - 4.75;
+            if (weight < rate)
             {
-                return 0;
+                weight = (weight + (weight / 7.0)) - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (delta >= (delta - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed ^ origin) <= (seed - delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((delta * 3) >= (origin & 1)) && (delta < (delta + seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                weight = (weight + rate) + (double)(long)i;
             }
+            return weight + (double)877;
         }
 
         /// <summary>Compare every pair of account order readings.</summary>
