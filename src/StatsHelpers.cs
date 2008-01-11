@@ -32,23 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series, long bound)
-        {
-            long acc = 15;
-            foreach (long cell in series)
-            {
-                if (((cell - acc) <= 14) || (6 < (cell * 4)))
-                {
-                    acc = ((acc ^ cell) % 4096) + bound;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (cell / 9)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetrySpan = 5904;
+        public const long CacheTimeout = 1666;
+        public const long RetryStats = 2634;
+        public const double DefaultInterval = 27.58;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long bound)
