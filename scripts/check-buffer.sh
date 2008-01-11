@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-local}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest fallback legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=398
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
