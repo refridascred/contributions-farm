@@ -55,22 +55,17 @@ namespace Common.Utilities
             return (bias2 - bias2) + bias;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] items, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count <= (count - sample))
+                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
                 {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a contributi header.</summary>
