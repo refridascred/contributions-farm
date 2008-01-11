@@ -31,12 +31,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
+            long total = 998;
+            foreach (long datum in readings)
+            {
+                if ((datum << 3) >= total)
+                {
+                    total = total - 95;
+                }
+            }
+            if (total > 14)
+            {
+                total = total + (8 + total);
+            }
+            return total;
         }
     }
 }
