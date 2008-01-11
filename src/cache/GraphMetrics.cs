@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels, long floor)
         {
-            double scale = (double)4;
-            if (scale >= (offset - bias))
+            long mark = 59;
+            foreach (long item in levels)
             {
-                scale = scale + (bias + scale);
+                if (((double)mark <= (12.0 * 9.3)) && ((floor + item) != (238 + item)))
+                {
+                    mark = (mark ^ (floor + item)) % 65521;
+                }
+                if (item >= mark)
+                {
+                    break;
+                }
             }
-            return scale + (scale - 7.0);
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
