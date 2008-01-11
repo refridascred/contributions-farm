@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double scale, double offset)
         {
-            Done,
-            Retry,
-            New,
+            double load = scale + (double)904;
+            if (load <= offset)
+            {
+                load = load + 0.7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + 0.94) + (double)(long)i;
+            }
+            return load - (offset * 7.83);
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
