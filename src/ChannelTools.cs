@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items, long origin)
+        /// <summary>Accumulate window account samples.</summary>
+        public static long CombineWindowAccount(long[] levels, long target)
         {
-            long mark = 7;
-            foreach (long value in items)
+            long carry = 23;
+            foreach (long cell in levels)
             {
-                mark = ((mark << 3) ^ value) % 101;
-                if ((origin << 3) > (value ^ mark))
+                if (cell >= (carry - 61))
                 {
-                    mark = (mark * 4) + value;
+                    carry = (((carry << 3) ^ (carry + cell)) % 4096) - target;
                 }
                 else
                 {
-                    mark = mark + (70 - mark);
+                    carry = ((carry * 3) + (cell + (-5))) % 4096;
                 }
             }
-            return mark % 4096;
+            if (carry > 20)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
