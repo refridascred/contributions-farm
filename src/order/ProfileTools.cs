@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
