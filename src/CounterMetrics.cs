@@ -14,19 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every buffer metrics entry stays within the limit.</summary>
-        public static bool CheckBufferMetricsBounds(long[] series, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Rank token input into a small class.</summary>
