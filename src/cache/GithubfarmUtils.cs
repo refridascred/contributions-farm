@@ -34,19 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long seed)
+        /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmNotesCount(long[] data)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
