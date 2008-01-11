@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitLevel = 8.71;
-        public const long CacheRatio = 6673;
-        public const long BurstSize = 5445;
-        public const string BurstCache = "staging-edge";
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank counter stream input into a small class.</summary>
         public static long ClassifyCounterStream(long origin, long offset)
