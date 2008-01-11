@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            long total = 72;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + total) % 1000;
-                if ((reading + reading) >= (reading - total))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total ^ (reading + reading);
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Roll a command counter counter forward.</summary>
