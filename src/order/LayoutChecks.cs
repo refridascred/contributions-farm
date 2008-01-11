@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const string BatchFilter = "cached-1";
         public const long StepRatio = 1125;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] samples, long origin)
         {
-            long acc = 28;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc - (acc & 3);
-                if (!((cell << 1) > 1))
+                if (samples[i] < origin)
                 {
-                    acc = (acc * 4) + (cell + cell);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
