@@ -32,19 +32,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long floor)
+        /// <summary>Roll a layout tools counter forward.</summary>
+        public static long IterateLayoutTools(long offset)
         {
-            long total = 76;
-            foreach (long entry in values)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                total = (((total << 2) ^ (entry & 127)) % 97) - floor;
+                mix = (mix ^ (mix * 4)) % 1000;
+                if ((offset & 31) <= (long)i)
+                {
+                    mix = (mix + ((long)i << 3)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (offset + offset)) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (total > 797)
-            {
-                total = total + (53 % 10);
-            }
-            return total % 97;
+            return mix;
         }
     }
 }
