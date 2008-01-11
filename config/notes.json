@@ -1,22 +1,6 @@
 {
-  "min_depth_pct": {
-    "dry_run": "latest",
-    "session_retries": 625,
-    "max_size": 9.33,
-    "batch_capacity_count": ["latest", "strict"]
-  },
-  "audit": {
-    "flush_size": 92.16,
-    "batch_capacity": ["latest", "stable", "staging"],
-    "flush_window_ms": 54.78,
-    "flush_timeout_s": {
-      "buffer_interval": 77,
-      "retry_delay_pct": [368, 323],
-      "max_size_ms": 35,
-      "flush_ratio_s": 8244
-    }
-  },
-  "cache_ratio_count": "cached",
-  "persist": "strict",
-  "strict": false
+  "contributi_threshold": 6159,
+  "batch_threshold": 30,
+  "hard_interval": false,
+  "retry_threshold_pct": 30
 }
