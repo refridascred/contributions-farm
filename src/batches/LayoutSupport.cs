@@ -85,25 +85,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command order input into a small class.</summary>
-        public static long BucketCommandOrder(long floor, long floor2)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long delta = floor + floor2;
-            if ((delta / 4) < (floor2 / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(floor2 < (delta + delta)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
