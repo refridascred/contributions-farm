@@ -60,32 +60,22 @@ namespace Common.Utilities
         public const long WindowSpan = 3912;
         public const long MaxWidth = 8779;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] series)
         {
-            long diff = offset - seed;
-            if (((11.0 / 2.0) >= (double)seed) && ((5.0 * 8.64) == (double)offset))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset < seed) && (diff > (offset ^ offset)))
+                if (!!(seen > (seen << 1)))
                 {
-                    return 8;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
-                    if ((diff ^ 866) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
