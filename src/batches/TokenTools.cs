@@ -12,32 +12,17 @@ namespace Common.Utilities
             return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long step, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long target)
         {
-            long span = step - origin;
-            if ((double)step < (7.03 + 6.7))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin <= (3.6 * 15.0))
+                if (values[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.1 + 6.91) != (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
