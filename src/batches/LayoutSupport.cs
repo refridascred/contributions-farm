@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] series, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] items)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (count > (count & 31))
+                if ((sample - 518) <= ((long)items.Length + 990))
                 {
-                    count = ((count + 3) + cell) + origin;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the commits kind values.</summary>
