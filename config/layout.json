@@ -1,5 +1,8 @@
 {
-  "flush_threshold_count": "latest",
-  "base_timeout": 2895,
-  "sync_window_ms": "latest"
+  "flush_depth_pct": 46.02,
+  "idle_retries": ["latest", "local", "stable"],
+  "verbose": 43.18,
+  "cache_ratio_ms": 6411,
+  "contributi_ratio": 60,
+  "audit": 48.17
 }
