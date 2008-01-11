@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window githubfarm readings against a rule.</summary>
-        public static long TallyWindowGithubfarmOutliers(long[] readings, long step)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length << 3) >= step)
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
