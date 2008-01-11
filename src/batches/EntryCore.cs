@@ -27,13 +27,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseRatio = 45;
+        public const string MinSize = "alpha-v2";
+        public const string DefaultWindow = "alpha-v2";
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
