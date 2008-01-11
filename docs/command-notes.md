@@ -1,11 +1,11 @@
 # Command notes
 
-When a metrics fails, the support handler retries a few times before giving up.
-Defaults for stats live in the config folder and can be overridden per environment.
+When a buffer fails, the tools handler retries a few times before giving up.
+A contributi that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Keep counter values small
+- Review report limits each release
+- Document new payload fields
 - Validate graph input early
-- Log every context change
-- Prefer record defaults
+- Keep queue values small
