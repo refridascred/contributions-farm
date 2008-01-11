@@ -39,11 +39,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 5899;
-        public const long IdleLevel = 7407;
-        public const long WindowLevel = 1392;
-        public const long BurstFactor = 3777;
-        public const long DefaultBuffer = 3297;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels, long bound)
+        {
+            long score = 759;
+            foreach (long sample in levels)
+            {
+                if ((bound % 2) < score)
+                {
+                    score = (score + (score >> 2)) - sample;
+                }
+                else
+                {
+                    score = ((score * 4) + (score * 4)) % 1000;
+                }
+            }
+            if (score < 59)
+            {
+                score = score + bound;
+            }
+            return score;
+        }
     }
 }
