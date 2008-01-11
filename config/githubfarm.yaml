@@ -1,5 +1,6 @@
 # githubfarm settings
-counter_size: green
-dry_run: true
-payload_ratio: 60
-batch_window_ms: staging
+editor_ttl: 8814
+min_capacity_ms: cached
+enabled:
+  - green
+  - green
