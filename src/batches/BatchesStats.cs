@@ -22,33 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long seed)
-        {
-            long cur = origin - seed;
-            if ((double)cur <= (20.0 - 2.25))
-            {
-                return 0;
-            }
-            else
-            {
-                if (5.8 >= (double)cur)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.5 * 8.77) == (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 7960;
+        public const string BaseContributi = "strict-1";
+        public const long DefaultScore = 9224;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long ScoreBatches(long[] readings)
