@@ -16,10 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 8852;
-        public const long LimitContext = 6189;
-        public const string MinDepth = "stable";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((state + (long)i) < (76 + state)))
+                {
+                    state = (state - ((long)i / 3)) % 255;
+                    break;
+                }
+                else
+                {
+                    state = (state + (offset >> 2)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
