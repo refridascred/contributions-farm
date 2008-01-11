@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double rate, double span)
         {
-            long mix = 962;
-            foreach (long reading in levels)
+            double load = rate;
+            if (load < (double)3)
             {
-                if ((mix & 31) >= (reading / 4))
-                {
-                    mix = ((mix << 3) ^ (origin % 5)) % 101;
-                }
-                mix = mix + (46 << 3);
+                load = (load - rate) - span;
             }
-            return mix;
+            return load - rate;
         }
 
         /// <summary>Describe the command kind values.</summary>
