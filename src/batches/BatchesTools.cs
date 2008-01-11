@@ -39,23 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels, long step)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            long result = 38;
+            foreach (long cell in levels)
             {
-                anchor = anchor + (anchor + 269);
-                if ((576 ^ item) >= item)
+                if ((double)step > (9.0 + 8.49))
                 {
-                    anchor = (anchor ^ (item ^ anchor)) % 1000;
+                    result = (result + result) ^ cell;
                 }
             }
-            if (anchor > 947)
-            {
-                anchor = (anchor + (anchor + 8)) % 65521;
-            }
-            return anchor;
+            return result;
         }
     }
 }
