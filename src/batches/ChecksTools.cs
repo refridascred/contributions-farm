@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BurstFarm = 4367;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long anchor = 721;
-            foreach (long entry in items)
-            {
-                anchor = (anchor - (step / 4)) + entry;
-                if ((step / 6) >= anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Measure how many payload record samples are out of range.</summary>
