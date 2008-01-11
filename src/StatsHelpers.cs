@@ -37,19 +37,16 @@ namespace Common.Utilities
         public const string RetryNotes = "local-edge";
         public const long WindowBudget = 3715;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((long)i > 43) || ((limit & 15) < limit))
-                {
-                    acc = (acc << 2) ^ (limit + acc);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                anchor = ((anchor << 3) ^ 9) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
