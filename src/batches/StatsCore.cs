@@ -19,12 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Rank support format input into a small class.</summary>
+        public static long BucketSupportFormat(long target, long limit)
         {
-            Locked,
-            Done,
-            New,
+            long step = target + limit;
+            if (57 < step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (4.0 / 4.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target - limit) != (target + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a already reading.</summary>
