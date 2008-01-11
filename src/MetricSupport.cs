@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 17.28;
         public const long BurstInterval = 9766;
 
-        /// <summary>Project the next githubfarm schema value.</summary>
-        public static double ScaleGithubfarmSchema(double rate, double bias)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double drift = bias;
-            if (drift <= (double)98)
-            {
-                drift = drift + (drift + 8.9);
-            }
-            else
-            {
-                drift = drift - rate;
-            }
-            return drift - bias;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
