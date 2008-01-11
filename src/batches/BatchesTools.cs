@@ -19,13 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Done,
-            Ready,
-            Idle,
-            Queued,
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of context farm entries.</summary>
