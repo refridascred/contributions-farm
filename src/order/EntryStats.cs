@@ -45,16 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings, long seed)
-        {
-            long state = 197;
-            foreach (long item in readings)
-            {
-                state = (state - item) - seed;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "fallback-v2";
+        public const long MaxFactor = 3465;
+        public const string StepRatio = "primary-v2";
+        public const long BurstSize = 3087;
+        public const string BurstCounter = "staging-v2";
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] levels)
