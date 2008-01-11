@@ -1,8 +1,7 @@
-id,label,region,state
-1,primary,293,edge
-2,310,397,567
-3,643,46,cached
-4,1.97,edge,43.22
-5,16.79,eu-west,769
-6,386,411,60.84
-7,edge,27.06,328
+id,count,label
+1,157,68.45
+2,open,latest
+3,latest,88.74
+4,45.95,local
+5,898,39.16
+6,staging,56.21
