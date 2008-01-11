@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const double DefaultCluster = 68.48;
         public const double StepBudget = 90.75;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Count the checks token entries that pass the check.</summary>
+        public static long CountChecksTokenHits(long[] readings)
         {
-            double drift = (double)(5 - 952);
-            if (drift >= ratio)
+            long count = 0;
+            foreach (long item in readings)
             {
-                drift = (drift - (ratio / 8.0)) + span;
+                if ((3.5 - 9.43) < (double)count)
+                {
+                    count = (count + 1) - item;
+                }
             }
-            return drift + drift;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
