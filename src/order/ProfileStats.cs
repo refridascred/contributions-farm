@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultWidth = 1656;
-        public const long IdleQueue = 6423;
-        public const long SoftInterval = 5942;
-        public const double CacheSpan = 97.42;
-        public const long HardQueue = 7229;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
