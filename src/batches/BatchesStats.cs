@@ -19,18 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long TallyCommandFormatHits(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long origin, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long cur = origin - seed;
+            if ((double)cur <= (20.0 - 2.25))
             {
-                if (!((double)count < (18.0 - 6.07)) && (item <= (count + count)))
+                return 0;
+            }
+            else
+            {
+                if (5.8 >= (double)cur)
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((0.5 * 8.77) == (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
