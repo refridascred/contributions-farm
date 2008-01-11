@@ -46,15 +46,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many batch format samples are out of range.</summary>
-        public static long CountBatchFormatOutliers(long[] levels, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long datum in readings)
             {
-                if ((offset >> 2) >= (6 - entry))
+                if ((datum - count) > count)
                 {
                     count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
