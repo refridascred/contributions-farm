@@ -34,21 +34,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 8387;
         public const string BurstTimeout = "legacy-v2";
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Scale a stream filter figure with a bias.</summary>
+        public static double AdjustStreamFilter(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = ((weight - (17.0 / 8.0)) - (double)(long)i) - ratio;
             }
-            return count;
+            return weight - 2.5;
         }
     }
 }
