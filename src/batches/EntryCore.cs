@@ -55,15 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Active,
-            Pending,
-            Idle,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3917;
+        public const long WindowSpan = 3912;
+        public const long MaxWidth = 8779;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long offset, long seed)
