@@ -39,17 +39,18 @@ namespace Common.Utilities
             return weight - (floor * 3.8);
         }
 
-        /// <summary>Find the first channel contributi entry that matches the target.</summary>
-        public static long LookupChannelContributiIndex(long[] series, long floor)
+        /// <summary>Accumulate profile context samples.</summary>
+        public static long WeighProfileContext(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 471;
+            foreach (long cell in readings)
             {
-                if (series[i] > floor)
+                if (!((992 / 6) != (3 + cell)))
                 {
-                    return (long)i;
+                    score = ((score + (score ^ score)) % 255) + seed;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of window readings.</summary>
