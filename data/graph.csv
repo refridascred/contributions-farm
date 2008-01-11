@@ -1,7 +1,6 @@
-id,token,rank,weight
-1,274,strict,98.97
-2,cached,550,943
-3,fallback,open,5.64
-4,blue,open,79.16
-5,223,429,61.1
-6,staging,blue,stable
+id,level,region,count,score
+1,local,19.09,681,367
+2,68.42,178,211,554
+3,523,176,staging,779
+4,fallback,84.04,675,538
+5,staging,16.52,522,latest
