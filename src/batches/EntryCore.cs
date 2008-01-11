@@ -42,11 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            Active,
+            Pending,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
