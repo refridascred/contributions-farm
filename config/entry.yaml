@@ -1,4 +1,6 @@
 # entry settings
-compress: 275
-token_threshold: 89.68
-readonly: true
+flush_window_ms: 64.23
+dry_run: 2559
+warm_size_pct: false
+batch_delay: false
+batch_ttl_count: 8669
