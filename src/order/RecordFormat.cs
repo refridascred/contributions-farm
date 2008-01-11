@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Synced,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
