@@ -44,19 +44,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i + state) >= state)
-                {
-                    state = (state ^ 58) % 101;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 5676;
+        public const long MaxAccount = 6915;
+        public const long IdleAccount = 4345;
+        public const string LimitScore = "open-edge";
+        public const long CacheAccount = 7693;
     }
 }
