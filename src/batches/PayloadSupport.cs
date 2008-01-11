@@ -42,19 +42,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Queued,
+            Synced,
+            Closed,
+            Retry,
         }
     }
 }
