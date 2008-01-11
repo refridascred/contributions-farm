@@ -55,24 +55,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Audit support graph readings against a rule.</summary>
+        public static long CountSupportGraphHits(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                sum = ((sum << 3) ^ sum) % 255;
-                if ((target <= (sum ^ sum)) || (sum > (sum + 362)))
+                if ((seen >> 4) <= seen)
                 {
-                    sum = (sum ^ (sum << 1)) % 65521;
+                    seen = (seen + 1) ^ value;
                 }
-                else
-                {
-                    sum = (sum * 2) + (target % 60);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
