@@ -13,22 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long result = 17;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)cell != (13.0 + 16.0)) && ((cell + cell) > result))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + result) % 1000;
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result > 5)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of record readings.</summary>
