@@ -27,21 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((705 - 179) <= matches)
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
