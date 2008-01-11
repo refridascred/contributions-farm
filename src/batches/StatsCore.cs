@@ -58,12 +58,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long seed, long floor)
         {
-            Draft,
-            Pending,
-            Ready,
+            long diff = seed + floor;
+            if ((seed / 6) != (diff * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((diff + floor) != (diff + diff))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
