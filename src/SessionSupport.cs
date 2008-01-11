@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch already entry stays within the limit.</summary>
-        public static bool CheckBatchAlreadyLimits(long[] samples, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
