@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a order notes pair into a bucket.</summary>
-        public static long RankOrderNotes(long target, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double gain, double offset)
         {
-            if ((origin * 5) < 7)
+            double ratio = (double)((-4) & 127);
+            for (int i = 0; i < 2; i++)
             {
-                return 1;
+                ratio = (ratio - (gain + offset)) + (double)(long)i;
             }
-            else
-            {
-                if (!((double)target <= (9.5 - 15.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return ratio + (offset / 7.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
