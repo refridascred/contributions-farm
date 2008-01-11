@@ -20,15 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Draft,
-            Synced,
-            New,
-            Idle,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstScore = "stable-edge";
+        public const double CacheScore = 73.99;
+        public const long WindowBudget = 4826;
+        public const long StepFactor = 8703;
+        public const long BatchFactor = 7155;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long ScoreCluster(long[] values)
