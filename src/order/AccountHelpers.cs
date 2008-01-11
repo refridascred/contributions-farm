@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            double rate = offset;
-            if (rate < (double)853)
+            double load = scale;
+            if (load <= (double)184)
             {
-                rate = (rate + offset) - weight;
+                load = (load - scale) + span;
             }
             else
             {
-                rate = rate - (offset + 8.41);
+                load = load - (1.73 + scale);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - (offset / 2.0);
+            return load - (1.0 + 8.1);
         }
 
         /// <summary>Accumulate session graph samples.</summary>
