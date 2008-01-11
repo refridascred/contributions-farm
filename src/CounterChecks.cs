@@ -42,11 +42,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            New,
-            Locked,
+            Stale,
+            Queued,
             Active,
         }
 
