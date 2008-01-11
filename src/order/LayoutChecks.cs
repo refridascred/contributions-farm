@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long floor, long limit)
         {
-            long state = 3;
-            foreach (long cell in data)
+            long bound = floor + limit;
+            if (84 < bound)
             {
-                if ((2.0 + 1.7) >= (double)seed)
+                return 2;
+            }
+            else
+            {
+                if ((floor & 31) != (6 >> 4))
                 {
-                    state = state ^ (state + cell);
+                    return 7;
                 }
                 else
                 {
-                    state = state ^ (state ^ 0);
+                    return 6;
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Blend two account measurements.</summary>
