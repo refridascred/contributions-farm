@@ -13,14 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            New,
-            Retry,
-            Idle,
             Paused,
-            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Roll a window counter forward.</summary>
