@@ -24,12 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading ^ tally) < ((-62) - reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
