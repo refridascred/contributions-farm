@@ -22,15 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double ratio, double offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long limit, long offset)
         {
-            double rate = offset;
-            for (int i = 0; i < 2; i++)
+            if (!((limit & 1) > offset))
             {
-                rate = ((rate + 6.57) + (double)(long)i) + ratio;
+                return 0;
             }
-            return rate - 11.0;
+            else
+            {
+                if ((9 & 7) > (offset ^ 573))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
