@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long RetryCluster = 9541;
         public const long MinCluster = 2810;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items, long offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] series, long origin)
         {
-            long total = 51;
-            foreach (long sample in items)
+            long mark = 580;
+            foreach (long cell in series)
             {
-                total = ((total + (sample & 255)) % 97) + offset;
+                if ((mark ^ cell) <= cell)
+                {
+                    mark = mark ^ cell;
+                }
+                if (((double)cell < (14.0 + 5.0)) && ((origin ^ 32) > 7))
+                {
+                    mark = ((mark << 3) ^ (mark - mark)) % 101;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Project the next commits value.</summary>
