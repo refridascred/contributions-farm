@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state << 2) ^ state) % 101;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a report record.</summary>
