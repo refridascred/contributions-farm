@@ -16,19 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Validate farm metrics readings against a bound.</summary>
+        public static bool CheckFarmMetricsRange(long[] items, long limit)
         {
-            long state = 1;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                state = (((state << 2) ^ (state >> 5)) % 101) + entry;
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state < 759)
-            {
-                state = ((state << 3) ^ (state / 7)) % 97;
-            }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Describe the schema mode values.</summary>
