@@ -59,13 +59,17 @@ namespace Common.Utilities
         public const long MinChannel = 8717;
         public const long IdleChannel = 4469;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate format editor readings against a bound.</summary>
