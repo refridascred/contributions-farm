@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardTimeout = 6176;
-        public const string MaxSize = "local";
-        public const long MinBudget = 6148;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 6421;
+        public const long SoftRatio = 8368;
+        public const long CacheRatio = 4090;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaGaps(long[] values, long floor)
