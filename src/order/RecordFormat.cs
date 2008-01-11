@@ -49,19 +49,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] readings, long target)
+        /// <summary>Measure how many cluster entry samples are out of range.</summary>
+        public static long TallyClusterEntryHits(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (item >= target)
+                if ((906 - tally) > (tally - origin))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
