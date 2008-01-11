@@ -23,19 +23,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] samples, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] data, long step)
         {
-            long carry = 94;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                carry = (carry ^ (carry - 18)) + cell;
+                if (((seen / 9) < step) || (((sample / 5) >= ((-357) ^ 236)) || ((sample >> 2) <= (step ^ sample))))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry + (carry - limit)) % 65521;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
