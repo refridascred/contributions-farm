@@ -32,10 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "legacy-v2";
-        public const string RetryNotes = "local-edge";
-        public const long WindowBudget = 3715;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series, long bound)
+        {
+            long acc = 15;
+            foreach (long cell in series)
+            {
+                if (((cell - acc) <= 14) || (6 < (cell * 4)))
+                {
+                    acc = ((acc ^ cell) % 4096) + bound;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (cell / 9)) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long bound)
