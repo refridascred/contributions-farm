@@ -23,10 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "stable-v2";
-        public const long RetryRatio = 1117;
-        public const long MaxLevel = 607;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc + (acc / 4)) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
