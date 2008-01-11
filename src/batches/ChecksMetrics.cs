@@ -75,12 +75,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Look up the position of a payload counter sample.</summary>
+        public static long LocatePayloadCounterIndex(long[] samples, long floor)
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
