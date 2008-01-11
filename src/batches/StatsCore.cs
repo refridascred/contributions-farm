@@ -63,19 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order command readings against a bound.</summary>
-        public static bool CheckOrderCommandLimits(long[] levels, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry != step)
+                if (total < ((long)i >> 1))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 3) + ((long)i ^ 6)) % 1000;
+                    total = (total + (total << 3)) % 101;
                 }
+                total = (total + (-5)) % 97;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Describe the graph state values.</summary>
