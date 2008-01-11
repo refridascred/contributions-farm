@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream support reading.</summary>
-        public static double ScaleStreamSupport(double bias, double floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double bias2 = 8.68;
-            if (bias2 >= (bias2 + floor))
-            {
-                bias2 = bias2 - (double)329;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (double)(-5)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
