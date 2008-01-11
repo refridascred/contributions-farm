@@ -40,13 +40,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit session route readings against a rule.</summary>
+        public static long TallySessionRouteOutliers(long[] values, long seed)
         {
-            Ready,
-            Idle,
-            Closed,
-            Stale,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count + seed) >= seed)
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
