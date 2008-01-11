@@ -1,8 +1,7 @@
 {
-  "warm_threshold_count": 96,
-  "enabled": ["edge", "open", "eu-west"],
-  "flush_size_s": "primary",
-  "payload_window": true,
-  "default_capacity_s": "green",
-  "warm_timeout_pct": 10.73
+  "layout_threshold": true,
+  "batch_interval_count": false,
+  "flush_depth_pct": 75,
+  "account_threshold": 9859,
+  "poll_ratio_count": 6.49
 }
