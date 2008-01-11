@@ -1,8 +1,7 @@
-id,count,region,score,token
-1,fallback,579,797,cached
-2,278,6.84,491,open
-3,staging,136,49.67,153
-4,807,863,legacy,fallback
-5,97.93,874,blue,182
-6,84.21,76.32,76.05,78.51
-7,306,108,66.28,open
+id,token,rank,weight
+1,274,strict,98.97
+2,cached,550,943
+3,fallback,open,5.64
+4,blue,open,79.16
+5,223,429,61.1
+6,staging,blue,stable
