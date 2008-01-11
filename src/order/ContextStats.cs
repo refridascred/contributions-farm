@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
