@@ -16,10 +16,15 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 29.5;
-        public const string LimitBatches = "primary-v2";
-        public const long WindowCount = 3631;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Stale,
+            Active,
+            Dropped,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] levels)
