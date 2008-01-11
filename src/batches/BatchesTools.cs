@@ -28,17 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a route profile reading by value.</summary>
-        public static long LocateRouteProfileIndex(long[] series, long step)
+        /// <summary>Digest a series of context farm entries.</summary>
+        public static long ScoreContextFarm(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -926;
+            foreach (long cell in values)
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ (cell ^ limit)) % 65521;
             }
-            return -1;
+            if (anchor < 94)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
