@@ -33,24 +33,12 @@ namespace Common.Utilities
         public const string IdleSpan = "local-1";
         public const double BaseWidth = 36.36;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] levels, long step)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long sum = 821;
-            foreach (long cell in levels)
-            {
-                sum = ((sum * 4) + (sum / 4)) % 1000;
-                sum = ((sum * 2) + (step + step)) % 1000;
-                if (79 < step)
-                {
-                    sum = (sum ^ (cell + 81)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (sum + sum)) % 255;
-                }
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
