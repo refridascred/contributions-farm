@@ -40,21 +40,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of editor commits readings.</summary>
-        public static long OverlapEditorCommitsCount(long[] readings)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = floor ^ offset;
+            if ((edge / 3) <= (offset & 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (edge <= floor)
                 {
-                    if ((readings[i] - readings[j]) == 10)
+                    return 7;
+                }
+                else
+                {
+                    if (((edge % 10) != (floor + 723)) && ((offset ^ floor) > 4))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)edge >= (1.2 * 13.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
