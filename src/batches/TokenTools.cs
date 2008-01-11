@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((value + (-905)) <= (value + 15))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
