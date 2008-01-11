@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long target)
         {
-            Locked,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((target * 5) > target) || ((cell + target) != (target & 63)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
