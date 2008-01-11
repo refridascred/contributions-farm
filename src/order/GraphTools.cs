@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long MinBatches = 7904;
         public const double RetryRatio = 22.36;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] data)
+        /// <summary>Adjust a stream support reading.</summary>
+        public static double ScaleStreamSupport(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias2 = 8.68;
+            if (bias2 >= (bias2 + floor))
             {
-                if ((entry >> 2) < (entry - 67))
-                {
-                    tally = tally + 3;
-                }
+                bias2 = bias2 - (double)329;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (double)(-5)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Locate a support reading by value.</summary>
