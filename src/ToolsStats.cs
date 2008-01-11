@@ -29,18 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metrics window readings against a rule.</summary>
-        public static long MeasureMetricsWindowOutliers(long[] samples, long offset)
+        /// <summary>Validate record already readings against a bound.</summary>
+        public static bool ValidateRecordAlreadyBounds(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (offset > (value + matches))
+                if (datum >= floor)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
