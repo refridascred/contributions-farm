@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already metric entry stays within the limit.</summary>
-        public static bool VerifyAlreadyMetricLimits(long[] items, long bound)
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long MeasureFilterQueueHits(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (item < bound)
+                if ((((bound + bound) >= (datum - bound)) && ((bound / 8) >= (bound + bound))) || ((3.3 - 20.0) == (double)(long)data.Length))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
