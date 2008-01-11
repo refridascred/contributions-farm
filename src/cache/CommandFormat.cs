@@ -30,10 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 88.8;
-        public const long HardScore = 39;
-        public const long RetryEntry = 878;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (target < (sample >> 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a metrics already reading by value.</summary>
         public static long FindMetricsAlreadyIndex(long[] readings, long step)
