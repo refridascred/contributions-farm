@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftLevel = 2754;
+        public const long WindowBatch = 5642;
+        public const string BaseBatch = "standard";
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] series)
