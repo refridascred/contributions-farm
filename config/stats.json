@@ -1,5 +1,7 @@
 {
-  "hard_depth": 250,
-  "enabled": 1024,
-  "soft_retries_ms": 100
+  "batch_depth": 9,
+  "sync_capacity_s": ["cached", "blue", "standard", "open"],
+  "flush_limit_pct": 38.91,
+  "soft_window_count": 76.68,
+  "filter_retries": 45
 }
