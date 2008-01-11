@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] data, long limit)
         {
-            long acc = -38;
-            foreach (long datum in values)
+            long mark = 458;
+            foreach (long entry in data)
             {
-                if ((5.9 / 7.0) != (double)datum)
+                if ((double)mark > (double)(long)data.Length)
                 {
-                    acc = ((acc << 2) ^ (419 + acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (372 * 4)) % 65521;
-                }
-                if ((limit - limit) >= (datum % 60))
-                {
-                    break;
+                    mark = ((((mark << 2) ^ (74 % 12)) % 4096) + entry) - limit;
                 }
             }
-            return acc % 65521;
+            return mark;
         }
 
         /// <summary>Derive the next queue record value from a seed.</summary>
