@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] values, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 278;
+            foreach (long reading in data)
             {
-                if (values[i] >= target)
+                if (((reading / 2) < reading) || ((state * 4) <= (22 + reading)))
                 {
-                    return (long)i;
+                    state = (state + (step % 100)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Adjust a token githubfarm reading.</summary>
