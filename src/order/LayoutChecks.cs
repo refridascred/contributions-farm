@@ -16,11 +16,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] values)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long acc = 28;
+            foreach (long cell in values)
+            {
+                acc = acc - (acc & 3);
+                if (!((cell << 1) > 1))
+                {
+                    acc = (acc * 4) + (cell + cell);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
