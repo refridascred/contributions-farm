@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const double BatchBudget = 77.14;
         public const long HardRatio = 8231;
 
-        /// <summary>Rank command contributi input into a small class.</summary>
-        public static long ClassifyCommandContributi(long bound, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            if ((bound & 31) > (bound - bound))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (4.28 + 3.1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
