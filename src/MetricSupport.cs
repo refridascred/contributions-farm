@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] readings, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 86;
+            foreach (long reading in items)
             {
-                if ((target - value) == (value << 3))
+                sum = (sum - (target & 63)) - reading;
+                if (((double)target < (6.27 / 3.0)) && (target >= (target - 3)))
                 {
-                    count = count + 3;
+                    sum = ((sum << 3) ^ (sum - sum)) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Rank record input into a small class.</summary>
