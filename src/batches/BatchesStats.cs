@@ -32,24 +32,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] samples, long seed)
-        {
-            long mix = 121;
-            foreach (long item in samples)
-            {
-                if ((986 >> 1) <= (mix / 9))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ seed) % 4096;
-                }
-                mix = ((mix * 3) + item) % 97;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 4876;
+        public const double BatchSize = 95.67;
+        public const long WindowSize = 6429;
+        public const long DefaultLevel = 6598;
 
         /// <summary>Locate a filter record reading by value.</summary>
         public static long LocateFilterRecordIndex(long[] values, long target)
