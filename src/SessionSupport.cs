@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 812;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mark * 3) >= value)
                 {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (value + 4)) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every batch already entry stays within the limit.</summary>
