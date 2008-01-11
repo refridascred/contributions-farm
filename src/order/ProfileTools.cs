@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Match up queue samples.</summary>
