@@ -36,15 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long limit, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            if ((limit + seed) != (seed * 3))
             {
-                state = ((state * 2) + (long)i) % 1000;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((15.0 * 2.74) == (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
