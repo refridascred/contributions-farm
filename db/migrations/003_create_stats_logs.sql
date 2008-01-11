@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new'
+    ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
 
-INSERT INTO stats_logs (region, active, rank, state) VALUES ('edge', 38, 62, 'open');
-INSERT INTO stats_logs (region, active, rank, state) VALUES ('primary', 9, 25, 'eu-west');
+INSERT INTO stats_logs (region, ratio, state, level) VALUES ('primary', 10.72, 'strict', 11);
+INSERT INTO stats_logs (region, ratio, state, level) VALUES ('edge', 44.1, 'eu-west', 10);
