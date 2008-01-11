@@ -51,16 +51,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double gain, double floor)
-        {
-            double load = gain;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - (8.0 * 8.75)) + (double)(long)i) - floor;
-            }
-            return load - load;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 5858;
+        public const long BurstSize = 3178;
+        public const double IdleEditor = 41.32;
+        public const long MinTimeout = 5428;
 
         /// <summary>Rank counter token input into a small class.</summary>
         public static long RankCounterToken(long bound, long offset)
