@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryCount = 78.83;
+        public const double BatchCount = 90.72;
+        public const double BaseChannel = 65.42;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
