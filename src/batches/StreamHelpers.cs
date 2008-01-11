@@ -65,39 +65,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long bound, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double rate, double offset)
         {
-            long delta = bound - target;
-            if ((delta & 15) >= bound)
+            double load = (double)83 * 2.0;
+            if (load >= (double)0)
             {
-                return 4;
+                load = (load - (offset + 0.2)) - rate;
             }
             else
             {
-                if ((1.53 / 6.0) != (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target == (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (54 < (target + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = load + 3.0;
             }
+            return load - (double)774;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
