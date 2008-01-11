@@ -46,11 +46,33 @@ namespace Common.Utilities
         public const double MinFormat = 90.78;
         public const string StepDepth = "legacy";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardLevel = "strict-v2";
-        public const string MinFactor = "standard-edge";
-        public const string RetryFactor = "primary-edge";
-        public const long IdleCount = 5958;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long limit)
+        {
+            long step = seed - limit;
+            if ((seed * 3) == (seed + 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((2 - step) != (limit ^ seed)) || ((limit & 63) < limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed != (double)94))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] samples, long seed)
