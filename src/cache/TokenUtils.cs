@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftCount = 1304;
-        public const double MinQueue = 94.05;
-        public const double StepSize = 61.35;
-        public const double RetryQueue = 28.66;
-        public const double SoftQueue = 82.77;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Stale,
+            New,
+            Done,
+            Retry,
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double gain, double span)
