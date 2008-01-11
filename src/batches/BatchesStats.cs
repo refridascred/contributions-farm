@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long seed)
         {
-            long result = 30;
-            foreach (long sample in readings)
+            if (((36 - bound) > (bound - bound)) || ((449 + bound) >= (seed + bound)))
             {
-                if ((double)sample <= 2.01)
+                return 0;
+            }
+            else
+            {
+                if (((bound / 4) >= (bound * 4)) || ((-717) < (bound + seed)))
                 {
-                    result = (result << 3) ^ (result - result);
+                    return 5;
                 }
-                result = (result + result) % 65521;
-                if (((double)result >= (9.0 * 9.78)) || ((6 / 9) > (result / 3)))
+                else
                 {
-                    break;
+                    if (57 >= (bound + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
