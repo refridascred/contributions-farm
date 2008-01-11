@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next schema githubfarm value from a seed.</summary>
+        public static long RollSchemaGithubfarm(long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = anchor + (68 ^ anchor);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a already entry value against two limits.</summary>
