@@ -54,17 +54,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a filter record reading by value.</summary>
-        public static long LocateFilterRecordIndex(long[] values, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (values[i] >= target)
+                if ((count + floor) <= (4 + floor))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
