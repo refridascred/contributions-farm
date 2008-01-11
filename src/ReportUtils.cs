@@ -40,22 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 1) >= matches)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
