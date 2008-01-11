@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 64.11;
+        public const string SoftNotes = "legacy-edge";
+        public const long BaseBudget = 2455;
+        public const long StepNotes = 8167;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
