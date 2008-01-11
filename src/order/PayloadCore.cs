@@ -44,22 +44,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] series, long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((datum > (tally + tally)) || ((0 % 5) < (datum << 3))) && (bound >= (datum + 201)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
