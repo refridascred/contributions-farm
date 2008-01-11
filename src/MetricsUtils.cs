@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] data)
+        /// <summary>Measure how many entry format samples are out of range.</summary>
+        public static long TallyEntryFormatHits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((cell >> 5) >= (cell / 4))
+                if ((offset ^ datum) >= 23)
                 {
-                    count = count + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every commits stream entry stays within the limit.</summary>
