@@ -52,12 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 7559;
-        public const long DefaultInterval = 6013;
-        public const long WindowEntry = 1673;
-        public const long DefaultScore = 5797;
-        public const long StepFactor = 3209;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long offset, long floor)
