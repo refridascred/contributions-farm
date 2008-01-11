@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            long mix = 962;
+            foreach (long reading in levels)
+            {
+                if ((mix & 31) >= (reading / 4))
+                {
+                    mix = ((mix << 3) ^ (origin % 5)) % 101;
+                }
+                mix = mix + (46 << 3);
+            }
+            return mix;
         }
 
         /// <summary>Describe the command kind values.</summary>
