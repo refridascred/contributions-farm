@@ -16,12 +16,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 12.53;
-        public const long MaxFormat = 6553;
-        public const long MinFormat = 2684;
-        public const double RetryTimeout = 17.28;
-        public const long BurstInterval = 9766;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] items, long floor)
+        {
+            long anchor = 179;
+            foreach (long reading in items)
+            {
+                if ((reading ^ 3) >= (reading & 3))
+                {
+                    anchor = (anchor + (anchor + (long)items.Length)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + 4) % 101;
+                }
+                if ((double)reading <= (1.0 - 18.0))
+                {
+                    anchor = (anchor << 3) ^ floor;
+                }
+                else
+                {
+                    anchor = (anchor ^ (reading << 3)) % 97;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long target, long origin)
