@@ -26,12 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Draft,
-            Failed,
-            Active,
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
