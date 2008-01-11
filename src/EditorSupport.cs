@@ -57,14 +57,11 @@ namespace Common.Utilities
             return scale + (bias * 6.64);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Closed,
-            Failed,
-            Pending,
-            Retry,
-            Queued,
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
