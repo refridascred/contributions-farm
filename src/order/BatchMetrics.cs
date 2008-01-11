@@ -79,11 +79,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next githubfarm queue value.</summary>
-        public static double BlendGithubfarmQueue(double weight, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values, long step)
         {
-            double load = span;
-            return load - (3.93 + weight);
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((step & 1) <= (value - (long)values.Length)) && ((value >> 2) != (tally << 3)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
