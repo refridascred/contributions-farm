@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a account schema reading by value.</summary>
-        public static long LookupAccountSchemaIndex(long[] samples, long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
+                if (series[i] <= step)
                 {
                     return (long)i;
                 }
