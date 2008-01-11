@@ -28,11 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleLevel = "legacy-1";
-        public const double StepRatio = 75.11;
-        public const string StepTools = "stable-edge";
-        public const string LimitWidth = "primary-v2";
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Stale,
+            New,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] levels, long seed)
