@@ -40,15 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Retry,
-            Dropped,
-            Pending,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 69.67;
+        public const long BurstScore = 8755;
+        public const long BaseSize = 9666;
+        public const double WindowFactor = 91.91;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ProjectCache(double rate, double bias)
