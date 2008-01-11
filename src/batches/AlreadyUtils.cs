@@ -46,18 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics commits entries that pass the check.</summary>
-        public static long AuditMetricsCommitsHits(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = 857;
+            foreach (long value in series)
             {
-                if ((98 ^ 93) <= (tally + entry))
+                long step = value >> 5;
+                if ((step / 4) < (value + anchor))
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor << 3) ^ (step / 2)) % 101;
                 }
+                anchor = (anchor << 3) ^ (-3);
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
