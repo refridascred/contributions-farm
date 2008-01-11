@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate session batch readings against a bound.</summary>
-        public static bool GuardSessionBatchLimits(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 4.62;
+        public const string StepDepth = "alpha-1";
+        public const long WindowDepth = 4586;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 9861;
