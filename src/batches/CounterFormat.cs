@@ -37,14 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] data, long bound)
         {
-            Dropped,
-            Ready,
-            Closed,
-            Retry,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
