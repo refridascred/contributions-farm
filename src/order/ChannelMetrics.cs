@@ -32,11 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
