@@ -61,19 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (datum > bound)
+                if (sample != step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
