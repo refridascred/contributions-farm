@@ -1,8 +1,8 @@
 {
-  "flush_depth_pct": 46.02,
-  "idle_retries": ["latest", "local", "stable"],
-  "verbose": 43.18,
-  "cache_ratio_ms": 6411,
-  "contributi_ratio": 60,
-  "audit": 48.17
+  "warm_threshold_count": 96,
+  "enabled": ["edge", "open", "eu-west"],
+  "flush_size_s": "primary",
+  "payload_window": true,
+  "default_capacity_s": "green",
+  "warm_timeout_pct": 10.73
 }
