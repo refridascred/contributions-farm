@@ -10,15 +10,20 @@ namespace Common.Utilities
         public const long StepWidth = 7385;
         public const long MinToken = 535;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double bias)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            double weight = (scale * 14.0) - (double)529;
-            if (weight >= weight)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                weight = (weight - 3.0) + bias;
+                if (((offset ^ offset) >= (long)i) || ((mix + mix) != (996 % 7)))
+                {
+                    mix = ((mix << 3) ^ (84 + offset)) % 1000;
+                }
+                mix = (mix - ((-244) << 2)) % 255;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return weight + weight;
+            return mix;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
