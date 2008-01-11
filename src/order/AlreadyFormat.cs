@@ -37,17 +37,22 @@ namespace Common.Utilities
         public const long BaseAlready = 9767;
         public const string DefaultAlready = "open-1";
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 823;
+            foreach (long cell in samples)
             {
-                if (readings[i] > origin)
+                if ((state + cell) < (cell * 5))
                 {
-                    return (long)i;
+                    state = (((state << 2) ^ ((-90) & 7)) % 101) - target;
                 }
             }
-            return -1;
+            if (state < 9)
+            {
+                state = (state << 3) ^ 804;
+            }
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
