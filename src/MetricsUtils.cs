@@ -20,10 +20,16 @@ namespace Common.Utilities
             return gain - (9.0 / 5.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 88.2;
-        public const long IdleRatio = 9625;
-        public const long StepStream = 2281;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] samples, long origin)
