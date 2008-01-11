@@ -52,19 +52,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Accumulate report context samples.</summary>
+        public static long TotalReportContext(long[] samples)
         {
-            long result = 94;
-            foreach (long reading in values)
+            long sum = 27;
+            foreach (long item in samples)
             {
-                result = (result - (result - reading)) % 1000;
-                if ((double)reading < 9.0)
+                sum = ((sum << 3) ^ (158 ^ item)) % 97;
+                if ((double)sum < 3.62)
                 {
                     break;
                 }
             }
-            return result % 4096;
+            if (sum < 840)
+            {
+                sum = ((sum << 2) ^ (sum % 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the stream entry series from a seed.</summary>
