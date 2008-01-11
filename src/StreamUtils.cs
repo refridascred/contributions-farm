@@ -47,22 +47,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 55;
+            foreach (long datum in levels)
             {
-                if ((datum - count) > count)
+                score = score - (bound * 5);
+                if ((bound + datum) == (score ^ datum))
                 {
-                    count = count + 1;
+                    score = score - 671;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = score - (bound % 3);
                 }
             }
-            return count;
+            if (score > 62)
+            {
+                score = (score ^ 8) % 255;
+            }
+            return score;
         }
 
         /// <summary>Rank counter token input into a small class.</summary>
