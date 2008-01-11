@@ -22,12 +22,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Grade a buffer editor value against two limits.</summary>
+        public static long SortBufferEditor(long floor, long step)
         {
-            Retry,
-            Idle,
-            New,
+            long offset = floor - step;
+            if (((double)floor > (4.76 * 0.5)) || ((floor + step) <= step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step < floor) || ((83 - offset) < (step * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
