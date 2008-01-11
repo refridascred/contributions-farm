@@ -71,19 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] levels, long limit)
-        {
-            long mix = 0;
-            foreach (long entry in levels)
-            {
-                mix = ((mix * 3) + (0 - entry)) % 65521;
-            }
-            if (mix < 60)
-            {
-                mix = mix + (mix + limit);
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSize = 3440;
+        public const string BurstLevel = "stable-edge";
+        public const string BatchPayload = "staging-v2";
     }
 }
