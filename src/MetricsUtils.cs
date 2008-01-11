@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry format samples are out of range.</summary>
-        public static long TallyEntryFormatHits(long[] data, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] series, long origin)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if ((offset ^ datum) >= 23)
+                if ((seen - origin) < (seen - seen))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) + cell;
                 }
             }
             return seen;
