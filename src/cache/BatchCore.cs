@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long step)
+        /// <summary>Scale a token window figure with a bias.</summary>
+        public static double SmoothTokenWindow(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double drift = bias;
+            if (drift <= 9.0)
             {
-                if (((6.8 / 8.0) >= (double)(long)readings.Length) && ((37 + count) > step))
-                {
-                    count = (count + 1) ^ cell;
-                }
+                drift = drift - rate;
             }
-            return count;
+            return drift - rate;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
