@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Validate session batch readings against a bound.</summary>
+        public static bool GuardSessionBatchLimits(long[] samples, long origin)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
