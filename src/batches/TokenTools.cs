@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardLevel = 339;
-        public const double BaseProfile = 64.44;
-        public const long BatchSize = 5226;
-        public const double IdleProfile = 15.3;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally << 2) >= (tally << 3))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
