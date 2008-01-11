@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up order route samples.</summary>
-        public static long OverlapOrderRouteCount(long[] values)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = weight * 3.0;
+            if (load > bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + (double)982;
             }
-            return tally;
+            return load - (7.0 * 9.4);
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
