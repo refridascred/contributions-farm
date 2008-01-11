@@ -46,22 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] items)
-        {
-            long result = 33;
-            foreach (long item in items)
-            {
-                if ((double)item >= (3.1 - 2.2))
-                {
-                    result = (result * 3) + item;
-                }
-                if ((double)result <= (0.57 + 8.1))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetrySize = "open-v2";
+        public const double IdleGraph = 76.92;
+        public const double BurstGraph = 79.96;
+        public const long BatchGraph = 8369;
     }
 }
