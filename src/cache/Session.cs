@@ -42,17 +42,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long bound)
+        /// <summary>Roll a contributi batches counter forward.</summary>
+        public static long IterateContributiBatches(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                if (sum <= (sum + sum))
                 {
-                    return (long)i;
+                    sum = sum - (sum - sum);
                 }
+                sum = (sum - step) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
