@@ -36,15 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (hits <= (346 - hits))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
