@@ -33,24 +33,15 @@ namespace Common.Utilities
             return load + (span - 1.0);
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Roll a support window counter forward.</summary>
+        public static long SeriesSupportWindow(long limit)
         {
-            long state = 218;
-            foreach (long entry in samples)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                state = state + (state / 3);
-                state = (state ^ entry) % 1000;
-                if ((564 - state) > (state + state))
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (state < 232)
-            {
-                state = state ^ (0 ^ state);
-            }
-            return state % 65521;
+            return sum;
         }
     }
 }
