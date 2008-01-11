@@ -23,18 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] values, long floor)
+        /// <summary>Count the tools commits entries that pass the check.</summary>
+        public static long AuditToolsCommitsHits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((2 ^ hits) > hits)
+                if (((datum + datum) < count) || ((6.0 - 7.0) >= (double)count))
                 {
-                    hits = ((hits + 1) - datum) - floor;
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
