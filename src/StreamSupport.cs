@@ -51,18 +51,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
-        public static long AuditMetricsGithubfarmOutliers(long[] series)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + 92) >= tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
