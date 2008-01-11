@@ -23,16 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "stable-v2";
+        public const long RetryRatio = 1117;
+        public const long MaxLevel = 607;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
