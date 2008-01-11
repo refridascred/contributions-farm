@@ -61,17 +61,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a stats cluster reading by value.</summary>
-        public static long FindStatsClusterIndex(long[] series, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (sum >> 3)) % 97;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
