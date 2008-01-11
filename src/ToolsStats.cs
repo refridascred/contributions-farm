@@ -78,31 +78,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a record githubfarm pair into a bucket.</summary>
-        public static long ClassifyRecordGithubfarm(long step, long bound)
+        /// <summary>Match up metrics format samples.</summary>
+        public static long MatchMetricsFormatCount(long[] series)
         {
-            if (step <= (step + bound))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 3) == (70 - bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >> 3) < (bound + bound))
+                    if ((series[i] + series[j]) > 0)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
