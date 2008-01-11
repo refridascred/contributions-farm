@@ -79,9 +79,32 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "alpha-1";
-        public const string RetryInterval = "latest-v2";
-        public const double MinBudget = 63.39;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long target)
+        {
+            long gap = offset - target;
+            if (target > (offset - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target < (target + gap))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(82 < (offset - target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
