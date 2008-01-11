@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 80.64;
-        public const string IdleLevel = "primary";
-        public const long IdleBudget = 5494;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels, long seed)
+        {
+            long score = 183;
+            foreach (long reading in levels)
+            {
+                score = (score - (reading - reading)) - seed;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
