@@ -1,11 +1,4 @@
 # entry settings
-cache_window: fallback
-min_timeout:
-  soft_size_ms: false
-  verbose: cached
-  cache_retries: green
-  account_delay: fallback
-strict:
-  - 425
-  - 51
-  - 348
+command_delay: stable
+max_depth_s: legacy
+soft_window: 2503
