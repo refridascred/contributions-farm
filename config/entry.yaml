@@ -1,4 +1,12 @@
 # entry settings
-command_delay: stable
-max_depth_s: legacy
-soft_window: 2503
+metric_threshold: stable
+warm_capacity_pct:
+  - 195
+  - 425
+compress:
+  - 37
+  - 44
+already_ratio: 96.17
+idle_threshold:
+  - cached
+  - open
