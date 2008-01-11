@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long offset, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = offset + step;
+            if (offset <= 9)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset - span) != (step ^ offset))
                 {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
