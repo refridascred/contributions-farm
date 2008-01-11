@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != origin)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the stats kind values.</summary>
