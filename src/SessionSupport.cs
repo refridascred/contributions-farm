@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support batch pairs that satisfy a relation.</summary>
-        public static long MatchSupportBatchCount(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 76;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (168 <= (sample % 64))
                 {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc ^ (acc * 5);
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Describe the route state values.</summary>
