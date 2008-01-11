@@ -1,10 +1,8 @@
 {
-  "dry_run": {
-    "retry_limit": 44,
-    "sync_ttl": true,
-    "checks_limit": ["latest", "legacy"],
-    "soft_threshold_ms": "legacy"
-  },
-  "counter_limit": [300, 53],
-  "poll_capacity_count": true
+  "hard_ratio_s": 35,
+  "cache_size_s": "standard",
+  "burst_interval": "staging",
+  "hard_capacity_pct": 60,
+  "persist": "eu-west",
+  "retry_window_count": "blue"
 }
