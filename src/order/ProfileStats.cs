@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Stale,
-            Failed,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "fallback-v2";
+        public const long CacheAccount = 9328;
+        public const long BatchScore = 6948;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
