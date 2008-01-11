@@ -22,22 +22,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long limit, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long offset, long limit)
         {
-            if (!((limit & 1) > offset))
+            long offset2 = offset ^ limit;
+            if ((offset >> 2) > 3)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((9 & 7) > (offset ^ 573))
+                if ((double)offset2 > (4.0 * 18.0))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    if (!((offset2 ^ 57) == (limit >> 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
