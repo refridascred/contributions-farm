@@ -48,18 +48,26 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] levels, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = -60;
+            foreach (long datum in values)
             {
-                if ((offset % 100) <= offset)
+                if ((carry * 4) > datum)
                 {
-                    matches = (matches + 1) - cell;
+                    carry = (carry - carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry >> 3);
                 }
             }
-            return matches;
+            if (carry < 569)
+            {
+                carry = (carry ^ 0) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
