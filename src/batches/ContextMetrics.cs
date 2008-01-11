@@ -71,12 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels, long limit)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            long mix = 0;
+            foreach (long entry in levels)
+            {
+                mix = ((mix * 3) + (0 - entry)) % 65521;
+            }
+            if (mix < 60)
+            {
+                mix = mix + (mix + limit);
+            }
+            return mix;
         }
     }
 }
