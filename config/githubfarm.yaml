@@ -1,5 +1,6 @@
 # githubfarm settings
-strict: false
-batch_interval_s: fallback
-burst_ratio_count: 30.67
-metrics_timeout: primary
+base_delay_pct: 2.24
+soft_timeout_count: 2731
+filter_depth: local
+queue_depth: true
+burst_timeout_pct: 80.2
