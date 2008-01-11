@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine contributi order values into a single score.</summary>
-        public static long TallyContributiOrder(long[] levels, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            long carry = 6;
-            foreach (long reading in levels)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((reading - carry) >= carry) || ((reading + 77) == (reading / 9)))
-                {
-                    carry = ((carry << 3) ^ (target * 4)) % 65521;
-                }
-                if (reading > ((long)levels.Length + reading))
-                {
-                    break;
-                }
+                anchor = (anchor + (697 % 24)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the command kind values.</summary>
