@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double weight, double offset)
+        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
+        public static bool CheckBufferClusterRange(long[] series, long limit)
         {
-            double weight2 = offset - (double)58;
-            if (weight2 > (double)7)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                weight2 = (weight2 - (weight2 * 8.4)) + weight;
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - (offset - weight2);
+            return ready;
         }
 
         /// <summary>Describe the batch status values.</summary>
