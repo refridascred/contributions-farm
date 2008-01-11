@@ -1,19 +1,6 @@
 # githubfarm settings
-tools_ratio:
-  profile_limit: 10.93
-  flush_retries: 80.54
-  buffer_capacity: blue
-  idle_threshold_s:
-    persist: local
-    tools_depth: blue
-    enabled: false
-    max_ttl_s: 83.6
-  poll_retries_s: eu-west
-  min_delay_count:
-    - 33
-    - 285
-    - 83
-burst_ratio: stable
-idle_size_count: eu-west
-flush_limit_count: 70.57
-compress: false
+buffer_window: latest
+poll_interval_count: true
+account_interval: strict
+stats_timeout: 24.85
+cache_threshold: stable
