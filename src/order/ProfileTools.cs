@@ -31,11 +31,25 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 81.4;
-        public const long HardBudget = 1866;
-        public const string BaseContributi = "open-edge";
-        public const double IdleLevel = 47.43;
+        /// <summary>Classify a metrics layout pair into a bucket.</summary>
+        public static long BucketMetricsLayout(long seed, long seed2)
+        {
+            if (((358 % 100) == (seed2 + 1)) && ((seed * 4) > (seed & 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed2 <= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Check that every editor counter entry stays within the limit.</summary>
         public static bool CheckEditorCounterRange(long[] data, long limit)
