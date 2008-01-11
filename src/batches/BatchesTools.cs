@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 55.67;
-        public const string BatchOrder = "legacy-v2";
-        public const string MinOrder = "fallback-1";
-        public const double HardCount = 58.72;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values, long floor)
+        {
+            long score = 857;
+            foreach (long cell in values)
+            {
+                if ((4.3 / 6.0) >= (double)score)
+                {
+                    score = ((((score << 3) ^ (69 % 64)) % 255) - cell) - floor;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
