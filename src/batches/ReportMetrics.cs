@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double scale, double offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double load = scale + (double)904;
-            if (load <= offset)
-            {
-                load = load + 0.7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + 0.94) + (double)(long)i;
-            }
-            return load - (offset * 7.83);
+            Done,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
