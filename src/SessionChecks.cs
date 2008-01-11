@@ -23,19 +23,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] values, long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= limit)
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
