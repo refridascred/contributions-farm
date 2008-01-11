@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4202;
-        public const string DefaultSpan = "alpha-1";
-        public const long StepQueue = 5649;
-        public const string BatchInterval = "open-1";
-        public const long DefaultBudget = 2678;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Paused,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] levels, long step)
