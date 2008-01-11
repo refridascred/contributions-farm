@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a profile format counter forward.</summary>
-        public static long SeriesProfileFormat(long bound)
+        /// <summary>Fold a list of metric tools readings.</summary>
+        public static long TallyMetricTools(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long result = 4;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (((mix << 2) ^ bound) % 101) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                result = (((result * 5) + (result + result)) % 97) - reading;
             }
-            return mix;
+            if (result > 124)
+            {
+                result = result + (result + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the metric class values.</summary>
