@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Classify a route profile pair into a bucket.</summary>
+        public static long BucketRouteProfile(long bound, long floor)
         {
-            double bias2 = offset;
-            if (bias2 > (offset / 9.0))
+            if ((bound ^ 9) != (floor + bound))
             {
-                bias2 = (bias2 + 4.0) - bias;
+                return 8;
             }
-            return bias2 + (offset - 0.5);
+            else
+            {
+                if (!(bound <= (floor & 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
