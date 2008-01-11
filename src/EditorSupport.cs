@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] series, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double scale = (double)24 + weight;
+            if (scale < (weight - scale))
             {
-                if (entry != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale - (double)933) - offset;
             }
-            return ready;
+            return scale - (double)393;
         }
 
         /// <summary>Count the format tools entries that pass the check.</summary>
