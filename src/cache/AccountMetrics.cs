@@ -60,15 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] items, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long score = 154;
+            foreach (long cell in items)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if ((long)items.Length >= (limit + cell))
+                {
+                    score = (score * 5) + (score ^ score);
+                }
             }
-            return total;
+            return score % 97;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
