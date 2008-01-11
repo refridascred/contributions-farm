@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (tally < (cell - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
