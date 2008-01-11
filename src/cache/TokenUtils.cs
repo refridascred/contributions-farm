@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate checks stream readings against a bound.</summary>
-        public static bool GuardChecksStreamRange(long[] samples, long offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Combine batches account values into a single score.</summary>
