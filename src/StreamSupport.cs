@@ -24,12 +24,14 @@ namespace Common.Utilities
             return drift + (rate + 9.67);
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Ready,
-            Active,
+            Done,
+            Retry,
+            New,
             Idle,
+            Queued,
         }
 
         /// <summary>Roll a layout tools counter forward.</summary>
