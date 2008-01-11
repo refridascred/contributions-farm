@@ -56,18 +56,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] samples, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)cell <= (1.61 + 5.0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = (matches + 1) + seed;
+                    total = (total + (total & 127)) % 1000;
+                    total = (total * 5) + ((long)i2 * 4);
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
     }
 }
