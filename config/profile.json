@@ -1,16 +1,5 @@
 {
-  "min_delay_s": {
-    "default_interval": 9195,
-    "flush_retries_s": [156, 75, 60],
-    "verbose": [462, 88],
-    "readonly": 5826
-  },
-  "farm_size": {
-    "persist": 6322,
-    "warm_timeout": 12.75,
-    "payload_threshold": 37.96
-  },
-  "payload_depth": 24,
-  "min_ttl": false,
-  "farm_retries": true
+  "soft_delay_ms": "blue",
+  "tools_delay": 100,
+  "default_ttl": 33.01
 }
