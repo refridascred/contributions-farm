@@ -31,13 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long step)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
