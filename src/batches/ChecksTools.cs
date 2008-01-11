@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long BurstFarm = 4367;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] series, long origin)
         {
-            Dropped,
-            Failed,
-            Done,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)origin <= 5.64)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
