@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] items)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits + entry) > (-858))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
