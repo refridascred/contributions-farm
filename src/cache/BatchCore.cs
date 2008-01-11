@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a token window figure with a bias.</summary>
-        public static double SmoothTokenWindow(double rate, double bias)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long seed)
         {
-            double drift = bias;
-            if (drift <= 9.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - rate;
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - rate;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
