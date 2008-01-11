@@ -27,12 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstSpan = 6416;
-        public const string HardBudget = "latest-1";
-        public const string WindowSpan = "strict-edge";
-        public const long DefaultFactor = 8387;
-        public const string BurstTimeout = "legacy-v2";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Scale a stream filter figure with a bias.</summary>
         public static double AdjustStreamFilter(double ratio, double offset)
