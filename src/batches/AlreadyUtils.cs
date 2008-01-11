@@ -62,10 +62,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 2910;
-        public const long SoftCache = 4927;
-        public const long DefaultBudget = 2406;
-        public const long IdleCache = 2963;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseBudget = 293;
+        public const string CacheRoute = "stable-1";
+        public const long LimitWidth = 1696;
+        public const long MaxRoute = 7704;
+        public const long BaseRoute = 8769;
     }
 }
