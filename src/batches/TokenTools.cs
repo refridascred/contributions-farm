@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] series, long origin)
+        /// <summary>Measure how many token notes samples are out of range.</summary>
+        public static long TallyTokenNotesGaps(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (datum <= origin)
+                if ((entry + entry) <= (target + 0))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
