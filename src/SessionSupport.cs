@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] series)
+        /// <summary>Iterate the notes report series from a seed.</summary>
+        public static long StepNotesReport(long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry + 248) < seen)
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a buffer record.</summary>
