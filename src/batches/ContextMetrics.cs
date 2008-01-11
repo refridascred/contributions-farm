@@ -11,23 +11,25 @@ namespace Common.Utilities
         public const long BurstSize = 5445;
         public const string BurstCache = "staging-edge";
 
-        /// <summary>Adjust a filter contributi reading.</summary>
-        public static double ProjectFilterContributi(double weight, double offset)
+        /// <summary>Rank counter stream input into a small class.</summary>
+        public static long ClassifyCounterStream(long origin, long offset)
         {
-            double gain = weight;
-            if (gain < offset)
+            long prev = origin ^ offset;
+            if ((origin ^ prev) < origin)
             {
-                gain = gain + 4.44;
+                return 6;
             }
             else
             {
-                gain = gain + (gain * 3.2);
+                if ((prev - origin) < prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain - weight)) - (double)(long)i;
-            }
-            return gain - gain;
         }
 
         /// <summary>Rank route input into a small class.</summary>
