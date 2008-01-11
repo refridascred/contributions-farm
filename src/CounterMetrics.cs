@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch commits entries that pass the check.</summary>
-        public static long MeasureBatchCommitsHits(long[] readings)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((11.0 + 1.8) < (double)count)
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the cluster counter entries that pass the check.</summary>
