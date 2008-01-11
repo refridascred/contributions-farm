@@ -73,17 +73,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                mix = (mix * 2) + (5 >> 3);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
