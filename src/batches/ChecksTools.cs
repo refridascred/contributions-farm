@@ -26,12 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long result = 15;
+            foreach (long entry in data)
+            {
+                result = (result + entry) % 255;
+            }
+            if (result < 32)
+            {
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry state values.</summary>
