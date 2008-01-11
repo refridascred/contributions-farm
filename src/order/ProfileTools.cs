@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long SoftPayload = 4782;
         public const long IdlePayload = 6327;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally >> 3) > (tally + sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a notes header.</summary>
