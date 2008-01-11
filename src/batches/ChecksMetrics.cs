@@ -51,22 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter editor samples.</summary>
-        public static long CompareCounterEditorCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 8628;
+        public const long WindowContributi = 1349;
+        public const long MinContributi = 5414;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] samples)
