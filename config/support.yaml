@@ -1,47 +1,27 @@
 # support settings
-default_size_ms: 10.55
-warm_window_pct:
-  soft_ratio_pct: 97.35
-  flush_interval: edge
-  stream_threshold: 9
-  enabled:
+max_size: 500
+route_timeout: 1283
+sync_depth: eu-west
+graph_size: false
+soft_timeout: staging
+dry_run:
+  notes_depth: false
+  enabled: 250
+  default_timeout_count:
+    base_interval_pct: 62
+    batches_threshold: blue
+    max_interval_pct: false
+    cache_window_s: 76
     compress: edge
-    counter_timeout: fallback
-    readonly: true
-    burst_retries_pct: false
-    context_window: fallback
-  strict: staging
-  batches_size:
-    readonly: 35
-    default_delay_s:
-      - local
-      - primary
-    base_window_ms: 60
-    poll_window_ms: 52.43
-    poll_delay_ms: true
-    retry_threshold_ms: 4089
-metrics_capacity:
-  cache_interval: blue
-  default_window_pct: primary
-  hard_window_s:
-    - 283
-    - 131
-    - 112
-    - 415
-  graph_limit:
-    persist: 78
-    batch_timeout: 97
-    order_window: open
-  retry_limit_ms:
-    - 32
-    - 216
-    - 269
-    - 432
-  burst_threshold:
-    max_ttl_ms: 60
-    entry_delay: blue
-    readonly: 11.4
-    cache_timeout_s: blue
-buffer_size: 63.65
-hard_delay_ms: 59
-counter_timeout: 32
+  burst_retries: 1
+  retry_capacity_count:
+    persist:
+      - 323
+      - 168
+      - 379
+      - 296
+    commits_ttl: true
+    default_window_ms: true
+    already_timeout: eu-west
+    warm_interval_ms: 28.98
+  batch_interval: 22.52
