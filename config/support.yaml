@@ -1,5 +1,20 @@
 # support settings
-cluster_limit: 28
-default_interval_pct: 44.28
-min_ratio: strict
-idle_threshold: open
+metric_interval:
+  tools_ttl: 60
+  metrics_timeout: open
+  poll_limit_pct:
+    - cached
+    - staging
+    - stable
+  counter_ttl: 24.64
+idle_ratio_s: 8828
+poll_ttl_ms: primary
+stream_ratio: true
+stats_depth:
+  - fallback
+  - strict
+schema_ratio:
+  - 428
+  - 327
+  - 427
+  - 264
