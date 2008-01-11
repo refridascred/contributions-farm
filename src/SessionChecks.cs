@@ -14,13 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double ratio, double offset)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            double rate = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = ((rate + 6.57) + (double)(long)i) + ratio;
+            }
+            return rate - 11.0;
         }
 
         /// <summary>Define already limits and defaults.</summary>
