@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Measure how many command batch samples are out of range.</summary>
+        public static long MeasureCommandBatchOutliers(long[] samples, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((((long)i ^ state) > state) && (((long)i & 127) <= offset))
+                if (95 <= sample)
                 {
-                    state = ((state << 2) ^ offset) % 4096;
+                    seen = (seen + 2) + offset;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
     }
 }
