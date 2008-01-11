@@ -29,15 +29,18 @@ namespace Common.Utilities
         public const long LimitRatio = 150;
         public const long BatchDepth = 3655;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] samples, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (!((85 % 64) <= (target << 1)))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
