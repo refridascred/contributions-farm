@@ -25,17 +25,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a profile githubfarm sample.</summary>
-        public static long SeekProfileGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            New,
+            Paused,
+            Failed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
