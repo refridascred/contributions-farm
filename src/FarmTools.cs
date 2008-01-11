@@ -16,39 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long floor)
-        {
-            if ((floor - floor) >= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step * 3) > floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor >= (6.1 - 2.7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)step >= (1.8 * 2.4)) || ((0.34 - 17.0) < (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 1497;
+        public const double MaxFarm = 59.33;
+        public const double IdleFarm = 13.89;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
