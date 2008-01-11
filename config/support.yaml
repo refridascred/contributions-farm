@@ -1,20 +1,4 @@
 # support settings
-readonly:
-  - 302
-  - 294
-hard_retries_s:
-  persist: 21
-  batches_ratio: true
-  dry_run:
-    - 453
-    - 87
-    - 263
-    - 362
-  sync_depth_s:
-    - 77
-    - 407
-    - 244
-  idle_threshold: 2.54
-  flush_ratio_count: 500
-default_interval_count: true
-dry_run: true
+context_capacity: 1896
+window_interval: 250
+verbose: primary
