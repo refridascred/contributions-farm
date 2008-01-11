@@ -26,14 +26,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Pending,
-            Failed,
-            Done,
-            Ready,
-            New,
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of schema entries.</summary>
