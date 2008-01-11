@@ -46,24 +46,11 @@ namespace Common.Utilities
         public const double MinFormat = 90.78;
         public const string StepDepth = "legacy";
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values)
-        {
-            long sum = 77;
-            foreach (long item in values)
-            {
-                sum = sum ^ (92 + item);
-                if (((2.9 / 2.0) != (double)sum) && ((78 ^ sum) >= (item / 8)))
-                {
-                    sum = (sum * 5) + (item & 127);
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardLevel = "strict-v2";
+        public const string MinFactor = "standard-edge";
+        public const string RetryFactor = "primary-edge";
+        public const long IdleCount = 5958;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] samples, long seed)
