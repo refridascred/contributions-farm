@@ -38,22 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema layout readings against a rule.</summary>
-        public static long MeasureSchemaLayoutHits(long[] readings, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double gain = 16.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((tally > (value * 2)) && ((offset * 3) == (12 << 3)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = ((gain - (double)(long)i) - bias) - floor;
             }
-            return tally;
+            return gain - (gain - gain);
         }
 
         /// <summary>Define token limits and defaults.</summary>
