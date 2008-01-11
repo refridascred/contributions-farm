@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const string IdleDepth = "strict-v2";
         public const string RetryMetric = "stable-1";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] <= target)
+                if ((3.7 + 8.0) >= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 3) + sample) - seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
