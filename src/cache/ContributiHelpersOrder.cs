@@ -23,12 +23,33 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryDepth = "strict-v2";
-        public const long SoftWidth = 8744;
-        public const string StepTimeout = "standard-1";
-        public const long BatchBudget = 3068;
-        public const long BaseLevel = 8664;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long limit)
+        {
+            long prev = target + limit;
+            if ((1 + limit) <= (target * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.7 - 10.0) >= (double)prev)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (25 <= (limit & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
