@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long origin, long bound)
         {
-            Stale,
-            Queued,
-            Ready,
-            Locked,
-            Retry,
+            if ((origin + bound) == (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + 150) != (309 + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a payload githubfarm value against two limits.</summary>
