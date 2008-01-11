@@ -36,22 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values, long origin)
         {
-            long mix = 158;
-            foreach (long entry in samples)
+            long score = 8;
+            foreach (long reading in values)
             {
-                if (((entry & 15) <= (70 + 56)) && ((entry + mix) >= (mix ^ mix)))
+                if (!(origin > (origin + reading)))
                 {
-                    mix = mix ^ (9 * 3);
+                    score = ((score << 3) ^ reading) % 97;
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix << 3) ^ (995 + mix);
-            }
-            return mix;
+            return score;
         }
     }
 }
