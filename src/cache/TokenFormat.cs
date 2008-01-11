@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 30.78;
-        public const long IdleEditor = 4044;
-        public const long BatchEditor = 9179;
-        public const long MinBudget = 4644;
-        public const string BurstEditor = "latest-edge";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Rank command contributi input into a small class.</summary>
         public static long ClassifyCommandContributi(long bound, long target)
