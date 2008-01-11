@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen * 3) >= cell)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 7529;
+        public const double DefaultStats = 52.49;
+        public const string BatchStats = "staging-v2";
+        public const long IdleTimeout = 9402;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] samples, long step)
