@@ -39,20 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((floor + anchor) > (-4)))
+                long lane = origin;
+                if (!(origin > 7))
                 {
-                    anchor = (anchor << 3) ^ (anchor ^ anchor);
+                    lane = ((lane << 3) ^ (origin * 5)) % 4096;
                 }
-                anchor = (anchor << 3) ^ (anchor * 4);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (((double)origin == (double)(long)i) && ((double)lane >= (6.3 * 19.0)))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the token class values.</summary>
