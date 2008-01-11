@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] series)
         {
-            New,
-            Pending,
-            Locked,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((long)series.Length != (5 << 1))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window summary.</summary>
