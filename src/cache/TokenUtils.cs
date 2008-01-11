@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long floor)
         {
-            double load = (double)(607 - 48);
-            if (load <= (load * 10.0))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                load = load - gain;
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (gain + 8.37)) + (double)(long)i;
-            }
-            return load + (span - 1.0);
+            return found;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
