@@ -1,17 +1,6 @@
 {
-  "sync_size_count": "green",
-  "hard_depth_s": false,
-  "order_timeout": {
-    "compress": ["stable", "blue", "blue", "eu-west"],
-    "max_limit_pct": 3,
-    "soft_ttl_ms": false,
-    "batch_timeout": {
-      "max_threshold": true,
-      "poll_threshold_ms": 2051,
-      "default_delay_ms": 65,
-      "batch_depth_count": [39, 114, 387],
-      "warm_timeout_pct": "eu-west",
-      "cache_ttl_s": "local"
-    }
-  }
+  "tools_capacity": "fallback",
+  "soft_window_count": 30,
+  "idle_threshold_ms": 11,
+  "flush_ttl_s": true
 }
