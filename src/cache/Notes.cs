@@ -28,13 +28,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank metrics githubfarm input into a small class.</summary>
+        public static long GradeMetricsGithubfarm(long bound, long target)
         {
-            Stale,
-            New,
-            Draft,
-            Ready,
+            if ((target % 12) > (target - bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound & 127) == (bound & 31)) && (target < (bound % 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound / 8) == (bound / 9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target > (206 ^ bound)) || ((double)target >= (9.2 / 4.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
