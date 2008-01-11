@@ -31,17 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - state) % 101;
-                state = ((state * 5) + ((long)i - state)) % 65521;
-                state = ((state * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
