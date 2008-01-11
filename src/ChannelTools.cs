@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading & 31) <= (263 & 31)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
