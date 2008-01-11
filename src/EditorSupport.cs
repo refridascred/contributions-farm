@@ -29,39 +29,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] items, long bound)
         {
-            long span = origin - bound;
-            if ((7.0 + 5.6) < (double)origin)
+            bool found = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 3) > 67)
+                if (reading <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin << 1) == (bound ^ 791))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((span < (span + span)) && (span >= (span / 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
