@@ -36,19 +36,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] readings, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mix = 0;
+            foreach (long value in data)
             {
-                if (sample < offset)
+                if (!((value - mix) == (14 >> 4)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (mix + value)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
                 }
             }
-            return valid;
+            return mix % 4096;
         }
     }
 }
