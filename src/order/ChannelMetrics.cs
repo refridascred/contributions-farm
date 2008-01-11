@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long anchor = 4;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + sample) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor - (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a command record.</summary>
