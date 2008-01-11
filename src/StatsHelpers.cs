@@ -32,14 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate counter stream readings against a bound.</summary>
+        public static bool VerifyCounterStreamRange(long[] samples, long bound)
         {
-            Closed,
-            Draft,
-            Done,
-            Queued,
-            Synced,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
