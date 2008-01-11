@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long limit)
         {
-            long mark = 43;
-            foreach (long sample in items)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark + (mark + sample)) % 1000;
+                total = (total * 3) + ((long)i + limit);
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (mark > 68)
-            {
-                mark = (mark + (mark * 2)) % 97;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
