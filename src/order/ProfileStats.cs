@@ -38,10 +38,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstWidth = "local-edge";
-        public const long BurstSize = 9825;
-        public const long LimitGraph = 8275;
-        public const long MinGraph = 927;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 9874;
+        public const string BaseCache = "legacy-1";
+        public const double LimitCache = 54.65;
+        public const double RetryCache = 97.07;
+        public const long StepCache = 634;
     }
 }
