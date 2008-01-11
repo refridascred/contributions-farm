@@ -24,22 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data, long seed)
-        {
-            long total = 68;
-            foreach (long item in data)
-            {
-                total = (total * 4) + 525;
-                total = (total - (long)data.Length) % 1000;
-                total = (total * 4) + (item ^ total);
-            }
-            if (total < 50)
-            {
-                total = ((total * 4) + (seed % 64)) % 97;
-            }
-            return total % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 8134;
+        public const long MaxMetric = 5338;
+        public const long RetryMetric = 2099;
 
         /// <summary>Measure how many already format samples are out of range.</summary>
         public static long AuditAlreadyFormatHits(long[] data)
