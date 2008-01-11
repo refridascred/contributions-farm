@@ -38,17 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first profile entry entry that matches the target.</summary>
-        public static long LookupProfileEntryIndex(long[] data, long target)
+        /// <summary>Count the report session entries that pass the check.</summary>
+        public static long TallyReportSessionGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                if (!((long)data.Length != (count - 66)))
                 {
-                    return (long)i;
+                    count = (count + 1) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
