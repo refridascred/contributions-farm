@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long floor, long bound)
+        /// <summary>Find the first batches filter entry that matches the target.</summary>
+        public static long LocateBatchesFilterIndex(long[] items, long origin)
         {
-            if ((double)bound == (2.9 + 16.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - floor) >= bound)
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
