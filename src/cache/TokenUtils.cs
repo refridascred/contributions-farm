@@ -31,19 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] readings, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Stale,
+            Pending,
+            Retry,
         }
     }
 }
