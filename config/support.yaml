@@ -1,9 +1,20 @@
 # support settings
-compress: 66
-entry_ratio: 50.84
-channel_ttl:
-  - legacy
-  - primary
-  - eu-west
-support_size: 94.34
-contributi_timeout: stable
+session_timeout: true
+session_interval:
+  metrics_size: strict
+  min_ttl_ms:
+    - 364
+    - 71
+    - 30
+    - 272
+  readonly: staging
+metrics_window: 94
+sync_ratio:
+  - 133
+  - 249
+  - 173
+warm_depth_pct:
+  - 96
+  - 462
+  - 216
+  - 171
