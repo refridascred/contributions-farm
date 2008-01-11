@@ -40,12 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
             public string Limit { get; set; } = "";
         }
 
