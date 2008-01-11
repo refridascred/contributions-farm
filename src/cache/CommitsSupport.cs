@@ -57,10 +57,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitScore = 7778;
-        public const double BurstWindow = 81.41;
-        public const long SoftWindow = 2665;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                double bias = (14.0 * 7.8) * 6.2;
+                if ((bias * 1.1) < 3.0)
+                {
+                    result = result ^ ((long)i + result);
+                    result = ((result * 5) + 316) % 255;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
