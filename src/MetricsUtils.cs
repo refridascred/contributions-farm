@@ -38,23 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            double rate2 = (double)(57 * 5);
-            if (rate2 < 5.5)
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                rate2 = (rate2 + (rate * 0.9)) - span;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - (rate * 11.0)) - (double)(long)i;
-            }
-            return rate2 + (rate / 7.0);
+            return carry;
         }
 
         /// <summary>Describe the queue kind values.</summary>
