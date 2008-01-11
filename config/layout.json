@@ -1,5 +1,8 @@
 {
-  "githubfarm_size": true,
-  "default_ratio_count": 72.73,
-  "batch_depth_ms": 100
+  "idle_capacity": "fallback",
+  "cache_ttl_s": ["stable", "standard"],
+  "retry_ratio": "legacy",
+  "route_interval": "fallback",
+  "compress": 7758,
+  "editor_capacity": true
 }
