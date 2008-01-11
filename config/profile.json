@@ -1,7 +1,5 @@
 {
-  "hard_depth_s": "blue",
-  "readonly": "green",
-  "cache_size_ms": [243, 419, 161, 71],
-  "support_window": [432, 331, 52, 211],
-  "sync_retries_count": "staging"
+  "profile_ttl": 100,
+  "compress": "fallback",
+  "poll_size_ms": "legacy"
 }
