@@ -34,16 +34,18 @@ namespace Common.Utilities
         public const double BatchGraph = 65.47;
         public const long SoftScore = 2493;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Audit stats schema readings against a rule.</summary>
+        public static long TallyStatsSchemaOutliers(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 3) + ((long)i & 63)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
+                if ((double)reading > 2.9)
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a cache reading.</summary>
