@@ -53,18 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report support entries that pass the check.</summary>
-        public static long MeasureReportSupportOutliers(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (12.0 > (double)count)
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
