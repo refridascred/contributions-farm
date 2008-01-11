@@ -65,22 +65,12 @@ namespace Common.Utilities
             return scale - (rate / 2.0);
         }
 
-        /// <summary>Combine contributi profile values into a single score.</summary>
-        public static long ScoreContributiProfile(long[] series)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long carry = 50;
-            foreach (long cell in series)
-            {
-                if ((carry + 304) <= (cell & 7))
-                {
-                    carry = (carry - (47 - cell)) % 4096;
-                }
-                if ((carry >> 5) >= (carry & 7))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
