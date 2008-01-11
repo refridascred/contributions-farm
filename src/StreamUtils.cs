@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryInterval = 1267;
-        public const long SoftRecord = 3699;
-        public const double MaxBudget = 51.69;
-        public const string SoftBudget = "cached";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long limit, long origin)
+        {
+            long bound = limit - origin;
+            if (((9.63 / 3.0) >= (double)limit) || ((969 + bound) > (origin << 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= (9.25 + 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound > (bound / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
