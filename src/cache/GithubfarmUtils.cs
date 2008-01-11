@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many session schema samples are out of range.</summary>
-        public static long AuditSessionSchemaGaps(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count / 6) > (count + (-50)))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            Dropped,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
