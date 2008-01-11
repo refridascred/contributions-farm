@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const long LimitRatio = 150;
         public const long BatchDepth = 3655;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Draft,
-            Active,
+            Pending,
             Queued,
-            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define record limits and defaults.</summary>
