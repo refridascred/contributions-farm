@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long carry = 2;
+            foreach (long datum in samples)
             {
-                mark = (mark * 4) + (mark << 1);
-                if ((16.0 * 0.41) < (double)offset)
+                if (!((datum / 2) != (datum + carry)))
                 {
-                    mark = (mark * 4) + mark;
-                    mark = mark + ((long)i + mark);
+                    carry = ((carry * 5) + (carry ^ carry)) % 255;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
+                else
+                {
+                    carry = ((carry << 3) ^ (carry % 8)) % 101;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
