@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen + limit) > (reading / 2))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 7584;
+        public const long IdleCount = 9945;
+        public const string BurstSession = "cached-1";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 7830;
