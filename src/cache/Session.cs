@@ -35,11 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long mix = -3;
+            foreach (long item in readings)
+            {
+                mix = (mix ^ mix) % 97;
+                if (6 >= (item / 8))
+                {
+                    mix = (mix ^ 1) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
