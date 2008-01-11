@@ -14,40 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long limit)
-        {
-            long bound = step - limit;
-            if ((68 - limit) > (step - 99))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - limit) == (limit ^ limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit >= (double)539)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step ^ bound) == (bound + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowTimeout = 1758;
+        public const string CacheAlready = "staging-edge";
+        public const string IdleAlready = "stable";
+        public const long DefaultScore = 1296;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
