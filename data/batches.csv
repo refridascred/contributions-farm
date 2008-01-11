@@ -1,8 +1,6 @@
-id,ratio,state
-1,legacy,55.81
-2,57.4,eu-west
-3,123,104
-4,legacy,local
-5,primary,620
-6,69.45,74.72
-7,edge,928
+id,count,active,token
+1,78,strict,primary
+2,8.89,green,open
+3,79.47,strict,open
+4,15.48,28.2,195
+5,385,staging,889
