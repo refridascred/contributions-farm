@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                carry = carry + (994 + carry);
+                if (((floor % 8) >= floor) || ((double)956 == (double)(long)i))
+                {
+                    carry = ((carry << 2) ^ ((long)i & 15)) % 255;
+                    carry = carry - floor;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
             return carry;
         }
