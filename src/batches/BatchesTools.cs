@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] readings, long target)
+        /// <summary>Match up tools context samples.</summary>
+        public static long PairToolsContextCount(long[] samples)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((target * 5) > target) || ((cell + target) != (target & 63)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
