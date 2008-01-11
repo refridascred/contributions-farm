@@ -24,18 +24,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] data)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((7 - (long)data.Length) <= (tally % 97))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
