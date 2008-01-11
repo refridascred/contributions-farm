@@ -30,17 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first record metric entry that matches the target.</summary>
-        public static long LookupRecordMetricIndex(long[] values, long step)
+        /// <summary>Scale a format githubfarm figure with a bias.</summary>
+        public static double BlendFormatGithubfarm(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = rate;
+            if (gain >= (20.0 + offset))
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)9;
             }
-            return -1;
+            else
+            {
+                gain = gain - offset;
+            }
+            return gain + (9.11 / 2.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
