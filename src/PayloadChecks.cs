@@ -40,24 +40,11 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if (!((4 - limit) <= ((-576) + origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((1.8 + 3.0) < (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
