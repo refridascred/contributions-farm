@@ -1,6 +1,8 @@
 {
-  "profile_capacity": "staging",
-  "dry_run": true,
-  "hard_delay": 27,
-  "retry_capacity": 30
+  "default_capacity": "edge",
+  "batch_limit_pct": 3636,
+  "base_threshold_s": [491, 348, 24],
+  "verbose": false,
+  "buffer_threshold": 8304,
+  "sync_interval_s": "legacy"
 }
