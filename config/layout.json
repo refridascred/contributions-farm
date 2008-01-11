@@ -1,8 +1,7 @@
 {
-  "idle_capacity": "fallback",
-  "cache_ttl_s": ["stable", "standard"],
-  "retry_ratio": "legacy",
-  "route_interval": "fallback",
-  "compress": 7758,
-  "editor_capacity": true
+  "idle_ttl_s": true,
+  "batch_ttl": "green",
+  "idle_threshold_s": 67,
+  "sync_threshold_ms": [494, 486],
+  "min_capacity_count": [365, 116, 7]
 }
