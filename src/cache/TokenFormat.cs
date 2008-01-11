@@ -32,10 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1292;
-        public const long RetryEntry = 1515;
-        public const long WindowSize = 9821;
-        public const double IdleFactor = 46.9;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long step, long origin)
+        {
+            if ((origin - 2) < (origin - origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step >= (2.13 - 1.3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((179 - origin) <= (origin * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
