@@ -23,22 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] series, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double gain = offset;
+            if (gain < (scale / 7.0))
             {
-                if (((reading + reading) < (floor + 705)) && ((78 <= floor) || ((double)(-33) < (double)count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain - scale;
             }
-            return count;
+            else
+            {
+                gain = gain + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + 6.0) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Hold a queue header.</summary>
