@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
