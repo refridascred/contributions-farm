@@ -34,13 +34,12 @@ namespace Common.Utilities
         public const long StepSchema = 5304;
         public const long WindowWidth = 3592;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            Queued,
+            Paused,
+            Done,
         }
     }
 }
