@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] levels)
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen & 7) != (seen + (-144)))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
