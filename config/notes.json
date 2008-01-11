@@ -1,7 +1,17 @@
 {
-  "payload_threshold": 998,
-  "format_depth": true,
-  "context_window": "edge",
-  "dry_run": "primary",
-  "max_window": ["green", "stable", "stable", "eu-west"]
+  "githubfarm_window": 59,
+  "warm_retries": 60,
+  "batch_depth_count": {
+    "readonly": 1024,
+    "compress": {
+      "base_window_s": 6808,
+      "warm_depth_ms": ["primary", "local", "strict", "standard"],
+      "hard_ttl_pct": ["local", "latest"]
+    },
+    "schema_depth": "strict",
+    "githubfarm_timeout": "open",
+    "audit": 48.76,
+    "burst_capacity_pct": 41
+  },
+  "burst_limit": false
 }
