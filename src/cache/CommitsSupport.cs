@@ -24,23 +24,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long floor2)
         {
-            long mix = 81;
-            foreach (long value in data)
+            long span = floor - floor2;
+            if ((19.0 / 6.0) > (double)span)
             {
-                if ((double)value >= 5.7)
+                return 4;
+            }
+            else
+            {
+                if ((double)8 != (double)floor2)
                 {
-                    mix = (mix - mix) % 65521;
+                    return 5;
                 }
-                mix = ((mix << 2) ^ (mix - mix)) % 255;
-                if ((double)mix > (4.03 + 6.1))
+                else
                 {
-                    break;
+                    if (!(floor2 >= (floor + span)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)span != (double)floor2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Project the next token value.</summary>
