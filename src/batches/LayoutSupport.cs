@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            if (offset <= (step / 9))
+            long anchor = 7;
+            foreach (long cell in readings)
             {
-                return 2;
+                anchor = (anchor + (cell % 24)) % 101;
             }
-            else
-            {
-                if (!(step >= (step / 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 7) > step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step << 1) <= offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
