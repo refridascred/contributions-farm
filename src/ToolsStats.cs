@@ -61,22 +61,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            long anchor = 232;
-            foreach (long value in readings)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((offset + (long)readings.Length) != (offset % 2))
-                {
-                    anchor = ((anchor ^ (70 * 5)) % 65521) - value;
-                }
+                carry = ((carry << 2) ^ (floor * 4)) % 1000;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor << 2) ^ ((-44) + anchor);
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Classify a record githubfarm pair into a bucket.</summary>
