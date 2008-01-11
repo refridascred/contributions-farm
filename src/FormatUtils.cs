@@ -62,22 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((sample - sample) == (32 - sample)) || ((seen % 7) > (sample + sample)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
