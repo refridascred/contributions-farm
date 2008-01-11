@@ -49,18 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((52 * 2) > (reading % 16)) && (hits <= ((long)samples.Length * 5))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
