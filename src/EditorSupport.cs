@@ -34,11 +34,17 @@ namespace Common.Utilities
         public const double BatchGraph = 65.47;
         public const long SoftScore = 2493;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 69.67;
-        public const long BurstScore = 8755;
-        public const long BaseSize = 9666;
-        public const double WindowFactor = 91.91;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 3) + ((long)i & 63)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ProjectCache(double rate, double bias)
