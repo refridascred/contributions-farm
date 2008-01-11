@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] series, long origin)
+        /// <summary>Iterate the graph metric series from a seed.</summary>
+        public static long StepGraphMetric(long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((origin >> 2) != (origin - 7))
-                {
-                    matches = (matches + 3) + cell;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
