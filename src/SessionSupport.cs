@@ -22,22 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Combine githubfarm metrics values into a single score.</summary>
+        public static long ScoreGithubfarmMetrics(long[] values)
         {
-            long seen = 0;
+            long anchor = 2;
             foreach (long datum in values)
             {
-                if ((1.8 * 9.23) <= (double)seen)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (((anchor << 2) ^ (anchor / 7)) % 101) - datum;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the route state values.</summary>
