@@ -27,19 +27,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry entry stays within the limit.</summary>
-        public static bool VerifyEditorEntryRange(long[] data, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long floor, long bound)
         {
-            bool valid = true;
-            foreach (long item in data)
+            if ((floor / 4) < floor)
             {
-                if (item > origin)
+                return 8;
+            }
+            else
+            {
+                if (((-87) + bound) >= floor)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the route phase values.</summary>
