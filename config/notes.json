@@ -1,7 +1,5 @@
 {
-  "readonly": 96.93,
-  "persist": "blue",
-  "farm_ttl": 31.4,
-  "burst_delay": "legacy",
-  "batch_delay_ms": "stable"
+  "route_interval": [359, 360],
+  "burst_ttl": 20.2,
+  "verbose": [124, 323]
 }
