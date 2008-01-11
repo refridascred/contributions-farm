@@ -19,11 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long step)
         {
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
+            if ((seed - 93) < (step - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step > (step / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((1.1 * 8.9) < (double)seed) && ((step * 5) >= (seed + seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
