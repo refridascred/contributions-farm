@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] items)
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long CountContextContributiHits(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)hits > (12.0 + 9.0))
+                if ((double)tally <= (7.6 - 9.62))
                 {
-                    hits = (hits + 2) + value;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a tools header.</summary>
