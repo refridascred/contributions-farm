@@ -34,12 +34,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double weight, double floor)
         {
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            double scale = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale + (scale - floor)) + (double)(long)i) + weight;
+            }
+            return scale - scale;
         }
     }
 }
