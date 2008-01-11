@@ -1,25 +1,8 @@
 # support settings
-burst_threshold:
-  idle_timeout: false
-  batch_limit_pct:
-    - primary
-    - green
-    - eu-west
-    - staging
-  burst_threshold_s: 500
-  idle_capacity_pct: edge
-  tools_limit: open
-  flush_size_ms:
-    checks_ttl: fallback
-    min_ratio: false
-    verbose: 250
-    flush_limit_ms: 6.62
-    max_ttl_ms: edge
-poll_limit_pct:
-  default_size: 72.96
-  base_threshold: latest
-  idle_threshold_pct: false
-command_limit: primary
-persist:
-  - open
-  - open
+retry_limit_s: 95
+base_retries: 8960
+burst_depth:
+  - 348
+  - 382
+  - 428
+  - 71
