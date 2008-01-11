@@ -27,20 +27,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] samples, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] readings, long bound)
         {
-            long sum = 63;
-            foreach (long cell in samples)
+            long score = 15;
+            foreach (long entry in readings)
             {
-                if (((4 ^ sum) < (sum + cell)) && (649 < sum))
+                if ((score + score) >= score)
                 {
-                    sum = (((sum * 5) + (sum * 4)) % 255) + limit;
-                    sum = (sum + (sum % 3)) % 101;
+                    score = (((score << 3) ^ (bound & 31)) % 255) - entry;
                 }
-                sum = (sum - (cell >> 2)) % 101;
+                else
+                {
+                    score = score + (score + bound);
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
