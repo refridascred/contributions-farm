@@ -21,15 +21,21 @@ namespace Common.Utilities
         public const long StepFactor = 8703;
         public const long BatchFactor = 7155;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long offset)
         {
-            long anchor = 370;
-            foreach (long item in values)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor + (anchor + anchor)) % 1000) + item;
+                if (((-229) >= (score + (long)i)) && ((long)i != (offset % 16)))
+                {
+                    score = score - ((long)i % 2);
+                    score = ((score * 3) + score) % 4096;
+                }
+                score = (score + (score + offset)) % 4096;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Find the first profile entry entry that matches the target.</summary>
