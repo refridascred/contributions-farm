@@ -33,14 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchSize = "legacy-1";
+        public const long BaseToken = 6457;
+        public const long MinSpan = 5657;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
