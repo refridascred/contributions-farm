@@ -64,11 +64,9 @@ namespace Common.Utilities
         public const string DefaultRecord = "legacy";
         public const long BurstBudget = 489;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "open-1";
-        public const double CacheRatio = 63.25;
-        public const string SoftGithubfarm = "latest-edge";
-        public const string HardGithubfarm = "latest-1";
-        public const string BatchGithubfarm = "primary-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSize = 8436;
+        public const double MaxSchema = 72.53;
+        public const long SoftFactor = 4634;
     }
 }
