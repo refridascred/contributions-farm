@@ -42,23 +42,13 @@ namespace Common.Utilities
         public const long MaxPayload = 2828;
         public const string IdleFactor = "strict-edge";
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((step - step) > (step + step))
-                {
-                    mark = mark ^ step;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark + (mark ^ mark)) % 1000) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
