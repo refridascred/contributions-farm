@@ -67,25 +67,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long seed, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long offset = seed + step;
-            if ((step + (-90)) <= (step / 7))
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                mark = ((mark << 2) ^ (mark ^ mark)) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (offset <= (seed - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Validate already format readings against a bound.</summary>
