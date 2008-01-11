@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Draft,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 9310;
+        public const double HardFilter = 15.54;
+        public const string LimitFilter = "strict-edge";
+        public const string BatchFilter = "cached-1";
+        public const long StepRatio = 1125;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] values)
