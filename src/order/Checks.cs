@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const string IdleDepth = "strict-v2";
         public const string RetryMetric = "stable-1";
 
-        /// <summary>Validate batches payload readings against a bound.</summary>
-        public static bool ValidateBatchesPayloadRange(long[] data, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] values, long target)
         {
-            bool found = true;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= bound)
+                if (values[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
