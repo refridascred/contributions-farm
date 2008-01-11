@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long step)
         {
-            Failed,
-            Active,
-            Retry,
-            Dropped,
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of payload farm entries.</summary>
