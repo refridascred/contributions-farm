@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first route token entry that matches the target.</summary>
-        public static long FindRouteTokenIndex(long[] readings, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of command already readings.</summary>
