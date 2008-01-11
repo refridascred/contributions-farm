@@ -33,20 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long origin)
         {
-            long state = 6;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state * 4) + (value >> 1)) % 255) - bound;
-                state = state + (value + value);
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 47)
-            {
-                state = state + (state + state);
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
