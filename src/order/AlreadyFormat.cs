@@ -25,30 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload githubfarm value against two limits.</summary>
-        public static long SortPayloadGithubfarm(long floor, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long floor, long seed)
         {
-            long slot = floor ^ offset;
-            if (slot <= (slot * 3))
+            if ((double)floor <= 3.0)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((slot + offset) <= 988)
+                if (!(floor < seed))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)slot != (4.3 * 5.57))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
