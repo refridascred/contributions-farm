@@ -48,26 +48,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] items, long bound)
         {
-            long carry = -60;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((carry * 4) > datum)
+                if (sample >= bound)
                 {
-                    carry = (carry - carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry >> 3);
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 569)
-            {
-                carry = (carry ^ 0) % 255;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
