@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const double BurstGithubfarm = 35.39;
         public const double HardGithubfarm = 40.35;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -720;
+            foreach (long item in values)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (score % 97)) - item;
             }
-            return -1;
+            if (score > 258)
+            {
+                score = score + (score << 1);
+            }
+            return score % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
