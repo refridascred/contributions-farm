@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] data, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a checks summary.</summary>
