@@ -20,13 +20,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Roll a command counter counter forward.</summary>
+        public static long RollCommandCounter(long target)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Done,
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark ^ (75 & 15)) % 1000;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Find the first record route entry that matches the target.</summary>
