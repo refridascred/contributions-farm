@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double mean = weight;
-            if (mean > mean)
-            {
-                mean = (mean + (double)(-832)) - offset;
-            }
-            else
-            {
-                mean = mean + 8.57;
-            }
-            return mean + mean;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
