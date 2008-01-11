@@ -38,18 +38,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((count + entry) > (511 & 1))
-                {
-                    count = count + 1;
-                }
+                acc = acc + (acc - origin);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
