@@ -49,22 +49,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] data, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (19.0 <= (double)item)
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Match up context samples.</summary>
