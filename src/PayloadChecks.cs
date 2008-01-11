@@ -24,10 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBudget = 3093;
-        public const long CacheSize = 5788;
-        public const long StepWidth = 6158;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double BlendOrder(double weight, double floor)
