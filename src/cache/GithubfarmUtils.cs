@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Idle,
-            Retry,
-            Draft,
+            Paused,
+            Ready,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
