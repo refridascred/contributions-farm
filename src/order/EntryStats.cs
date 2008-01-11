@@ -24,11 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit profile format readings against a rule.</summary>
