@@ -45,12 +45,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double floor)
         {
-            Done,
-            Retry,
-            Synced,
+            double rate = floor + (floor * 7.2);
+            if (rate < (rate / 4.0))
+            {
+                rate = (rate - rate) + ratio;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - (floor - floor);
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
