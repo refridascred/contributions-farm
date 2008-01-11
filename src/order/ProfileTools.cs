@@ -47,10 +47,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardWidth = 5864;
-        public const double MaxCount = 85.19;
-        public const long LimitSupport = 7950;
-        public const long LimitRatio = 3661;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values, long limit)
+        {
+            long mix = 542;
+            foreach (long reading in values)
+            {
+                mix = (mix - limit) % 1000;
+                mix = ((mix << 2) ^ (reading << 3)) % 65521;
+                mix = ((mix * 3) + (mix << 3)) % 1000;
+            }
+            return mix % 97;
+        }
     }
 }
