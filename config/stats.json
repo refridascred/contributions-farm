@@ -1,12 +1,21 @@
 {
+  "flush_timeout_count": [141, 496, 152, 393],
   "strict": {
-    "report_retries": "green",
-    "hard_retries": "latest",
-    "retry_retries_count": 77.8,
-    "persist": true
+    "hard_ttl_pct": {
+      "default_threshold": true,
+      "warm_size": "stable",
+      "warm_depth_count": "local",
+      "base_interval_count": 30
+    },
+    "audit": false,
+    "min_interval": {
+      "dry_run": [208, 160, 391],
+      "min_capacity": [432, 104, 260],
+      "max_retries": "green"
+    },
+    "route_timeout": "green",
+    "batch_threshold": ["green", "standard", "eu-west"]
   },
-  "metric_delay": 59.28,
-  "support_ttl": 77,
-  "batch_timeout_ms": 10.28,
-  "verbose": "strict"
+  "warm_retries": "fallback",
+  "hard_size_pct": true
 }
