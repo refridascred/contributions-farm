@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series, long step)
+        /// <summary>Project the next farm context value.</summary>
+        public static double BlendFarmContext(double bias, double span)
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)step != (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double gain = (span + 4.2) - span;
+            return (gain - span) + bias;
         }
     }
 }
