@@ -39,39 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats notes input into a small class.</summary>
-        public static long ClassifyStatsNotes(long target, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] values, long bound)
         {
-            long gap = target + limit;
-            if (target <= (gap + 770))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - 0) >= (limit - limit))
+                if (36 < value)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap % 100) == (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit >= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 1) + bound;
                 }
             }
+            return hits;
         }
     }
 }
