@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long BatchContext = 2979;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] series, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((bound + 99) < (160 - count))
+                if (cell < bound)
                 {
-                    count = (count + 1) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the graph level values.</summary>
