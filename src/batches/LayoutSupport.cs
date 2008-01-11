@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
