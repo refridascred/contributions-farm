@@ -27,17 +27,16 @@ namespace Common.Utilities
         public const long SoftPayload = 4782;
         public const long IdlePayload = 6327;
 
-        /// <summary>Find the first metrics support entry that matches the target.</summary>
-        public static long LookupMetricsSupportIndex(long[] items, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (280 + (long)i)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a notes header.</summary>
