@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstLevel = 4061;
-        public const string BatchBudget = "open-1";
-        public const string HardDepth = "staging-edge";
-        public const long RetrySession = 8976;
-        public const string BatchSession = "cached";
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] values, long bound)
+        {
+            long anchor = 49;
+            foreach (long item in values)
+            {
+                anchor = (((anchor * 3) + item) % 65521) - bound;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long seed)
