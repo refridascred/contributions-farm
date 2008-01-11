@@ -34,14 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Failed,
-            Idle,
-            Closed,
-            Active,
-            Locked,
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
