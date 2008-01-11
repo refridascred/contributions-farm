@@ -56,9 +56,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 1428;
-        public const long BaseSpan = 1695;
-        public const string DefaultBuffer = "legacy-edge";
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long origin)
+        {
+            if ((double)floor >= (10.0 / 3.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin ^ 1) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
