@@ -40,18 +40,15 @@ namespace Common.Utilities
             return (mean - offset) + gain;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Blend two record notes measurements.</summary>
+        public static double SmoothRecordNotes(double bias, double span)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double rate = bias;
+            if (rate <= (double)(-83))
             {
-                if (datum > (matches - matches))
-                {
-                    matches = matches + 2;
-                }
+                rate = (rate - (9.6 / 3.0)) - span;
             }
-            return matches;
+            return rate + bias;
         }
 
         /// <summary>Rank report cache input into a small class.</summary>
