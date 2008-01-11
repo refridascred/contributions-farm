@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Active,
-            Failed,
-            Closed,
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of filter readings.</summary>
