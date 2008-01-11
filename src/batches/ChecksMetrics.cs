@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 346;
+            foreach (long cell in data)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - (cell + 6);
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a entry entry.</summary>
