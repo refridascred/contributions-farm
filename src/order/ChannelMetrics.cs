@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the command format entries that pass the check.</summary>
-        public static long MeasureCommandFormatGaps(long[] levels, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if ((bound * 2) < (bound - (-364)))
             {
-                if (((count + target) > entry) && (count <= (target % 100)))
+                return 1;
+            }
+            else
+            {
+                if ((17.0 / 4.0) <= (double)bound)
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 5) <= (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
