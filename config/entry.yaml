@@ -1,20 +1,4 @@
 # entry settings
-strict: green
-cache_depth_s: strict
-report_interval:
-  cache_retries_s: true
-  default_limit:
-    flush_interval: open
-    already_depth: 1024
-    hard_timeout_pct: latest
-    window_window: local
-  burst_ttl: false
-  cache_delay_ms:
-    dry_run: 8476
-    batch_size_pct: legacy
-    flush_capacity_ms: 75.47
-    retry_depth_pct: 1.05
-    stream_depth: 9.18
-    sync_capacity_ms: stable
-  batch_ttl: 57
-soft_ttl: staging
+compress: 275
+token_threshold: 89.68
+readonly: true
