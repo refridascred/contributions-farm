@@ -10,20 +10,39 @@ namespace Common.Utilities
         public const long StepWidth = 7385;
         public const long MinToken = 535;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long origin, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long cur = origin + limit;
+            if (cur >= limit)
             {
-                if (((offset ^ offset) >= (long)i) || ((mix + mix) != (996 % 7)))
-                {
-                    mix = ((mix << 3) ^ (84 + offset)) % 1000;
-                }
-                mix = (mix - ((-244) << 2)) % 255;
-                mix = ((mix * 4) + (long)i) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((cur % 8) <= (3 * 5)) || (limit < (85 >> 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((cur & 31) < (limit & 255))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (13.0 - 10.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
