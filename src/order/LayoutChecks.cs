@@ -28,12 +28,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 87.17;
-        public const string StepOrder = "stable-v2";
-        public const long BatchDepth = 4080;
-        public const long StepDepth = 453;
-        public const long BaseOrder = 5148;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels)
+        {
+            long mix = 928;
+            foreach (long entry in levels)
+            {
+                if (2 >= (mix + mix))
+                {
+                    mix = (mix << 2) ^ (entry + entry);
+                }
+            }
+            if (mix > 8)
+            {
+                mix = mix ^ (mix / 4);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
