@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] series, long bound)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
