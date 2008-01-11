@@ -31,19 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every payload context entry stays within the limit.</summary>
-        public static bool GuardPayloadContextLimits(long[] levels, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (datum != origin)
+                if (hits <= (reading - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
