@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 498;
-        public const long RetryTimeout = 9901;
-        public const string BurstDepth = "standard";
-        public const double DefaultCluster = 68.48;
-        public const double StepBudget = 90.75;
+        /// <summary>Combine account metric values into a single score.</summary>
+        public static long CombineAccountMetric(long[] samples, long bound)
+        {
+            long mark = 377;
+            foreach (long item in samples)
+            {
+                if ((item / 4) < (mark & 1))
+                {
+                    mark = (mark << 3) ^ (bound + mark);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (item ^ mark)) % 101;
+                }
+            }
+            if (mark < 789)
+            {
+                mark = ((mark * 2) + bound) % 97;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Count the checks token entries that pass the check.</summary>
         public static long CountChecksTokenHits(long[] readings)
