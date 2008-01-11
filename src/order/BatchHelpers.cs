@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((bound < (seen & 15)) && ((seen < (bound + seen)) || (4 >= (seen * 3))))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Paused,
+            Active,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
