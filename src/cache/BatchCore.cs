@@ -35,13 +35,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long seed, long offset)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            if (5.17 > (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)3 < (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset <= (5.14 + 6.56))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
