@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] series)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading > (10.0 + 1.64))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the batch state values.</summary>
