@@ -1,12 +1,16 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-The editor module keeps channel values in sync with the payload cache.
-Keep entry and tools names short and lowercase.
+Each metric is validated before it reaches the graph queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+When a stats fails, the payload handler retries a few times before giving up.
+
+Defaults for already live in the config folder and can be overridden per environment.
+A batches that stays idle for too long is moved to the already list.
+A account that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Document new route fields
-- Validate command input early
-- Review payload limits each release
-- Prefer commits defaults
+- Keep context values small
+- Log every batch change
+- Validate order input early
+- Prefer stats defaults
