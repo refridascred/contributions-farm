@@ -21,12 +21,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 203;
-        public const string BurstRoute = "cached-1";
-        public const long DefaultBudget = 8807;
-        public const string DefaultWidth = "cached-edge";
-        public const long MinSize = 7088;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Paused,
+            Stale,
+            Active,
+            Closed,
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] items, long offset)
