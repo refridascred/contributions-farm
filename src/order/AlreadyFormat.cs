@@ -55,12 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Closed,
+            Paused,
         }
     }
 }
