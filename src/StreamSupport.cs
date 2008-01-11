@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Draft,
-            Done,
-            Closed,
-            New,
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit graph stats readings against a rule.</summary>
