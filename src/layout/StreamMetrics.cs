@@ -39,5 +39,14 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Paused,
+            Draft,
+            Stale,
+            Ready,
+        }
     }
 }
