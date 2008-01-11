@@ -35,22 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long acc = 5;
-            foreach (long cell in values)
-            {
-                if (!(cell <= (15 - (-69))))
-                {
-                    acc = (acc ^ (acc - cell)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (39 + 6)) % 1000;
-                }
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
