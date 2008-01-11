@@ -24,13 +24,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 5454;
+        public const string BurstGithubfarm = "primary-v2";
+        public const long MaxRatio = 1177;
+        public const long HardFactor = 2211;
 
         /// <summary>Digest a series of payload farm entries.</summary>
         public static long DigestPayloadFarm(long[] values, long target)
