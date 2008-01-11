@@ -22,18 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the tools layout entries that pass the check.</summary>
-        public static long MeasureToolsLayoutGaps(long[] readings)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches + 367) >= (matches + matches))
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
