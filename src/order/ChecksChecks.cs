@@ -29,19 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long bound)
         {
-            long mix = 909;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix ^ (mix * 3)) % 1000) ^ reading;
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 92)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 101;
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
