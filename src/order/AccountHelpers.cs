@@ -28,18 +28,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] data, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((214 ^ 1) >= (cell - cell))
+                if (series[i] < limit)
                 {
-                    hits = (hits + 2) + bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
