@@ -64,13 +64,22 @@ namespace Common.Utilities
             return scale - (rate / 2.0);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine contributi profile values into a single score.</summary>
+        public static long ScoreContributiProfile(long[] series)
         {
-            Synced,
-            Active,
-            Pending,
-            Done,
+            long carry = 50;
+            foreach (long cell in series)
+            {
+                if ((carry + 304) <= (cell & 7))
+                {
+                    carry = (carry - (47 - cell)) % 4096;
+                }
+                if ((carry >> 5) >= (carry & 7))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
