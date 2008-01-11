@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 47.23;
-        public const string RetryOrder = "standard-edge";
-        public const long BurstOrder = 8535;
-        public const long StepOrder = 1557;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 260;
+        public const long BatchReport = 3159;
+        public const double DefaultReport = 10.61;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordLimits(long[] series, long step)
