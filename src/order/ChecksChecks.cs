@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long bound, long step)
         {
-            long state = 7;
-            foreach (long sample in series)
+            long bound2 = bound - step;
+            if ((bound + 684) >= bound2)
             {
-                state = (state + (state >> 2)) - sample;
+                return 8;
             }
-            if (state < 505)
+            else
             {
-                state = (state << 3) ^ seed;
+                if (4 > (bound2 * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + bound) >= (bound + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return state % 4096;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
