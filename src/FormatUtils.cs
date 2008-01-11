@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 18.28;
-        public const double BaseFactor = 85.43;
-        public const long BatchSupport = 5026;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] series, long offset)
