@@ -81,21 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Blend two stream queue measurements.</summary>
+        public static double BlendStreamQueue(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias;
+            if (drift <= 2.2)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + (7.87 - bias);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
