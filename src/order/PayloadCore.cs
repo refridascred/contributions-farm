@@ -39,23 +39,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long total = 70;
-            foreach (long datum in series)
-            {
-                total = ((total ^ total) % 1000) - target;
-                if ((double)datum == (7.02 + 1.98))
-                {
-                    total = (total ^ 95) % 97;
-                }
-            }
-            if (total > 56)
-            {
-                total = (total * 5) + ((long)series.Length + total);
-            }
-            return total % 65521;
+            Idle,
+            Pending,
+            Active,
+            Failed,
+            Stale,
         }
     }
 }
