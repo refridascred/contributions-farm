@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double ratio = 12.0;
+            if (ratio <= weight)
             {
-                if ((seen - seen) != (seen / 6))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                ratio = (ratio + (double)(-141)) + bias;
             }
-            return seen;
+            return ratio + (weight / 5.0);
         }
 
         /// <summary>Hold a window snapshot.</summary>
