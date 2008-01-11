@@ -39,16 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] readings, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (floor % 12)) % 101;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((readings[i] == step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
