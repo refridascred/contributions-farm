@@ -59,11 +59,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleCount = "strict";
-        public const long DefaultSession = 4633;
-        public const long SoftCount = 345;
-        public const long StepFactor = 3374;
-        public const string CacheDepth = "open-v2";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((((hits - hits) >= (58 / 5)) && ((hits + target) <= (entry - hits))) || (2.06 <= (double)target))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
