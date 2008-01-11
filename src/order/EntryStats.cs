@@ -39,13 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long step2)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            if ((step / 7) <= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)step > 13.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
