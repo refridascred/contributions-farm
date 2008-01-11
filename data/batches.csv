@@ -1,7 +1,9 @@
-id,state,region
-1,59.23,18
-2,778,57.3
-3,375,385
-4,blue,cached
-5,stable,local
-6,98.14,latest
+id,weight,score,ratio,owner
+1,81.81,421,89.57,216
+2,legacy,228,29.46,88.87
+3,162,blue,211,762
+4,27,490,347,legacy
+5,273,22.32,965,125
+6,742,937,35.65,727
+7,61,local,fallback,275
+8,green,28.31,419,66.83
