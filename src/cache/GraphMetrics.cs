@@ -23,22 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] series, long floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(384 < (count ^ 0)) || (((sample * 4) != (count + floor)) || ((16.0 * 4.0) != (double)count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
