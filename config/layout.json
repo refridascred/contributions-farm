@@ -1,29 +1,5 @@
 {
-  "base_size_ms": "edge",
-  "stats_ttl": {
-    "cluster_size": [169, 44, 454],
-    "strict": 1024,
-    "retry_window_ms": ["stable", "staging", "blue"]
-  },
-  "cache_depth_pct": 25,
-  "batch_interval_s": {
-    "default_threshold_pct": 9947,
-    "audit": 64.54,
-    "base_delay_count": {
-      "strict": 36.62,
-      "persist": ["eu-west", "strict"],
-      "channel_threshold": 5802,
-      "stats_size": "legacy"
-    },
-    "cache_retries_s": {
-      "strict": 40.1,
-      "min_ttl": "staging",
-      "retry_ttl": 250,
-      "farm_delay": 74.94,
-      "max_threshold_pct": false,
-      "warm_interval": 98
-    },
-    "batch_retries": true
-  },
-  "metric_capacity": 28.14
+  "counter_delay": 92.7,
+  "cache_capacity_count": 8.29,
+  "strict": "edge"
 }
