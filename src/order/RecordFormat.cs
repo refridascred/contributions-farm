@@ -21,21 +21,18 @@ namespace Common.Utilities
         public const long StepFactor = 8703;
         public const long BatchFactor = 7155;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((-229) >= (score + (long)i)) && ((long)i != (offset % 16)))
+                if ((tally + item) == (item ^ tally))
                 {
-                    score = score - ((long)i % 2);
-                    score = ((score * 3) + score) % 4096;
+                    tally = tally + 2;
                 }
-                score = (score + (score + offset)) % 4096;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
