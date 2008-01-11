@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long score = 183;
-            foreach (long reading in levels)
-            {
-                score = (score - (reading - reading)) - seed;
-            }
-            return score % 1000;
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Digest a series of support entries.</summary>
