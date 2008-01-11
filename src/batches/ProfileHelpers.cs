@@ -35,11 +35,26 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum << 2) ^ sum) % 97;
+                if ((sum + bound) == ((long)i - sum))
+                {
+                    sum = ((sum << 2) ^ (long)i) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 4) + ((long)i - bound)) % 97;
+                    sum = (sum + sum) % 101;
+                }
+                sum = sum ^ (sum ^ bound);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
