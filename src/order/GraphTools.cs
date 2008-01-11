@@ -46,32 +46,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long offset, long offset2)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            long lane = offset ^ offset2;
-            if (!(lane > 31))
+            double mean = (double)(9 + 3);
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                mean = ((mean + (bias * 1.01)) + (double)(long)i) + scale;
             }
-            else
-            {
-                if (!((double)offset != (5.75 - 6.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 / 5.0) > (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mean - (bias * 9.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
