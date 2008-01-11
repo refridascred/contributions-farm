@@ -14,19 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long floor)
+        /// <summary>Count queue notes pairs that satisfy a relation.</summary>
+        public static long OverlapQueueNotesCount(long[] items)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
