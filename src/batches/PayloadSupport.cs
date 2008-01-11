@@ -55,22 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile command entries that pass the check.</summary>
-        public static long MeasureProfileCommandOutliers(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((entry + hits) > (entry << 2))
+                if (sample > seed)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
