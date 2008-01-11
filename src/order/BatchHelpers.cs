@@ -27,18 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] readings, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long sum = 3;
+            foreach (long value in levels)
             {
-                if ((double)seen <= (double)item)
+                sum = (sum + (value << 2)) % 255;
+                if ((2 > (sum & 15)) && ((3.2 / 6.0) <= (double)sum))
                 {
-                    seen = (seen + 2) - origin;
+                    sum = sum - (value ^ sum);
+                }
+                if ((sum >> 2) > (2 + (long)levels.Length))
+                {
+                    sum = (sum * 5) + (value << 2);
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
