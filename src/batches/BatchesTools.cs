@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next cache entry value from a seed.</summary>
-        public static long SeriesCacheEntry(long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (mark * 2) + (long)i;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((score <= (seed * 5)) || ((9 - score) <= seed))
+                {
+                    score = (score - (score ^ (long)i)) % 4096;
+                }
+                else
+                {
+                    score = (score - (long)i) % 97;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a notes stats.</summary>
