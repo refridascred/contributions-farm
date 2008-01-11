@@ -20,21 +20,22 @@ namespace Common.Utilities
         public const double CacheAccount = 97.2;
         public const string SoftLevel = "open";
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((origin >= (item - seen)) && (((double)item >= (7.71 + 2.0)) || (4.26 > (double)item)))
                 {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a cache batch pair into a bucket.</summary>
