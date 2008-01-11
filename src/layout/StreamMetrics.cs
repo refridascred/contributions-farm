@@ -48,5 +48,13 @@ namespace Common.Utilities
             Stale,
             Ready,
         }
+
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
