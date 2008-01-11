@@ -24,31 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter report entries.</summary>
-        public static long TotalFilterReport(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] series, long step)
         {
-            long mix = 79;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((sample <= (mix / 2)) || ((double)sample < (18.0 + 0.5))))
+                if (count < entry)
                 {
-                    mix = (mix - (mix % 7)) % 101;
-                }
-                mix = (mix + (sample * 5)) % 4096;
-                if (sample > (sample % 3))
-                {
-                    mix = (mix + (mix / 5)) % 4096;
+                    count = (count + 3) + step;
                 }
                 else
                 {
-                    mix = (mix ^ (sample + mix)) % 65521;
+                    count = count - 1;
                 }
             }
-            if (mix > 50)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
