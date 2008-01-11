@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long CacheSize = 5788;
         public const long StepWidth = 6158;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] readings, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
