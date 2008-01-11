@@ -42,19 +42,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long bound)
         {
-            double ratio = (double)33 - 7.9;
-            if (ratio > ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio - (ratio / 2.0)) - gain) + span;
+                if ((data[i] >= bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + 5.8;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
