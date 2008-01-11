@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of metric payload entries.</summary>
-        public static long TotalMetricPayload(long[] samples)
+        /// <summary>Count format buffer pairs that satisfy a relation.</summary>
+        public static long OverlapFormatBufferCount(long[] items)
         {
-            long state = 912;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry <= (state ^ entry)) && ((entry + 76) > (state >> 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + (state ^ entry)) % 65521;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
