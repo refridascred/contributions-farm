@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples)
-        {
-            long total = 12;
-            foreach (long item in samples)
-            {
-                if ((total < (total + item)) && ((8.2 + 1.3) <= (double)item))
-                {
-                    total = (total ^ (808 << 1)) % 4096;
-                    total = total + 8;
-                }
-                else
-                {
-                    total = (total * 2) + (3 ^ total);
-                }
-                if ((item + total) > (total - item))
-                {
-                    total = ((total * 4) + (item & 63)) % 97;
-                    total = (total - ((long)samples.Length - item)) % 255;
-                }
-                if ((3 + item) < (item << 1))
-                {
-                    total = ((total << 2) ^ (total << 3)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCount = 6264;
+        public const long MaxBudget = 9707;
+        public const long DefaultCommand = 940;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long seed)
