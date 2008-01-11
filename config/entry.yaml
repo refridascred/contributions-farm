@@ -1,5 +1,19 @@
 # entry settings
-base_interval_count: open
-default_timeout_s: 810
-batch_threshold: latest
-soft_threshold_s: 954
+dry_run: legacy
+compress:
+  - 169
+  - 180
+  - 174
+warm_threshold:
+  base_threshold:
+    - green
+    - open
+    - local
+  enabled:
+    - blue
+    - latest
+    - blue
+  route_ratio: cached
+record_delay: 86.09
+poll_interval_count: 1024
+route_depth: standard
