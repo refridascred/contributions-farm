@@ -27,11 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public long Label { get; set; }
             public bool Weight { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a stream filter figure with a bias.</summary>
