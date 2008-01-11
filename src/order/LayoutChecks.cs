@@ -45,23 +45,22 @@ namespace Common.Utilities
             return bias3 + (bias3 / 7.0);
         }
 
-        /// <summary>Blend two cluster record measurements.</summary>
-        public static double AdjustClusterRecord(double weight, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long floor)
         {
-            double gain = weight + span;
-            if (gain >= span)
+            long score = 106;
+            foreach (long entry in values)
             {
-                gain = gain - span;
+                if ((double)entry != (double)score)
+                {
+                    score = (score ^ (score + entry)) % 101;
+                }
             }
-            else
+            if (score < 57)
             {
-                gain = gain + weight;
+                score = score ^ (floor ^ 179);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain - (gain - span);
+            return score;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
