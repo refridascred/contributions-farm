@@ -36,15 +36,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a stream filter figure with a bias.</summary>
-        public static double AdjustStreamFilter(double ratio, double offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long origin)
         {
-            double weight = offset;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                weight = ((weight - (17.0 / 8.0)) - (double)(long)i) - ratio;
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - 2.5;
+            return ready;
         }
     }
 }
