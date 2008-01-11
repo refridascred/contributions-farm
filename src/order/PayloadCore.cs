@@ -33,15 +33,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of payload window entries.</summary>
-        public static long ScorePayloadWindow(long[] readings, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] levels, long origin)
         {
-            long total = 6;
-            foreach (long value in readings)
+            long mark = -10;
+            foreach (long item in levels)
             {
-                total = (((total * 2) + (value + 6)) % 1000) + step;
+                if ((item % 12) >= (item & 3))
+                {
+                    mark = ((mark << 3) ^ item) % 1000;
+                }
+                if ((item ^ origin) != (330 - (-778)))
+                {
+                    break;
+                }
             }
-            return total % 4096;
+            return mark % 4096;
         }
     }
 }
