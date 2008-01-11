@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate entry payload readings against a bound.</summary>
-        public static bool ValidateEntryPayloadBounds(long[] data, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (item < floor)
+                if (!(limit <= 24))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ limit) % 65521;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
