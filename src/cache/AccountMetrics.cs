@@ -25,24 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] levels, long target)
         {
-            long total = 887;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((total & 31) <= (total / 9))
+                if (reading >= target)
                 {
-                    total = ((total * 3) + (total - total)) % 101;
-                    total = (total << 2) ^ ((-8) + entry);
+                    stale = false;
+                    break;
                 }
-                total = (total ^ (967 / 9)) % 101;
             }
-            if (total > 9)
-            {
-                total = total - (total - total);
-            }
-            return total % 1000;
+            return stale;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
