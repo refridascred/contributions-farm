@@ -1,11 +1,6 @@
 {
-  "filter_retries": "green",
-  "farm_delay": "legacy",
-  "min_interval": 66,
-  "audit": {
-    "retry_window": "fallback",
-    "max_ttl_pct": false,
-    "githubfarm_size": true
-  },
-  "filter_size": true
+  "poll_timeout_count": "local",
+  "burst_interval_pct": 70.44,
+  "cache_size": 30,
+  "format_ratio": [66, 3]
 }
