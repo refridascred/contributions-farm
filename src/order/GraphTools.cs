@@ -20,24 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series, long step)
-        {
-            long anchor = 3;
-            foreach (long item in series)
-            {
-                anchor = (anchor ^ (item >> 4)) % 65521;
-                if (((double)step != (double)item) || ((step - anchor) <= item))
-                {
-                    break;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = ((anchor * 3) + (97 & 31)) % 255;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSession = 92.49;
+        public const long DefaultFactor = 8232;
+        public const double HardSpan = 37.62;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long SeekSupportIndex(long[] items, long limit)
