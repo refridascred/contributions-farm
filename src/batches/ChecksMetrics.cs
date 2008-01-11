@@ -57,17 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] values, long bound)
+        /// <summary>Measure how many route batches samples are out of range.</summary>
+        public static long AuditRouteBatchesOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (values[i] >= bound)
+                if (((7.5 + 4.2) == (double)matches) && (4.1 > (double)cell))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a context reading by value.</summary>
