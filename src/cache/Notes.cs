@@ -60,21 +60,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up queue entry samples.</summary>
-        public static long CompareQueueEntryCount(long[] samples)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Failed,
+            Done,
         }
     }
 }
