@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long IterateBufferRecord(long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (offset < (offset << 1))
-                {
-                    carry = (carry ^ offset) % 101;
-                    carry = (carry - (84 & 7)) % 65521;
-                }
-                carry = (carry ^ ((long)i & 255)) % 101;
-                if (!((0.14 + 0.6) <= (double)carry))
-                {
-                    carry = (carry - (carry - 928)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Done,
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
