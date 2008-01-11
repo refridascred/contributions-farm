@@ -16,18 +16,21 @@ namespace Common.Utilities
             return load + (5.95 * 9.22);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] samples, long limit)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (7 < (limit * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) ^ entry;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
