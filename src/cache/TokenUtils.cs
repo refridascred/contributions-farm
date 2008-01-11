@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long limit, long seed)
+        /// <summary>Validate checks stream readings against a bound.</summary>
+        public static bool GuardChecksStreamRange(long[] samples, long offset)
         {
-            long edge = limit ^ seed;
-            if ((limit >= (seed + limit)) || ((seed & 31) <= (edge + seed)))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - limit) > (edge % 5))
+                if (item < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7 ^ edge) != (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine batches account values into a single score.</summary>
