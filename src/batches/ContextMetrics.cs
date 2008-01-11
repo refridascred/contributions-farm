@@ -49,14 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Adjust a filter stream reading.</summary>
+        public static double SmoothFilterStream(double rate, double bias)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Locked,
-            Closed,
+            double scale = rate / 5.0;
+            if (scale <= bias)
+            {
+                scale = scale + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (rate / 2.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
