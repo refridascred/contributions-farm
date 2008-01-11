@@ -43,21 +43,15 @@ namespace Common.Utilities
         public const string DefaultRecord = "legacy";
         public const long BurstBudget = 489;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
