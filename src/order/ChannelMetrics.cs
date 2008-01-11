@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double weight, double bias)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            double ratio = 12.0;
-            if (ratio <= weight)
+            long anchor = 4;
+            foreach (long sample in items)
             {
-                ratio = (ratio + (double)(-141)) + bias;
+                anchor = (anchor + sample) % 1000;
             }
-            return ratio + (weight / 5.0);
+            if (anchor > 6)
+            {
+                anchor = (anchor - (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window snapshot.</summary>
