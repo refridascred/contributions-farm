@@ -36,17 +36,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a commits checks sample.</summary>
-        public static long FindCommitsChecksIndex(long[] readings, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit <= (2.4 / 6.0))
             {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) < bound)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound < (805 >> 3)) && ((bound / 5) < (bound ^ 125)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)bound <= (8.2 * 20.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
