@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every session metric entry stays within the limit.</summary>
-        public static bool GuardSessionMetricBounds(long[] levels, long limit)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
