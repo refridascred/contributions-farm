@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values, long offset)
-        {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                if (((-126) >> 5) < (long)values.Length)
-                {
-                    mark = ((mark << 3) ^ mark) + cell;
-                }
-                if (((6.65 * 5.4) >= (double)mark) && ((double)offset >= (1.3 * 12.0)))
-                {
-                    mark = (mark ^ (56 * 4)) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 842;
+        public const double CacheGithubfarm = 27.46;
+        public const double BurstGithubfarm = 35.39;
+        public const double HardGithubfarm = 40.35;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] series, long step)
