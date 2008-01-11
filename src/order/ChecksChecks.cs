@@ -33,10 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 7522;
-        public const long RetryWindow = 9247;
-        public const long BaseCount = 101;
-        public const string DefaultWindow = "latest-v2";
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((((long)i ^ state) > state) && (((long)i & 127) <= offset))
+                {
+                    state = ((state << 2) ^ offset) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
