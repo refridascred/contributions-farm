@@ -20,10 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSession = 92.49;
-        public const long DefaultFactor = 8232;
-        public const double HardSpan = 37.62;
+        /// <summary>Locate a context channel reading by value.</summary>
+        public static long LookupContextChannelIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long SeekSupportIndex(long[] items, long limit)
