@@ -1,4 +1,29 @@
 # entry settings
-sync_ttl_ms: edge
-already_limit: open
-channel_timeout: 30
+sync_capacity:
+  base_threshold:
+    flush_size_count: 6.94
+    stream_interval: 32.74
+    queue_delay:
+      - open
+      - primary
+    strict: 36
+    sync_ratio_s: true
+    enabled: 1542
+  editor_ttl: 51.34
+  hard_depth_s: primary
+  min_timeout_s: false
+  cache_depth_ms:
+    - strict
+    - local
+    - staging
+  hard_ratio:
+    - 20
+    - 417
+    - 265
+burst_threshold_pct: cached
+layout_limit: latest
+buffer_ratio: 30
+enabled: 82
+flush_size_pct:
+  - 177
+  - 231
