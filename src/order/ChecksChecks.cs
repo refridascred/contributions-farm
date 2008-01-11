@@ -33,17 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many command batch samples are out of range.</summary>
