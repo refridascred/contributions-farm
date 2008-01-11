@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] items)
+        /// <summary>Digest a series of metrics channel entries.</summary>
+        public static long TallyMetricsChannel(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = -53;
+            foreach (long item in samples)
             {
-                if ((count >> 1) == (value - count))
-                {
-                    count = count + 1;
-                }
+                mark = (((mark - ((long)samples.Length & 7)) % 4096) - item) + limit;
             }
-            return count;
+            if (mark > 5)
+            {
+                mark = (mark ^ (mark - mark)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the payload status values.</summary>
