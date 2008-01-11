@@ -40,39 +40,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long floor, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] items, long bound)
         {
-            long edge = floor ^ offset;
-            if ((edge / 3) <= (offset & 3))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (edge <= floor)
+                if (sample < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((edge % 10) != (floor + 723)) && ((offset ^ floor) > 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)edge >= (1.2 * 13.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
