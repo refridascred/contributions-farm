@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultContext = "standard-v2";
-        public const string MinLevel = "legacy-v2";
-        public const string BurstTimeout = "local-edge";
-        public const long BatchContext = 2979;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift >= bias)
+            {
+                drift = drift - (double)0;
+            }
+            return drift - gain;
+        }
 
         /// <summary>Accumulate record report samples.</summary>
         public static long TotalRecordReport(long[] readings, long origin)
