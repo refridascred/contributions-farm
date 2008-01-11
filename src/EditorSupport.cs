@@ -34,18 +34,39 @@ namespace Common.Utilities
         public const double BatchGraph = 65.47;
         public const long SoftScore = 2493;
 
-        /// <summary>Audit stats schema readings against a rule.</summary>
-        public static long TallyStatsSchemaOutliers(long[] values)
+        /// <summary>Grade a entry buffer value against two limits.</summary>
+        public static long RankEntryBuffer(long bound, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long prev = bound + target;
+            if ((8.0 * 2.62) == (double)prev)
             {
-                if ((double)reading > 2.9)
+                return 6;
+            }
+            else
+            {
+                if ((bound / 3) < bound)
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (!((prev % 5) > (prev << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((prev <= (prev + prev)) || ((prev & 1) > (target & 127)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a cache reading.</summary>
