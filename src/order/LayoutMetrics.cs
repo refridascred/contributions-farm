@@ -37,24 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long limit, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long limit)
         {
-            if ((limit + seed) != (seed * 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((15.0 * 2.74) == (double)seed)
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
