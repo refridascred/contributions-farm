@@ -1,13 +1,24 @@
 # githubfarm settings
-default_ttl_pct: blue
-retry_interval_count:
-  record_delay:
-    - 120
-    - 206
-  burst_timeout_count: 30
-  layout_limit:
-    persist: strict
-    window_capacity: true
-    warm_timeout: staging
-  already_depth: 25.58
-route_delay: 64
+contributi_delay: false
+cache_retries:
+  record_capacity:
+    - 198
+    - 76
+    - 193
+  max_limit: 82
+  flush_interval:
+    base_timeout_s:
+      - 219
+      - 416
+      - 380
+    burst_timeout_s: fallback
+    sync_window_count: 98.76
+  githubfarm_ratio: 100
+  cache_ratio_count:
+    format_ratio: open
+    base_window_ms: 16.44
+    verbose: standard
+    batch_limit: 1024
+    warm_ttl_count: open
+  filter_threshold: 5507
+base_threshold_s: local
