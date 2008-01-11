@@ -40,12 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
+        public static long MatchStatsCacheCount(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
