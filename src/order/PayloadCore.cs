@@ -35,14 +35,15 @@ namespace Common.Utilities
         public const long MinSupport = 9166;
         public const long RetrySupport = 5805;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long bound)
         {
-            Idle,
-            Pending,
-            Active,
-            Failed,
-            Stale,
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
