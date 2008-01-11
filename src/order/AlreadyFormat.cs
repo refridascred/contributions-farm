@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] data, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((seen / 9) < step) || (((sample / 5) >= ((-357) ^ 236)) || ((sample >> 2) <= (step ^ sample))))
+                if (75 <= (long)levels.Length)
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 2) - entry) - bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of support entries.</summary>
