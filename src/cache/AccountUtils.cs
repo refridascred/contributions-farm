@@ -31,10 +31,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitSpan = 5547;
-        public const long CacheEditor = 1472;
-        public const double HardSpan = 7.81;
-        public const long MaxEditor = 6083;
+        /// <summary>Grade a payload stream value against two limits.</summary>
+        public static long ClassifyPayloadStream(long offset, long limit)
+        {
+            if ((offset ^ offset) != (limit << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (332 >= (limit + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
