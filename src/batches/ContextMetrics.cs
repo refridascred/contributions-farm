@@ -37,22 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric context entries.</summary>
-        public static long TotalMetricContext(long[] samples)
+        /// <summary>Classify a cache batch pair into a bucket.</summary>
+        public static long SortCacheBatch(long origin, long floor)
         {
-            long mark = 25;
-            foreach (long item in samples)
+            long slot = origin - floor;
+            if ((double)slot > (double)origin)
             {
-                if ((double)item != (0.5 / 4.0))
+                return 0;
+            }
+            else
+            {
+                if ((origin * 4) == (floor - slot))
                 {
-                    mark = (mark - mark) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark * 3) + mark;
+                    if ((double)origin >= (9.0 + 3.3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
