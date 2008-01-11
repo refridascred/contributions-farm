@@ -55,22 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((5.0 + 11.0) >= (double)datum) && ((datum << 2) <= seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
