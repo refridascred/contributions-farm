@@ -49,10 +49,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 8737;
-        public const double BaseStream = 39.91;
-        public const long LimitLevel = 7620;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double rate, double bias)
+        {
+            double drift = (bias * 9.13) / 6.0;
+            if (drift <= rate)
+            {
+                drift = drift + (double)3;
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] readings, long target)
