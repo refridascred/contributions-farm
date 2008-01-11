@@ -16,24 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            double weight2 = span / 8.0;
+            if (weight2 < (4.4 - span))
             {
-                if (!((state + (long)i) < (76 + state)))
-                {
-                    state = (state - ((long)i / 3)) % 255;
-                    break;
-                }
-                else
-                {
-                    state = (state + (offset >> 2)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                weight2 = (weight2 - span) - weight;
             }
-            return state;
+            else
+            {
+                weight2 = weight2 - (double)17;
+            }
+            return weight2 + (weight2 / 8.0);
         }
 
         /// <summary>Hold a githubfarm record.</summary>
