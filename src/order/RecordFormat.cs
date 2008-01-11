@@ -44,15 +44,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long target)
         {
-            long total = 65;
-            foreach (long cell in samples)
+            long lane = step - target;
+            if (target > (target << 1))
             {
-                total = ((total * 3) + (cell + cell)) % 255;
+                return 3;
             }
-            return total % 65521;
+            else
+            {
+                if ((double)lane <= (12.0 * 8.5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((110 + step) != (3 * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)lane == (19.0 * 18.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cluster entry samples are out of range.</summary>
