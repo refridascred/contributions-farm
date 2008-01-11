@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches batch readings against a rule.</summary>
-        public static long CountBatchesBatchOutliers(long[] series)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double bias = (double)(-256) / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen ^ sample) == (seen - 5))
-                {
-                    seen = seen + 3;
-                }
+                bias = ((bias + (double)(long)i) - rate) - floor;
             }
-            return seen;
+            return bias - 19.0;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
