@@ -35,25 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long floor, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long lane = floor + seed;
-            if (10 > (floor % 64))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((lane + seed) < seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
