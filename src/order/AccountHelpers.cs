@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of metric tools readings.</summary>
-        public static long TallyMetricTools(long[] readings)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long result = 4;
-            foreach (long reading in readings)
-            {
-                result = (((result * 5) + (result + result)) % 97) - reading;
-            }
-            if (result > 124)
-            {
-                result = result + (result + result);
-            }
-            return result % 97;
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
