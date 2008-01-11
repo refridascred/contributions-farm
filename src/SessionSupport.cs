@@ -31,13 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state - state) % 101;
+                state = ((state * 5) + ((long)i - state)) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
