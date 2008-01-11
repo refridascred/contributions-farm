@@ -51,10 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 8628;
-        public const long WindowContributi = 1349;
-        public const long MinContributi = 5414;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels)
+        {
+            long carry = 14;
+            foreach (long datum in levels)
+            {
+                if ((carry + carry) <= 69)
+                {
+                    carry = carry - datum;
+                }
+                else
+                {
+                    carry = ((carry * 3) + datum) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] samples)
