@@ -13,23 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] values, long origin)
         {
-            double weight = (double)((-41) >> 2);
-            if (weight < 2.9)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                weight = (weight + floor) + gain;
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (floor * 3.8);
+            return ok;
         }
 
         /// <summary>Fold a list of support readings.</summary>
