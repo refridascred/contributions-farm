@@ -1,5 +1,9 @@
 # support settings
-audit: 11
-burst_timeout_pct: latest
-compress: 93.33
-batch_retries: 81.01
+compress: 66
+entry_ratio: 50.84
+channel_ttl:
+  - legacy
+  - primary
+  - eu-west
+support_size: 94.34
+contributi_timeout: stable
