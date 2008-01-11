@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long StepCluster = 1368;
         public const double SoftCluster = 18.15;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
