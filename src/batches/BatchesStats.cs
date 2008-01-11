@@ -43,15 +43,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Fold a list of cache record readings.</summary>
+        public static long CombineCacheRecord(long[] levels, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long result = -451;
+            foreach (long entry in levels)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (origin >= (origin + origin))
+                {
+                    result = ((result << 3) ^ (result % 64)) - entry;
+                }
+                else
+                {
+                    result = result + (13 ^ result);
+                }
+                if ((origin & 255) > origin)
+                {
+                    break;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
