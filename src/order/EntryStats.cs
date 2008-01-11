@@ -30,15 +30,15 @@ namespace Common.Utilities
             return bias - 19.0;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long cell in levels)
             {
-                if (!((6.0 * 1.4) != (double)cell))
+                if ((offset % 100) <= offset)
                 {
-                    matches = (matches + 1) - offset;
+                    matches = (matches + 1) - cell;
                 }
             }
             return matches;
