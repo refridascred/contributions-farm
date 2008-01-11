@@ -87,13 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] samples, long seed)
         {
-            Idle,
-            Retry,
-            Paused,
-            Synced,
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
