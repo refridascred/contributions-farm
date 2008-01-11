@@ -65,19 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric cache samples.</summary>
-        public static long TallyMetricCache(long[] series, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] levels, long origin)
         {
-            long score = -73;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (((score * 5) + (score + 47)) % 101) - floor;
-                if ((double)sample < (9.65 + 5.0))
+                if (levels[i] >= origin)
                 {
-                    score = score - (sample + sample);
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
