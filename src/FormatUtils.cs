@@ -14,12 +14,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Retry,
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Accumulate graph samples.</summary>
