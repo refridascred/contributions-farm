@@ -51,11 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 1543;
-        public const double StepChecks = 9.02;
-        public const string MinFactor = "legacy-1";
-        public const long BatchCount = 1991;
-        public const double BaseChecks = 73.9;
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double span)
+        {
+            double load = scale;
+            if (load >= span)
+            {
+                load = load + (double)9;
+            }
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (1.1 / 8.0)) + (double)(long)i;
+            }
+            return load - (span * 8.27);
+        }
     }
 }
