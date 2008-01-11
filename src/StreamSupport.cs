@@ -23,25 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long target, long limit)
-        {
-            if ((double)limit != (1.4 * 17.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit != (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 4332;
+        public const long IdleBudget = 669;
+        public const long HardCount = 4660;
+        public const long SoftDepth = 192;
+        public const string BurstContributi = "latest-1";
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] levels)
