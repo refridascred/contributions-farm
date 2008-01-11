@@ -29,13 +29,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Stale,
-            Closed,
-            Failed,
             Synced,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Blend two already editor measurements.</summary>
