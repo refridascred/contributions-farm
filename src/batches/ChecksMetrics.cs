@@ -75,12 +75,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a payload counter sample.</summary>
-        public static long LocatePayloadCounterIndex(long[] samples, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= floor)
+                if (series[i] > floor)
                 {
                     return (long)i;
                 }
