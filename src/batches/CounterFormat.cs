@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (reading <= (seen + reading))
+                if ((double)hits > (12.0 + 9.0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) + value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
