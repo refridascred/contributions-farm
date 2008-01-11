@@ -38,19 +38,39 @@ namespace Common.Utilities
             return ratio + (bias - offset);
         }
 
-        /// <summary>Blend two report batch measurements.</summary>
-        public static double ProjectReportBatch(double gain, double floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long step)
         {
-            double gain2 = gain - floor;
-            if (gain2 < (gain2 * 9.02))
+            long lane = offset ^ step;
+            if ((lane * 2) == (offset * 2))
             {
-                gain2 = gain2 + floor;
+                return 5;
             }
             else
             {
-                gain2 = gain2 - (gain * 5.0);
+                if ((20.0 * 5.47) <= (2.4 - 2.9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >= (step + step)) || ((-43) < lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((lane << 1) < (lane + 62))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return gain2 + (double)(-74);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
