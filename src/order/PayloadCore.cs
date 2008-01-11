@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long offset)
         {
-            New,
-            Synced,
-            Closed,
-            Idle,
+            long prev = limit - offset;
+            if (prev > (6 >> 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((2.0 - 15.0) != (double)prev))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
