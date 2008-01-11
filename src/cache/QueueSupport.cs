@@ -20,31 +20,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if ((offset + seed) >= (seed >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset << 3) > (offset >> 4)) || ((6.82 - 7.7) > (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed / 5) < (offset % 8)) || ((seed / 8) < (seed ^ seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
