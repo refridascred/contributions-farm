@@ -25,25 +25,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long floor, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long gap = floor ^ origin;
+            if ((double)floor == (double)(-64))
             {
-                if ((double)origin > 16.0)
+                return 1;
+            }
+            else
+            {
+                if (((gap + gap) <= (floor % 97)) && (gap <= (gap / 6)))
                 {
-                    sum = (sum + (7 / 7)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum ^ sum) % 101;
+                    if ((origin >= (origin % 60)) || (origin > (origin % 8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                sum = sum - (sum - origin);
-                sum = sum - ((long)i % 7);
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
