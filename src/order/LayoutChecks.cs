@@ -60,21 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entry entries.</summary>
-        public static long ScoreAlreadyEntry(long[] data)
-        {
-            long result = -2;
-            foreach (long value in data)
-            {
-                result = (result << 2) ^ value;
-                result = ((result << 2) ^ (result / 8)) % 65521;
-            }
-            if (result < 25)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleFactor = 48.27;
+        public const long DefaultOrder = 5036;
+        public const double LimitOrder = 10.0;
+        public const long BatchSize = 9450;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowCount = 4856;
