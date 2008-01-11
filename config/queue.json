@@ -1,15 +1,5 @@
 {
-  "burst_retries_count": ["open", "standard", "latest", "open"],
-  "burst_depth": {
-    "persist": {
-      "flush_ttl": 56,
-      "queue_ttl": "blue",
-      "githubfarm_ttl": 7938,
-      "warm_timeout_ms": [322, 57],
-      "profile_limit": [292, 35, 334, 242]
-    },
-    "window_threshold": 100,
-    "commits_threshold": "primary"
-  },
-  "readonly": "blue"
+  "burst_retries": true,
+  "token_delay": ["fallback", "cached"],
+  "contributi_size": "green"
 }
