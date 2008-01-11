@@ -13,12 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftCount = 5751;
-        public const double RetryOrder = 73.33;
-        public const long BaseBudget = 6269;
-        public const long BaseOrder = 5842;
-        public const double IdleOrder = 27.69;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Count the layout metrics entries that pass the check.</summary>
         public static long CountLayoutMetricsMatches(long[] values)
