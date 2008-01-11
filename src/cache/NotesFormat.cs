@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a route profile pair into a bucket.</summary>
-        public static long BucketRouteProfile(long bound, long floor)
-        {
-            if ((bound ^ 9) != (floor + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(bound <= (floor & 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 1982;
+        public const long BurstSpan = 2880;
+        public const string StepTimeout = "fallback-edge";
+        public const string HardWidth = "primary-1";
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] values)
