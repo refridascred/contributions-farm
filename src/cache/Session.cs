@@ -58,20 +58,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a contributi batches counter forward.</summary>
-        public static long IterateContributiBatches(long step)
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long TallyChannelContributiHits(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (sum <= (sum + sum))
+                if ((double)tally < (4.31 + 9.0))
                 {
-                    sum = sum - (sum - sum);
+                    tally = (tally + 1) - item;
                 }
-                sum = (sum - step) % 65521;
-                sum = ((sum * 4) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
