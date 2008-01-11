@@ -53,18 +53,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] items, long limit)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = 154;
-            foreach (long cell in items)
-            {
-                if ((long)items.Length >= (limit + cell))
-                {
-                    score = (score * 5) + (score ^ score);
-                }
-            }
-            return score % 97;
+            Queued,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the commits state values.</summary>
