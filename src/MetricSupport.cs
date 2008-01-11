@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long seed, long step)
         {
-            double gain = bias * 3.1;
-            if (gain < floor)
+            if ((double)seed <= (6.94 + 5.17))
             {
-                gain = gain - (gain + 13.0);
+                return 5;
             }
-            return gain - gain;
+            else
+            {
+                if (!((16.0 + 9.4) > (double)seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((622 >= (seed & 1)) || ((seed % 100) < seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
