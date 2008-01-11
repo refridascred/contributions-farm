@@ -72,25 +72,14 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-v2";
         public const long BatchScore = 8661;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long seed, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long diff = seed + floor;
-            if ((seed / 6) != (diff * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((diff + floor) != (diff + diff))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Active,
+            Done,
+            Ready,
+            Failed,
         }
     }
 }
