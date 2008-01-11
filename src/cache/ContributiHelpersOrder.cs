@@ -43,19 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] data, long floor)
+        /// <summary>Look up the position of a cache entry sample.</summary>
+        public static long FindCacheEntryIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > floor)
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
