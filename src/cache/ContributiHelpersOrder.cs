@@ -22,23 +22,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long floor, long target)
         {
-            long gap = limit ^ step;
-            if ((limit - gap) < (step + limit))
+            long step = floor + target;
+            if (!(floor < (target + floor)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (((limit % 10) != (6 ^ step)) && ((6.0 + 18.0) > (double)limit))
+                if ((70 - 408) >= step)
                 {
                     return 0;
                 }
                 else
                 {
-                    return 8;
+                    if ((5.12 >= (double)target) && ((floor % 24) < floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
