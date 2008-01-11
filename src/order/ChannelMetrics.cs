@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Active,
-            Failed,
-            Ready,
-            Retry,
+            Idle,
             Synced,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
