@@ -49,15 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] data, long bound)
         {
-            double scale = rate;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                scale = ((scale - (2.0 - scale)) + (double)(long)i) + span;
+                if (reading <= hits)
+                {
+                    hits = (hits + 1) + bound;
+                }
             }
-            return scale - (0.4 * 7.53);
+            return hits;
         }
     }
 }
