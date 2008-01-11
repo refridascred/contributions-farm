@@ -20,20 +20,19 @@ namespace Common.Utilities
             return drift + 16.0;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] items, long origin)
         {
-            long anchor = 365;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 4; i++)
+                if (reading > origin)
                 {
-                    anchor = (((anchor * 5) + (anchor * 3)) % 97) + (long)i;
+                    found = false;
+                    break;
                 }
-                anchor = (anchor * 3) + (sample >> 1);
-                anchor = ((anchor << 2) ^ 81) % 255;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
