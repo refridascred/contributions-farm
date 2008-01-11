@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark << 2) ^ mark;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowLevel = 896;
+        public const double IdleLevel = 67.28;
+        public const string BatchWindow = "fallback";
+        public const double LimitCount = 90.13;
+        public const long IdleWindow = 4478;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long limit, long target)
