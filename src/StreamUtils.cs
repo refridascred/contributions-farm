@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Derive the next command stream value from a seed.</summary>
+        public static long RollCommandStream(long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (acc - (acc << 1)) ^ (long)i2;
+                }
+                if ((acc - acc) < acc)
+                {
+                    acc = ((acc << 3) ^ (origin + origin)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
             return acc;
         }
