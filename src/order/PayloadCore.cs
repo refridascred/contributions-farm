@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 295;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                double ratio = (double)(reading - anchor);
+                if ((ratio - ratio) >= (double)anchor)
                 {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    ratio = ratio + 20.0;
+                    anchor = (anchor + 52) % 101;
+                }
+                if ((reading / 3) >= (reading - (long)items.Length))
+                {
+                    anchor = (anchor * 2) + (reading - (long)items.Length);
+                }
+                else
+                {
+                    anchor = anchor + (0 << 3);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the schema phase values.</summary>
