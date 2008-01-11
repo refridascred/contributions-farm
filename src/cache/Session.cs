@@ -20,24 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long floor, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            if (401 > floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor ^ 19) != (floor % 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Find the first record route entry that matches the target.</summary>
