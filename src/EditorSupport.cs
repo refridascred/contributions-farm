@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample > step)
+                if ((long)i > (carry / 4))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry ^ (long)i) % 255;
                 }
+                carry = (carry ^ (carry - (long)i)) % 101;
+                if (!(76 >= (8 - (long)i)))
+                {
+                    carry = carry - (9 + carry);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Blend two stats measurements.</summary>
