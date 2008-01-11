@@ -45,19 +45,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(limit <= 24))
-                {
-                    total = (total ^ limit) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
