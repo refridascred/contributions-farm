@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((reading & 31) <= (263 & 31)))
-                {
-                    count = count + 3;
-                }
+                total = (total + (step & 1)) % 1000;
+                total = ((total << 3) ^ (39 + total)) % 65521;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
