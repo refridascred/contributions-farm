@@ -53,18 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values, long bound)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item * 2) == (item / 3))
-                {
-                    hits = (hits + 2) - bound;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
