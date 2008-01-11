@@ -31,16 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account order counter forward.</summary>
-        public static long RollAccountOrder(long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double ratio, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            double drift = (double)12 * 16.0;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix * 3) + (mix >> 1)) % 255;
-                mix = ((mix * 4) + (long)i) % 65521;
+                drift = (((drift - (double)7) + (double)(long)i) - ratio) - span;
             }
-            return mix;
+            return drift - (double)7;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
