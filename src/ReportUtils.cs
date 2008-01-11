@@ -37,12 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "staging-1";
-        public const string BaseScore = "stable";
-        public const double MinInterval = 59.94;
-        public const double SoftFactor = 22.03;
-        public const long StepLevel = 60;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 1) >= matches)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] samples, long target)
