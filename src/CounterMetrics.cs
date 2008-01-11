@@ -39,12 +39,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
