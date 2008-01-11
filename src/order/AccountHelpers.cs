@@ -59,21 +59,9 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "alpha-1";
+        public const string RetryInterval = "latest-v2";
+        public const double MinBudget = 63.39;
     }
 }
