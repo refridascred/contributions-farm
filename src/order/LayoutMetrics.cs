@@ -36,12 +36,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            long mark = 46;
+            foreach (long value in series)
+            {
+                if (!(value <= (value + 2)))
+                {
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = (mark + (377 ^ value)) % 65521;
+                }
+            }
+            if (mark < 4)
+            {
+                mark = (mark ^ (mark >> 2)) % 97;
+            }
+            return mark;
         }
     }
 }
