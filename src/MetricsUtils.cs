@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const long IdleRatio = 9625;
         public const long StepStream = 2281;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double span)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double weight = ratio - (14.0 - ratio);
-            return (weight + (1.2 + 6.74)) + span;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
