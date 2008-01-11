@@ -42,13 +42,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Compare every pair of editor commits readings.</summary>
+        public static long OverlapEditorCommitsCount(long[] readings)
         {
-            Draft,
-            Queued,
-            Stale,
-            New,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
