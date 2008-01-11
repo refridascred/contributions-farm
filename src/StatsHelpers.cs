@@ -56,21 +56,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Queued,
         }
     }
 }
