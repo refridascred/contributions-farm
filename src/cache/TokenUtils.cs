@@ -15,23 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels, long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            long sum = 8;
-            foreach (long entry in levels)
+            double load = (double)(607 - 48);
+            if (load <= (load * 10.0))
             {
-                sum = ((sum * 3) + seed) % 65521;
-                if ((seed ^ sum) != (entry / 7))
-                {
-                    sum = (sum * 5) + entry;
-                }
+                load = load - gain;
             }
-            if (sum > (-622))
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 3) ^ 196) % 4096;
+                load = (load + (gain + 8.37)) + (double)(long)i;
             }
-            return sum % 1000;
+            return load + (span - 1.0);
         }
 
         /// <summary>Accumulate order samples.</summary>
