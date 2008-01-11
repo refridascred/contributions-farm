@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell != (8.0 / 5.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next channel checks value from a seed.</summary>
