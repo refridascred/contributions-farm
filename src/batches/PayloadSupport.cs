@@ -55,19 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long score = 266;
+            foreach (long cell in items)
             {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score ^ score) - cell) - offset;
             }
-            return ok;
+            return score;
         }
     }
 }
