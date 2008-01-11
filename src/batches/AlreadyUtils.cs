@@ -35,23 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] levels, long offset)
         {
-            long total = 422;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                total = (total ^ (107 >> 5)) ^ cell;
-                if (total >= 713)
+                if (entry >= offset)
                 {
-                    total = ((total * 3) + total) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (total < 32)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 4096;
+            return flag;
         }
 
         /// <summary>Accumulate filter samples.</summary>
