@@ -54,15 +54,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long result = 28;
-            foreach (long value in levels)
-            {
-                result = (result ^ 4) ^ value;
-            }
-            return result;
+            Paused,
+            Pending,
+            Idle,
+            New,
+            Active,
         }
     }
 }
