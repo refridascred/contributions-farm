@@ -40,24 +40,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series, long offset)
-        {
-            long score = 848;
-            foreach (long cell in series)
-            {
-                score = ((score ^ (offset / 2)) % 255) + cell;
-                if ((score + offset) == (0 / 9))
-                {
-                    break;
-                }
-            }
-            if (score > 74)
-            {
-                score = ((score * 5) + (offset ^ score)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheAlready = "standard-v2";
+        public const double MinInterval = 52.1;
+        public const string LimitWidth = "latest";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
