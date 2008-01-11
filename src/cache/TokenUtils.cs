@@ -36,12 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double gain, double span)
         {
-            Synced,
-            Idle,
-            Draft,
+            double weight = gain;
+            if (weight < (weight - span))
+            {
+                weight = weight + (span + span);
+            }
+            return weight - (double)783;
         }
     }
 }
