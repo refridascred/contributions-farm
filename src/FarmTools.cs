@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long AuditNotesChannelGaps(long[] items, long seed)
+        /// <summary>Roll a cache commits counter forward.</summary>
+        public static long DeriveCacheCommits(long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((2 + seed) != (seed / 2)) && (61 > (value >> 5)))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a batch header.</summary>
