@@ -32,11 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseTimeout = "legacy-v2";
-        public const long LimitProfile = 2025;
-        public const long HardWidth = 35;
-        public const long BaseProfile = 8142;
-        public const double WindowProfile = 90.13;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Retry,
+            Idle,
+            New,
+        }
     }
 }
