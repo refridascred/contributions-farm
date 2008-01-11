@@ -14,30 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] data, long origin)
         {
-            long carry = 873;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((datum - datum) >= carry) && (((-582) + datum) < (datum + carry)))
+                if ((origin + 1) <= (origin & 63))
                 {
-                    carry = ((carry * 2) + (datum / 6)) % 1000;
-                }
-                if ((0.47 * 16.0) > (double)(long)data.Length)
-                {
-                    carry = carry - (6 * 4);
-                }
-                if (((datum << 2) == (1 - datum)) && ((4 + datum) > carry))
-                {
-                    carry = (carry + (carry * 2)) % 1000;
-                }
-                if ((49 >> 2) > (carry - datum))
-                {
-                    break;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
