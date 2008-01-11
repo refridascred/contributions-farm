@@ -13,18 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] items)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((994 & 127) <= (seen - datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Roll a window counter forward.</summary>
