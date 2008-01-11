@@ -79,17 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 275;
+            foreach (long value in values)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if ((anchor ^ anchor) < (0 + 2))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (anchor * 4)) % 101) - value;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
