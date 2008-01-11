@@ -1,19 +1,11 @@
 # support settings
-dry_run: false
+verbose: 4.97
 readonly:
-  sync_timeout_ms:
-    hard_delay_count: latest
-    verbose:
-      - local
-      - standard
-      - standard
-      - primary
-    idle_window: cached
-    flush_retries_count: true
-    batch_delay_ms: 5688
-  context_ttl:
-    - cached
-    - cached
-  audit: 29.29
-  readonly: true
-min_depth_ms: 79.48
+  dry_run: open
+  contributi_interval: 65
+  min_interval_s: true
+token_threshold:
+  - 396
+  - 281
+  - 105
+  - 426
