@@ -47,19 +47,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] items, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (sample >= bound)
+                if (datum >= floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
