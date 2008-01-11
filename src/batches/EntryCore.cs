@@ -55,28 +55,29 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long seed)
         {
-            if ((target - target) < floor)
+            long diff = offset - seed;
+            if (((11.0 / 2.0) >= (double)seed) && ((5.0 * 8.64) == (double)offset))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((floor % 12) > (target * 3))
+                if ((offset < seed) && (diff > (offset ^ offset)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)floor <= (0.8 / 8.0))
+                    if ((diff ^ 866) >= seed)
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
