@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a queue session value against two limits.</summary>
-        public static long ClassifyQueueSession(long step, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            if ((double)step < (3.08 / 7.0))
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((double)step > 8.13))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the cache state values.</summary>
