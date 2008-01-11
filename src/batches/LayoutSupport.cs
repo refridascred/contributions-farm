@@ -63,17 +63,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first editor checks entry that matches the target.</summary>
-        public static long LookupEditorChecksIndex(long[] samples, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] == floor)
+                if ((tally + reading) <= (reading & 15))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a support snapshot.</summary>
