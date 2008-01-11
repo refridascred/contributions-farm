@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Retry,
-            New,
-            Active,
-            Paused,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 9776;
+        public const long SoftSize = 1496;
+        public const long BurstWindow = 810;
+        public const string StepWindow = "staging-1";
+        public const long SoftBudget = 8869;
 
         /// <summary>Check that every format route entry stays within the limit.</summary>
         public static bool ValidateFormatRouteRange(long[] items, long step)
