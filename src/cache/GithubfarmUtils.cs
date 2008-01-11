@@ -24,10 +24,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchSpan = 77.52;
-        public const string MinRatio = "standard-edge";
-        public const long WindowCount = 1551;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] readings)
