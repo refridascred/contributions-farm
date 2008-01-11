@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double gain, double bias)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            double drift = bias;
-            if (drift >= bias)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                drift = drift - (double)0;
+                anchor = ((anchor << 3) ^ (limit << 3)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return drift - gain;
+            return anchor;
         }
 
         /// <summary>Accumulate record report samples.</summary>
