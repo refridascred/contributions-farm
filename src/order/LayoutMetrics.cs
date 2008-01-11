@@ -26,38 +26,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long step, long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if ((seed >= (20 / 7)) && ((839 / 6) != (seed + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step + 618) != (seed >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3 + seed) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - seed) < (step % 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
