@@ -1,6 +1,23 @@
 {
-  "sync_interval_count": true,
-  "tools_ratio": "stable",
-  "batch_depth": false,
-  "audit": false
+  "metrics_ratio": 100,
+  "queue_size": "fallback",
+  "hard_capacity": "legacy",
+  "poll_ttl": {
+    "readonly": [294, 122, 250],
+    "batch_size": 85,
+    "context_delay": "open",
+    "compress": {
+      "strict": false,
+      "burst_threshold_ms": ["cached", "primary", "standard", "cached"],
+      "warm_timeout": [409, 221, 169]
+    },
+    "verbose": {
+      "poll_timeout_count": "stable",
+      "min_retries": "eu-west",
+      "stats_ratio": 8449,
+      "batch_depth_s": "open",
+      "token_timeout": false
+    }
+  },
+  "graph_interval": "eu-west"
 }
