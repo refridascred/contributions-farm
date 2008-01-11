@@ -35,18 +35,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long carry = 5;
+            foreach (long value in levels)
             {
-                if ((offset + reading) <= count)
+                carry = (carry ^ (carry - limit)) ^ value;
+                carry = ((carry << 3) ^ (limit * 5)) % 65521;
+                if ((limit * 3) <= (102 + limit))
                 {
-                    count = count + 3;
+                    carry = (carry << 2) ^ carry;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
