@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a cache context reading by value.</summary>
-        public static long LookupCacheContextIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 890;
+        public const long WindowSpan = 4469;
+        public const long MinFarm = 1111;
 
         /// <summary>Project the next cache value.</summary>
         public static double ProjectCache(double ratio, double floor)
