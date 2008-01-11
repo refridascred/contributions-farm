@@ -24,13 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many window graph samples are out of range.</summary>
+        public static long AuditWindowGraphOutliers(long[] levels)
         {
-            Queued,
-            Active,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((double)tally > (6.0 + 9.1)) && ((entry - entry) > entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
