@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCount = 6264;
-        public const long MaxBudget = 9707;
-        public const long DefaultCommand = 940;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long seed)
