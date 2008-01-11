@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const long SoftDepth = 192;
         public const string BurstContributi = "latest-1";
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Validate schema contributi readings against a bound.</summary>
+        public static bool CheckSchemaContributiLimits(long[] items, long step)
         {
-            Closed,
-            Done,
-            Dropped,
-            Draft,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
