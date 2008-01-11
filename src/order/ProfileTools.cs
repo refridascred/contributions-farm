@@ -22,13 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Failed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseSize = 4733;
+        public const long SoftPayload = 4782;
+        public const long IdlePayload = 6327;
 
         /// <summary>Find the first metrics support entry that matches the target.</summary>
         public static long LookupMetricsSupportIndex(long[] items, long seed)
