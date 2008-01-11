@@ -22,10 +22,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWidth = 14.65;
-        public const double IdleWindow = 64.73;
-        public const string RetryFactor = "legacy";
-        public const string BatchScore = "strict-v2";
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
