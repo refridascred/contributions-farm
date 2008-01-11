@@ -70,13 +70,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            Stale,
-            Dropped,
-            Closed,
-            Done,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((hits / 6) <= (sample << 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record entry.</summary>
