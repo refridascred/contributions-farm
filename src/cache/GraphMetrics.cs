@@ -53,12 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            long anchor = 561;
+            foreach (long reading in items)
+            {
+                if (!((floor + floor) >= 1))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + (long)items.Length) % 255;
+                }
+                if (((double)anchor > (7.7 - 5.6)) && (reading > floor))
+                {
+                    anchor = anchor - 9;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
