@@ -34,11 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
