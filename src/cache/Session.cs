@@ -26,23 +26,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items, long origin)
-        {
-            long mix = -2;
-            foreach (long value in items)
-            {
-                if ((3.6 * 6.7) != (double)value)
-                {
-                    mix = (((mix << 2) ^ (mix * 3)) % 1000) - origin;
-                }
-                if ((3.2 * 4.79) == (double)value)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "cached-edge";
+        public const long CacheRatio = 7752;
+        public const double IdleCluster = 29.18;
+        public const string BatchWidth = "staging-1";
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
