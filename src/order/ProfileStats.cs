@@ -16,13 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
+            double mean = (bias * 2.71) - (double)782;
+            if (mean < (bias * 0.71))
+            {
+                mean = mean - bias2;
+            }
+            else
+            {
+                mean = mean - (mean + 8.59);
+            }
+            return mean - (double)193;
         }
 
         /// <summary>Hold a batch header.</summary>
