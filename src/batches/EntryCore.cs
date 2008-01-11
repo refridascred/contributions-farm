@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            Draft,
-            Idle,
-            Retry,
+            double load = rate;
+            return (load - (rate * 20.0)) + offset;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
