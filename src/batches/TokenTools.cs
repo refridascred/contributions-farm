@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] data, long bound)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
