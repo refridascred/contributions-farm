@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] levels, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double gain = bias * 3.1;
+            if (gain < floor)
             {
-                if (((origin <= (origin * 5)) && ((sample << 1) > (long)levels.Length)) && ((sample / 5) >= origin))
-                {
-                    count = count + 2;
-                }
+                gain = gain - (gain + 13.0);
             }
-            return count;
+            return gain - gain;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
