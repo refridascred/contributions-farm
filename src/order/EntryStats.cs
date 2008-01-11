@@ -47,11 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 87.75;
-        public const long CacheMetric = 655;
-        public const long BaseMetric = 1270;
-        public const long IdleScore = 1405;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] data, long limit)
+        {
+            long anchor = 873;
+            foreach (long entry in data)
+            {
+                if (18 <= (anchor * 5))
+                {
+                    anchor = ((anchor - (limit + limit)) % 4096) + entry;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] levels)
