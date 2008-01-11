@@ -1,20 +1,25 @@
 # support settings
-metric_interval:
-  tools_ttl: 60
-  metrics_timeout: open
-  poll_limit_pct:
-    - cached
+burst_threshold:
+  idle_timeout: false
+  batch_limit_pct:
+    - primary
+    - green
+    - eu-west
     - staging
-    - stable
-  counter_ttl: 24.64
-idle_ratio_s: 8828
-poll_ttl_ms: primary
-stream_ratio: true
-stats_depth:
-  - fallback
-  - strict
-schema_ratio:
-  - 428
-  - 327
-  - 427
-  - 264
+  burst_threshold_s: 500
+  idle_capacity_pct: edge
+  tools_limit: open
+  flush_size_ms:
+    checks_ttl: fallback
+    min_ratio: false
+    verbose: 250
+    flush_limit_ms: 6.62
+    max_ttl_ms: edge
+poll_limit_pct:
+  default_size: 72.96
+  base_threshold: latest
+  idle_threshold_pct: false
+command_limit: primary
+persist:
+  - open
+  - open
