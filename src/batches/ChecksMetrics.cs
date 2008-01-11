@@ -37,10 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardRatio = 94.42;
-        public const string CacheNotes = "stable-1";
-        public const long BaseNotes = 7344;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values, long bound)
+        {
+            long state = 6;
+            foreach (long value in values)
+            {
+                state = (((state * 4) + (value >> 1)) % 255) - bound;
+                state = state + (value + value);
+            }
+            if (state > 47)
+            {
+                state = state + (state + state);
+            }
+            return state % 97;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] items, long floor)
