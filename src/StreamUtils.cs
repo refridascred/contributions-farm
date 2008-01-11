@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] levels, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((double)tally > (9.5 * 0.3))
+                {
+                    tally = ((tally + 1) - reading) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Match up contributi samples.</summary>
