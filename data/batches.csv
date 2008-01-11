@@ -1,6 +1,8 @@
-id,count,active,token
-1,78,strict,primary
-2,8.89,green,open
-3,79.47,strict,open
-4,15.48,28.2,195
-5,385,staging,889
+id,ratio,count
+1,90.51,838
+2,legacy,60.19
+3,87,cached
+4,362,817
+5,747,333
+6,168,green
+7,502,latest
