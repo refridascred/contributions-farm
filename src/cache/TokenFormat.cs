@@ -32,19 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values, long floor)
-        {
-            long carry = -59;
-            foreach (long reading in values)
-            {
-                carry = carry + floor;
-                if ((double)reading < (9.3 - 1.53))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseTimeout = "legacy-v2";
+        public const long LimitProfile = 2025;
+        public const long HardWidth = 35;
+        public const long BaseProfile = 8142;
+        public const double WindowProfile = 90.13;
     }
 }
