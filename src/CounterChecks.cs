@@ -38,14 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Queued,
-            Paused,
-            Locked,
-            Failed,
-            Retry,
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
