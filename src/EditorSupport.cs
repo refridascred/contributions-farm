@@ -70,10 +70,14 @@ namespace Common.Utilities
             return scale + (bias * 6.64);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2263;
-        public const string RetryPayload = "latest-v2";
-        public const long SoftPayload = 7615;
-        public const long LimitLevel = 3872;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Closed,
+            Failed,
+            Pending,
+            Retry,
+            Queued,
+        }
     }
 }
