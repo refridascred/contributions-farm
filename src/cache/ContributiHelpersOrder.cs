@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] series, long bound)
+        /// <summary>Match up order route samples.</summary>
+        public static long OverlapOrderRouteCount(long[] values)
         {
-            long anchor = 2;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor <= (cell / 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (anchor / 3)) % 97) + bound;
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 59)
-            {
-                anchor = ((anchor * 3) + anchor) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
