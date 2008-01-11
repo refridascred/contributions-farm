@@ -42,14 +42,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Pending,
+            Draft,
+            Stale,
             Queued,
-            Synced,
-            Closed,
-            Retry,
+            Paused,
         }
     }
 }
