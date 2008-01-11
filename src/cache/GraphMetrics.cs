@@ -53,24 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long floor, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            if ((double)limit <= (3.0 / 3.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit << 3) != (1 + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
