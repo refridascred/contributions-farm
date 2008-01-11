@@ -34,12 +34,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long bound)
         {
-            Idle,
-            Active,
-            Paused,
+            long anchor = 6;
+            foreach (long value in data)
+            {
+                if (((double)anchor != (double)(-78)) || ((1.68 + 16.0) != (double)bound))
+                {
+                    anchor = anchor - (value * 5);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (value - anchor)) % 65521;
+                }
+            }
+            if (anchor < 73)
+            {
+                anchor = (anchor * 2) + (anchor << 3);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the schema state values.</summary>
