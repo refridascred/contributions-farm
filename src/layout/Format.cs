@@ -41,5 +41,20 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double floor)
+        {
+            double mean = (double)(0 ^ 40);
+            if (mean <= 3.9)
+            {
+                mean = (mean - weight) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + weight) - (double)(long)i;
+            }
+            return mean + (double)(-922);
+        }
     }
 }
