@@ -1,5 +1,5 @@
 # support settings
-window_limit: fallback
-warm_size_pct: 2001
-dry_run: local
-hard_ratio_s: standard
+audit: 11
+burst_timeout_pct: latest
+compress: 93.33
+batch_retries: 81.01
