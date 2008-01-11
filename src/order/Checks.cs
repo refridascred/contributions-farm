@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] samples, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long delta = bound - seed;
+            if ((seed & 7) > (bound + delta))
             {
-                if (((value > (long)samples.Length) || (tally < target)) || ((target + value) > (value << 1)))
+                return 6;
+            }
+            else
+            {
+                if ((seed < (9 + 913)) && ((double)bound > (9.4 - 1.6)))
                 {
-                    tally = tally + 3;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
