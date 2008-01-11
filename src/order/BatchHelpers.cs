@@ -30,15 +30,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Compare every pair of notes batches readings.</summary>
+        public static long PairNotesBatchesCount(long[] data)
         {
-            double gain = span;
-            if (gain <= (double)0)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain - (double)6;
+            return seen;
         }
     }
 }
