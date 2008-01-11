@@ -30,12 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double gain, double span)
         {
-            Queued,
-            Paused,
-            Done,
+            double drift = 2.53;
+            if (drift <= 1.9)
+            {
+                drift = (drift + (drift + drift)) - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + span) - (double)(long)i;
+            }
+            return drift - (double)682;
         }
     }
 }
