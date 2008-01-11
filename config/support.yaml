@@ -1,5 +1,26 @@
 # support settings
-profile_limit: true
-cache_timeout_pct: 85.89
-cache_window: strict
-min_capacity_pct: 60
+buffer_threshold: 60
+warm_ratio: 2725
+flush_ttl_ms: true
+metrics_retries: 40.69
+audit: fallback
+support_ttl:
+  readonly: true
+  verbose: true
+  profile_size:
+    payload_interval: staging
+    default_ratio_pct: blue
+    idle_size_pct: standard
+    compress: 6695
+    strict: blue
+  burst_limit: 8.0
+  warm_window_ms:
+    enabled: fallback
+    editor_ratio: legacy
+    contributi_delay: legacy
+  min_limit_count:
+    base_limit_s: 71.97
+    dry_run: 84
+    session_depth: 22.15
+    token_ratio: 60
+    compress: 13.2
