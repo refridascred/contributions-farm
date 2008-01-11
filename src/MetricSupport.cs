@@ -25,23 +25,34 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter queue samples.</summary>
-        public static long CombineFilterQueue(long[] data)
+        /// <summary>Digest a series of layout commits entries.</summary>
+        public static long TallyLayoutCommits(long[] data, long step)
         {
-            long anchor = 7;
-            foreach (long cell in data)
+            long sum = 24;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 2) + (cell >> 1)) % 4096;
-                if ((1.36 * 2.08) < (double)cell)
+                if (!((step * 5) <= (entry * 4)))
                 {
-                    anchor = (anchor + ((-3) * 4)) % 255;
+                    sum = (sum + (step - step)) % 101;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (((sum << 3) ^ 1) % 65521) + (long)i;
+                }
+                if ((double)step < (4.0 + 2.1))
+                {
+                    sum = (sum ^ (step - 239)) % 65521;
                 }
                 else
                 {
-                    anchor = (anchor * 3) + (cell + anchor);
+                    sum = (sum - (2 ^ step)) % 65521;
                 }
             }
-            return anchor;
+            if (sum < 8)
+            {
+                sum = ((sum * 3) + sum) % 1000;
+            }
+            return sum;
         }
     }
 }
