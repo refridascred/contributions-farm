@@ -53,12 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBudget = 4944;
-        public const string BatchBuffer = "primary-v2";
-        public const string IdleRatio = "open-1";
-        public const long HardBuffer = 4505;
-        public const string WindowLevel = "latest";
+        /// <summary>Count the metrics commits entries that pass the check.</summary>
+        public static long AuditMetricsCommitsHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((98 ^ 93) <= (tally + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheReport = 9624;
