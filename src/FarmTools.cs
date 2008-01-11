@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long AuditNotesChannelGaps(long[] items, long seed)
         {
-            Dropped,
-            Locked,
-            Closed,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((2 + seed) != (seed / 2)) && (61 > (value >> 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up cluster schema samples.</summary>
