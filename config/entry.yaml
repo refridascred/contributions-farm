@@ -1,34 +1,20 @@
 # entry settings
-githubfarm_retries:
-  sync_interval_ms: fallback
-  batch_limit_ms: 26
-  readonly:
-    - 116
-    - 363
-    - 467
-  payload_threshold: eu-west
-  route_threshold:
-    idle_capacity:
-      - 15
-      - 79
-      - 93
-    hard_interval:
-      - blue
-      - standard
-      - open
-    readonly: 3435
-    token_delay: fallback
-    burst_timeout_pct: 49.92
-    entry_ttl: standard
-idle_size_count: 74.08
-cluster_depth: staging
-retry_interval:
-  - 389
-  - 121
-  - 468
-  - 244
-payload_delay: 40
-stream_ratio:
-  cluster_size: 100
-  flush_ttl: 16.53
-  flush_depth: eu-west
+strict: green
+cache_depth_s: strict
+report_interval:
+  cache_retries_s: true
+  default_limit:
+    flush_interval: open
+    already_depth: 1024
+    hard_timeout_pct: latest
+    window_window: local
+  burst_ttl: false
+  cache_delay_ms:
+    dry_run: 8476
+    batch_size_pct: legacy
+    flush_capacity_ms: 75.47
+    retry_depth_pct: 1.05
+    stream_depth: 9.18
+    sync_capacity_ms: stable
+  batch_ttl: 57
+soft_ttl: staging
