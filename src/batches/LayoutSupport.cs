@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            Idle,
-            Retry,
-            Stale,
-            Dropped,
+            long prev = origin - limit;
+            if (((double)prev < (double)origin) && ((limit << 2) < (origin ^ (-27))))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin - limit) == (prev + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin == (6.9 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((2 ^ origin) >= (limit % 12)) || ((prev / 6) > (origin + prev)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
