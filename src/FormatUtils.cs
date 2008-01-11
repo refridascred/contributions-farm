@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Paused,
-            Retry,
-            Draft,
-            Closed,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 18.28;
+        public const double BaseFactor = 85.43;
+        public const long BatchSupport = 5026;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] series, long offset)
