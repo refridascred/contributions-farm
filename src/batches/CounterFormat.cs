@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long origin, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long origin)
         {
-            if (((step - step) > origin) || ((double)329 > (double)origin))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((step + 30) >= step))
+                if (item <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
