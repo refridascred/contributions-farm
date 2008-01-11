@@ -31,19 +31,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double bias = scale + (scale - offset);
-            if (bias <= (double)(-63))
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (offset / 7.0);
+            Active,
+            Draft,
+            Stale,
+            Retry,
+            Synced,
         }
     }
 }
