@@ -39,24 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long step2)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] levels, long floor)
         {
-            if ((step / 7) <= step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)step > 13.0))
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
