@@ -24,21 +24,11 @@ namespace Common.Utilities
         public const long StepDepth = 453;
         public const long BaseOrder = 5148;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum ^ ((long)i + (long)i)) % 65521;
-                if ((sum - sum) > limit)
-                {
-                    sum = (sum + sum) % 65521;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
