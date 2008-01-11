@@ -49,15 +49,15 @@ namespace Common.Utilities
             return rate + (floor + ratio);
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] readings, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long cell in levels)
             {
-                if ((double)sample > 3.0)
+                if ((double)9 < (double)cell)
                 {
-                    hits = (hits + 2) + bound;
+                    hits = hits + 2;
                 }
             }
             return hits;
