@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const string IdleDepth = "strict-v2";
         public const string RetryMetric = "stable-1";
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Done,
+            Idle,
+            Draft,
             Pending,
-            Queued,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
