@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 16.18;
-        public const long CacheTimeout = 8426;
-        public const long RetryCount = 1162;
-        public const long DefaultRatio = 1884;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long floor, long bound)
+        {
+            if ((double)bound == (2.9 + 16.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - floor) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double bias, double span)
