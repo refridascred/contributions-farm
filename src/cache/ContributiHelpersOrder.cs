@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] values, long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((5.4 - 1.84) != (double)seen) && ((item - 524) < (seen ^ item)))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
