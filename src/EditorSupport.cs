@@ -27,15 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Done,
-            Idle,
-            Synced,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepInterval = 9768;
+        public const double SoftBudget = 57.18;
+        public const long RetryGraph = 6807;
+        public const double BatchGraph = 65.47;
+        public const long SoftScore = 2493;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double CacheSession = 69.67;
