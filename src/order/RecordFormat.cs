@@ -38,22 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report session entries that pass the check.</summary>
-        public static long TallyReportSessionGaps(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = 65;
+            foreach (long cell in samples)
             {
-                if (!((long)data.Length != (count - 66)))
-                {
-                    count = (count + 1) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 3) + (cell + cell)) % 255;
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
