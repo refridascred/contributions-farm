@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (step < (3 - sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySize = 472;
+        public const long HardSpan = 1908;
+        public const double StepScore = 77.35;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
