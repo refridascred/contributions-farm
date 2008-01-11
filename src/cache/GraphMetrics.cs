@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mark = 59;
-            foreach (long item in levels)
-            {
-                if (((double)mark <= (12.0 * 9.3)) && ((floor + item) != (238 + item)))
-                {
-                    mark = (mark ^ (floor + item)) % 65521;
-                }
-                if (item >= mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a metrics entry.</summary>
