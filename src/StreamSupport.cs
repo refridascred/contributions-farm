@@ -38,9 +38,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSpan = "cached-v2";
-        public const double MaxRatio = 95.27;
-        public const long HardSupport = 2816;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long floor, long offset)
+        {
+            if (floor <= (floor % 60))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.11 + 7.16) == (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
