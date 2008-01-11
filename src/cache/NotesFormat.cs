@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples, long limit)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long mix = 251;
+            foreach (long sample in samples)
+            {
+                if (!((double)sample != (11.0 + 5.55)))
+                {
+                    mix = (mix ^ ((long)samples.Length + 13)) % 65521;
+                }
+                if ((mix % 60) <= mix)
+                {
+                    mix = (mix ^ (limit - sample)) % 1000;
+                }
+            }
+            if (mix < 5)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
