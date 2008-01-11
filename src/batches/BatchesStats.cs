@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double bias = weight;
-            if (bias <= (1.03 + bias))
-            {
-                bias = bias + (offset + bias);
-            }
-            else
-            {
-                bias = bias + weight;
-            }
-            return bias - (weight * 16.0);
+            Failed,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Digest a series of payload farm entries.</summary>
