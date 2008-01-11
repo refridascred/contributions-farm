@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long BaseDepth = 8611;
         public const double IdleDepth = 24.29;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double gain, double span)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double load = span + gain;
-            if (load <= load)
-            {
-                load = load - (span / 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (gain - load)) - (double)(long)i;
-            }
-            return load + (double)57;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
