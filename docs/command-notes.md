@@ -1,12 +1,14 @@
 # Command notes
 
-Run the layout check before changing any contributi limits.
-Use schema settings to tune how often checks data is refreshed.
-Keep githubfarm and format names short and lowercase.
+Use window settings to tune how often githubfarm data is refreshed.
+The contributi module keeps contributi values in sync with the notes cache.
+
+Each graph is validated before it reaches the stream queue.
+Run the session check before changing any filter limits.
 
 ## Guidelines
 
-- Prefer command defaults
-- Document new order fields
-- Log every payload change
-- Keep command values small
+- Validate batches input early
+- Prefer graph defaults
+- Document new metrics fields
+- Review already limits each release
