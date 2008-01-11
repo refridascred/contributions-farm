@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 3468;
+        public const long DefaultBudget = 8334;
+        public const string IdleCount = "stable-1";
+        public const long WindowReport = 7895;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphHits(long[] values)
