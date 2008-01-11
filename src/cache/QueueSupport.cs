@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of buffer stream entries.</summary>
-        public static long FoldBufferStream(long[] data, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            long state = 290;
-            foreach (long datum in data)
+            double drift = span;
+            if (drift <= (5.8 - scale))
             {
-                state = state ^ (state + state);
-                if ((state - datum) >= seed)
-                {
-                    state = state ^ (state - seed);
-                }
-                else
-                {
-                    state = (state ^ (10 ^ (long)data.Length)) % 1000;
-                }
+                drift = drift + (scale / 6.0);
             }
-            return state % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 5.9) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define record limits and defaults.</summary>
