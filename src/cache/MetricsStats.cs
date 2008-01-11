@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long BaseBudget = 6888;
         public const long SoftScore = 1019;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 88.03;
+        public const double DefaultSpan = 81.17;
+        public const double BatchAccount = 32.38;
 
         /// <summary>Fold a list of editor githubfarm readings.</summary>
         public static long TallyEditorGithubfarm(long[] readings, long floor)
