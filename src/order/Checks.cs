@@ -23,10 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 3879;
-        public const long BaseCount = 1080;
-        public const double RetryTimeout = 5.93;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Closed,
+            Draft,
+            New,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Measure how many context route samples are out of range.</summary>
         public static long CountContextRouteMatches(long[] data, long offset)
