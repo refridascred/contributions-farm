@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double drift = offset;
+            if (drift <= (offset - drift))
             {
-                if ((double)item < (1.0 - 7.32))
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift + drift) - gain;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift + 16.0;
         }
 
         /// <summary>Match up record samples.</summary>
