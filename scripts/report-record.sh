@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local; do
+mode="${1:-blue}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in standard stable latest; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=185
-log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
