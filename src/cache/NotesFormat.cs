@@ -24,19 +24,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next stats queue value.</summary>
-        public static double ScaleStatsQueue(double bias, double offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long origin)
         {
-            double ratio = offset;
-            if (ratio >= (double)247)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                ratio = ratio + ratio;
+                if (3.5 < (double)sample)
+                {
+                    seen = (seen + 1) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - 0.7) - (double)(long)i;
-            }
-            return ratio + bias;
+            return seen;
         }
     }
 }
