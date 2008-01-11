@@ -88,12 +88,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Paused,
-            Dropped,
-            Idle,
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Validate format editor readings against a bound.</summary>
