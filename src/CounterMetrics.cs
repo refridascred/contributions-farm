@@ -39,31 +39,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            if ((0.09 + 9.3) >= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((1.05 * 4.0) == (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin > (origin * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
