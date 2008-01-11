@@ -35,19 +35,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] readings, long offset)
         {
-            bool found = true;
+            bool valid = true;
             foreach (long sample in readings)
             {
-                if (sample < seed)
+                if (sample < offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
