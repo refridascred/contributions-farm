@@ -21,14 +21,25 @@ namespace Common.Utilities
         public const double MaxFarm = 59.33;
         public const double IdleFarm = 13.89;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long step, long step2)
         {
-            Active,
-            Draft,
-            Stale,
-            Retry,
-            Synced,
+            long diff = step ^ step2;
+            if ((double)step != (double)step2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((diff >> 3) > (step2 - 775))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
