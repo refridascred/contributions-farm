@@ -32,23 +32,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double rate = floor + (floor * 7.2);
-            if (rate < (rate / 4.0))
-            {
-                rate = (rate - rate) + ratio;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - (floor - floor);
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
