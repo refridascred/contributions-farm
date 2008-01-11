@@ -21,13 +21,9 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleBudget = 33.48;
+        public const long HardChecks = 9732;
+        public const long SoftTimeout = 3820;
     }
 }
