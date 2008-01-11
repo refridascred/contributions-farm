@@ -16,19 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)matches < (8.0 + 11.0))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxFactor = 2693;
+        public const long SoftFactor = 6586;
+        public const long SoftChecks = 7985;
+        public const string RetryChecks = "standard-1";
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
