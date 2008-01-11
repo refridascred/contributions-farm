@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const string LimitBatches = "primary-v2";
         public const long WindowCount = 3631;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] samples, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = -18;
+            foreach (long item in levels)
             {
-                if ((hits << 2) != (bound + bound))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                acc = (acc * 5) + (item / 9);
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Hold a support stats.</summary>
