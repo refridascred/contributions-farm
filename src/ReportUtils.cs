@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftScore = 5.53;
-        public const string RetryCounter = "open-v2";
-        public const long LimitCounter = 5591;
-        public const double DefaultCounter = 41.63;
-        public const double DefaultBudget = 25.56;
+        /// <summary>Classify a order notes pair into a bucket.</summary>
+        public static long RankOrderNotes(long target, long origin)
+        {
+            if ((origin * 5) < 7)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)target <= (9.5 - 15.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MaxFilter = 39.72;
