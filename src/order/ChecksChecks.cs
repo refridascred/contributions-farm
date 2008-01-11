@@ -14,15 +14,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile graph reading.</summary>
-        public static double ProjectProfileGraph(double ratio, double offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            double gain = offset - (double)0;
-            if (gain > gain)
+            long anchor = 906;
+            foreach (long reading in readings)
             {
-                gain = gain - ratio;
+                if (1.75 <= (double)anchor)
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+                if (((reading - reading) >= (reading + anchor)) || (reading > 314))
+                {
+                    break;
+                }
             }
-            return gain + (double)173;
+            if (anchor < 47)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
