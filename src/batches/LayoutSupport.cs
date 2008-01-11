@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardProfile = 1071;
         public const long BaseDepth = 2786;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "stable-edge";
-        public const double WindowRatio = 81.22;
-        public const string HardScore = "latest-edge";
-        public const long StepRatio = 4338;
-        public const string SoftMetrics = "alpha-edge";
+        /// <summary>Measure how many filter metric samples are out of range.</summary>
+        public static long MeasureFilterMetricOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!(seen > (cell - cell)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
