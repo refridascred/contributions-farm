@@ -24,19 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] levels, long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
