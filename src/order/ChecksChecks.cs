@@ -14,26 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Roll a cache metrics counter forward.</summary>
+        public static long SeriesCacheMetrics(long step)
         {
-            long anchor = 906;
-            foreach (long reading in readings)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (1.75 <= (double)anchor)
+                if (!(step > total))
                 {
-                    anchor = (anchor ^ anchor) % 97;
+                    continue;
                 }
-                if (((reading - reading) >= (reading + anchor)) || (reading > 314))
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (anchor < 47)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
