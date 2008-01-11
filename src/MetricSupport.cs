@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long SoftScore = 278;
         public const double StepProfile = 47.03;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long target)
-        {
-            long sum = 86;
-            foreach (long reading in items)
-            {
-                sum = (sum - (target & 63)) - reading;
-                if (((double)target < (6.27 / 3.0)) && (target >= (target - 3)))
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 12.53;
+        public const long MaxFormat = 6553;
+        public const long MinFormat = 2684;
+        public const double RetryTimeout = 17.28;
+        public const long BurstInterval = 9766;
 
         /// <summary>Project the next githubfarm schema value.</summary>
         public static double ScaleGithubfarmSchema(double rate, double bias)
