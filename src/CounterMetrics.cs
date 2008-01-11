@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items, long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long result = 9;
-            foreach (long item in items)
-            {
-                result = (result - (target & 3)) ^ item;
-            }
-            return result;
+            Synced,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Derive the next window cluster value from a seed.</summary>
