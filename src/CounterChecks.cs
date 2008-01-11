@@ -62,18 +62,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long CountOrderCommandMatches(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)item <= (2.3 - 1.2))
+                sum = ((sum << 3) ^ sum) % 255;
+                if ((target <= (sum ^ sum)) || (sum > (sum + 362)))
                 {
-                    tally = tally + 2;
+                    sum = (sum ^ (sum << 1)) % 65521;
                 }
+                else
+                {
+                    sum = (sum * 2) + (target % 60);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
