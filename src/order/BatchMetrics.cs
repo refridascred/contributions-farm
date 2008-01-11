@@ -53,10 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheDepth = 8.8;
-        public const double DefaultGithubfarm = 84.98;
-        public const string StepGithubfarm = "fallback-v2";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Draft,
+            Done,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
