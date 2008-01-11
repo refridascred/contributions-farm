@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((score <= (seed * 5)) || ((9 - score) <= seed))
-                {
-                    score = (score - (score ^ (long)i)) % 4096;
-                }
-                else
-                {
-                    score = (score - (long)i) % 97;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Pending,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a notes stats.</summary>
