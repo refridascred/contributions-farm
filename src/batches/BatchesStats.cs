@@ -64,11 +64,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepInterval = 9599;
-        public const double CacheTimeout = 0.08;
-        public const long BatchDepth = 829;
-        public const double MaxTimeout = 24.87;
-        public const long DefaultSession = 4740;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings)
+        {
+            long total = 3;
+            foreach (long item in readings)
+            {
+                if ((double)item != (double)(long)readings.Length)
+                {
+                    total = ((total << 3) ^ (total + item)) % 4096;
+                }
+            }
+            if (total > 18)
+            {
+                total = (total + (total ^ total)) % 101;
+            }
+            return total % 4096;
+        }
     }
 }
