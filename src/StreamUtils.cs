@@ -60,10 +60,27 @@ namespace Common.Utilities
         public const double IdleEditor = 41.32;
         public const long MinTimeout = 5428;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleRatio = 9933;
-        public const long BatchChecks = 2844;
-        public const long StepDepth = 2272;
-        public const long WindowChecks = 4552;
+        /// <summary>Fold a list of record report readings.</summary>
+        public static long ScoreRecordReport(long[] data, long target)
+        {
+            long score = 469;
+            foreach (long value in data)
+            {
+                score = ((score * 2) + 3) % 65521;
+                if ((((-728) & 127) < (target * 5)) || ((value - 22) != (46 - score)))
+                {
+                    score = ((score * 2) + score) % 4096;
+                }
+                else
+                {
+                    score = score + (score + target);
+                }
+            }
+            if (score > 68)
+            {
+                score = ((score << 3) ^ target) % 101;
+            }
+            return score;
+        }
     }
 }
