@@ -23,21 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the metric state values.</summary>
