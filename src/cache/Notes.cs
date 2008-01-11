@@ -56,18 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor order entries that pass the check.</summary>
-        public static long AuditEditorOrderGaps(long[] items, long floor)
+        /// <summary>Combine metric token values into a single score.</summary>
+        public static long TallyMetricToken(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = 76;
+            foreach (long value in items)
             {
-                if ((cell - tally) >= cell)
-                {
-                    tally = (tally + 3) + floor;
-                }
+                sum = sum - (value ^ sum);
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
