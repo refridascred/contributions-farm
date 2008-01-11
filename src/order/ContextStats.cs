@@ -24,24 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats batch counter forward.</summary>
-        public static long DeriveStatsBatch(long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] data, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (cell != floor)
                 {
-                    mark = (((mark << 3) ^ step) % 4096) - (long)i2;
-                    mark = mark - (76 >> 3);
+                    valid = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mark = (((mark * 3) + (mark << 2)) % 4096) ^ (long)i3;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Accumulate order samples.</summary>
