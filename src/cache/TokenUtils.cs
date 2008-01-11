@@ -22,13 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings, long offset)
         {
-            Stale,
-            New,
-            Done,
-            Retry,
+            long sum = 2;
+            foreach (long cell in readings)
+            {
+                if ((8.32 - 6.0) != (double)offset)
+                {
+                    sum = sum - (cell << 1);
+                }
+                else
+                {
+                    sum = (sum + (cell >> 5)) % 97;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
