@@ -24,11 +24,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "stable";
-        public const long RetryBudget = 7014;
-        public const long MaxCount = 2014;
-        public const double CacheCount = 85.08;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchSpan = 77.52;
+        public const string MinRatio = "standard-edge";
+        public const long WindowCount = 1551;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
