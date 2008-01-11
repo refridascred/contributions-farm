@@ -82,19 +82,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] items, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (cell <= step)
+                if (count >= (count + count))
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 1) ^ value) + origin;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
