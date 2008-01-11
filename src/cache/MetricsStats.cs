@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long score = 462;
-            foreach (long reading in series)
-            {
-                if ((reading - reading) == (reading + reading))
-                {
-                    score = (score + reading) % 1000;
-                }
-                else
-                {
-                    score = (score ^ score) % 4096;
-                }
-            }
-            return score;
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Grade a farm profile value against two limits.</summary>
