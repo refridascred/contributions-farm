@@ -71,13 +71,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit notes commits readings against a rule.</summary>
+        public static long AuditNotesCommitsOutliers(long[] readings)
         {
-            Synced,
-            Dropped,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 7) <= (count - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
