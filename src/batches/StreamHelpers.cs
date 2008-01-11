@@ -16,18 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen ^ cell) >= (seen & 31))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Retry,
+            Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Scale a format githubfarm figure with a bias.</summary>
