@@ -22,32 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long offset, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long offset2 = offset ^ limit;
-            if ((offset >> 2) > 3)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset2 > (4.0 * 18.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset2 ^ 57) == (limit >> 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
