@@ -1,12 +1,23 @@
 {
-  "stream_interval": "strict",
-  "burst_limit": [269, 270],
-  "stats_limit": "eu-west",
-  "flush_window": "cached",
-  "stream_ttl": {
-    "cache_threshold_ms": "fallback",
-    "compress": 250,
-    "stats_depth": 6575
+  "flush_interval_count": {
+    "base_window": 33,
+    "poll_timeout_count": 500,
+    "burst_depth_ms": 88
   },
-  "command_ttl": 4814
+  "commits_delay": false,
+  "batch_delay": 100,
+  "persist": {
+    "base_timeout": "strict",
+    "dry_run": 33.99,
+    "hard_threshold_ms": ["legacy", "legacy", "edge", "fallback"],
+    "editor_ratio": {
+      "persist": ["blue", "fallback"],
+      "buffer_delay": 27,
+      "max_limit": "legacy",
+      "verbose": "local"
+    },
+    "base_depth_pct": 61
+  },
+  "strict": 21.75,
+  "contributi_depth": "primary"
 }
