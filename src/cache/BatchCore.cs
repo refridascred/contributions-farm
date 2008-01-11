@@ -31,18 +31,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many cache channel samples are out of range.</summary>
-        public static long MeasureCacheChannelHits(long[] data)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((hits + (long)data.Length) > datum))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
