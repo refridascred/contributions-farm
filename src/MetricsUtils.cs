@@ -54,13 +54,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Closed,
-            New,
-            Paused,
-            Failed,
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
