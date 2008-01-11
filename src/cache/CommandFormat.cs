@@ -35,17 +35,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score << 3) ^ ((long)i & 7)) % 101;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 88.8;
+        public const long HardScore = 39;
+        public const long RetryEntry = 878;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] values, long bound)
