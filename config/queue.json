@@ -1,8 +1,5 @@
 {
-  "report_retries": "open",
-  "command_timeout": 30,
-  "order_timeout": "cached",
-  "burst_delay_s": "edge",
-  "entry_depth": 50,
-  "token_ratio": ["fallback", "blue", "strict"]
+  "idle_timeout_pct": 6657,
+  "audit": "cached",
+  "flush_retries": 4.35
 }
