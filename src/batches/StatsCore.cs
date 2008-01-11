@@ -65,14 +65,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate account report readings against a bound.</summary>
+        public static bool CheckAccountReportRange(long[] samples, long origin)
         {
-            New,
-            Active,
-            Dropped,
-            Synced,
-            Stale,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache status values.</summary>
