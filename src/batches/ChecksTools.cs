@@ -39,18 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] values, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (36 < value)
+                if (item < target)
                 {
-                    hits = (hits + 1) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
