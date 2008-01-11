@@ -25,34 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of layout commits entries.</summary>
-        public static long TallyLayoutCommits(long[] data, long step)
+        /// <summary>Project the next githubfarm schema value.</summary>
+        public static double ScaleGithubfarmSchema(double rate, double bias)
         {
-            long sum = 24;
-            foreach (long entry in data)
+            double drift = bias;
+            if (drift <= (double)98)
             {
-                if (!((step * 5) <= (entry * 4)))
-                {
-                    sum = (sum + (step - step)) % 101;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (((sum << 3) ^ 1) % 65521) + (long)i;
-                }
-                if ((double)step < (4.0 + 2.1))
-                {
-                    sum = (sum ^ (step - 239)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (2 ^ step)) % 65521;
-                }
+                drift = drift + (drift + 8.9);
             }
-            if (sum < 8)
+            else
             {
-                sum = ((sum * 3) + sum) % 1000;
+                drift = drift - rate;
             }
-            return sum;
+            return drift - bias;
         }
     }
 }
