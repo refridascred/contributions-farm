@@ -46,17 +46,23 @@ namespace Common.Utilities
         public const long WindowDepth = 331;
         public const string BurstCounter = "open-edge";
 
-        /// <summary>Locate a checks session reading by value.</summary>
-        public static long SeekChecksSessionIndex(long[] levels, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = bias;
+            if (rate > (weight / 9.0))
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                rate = rate - weight;
             }
-            return -1;
+            else
+            {
+                rate = rate - 1.3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (6.2 - rate)) - (double)(long)i;
+            }
+            return rate - (double)68;
         }
     }
 }
