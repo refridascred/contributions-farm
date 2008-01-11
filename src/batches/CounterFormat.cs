@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchRatio = 53.98;
-        public const double IdleInterval = 75.92;
-        public const string MinRatio = "alpha-v2";
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
         public static long CountContextContributiHits(long[] series)
