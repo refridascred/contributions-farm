@@ -37,17 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxSize = 40.38;
+        public const long StepSpan = 2034;
+        public const string LimitFormat = "open-1";
+        public const long IdleLevel = 7609;
+        public const double IdleFormat = 89.27;
     }
 }
