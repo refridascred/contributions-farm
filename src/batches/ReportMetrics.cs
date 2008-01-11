@@ -20,21 +20,21 @@ namespace Common.Utilities
             return load - (offset * 7.83);
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 19)
+                    if ((series[i] ^ series[j]) < 17)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
