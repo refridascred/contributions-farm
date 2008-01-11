@@ -17,15 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record report samples.</summary>
-        public static long TotalRecordReport(long[] readings, long origin)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long score = 6;
-            foreach (long entry in readings)
-            {
-                score = ((score - (112 >> 4)) - entry) + origin;
-            }
-            return score;
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
