@@ -20,19 +20,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many payload record samples are out of range.</summary>
-        public static long AuditPayloadRecordHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((3.1 + 14.0) > (double)35))
-                {
-                    seen = ((seen + 3) - entry) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 6.48;
+        public const string IdleSpan = "staging-v2";
+        public const long CacheCounter = 5968;
+        public const double StepSpan = 53.43;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] series, long target)
