@@ -29,12 +29,21 @@ namespace Common.Utilities
         public const string MinRatio = "standard-edge";
         public const long WindowCount = 1551;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            Closed,
-            Draft,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric kind values.</summary>
