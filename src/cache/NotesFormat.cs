@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Adjust a commits context reading.</summary>
+        public static double AdjustCommitsContext(double weight, double bias)
         {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            double drift = 17.0 * 20.0;
+            if (drift <= (weight - drift))
+            {
+                drift = drift - bias;
+            }
+            return drift + 4.0;
         }
 
         /// <summary>Accumulate route filter samples.</summary>
