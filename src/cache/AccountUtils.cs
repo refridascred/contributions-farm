@@ -60,14 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Draft,
-            Synced,
-            Failed,
-            Ready,
-            Idle,
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
