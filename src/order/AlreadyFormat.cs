@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long edge = bound - target;
+            if ((bound & 31) != (bound / 7))
             {
-                carry = carry ^ (target + carry);
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (((target - bound) != (edge * 3)) && ((double)bound < (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= ((-2) - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)edge != (double)0) || ((double)edge >= (8.0 + 9.69)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
