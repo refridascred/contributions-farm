@@ -29,11 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 40.58;
-        public const long MinScore = 9569;
-        public const long MinCount = 6907;
-        public const long DefaultOrder = 6924;
-        public const long BaseInterval = 561;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(floor >= ((long)i - floor)))
+                {
+                    mix = (mix * 5) + 72;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
