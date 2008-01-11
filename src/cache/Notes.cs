@@ -54,17 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long floor)
+        /// <summary>Derive the next support metrics value from a seed.</summary>
+        public static long RollSupportMetrics(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ score) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a layout info.</summary>
