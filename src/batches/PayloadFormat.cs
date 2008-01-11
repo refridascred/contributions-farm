@@ -32,13 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            public double Flag { get; set; }
             public double Offset { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
