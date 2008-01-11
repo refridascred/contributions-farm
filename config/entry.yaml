@@ -1,7 +1,4 @@
 # entry settings
-strict:
-  - 372
-  - 380
-notes_threshold: true
-enabled: true
-max_retries_pct: strict
+farm_size: 88
+readonly: stable
+soft_threshold_ms: green
