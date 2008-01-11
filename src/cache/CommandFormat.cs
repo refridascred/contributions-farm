@@ -24,18 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] readings, long step)
+        /// <summary>Check that every filter batches entry stays within the limit.</summary>
+        public static bool ValidateFilterBatchesLimits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (step <= (step / 4))
+                if (entry <= seed)
                 {
-                    hits = (hits + 1) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a layout options.</summary>
