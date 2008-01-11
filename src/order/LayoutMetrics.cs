@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long BatchContext = 2979;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings, long limit)
+        /// <summary>Validate commits githubfarm readings against a bound.</summary>
+        public static bool VerifyCommitsGithubfarmLimits(long[] readings, long step)
         {
-            long total = 880;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 10; i++)
+                if (value >= step)
                 {
-                    total = (((total << 2) ^ (entry + (long)i)) % 101) - limit;
+                    ready = false;
+                    break;
                 }
-                total = (total << 3) ^ total;
             }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Describe the graph level values.</summary>
