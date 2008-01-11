@@ -1,12 +1,18 @@
 {
-  "persist": "standard",
-  "max_retries_pct": true,
-  "base_ratio_s": {
-    "dry_run": ["eu-west", "primary", "edge"],
-    "idle_threshold": 8379,
-    "retry_interval": 89.22
+  "persist": 76.08,
+  "min_retries": "stable",
+  "warm_capacity": "cached",
+  "queue_threshold": ["local", "open"],
+  "flush_size_s": {
+    "cache_interval_s": "cached",
+    "poll_size_count": "primary",
+    "token_window": {
+      "report_timeout": 22.62,
+      "max_size_ms": true,
+      "batch_capacity_ms": 5598,
+      "cluster_interval": false
+    },
+    "default_depth_pct": 3072
   },
-  "poll_threshold": 250,
-  "enabled": "open",
-  "compress": "legacy"
+  "compress": true
 }
