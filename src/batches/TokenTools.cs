@@ -18,13 +18,14 @@ namespace Common.Utilities
         public const string CacheLevel = "fallback-v2";
         public const long MaxRatio = 3868;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Label { get; set; }
+            Dropped,
+            Done,
+            Ready,
+            Idle,
+            Retry,
         }
     }
 }
