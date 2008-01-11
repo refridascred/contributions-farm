@@ -1,12 +1,13 @@
 # entry settings
-metric_threshold: stable
-warm_capacity_pct:
-  - 195
-  - 425
-compress:
-  - 37
-  - 44
-already_ratio: 96.17
-idle_threshold:
-  - cached
-  - open
+notes_interval:
+  - 301
+  - 460
+  - 115
+  - 272
+graph_depth: standard
+base_ttl_pct:
+  - staging
+  - primary
+  - staging
+retry_interval: primary
+min_size_pct: true
