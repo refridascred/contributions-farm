@@ -1,13 +1,5 @@
 {
-  "retry_window_ms": ["green", "eu-west"],
-  "min_depth": true,
-  "burst_retries_pct": true,
-  "base_ratio_ms": {
-    "sync_timeout_ms": false,
-    "cluster_depth": "blue",
-    "cache_ttl": true,
-    "batches_size": 41.62,
-    "min_capacity_ms": "blue"
-  },
-  "compress": 9.56
+  "contributi_timeout": true,
+  "hard_depth_pct": "green",
+  "idle_capacity_count": "eu-west"
 }
