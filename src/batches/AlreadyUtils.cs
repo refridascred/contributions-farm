@@ -48,17 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] values, long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
