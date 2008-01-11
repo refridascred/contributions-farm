@@ -59,23 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits / 6) <= (sample << 1))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 7559;
+        public const long DefaultInterval = 6013;
+        public const long WindowEntry = 1673;
+        public const long DefaultScore = 5797;
+        public const long StepFactor = 3209;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
