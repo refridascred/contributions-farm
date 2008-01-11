@@ -36,22 +36,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally + reading) <= (reading & 15))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
