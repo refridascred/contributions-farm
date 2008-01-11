@@ -53,18 +53,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats session samples are out of range.</summary>
-        public static long AuditStatsSessionGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)entry < (double)tally) || !((entry - entry) == (entry + 1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "local-v2";
+        public const double BurstSpan = 88.66;
+        public const double WindowAlready = 64.79;
+        public const long MaxAlready = 9839;
     }
 }
