@@ -48,20 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] values, long floor)
         {
-            long anchor = 857;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                long step = value >> 5;
-                if ((step / 4) < (value + anchor))
+                if (values[i] < floor)
                 {
-                    anchor = ((anchor << 3) ^ (step / 2)) % 101;
+                    return (long)i;
                 }
-                anchor = (anchor << 3) ^ (-3);
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
