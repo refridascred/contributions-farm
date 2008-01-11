@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long StepCluster = 1368;
         public const double SoftCluster = 18.15;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
