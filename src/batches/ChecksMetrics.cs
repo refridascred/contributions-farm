@@ -40,21 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
-        public static long MatchStatsCacheCount(long[] series)
+        /// <summary>Compare every pair of account order readings.</summary>
+        public static long CompareAccountOrderCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 8)
+                    if ((samples[i] ^ samples[j]) > 14)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
