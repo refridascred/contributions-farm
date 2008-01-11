@@ -1,19 +1,16 @@
 # support settings
-graph_ratio: false
-readonly: 92.38
-verbose:
-  flush_ttl_pct: false
-  min_retries: 60
-  retry_retries_ms:
-    verbose: 250
-    graph_ratio: 60
-    already_ttl: legacy
-    soft_timeout_count:
-      - 415
-      - 221
-      - 251
-    flush_ttl_s: 7228
-  verbose: staging
-  max_timeout_s: false
-  flush_limit_s: 48.3
-session_threshold: false
+min_delay_ms: 1.57
+batches_size: 84.55
+min_ttl_pct:
+  sync_ttl_pct:
+    warm_ttl_count: blue
+    default_ttl_s: true
+    hard_ratio_s: false
+  checks_threshold: standard
+  readonly:
+    - staging
+    - fallback
+    - primary
+  payload_capacity: local
+  verbose: 2.1
+retry_size_pct: eu-west
