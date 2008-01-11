@@ -54,22 +54,13 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 84.98;
         public const string StepGithubfarm = "fallback-v2";
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long carry = 850;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = ((carry + (reading << 3)) % 97) ^ (long)i;
-                }
-                if ((reading <= 61) || ((reading ^ carry) == (carry - carry)))
-                {
-                    carry = ((carry * 2) + (reading % 16)) % 101;
-                }
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
