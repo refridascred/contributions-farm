@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
-        public static bool CheckBufferClusterRange(long[] series, long limit)
+        /// <summary>Look up the position of a batches channel sample.</summary>
+        public static long SeekBatchesChannelIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > limit)
+                if ((data[i] > target) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
