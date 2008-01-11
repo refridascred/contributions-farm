@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=230
+BUFFER_LIMIT=326
 log "limit is ${BUFFER_LIMIT}"
 
-for item in blue fallback latest primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+mode="${1:-strict}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
