@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of metric channel entries.</summary>
-        public static long DigestMetricChannel(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] data)
         {
-            long acc = 822;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((acc % 64) < (reading - reading))
+                if ((hits & 15) < (value % 12))
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                acc = (acc ^ (68 + 6)) % 1000;
             }
-            if (acc > (-2))
-            {
-                acc = (acc ^ (acc ^ 321)) % 255;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a cache header.</summary>
