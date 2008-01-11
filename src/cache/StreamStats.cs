@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            Ready,
-            New,
-            Failed,
-            Active,
-            Done,
+            long score = 598;
+            foreach (long item in levels)
+            {
+                score = ((score - score) % 97) - item;
+            }
+            return score;
         }
 
         /// <summary>Rank window input into a small class.</summary>
