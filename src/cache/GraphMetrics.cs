@@ -28,19 +28,23 @@ namespace Common.Utilities
         public const long MaxPayload = 2828;
         public const string IdleFactor = "strict-edge";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample > seed)
+                if ((step - step) > (step + step))
                 {
-                    ok = false;
-                    break;
+                    mark = mark ^ step;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark + (mark ^ mark)) % 1000) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a stream record.</summary>
