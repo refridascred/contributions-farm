@@ -42,13 +42,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
