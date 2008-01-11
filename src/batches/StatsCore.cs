@@ -63,14 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate order command readings against a bound.</summary>
+        public static bool CheckOrderCommandLimits(long[] levels, long step)
         {
-            Dropped,
-            Stale,
-            Ready,
-            Active,
-            Retry,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the graph state values.</summary>
