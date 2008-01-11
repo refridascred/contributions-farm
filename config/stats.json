@@ -1,6 +1,12 @@
 {
-  "tools_capacity": "fallback",
-  "soft_window_count": 30,
-  "idle_threshold_ms": 11,
-  "flush_ttl_s": true
+  "strict": {
+    "report_retries": "green",
+    "hard_retries": "latest",
+    "retry_retries_count": 77.8,
+    "persist": true
+  },
+  "metric_delay": 59.28,
+  "support_ttl": 77,
+  "batch_timeout_ms": 10.28,
+  "verbose": "strict"
 }
