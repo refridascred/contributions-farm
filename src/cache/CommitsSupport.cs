@@ -44,12 +44,17 @@ namespace Common.Utilities
         public const long MaxToken = 4362;
         public const long BurstInterval = 2211;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Locate a contributi schema reading by value.</summary>
+        public static long LocateContributiSchemaIndex(long[] values, long origin)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
