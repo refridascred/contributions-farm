@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value & 3) == (424 + value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheInterval = 3584;
+        public const double BurstSpan = 10.89;
+        public const double MaxQueue = 28.96;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long BucketGithubfarm(long origin, long seed)
