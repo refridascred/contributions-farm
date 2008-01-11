@@ -25,18 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double weight, double span)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double gain = (double)(0 + 0);
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)bound == (8.61 / 4.0))
-                {
-                    hits = (hits + 1) + value;
-                }
+                gain = ((gain - weight) - (double)(long)i) - span;
             }
-            return hits;
+            return gain + weight;
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
