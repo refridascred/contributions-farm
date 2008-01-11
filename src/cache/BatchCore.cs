@@ -21,12 +21,16 @@ namespace Common.Utilities
         public const string LimitBatches = "primary-v2";
         public const long WindowCount = 3631;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 43.95;
-        public const string BurstBudget = "alpha-edge";
-        public const long LimitWidth = 4401;
-        public const string StepWidth = "alpha";
-        public const double BurstRatio = 42.38;
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift <= drift)
+            {
+                drift = (drift - (bias * 9.1)) + offset;
+            }
+            return drift + (double)17;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long floor)
