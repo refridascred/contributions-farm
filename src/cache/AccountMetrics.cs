@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long target)
+        /// <summary>Validate entry payload readings against a bound.</summary>
+        public static bool ValidateEntryPayloadBounds(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (cell != target)
+                if (item < floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
