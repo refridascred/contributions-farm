@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Dropped,
-            Failed,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 2760;
+        public const string LimitRatio = "cached-1";
+        public const long LimitFilter = 5504;
+        public const double HardFilter = 96.16;
+        public const long BatchDepth = 6219;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] series)
