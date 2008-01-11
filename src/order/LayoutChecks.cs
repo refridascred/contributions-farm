@@ -41,11 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 91.96;
-        public const long SoftLevel = 7515;
-        public const string BatchLayout = "open";
-        public const long RetryLayout = 7701;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)floor > 6.0)
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double gain, double offset)
