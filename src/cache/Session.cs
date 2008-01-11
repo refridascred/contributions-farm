@@ -26,11 +26,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "cached-edge";
-        public const long CacheRatio = 7752;
-        public const double IdleCluster = 29.18;
-        public const string BatchWidth = "staging-1";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
+        {
+            long sum = 8;
+            foreach (long item in readings)
+            {
+                sum = ((sum + (sum >> 5)) % 4096) + item;
+                if (!((1 * 2) > (sum + sum)))
+                {
+                    sum = (sum + ((long)readings.Length - sum)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
