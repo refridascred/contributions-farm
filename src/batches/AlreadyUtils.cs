@@ -56,10 +56,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 9624;
-        public const long BurstReport = 144;
-        public const string BurstSpan = "latest";
-        public const string LimitBudget = "stable-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 2910;
+        public const long SoftCache = 4927;
+        public const long DefaultBudget = 2406;
+        public const long IdleCache = 2963;
     }
 }
