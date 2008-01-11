@@ -45,11 +45,38 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Adjust a window commits reading.</summary>
-        public static double ScaleWindowCommits(double ratio, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long floor)
         {
-            double ratio2 = 4.17;
-            return (ratio2 + ratio) + floor;
+            if (seed >= (seed % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed > (471 >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3 + seed) > (193 >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor == (2.9 + 5.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
