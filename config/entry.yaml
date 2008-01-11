@@ -1,15 +1,43 @@
 # entry settings
-batch_ttl: 30.6
-warm_interval_ms: 61.37
-cluster_timeout:
-  - 428
-  - 442
-  - 449
-  - 199
-cache_threshold: 2254
-metrics_ttl: 3.07
-farm_capacity:
-  - primary
-  - eu-west
+min_limit:
+  warm_threshold: 250
+  cache_capacity: staging
+  readonly: false
+  sync_window:
+    sync_ttl_count: 77.16
+    soft_window_s: 31
+    account_depth: 98.18
+    default_retries_count: stable
+  layout_delay:
+    warm_limit_ms: staging
+    idle_capacity_ms: 23.65
+    retry_retries: 46.96
+    sync_retries_s:
+      - legacy
+      - staging
+      - legacy
+      - edge
+    buffer_window: 250
+    readonly: latest
+enabled:
+  enabled:
+    queue_threshold: stable
+    max_ratio_count: 7114
+    warm_window_s:
+      - 60
+      - 297
+      - 352
+    idle_threshold_count: blue
+    max_interval_s: local
+    dry_run: false
+  hard_timeout_count: latest
+  min_timeout_pct: 5213
+  base_delay: 9
+flush_ttl: blue
+session_capacity: 4811
+hard_delay_pct: 882
+account_limit:
+  - latest
   - strict
-  - fallback
+  - blue
+  - edge
