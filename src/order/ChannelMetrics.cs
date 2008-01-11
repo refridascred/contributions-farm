@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Draft,
+            Active,
+            Failed,
             Ready,
+            Retry,
             Synced,
-            Queued,
-            Locked,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
