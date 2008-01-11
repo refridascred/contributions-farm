@@ -79,31 +79,13 @@ namespace Common.Utilities
         public const double BurstWindow = 81.41;
         public const long SoftWindow = 2665;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            if ((step + step) <= (step * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step >> 4) == (step >> 1)) && ((step ^ step) <= (step + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed > (7.75 - 6.6)) || ((seed >> 4) < 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Pending,
+            Dropped,
         }
     }
 }
