@@ -1,14 +1,19 @@
 # support settings
-metrics_window: cached
-strict:
-  cache_timeout: 81
-  sync_size_pct: true
-  base_ttl_s: 72.75
-dry_run: 56.19
-readonly: 37.67
-counter_limit:
-  min_depth: 100
-  cache_retries_ms:
-    - edge
-    - strict
-  max_capacity: legacy
+graph_ratio: false
+readonly: 92.38
+verbose:
+  flush_ttl_pct: false
+  min_retries: 60
+  retry_retries_ms:
+    verbose: 250
+    graph_ratio: 60
+    already_ttl: legacy
+    soft_timeout_count:
+      - 415
+      - 221
+      - 251
+    flush_ttl_s: 7228
+  verbose: staging
+  max_timeout_s: false
+  flush_limit_s: 48.3
+session_threshold: false
