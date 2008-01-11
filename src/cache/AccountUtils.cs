@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 7;
+            foreach (long entry in data)
             {
-                if (readings[i] >= step)
+                if (!((total & 1) == (7 & 7)))
                 {
-                    return (long)i;
+                    total = ((((total * 5) + (total & 7)) % 255) ^ entry) - seed;
                 }
             }
-            return -1;
+            if (total < (-419))
+            {
+                total = total + (total / 3);
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi header.</summary>
