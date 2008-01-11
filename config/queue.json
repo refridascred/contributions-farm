@@ -1,8 +1,19 @@
 {
-  "cache_depth": 58,
-  "default_window_pct": 30,
-  "hard_threshold": 1024,
-  "commits_retries": 83,
-  "cache_size_count": 25.58,
-  "metric_window": 34
+  "warm_retries_count": {
+    "compress": "staging",
+    "already_depth": false,
+    "batch_capacity": true,
+    "enabled": {
+      "base_ratio_ms": true,
+      "window_timeout": 51.21,
+      "filter_window": 9654,
+      "already_interval": 57.97
+    },
+    "retry_threshold": "primary",
+    "min_delay_count": 3842
+  },
+  "flush_size": "edge",
+  "githubfarm_timeout": "standard",
+  "warm_delay": "stable",
+  "hard_timeout_count": 8950
 }
