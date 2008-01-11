@@ -1,11 +1,13 @@
 {
-  "retry_depth_s": 83.56,
-  "cache_ttl_ms": "local",
-  "audit": "cached",
-  "enabled": 80.75,
-  "idle_window_pct": {
-    "audit": 63.4,
-    "hard_threshold_ms": false,
-    "checks_delay": 250
-  }
+  "retry_capacity": ["strict", "standard", "standard"],
+  "max_size_pct": ["blue", "latest", "staging"],
+  "counter_window": {
+    "readonly": ["open", "strict", "blue", "legacy"],
+    "warm_retries": 9032,
+    "strict": 13,
+    "token_window": 5763,
+    "default_ratio": 95.04
+  },
+  "verbose": ["local", "strict", "green"],
+  "max_depth_count": "cached"
 }
