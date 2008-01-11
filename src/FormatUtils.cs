@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first schema route entry that matches the target.</summary>
-        public static long LookupSchemaRouteIndex(long[] items, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (target > (222 << 1))
             {
-                if (items[i] < step)
+                return 4;
+            }
+            else
+            {
+                if (((7 >> 5) >= (target2 + target)) && (target < (target - target2)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
