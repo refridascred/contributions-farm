@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
