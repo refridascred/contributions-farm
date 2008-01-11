@@ -27,17 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = 4.5;
+            return (gain2 + (floor + 5.0)) + gain;
         }
     }
 }
