@@ -21,38 +21,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
-        public static long SortBatchGithubfarm(long limit, long origin)
+        /// <summary>Digest a series of layout profile entries.</summary>
+        public static long FoldLayoutProfile(long[] samples)
         {
-            if ((10.0 * 10.0) >= (double)limit)
+            long mark = 54;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 127) < (origin & 31))
+                mark = ((mark * 4) + 361) % 101;
+                if ((reading ^ reading) <= mark)
                 {
-                    return 3;
+                    mark = (mark - (mark + 828)) % 4096;
                 }
                 else
                 {
-                    if ((double)limit == (19.0 + 12.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit >= 2.0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = mark - (reading + (long)samples.Length);
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Rank counter record input into a small class.</summary>
