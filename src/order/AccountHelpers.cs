@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Roll a profile format counter forward.</summary>
+        public static long SeriesProfileFormat(long bound)
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (((mix << 2) ^ bound) % 101) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
