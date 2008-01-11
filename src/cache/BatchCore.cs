@@ -42,17 +42,18 @@ namespace Common.Utilities
             return rate + (floor + ratio);
         }
 
-        /// <summary>Look up the position of a batches cache sample.</summary>
-        public static long SeekBatchesCacheIndex(long[] items, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (items[i] >= limit)
+                if ((double)sample > 3.0)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
