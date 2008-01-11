@@ -25,19 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] readings, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long acc = 605;
-            foreach (long reading in readings)
-            {
-                acc = ((acc - (acc % 60)) % 97) + reading;
-            }
-            if (acc > 4)
-            {
-                acc = acc - (target + acc);
-            }
-            return acc;
+            Queued,
+            Paused,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
