@@ -1,33 +1,4 @@
 # githubfarm settings
-warm_timeout_count:
-  - 459
-  - 7
-  - 210
-  - 352
-stats_ttl: 37.34
-soft_window_count:
-  cache_timeout: 94.65
-  enabled:
-    burst_window_ms: true
-    burst_depth: 3636
-    hard_limit_s: false
-    retry_delay_pct: 7410
-    already_capacity:
-      - 257
-      - 97
-      - 381
-      - 398
-  persist:
-    burst_depth_count:
-      - eu-west
-      - latest
-      - edge
-      - staging
-    hard_depth: 79.6
-    readonly: eu-west
-    compress: stable
-max_retries_s:
-  - latest
-  - legacy
-  - fallback
-entry_delay: 65.82
+format_depth: true
+min_window: 1024
+sync_retries_ms: true
