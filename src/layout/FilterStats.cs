@@ -37,5 +37,10 @@ namespace Common.Utilities
             }
             return valid;
         }
+
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchLevel = 89.69;
+        public const long BaseSize = 2853;
+        public const string SoftReport = "strict-1";
     }
 }
