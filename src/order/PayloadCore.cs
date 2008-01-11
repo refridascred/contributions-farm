@@ -44,15 +44,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] samples, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] series, long bound)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long datum in series)
             {
-                if (floor > item)
+                if (((datum > (tally + tally)) || ((0 % 5) < (datum << 3))) && (bound >= (datum + 201)))
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
