@@ -17,12 +17,31 @@ namespace Common.Utilities
         public const double RetryTimeout = 17.28;
         public const long BurstInterval = 9766;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long origin)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            if (((origin + 6) == (origin + origin)) || (9.0 <= (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5 + origin) > origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)origin >= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
