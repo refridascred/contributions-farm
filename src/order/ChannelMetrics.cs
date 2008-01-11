@@ -32,10 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSpan = 1266;
-        public const long CacheMetric = 5125;
-        public const long BaseFactor = 7056;
-        public const long SoftMetric = 343;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Failed,
+            Locked,
+            Retry,
+        }
     }
 }
