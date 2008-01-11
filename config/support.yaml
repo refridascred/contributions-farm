@@ -1,11 +1,5 @@
 # support settings
-idle_window: 100
-enabled:
-  - blue
-  - latest
-  - stable
-  - strict
-readonly:
-  - 382
-  - 265
-  - 128
+profile_limit: true
+cache_timeout_pct: 85.89
+cache_window: strict
+min_capacity_pct: 60
