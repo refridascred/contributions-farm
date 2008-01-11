@@ -31,18 +31,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (hits <= (reading - hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
