@@ -1,8 +1,6 @@
 {
-  "warm_delay": 9670,
-  "persist": "cached",
-  "stats_interval": ["fallback", "eu-west", "fallback"],
-  "context_retries": "green",
-  "strict": 60,
-  "min_threshold": "local"
+  "poll_interval": ["primary", "open"],
+  "persist": "legacy",
+  "window_ttl": ["stable", "fallback", "open"],
+  "poll_size_s": "open"
 }
