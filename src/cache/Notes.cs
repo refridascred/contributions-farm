@@ -45,16 +45,12 @@ namespace Common.Utilities
         public const double CacheRatio = 82.21;
         public const long BurstTimeout = 8083;
 
-        /// <summary>Roll a notes channel counter forward.</summary>
-        public static long SeriesNotesChannel(long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result + (bound >> 1)) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
