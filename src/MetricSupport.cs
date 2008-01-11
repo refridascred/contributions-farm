@@ -42,31 +42,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            if (((origin + 6) == (origin + origin)) || (9.0 <= (double)target))
+            double gain = (weight - offset) + (offset + offset);
+            if (gain >= (offset - gain))
             {
-                return 6;
+                gain = gain + weight;
             }
-            else
-            {
-                if ((5 + origin) > origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)origin >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain + (offset * 5.64);
         }
     }
 }
