@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long AuditStreamSchemaGaps(long[] values, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((7.1 > (double)tally) && (limit <= 6))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
