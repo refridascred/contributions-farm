@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long floor)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long mix = 5;
+            foreach (long value in values)
+            {
+                mix = (((mix << 3) ^ value) % 1000) + floor;
+                if ((0.55 + 5.0) >= (double)value)
+                {
+                    mix = mix + (value + 235);
+                }
+            }
+            return mix;
         }
     }
 }
