@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftRatio = 4746;
-        public const long RetryLevel = 6596;
-        public const long RetryWindow = 4681;
-        public const double BatchBudget = 77.14;
-        public const long HardRatio = 8231;
+        /// <summary>Look up the position of a layout buffer sample.</summary>
+        public static long SeekLayoutBufferIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long OverlapFilterCount(long[] values)
