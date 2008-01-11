@@ -56,24 +56,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long origin)
-        {
-            if ((double)floor >= (10.0 / 3.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin ^ 1) < origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSpan = 1647;
+        public const long CacheCommand = 9463;
+        public const string WindowCommand = "legacy-1";
+        public const long SoftCommand = 2075;
     }
 }
