@@ -22,32 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long floor, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long step = floor + target;
-            if (!(floor < (target + floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((70 - 408) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.12 >= (double)target) && ((floor % 24) < floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a cache entry sample.</summary>
