@@ -44,11 +44,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 577;
-        public const double RetryBudget = 90.43;
-        public const long DefaultDepth = 3417;
-        public const string MinStream = "stable-1";
+        /// <summary>Accumulate payload stats samples.</summary>
+        public static long WeighPayloadStats(long[] data)
+        {
+            long carry = 7;
+            foreach (long cell in data)
+            {
+                if (!((9.45 - 2.3) == (double)carry))
+                {
+                    carry = (((carry * 2) + (long)data.Length) % 101) - cell;
+                }
+                if ((double)(long)data.Length >= (9.2 * 9.0))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] levels, long seed)
