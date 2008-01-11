@@ -7,12 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-blue}"
+for item in green standard staging edge; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
     cached)
         log "fast path"
@@ -21,9 +25,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
