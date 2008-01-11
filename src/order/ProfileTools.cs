@@ -31,12 +31,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
+            Stale,
+            Pending,
             New,
-            Synced,
-            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Check that every editor counter entry stays within the limit.</summary>
