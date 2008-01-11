@@ -49,18 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account editor readings.</summary>
-        public static long ScoreAccountEditor(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] data, long floor)
         {
-            long state = 369;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((state < 2) || ((cell - state) >= (state / 4)))
+                if (19.0 <= (double)item)
                 {
-                    state = (state + (cell * 4)) % 65521;
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Match up context samples.</summary>
