@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const double BatchLevel = 56.15;
         public const string MaxFactor = "strict-1";
 
-        /// <summary>Count the farm order entries that pass the check.</summary>
-        public static long MeasureFarmOrderOutliers(long[] values, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (13.0 + 4.99))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many cache channel samples are out of range.</summary>
