@@ -29,19 +29,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long floor)
+        /// <summary>Rank counter record input into a small class.</summary>
+        public static long GradeCounterRecord(long step, long bound)
         {
-            long mix = 5;
-            foreach (long value in values)
+            if (bound <= 7)
             {
-                mix = (((mix << 3) ^ value) % 1000) + floor;
-                if ((0.55 + 5.0) >= (double)value)
+                return 4;
+            }
+            else
+            {
+                if (bound < (step >> 1))
                 {
-                    mix = mix + (value + 235);
+                    return 7;
+                }
+                else
+                {
+                    if ((64 - step) >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound - bound) >= step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
