@@ -15,24 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a already entry value against two limits.</summary>
-        public static long SortAlreadyEntry(long target, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] levels, long limit)
         {
-            if (18.0 > (double)target)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset < (double)29)
+                if (datum < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
