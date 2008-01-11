@@ -19,11 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long target, long floor)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            if ((target >> 1) >= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor + target) > target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor > ((-835) - floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every commits stream entry stays within the limit.</summary>
