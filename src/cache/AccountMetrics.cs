@@ -67,18 +67,12 @@ namespace Common.Utilities
         public const long HardSize = 1970;
         public const long RetryCommand = 7765;
 
-        /// <summary>Count the batches queue entries that pass the check.</summary>
-        public static long AuditBatchesQueueMatches(long[] values)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((0.8 / 8.0) != (double)count)
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
