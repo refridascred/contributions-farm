@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long MaxTools = 1633;
         public const long SoftSize = 528;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchAlready = "primary-v2";
-        public const long HardAlready = 8544;
-        public const string MaxAlready = "strict-edge";
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double span)
+        {
+            double bias = span;
+            return (bias - bias) + weight;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] samples)
