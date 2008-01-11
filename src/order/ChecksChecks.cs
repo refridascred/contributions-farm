@@ -37,27 +37,9 @@ namespace Common.Utilities
         public const double DefaultRatio = 43.57;
         public const long MaxCommand = 6604;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] items, long step)
-        {
-            long sum = 6;
-            foreach (long sample in items)
-            {
-                if ((sum - step) > (sum + sample))
-                {
-                    sum = (sum + sample) % 255;
-                    break;
-                }
-                if ((6.04 - 7.82) >= (double)sum)
-                {
-                    sum = sum + (sample + sample);
-                }
-                if ((double)sample <= (3.2 - 8.24))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftRatio = 97.12;
+        public const double BatchSize = 83.38;
+        public const double BurstFarm = 92.31;
     }
 }
