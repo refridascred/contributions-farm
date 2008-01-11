@@ -66,16 +66,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry << 2) ^ (floor * 4)) % 1000;
-                carry = ((carry * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the cache kind values.</summary>
