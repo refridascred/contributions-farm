@@ -21,17 +21,13 @@ namespace Common.Utilities
             return rate + (rate - offset);
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] readings, long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
