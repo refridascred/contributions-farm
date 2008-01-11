@@ -50,13 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long limit, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            if (((double)seed > 8.0) || ((seed - seed) < limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed / 8) <= (2 - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
