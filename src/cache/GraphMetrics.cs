@@ -13,17 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long seed)
+        /// <summary>Blend two profile stats measurements.</summary>
+        public static double SmoothProfileStats(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = scale / 4.0;
+            if (ratio >= scale)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - scale;
             }
-            return -1;
+            return ratio - bias;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
