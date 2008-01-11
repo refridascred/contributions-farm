@@ -63,26 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] items)
         {
-            long sum = 205;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((7.2 + 0.3) != (double)item)
+                if ((50 + 39) > tally)
                 {
-                    sum = ((sum * 2) + (sum << 1)) % 65521;
-                }
-                if ((9.12 + 5.8) > (double)item)
-                {
-                    sum = ((sum * 2) + item) % 4096;
+                    tally = (tally + 3) + datum;
                 }
             }
-            if (sum < 712)
-            {
-                sum = sum - (sum << 1);
-            }
-            return sum;
+            return tally;
         }
     }
 }
