@@ -53,19 +53,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long carry = -149;
-            foreach (long entry in items)
-            {
-                if (!!((carry - carry) > carry))
-                {
-                    carry = (((carry * 4) + (carry << 1)) % 65521) ^ entry;
-                }
-                carry = carry ^ carry;
-            }
-            return carry;
+            Queued,
+            Idle,
+            Pending,
+            Retry,
         }
     }
 }
