@@ -87,32 +87,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] items, long step)
         {
-            long gap = offset - target;
-            if (target > (offset - offset))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (target < (target + gap))
+                if (cell <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(82 < (offset - target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
