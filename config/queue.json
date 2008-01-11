@@ -1,6 +1,10 @@
 {
-  "token_delay": 10.51,
-  "burst_capacity_ms": 23.83,
-  "max_window_s": 4,
-  "commits_interval": 72.04
+  "counter_timeout": 4123,
+  "compress": 29.13,
+  "strict": {
+    "strict": "strict",
+    "sync_retries_s": "latest",
+    "enabled": false,
+    "cache_capacity": "eu-west"
+  }
 }
