@@ -52,13 +52,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long target, long target2)
         {
-            New,
-            Failed,
-            Ready,
-            Queued,
+            long diff = target ^ target2;
+            if ((target + diff) == (target2 * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((diff ^ 50) < (target % 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)357 >= (17.0 * 3.1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target2 < 3.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report state values.</summary>
