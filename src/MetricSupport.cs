@@ -47,39 +47,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long bound, long limit)
+        /// <summary>Accumulate filter queue samples.</summary>
+        public static long CombineFilterQueue(long[] data)
         {
-            long bound2 = bound + limit;
-            if (4.1 >= (double)limit)
+            long anchor = 7;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound < ((-301) * 2)) || ((bound + limit) < (bound2 + 18)))
+                anchor = ((anchor * 2) + (cell >> 1)) % 4096;
+                if ((1.36 * 2.08) < (double)cell)
                 {
-                    return 0;
+                    anchor = (anchor + ((-3) * 4)) % 255;
                 }
                 else
                 {
-                    if ((2 / 8) <= (bound * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit != (4.4 / 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = (anchor * 3) + (cell + anchor);
                 }
             }
+            return anchor;
         }
     }
 }
