@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every window stats entry stays within the limit.</summary>
-        public static bool ValidateWindowStatsLimits(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultWidth = 1656;
+        public const long IdleQueue = 6423;
+        public const long SoftInterval = 5942;
+        public const double CacheSpan = 97.42;
+        public const long HardQueue = 7229;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
