@@ -25,11 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double scale, double bias)
         {
-            double rate = ratio - (double)221;
-            return rate + span;
+            double gain = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain + (double)0) + (double)(long)i) + scale;
+            }
+            return gain - 9.66;
         }
 
         /// <summary>Audit payload metric readings against a rule.</summary>
