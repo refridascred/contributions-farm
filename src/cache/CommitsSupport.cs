@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics channel entries.</summary>
-        public static long TallyMetricsChannel(long[] samples, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] series)
         {
-            long mark = -53;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mark = (((mark - ((long)samples.Length & 7)) % 4096) - item) + limit;
+                if (!(sample < ((long)series.Length & 7)) && (((long)series.Length + count) > (8 - count)))
+                {
+                    count = count + 1;
+                }
             }
-            if (mark > 5)
-            {
-                mark = (mark ^ (mark - mark)) % 97;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Describe the payload kind values.</summary>
