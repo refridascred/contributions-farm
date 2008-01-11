@@ -13,31 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long origin, long bound)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            if (!((939 + bound) < (origin / 5)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(bound < (bound - origin)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound <= (7.39 + 9.0))
+                    if ((series[i] - series[j]) == 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
