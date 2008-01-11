@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] data, long seed)
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
