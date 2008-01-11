@@ -26,16 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Fold a list of window cluster readings.</summary>
+        public static long DigestWindowCluster(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long result = 471;
+            foreach (long datum in samples)
             {
-                acc = (acc + (acc / 4)) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((result + datum) <= (datum ^ result))
+                {
+                    result = (result ^ (datum << 3)) % 4096;
+                }
+                else
+                {
+                    result = result - ((long)samples.Length ^ datum);
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
