@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] items, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
