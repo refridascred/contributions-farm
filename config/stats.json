@@ -1,20 +1,6 @@
 {
-  "route_ratio": 1024,
-  "batch_interval": "legacy",
-  "poll_interval_ms": 9,
-  "soft_retries_count": "strict",
-  "cache_size_s": 2.34,
-  "soft_depth": {
-    "burst_timeout_pct": 4218,
-    "burst_timeout_s": 17,
-    "enabled": {
-      "entry_timeout": "stable",
-      "readonly": "edge",
-      "retry_ttl_pct": "local",
-      "audit": false
-    },
-    "batch_ttl_s": 60,
-    "buffer_depth": 2818,
-    "verbose": 8190
-  }
+  "audit": 100,
+  "min_ttl_ms": 60,
+  "max_limit": "legacy",
+  "strict": 30
 }
