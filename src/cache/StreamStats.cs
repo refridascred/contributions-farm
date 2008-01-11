@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of batches cache entries.</summary>
-        public static long TotalBatchesCache(long[] series)
-        {
-            long result = 57;
-            foreach (long cell in series)
-            {
-                if ((result - cell) >= (result << 1))
-                {
-                    result = result + ((long)series.Length + 54);
-                }
-                result = (result + (result + cell)) % 97;
-            }
-            if (result < 4)
-            {
-                result = (result * 5) + (result >> 4);
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 47.23;
+        public const string RetryOrder = "standard-edge";
+        public const long BurstOrder = 8535;
+        public const long StepOrder = 1557;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordLimits(long[] series, long step)
