@@ -26,12 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepDepth = "cached-v2";
+        public const long IdleLevel = 9840;
+        public const string MaxCommits = "cached-1";
+        public const double RetryCommits = 87.78;
+        public const string BaseCommits = "staging-edge";
     }
 }
