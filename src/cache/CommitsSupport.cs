@@ -74,13 +74,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit batches cache readings against a rule.</summary>
+        public static long MeasureBatchesCacheHits(long[] samples, long origin)
         {
-            Active,
-            Failed,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((origin >> 2) <= origin)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
