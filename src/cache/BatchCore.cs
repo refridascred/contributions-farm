@@ -16,11 +16,10 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 29.72;
-        public const double MinContributi = 25.04;
-        public const double BatchLevel = 56.15;
-        public const string MaxFactor = "strict-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 29.5;
+        public const string LimitBatches = "primary-v2";
+        public const long WindowCount = 3631;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseGithubfarm = 43.95;
