@@ -67,18 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile window samples are out of range.</summary>
-        public static long CountProfileWindowGaps(long[] samples, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!!((19.0 / 7.0) == (double)count))
-                {
-                    count = ((count + 3) - value) + offset;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
