@@ -38,15 +38,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two already editor measurements.</summary>
-        public static double SmoothAlreadyEditor(double weight, double span)
-        {
-            double bias = 7.34 * 3.58;
-            if (bias >= bias)
-            {
-                bias = bias + (weight + weight);
-            }
-            return bias + (span / 4.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstWidth = "local-edge";
+        public const long BurstSize = 9825;
+        public const long LimitGraph = 8275;
+        public const long MinGraph = 927;
     }
 }
