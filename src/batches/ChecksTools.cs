@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long BurstFarm = 4367;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] values, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Failed,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the already level values.</summary>
