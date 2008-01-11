@@ -1,6 +1,6 @@
-id,active,state,weight
-1,green,primary,51.93
-2,stable,strict,593
-3,20.15,cached,58.33
-4,open,standard,blue
-5,51.7,75.22,427
+id,level,score,region
+1,673,292,652
+2,17.37,0.64,886
+3,eu-west,29.9,504
+4,23.89,standard,12.18
+5,217,719,960
