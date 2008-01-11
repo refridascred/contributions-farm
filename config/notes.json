@@ -1,11 +1,5 @@
 {
-  "githubfarm_retries": 34.96,
-  "idle_capacity": {
-    "enabled": ["standard", "strict", "stable"],
-    "persist": 19.61,
-    "verbose": true
-  },
-  "base_ratio_count": "primary",
-  "default_capacity_ms": "latest",
-  "idle_capacity_pct": "open"
+  "poll_depth_count": [171, 73],
+  "buffer_ratio": "standard",
+  "readonly": 71
 }
