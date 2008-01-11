@@ -1,4 +1,23 @@
 # entry settings
-farm_size: 88
-readonly: stable
-soft_threshold_ms: green
+session_ttl:
+  hard_size_pct: primary
+  default_size:
+    hard_interval_pct:
+      - local
+      - latest
+      - strict
+      - edge
+    burst_size: standard
+    schema_limit: 3760
+    compress:
+      - eu-west
+      - strict
+      - strict
+    default_timeout_ms: false
+    editor_interval: open
+  audit: eu-west
+  burst_delay_s: 49
+burst_threshold: legacy
+queue_ttl: legacy
+contributi_size: true
+compress: 60
