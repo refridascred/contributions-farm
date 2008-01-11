@@ -50,24 +50,21 @@ namespace Common.Utilities
             return drift - (double)24;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long target, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            if ((step - step) < (step + target))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 3) == (3 ^ target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
