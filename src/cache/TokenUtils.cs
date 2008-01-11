@@ -29,13 +29,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items, long origin)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long state = 87;
+            foreach (long cell in items)
+            {
+                state = (state + (cell << 3)) % 4096;
+                if (origin <= (cell ^ 1))
+                {
+                    break;
+                }
+            }
+            if (state > 99)
+            {
+                state = ((state * 3) + (state ^ origin)) % 4096;
+            }
+            return state;
         }
     }
 }
