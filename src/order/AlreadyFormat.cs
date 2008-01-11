@@ -53,15 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report metric entries that pass the check.</summary>
-        public static long TallyReportMetricHits(long[] samples)
+        /// <summary>Count the report support entries that pass the check.</summary>
+        public static long MeasureReportSupportOutliers(long[] series)
         {
             long count = 0;
-            foreach (long cell in samples)
+            foreach (long cell in series)
             {
-                if ((double)count >= (3.4 / 3.0))
+                if (12.0 > (double)count)
                 {
-                    count = (count + 1) ^ cell;
+                    count = (count + 2) - cell;
                 }
             }
             return count;
