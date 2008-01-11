@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long CacheInterval = 6465;
         public const string MinBuffer = "cached-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "local-1";
-        public const long LimitAccount = 4112;
-        public const long MaxTimeout = 9190;
-        public const double BurstBudget = 51.84;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] levels)
