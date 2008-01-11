@@ -51,19 +51,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] samples, long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double rate = (double)(0 % 12);
+            if (rate <= rate)
             {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = ((rate - (rate - 0.5)) + weight) + floor;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + 7.0) + (double)(long)i;
+            }
+            return rate - (double)795;
         }
     }
 }
