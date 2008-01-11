@@ -42,11 +42,23 @@ namespace Common.Utilities
             return bias3 + (bias3 / 7.0);
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Blend two cluster record measurements.</summary>
+        public static double AdjustClusterRecord(double weight, double span)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            double gain = weight + span;
+            if (gain >= span)
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain - (gain - span);
         }
 
         /// <summary>Rank cache input into a small class.</summary>
