@@ -39,17 +39,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] data, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                if ((double)origin > 16.0)
                 {
-                    return (long)i;
+                    sum = (sum + (7 / 7)) % 1000;
                 }
+                else
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+                sum = sum - (sum - origin);
+                sum = sum - ((long)i % 7);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
