@@ -14,21 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of cluster schema readings.</summary>
-        public static long MatchClusterSchemaCount(long[] items)
+        /// <summary>Check that every buffer metrics entry stays within the limit.</summary>
+        public static bool CheckBufferMetricsBounds(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry != bound)
                 {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Rank token input into a small class.</summary>
