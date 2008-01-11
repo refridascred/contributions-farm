@@ -35,18 +35,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
         {
-            long score = 898;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (score < (score + score))
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
                 {
-                    score = ((score + (score - 63)) % 101) + reading;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
