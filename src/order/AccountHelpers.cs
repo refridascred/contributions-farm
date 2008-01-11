@@ -38,18 +38,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] readings)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((1 + datum) < seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
