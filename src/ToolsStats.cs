@@ -31,11 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long offset)
         {
-            double bias2 = rate;
-            return (bias2 - bias2) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
