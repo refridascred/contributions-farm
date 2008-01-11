@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
