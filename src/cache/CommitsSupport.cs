@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)matches > (6.39 - 2.1)))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
