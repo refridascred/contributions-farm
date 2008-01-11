@@ -32,12 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Failed,
-            Ready,
-            Idle,
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
