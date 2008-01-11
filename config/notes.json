@@ -1,6 +1,21 @@
 {
-  "buffer_interval": 250,
-  "base_depth": [323, 313, 420],
-  "cache_threshold_pct": "cached",
-  "sync_depth_s": ["blue", "staging", "cached", "primary"]
+  "contributi_size": 5116,
+  "record_window": false,
+  "poll_delay": {
+    "already_timeout": "staging",
+    "dry_run": {
+      "metrics_delay": [47, 99],
+      "profile_capacity": ["eu-west", "stable"],
+      "poll_limit_pct": "blue",
+      "warm_ratio_count": true,
+      "queue_size": "standard"
+    },
+    "queue_delay": 60
+  },
+  "batch_threshold_count": 13.69,
+  "warm_threshold": {
+    "payload_interval": 4,
+    "tools_interval": "standard",
+    "default_ttl": [491, 257, 140]
+  }
 }
