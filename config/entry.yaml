@@ -1,22 +1,23 @@
 # entry settings
-editor_size: 33
-min_threshold_s:
-  dry_run: 60
-  base_interval: true
-  base_retries_count: eu-west
-  entry_retries: 56.9
-  batch_threshold_s: 3409
-retry_capacity_s:
-  max_delay: 32.5
-  hard_depth_s: 611
-  hard_interval_pct: 100
-  batch_delay_ms: legacy
-  sync_ttl: open
-  layout_threshold: edge
+max_retries_s:
+  - green
+  - local
+max_capacity_ms:
+  default_size:
+    idle_ttl: false
+    layout_ratio: latest
+    counter_depth:
+      - edge
+      - cached
+      - edge
+    base_capacity_s: local
+    soft_capacity_s: false
+    readonly: 62.33
+  cache_interval_s: 67.74
+  dry_run: false
+  compress: false
+verbose: edge
+strict: primary
 enabled:
-  - open
-  - blue
-  - strict
-  - primary
-retry_ratio: eu-west
-notes_delay: 45
+  - 70
+  - 152
