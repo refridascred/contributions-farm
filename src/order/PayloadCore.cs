@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const long MinSupport = 9166;
         public const long RetrySupport = 5805;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
