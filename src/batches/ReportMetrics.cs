@@ -20,21 +20,19 @@ namespace Common.Utilities
             return drift + (weight / 9.0);
         }
 
-        /// <summary>Compare every pair of buffer checks readings.</summary>
-        public static long PairBufferChecksCount(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 95;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = mark + ((long)readings.Length << 3);
+                if (((double)mark == (10.0 - 0.7)) || ((mark - entry) == (entry + mark)))
                 {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ (entry + entry)) % 1000;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
