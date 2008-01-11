@@ -42,13 +42,13 @@ namespace Common.Utilities
         public const long MaxPayload = 2828;
         public const string IdleFactor = "strict-edge";
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            Stale,
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
