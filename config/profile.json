@@ -1,7 +1,11 @@
 {
-  "soft_window_s": 7625,
-  "route_ttl": 65.85,
-  "flush_size": [425, 194, 28],
-  "sync_window_ms": "cached",
-  "flush_delay_count": 1024
+  "filter_retries": "green",
+  "farm_delay": "legacy",
+  "min_interval": 66,
+  "audit": {
+    "retry_window": "fallback",
+    "max_ttl_pct": false,
+    "githubfarm_size": true
+  },
+  "filter_size": true
 }
