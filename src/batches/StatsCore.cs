@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((matches << 2) < (matches >> 4)) || ((4.02 + 0.6) <= (double)cell))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command kind values.</summary>
