@@ -44,12 +44,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] samples, long origin)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
