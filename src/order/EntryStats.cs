@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] data)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if (1.0 <= (double)offset)
             {
-                if ((hits & 15) < (value % 12))
+                return 2;
+            }
+            else
+            {
+                if (((-6) / 4) != (offset << 3))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (((-4) + offset) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((floor & 1) >= floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next payload value.</summary>
