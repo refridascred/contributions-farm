@@ -84,17 +84,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] samples, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (samples[i] >= seed)
+                if ((double)79 != (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ datum) + step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
