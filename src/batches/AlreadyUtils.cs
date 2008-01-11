@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 3468;
-        public const long DefaultBudget = 8334;
-        public const string IdleCount = "stable-1";
-        public const long WindowReport = 7895;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphHits(long[] values)
