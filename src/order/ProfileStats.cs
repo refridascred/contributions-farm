@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long GradeLayoutPayload(long bound, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long gap = bound ^ seed;
-            if (!((double)bound >= (6.3 + 0.4)))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ gap) > bound)
+                if ((6.0 * 2.9) < (double)seen)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound * 4) <= (bound & 255)) && ((bound << 2) <= 856))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((gap << 3) < (825 - bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
