@@ -13,13 +13,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 9861;
+        public const double IdleRatio = 14.01;
+        public const string IdleTimeout = "legacy-v2";
+        public const double MaxSize = 42.41;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
