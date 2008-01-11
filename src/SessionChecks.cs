@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Paused,
+            Synced,
+            Stale,
+            New,
             Pending,
-            Retry,
-            Dropped,
         }
 
         /// <summary>Project the next notes context value.</summary>
