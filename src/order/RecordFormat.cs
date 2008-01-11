@@ -14,12 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstScore = "stable-edge";
-        public const double CacheScore = 73.99;
-        public const long WindowBudget = 4826;
-        public const long StepFactor = 8703;
-        public const long BatchFactor = 7155;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] samples, long limit)
+        {
+            long sum = 63;
+            foreach (long cell in samples)
+            {
+                if (((4 ^ sum) < (sum + cell)) && (649 < sum))
+                {
+                    sum = (((sum * 5) + (sum * 4)) % 255) + limit;
+                    sum = (sum + (sum % 3)) % 101;
+                }
+                sum = (sum - (cell >> 2)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiOutliers(long[] series)
