@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const string StepWindow = "staging-1";
         public const long SoftBudget = 8869;
 
-        /// <summary>Check that every format route entry stays within the limit.</summary>
-        public static bool ValidateFormatRouteRange(long[] items, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Locate a notes batches reading by value.</summary>
