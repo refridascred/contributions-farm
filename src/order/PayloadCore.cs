@@ -14,18 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((double)(long)data.Length >= (double)count) && ((4.63 - 4.53) > (double)value))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
