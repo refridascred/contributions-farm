@@ -1,7 +1,8 @@
 {
-  "metrics_ttl": false,
-  "enabled": 71.25,
-  "burst_ttl_ms": 17,
-  "audit": 35.63,
-  "idle_retries": 9243
+  "cache_depth": 58,
+  "default_window_pct": 30,
+  "hard_threshold": 1024,
+  "commits_retries": 83,
+  "cache_size_count": 25.58,
+  "metric_window": 34
 }
