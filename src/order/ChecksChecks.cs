@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftCount = "alpha-1";
+        public const long StepWidth = 7385;
+        public const long MinToken = 535;
 
         /// <summary>Project the next farm value.</summary>
         public static double AdjustFarm(double scale, double bias)
