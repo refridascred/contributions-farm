@@ -33,11 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm context value.</summary>
-        public static double BlendFarmContext(double bias, double span)
-        {
-            double gain = (span + 4.2) - span;
-            return (gain - span) + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 65.44;
+        public const double BatchRatio = 23.41;
+        public const long MinBudget = 9053;
     }
 }
