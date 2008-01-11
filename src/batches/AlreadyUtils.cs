@@ -70,17 +70,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel account reading by value.</summary>
-        public static long LocateChannelAccountIndex(long[] data, long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Active,
+            Synced,
+            Draft,
         }
     }
 }
