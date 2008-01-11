@@ -50,13 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            Done,
+            Paused,
+            Retry,
+            Idle,
         }
     }
 }
