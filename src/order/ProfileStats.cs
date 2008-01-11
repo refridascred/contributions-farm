@@ -16,12 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
+            public double Stamp { get; set; }
             public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
