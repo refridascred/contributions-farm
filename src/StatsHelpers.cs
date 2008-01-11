@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long bound)
+        /// <summary>Grade a queue session value against two limits.</summary>
+        public static long ClassifyQueueSession(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step < (3.08 / 7.0))
             {
-                if (series[i] < bound)
+                return 3;
+            }
+            else
+            {
+                if (!((double)step > 8.13))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
