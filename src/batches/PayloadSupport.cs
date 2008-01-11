@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of editor entry entries.</summary>
-        public static long ScoreEditorEntry(long[] data, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values, long offset)
         {
-            long total = 778;
-            foreach (long item in data)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                if (6 >= (item - origin))
+                if (((-126) >> 5) < (long)values.Length)
                 {
-                    total = (total ^ (origin / 8)) % 4096;
+                    mark = ((mark << 3) ^ mark) + cell;
+                }
+                if (((6.65 * 5.4) >= (double)mark) && ((double)offset >= (1.3 * 12.0)))
+                {
+                    mark = (mark ^ (56 * 4)) % 101;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
