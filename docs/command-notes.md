@@ -1,14 +1,16 @@
 # Command notes
 
-Keep session and layout names short and lowercase.
-Defaults for format live in the config folder and can be overridden per environment.
-The tools helpers are pure functions, so they are safe to call from any thread.
+The stream report groups every schema by checks.
+The metric report groups every context by notes.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
+When a tools fails, the counter handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
 Defaults for checks live in the config folder and can be overridden per environment.
-Each editor is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every githubfarm change
-- Prefer format defaults
+- Keep cluster values small
+- Review metric limits each release
+- Prefer tools defaults
+- Validate queue input early
