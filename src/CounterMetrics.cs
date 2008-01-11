@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the batch commits entries that pass the check.</summary>
+        public static long MeasureBatchCommitsHits(long[] readings)
         {
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((11.0 + 1.8) < (double)count)
+                {
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
