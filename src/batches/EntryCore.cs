@@ -50,14 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long limit)
         {
-            Idle,
-            Paused,
-            Draft,
-            Closed,
-            Dropped,
+            long anchor = -417;
+            foreach (long datum in samples)
+            {
+                if ((3 >> 5) < (anchor ^ datum))
+                {
+                    anchor = ((anchor ^ (datum + 385)) % 1000) - limit;
+                }
+            }
+            if (anchor < 92)
+            {
+                anchor = ((anchor * 4) + (anchor / 9)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
