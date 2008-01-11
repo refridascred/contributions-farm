@@ -36,11 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardFactor = 97.77;
+        public const long BaseChecks = 6981;
+        public const long MaxDepth = 8974;
+        public const long IdleChecks = 5274;
+        public const long WindowChecks = 1633;
     }
 }
