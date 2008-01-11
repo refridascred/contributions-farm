@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long RetryRatio = 1117;
         public const long MaxLevel = 607;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
