@@ -60,11 +60,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double rate, double offset)
+        /// <summary>Rank counter token input into a small class.</summary>
+        public static long RankCounterToken(long bound, long offset)
         {
-            double rate2 = rate;
-            return (rate2 + 5.0) + offset;
+            long edge = bound - offset;
+            if ((double)bound < (1.06 * 8.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset / 5) <= (68 * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((edge / 2) < (bound + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
