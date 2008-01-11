@@ -55,18 +55,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster entry samples are out of range.</summary>
-        public static long TallyClusterEntryHits(long[] items, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 0;
+            foreach (long item in levels)
             {
-                if ((906 - tally) > (tally - origin))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                mix = (mix - (item & 7)) + seed;
             }
-            return tally;
+            return mix % 1000;
         }
     }
 }
