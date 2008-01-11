@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the layout phase values.</summary>
