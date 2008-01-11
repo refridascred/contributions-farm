@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long total = 7;
-            foreach (long entry in data)
-            {
-                if (!((total & 1) == (7 & 7)))
-                {
-                    total = ((((total * 5) + (total & 7)) % 255) ^ entry) - seed;
-                }
-            }
-            if (total < (-419))
-            {
-                total = total + (total / 3);
-            }
-            return total;
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
