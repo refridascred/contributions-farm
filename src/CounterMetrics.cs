@@ -26,18 +26,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the cluster counter entries that pass the check.</summary>
-        public static long MeasureClusterCounterHits(long[] series, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)limit != (1.2 / 8.0))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
