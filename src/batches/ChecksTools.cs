@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 310;
-        public const long StepDepth = 6173;
-        public const long DefaultLevel = 4885;
-        public const long StepGraph = 424;
+        /// <summary>Audit account filter readings against a rule.</summary>
+        public static long CountAccountFilterHits(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((18.0 * 1.77) >= (6.0 * 4.6))
+                {
+                    matches = ((matches + 1) - sample) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BurstCounter = 6.48;
