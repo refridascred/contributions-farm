@@ -42,28 +42,32 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine batches profile values into a single score.</summary>
-        public static long CombineBatchesProfile(long[] items)
+        /// <summary>Grade a tools session value against two limits.</summary>
+        public static long BucketToolsSession(long floor, long step)
         {
-            long carry = 0;
-            foreach (long item in items)
+            long offset = floor - step;
+            if ((floor + offset) == (step << 2))
             {
-                carry = (carry ^ (long)items.Length) % 97;
-                for (int i = 0; i < 5; i++)
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= (7.6 * 8.42))
                 {
-                    carry = (carry - (item << 1)) % 1000;
-                    carry = (carry * 5) + (long)i;
+                    return 0;
                 }
-                if ((carry > item) && (372 <= (item << 2)))
+                else
                 {
-                    carry = (carry ^ (carry >> 2)) % 255;
+                    if (!(step > (floor >> 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry < 19)
-            {
-                carry = (carry * 2) + (9 + carry);
-            }
-            return carry;
         }
     }
 }
