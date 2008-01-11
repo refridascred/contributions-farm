@@ -1,21 +1,4 @@
 # githubfarm settings
-audit:
-  default_ratio: latest
-  warm_interval_count: primary
-  enabled: 250
-  hard_ratio_pct: blue
-  session_interval: local
-  hard_timeout_pct: primary
-min_threshold_s: true
-retry_threshold_ms: 46.31
-soft_retries_pct:
-  retry_retries_pct: true
-  cache_timeout: true
-  profile_depth: blue
-  batch_timeout:
-    burst_retries_ms: false
-    max_interval_pct: blue
-    stats_capacity: true
-    dry_run: 30
-    batches_threshold: true
-cache_window_ms: true
+audit: 96
+entry_limit: 8314
+flush_ttl: 500
