@@ -36,19 +36,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long origin)
+        /// <summary>Look up the position of a commits checks sample.</summary>
+        public static long FindCommitsChecksIndex(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= origin)
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
