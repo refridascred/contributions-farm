@@ -65,19 +65,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double load = (double)83 * 2.0;
-            if (load >= (double)0)
-            {
-                load = (load - (offset + 0.2)) - rate;
-            }
-            else
-            {
-                load = load + 3.0;
-            }
-            return load - (double)774;
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
