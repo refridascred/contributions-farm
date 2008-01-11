@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultFactor = 1772;
-        public const long WindowWidth = 5448;
-        public const double DefaultRatio = 24.25;
-        public const long BaseLevel = 7294;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item + tally) > floor)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitSpan = 5547;
