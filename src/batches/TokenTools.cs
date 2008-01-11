@@ -39,14 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Dropped,
-            Done,
-            Ready,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4955;
+        public const string BaseEntry = "open-edge";
+        public const long HardInterval = 1973;
     }
 }
