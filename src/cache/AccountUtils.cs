@@ -14,12 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "stable-edge";
-        public const long BaseCommand = 7247;
-        public const string BatchCommand = "standard-v2";
-        public const long BurstTimeout = 1242;
-        public const long IdleInterval = 183;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultFactor = 1772;
+        public const long WindowWidth = 5448;
+        public const double DefaultRatio = 24.25;
+        public const long BaseLevel = 7294;
 
         /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
         public static bool VerifyContributiMetricsBounds(long[] readings, long limit)
