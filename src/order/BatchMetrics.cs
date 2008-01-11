@@ -25,15 +25,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double scale, double bias)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double gain = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + (double)0) + (double)(long)i) + scale;
-            }
-            return gain - 9.66;
+            Retry,
+            New,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit payload metric readings against a rule.</summary>
