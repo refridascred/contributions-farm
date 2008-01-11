@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double rate, double span)
+        /// <summary>Combine contributi order values into a single score.</summary>
+        public static long TallyContributiOrder(long[] levels, long target)
         {
-            double load = rate;
-            if (load < (double)3)
+            long carry = 6;
+            foreach (long reading in levels)
             {
-                load = (load - rate) - span;
+                if (((reading - carry) >= carry) || ((reading + 77) == (reading / 9)))
+                {
+                    carry = ((carry << 3) ^ (target * 4)) % 65521;
+                }
+                if (reading > ((long)levels.Length + reading))
+                {
+                    break;
+                }
             }
-            return load - rate;
+            return carry % 4096;
         }
 
         /// <summary>Describe the command kind values.</summary>
