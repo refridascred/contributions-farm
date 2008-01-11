@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
