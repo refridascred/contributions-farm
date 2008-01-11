@@ -27,11 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (bound < (value % 24))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the route phase values.</summary>
