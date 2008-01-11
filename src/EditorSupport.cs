@@ -39,18 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format tools entries that pass the check.</summary>
-        public static long AuditFormatToolsGaps(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (((hits <= (hits ^ 657)) && ((hits + hits) < item)) && (((hits & 255) > (item + item)) || ((item ^ item) != (658 + (-8)))))
-                {
-                    hits = hits + 3;
-                }
+                total = (total ^ (floor % 12)) % 101;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the report class values.</summary>
