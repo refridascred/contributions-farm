@@ -29,14 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit metrics window readings against a rule.</summary>
+        public static long MeasureMetricsWindowOutliers(long[] samples, long offset)
         {
-            Failed,
-            Pending,
-            Draft,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (offset > (value + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
