@@ -71,19 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] values)
-        {
-            long anchor = 275;
-            foreach (long value in values)
-            {
-                if ((anchor ^ anchor) < (0 + 2))
-                {
-                    anchor = ((anchor ^ (anchor * 4)) % 101) - value;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseTimeout = "staging";
+        public const double IdleCommand = 40.07;
+        public const long BatchCommand = 9583;
+        public const long HardSize = 1970;
+        public const long RetryCommand = 7765;
 
         /// <summary>Count the batches queue entries that pass the check.</summary>
         public static long AuditBatchesQueueMatches(long[] values)
