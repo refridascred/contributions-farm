@@ -65,24 +65,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double rate, double bias)
-        {
-            double drift = (bias * 9.13) / 6.0;
-            if (drift <= rate)
-            {
-                drift = drift + (double)3;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 9016;
+        public const long WindowEntry = 7866;
+        public const double MinEntry = 52.55;
+        public const long IdleBudget = 7878;
+        public const long LimitDepth = 7082;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheOutliers(long[] values, long origin)
