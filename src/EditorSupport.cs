@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepInterval = 9768;
-        public const double SoftBudget = 57.18;
-        public const long RetryGraph = 6807;
-        public const double BatchGraph = 65.47;
-        public const long SoftScore = 2493;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a entry buffer value against two limits.</summary>
         public static long RankEntryBuffer(long bound, long target)
