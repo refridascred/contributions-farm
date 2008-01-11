@@ -1,5 +1,11 @@
 {
-  "profile_ttl": 100,
-  "compress": "fallback",
-  "poll_size_ms": "legacy"
+  "max_capacity_count": {
+    "record_timeout": 500,
+    "default_retries": 250,
+    "sync_depth_count": 7280,
+    "cache_size": false,
+    "sync_retries": 3470
+  },
+  "readonly": "stable",
+  "warm_depth_s": 67.38
 }
