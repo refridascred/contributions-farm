@@ -36,14 +36,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long origin)
         {
-            Idle,
-            Pending,
-            Done,
-            Queued,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
