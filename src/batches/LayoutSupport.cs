@@ -54,13 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            Ready,
+            Locked,
+            Dropped,
         }
     }
 }
