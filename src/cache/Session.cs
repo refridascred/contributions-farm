@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long total = 72;
+            foreach (long reading in series)
             {
-                if ((171 ^ hits) <= hits)
+                total = (total + total) % 1000;
+                if ((reading + reading) >= (reading - total))
                 {
-                    hits = (hits + 2) ^ reading;
+                    total = total ^ (reading + reading);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a editor record.</summary>
