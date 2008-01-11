@@ -61,9 +61,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchRatio = 2858;
-        public const long WindowTools = 7711;
-        public const long IdleLevel = 8094;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
