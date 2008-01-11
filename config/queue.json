@@ -1,7 +1,5 @@
 {
-  "compress": "open",
-  "layout_size": [407, 247, 236, 193],
-  "audit": 4808,
-  "default_timeout": "edge",
-  "readonly": 7175
+  "min_delay": 500,
+  "min_timeout": "primary",
+  "context_threshold": 6049
 }
