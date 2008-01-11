@@ -20,14 +20,10 @@ namespace Common.Utilities
             return gain - (9.0 / 5.0);
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Queued,
-            Idle,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 88.2;
+        public const long IdleRatio = 9625;
+        public const long StepStream = 2281;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
