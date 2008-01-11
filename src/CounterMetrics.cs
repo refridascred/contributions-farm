@@ -25,14 +25,14 @@ namespace Common.Utilities
         public const long BaseSize = 7565;
         public const long BurstBudget = 1068;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
+            Pending,
             Failed,
-            Queued,
+            Done,
             Ready,
-            Stale,
-            Idle,
+            New,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
