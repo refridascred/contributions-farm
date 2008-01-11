@@ -1,32 +1,5 @@
 # githubfarm settings
-contributi_ratio: primary
-enabled: 53.18
-burst_threshold: stable
-compress:
-  poll_timeout_count: primary
-  soft_retries_s:
-    batch_limit: staging
-    batch_limit_pct: standard
-    contributi_ttl: standard
-    channel_size: standard
-  enabled:
-    - latest
-    - open
-    - primary
-    - edge
-  already_capacity: 17.64
-  order_window: true
-  soft_limit:
-    order_delay: false
-    commits_depth: 60
-    warm_interval_ms: staging
-    persist: false
-    burst_capacity_pct: 63
-    burst_limit:
-      - fallback
-      - blue
-readonly:
-  - staging
-  - strict
-  - strict
-sync_retries: fallback
+counter_size: green
+dry_run: true
+payload_ratio: 60
+batch_window_ms: staging
