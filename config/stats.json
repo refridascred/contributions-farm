@@ -1,7 +1,17 @@
 {
-  "dry_run": 81.33,
-  "flush_threshold_ms": "primary",
-  "burst_ttl_s": "local",
-  "poll_timeout_ms": "standard",
-  "readonly": 2613
+  "readonly": "edge",
+  "warm_interval_s": ["legacy", "eu-west", "open"],
+  "hard_limit_pct": {
+    "counter_limit": {
+      "account_delay": 85.14,
+      "format_capacity": "blue",
+      "enabled": 100,
+      "strict": "legacy",
+      "buffer_window": "fallback",
+      "payload_timeout": "stable"
+    },
+    "hard_retries": ["edge", "blue"],
+    "cache_window_pct": "open"
+  },
+  "flush_threshold_s": false
 }
