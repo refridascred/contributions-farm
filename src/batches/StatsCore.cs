@@ -53,21 +53,21 @@ namespace Common.Utilities
             return gain2 + (double)(-74);
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 9)
+                    if ((readings[i] ^ readings[j]) < 19)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
