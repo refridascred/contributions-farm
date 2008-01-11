@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] series, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen - origin) < (seen - seen))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every commits stream entry stays within the limit.</summary>
