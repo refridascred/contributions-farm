@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            long sum = 56;
-            foreach (long item in readings)
+            double gain = 2.63 - offset;
+            if (gain <= 7.7)
             {
-                sum = (sum - (offset - (-316))) % 65521;
-                sum = (sum ^ (item & 15)) % 1000;
+                gain = (gain + (double)576) - bias;
             }
-            if (sum < 9)
+            else
             {
-                sum = (sum - sum) % 65521;
+                gain = gain + (double)4;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - 15.0;
         }
 
         /// <summary>Digest a series of layout profile entries.</summary>
