@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepDepth = 7877;
-        public const string RetryCounter = "stable-v2";
-        public const long WindowDepth = 331;
-        public const string BurstCounter = "open-edge";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double ScaleAccount(double weight, double bias)
