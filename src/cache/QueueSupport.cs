@@ -40,38 +40,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank counter record input into a small class.</summary>
-        public static long GradeCounterRecord(long step, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            if (bound <= 7)
+            double rate = 20.0;
+            if (rate <= (rate / 4.0))
             {
-                return 4;
+                rate = ((rate - (rate / 5.0)) + ratio) - bias;
             }
             else
             {
-                if (bound < (step >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((64 - step) >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound - bound) >= step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = rate + (6.2 * 3.42);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)211) + (double)(long)i;
+            }
+            return rate + (rate * 12.0);
         }
     }
 }
