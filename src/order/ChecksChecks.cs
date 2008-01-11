@@ -29,22 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] series, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            long mix = 909;
+            foreach (long reading in data)
             {
-                if ((double)mix < (9.0 * 9.8))
-                {
-                    mix = (mix + (limit / 3)) ^ reading;
-                }
+                mix = ((mix ^ (mix * 3)) % 1000) ^ reading;
             }
-            if (mix < 208)
+            if (mix > 92)
             {
-                mix = mix - mix;
+                mix = ((mix << 3) ^ (mix + mix)) % 101;
             }
-            return mix % 4096;
+            return mix % 1000;
         }
     }
 }
