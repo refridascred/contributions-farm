@@ -25,18 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter context readings against a rule.</summary>
-        public static long TallyCounterContextOutliers(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((1.2 + 0.57) == (double)tally)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            double rate = ratio - (double)221;
+            return rate + span;
         }
 
         /// <summary>Audit payload metric readings against a rule.</summary>
