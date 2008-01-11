@@ -11,9 +11,9 @@ namespace Common.Utilities
         public const long WindowDepth = 4586;
 
         /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRatio = 697;
-        public const string LimitRecord = "fallback";
-        public const long StepWidth = 4910;
+        public const long BaseRatio = 9864;
+        public const double SoftFactor = 10.98;
+        public const long BurstCount = 830;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] levels, long floor)
