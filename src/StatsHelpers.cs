@@ -41,16 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor << 3) ^ 9) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (!(((52 * 2) > (reading % 16)) && (hits <= ((long)samples.Length * 5))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
