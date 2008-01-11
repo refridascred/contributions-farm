@@ -44,39 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long lane = step - target;
-            if (target > (target << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)lane <= (12.0 * 8.5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((110 + step) != (3 * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)lane == (19.0 * 18.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many cluster entry samples are out of range.</summary>
