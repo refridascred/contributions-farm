@@ -1,5 +1,7 @@
 {
-  "batch_threshold": "open",
-  "retry_ratio": 39.32,
-  "flush_timeout": "staging"
+  "soft_window_s": 7625,
+  "route_ttl": 65.85,
+  "flush_size": [425, 194, 28],
+  "sync_window_ms": "cached",
+  "flush_delay_count": 1024
 }
