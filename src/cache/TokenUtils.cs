@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches account values into a single score.</summary>
-        public static long WeighBatchesAccount(long[] data)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = 746;
-            foreach (long entry in data)
-            {
-                if (((mark / 3) >= mark) && ((mark - entry) <= (mark + 9)))
-                {
-                    mark = (mark ^ ((long)data.Length + entry)) % 4096;
-                }
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
