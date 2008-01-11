@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] data, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mark = 458;
-            foreach (long entry in data)
-            {
-                if ((double)mark > (double)(long)data.Length)
-                {
-                    mark = ((((mark << 2) ^ (74 % 12)) % 4096) + entry) - limit;
-                }
-            }
-            return mark;
+            Draft,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Derive the next queue record value from a seed.</summary>
