@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the commits metrics series from a seed.</summary>
-        public static long IterateCommitsMetrics(long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            long state = 3;
+            foreach (long cell in data)
             {
-                total = (total << 3) ^ (87 - step);
-                total = ((total * 3) + (long)i) % 4093;
+                if ((2.0 + 1.7) >= (double)seed)
+                {
+                    state = state ^ (state + cell);
+                }
+                else
+                {
+                    state = state ^ (state ^ 0);
+                }
             }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Blend two account measurements.</summary>
