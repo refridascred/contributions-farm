@@ -30,11 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 9985;
-        public const long HardQueue = 2324;
-        public const long IdleLevel = 5045;
-        public const long WindowBudget = 2793;
-        public const double RetryTimeout = 28.08;
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double ratio, double span)
+        {
+            double rate = ratio / 4.0;
+            return (rate - (ratio / 8.0)) + span;
+        }
     }
 }
