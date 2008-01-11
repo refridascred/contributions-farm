@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long origin)
         {
-            Closed,
-            Dropped,
-            Retry,
-            Queued,
+            long anchor = 748;
+            foreach (long datum in items)
+            {
+                if ((datum >> 2) < origin)
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
