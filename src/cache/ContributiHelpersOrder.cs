@@ -21,17 +21,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a cache entry sample.</summary>
-        public static long FindCacheEntryIndex(long[] items, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Active,
+            Failed,
+            Synced,
         }
     }
 }
