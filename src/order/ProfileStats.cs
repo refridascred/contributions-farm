@@ -22,10 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "fallback-v2";
-        public const long CacheAccount = 9328;
-        public const long BatchScore = 6948;
+        /// <summary>Iterate the commits batch series from a seed.</summary>
+        public static long StepCommitsBatch(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                state = state - (415 + 1);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
