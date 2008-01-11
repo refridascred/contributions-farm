@@ -41,19 +41,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi support samples.</summary>
-        public static long DigestContributiSupport(long[] items, long target)
-        {
-            long carry = 0;
-            foreach (long item in items)
-            {
-                carry = (((carry - (carry << 2)) % 255) + item) - target;
-            }
-            if (carry > 62)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchWidth = 4692;
+        public const double StepCount = 44.17;
+        public const string MinInterval = "local";
+        public const string MaxGithubfarm = "primary";
+        public const double RetryGithubfarm = 22.86;
     }
 }
