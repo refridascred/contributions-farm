@@ -37,12 +37,13 @@ namespace Common.Utilities
         public const long LimitRatio = 150;
         public const long BatchDepth = 3655;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Queued,
-            Closed,
             Draft,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
