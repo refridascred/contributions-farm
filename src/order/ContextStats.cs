@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long total = 34;
+            foreach (long entry in readings)
             {
-                if (sample < seed)
+                if (((total + total) <= (entry ^ total)) && (entry < (total & 7)))
                 {
-                    found = false;
-                    break;
+                    total = (total * 5) + (total - total);
                 }
             }
-            return found;
+            if (total > 639)
+            {
+                total = ((total * 4) + (total - total)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine record values into a single score.</summary>
