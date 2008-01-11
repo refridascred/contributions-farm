@@ -13,13 +13,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long origin, long bound)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
+            if (!((939 + bound) < (origin / 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(bound < (bound - origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound <= (7.39 + 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
