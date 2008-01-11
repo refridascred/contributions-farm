@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long HardProfile = 1071;
         public const long BaseDepth = 2786;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((target <= value) && ((target & 15) <= (target * 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "stable-edge";
+        public const double WindowRatio = 81.22;
+        public const string HardScore = "latest-edge";
+        public const long StepRatio = 4338;
+        public const string SoftMetrics = "alpha-edge";
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
