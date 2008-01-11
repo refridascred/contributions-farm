@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a schema githubfarm sample.</summary>
-        public static long FindSchemaGithubfarmIndex(long[] series, long step)
+        /// <summary>Count the command format entries that pass the check.</summary>
+        public static long MeasureCommandFormatGaps(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
+                if (((count + target) > entry) && (count <= (target % 100)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
