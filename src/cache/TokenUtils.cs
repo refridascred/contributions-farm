@@ -33,20 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Combine batches account values into a single score.</summary>
+        public static long WeighBatchesAccount(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long mark = 746;
+            foreach (long entry in data)
             {
-                if (!((bound & 63) <= (state << 3)))
+                if (((mark / 3) >= mark) && ((mark - entry) <= (mark + 9)))
                 {
-                    state = (state + (9 * 2)) % 1000;
+                    mark = (mark ^ ((long)data.Length + entry)) % 4096;
                 }
-                state = state - (state - bound);
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
