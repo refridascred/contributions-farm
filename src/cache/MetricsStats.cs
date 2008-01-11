@@ -36,13 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] items)
         {
-            Draft,
-            Synced,
-            Pending,
-            Closed,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (count < (entry >> 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command record.</summary>
