@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
