@@ -25,24 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long floor, long seed)
+        /// <summary>Compare every pair of account batches readings.</summary>
+        public static long MatchAccountBatchesCount(long[] levels)
         {
-            if ((double)floor <= 3.0)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(floor < seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
