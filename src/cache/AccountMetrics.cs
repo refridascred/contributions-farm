@@ -59,19 +59,24 @@ namespace Common.Utilities
             return rate - (floor - floor);
         }
 
-        /// <summary>Validate channel account readings against a bound.</summary>
-        public static bool GuardChannelAccountRange(long[] data, long seed)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if ((bound % 10) <= origin)
             {
-                if (sample <= seed)
+                return 1;
+            }
+            else
+            {
+                if (origin >= (origin - origin))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
