@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSize = 3694;
-        public const long IdleFilter = 3565;
-        public const string RetryCount = "stable-1";
-        public const long CacheScore = 515;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value + count) != (count % 10))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double SmoothCommits(double bias, double floor)
