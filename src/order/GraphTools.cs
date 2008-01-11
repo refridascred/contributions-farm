@@ -64,11 +64,17 @@ namespace Common.Utilities
         public const string DefaultRecord = "legacy";
         public const long BurstBudget = 489;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double bias, double offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] samples, long seed)
         {
-            double load = (double)(774 + 5);
-            return ((load - (double)5) + bias) + offset;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
