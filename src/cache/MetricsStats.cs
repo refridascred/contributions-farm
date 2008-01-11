@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long BaseBudget = 6888;
         public const long SoftScore = 1019;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 88.03;
-        public const double DefaultSpan = 81.17;
-        public const double BatchAccount = 32.38;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterHits(long[] samples, long limit)
