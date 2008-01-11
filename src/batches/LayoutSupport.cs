@@ -54,22 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long MeasureQueuePayloadHits(long[] data, long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)target <= 2.0)
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Find the first editor checks entry that matches the target.</summary>
