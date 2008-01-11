@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a report contributi reading.</summary>
-        public static double AdjustReportContributi(double scale, double floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long step)
         {
-            double rate = scale;
-            if (rate < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (floor + rate);
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + scale;
-            }
-            return rate - scale;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
