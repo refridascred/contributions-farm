@@ -21,16 +21,11 @@ namespace Common.Utilities
         public const string LimitBatches = "primary-v2";
         public const long WindowCount = 3631;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double offset)
-        {
-            double drift = bias;
-            if (drift <= drift)
-            {
-                drift = (drift - (bias * 9.1)) + offset;
-            }
-            return drift + (double)17;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstDepth = 242;
+        public const long WindowSupport = 6653;
+        public const long SoftWidth = 7530;
+        public const long LimitCount = 2445;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
