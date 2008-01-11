@@ -79,24 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order route value against two limits.</summary>
-        public static long RankOrderRoute(long seed, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] samples)
         {
-            if ((double)floor >= (double)seed)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 7) < seed)
+                if ((item >> 4) != (item % 100))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next commits value.</summary>
