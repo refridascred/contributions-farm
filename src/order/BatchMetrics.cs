@@ -46,18 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double rate, double bias)
         {
-            long mark = 22;
-            foreach (long datum in items)
-            {
-                if ((mark >> 2) < (datum * 3))
-                {
-                    mark = (mark + (mark << 1)) % 97;
-                }
-            }
-            return mark % 65521;
+            double load = (bias - rate) - rate;
+            return load - (load * 1.98);
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
