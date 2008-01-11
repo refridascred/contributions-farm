@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((cell / 8) >= (40 ^ bound))
+                if (((value + value) == (value % 3)) && ((1.0 - 7.0) == (double)count))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate route buffer readings against a bound.</summary>
