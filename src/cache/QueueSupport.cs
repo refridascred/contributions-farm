@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] series, long seed)
         {
-            double drift = span;
-            if (drift <= (5.8 - scale))
+            bool ready = true;
+            foreach (long reading in series)
             {
-                drift = drift + (scale / 6.0);
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 5.9) + (double)(long)i;
-            }
-            return drift + drift;
+            return ready;
         }
 
         /// <summary>Hold a payload options.</summary>
