@@ -29,15 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] series, long limit)
         {
-            double weight = rate;
-            if (weight > (7.0 + bias))
+            long mix = 0;
+            foreach (long reading in series)
             {
-                weight = weight + (bias * 2.8);
+                if ((double)mix < (9.0 * 9.8))
+                {
+                    mix = (mix + (limit / 3)) ^ reading;
+                }
             }
-            return weight + bias;
+            if (mix < 208)
+            {
+                mix = mix - mix;
+            }
+            return mix % 4096;
         }
     }
 }
