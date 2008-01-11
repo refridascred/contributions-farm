@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] data)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double gain2 = (double)2 / 2.0;
+            if (gain2 <= gain)
             {
-                if (((item / 7) > (item ^ item)) || ((item / 4) > hits))
-                {
-                    hits = hits + 1;
-                }
+                gain2 = gain2 + (gain * 4.57);
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - (8.5 - 9.38)) + (double)(long)i;
+            }
+            return gain2 + (8.0 * 8.39);
         }
 
         /// <summary>Match up tools context samples.</summary>
