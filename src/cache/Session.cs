@@ -22,16 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter counter forward.</summary>
-        public static long RollCommandCounter(long target)
+        /// <summary>Compare every pair of command already readings.</summary>
+        public static long MatchCommandAlreadyCount(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ (75 & 15)) % 1000;
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a payload info.</summary>
