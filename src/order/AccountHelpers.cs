@@ -30,10 +30,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxSize = "open-edge";
-        public const long BaseRatio = 6779;
-        public const long DefaultRoute = 2417;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Dropped,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesOutliers(long[] readings)
