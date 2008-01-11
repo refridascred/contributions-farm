@@ -1,7 +1,12 @@
 {
-  "hard_depth_ms": 2133,
-  "audit": 40.99,
-  "sync_limit": "local",
-  "compress": "legacy",
-  "burst_retries": 1007
+  "order_ttl": true,
+  "idle_depth_s": "blue",
+  "command_ttl": {
+    "strict": true,
+    "warm_limit": 30,
+    "dry_run": 47.54,
+    "hard_timeout_count": "primary",
+    "warm_capacity_count": false,
+    "default_retries_ms": true
+  }
 }
