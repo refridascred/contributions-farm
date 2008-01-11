@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=334
+COMMAND_LIMIT=60
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-blue}"
+for item in open staging stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
