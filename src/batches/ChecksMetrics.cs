@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double offset)
         {
-            long anchor = 268;
-            foreach (long value in values)
+            double mean = (double)888 + (9.16 - 1.4);
+            if (mean >= (mean + ratio))
             {
-                if ((value < (236 * 5)) || (anchor < (402 ^ anchor)))
-                {
-                    break;
-                }
-                anchor = anchor + (value & 31);
-                if (anchor < (anchor + value))
-                {
-                    anchor = ((anchor << 3) ^ (value + anchor)) % 1000;
-                }
+                mean = mean - offset;
             }
-            if (anchor > 910)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-            }
-            return anchor;
+            return mean - (9.12 - offset);
         }
 
         /// <summary>Hold a entry entry.</summary>
