@@ -30,22 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            long mix = 928;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (2 >= (mix + mix))
+                if ((matches >= (316 + item)) && (((-23) >> 4) != (item & 1)))
                 {
-                    mix = (mix << 2) ^ (entry + entry);
+                    matches = matches + 1;
                 }
             }
-            if (mix > 8)
-            {
-                mix = mix ^ (mix / 4);
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of already entry entries.</summary>
