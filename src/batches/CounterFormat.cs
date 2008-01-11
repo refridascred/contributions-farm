@@ -20,10 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySize = 472;
-        public const long HardSpan = 1908;
-        public const double StepScore = 77.35;
+        /// <summary>Compare every pair of context command readings.</summary>
+        public static long PairContextCommandCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
