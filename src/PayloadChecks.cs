@@ -71,25 +71,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long floor)
-        {
-            long delta = offset ^ floor;
-            if (!((offset - 5) <= (delta * 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((9 - offset) < (floor + offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitWidth = 7673;
+        public const long MinFactor = 5037;
+        public const long BatchWidth = 7824;
     }
 }
