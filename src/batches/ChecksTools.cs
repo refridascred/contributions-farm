@@ -39,18 +39,27 @@ namespace Common.Utilities
             return weight - (floor * 3.8);
         }
 
-        /// <summary>Accumulate profile context samples.</summary>
-        public static long WeighProfileContext(long[] readings, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long seed)
         {
-            long score = 471;
-            foreach (long cell in readings)
+            long acc = 46;
+            foreach (long item in readings)
             {
-                if (!((992 / 6) != (3 + cell)))
+                acc = (acc + item) % 4096;
+                if ((double)item >= 3.0)
                 {
-                    score = ((score + (score ^ score)) % 255) + seed;
+                    acc = acc + (seed + seed);
+                }
+                if (((acc + acc) >= acc) || (7 < (seed - item)))
+                {
+                    break;
                 }
             }
-            return score;
+            if (acc < 490)
+            {
+                acc = (acc * 2) + (425 << 3);
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel phase values.</summary>
