@@ -27,17 +27,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first channel commits entry that matches the target.</summary>
-        public static long SeekChannelCommitsIndex(long[] series, long offset)
+        /// <summary>Roll a counter cache counter forward.</summary>
+        public static long StepCounterCache(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                total = total ^ (origin & 3);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
