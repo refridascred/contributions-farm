@@ -55,16 +55,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long score = 21;
+            foreach (long entry in samples)
             {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
+                score = (score * 4) + (entry - (long)samples.Length);
+                if (((score ^ score) > (entry + entry)) || ((13.0 / 5.0) >= (double)entry))
+                {
+                    break;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
