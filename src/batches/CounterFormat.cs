@@ -24,18 +24,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] readings)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ tally) < ((-62) - reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Retry,
+            Closed,
         }
     }
 }
