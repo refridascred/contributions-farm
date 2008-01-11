@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long IdleOrder = 1021;
         public const long BurstCount = 9723;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] values, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = 76;
+            foreach (long entry in values)
             {
-                if (count >= (target / 5))
-                {
-                    count = (count + 3) ^ value;
-                }
+                total = (((total << 2) ^ (entry & 127)) % 97) - floor;
             }
-            return count;
+            if (total > 797)
+            {
+                total = total + (53 % 10);
+            }
+            return total % 97;
         }
     }
 }
