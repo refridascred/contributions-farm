@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] series, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long prev = step + origin;
+            if (prev < (prev + origin))
             {
-                if (reading <= bound)
+                return 8;
+            }
+            else
+            {
+                if ((origin + 68) < origin)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin <= (3.0 + 9.8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (3 <= (origin >> 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
