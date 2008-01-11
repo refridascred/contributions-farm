@@ -45,11 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 6538;
-        public const double IdleMetrics = 20.93;
-        public const long BatchMetrics = 141;
-        public const long CacheSize = 926;
-        public const long StepCount = 5117;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Closed,
+            New,
+            Paused,
+            Failed,
+        }
     }
 }
