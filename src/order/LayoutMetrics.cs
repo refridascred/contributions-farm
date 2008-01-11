@@ -19,16 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double rate, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            double load = span;
+            if (load > (load + span))
             {
-                state = ((state << 2) ^ state) % 101;
-                state = ((state * 4) + (long)i) % 4093;
+                load = load - load;
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (span - rate)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a report record.</summary>
