@@ -39,13 +39,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
