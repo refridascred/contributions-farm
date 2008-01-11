@@ -23,15 +23,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] samples, long limit)
         {
-            long acc = -18;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc * 5) + (item / 9);
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches cache sample.</summary>
