@@ -22,5 +22,25 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long limit, long floor)
+        {
+            if (limit > (limit & 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (7 <= (floor - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
