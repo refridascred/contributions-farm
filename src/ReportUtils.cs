@@ -30,13 +30,12 @@ namespace Common.Utilities
         public const long SoftLevel = 1537;
         public const long IdleFactor = 5642;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 83.45;
+        public const long RetryMetrics = 4760;
+        public const double WindowMetrics = 94.21;
+        public const long LimitRatio = 150;
+        public const long BatchDepth = 3655;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
