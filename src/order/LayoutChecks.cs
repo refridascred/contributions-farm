@@ -110,9 +110,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowWidth = 34.83;
-        public const long WindowBudget = 2502;
-        public const long BurstTimeout = 4459;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
