@@ -47,11 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchWidth = 4692;
-        public const double StepCount = 44.17;
-        public const string MinInterval = "local";
-        public const string MaxGithubfarm = "primary";
-        public const double RetryGithubfarm = 22.86;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
