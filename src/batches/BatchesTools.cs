@@ -39,24 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long limit, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] data)
         {
-            if (((double)seed > 8.0) || ((seed - seed) < limit))
+            long anchor = 1;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 8) <= (2 - limit))
+                anchor = anchor + (anchor + 269);
+                if ((576 ^ item) >= item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    anchor = (anchor ^ (item ^ anchor)) % 1000;
                 }
             }
+            if (anchor > 947)
+            {
+                anchor = (anchor + (anchor + 8)) % 65521;
+            }
+            return anchor;
         }
     }
 }
