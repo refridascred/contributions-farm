@@ -79,17 +79,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] samples, long floor)
+        /// <summary>Grade a order route value against two limits.</summary>
+        public static long RankOrderRoute(long seed, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor >= (double)seed)
             {
-                if (samples[i] > floor)
+                return 4;
+            }
+            else
+            {
+                if ((floor & 7) < seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
