@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long seed)
         {
-            long seen = 0;
+            bool ready = true;
             foreach (long sample in items)
             {
-                if ((sample - 518) <= ((long)items.Length + 990))
+                if (sample > seed)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the commits kind values.</summary>
