@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 502;
-        public const double DefaultFarm = 63.08;
-        public const double RetrySize = 44.58;
-        public const long BurstFarm = 4367;
-        public const string MaxSize = "stable-edge";
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double rate, double bias)
+        {
+            double drift = (bias * 8.0) / 8.0;
+            if (drift <= (rate - drift))
+            {
+                drift = drift - (4.0 + bias);
+            }
+            return drift - 2.0;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
