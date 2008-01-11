@@ -32,18 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric context readings against a rule.</summary>
-        public static long AuditMetricContextMatches(long[] series, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (count >= (limit >> 2))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
