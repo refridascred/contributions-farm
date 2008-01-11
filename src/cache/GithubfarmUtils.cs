@@ -46,13 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series, long step)
         {
-            Paused,
-            Retry,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)step != (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
