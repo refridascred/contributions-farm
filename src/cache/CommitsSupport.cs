@@ -72,15 +72,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double scale, double span)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long bound)
         {
-            double ratio = scale + 5.0;
-            if (ratio > span)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (span * 1.5);
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)193;
+            return -1;
         }
     }
 }
