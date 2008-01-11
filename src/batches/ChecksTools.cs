@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double rate, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long floor)
         {
-            double drift = (bias * 8.0) / 8.0;
-            if (drift <= (rate - drift))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (4.0 + bias);
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - 2.0;
+            return -1;
         }
 
         /// <summary>Audit account filter readings against a rule.</summary>
