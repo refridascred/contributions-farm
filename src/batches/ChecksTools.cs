@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long CacheCounter = 5968;
         public const double StepSpan = 53.43;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] series, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double ratio2 = floor;
+            if (ratio2 <= (20.0 + ratio))
             {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 + (floor / 3.0);
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (ratio / 9.0)) + (double)(long)i;
+            }
+            return ratio2 + (ratio * 12.0);
         }
     }
 }
