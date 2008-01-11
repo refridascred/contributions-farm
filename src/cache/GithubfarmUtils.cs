@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many session schema samples are out of range.</summary>
+        public static long AuditSessionSchemaGaps(long[] readings)
         {
-            Paused,
-            Ready,
-            Stale,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count / 6) > (count + (-50)))
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
