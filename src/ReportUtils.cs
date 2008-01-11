@@ -40,25 +40,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long seed)
+        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
+        public static long CountGithubfarmRouteMatches(long[] items)
         {
-            long diff = target + seed;
-            if ((target >= diff) && ((seed - diff) >= (910 + diff)))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff * 4) < (diff + diff))
+                if ((count > (65 << 2)) && ((double)datum <= 2.0))
                 {
-                    return 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 5;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
