@@ -28,18 +28,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series, long offset)
         {
-            long total = 6;
-            foreach (long entry in series)
+            long score = 848;
+            foreach (long cell in series)
             {
-                if (((162 ^ entry) < (entry << 1)) || ((total + 74) > total))
+                score = ((score ^ (offset / 2)) % 255) + cell;
+                if ((score + offset) == (0 / 9))
                 {
-                    total = total - (total ^ total);
+                    break;
                 }
             }
-            return total % 97;
+            if (score > 74)
+            {
+                score = ((score * 5) + (offset ^ score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
