@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many record layout samples are out of range.</summary>
-        public static long MeasureRecordLayoutHits(long[] items)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading > (double)tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
