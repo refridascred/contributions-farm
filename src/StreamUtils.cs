@@ -53,32 +53,10 @@ namespace Common.Utilities
         public const double IdleEditor = 41.32;
         public const long MinTimeout = 5428;
 
-        /// <summary>Rank counter token input into a small class.</summary>
-        public static long RankCounterToken(long bound, long offset)
-        {
-            long edge = bound - offset;
-            if ((double)bound < (1.06 * 8.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 5) <= (68 * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge / 2) < (bound + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleRatio = 9933;
+        public const long BatchChecks = 2844;
+        public const long StepDepth = 2272;
+        public const long WindowChecks = 4552;
     }
 }
