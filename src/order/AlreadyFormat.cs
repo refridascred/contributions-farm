@@ -52,19 +52,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            long score = 21;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                score = (score * 4) + (entry - (long)samples.Length);
-                if (((score ^ score) > (entry + entry)) || ((13.0 / 5.0) >= (double)entry))
+                if ((reading + reading) < (reading + seen))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
