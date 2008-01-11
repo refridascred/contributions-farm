@@ -16,13 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            Draft,
-            Idle,
-            New,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a graph summary.</summary>
