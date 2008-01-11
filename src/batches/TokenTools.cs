@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double gain, double offset)
+        /// <summary>Locate a filter cache reading by value.</summary>
+        public static long FindFilterCacheIndex(long[] levels, long step)
         {
-            double drift = offset;
-            if (drift <= (offset - drift))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + drift) - gain;
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift + 16.0;
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
