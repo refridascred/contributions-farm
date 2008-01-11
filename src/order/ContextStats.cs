@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings)
-        {
-            long total = 34;
-            foreach (long entry in readings)
-            {
-                if (((total + total) <= (entry ^ total)) && (entry < (total & 7)))
-                {
-                    total = (total * 5) + (total - total);
-                }
-            }
-            if (total > 639)
-            {
-                total = ((total * 4) + (total - total)) % 4096;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleInterval = 3970;
+        public const double WindowCluster = 52.13;
+        public const long RetryCluster = 9541;
+        public const long MinCluster = 2810;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] items, long offset)
