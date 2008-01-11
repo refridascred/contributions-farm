@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (origin - anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Project the next support value.</summary>
