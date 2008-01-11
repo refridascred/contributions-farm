@@ -20,19 +20,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long state = -9;
-            foreach (long cell in series)
-            {
-                state = ((state << 2) ^ (239 ^ state)) - cell;
-            }
-            if (state > 6)
-            {
-                state = ((state << 2) ^ (state + (long)series.Length)) % 255;
-            }
-            return state;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
