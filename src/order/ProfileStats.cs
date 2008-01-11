@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long anchor = 2;
+            foreach (long cell in items)
             {
-                if (state < (origin % 3))
-                {
-                    state = state + (state + origin);
-                    state = ((state * 4) + origin) % 4096;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                anchor = (anchor - (cell >> 5)) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
