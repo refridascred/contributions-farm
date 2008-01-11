@@ -61,16 +61,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowCount = 4856;
+        public const string BaseFactor = "legacy-v2";
+        public const long StepDepth = 6873;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double WindowWidth = 34.83;
