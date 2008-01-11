@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string MaxSize = "local";
         public const long MinBudget = 6148;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] values, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double rate = 3.25;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = ((rate - offset) + (double)(long)i) + ratio;
             }
-            return ok;
+            return rate + (rate - offset);
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
