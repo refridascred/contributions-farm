@@ -13,38 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long origin2)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items, long origin)
         {
-            if ((2 + origin) > (origin % 97))
+            long total = 583;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin2 / 5) <= (origin2 & 7)) && (((-170) + origin) > (61 % 60)))
+                if ((double)origin >= (1.6 / 8.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin2 > (origin * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin2 < (origin2 - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = (((total * 5) + origin) % 4096) + datum;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
