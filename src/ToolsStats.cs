@@ -31,17 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = span / 4.0;
+            if (load > (weight - span))
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + 5.6;
             }
-            return -1;
+            else
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (weight + load);
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
