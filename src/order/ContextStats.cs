@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long RetryCluster = 9541;
         public const long MinCluster = 2810;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] series, long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long limit)
         {
-            long mark = 580;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark ^ cell) <= cell)
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
                 {
-                    mark = mark ^ cell;
-                }
-                if (((double)cell < (14.0 + 5.0)) && ((origin ^ 32) > 7))
-                {
-                    mark = ((mark << 3) ^ (mark - mark)) % 101;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next commits value.</summary>
