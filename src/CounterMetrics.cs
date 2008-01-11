@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] readings, long step)
+        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
+        public static bool GuardCounterContributiLimits(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (readings[i] == step)
+                if (sample != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
