@@ -20,19 +20,23 @@ namespace Common.Utilities
         public const double DefaultRatio = 24.25;
         public const long BaseLevel = 7294;
 
-        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
-        public static bool VerifyContributiMetricsBounds(long[] readings, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double weight2 = 9.9;
+            if (weight2 >= (double)44)
             {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = (weight2 + (weight2 / 4.0)) + offset;
             }
-            return stale;
+            else
+            {
+                weight2 = weight2 + (weight / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - (weight2 * 19.0)) + (double)(long)i;
+            }
+            return weight2 - (weight2 / 2.0);
         }
     }
 }
