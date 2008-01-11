@@ -23,22 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] series, long floor)
         {
-            long mark = 33;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((cell - 1) > cell) || ((double)mark == (double)cell))
+                if (!(384 < (count ^ 0)) || (((sample * 4) != (count + floor)) || ((16.0 * 4.0) != (double)count)))
                 {
-                    mark = mark + (882 * 3);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark < 578)
-            {
-                mark = (mark ^ (mark & 63)) % 1000;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
