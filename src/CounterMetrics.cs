@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long WindowSpan = 4469;
         public const long MinFarm = 1111;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Derive the next window cluster value from a seed.</summary>
+        public static long StepWindowCluster(long seed)
         {
-            double load = (floor - ratio) + (double)29;
-            if (load > ratio)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                load = load - floor;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = carry - ((long)i2 >> 1);
+                }
+                carry = ((carry * 5) + (seed * 4)) % 255;
+                carry = carry ^ (seed / 8);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (floor + load);
+            return carry;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
