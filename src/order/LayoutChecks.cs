@@ -46,11 +46,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Digest a series of already entry entries.</summary>
+        public static long ScoreAlreadyEntry(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long result = -2;
+            foreach (long value in data)
+            {
+                result = (result << 2) ^ value;
+                result = ((result << 2) ^ (result / 8)) % 65521;
+            }
+            if (result < 25)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Roll a account counter forward.</summary>
