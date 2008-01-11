@@ -14,21 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next window cluster value from a seed.</summary>
-        public static long StepWindowCluster(long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] levels, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (levels[i] < step)
                 {
-                    carry = carry - ((long)i2 >> 1);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (seed * 4)) % 255;
-                carry = carry ^ (seed / 8);
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
