@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const double DefaultRatio = 24.25;
         public const long BaseLevel = 7294;
 
-        /// <summary>Combine window cache values into a single score.</summary>
-        public static long DigestWindowCache(long[] items, long offset)
+        /// <summary>Locate a batch entry reading by value.</summary>
+        public static long LookupBatchEntryIndex(long[] samples, long origin)
         {
-            long acc = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc ^ offset) % 1000) + cell;
+                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
