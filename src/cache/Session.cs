@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Find the first route token entry that matches the target.</summary>
+        public static long FindRouteTokenIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] > bound)
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of command already readings.</summary>
