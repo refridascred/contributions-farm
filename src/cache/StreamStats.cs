@@ -39,19 +39,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] series, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] data, long floor)
         {
-            long acc = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc - ((long)series.Length - 5)) ^ entry) + step;
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 94)
-            {
-                acc = (acc - (acc + 16)) % 101;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
