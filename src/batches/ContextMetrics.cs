@@ -64,18 +64,13 @@ namespace Common.Utilities
             return scale - (rate / 2.0);
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] items, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((((hits - hits) >= (58 / 5)) && ((hits + target) <= (entry - hits))) || (2.06 <= (double)target))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Pending,
+            Done,
         }
     }
 }
