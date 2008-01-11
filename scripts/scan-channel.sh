@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in stable standard legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-latest}"
 case "${mode}" in
-    open)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=367
+log "limit is ${CHANNEL_LIMIT}"
