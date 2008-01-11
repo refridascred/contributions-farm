@@ -1,7 +1,9 @@
-id,ratio,weight
-1,393,705
-2,stable,strict
-3,379,primary
-4,238,537
-5,79,111
-6,52.07,169
+id,region,score,state,ratio
+1,886,local,green,56.57
+2,standard,91.84,27.53,staging
+3,latest,edge,fallback,standard
+4,41.05,548,56.87,845
+5,22,cached,721,283
+6,854,885,4.18,801
+7,40.82,blue,40.5,cached
+8,196,648,primary,latest
