@@ -36,17 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (series[i] == origin)
+                if (sample != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the counter phase values.</summary>
