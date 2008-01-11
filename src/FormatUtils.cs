@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Find the first schema route entry that matches the target.</summary>
+        public static long LookupSchemaRouteIndex(long[] items, long step)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
