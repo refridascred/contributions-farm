@@ -27,18 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total + (step & 1)) % 1000;
-                total = ((total << 3) ^ (39 + total)) % 65521;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstSpan = 6416;
+        public const string HardBudget = "latest-1";
+        public const string WindowSpan = "strict-edge";
+        public const long DefaultFactor = 8387;
+        public const string BurstTimeout = "legacy-v2";
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] items)
