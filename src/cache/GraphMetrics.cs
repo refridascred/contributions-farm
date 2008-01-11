@@ -61,16 +61,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long limit, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            if ((double)limit < (9.1 + 0.92))
             {
-                sum = ((sum << 3) ^ (sum >> 3)) % 97;
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (!(target >= limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) > (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
