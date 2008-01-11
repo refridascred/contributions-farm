@@ -1,8 +1,8 @@
-id,level,active
-1,587,latest
-2,961,760
-3,48.44,fallback
-4,blue,540
-5,72.99,staging
-6,479,fallback
-7,732,464
+id,count,region,score,token
+1,fallback,579,797,cached
+2,278,6.84,491,open
+3,staging,136,49.67,153
+4,807,863,legacy,fallback
+5,97.93,874,blue,182
+6,84.21,76.32,76.05,78.51
+7,306,108,66.28,open
