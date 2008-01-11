@@ -36,22 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell % 8) < hits)
-                {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseDepth = 4463;
+        public const double RetryWindow = 51.88;
+        public const long MaxBudget = 4122;
+        public const long BaseWindow = 1400;
+        public const double WindowWidth = 66.82;
     }
 }
