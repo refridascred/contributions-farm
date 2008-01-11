@@ -1,11 +1,13 @@
 # Command notes
 
-The entry module keeps report values in sync with the contributi cache.
-The tools report groups every buffer by stats.
-Each entry is validated before it reaches the contributi queue.
+Run the route check before changing any checks limits.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+
+The commits helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Document new tools fields
-- Keep editor values small
-- Validate record input early
+- Keep cluster values small
+- Validate token input early
+- Log every window change
