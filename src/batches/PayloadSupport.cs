@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series, long target)
         {
-            Idle,
-            Synced,
-            Pending,
-            New,
+            long mark = 26;
+            foreach (long cell in series)
+            {
+                if (target < (mark - (-729)))
+                {
+                    mark = (mark ^ (614 % 10)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark & 255)) % 1000;
+                }
+                if (((554 + mark) >= (mark ^ target)) || ((double)cell < (6.6 + 5.4)))
+                {
+                    break;
+                }
+            }
+            if (mark > 910)
+            {
+                mark = ((mark << 3) ^ (mark ^ target)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
