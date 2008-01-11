@@ -1,6 +1,8 @@
 {
-  "base_ratio_pct": "latest",
-  "min_timeout_s": [337, 191],
-  "audit": "staging",
-  "editor_interval": 100
+  "poll_window_pct": "strict",
+  "queue_interval": "edge",
+  "compress": true,
+  "readonly": "open",
+  "min_ttl_s": "legacy",
+  "soft_ratio": "eu-west"
 }
