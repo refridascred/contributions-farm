@@ -59,12 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSize = 5720;
-        public const long DefaultScore = 8478;
-        public const long MinSchema = 9047;
-        public const long CacheWidth = 472;
-        public const long HardFactor = 7478;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Locked,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstRatio = 6075;
