@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine context values into a single score.</summary>
