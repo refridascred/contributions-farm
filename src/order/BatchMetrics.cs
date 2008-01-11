@@ -67,20 +67,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long carry = 850;
+            foreach (long reading in values)
             {
-                long slot = acc / 8;
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int i = 0; i < 7; i++)
                 {
-                    acc = (acc + slot) ^ (long)i2;
+                    carry = ((carry + (reading << 3)) % 97) ^ (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((reading <= 61) || ((reading ^ carry) == (carry - carry)))
+                {
+                    carry = ((carry * 2) + (reading % 16)) % 101;
+                }
             }
-            return acc;
+            return carry;
         }
     }
 }
