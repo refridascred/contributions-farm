@@ -32,13 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
