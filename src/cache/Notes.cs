@@ -50,19 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long mix = 50;
-            foreach (long sample in samples)
-            {
-                mix = ((mix * 3) + sample) % 101;
-                if (mix < (step - mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
