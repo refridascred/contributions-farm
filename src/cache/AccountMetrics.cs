@@ -82,10 +82,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 88.22;
-        public const string BurstBudget = "fallback-edge";
-        public const long IdleTimeout = 5166;
-        public const long BurstToken = 7560;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
