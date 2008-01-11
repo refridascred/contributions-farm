@@ -47,12 +47,40 @@ namespace Common.Utilities
         public const long BatchSize = 6389;
         public const long LimitTimeout = 1719;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitCount = 58.5;
-        public const long WindowLevel = 1513;
-        public const string BurstWidth = "strict-1";
-        public const long BatchSpan = 8045;
-        public const long SoftSpan = 5313;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long bound, long target)
+        {
+            long delta = bound - target;
+            if ((delta & 15) >= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.53 / 6.0) != (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target == (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (54 < (target + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long PairEditorCount(long[] readings)
