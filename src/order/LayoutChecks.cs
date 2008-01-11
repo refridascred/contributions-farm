@@ -30,18 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Measure how many stream queue samples are out of range.</summary>
+        public static long CountStreamQueueOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((matches >= (316 + item)) && (((-23) >> 4) != (item & 1)))
+                if ((tally * 4) <= tally)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) - cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of already entry entries.</summary>
