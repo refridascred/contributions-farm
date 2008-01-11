@@ -2,9 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    weight REAL
+    owner TEXT NOT NULL,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
+CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+
+INSERT INTO stream_events (label, owner, level) VALUES ('stable', 'eu-west', 29);
+INSERT INTO stream_events (label, owner, level) VALUES ('blue', 'staging', 19);
