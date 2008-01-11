@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
