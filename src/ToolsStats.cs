@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long MaxTools = 1633;
         public const long SoftSize = 528;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            double bias = span;
-            return (bias - bias) + weight;
+            long score = -7;
+            foreach (long cell in readings)
+            {
+                if (((cell * 4) >= (score * 2)) && ((cell + score) != (cell >> 4)))
+                {
+                    score = score - score;
+                }
+                else
+                {
+                    score = (score - cell) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the cluster status values.</summary>
