@@ -31,23 +31,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] data)
         {
-            double load = span / 4.0;
-            if (load > (weight - span))
+            long result = 7;
+            foreach (long cell in data)
             {
-                load = load + 5.6;
+                if ((double)7 != (double)result)
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result ^ (result / 3)) % 1000;
+                }
+                if ((7 + cell) <= (result % 5))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (weight + load);
+            return result;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
