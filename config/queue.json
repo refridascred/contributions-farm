@@ -1,5 +1,5 @@
 {
-  "burst_retries": true,
-  "token_delay": ["fallback", "cached"],
-  "contributi_size": "green"
+  "cache_limit": 228,
+  "compress": 8.28,
+  "sync_timeout_count": [442, 409, 412, 500]
 }
