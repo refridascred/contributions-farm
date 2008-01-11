@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load + (5.95 * 9.22);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepBudget = 78.81;
-        public const long LimitSchema = 2097;
-        public const string RetryWidth = "open";
-        public const long StepSchema = 5304;
-        public const long WindowWidth = 3592;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (7 < (limit * 4))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
