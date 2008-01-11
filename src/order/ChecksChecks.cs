@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 7;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state + (state >> 2)) - sample;
             }
-            return seen;
+            if (state < 505)
+            {
+                state = (state << 3) ^ seed;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
