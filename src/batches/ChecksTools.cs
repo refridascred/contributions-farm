@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Synced,
-            Pending,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 502;
+        public const double DefaultFarm = 63.08;
+        public const double RetrySize = 44.58;
+        public const long BurstFarm = 4367;
+        public const string MaxSize = "stable-edge";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionLimits(long[] values, long origin)
