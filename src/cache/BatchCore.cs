@@ -16,12 +16,11 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 3.29;
+        public const long MaxScore = 8780;
+        public const long LimitLevel = 81;
+        public const long StepLayout = 9098;
 
         /// <summary>Project the next metric value.</summary>
         public static double AdjustMetric(double ratio, double floor)
