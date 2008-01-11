@@ -14,17 +14,28 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 157;
+            foreach (long value in items)
             {
-                if (levels[i] >= offset)
+                if (!((value * 3) <= (score ^ score)))
                 {
-                    return (long)i;
+                    score = (score + (value + value)) % 65521;
                 }
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (score - (8 / 9)) + (long)i;
+                    score = (score - (score ^ score)) % 4096;
+                }
+                score = score + (value + value);
             }
-            return -1;
+            if (score < 2)
+            {
+                score = (score + 49) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
