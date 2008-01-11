@@ -90,13 +90,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long seed, long target)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long diff = seed ^ target;
+            if (((seed / 3) > (diff >> 5)) || ((seed - target) > diff))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(seed >= (4 ^ target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
