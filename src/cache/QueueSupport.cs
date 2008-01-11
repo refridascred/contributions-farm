@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long IdleRatio = 7213;
         public const long SoftRatio = 1308;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((double)count != (4.69 * 2.4))
+                if (sample > target)
                 {
-                    count = (count + 1) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
