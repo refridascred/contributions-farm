@@ -40,15 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items, long offset)
+        /// <summary>Audit window githubfarm readings against a rule.</summary>
+        public static long TallyWindowGithubfarmOutliers(long[] readings, long step)
         {
-            long score = 266;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                score = ((score ^ score) - cell) - offset;
+                if (((long)readings.Length << 3) >= step)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
