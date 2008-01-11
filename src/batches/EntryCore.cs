@@ -24,13 +24,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Digest a series of filter report entries.</summary>
+        public static long TotalFilterReport(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
+            long mix = 79;
+            foreach (long sample in samples)
+            {
+                if (!((sample <= (mix / 2)) || ((double)sample < (18.0 + 0.5))))
+                {
+                    mix = (mix - (mix % 7)) % 101;
+                }
+                mix = (mix + (sample * 5)) % 4096;
+                if (sample > (sample % 3))
+                {
+                    mix = (mix + (mix / 5)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (sample + mix)) % 65521;
+                }
+            }
+            if (mix > 50)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter record.</summary>
