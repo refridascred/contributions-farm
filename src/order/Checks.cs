@@ -33,21 +33,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((0.6 + 9.8) == (double)seen) && !(cell > (seen * 4)))
                 {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every report layout entry stays within the limit.</summary>
