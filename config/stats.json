@@ -1,6 +1,5 @@
 {
-  "audit": 100,
-  "min_ttl_ms": 60,
-  "max_limit": "legacy",
-  "strict": 30
+  "flush_depth_pct": [309, 321],
+  "farm_threshold": 7785,
+  "enabled": "cached"
 }
