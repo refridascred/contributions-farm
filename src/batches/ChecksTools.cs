@@ -39,12 +39,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Rank stats notes input into a small class.</summary>
+        public static long ClassifyStatsNotes(long target, long limit)
         {
-            Queued,
-            Pending,
-            Active,
+            long gap = target + limit;
+            if (target <= (gap + 770))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit - 0) >= (limit - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap % 100) == (limit + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
