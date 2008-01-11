@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Use record settings to tune how often session data is refreshed.
-The filter report groups every stream by profile.
+Keep profile and farm names short and lowercase.
+The entry report groups every format by commits.
+Keep route and metric names short and lowercase.
 
 ## Guidelines
 
-- Log every filter change
-- Validate session input early
-- Keep window values small
-- Review token limits each release
+- Document new batches fields
+- Validate window input early
+- Keep githubfarm values small
+- Review cluster limits each release
