@@ -52,12 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepInterval = 9599;
+        public const double CacheTimeout = 0.08;
+        public const long BatchDepth = 829;
+        public const double MaxTimeout = 24.87;
+        public const long DefaultSession = 4740;
     }
 }
