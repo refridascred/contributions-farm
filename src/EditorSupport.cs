@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double ratio, double offset)
         {
-            Idle,
-            Pending,
-            Stale,
+            double mean = 9.11;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (offset + ratio)) + (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
