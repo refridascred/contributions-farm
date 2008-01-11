@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data, long offset)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((offset & 15) <= sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue options.</summary>
