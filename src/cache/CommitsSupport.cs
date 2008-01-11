@@ -48,19 +48,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] levels, long offset)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double ratio = (double)33 - 7.9;
+            if (ratio > ratio)
             {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ((ratio - (ratio / 2.0)) - gain) + span;
             }
-            return found;
+            else
+            {
+                ratio = ratio + 5.8;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
