@@ -39,23 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report context samples.</summary>
-        public static long TotalReportContext(long[] samples)
+        /// <summary>Audit payload metric readings against a rule.</summary>
+        public static long AuditPayloadMetricHits(long[] values)
         {
-            long sum = 27;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum << 3) ^ (158 ^ item)) % 97;
-                if ((double)sum < 3.62)
+                if ((reading - reading) <= (count - count))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (sum < 840)
-            {
-                sum = ((sum << 2) ^ (sum % 3)) % 255;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
