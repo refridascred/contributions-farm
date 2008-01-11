@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const long IdleRatio = 7213;
         public const long SoftRatio = 1308;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] values, long step)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
