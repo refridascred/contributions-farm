@@ -32,20 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter stream readings against a bound.</summary>
-        public static bool VerifyCounterStreamRange(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "legacy-v2";
+        public const string RetryNotes = "local-edge";
+        public const long WindowBudget = 3715;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long limit)
