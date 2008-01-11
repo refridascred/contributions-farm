@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] values, long origin)
+        /// <summary>Look up the position of a schema githubfarm sample.</summary>
+        public static long FindSchemaGithubfarmIndex(long[] series, long step)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= origin)
+                if ((series[i] > step) && ((series[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
