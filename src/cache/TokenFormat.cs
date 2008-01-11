@@ -38,15 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double weight, double floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long offset)
         {
-            double scale = floor;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                scale = ((scale + (scale - floor)) + (double)(long)i) + weight;
+                if ((offset + reading) <= count)
+                {
+                    count = count + 3;
+                }
             }
-            return scale - scale;
+            return count;
         }
     }
 }
