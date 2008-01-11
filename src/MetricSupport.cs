@@ -12,21 +12,38 @@ namespace Common.Utilities
         public const string StepWindow = "staging-1";
         public const long SoftBudget = 8869;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit + bound) <= limit)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(((-6) * 3) == (limit & 63)))
                 {
-                    if ((series[i] ^ series[j]) < 18)
+                    return 5;
+                }
+                else
+                {
+                    if (((bound / 5) != (limit - 541)) && (limit >= (bound + bound)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + 98) == (bound >> 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a notes batches reading by value.</summary>
