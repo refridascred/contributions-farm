@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command already readings.</summary>
-        public static long MatchCommandAlreadyCount(long[] readings)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum - ((long)i2 + step);
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the cluster level values.</summary>
