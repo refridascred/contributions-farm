@@ -1,13 +1,8 @@
 {
-  "default_retries_ms": 7652,
-  "schema_size": 16,
-  "verbose": 100,
-  "burst_limit": "edge",
-  "queue_interval": {
-    "retry_depth_pct": false,
-    "dry_run": 6205,
-    "buffer_size": 56,
-    "batch_threshold": 66.8,
-    "stats_timeout": "standard"
-  }
+  "entry_interval": 3422,
+  "persist": "edge",
+  "cluster_window": "stable",
+  "default_size": "blue",
+  "idle_ttl": 93.21,
+  "burst_limit_ms": "cached"
 }
