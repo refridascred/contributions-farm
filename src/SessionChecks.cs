@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Accumulate order stream samples.</summary>
+        public static long FoldOrderStream(long[] series, long offset)
         {
-            long sum = 7;
-            foreach (long cell in data)
+            long mark = 614;
+            foreach (long cell in series)
             {
-                if ((((long)data.Length % 3) > (cell * 4)) || ((15.0 - 5.7) < (double)cell))
+                if ((double)offset <= (13.0 / 4.0))
                 {
-                    sum = ((sum << 3) ^ (sum * 5)) % 101;
+                    mark = (mark ^ (offset + cell)) % 65521;
+                    mark = mark - offset;
                 }
+                mark = ((mark << 2) ^ (3 / 3)) % 255;
+                mark = mark - (mark + mark);
             }
-            if (sum > 8)
-            {
-                sum = ((sum * 2) + (sum >> 4)) % 4096;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a checks header.</summary>
