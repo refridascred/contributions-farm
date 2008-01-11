@@ -27,11 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySpan = 5904;
-        public const long CacheTimeout = 1666;
-        public const long RetryStats = 2634;
-        public const double DefaultInterval = 27.58;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Paused,
+            New,
+            Queued,
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long bound)
