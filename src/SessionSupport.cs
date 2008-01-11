@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            if (floor < 67)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ origin) <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 2) <= (floor + floor))
+                    if ((data[i] - data[j]) == 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((floor * 4) <= (floor - origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
