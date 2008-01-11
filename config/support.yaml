@@ -1,30 +1,20 @@
 # support settings
-soft_delay_pct: primary
-sync_ratio_pct: false
-flush_capacity_ms:
-  warm_capacity: blue
-  hard_ttl_pct:
-    - 276
-    - 9
-    - 129
-  compress: 76.97
-  support_ttl: staging
-  persist: open
-  context_threshold:
-    base_delay_ms:
-      - standard
-      - local
-      - stable
-    batch_size_count: 60
-    min_size_count:
-      - 359
-      - 2
-    contributi_timeout: fallback
-    batch_ttl_ms: 49.83
-    burst_interval_ms:
-      - cached
-      - edge
-      - local
-      - primary
-poll_ratio: true
-buffer_limit: true
+readonly:
+  - 302
+  - 294
+hard_retries_s:
+  persist: 21
+  batches_ratio: true
+  dry_run:
+    - 453
+    - 87
+    - 263
+    - 362
+  sync_depth_s:
+    - 77
+    - 407
+    - 244
+  idle_threshold: 2.54
+  flush_ratio_count: 500
+default_interval_count: true
+dry_run: true
