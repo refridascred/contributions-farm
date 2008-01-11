@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] series, long bound)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((count + bound) >= (224 * 5)) || (((bound - count) <= cell) || ((4.85 * 5.79) >= (double)count)))
-                {
-                    count = count + 1;
-                }
+                mark = (mark ^ (mark / 2)) % 255;
+                mark = (mark << 2) ^ ((long)i + mark);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Match up editor samples.</summary>
