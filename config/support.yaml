@@ -1,4 +1,8 @@
 # support settings
-min_retries: legacy
-enabled: false
-min_timeout: 4932
+support_interval:
+  - 164
+  - 324
+  - 357
+  - 88
+hard_size_ms: legacy
+cluster_ttl: local
