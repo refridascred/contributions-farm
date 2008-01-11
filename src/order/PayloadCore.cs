@@ -60,22 +60,21 @@ namespace Common.Utilities
         public const long WindowPayload = 1222;
         public const long HardPayload = 8819;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels, long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset - offset) <= 517)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
