@@ -35,30 +35,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] data)
         {
-            long acc = 2;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!(acc >= (785 / 9)))
+                if (((double)cell < (9.3 / 5.0)) || ((double)cell >= (11.0 / 3.0)))
                 {
-                    break;
-                }
-                else
-                {
-                    acc = acc + acc;
-                }
-                if ((60 < (acc >> 5)) && (acc <= sample))
-                {
-                    acc = (acc * 4) + (sample + acc);
+                    matches = matches + 2;
                 }
             }
-            if (acc < 4)
-            {
-                acc = (acc << 2) ^ (4 * 4);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
