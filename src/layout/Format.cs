@@ -26,5 +26,20 @@ namespace Common.Utilities
             }
             return bias3 + (double)53;
         }
+
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (bound <= 423)
+                {
+                    mix = ((mix << 3) ^ (bound % 3)) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
