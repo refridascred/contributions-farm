@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
             public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
