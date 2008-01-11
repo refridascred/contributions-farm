@@ -50,23 +50,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            if (!((4 - limit) <= ((-576) + origin)))
             {
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    state = ((state - limit) % 65521) ^ (long)i3;
-                }
-                if ((limit + (long)i) >= ((long)i - state))
-                {
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (!((1.8 + 3.0) < (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
