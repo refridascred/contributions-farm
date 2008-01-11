@@ -1,7 +1,8 @@
-id,token,state
-1,strict,blue
-2,legacy,65.21
-3,835,573
-4,83.5,blue
-5,green,623
-6,cached,stable
+id,weight,region,count
+1,fallback,205,132
+2,green,138,edge
+3,971,136,stable
+4,178,43.96,strict
+5,2.05,80.38,393
+6,stable,latest,288
+7,legacy,53,90
