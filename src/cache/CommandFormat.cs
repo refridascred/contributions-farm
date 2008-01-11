@@ -35,16 +35,17 @@ namespace Common.Utilities
         public const long HardScore = 39;
         public const long RetryEntry = 878;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Locate a metrics already reading by value.</summary>
+        public static long FindMetricsAlreadyIndex(long[] readings, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total - (371 + origin)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
