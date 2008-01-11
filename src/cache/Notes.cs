@@ -67,13 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Done,
-            Paused,
-            Retry,
-            Idle,
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
