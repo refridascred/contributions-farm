@@ -27,27 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long acc = 46;
-            foreach (long item in readings)
-            {
-                acc = (acc + item) % 4096;
-                if ((double)item >= 3.0)
-                {
-                    acc = acc + (seed + seed);
-                }
-                if (((acc + acc) >= acc) || (7 < (seed - item)))
-                {
-                    break;
-                }
-            }
-            if (acc < 490)
-            {
-                acc = (acc * 2) + (425 << 3);
-            }
-            return acc;
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
