@@ -62,20 +62,10 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitScore = 7778;
+        public const double BurstWindow = 81.41;
+        public const long SoftWindow = 2665;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
