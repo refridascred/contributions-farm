@@ -37,19 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long TallyPayloadToolsOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (6 >= (matches + matches))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultBudget = 8845;
+        public const long HardContext = 151;
+        public const long BatchTimeout = 2838;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] levels)
