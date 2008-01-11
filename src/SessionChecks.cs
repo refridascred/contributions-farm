@@ -31,10 +31,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepTimeout = 1351;
-        public const long IdleAlready = 9444;
-        public const long LimitRatio = 4747;
+        /// <summary>Project the next notes context value.</summary>
+        public static double SmoothNotesContext(double bias, double span)
+        {
+            double drift = (double)(8 / 9);
+            if (drift <= 5.0)
+            {
+                drift = ((drift + (4.08 / 5.0)) - bias) - span;
+            }
+            else
+            {
+                drift = drift - 2.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)(-74)) - (double)(long)i;
+            }
+            return drift - (double)24;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
