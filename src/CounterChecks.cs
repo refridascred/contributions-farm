@@ -62,18 +62,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] samples, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            long mark = 864;
-            foreach (long item in samples)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((item >> 4) == (item / 9))
-                {
-                    mark = (mark + (seed * 3)) % 101;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
     }
 }
