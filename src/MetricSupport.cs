@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] levels, long origin)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((origin <= (origin * 5)) && ((sample << 1) > (long)levels.Length)) && ((sample / 5) >= origin))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
