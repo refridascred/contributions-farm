@@ -31,10 +31,11 @@ namespace Common.Utilities
             return ratio2 + offset;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 1570;
-        public const double SoftScore = 54.87;
-        public const double BurstFilter = 31.54;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "legacy-edge";
+        public const double SoftTimeout = 54.95;
+        public const long BaseAlready = 9767;
+        public const string DefaultAlready = "open-1";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] readings, long origin)
