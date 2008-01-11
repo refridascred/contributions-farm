@@ -52,22 +52,12 @@ namespace Common.Utilities
         public const long WindowSpan = 3912;
         public const long MaxWidth = 8779;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] series)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!!(seen > (seen << 1)))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
