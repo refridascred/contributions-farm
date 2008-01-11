@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count format buffer pairs that satisfy a relation.</summary>
-        public static long OverlapFormatBufferCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 94.99;
+        public const double MaxToken = 95.93;
+        public const double CacheWidth = 48.91;
+        public const long BatchToken = 7922;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadGaps(long[] samples)
