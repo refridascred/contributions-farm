@@ -42,12 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Closed,
-            Retry,
-            Paused,
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit support graph readings against a rule.</summary>
