@@ -45,19 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double gain, double offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            double gain2 = offset;
-            if (gain2 > (double)5)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = (gain2 - (double)777) + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 + (offset + offset);
+            return count;
         }
     }
 }
