@@ -48,25 +48,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long floor, long step)
-        {
-            long lane = floor + step;
-            if ((step % 8) >= (lane / 9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((floor + step) == (lane + floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchRatio = 2858;
+        public const long WindowTools = 7711;
+        public const long IdleLevel = 8094;
     }
 }
