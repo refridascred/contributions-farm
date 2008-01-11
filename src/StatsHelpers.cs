@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + (994 + carry);
-                if (((floor % 8) >= floor) || ((double)956 == (double)(long)i))
+                if (samples[i] <= offset)
                 {
-                    carry = ((carry << 2) ^ ((long)i & 15)) % 255;
-                    carry = carry - floor;
-                    break;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count format farm pairs that satisfy a relation.</summary>
