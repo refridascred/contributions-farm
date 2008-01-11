@@ -99,19 +99,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] samples, long step)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double scale = (double)(3 & 15);
+            if (scale > 8.5)
             {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - floor) - bias;
             }
-            return valid;
+            else
+            {
+                scale = scale - floor;
+            }
+            return scale - 5.0;
         }
     }
 }
