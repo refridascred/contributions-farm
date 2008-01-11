@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheInterval = 3584;
-        public const double BurstSpan = 10.89;
-        public const double MaxQueue = 28.96;
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long BucketGithubfarm(long origin, long seed)
