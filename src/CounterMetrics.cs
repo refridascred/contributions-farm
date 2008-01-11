@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Locate a cache context reading by value.</summary>
+        public static long LookupCacheContextIndex(long[] series, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the batch commits entries that pass the check.</summary>
