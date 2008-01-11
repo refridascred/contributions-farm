@@ -57,21 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((71 + target) > target)
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
