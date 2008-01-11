@@ -37,22 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] series, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (count < entry)
+                if (cell <= seed)
                 {
-                    count = (count + 3) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
