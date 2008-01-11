@@ -32,22 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long total = 3;
-            foreach (long item in readings)
-            {
-                if ((double)item != (double)(long)readings.Length)
-                {
-                    total = ((total << 3) ^ (total + item)) % 4096;
-                }
-            }
-            if (total > 18)
-            {
-                total = (total + (total ^ total)) % 101;
-            }
-            return total % 4096;
+            Failed,
+            Ready,
+            Idle,
         }
     }
 }
