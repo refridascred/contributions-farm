@@ -17,10 +17,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 39.72;
-        public const long SoftLevel = 1537;
-        public const long IdleFactor = 5642;
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double span)
+        {
+            double gain = (double)((-4) + 252);
+            if (gain < 9.1)
+            {
+                gain = (gain + scale) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)98) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinMetrics = 83.45;
