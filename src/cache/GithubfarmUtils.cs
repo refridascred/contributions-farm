@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepDepth = 2127;
-        public const long WindowSession = 9754;
-        public const long BaseSession = 750;
-        public const long BurstSession = 6040;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits >= (hits & 15))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsBounds(long[] readings, long origin)
