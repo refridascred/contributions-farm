@@ -10,40 +10,10 @@ namespace Common.Utilities
         public const long StepWidth = 7385;
         public const long MinToken = 535;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long origin, long limit)
-        {
-            long cur = origin + limit;
-            if (cur >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((cur % 8) <= (3 * 5)) || (limit < (85 >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur & 31) < (limit & 255))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (13.0 - 10.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 8378;
+        public const double DefaultRatio = 43.57;
+        public const long MaxCommand = 6604;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] items, long step)
