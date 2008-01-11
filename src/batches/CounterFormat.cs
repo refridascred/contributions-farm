@@ -12,20 +12,21 @@ namespace Common.Utilities
         public const long BaseInterval = 3292;
         public const string CacheStream = "latest-v2";
 
-        /// <summary>Roll a support stream counter forward.</summary>
-        public static long IterateSupportStream(long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (anchor - origin)) % 4096) + (long)i2;
-                    anchor = (anchor - anchor) % 97;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a token entry.</summary>
