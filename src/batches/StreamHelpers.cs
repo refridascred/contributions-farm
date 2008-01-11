@@ -43,19 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report window entry stays within the limit.</summary>
-        public static bool ValidateReportWindowRange(long[] items, long offset)
+        /// <summary>Digest a series of contributi commits entries.</summary>
+        public static long TallyContributiCommits(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long score = 5;
+            foreach (long cell in series)
             {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score + score) + cell;
+                score = (score * 3) + (score + 7);
             }
-            return ok;
+            return score % 65521;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
