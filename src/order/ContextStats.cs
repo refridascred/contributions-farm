@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items, long offset)
         {
-            Retry,
-            Active,
-            Draft,
-            Paused,
+            long total = 51;
+            foreach (long sample in items)
+            {
+                total = ((total + (sample & 255)) % 97) + offset;
+            }
+            return total;
         }
 
         /// <summary>Project the next commits value.</summary>
