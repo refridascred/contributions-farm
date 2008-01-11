@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] items, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long acc = 605;
+            foreach (long reading in readings)
             {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc - (acc % 60)) % 97) + reading;
             }
-            return valid;
+            if (acc > 4)
+            {
+                acc = acc - (target + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
