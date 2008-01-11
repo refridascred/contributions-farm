@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxInterval = 50.95;
-        public const long LimitBudget = 7629;
-        public const long MinFarm = 322;
-        public const long BatchFarm = 6638;
-        public const long DefaultSize = 5914;
+        /// <summary>Count the notes window entries that pass the check.</summary>
+        public static long AuditNotesWindowGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!(((5.7 - 7.8) != (double)reading) || ((double)seen <= (7.09 - 6.67))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
