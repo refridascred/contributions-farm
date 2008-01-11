@@ -23,17 +23,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] items, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 94;
+            foreach (long cell in samples)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (carry - 18)) + cell;
             }
-            return -1;
+            if (carry < 2)
+            {
+                carry = (carry + (carry - limit)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of support entries.</summary>
