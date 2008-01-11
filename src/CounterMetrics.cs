@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (floor - ratio) + (double)29;
+            if (load > ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - floor;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (floor + load);
         }
 
         /// <summary>Hold a metric snapshot.</summary>
