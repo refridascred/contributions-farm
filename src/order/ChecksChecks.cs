@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a cache metrics counter forward.</summary>
-        public static long SeriesCacheMetrics(long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] series, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (!(step > total))
+                if (entry > limit)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
