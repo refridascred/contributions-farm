@@ -41,15 +41,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Rank report cache input into a small class.</summary>
