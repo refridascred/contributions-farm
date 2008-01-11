@@ -49,11 +49,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowLevel = 5042;
-        public const long IdleCounter = 100;
-        public const long BurstCounter = 2958;
-        public const long StepCounter = 3598;
-        public const long SoftCounter = 6731;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowSize = 1311;
+        public const long BurstCount = 7537;
+        public const long BatchSpan = 3909;
+        public const long DefaultEntry = 1659;
     }
 }
