@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] values)
         {
-            double mean = span * 19.0;
-            if (mean > (double)434)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mean = (mean - (mean / 7.0)) - ratio;
+                if ((reading * 5) <= (count >> 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mean - span;
+            return count;
         }
 
         /// <summary>Describe the checks phase values.</summary>
