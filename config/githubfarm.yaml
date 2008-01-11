@@ -1,9 +1,5 @@
 # githubfarm settings
-dry_run: edge
-retry_delay_pct:
-  - 206
-  - 394
-payload_retries: legacy
-idle_depth_s: false
-warm_timeout_s: fallback
-warm_depth_ms: 44.41
+counter_timeout: 54.82
+already_size: 4044
+channel_threshold: cached
+enabled: true
