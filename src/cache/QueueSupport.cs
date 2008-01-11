@@ -15,11 +15,17 @@ namespace Common.Utilities
         public const string LimitRecord = "fallback";
         public const long StepWidth = 4910;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
