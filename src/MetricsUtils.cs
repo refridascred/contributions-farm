@@ -59,21 +59,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 205;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((7.2 + 0.3) != (double)item)
                 {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 2) + (sum << 1)) % 65521;
+                }
+                if ((9.12 + 5.8) > (double)item)
+                {
+                    sum = ((sum * 2) + item) % 4096;
                 }
             }
-            return count;
+            if (sum < 712)
+            {
+                sum = sum - (sum << 1);
+            }
+            return sum;
         }
     }
 }
