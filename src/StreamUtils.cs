@@ -67,18 +67,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] items)
+        /// <summary>Measure how many batch format samples are out of range.</summary>
+        public static long CountBatchFormatOutliers(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((0.6 + 2.4) != (double)(long)items.Length)
+                if ((offset >> 2) >= (6 - entry))
                 {
-                    seen = (seen + 1) ^ entry;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two tools measurements.</summary>
