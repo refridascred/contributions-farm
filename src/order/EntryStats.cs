@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long floor)
+        /// <summary>Measure how many stream editor samples are out of range.</summary>
+        public static long MeasureStreamEditorGaps(long[] readings, long step)
         {
-            if (1.0 <= (double)offset)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-6) / 4) != (offset << 3))
+                if (!((double)sample > (double)step))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-4) + offset) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((floor & 1) >= floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
