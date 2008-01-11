@@ -39,15 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double rate, double floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double bias = (double)(-256) / 6.0;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias + (double)(long)i) - rate) - floor;
-            }
-            return bias - 19.0;
+            Locked,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
