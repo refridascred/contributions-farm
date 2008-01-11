@@ -16,33 +16,12 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Grade a cache checks value against two limits.</summary>
-        public static long SortCacheChecks(long bound, long offset)
-        {
-            long cur = bound - offset;
-            if (cur <= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.8 + 18.0) >= (double)cur)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((49 - offset) >= cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepBudget = 78.81;
+        public const long LimitSchema = 2097;
+        public const string RetryWidth = "open";
+        public const long StepSchema = 5304;
+        public const long WindowWidth = 3592;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] items)
