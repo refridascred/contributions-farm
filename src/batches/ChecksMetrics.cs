@@ -74,17 +74,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 2.29;
+            if (mean > mean)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean - mean)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias2) + (double)(long)i;
+            }
+            return mean + 16.0;
         }
 
         /// <summary>Hold a batches stats.</summary>
