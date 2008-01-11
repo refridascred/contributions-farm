@@ -1,12 +1,20 @@
 # support settings
-burst_ratio_ms: standard
-verbose:
-  - open
-  - fallback
-entry_capacity: 7621
-context_window:
-  - edge
-  - stable
-  - primary
-default_depth_ms: 100
-enabled: 27
+window_retries: false
+strict: 17.89
+readonly:
+  report_timeout:
+    persist: true
+    audit:
+      - latest
+      - open
+      - strict
+      - latest
+    soft_timeout_s: 250
+    sync_depth_pct: 25
+  min_delay: 1024
+  audit: 7
+  idle_limit_pct: eu-west
+enabled:
+  - 154
+  - 102
+batch_limit_s: true
