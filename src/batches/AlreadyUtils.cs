@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            Done,
-            Paused,
-            Draft,
-            Ready,
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i == (acc - acc)) || ((acc / 3) < (acc & 127)))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc + (acc + 2)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
