@@ -47,14 +47,13 @@ namespace Common.Utilities
             return drift - (double)24;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            New,
-            Done,
-            Locked,
-            Active,
+            Stale,
             Dropped,
+            Queued,
+            Synced,
         }
     }
 }
