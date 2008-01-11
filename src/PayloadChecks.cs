@@ -29,17 +29,19 @@ namespace Common.Utilities
         public const long CacheSize = 5788;
         public const long StepWidth = 6158;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] levels, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
