@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            double bias = floor;
-            if (bias <= bias)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                bias = bias - (double)5;
+                if (matches < sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + 0.6) + (double)(long)i;
-            }
-            return bias - scale;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
