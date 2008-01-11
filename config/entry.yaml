@@ -1,24 +1,7 @@
 # entry settings
-flush_ratio_s: true
-verbose:
-  - edge
-  - legacy
+cache_ratio_s:
+  - strict
+  - green
   - blue
-  - cached
-min_capacity_ms:
-  retry_depth: blue
-  max_window:
-    - 274
-    - 363
-    - 205
-    - 106
-  enabled: local
-sync_size_s:
-  - primary
-  - green
-  - standard
-  - eu-west
-audit:
-  - open
-  - green
-cache_size_count: blue
+max_ttl: true
+payload_ratio: standard
