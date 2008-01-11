@@ -33,21 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmNotesCount(long[] data)
+        /// <summary>Count the record window entries that pass the check.</summary>
+        public static long TallyRecordWindowHits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches <= (offset >> 3)) || !((8 + item) <= 370))
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a report stats.</summary>
