@@ -61,12 +61,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSpan = 2004;
+        public const long MinCache = 3804;
+        public const long LimitBudget = 4547;
+        public const double BurstScore = 57.66;
+        public const long RetryCache = 1400;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] levels)
