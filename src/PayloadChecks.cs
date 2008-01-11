@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell % 8) >= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1298;
+        public const double BatchProfile = 20.66;
+        public const long HardTimeout = 7083;
+        public const double BurstProfile = 3.47;
 
         /// <summary>Count the layout metrics entries that pass the check.</summary>
         public static long CountLayoutMetricsMatches(long[] values)
