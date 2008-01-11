@@ -36,26 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long mark = 46;
-            foreach (long value in series)
+            long acc = 5;
+            foreach (long cell in values)
             {
-                if (!(value <= (value + 2)))
+                if (!(cell <= (15 - (-69))))
                 {
-                    mark = mark + mark;
+                    acc = (acc ^ (acc - cell)) % 97;
                 }
                 else
                 {
-                    mark = (mark + (377 ^ value)) % 65521;
+                    acc = (acc - (39 + 6)) % 1000;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark ^ (mark >> 2)) % 97;
-            }
-            return mark;
+            return acc;
         }
     }
 }
