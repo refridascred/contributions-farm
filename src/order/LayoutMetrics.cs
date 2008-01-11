@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((tally << 2) > (58 & 7))
+                if (((count + bound) >= (224 * 5)) || (((bound - count) <= cell) || ((4.85 * 5.79) >= (double)count)))
                 {
-                    tally = (tally + 3) + datum;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a command counter forward.</summary>
