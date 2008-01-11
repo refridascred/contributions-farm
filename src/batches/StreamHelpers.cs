@@ -93,21 +93,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item <= bound)
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
