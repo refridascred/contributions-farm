@@ -20,19 +20,19 @@ namespace Common.Utilities
             return drift + 16.0;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] items, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (reading > origin)
+                if (entry != bound)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
