@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
-        public static bool ValidateCounterContributiRange(long[] levels, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
