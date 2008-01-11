@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6.0 * 2.9) < (double)seen)
+                if (state < (origin % 3))
                 {
-                    seen = (seen + 3) + item;
+                    state = state + (state + origin);
+                    state = ((state * 4) + origin) % 4096;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
