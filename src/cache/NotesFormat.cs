@@ -18,12 +18,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long floor, long floor2)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            if ((3.78 * 5.9) >= (9.74 - 5.7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(floor2 < (floor + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
