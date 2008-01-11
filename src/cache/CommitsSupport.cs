@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] series, long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((766 + hits) < hits) && ((((-71) >> 2) == (bound + item)) || ((item & 127) < hits)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of metrics channel entries.</summary>
