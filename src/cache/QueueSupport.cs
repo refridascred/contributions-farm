@@ -19,13 +19,11 @@ namespace Common.Utilities
         public const string IdleTimeout = "legacy-v2";
         public const double MaxSize = 42.41;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 22.76;
+        public const long BatchCount = 5826;
+        public const long BaseFilter = 3276;
+        public const long WindowSpan = 7200;
+        public const double LimitDepth = 75.93;
     }
 }
