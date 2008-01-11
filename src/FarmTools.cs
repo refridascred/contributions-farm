@@ -27,17 +27,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(15 + 4);
+            return ((mean - (double)4) + bias) + floor;
         }
     }
 }
