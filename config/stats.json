@@ -1,17 +1,5 @@
 {
-  "readonly": "edge",
-  "warm_interval_s": ["legacy", "eu-west", "open"],
-  "hard_limit_pct": {
-    "counter_limit": {
-      "account_delay": 85.14,
-      "format_capacity": "blue",
-      "enabled": 100,
-      "strict": "legacy",
-      "buffer_window": "fallback",
-      "payload_timeout": "stable"
-    },
-    "hard_retries": ["edge", "blue"],
-    "cache_window_pct": "open"
-  },
-  "flush_threshold_s": false
+  "hard_depth": 250,
+  "enabled": 1024,
+  "soft_retries_ms": 100
 }
