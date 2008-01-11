@@ -25,14 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long bound)
         {
-            Retry,
-            New,
-            Draft,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)bound == (8.61 / 4.0))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
