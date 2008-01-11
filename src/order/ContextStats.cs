@@ -38,11 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 9987;
-        public const double BaseCount = 61.48;
-        public const long CacheFactor = 201;
-        public const long IdleTools = 9321;
+        /// <summary>Audit schema layout readings against a rule.</summary>
+        public static long MeasureSchemaLayoutHits(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally > (value * 2)) && ((offset * 3) == (12 << 3)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BurstToken = 24.57;
