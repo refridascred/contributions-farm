@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate contributi checks samples.</summary>
-        public static long CombineContributiChecks(long[] series, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long state = -7;
-            foreach (long item in series)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((long)series.Length ^ 41) > (state + seed)) && ((state - item) != (seed + seed)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    state = (state * 3) + (90 / 5);
+                    acc = (((acc * 4) + acc) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    state = state + (item / 7);
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (state < 30)
-            {
-                state = state - (state / 6);
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit command format readings against a rule.</summary>
