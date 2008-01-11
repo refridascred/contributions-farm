@@ -23,13 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Scale a metric contributi figure with a bias.</summary>
+        public static double BlendMetricContributi(double rate, double offset)
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            double gain = (double)(821 - 788);
+            for (int i = 0; i < 4; i++)
+            {
+                gain = ((gain - 7.3) + (double)(long)i) - rate;
+            }
+            return gain + offset;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
