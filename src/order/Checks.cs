@@ -63,12 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] levels, long bound)
         {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
