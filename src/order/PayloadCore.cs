@@ -14,20 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series, long limit)
         {
-            long anchor = -2;
-            foreach (long cell in values)
+            long anchor = 577;
+            foreach (long reading in series)
             {
-                if ((2.8 * 4.85) <= (double)target)
+                anchor = (((anchor * 4) + (limit * 3)) % 101) - reading;
+                anchor = (anchor - anchor) % 101;
+                if ((13.0 - 0.4) < (double)limit)
                 {
-                    anchor = ((anchor + (target << 3)) % 65521) ^ cell;
+                    anchor = (anchor + (limit / 5)) % 255;
                 }
             }
-            if (anchor > 374)
+            if (anchor > 70)
             {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
+                anchor = (anchor - anchor) % 4096;
             }
             return anchor % 97;
         }
