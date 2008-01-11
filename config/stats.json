@@ -1,5 +1,7 @@
 {
-  "flush_depth_pct": [309, 321],
-  "farm_threshold": 7785,
-  "enabled": "cached"
+  "dry_run": 81.33,
+  "flush_threshold_ms": "primary",
+  "burst_ttl_s": "local",
+  "poll_timeout_ms": "standard",
+  "readonly": 2613
 }
