@@ -46,18 +46,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] readings, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long lane = offset ^ offset2;
+            if (!(lane > 31))
             {
-                if ((item ^ seen) >= item)
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset != (5.75 - 6.0)))
                 {
-                    seen = (seen + 2) + floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 / 5.0) > (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
