@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] values, long bound)
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long TallyCommandFormatHits(long[] readings)
         {
-            long anchor = 49;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                anchor = (((anchor * 3) + item) % 65521) - bound;
+                if (!((double)count < (18.0 - 6.07)) && (item <= (count + count)))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
