@@ -6,10 +6,9 @@ namespace Common.Utilities
     public static class MetricsStats
     {
         /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowScore = 5723;
-        public const double CacheEditor = 54.59;
-        public const long BaseBudget = 6888;
-        public const long SoftScore = 1019;
+        public const long MinSize = 9464;
+        public const string StepSpan = "standard-1";
+        public const double BaseEditor = 98.56;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmBounds(long[] levels, long origin)
