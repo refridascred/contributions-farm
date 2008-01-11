@@ -30,13 +30,15 @@ namespace Common.Utilities
         public const long MinSupport = 9166;
         public const long RetrySupport = 5805;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of payload window entries.</summary>
+        public static long ScorePayloadWindow(long[] readings, long step)
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long total = 6;
+            foreach (long value in readings)
+            {
+                total = (((total * 2) + (value + 6)) % 1000) + step;
+            }
+            return total % 4096;
         }
     }
 }
