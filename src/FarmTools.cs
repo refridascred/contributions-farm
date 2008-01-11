@@ -16,10 +16,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 1497;
-        public const double MaxFarm = 59.33;
-        public const double IdleFarm = 13.89;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series)
+        {
+            long acc = 983;
+            foreach (long datum in series)
+            {
+                if ((datum - 0) <= (datum & 31))
+                {
+                    acc = ((acc * 4) + (datum << 2)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + acc);
+                    acc = ((acc * 3) + (datum - (-3))) % 65521;
+                }
+                if ((datum - acc) <= (long)series.Length)
+                {
+                    acc = (acc * 3) + (datum >> 3);
+                }
+                else
+                {
+                    acc = (acc - acc) % 4096;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long step, long step2)
