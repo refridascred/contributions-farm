@@ -37,11 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] items, long origin)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
