@@ -49,22 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] readings, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((tally / 7) > (seed % 2)) && (31 > (tally & 3)))
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Adjust a cache reading.</summary>
