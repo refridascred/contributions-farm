@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long mark = 6;
+            foreach (long cell in levels)
             {
-                mark = (mark ^ (mark / 2)) % 255;
-                mark = (mark << 2) ^ ((long)i + mark);
-                mark = ((mark * 2) + (long)i) % 97;
+                mark = (mark * 5) + (cell << 1);
             }
             return mark;
         }
