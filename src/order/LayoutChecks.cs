@@ -45,18 +45,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] items, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)floor > 6.0)
-                {
-                    seen = (seen + 3) + reading;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
