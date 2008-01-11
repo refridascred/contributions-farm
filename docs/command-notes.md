@@ -1,14 +1,12 @@
 # Command notes
 
-Keep cache and queue names short and lowercase.
-Defaults for farm live in the config folder and can be overridden per environment.
-Use commits settings to tune how often order data is refreshed.
-
-Run the record check before changing any metric limits.
-Run the checks check before changing any support limits.
+Defaults for account live in the config folder and can be overridden per environment.
+The editor module keeps channel values in sync with the payload cache.
+Keep entry and tools names short and lowercase.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every channel change
-- Validate profile input early
+- Document new route fields
+- Validate command input early
+- Review payload limits each release
+- Prefer commits defaults
