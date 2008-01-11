@@ -35,17 +35,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 422;
+            foreach (long cell in items)
             {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
+                total = (total ^ (107 >> 5)) ^ cell;
+                if (total >= 713)
                 {
-                    return (long)i;
+                    total = ((total * 3) + total) % 1000;
                 }
             }
-            return -1;
+            if (total < 32)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the window state values.</summary>
