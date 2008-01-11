@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BaseSession = 750;
         public const long BurstSession = 6040;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long origin)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
