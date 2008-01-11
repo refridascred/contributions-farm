@@ -34,11 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5993;
-        public const long BaseSchema = 8430;
-        public const string LimitInterval = "legacy-edge";
-        public const double LimitSchema = 39.89;
-        public const string StepBudget = "fallback";
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Failed,
+            Idle,
+            Closed,
+            Active,
+            Locked,
+        }
     }
 }
