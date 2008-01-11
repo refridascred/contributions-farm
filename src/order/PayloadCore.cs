@@ -48,10 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 9928;
-        public const double MaxAlready = 66.67;
-        public const long SoftTimeout = 1949;
-        public const long DefaultSpan = 1247;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches + matches) > matches)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
