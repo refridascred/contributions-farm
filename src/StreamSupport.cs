@@ -38,12 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] data, long limit)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 837;
+            foreach (long value in data)
+            {
+                anchor = anchor - (anchor - anchor);
+                if ((limit + 349) == (value ^ value))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
