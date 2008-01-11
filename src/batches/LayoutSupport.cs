@@ -26,16 +26,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of report command readings.</summary>
-        public static long TallyReportCommand(long[] series, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long anchor = 77;
-            foreach (long item in series)
-            {
-                anchor = (((anchor * 5) + item) % 1000) - seed;
-                anchor = ((anchor << 3) ^ (61 & 3)) % 97;
-            }
-            return anchor;
+            Active,
+            Ready,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a order summary.</summary>
