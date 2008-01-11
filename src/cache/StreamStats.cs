@@ -39,19 +39,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double floor)
-        {
-            double rate = (double)(0 % 12);
-            if (rate <= rate)
-            {
-                rate = ((rate - (rate - 0.5)) + weight) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + 7.0) + (double)(long)i;
-            }
-            return rate - (double)795;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftRatio = "primary-edge";
+        public const long RetryAccount = 7060;
+        public const double BaseLevel = 62.01;
+        public const string MinSpan = "local-1";
     }
 }
