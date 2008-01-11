@@ -26,11 +26,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
