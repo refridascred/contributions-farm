@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long result = 4;
-            foreach (long value in readings)
-            {
-                if ((3.91 + 8.25) < (double)result)
-                {
-                    result = ((result * 2) + (result - value)) % 255;
-                }
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
