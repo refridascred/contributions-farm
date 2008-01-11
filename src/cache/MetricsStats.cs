@@ -48,12 +48,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Retry,
+            Paused,
+            Synced,
         }
     }
 }
