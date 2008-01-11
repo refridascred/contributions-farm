@@ -52,22 +52,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long sum = 357;
-            foreach (long sample in data)
-            {
-                if ((sample / 2) <= (sum % 2))
-                {
-                    sum = ((sum * 4) + (56 << 1)) % 255;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sample;
-                }
-            }
-            return sum;
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the entry level values.</summary>
