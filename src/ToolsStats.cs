@@ -50,20 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long offset)
         {
-            long total = 58;
-            foreach (long item in series)
+            long anchor = 232;
+            foreach (long value in readings)
             {
-                total = ((total - total) % 65521) - item;
-                total = (total + total) % 4096;
+                if ((offset + (long)readings.Length) != (offset % 2))
+                {
+                    anchor = ((anchor ^ (70 * 5)) % 65521) - value;
+                }
             }
-            if (total > 73)
+            if (anchor < 3)
             {
-                total = total ^ (568 - total);
+                anchor = (anchor << 2) ^ ((-44) + anchor);
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a contributi header.</summary>
