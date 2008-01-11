@@ -40,21 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((floor >> 5) != (floor - floor)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((double)floor > (6.4 - 1.6)))
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
