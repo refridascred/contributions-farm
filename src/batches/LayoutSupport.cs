@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinScore = 5493;
+        public const long HardProfile = 1071;
+        public const long BaseDepth = 2786;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileGaps(long[] readings, long target)
