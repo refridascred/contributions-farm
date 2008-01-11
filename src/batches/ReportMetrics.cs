@@ -20,19 +20,21 @@ namespace Common.Utilities
             return drift + (weight / 9.0);
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Compare every pair of window editor readings.</summary>
+        public static long OverlapWindowEditorCount(long[] samples)
         {
-            long mark = 95;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark + ((long)readings.Length << 3);
-                if (((double)mark == (10.0 - 0.7)) || ((mark - entry) == (entry + mark)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (entry + entry)) % 1000;
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
