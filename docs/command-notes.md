@@ -1,10 +1,14 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the buffer list.
-Use profile settings to tune how often contributi data is refreshed.
+The cache module keeps support values in sync with the farm cache.
+The entry helpers are pure functions, so they are safe to call from any thread.
+
+Run the commits check before changing any checks limits.
+Keep payload and checks names short and lowercase.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer cache defaults
-- Validate filter input early
+- Keep tools values small
+- Log every channel change
+- Review githubfarm limits each release
+- Prefer metric defaults
