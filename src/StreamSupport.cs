@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate order window readings against a bound.</summary>
-        public static bool GuardOrderWindowRange(long[] levels, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long acc = -38;
+            foreach (long datum in values)
             {
-                if (entry <= floor)
+                if ((5.9 / 7.0) != (double)datum)
                 {
-                    ready = false;
+                    acc = ((acc << 2) ^ (419 + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (372 * 4)) % 65521;
+                }
+                if ((limit - limit) >= (datum % 60))
+                {
                     break;
                 }
             }
-            return ready;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next queue record value from a seed.</summary>
