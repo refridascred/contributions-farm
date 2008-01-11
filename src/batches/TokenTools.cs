@@ -35,9 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 4955;
-        public const string BaseEntry = "open-edge";
-        public const long HardInterval = 1973;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data)
+        {
+            long carry = 2;
+            foreach (long sample in data)
+            {
+                if ((carry * 2) < (carry << 2))
+                {
+                    carry = carry + (sample >> 3);
+                }
+                else
+                {
+                    carry = (carry + (carry + (-99))) % 1000;
+                }
+            }
+            return carry;
+        }
     }
 }
