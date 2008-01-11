@@ -22,38 +22,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metrics githubfarm input into a small class.</summary>
-        public static long GradeMetricsGithubfarm(long bound, long target)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long limit)
         {
-            if ((target % 12) > (target - bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound & 127) == (bound & 31)) && (target < (bound % 3)))
+                if (readings[i] >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound / 8) == (bound / 9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target > (206 ^ bound)) || ((double)target >= (9.2 / 4.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine metric token values into a single score.</summary>
