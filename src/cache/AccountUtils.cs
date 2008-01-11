@@ -25,17 +25,10 @@ namespace Common.Utilities
         public const double DefaultRatio = 24.25;
         public const long BaseLevel = 7294;
 
-        /// <summary>Locate a batch entry reading by value.</summary>
-        public static long LookupBatchEntryIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitSpan = 5547;
+        public const long CacheEditor = 1472;
+        public const double HardSpan = 7.81;
+        public const long MaxEditor = 6083;
     }
 }
