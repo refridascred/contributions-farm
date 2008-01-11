@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every account support entry stays within the limit.</summary>
-        public static bool GuardAccountSupportLimits(long[] values, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= target)
+                if ((series[i] < limit) && ((series[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
