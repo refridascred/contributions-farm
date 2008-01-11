@@ -74,10 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinLevel = "alpha";
-        public const string DefaultRecord = "legacy";
-        public const long BurstBudget = 489;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Pending,
+            Queued,
+            Paused,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] samples, long seed)
