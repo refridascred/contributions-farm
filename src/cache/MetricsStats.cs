@@ -26,24 +26,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels, long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mix = 914;
-            foreach (long sample in levels)
-            {
-                if ((mix ^ floor) == (mix >> 1))
-                {
-                    mix = mix ^ sample;
-                }
-                else
-                {
-                    mix = (mix + (sample - mix)) % 4096;
-                    mix = (mix ^ (7 << 1)) % 4096;
-                }
-                mix = (mix * 5) + (sample ^ sample);
-            }
-            return mix;
+            Draft,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a command record.</summary>
