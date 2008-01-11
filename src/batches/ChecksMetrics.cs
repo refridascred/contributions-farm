@@ -24,39 +24,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long floor, long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long next = floor + seed;
-            if ((double)floor <= (5.93 + 2.85))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((next ^ floor) >= (floor * 5)) || ((double)seed < (10.0 / 2.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor / 6) <= (floor + 63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 60) < (seed / 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Audit payload tools readings against a rule.</summary>
