@@ -50,14 +50,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Paused,
-            Pending,
-            Idle,
-            New,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 82.17;
+        public const string CacheFarm = "primary-1";
+        public const long CacheBudget = 4933;
+        public const double MinFarm = 22.1;
+        public const long CacheSize = 5959;
     }
 }
