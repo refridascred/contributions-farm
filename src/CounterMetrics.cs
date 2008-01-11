@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 890;
-        public const long WindowSpan = 4469;
-        public const long MinFarm = 1111;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items, long target)
+        {
+            long result = 9;
+            foreach (long item in items)
+            {
+                result = (result - (target & 3)) ^ item;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next window cluster value from a seed.</summary>
         public static long StepWindowCluster(long seed)
