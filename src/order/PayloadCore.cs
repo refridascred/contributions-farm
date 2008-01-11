@@ -32,10 +32,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRatio = 89.3;
-        public const string HardWidth = "cached";
-        public const string IdleRoute = "strict-edge";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (floor > item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] series, long target)
