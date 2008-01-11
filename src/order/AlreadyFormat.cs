@@ -27,11 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "legacy-edge";
-        public const double SoftTimeout = 54.95;
-        public const long BaseAlready = 9767;
-        public const string DefaultAlready = "open-1";
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] samples, long target)
