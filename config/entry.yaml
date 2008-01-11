@@ -1,9 +1,9 @@
 # entry settings
-warm_depth_count: eu-west
-flush_window_pct:
-  - staging
-  - strict
-sync_timeout_ms: eu-west
-min_depth_pct: 25.92
-compress: staging
-persist: 81
+default_retries_s:
+  - fallback
+  - edge
+  - local
+retry_limit_pct: true
+strict: stable
+persist: stable
+warm_interval_count: 22.1
