@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the notes window entries that pass the check.</summary>
-        public static long AuditNotesWindowGaps(long[] series)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(((5.7 - 7.8) != (double)reading) || ((double)seen <= (7.09 - 6.67))))
+                mark = mark - (long)i;
+                if (1.18 > (double)limit)
                 {
-                    seen = seen + 1;
+                    mark = (mark + (limit + limit)) % 65521;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
