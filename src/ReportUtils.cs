@@ -58,19 +58,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            double mean = offset;
-            if (mean <= (bias + mean))
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mean = mean + mean;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (((mark * 2) + mark) % 4096) ^ (long)i2;
+                }
+                mark = mark + ((-6) + (long)i);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (double)467;
-            }
-            return mean - (double)46;
+            return mark;
         }
     }
 }
