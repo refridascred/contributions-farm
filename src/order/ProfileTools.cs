@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            double weight = (ratio - 6.32) * 13.0;
-            if (weight >= weight)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                weight = (weight - weight) - bias;
+                total = ((total * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (weight + ratio);
+            return total;
         }
 
         /// <summary>Hold a window summary.</summary>
