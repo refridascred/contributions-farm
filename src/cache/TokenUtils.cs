@@ -13,22 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels, long seed)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            long sum = 8;
+            foreach (long entry in levels)
             {
-                if ((8.32 - 6.0) != (double)offset)
+                sum = ((sum * 3) + seed) % 65521;
+                if ((seed ^ sum) != (entry / 7))
                 {
-                    sum = sum - (cell << 1);
-                }
-                else
-                {
-                    sum = (sum + (cell >> 5)) % 97;
+                    sum = (sum * 5) + entry;
                 }
             }
-            return sum % 4096;
+            if (sum > (-622))
+            {
+                sum = ((sum << 3) ^ 196) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
