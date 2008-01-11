@@ -32,13 +32,22 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 51;
+            foreach (long entry in values)
+            {
+                if ((515 <= (entry + state)) || (state <= (entry + 14)))
+                {
+                    state = ((state << 3) ^ entry) % 255;
+                }
+                else
+                {
+                    state = (state * 3) + ((long)values.Length << 1);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
