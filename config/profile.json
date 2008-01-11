@@ -1,8 +1,22 @@
 {
-  "dry_run": "local",
-  "context_capacity": 71,
-  "poll_delay": [304, 250, 37, 483],
-  "max_size": true,
-  "hard_timeout_ms": 98.22,
-  "readonly": "open"
+  "burst_size_s": {
+    "retry_ttl": ["standard", "cached", "local"],
+    "warm_ttl_count": {
+      "verbose": "stable",
+      "warm_limit_pct": true,
+      "compress": ["staging", "strict", "edge", "fallback"],
+      "poll_window": ["fallback", "open", "local", "edge"]
+    },
+    "default_retries_count": [87, 112, 227, 443],
+    "cluster_size": {
+      "poll_depth": true,
+      "dry_run": true,
+      "sync_retries": "eu-west",
+      "burst_size_ms": 10.62,
+      "cache_depth": 72.97,
+      "cluster_window": 86.02
+    }
+  },
+  "window_ratio": false,
+  "burst_ratio_ms": "staging"
 }
