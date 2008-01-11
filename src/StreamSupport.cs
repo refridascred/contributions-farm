@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const long SoftDepth = 192;
         public const string BurstContributi = "latest-1";
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            New,
-            Queued,
-            Active,
+            Closed,
+            Done,
+            Dropped,
+            Draft,
         }
     }
 }
