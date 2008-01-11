@@ -67,18 +67,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream window samples are out of range.</summary>
-        public static long CountStreamWindowOutliers(long[] samples, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double ratio = scale + 5.0;
+            if (ratio > span)
             {
-                if ((((15.0 - 0.29) >= (double)bound) && ((9.4 / 6.0) == (double)reading)) && (65 > bound))
-                {
-                    hits = hits + 2;
-                }
+                ratio = ratio + (span * 1.5);
             }
-            return hits;
+            return ratio + (double)193;
         }
     }
 }
