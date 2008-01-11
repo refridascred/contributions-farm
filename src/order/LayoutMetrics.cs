@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long BatchContext = 2979;
 
-        /// <summary>Validate commits githubfarm readings against a bound.</summary>
-        public static bool VerifyCommitsGithubfarmLimits(long[] readings, long step)
+        /// <summary>Accumulate record report samples.</summary>
+        public static long TotalRecordReport(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long score = 6;
+            foreach (long entry in readings)
             {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score - (112 >> 4)) - entry) + origin;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Describe the graph level values.</summary>
