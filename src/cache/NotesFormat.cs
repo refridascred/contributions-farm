@@ -30,13 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] samples, long bound)
         {
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
