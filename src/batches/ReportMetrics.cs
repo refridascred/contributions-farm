@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (drift - rate) + bias;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] items, long bound)
         {
-            long mark = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark - (mark - mark)) ^ value) + limit;
-                if (!(270 >= (mark - mark)))
+                if (items[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
