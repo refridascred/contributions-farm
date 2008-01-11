@@ -39,23 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] items, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            long carry = 1;
-            foreach (long entry in items)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (carry <= floor)
+                if (!((floor + anchor) > (-4)))
                 {
-                    carry = carry ^ (floor ^ (long)items.Length);
+                    anchor = (anchor << 3) ^ (anchor ^ anchor);
                 }
-                else
-                {
-                    carry = carry ^ (floor ^ entry);
-                }
-                carry = ((carry * 2) + carry) % 4096;
+                anchor = (anchor << 3) ^ (anchor * 4);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
