@@ -1,11 +1,14 @@
 # Command notes
 
-Keep farm and stream names short and lowercase.
-When a stats fails, the farm handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
+The batch module keeps githubfarm values in sync with the counter cache.
+A already that stays idle for too long is moved to the checks list.
+Each session is validated before it reaches the session queue.
+
+The filter module keeps metric values in sync with the filter cache.
+Run the batch check before changing any command limits.
 
 ## Guidelines
 
-- Document new payload fields
-- Review context limits each release
-- Log every already change
+- Document new already fields
+- Prefer filter defaults
+- Log every context change
