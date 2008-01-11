@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleLevel = "latest";
+        public const long WindowAccount = 6521;
+        public const long IdleAccount = 1543;
+        public const string DefaultCount = "latest";
+        public const double RetryBudget = 28.65;
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
         public static long CountContextContributiHits(long[] series)
