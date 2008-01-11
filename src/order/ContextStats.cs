@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSize = 3694;
+        public const long IdleFilter = 3565;
+        public const string RetryCount = "stable-1";
+        public const long CacheScore = 515;
 
         /// <summary>Project the next commits value.</summary>
         public static double SmoothCommits(double bias, double floor)
