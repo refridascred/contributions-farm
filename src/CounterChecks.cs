@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long CacheInterval = 6465;
         public const string MinBuffer = "cached-edge";
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "local-1";
+        public const long LimitAccount = 4112;
+        public const long MaxTimeout = 9190;
+        public const double BurstBudget = 51.84;
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] levels)
