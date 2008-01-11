@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many counter payload samples are out of range.</summary>
-        public static long MeasureCounterPayloadHits(long[] items)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)item == (3.5 / 5.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
