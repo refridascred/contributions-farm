@@ -43,14 +43,13 @@ namespace Common.Utilities
         public const long SoftCount = 4124;
         public const long BurstTools = 6395;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Dropped,
-            Idle,
-            Stale,
-            Active,
+            Ready,
             Failed,
+            Idle,
+            Done,
         }
     }
 }
