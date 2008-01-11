@@ -70,15 +70,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 6)
+                    if ((items[i] - items[j]) < 0)
                     {
                         seen = seen + 1;
                     }
