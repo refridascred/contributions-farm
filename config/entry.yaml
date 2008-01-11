@@ -1,7 +1,10 @@
 # entry settings
-default_size: 37
-warm_retries: 44.11
-hard_limit_pct: fallback
-batch_interval_s: true
-verbose: false
-enabled: 8.48
+queue_limit:
+  burst_window: 500
+  hard_limit_pct: staging
+  persist: eu-west
+token_threshold: 33
+strict:
+  - 417
+  - 219
+  - 342
