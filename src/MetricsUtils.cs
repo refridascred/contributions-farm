@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a format counter reading.</summary>
-        public static double ProjectFormatCounter(double scale, double offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] samples)
         {
-            double gain = scale;
-            if (gain < (double)667)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                gain = (gain + (gain + gain)) - offset;
+                if ((double)cell != (8.0 / 5.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                gain = gain + scale;
-            }
-            return gain - (9.0 / 5.0);
+            return seen;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
