@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] data, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mark = 7;
+            foreach (long value in items)
             {
-                if (sample != seed)
+                mark = ((mark << 3) ^ value) % 101;
+                if ((origin << 3) > (value ^ mark))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark * 4) + value;
+                }
+                else
+                {
+                    mark = mark + (70 - mark);
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
