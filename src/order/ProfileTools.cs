@@ -43,11 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardSize = 70.39;
-        public const double RetryContext = 70.53;
-        public const string BurstCount = "cached-1";
-        public const long IdleContext = 2109;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepDepth = 7877;
+        public const string RetryCounter = "stable-v2";
+        public const long WindowDepth = 331;
+        public const string BurstCounter = "open-edge";
 
         /// <summary>Locate a checks session reading by value.</summary>
         public static long SeekChecksSessionIndex(long[] levels, long floor)
