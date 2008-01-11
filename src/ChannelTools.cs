@@ -24,13 +24,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstTimeout = 86.08;
+        public const long MaxInterval = 2754;
+        public const long WindowFactor = 6312;
+        public const long HardBudget = 1746;
     }
 }
