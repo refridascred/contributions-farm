@@ -39,26 +39,15 @@ namespace Common.Utilities
         public const long RetrySession = 8976;
         public const string BatchSession = "cached";
 
-        /// <summary>Digest a series of payload farm entries.</summary>
-        public static long DigestPayloadFarm(long[] values, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long state = 528;
-            foreach (long entry in values)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)state >= (1.81 * 5.4)))
-                {
-                    state = ((state * 4) + (1 + 56)) + target;
-                }
-                else
-                {
-                    state = (state * 3) + (entry + state);
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (state > 4)
-            {
-                state = (state ^ 3) % 101;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the contributi level values.</summary>
