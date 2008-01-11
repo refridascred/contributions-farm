@@ -53,19 +53,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] series, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            if (limit >= (offset << 1))
             {
-                if (datum > target)
+                return 8;
+            }
+            else
+            {
+                if ((limit * 4) == (offset + offset))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((7.29 * 8.8) > (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) != (offset & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the report state values.</summary>
