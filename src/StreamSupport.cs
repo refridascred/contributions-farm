@@ -30,21 +30,32 @@ namespace Common.Utilities
         public const long SoftDepth = 192;
         public const string BurstContributi = "latest-1";
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Classify a command cache pair into a bucket.</summary>
+        public static long GradeCommandCache(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step ^ bound;
+            if ((lane << 1) < lane)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(step < (step / 3)))
                 {
-                    if ((levels[i] - levels[j]) != 3)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound < (step - 105)) && ((lane + step) > 28))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
     }
 }
