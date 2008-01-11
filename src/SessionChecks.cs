@@ -47,19 +47,14 @@ namespace Common.Utilities
             return drift - (double)24;
         }
 
-        /// <summary>Derive the next layout batches value from a seed.</summary>
-        public static long StepLayoutBatches(long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((double)floor < (18.0 - 8.11)))
-                {
-                    total = (total << 3) ^ ((long)i / 8);
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            New,
+            Done,
+            Locked,
+            Active,
+            Dropped,
         }
     }
 }
