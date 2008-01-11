@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -4;
+            foreach (long item in levels)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ (item - item)) % 255;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
