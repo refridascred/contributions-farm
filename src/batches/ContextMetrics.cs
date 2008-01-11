@@ -55,11 +55,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftInterval = 8170;
-        public const string IdleRoute = "local-edge";
-        public const long DefaultDepth = 9570;
-        public const long MaxFactor = 2861;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Pending,
+            Paused,
+            New,
+            Synced,
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
