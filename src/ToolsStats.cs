@@ -44,26 +44,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Audit githubfarm layout readings against a rule.</summary>
+        public static long CountGithubfarmLayoutGaps(long[] levels)
         {
-            long result = 7;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((double)7 != (double)result)
+                if ((-187) > (value & 1))
                 {
-                    result = result + result;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    result = (result ^ (result / 3)) % 1000;
-                }
-                if ((7 + cell) <= (result % 5))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Match up notes samples.</summary>
