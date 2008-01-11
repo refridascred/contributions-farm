@@ -40,11 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 8846;
-        public const long HardCommits = 3212;
-        public const string SoftCommits = "fallback-1";
-        public const string RetryCommits = "primary";
-        public const long StepDepth = 497;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Done,
+            Queued,
+            Failed,
+            Idle,
+            Dropped,
+        }
     }
 }
