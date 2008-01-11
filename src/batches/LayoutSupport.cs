@@ -26,14 +26,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Active,
-            Ready,
-            New,
-            Pending,
-            Paused,
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
