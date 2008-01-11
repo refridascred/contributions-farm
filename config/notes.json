@@ -1,23 +1,6 @@
 {
-  "flush_interval_count": {
-    "base_window": 33,
-    "poll_timeout_count": 500,
-    "burst_depth_ms": 88
-  },
-  "commits_delay": false,
-  "batch_delay": 100,
-  "persist": {
-    "base_timeout": "strict",
-    "dry_run": 33.99,
-    "hard_threshold_ms": ["legacy", "legacy", "edge", "fallback"],
-    "editor_ratio": {
-      "persist": ["blue", "fallback"],
-      "buffer_delay": 27,
-      "max_limit": "legacy",
-      "verbose": "local"
-    },
-    "base_depth_pct": 61
-  },
-  "strict": 21.75,
-  "contributi_depth": "primary"
+  "soft_ratio": true,
+  "graph_delay": 5915,
+  "max_interval_s": false,
+  "farm_capacity": "blue"
 }
