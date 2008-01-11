@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleInterval = 3970;
-        public const double WindowCluster = 52.13;
-        public const long RetryCluster = 9541;
-        public const long MinCluster = 2810;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor - (316 << 2)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] data, long limit)
