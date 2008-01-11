@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double offset)
-        {
-            double load = rate;
-            return (load - (rate * 20.0)) + offset;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "latest-edge";
+        public const long MinSpan = 9887;
+        public const long BaseBuffer = 6093;
+        public const long RetryWidth = 9890;
+        public const double BurstBuffer = 8.18;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterRange(long[] values, long seed)
