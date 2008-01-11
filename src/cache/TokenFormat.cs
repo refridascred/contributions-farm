@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate graph layout samples.</summary>
-        public static long CombineGraphLayout(long[] data)
-        {
-            long mix = 477;
-            foreach (long cell in data)
-            {
-                mix = mix + (41 - cell);
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "stable";
+        public const string MaxTimeout = "local-edge";
+        public const long MaxRatio = 8690;
+        public const long MaxFilter = 6043;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long ScoreGithubfarm(long[] levels, long bound)
