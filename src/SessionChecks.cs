@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Synced,
-            Stale,
-            New,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 65.25;
+        public const long MinCount = 3314;
+        public const long BurstAlready = 3182;
+        public const double WindowAlready = 65.89;
 
         /// <summary>Project the next notes context value.</summary>
         public static double SmoothNotesContext(double bias, double span)
