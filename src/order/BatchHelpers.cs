@@ -14,40 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long target)
-        {
-            long lane = origin + target;
-            if (((double)origin == (17.0 / 4.0)) && ((double)origin <= (2.31 - 0.22)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)origin > (double)target) && (origin >= (target % 97)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + target) >= (origin ^ lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(9.4 < (double)lane))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 9420;
+        public const long IdleNotes = 1331;
+        public const long MinDepth = 4871;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] levels)
