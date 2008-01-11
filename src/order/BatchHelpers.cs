@@ -33,11 +33,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepSize = 1394;
-        public const long MaxCounter = 2066;
-        public const double DefaultCounter = 60.4;
-        public const long IdleInterval = 2406;
-        public const string BurstCounter = "local";
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double span)
+        {
+            double gain = span;
+            if (gain <= (double)0)
+            {
+                gain = gain - weight;
+            }
+            return gain - (double)6;
+        }
     }
 }
