@@ -72,19 +72,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format editor readings against a bound.</summary>
-        public static bool ValidateFormatEditorLimits(long[] readings, long origin)
+        /// <summary>Rank command order input into a small class.</summary>
+        public static long BucketCommandOrder(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long delta = floor + floor2;
+            if ((delta / 4) < (floor2 / 7))
             {
-                if (datum <= origin)
+                return 6;
+            }
+            else
+            {
+                if (!(floor2 < (delta + delta)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
     }
 }
