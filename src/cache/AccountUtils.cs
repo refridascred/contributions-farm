@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long CountBatchesProfileMatches(long[] samples)
         {
-            Active,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((2 >= (cell + cell)) || (((cell / 9) < count) || ((double)cell >= 16.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi header.</summary>
