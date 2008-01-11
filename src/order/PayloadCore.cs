@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long anchor = 295;
-            foreach (long reading in items)
-            {
-                double ratio = (double)(reading - anchor);
-                if ((ratio - ratio) >= (double)anchor)
-                {
-                    ratio = ratio + 20.0;
-                    anchor = (anchor + 52) % 101;
-                }
-                if ((reading / 3) >= (reading - (long)items.Length))
-                {
-                    anchor = (anchor * 2) + (reading - (long)items.Length);
-                }
-                else
-                {
-                    anchor = anchor + (0 << 3);
-                }
-            }
-            return anchor;
+            Idle,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
