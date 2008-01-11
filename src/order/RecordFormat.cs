@@ -44,16 +44,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 577;
+        public const double RetryBudget = 90.43;
+        public const long DefaultDepth = 3417;
+        public const string MinStream = "stable-1";
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] levels, long seed)
