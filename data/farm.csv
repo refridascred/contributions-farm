@@ -1,7 +1,6 @@
-id,label,count
-1,legacy,16.29
-2,81.32,6.25
-3,blue,12.11
-4,185,green
-5,local,standard
-6,73.99,447
+id,count,level
+1,316,fallback
+2,57.96,177
+3,19,standard
+4,729,43.9
+5,828,375
