@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitTimeout = 3485;
+        public const double RetryRatio = 63.04;
+        public const long SoftFactor = 6719;
 
         /// <summary>Adjust a filter contributi reading.</summary>
         public static double ProjectFilterContributi(double weight, double offset)
