@@ -22,15 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Rank payload metrics input into a small class.</summary>
+        public static long BucketPayloadMetrics(long limit, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long bound = limit ^ step;
+            if ((limit > 15) || ((limit - step) >= (bound >> 3)))
             {
-                result = ((result * 3) + (long)i) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((step + limit) >= (143 - 41))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
