@@ -19,20 +19,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.1 + 7.9) != (double)floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = (result - 94) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
