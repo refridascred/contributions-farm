@@ -35,13 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Retry,
-            Failed,
-            New,
+            Draft,
+            Ready,
+            Synced,
             Idle,
+            Locked,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
