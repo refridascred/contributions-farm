@@ -12,15 +12,10 @@ namespace Common.Utilities
         public const double DefaultCounter = 41.63;
         public const double DefaultBudget = 25.56;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            New,
-            Done,
-            Synced,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 39.72;
+        public const long SoftLevel = 1537;
+        public const long IdleFactor = 5642;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsBounds(long[] series, long limit)
