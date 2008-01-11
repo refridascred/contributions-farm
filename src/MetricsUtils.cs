@@ -32,17 +32,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (double)(57 * 5);
+            if (rate2 < 5.5)
             {
-                if ((series[i] > floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (rate * 0.9)) - span;
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (rate * 11.0)) - (double)(long)i;
+            }
+            return rate2 + (rate / 7.0);
         }
 
         /// <summary>Describe the queue kind values.</summary>
