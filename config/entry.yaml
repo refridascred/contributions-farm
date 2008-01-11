@@ -1,10 +1,10 @@
 # entry settings
-queue_limit:
-  burst_window: 500
-  hard_limit_pct: staging
-  persist: eu-west
-token_threshold: 33
-strict:
-  - 417
-  - 219
-  - 342
+contributi_ttl: legacy
+base_depth_ms: staging
+soft_ratio_s:
+  - local
+  - green
+  - green
+  - staging
+flush_delay_pct: latest
+readonly: false
