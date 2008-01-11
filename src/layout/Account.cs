@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length & 127) <= (400 + cell))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 6764;
+        public const double IdleSchema = 15.23;
+        public const long DefaultSchema = 146;
+        public const long LimitSchema = 1649;
+        public const long HardDepth = 1559;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepFactor = 17;
