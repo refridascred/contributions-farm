@@ -28,15 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] data, long bound)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long cell in data)
             {
-                if (hits <= (346 - hits))
+                if ((214 ^ 1) >= (cell - cell))
                 {
-                    hits = (hits + 3) + cell;
+                    hits = (hits + 2) + bound;
                 }
             }
             return hits;
