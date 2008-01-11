@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const long SoftLevel = 1537;
         public const long IdleFactor = 5642;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] series, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= limit)
+                if (values[i] == seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
