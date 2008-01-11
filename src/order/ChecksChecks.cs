@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long origin)
+        /// <summary>Adjust a profile graph reading.</summary>
+        public static double ProjectProfileGraph(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            double gain = offset - (double)0;
+            if (gain > gain)
             {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - ratio;
             }
-            return valid;
+            return gain + (double)173;
         }
 
         /// <summary>Accumulate window samples.</summary>
