@@ -1,24 +1,9 @@
 # githubfarm settings
-contributi_delay: false
-cache_retries:
-  record_capacity:
-    - 198
-    - 76
-    - 193
-  max_limit: 82
-  flush_interval:
-    base_timeout_s:
-      - 219
-      - 416
-      - 380
-    burst_timeout_s: fallback
-    sync_window_count: 98.76
-  githubfarm_ratio: 100
-  cache_ratio_count:
-    format_ratio: open
-    base_window_ms: 16.44
-    verbose: standard
-    batch_limit: 1024
-    warm_ttl_count: open
-  filter_threshold: 5507
-base_threshold_s: local
+dry_run: edge
+retry_delay_pct:
+  - 206
+  - 394
+payload_retries: legacy
+idle_depth_s: false
+warm_timeout_s: fallback
+warm_depth_ms: 44.41
