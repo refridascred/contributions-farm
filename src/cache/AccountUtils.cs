@@ -14,11 +14,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowTimeout = 1758;
-        public const string CacheAlready = "staging-edge";
-        public const string IdleAlready = "stable";
-        public const long DefaultScore = 1296;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long floor)
+        {
+            if ((5.7 - 15.0) != (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound < 9.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + bound) <= (floor - bound)) && ((10.0 / 5.0) >= (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + floor) < (floor >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
