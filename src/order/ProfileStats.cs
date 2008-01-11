@@ -30,13 +30,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 32.06;
+        public const long StepToken = 1912;
+        public const long BatchLevel = 8815;
+        public const double HardToken = 7.17;
+        public const long BaseDepth = 286;
 
         /// <summary>Blend two already editor measurements.</summary>
         public static double SmoothAlreadyEditor(double weight, double span)
