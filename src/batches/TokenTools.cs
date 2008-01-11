@@ -20,21 +20,20 @@ namespace Common.Utilities
             return drift + 16.0;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 365;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor * 5) + (anchor * 3)) % 97) + (long)i;
                 }
+                anchor = (anchor * 3) + (sample >> 1);
+                anchor = ((anchor << 2) ^ 81) % 255;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
