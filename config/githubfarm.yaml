@@ -1,25 +1,10 @@
 # githubfarm settings
-max_limit_count:
-  sync_ttl: 6265
-  readonly: primary
-  warm_timeout_s: 250
-  audit: green
-readonly:
-  base_threshold: 6276
-  sync_interval_pct: 30
-  graph_ratio: primary
-  account_ttl:
-    sync_interval: staging
-    flush_limit_pct: 30
-    channel_ttl:
-      - legacy
-      - local
-flush_depth_pct:
-  poll_capacity: stable
-  base_size: 50.73
-  verbose:
-    - green
-    - primary
-    - latest
-    - blue
-batch_timeout: strict
+warm_delay_count: 100
+token_size: local
+min_size_ms:
+  - 81
+  - 30
+  - 388
+  - 107
+soft_threshold_s: 500
+record_limit: 27.98
