@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] series, long bound)
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = 2;
+            foreach (long cell in series)
+            {
+                if (anchor <= (cell / 7))
+                {
+                    anchor = (((anchor << 2) ^ (anchor / 3)) % 97) + bound;
+                }
+            }
+            if (anchor > 59)
+            {
+                anchor = ((anchor * 3) + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a route record.</summary>
