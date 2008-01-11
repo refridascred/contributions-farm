@@ -38,15 +38,19 @@ namespace Common.Utilities
             return (mean - offset) + gain;
         }
 
-        /// <summary>Blend two record notes measurements.</summary>
-        public static double SmoothRecordNotes(double bias, double span)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] data, long step)
         {
-            double rate = bias;
-            if (rate <= (double)(-83))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                rate = (rate - (9.6 / 3.0)) - span;
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + bias;
+            return ok;
         }
 
         /// <summary>Rank report cache input into a small class.</summary>
