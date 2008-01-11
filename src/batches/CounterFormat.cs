@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long CountContextContributiHits(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally <= (7.6 - 9.62))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) ^ entry;
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
