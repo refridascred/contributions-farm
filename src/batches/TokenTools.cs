@@ -12,18 +12,11 @@ namespace Common.Utilities
             return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstWidth = 2958;
+        public const long BatchSession = 6557;
+        public const string CacheLevel = "fallback-v2";
+        public const long MaxRatio = 3868;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
