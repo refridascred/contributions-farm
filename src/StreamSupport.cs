@@ -23,12 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 4332;
-        public const long IdleBudget = 669;
-        public const long HardCount = 4660;
-        public const long SoftDepth = 192;
-        public const string BurstContributi = "latest-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 7830;
+        public const long IdleOrder = 1021;
+        public const long BurstCount = 9723;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksHits(long[] values, long target)
