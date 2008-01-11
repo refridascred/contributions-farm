@@ -27,18 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] levels, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (bound < (value % 24))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
