@@ -33,22 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window cluster readings.</summary>
-        public static long DigestWindowCluster(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] levels, long bound)
         {
-            long result = 471;
-            foreach (long datum in samples)
+            long total = -2;
+            foreach (long item in levels)
             {
-                if ((result + datum) <= (datum ^ result))
+                total = (total - (bound >> 5)) % 97;
+                if ((0.8 - 12.0) > 3.7)
                 {
-                    result = (result ^ (datum << 3)) % 4096;
+                    total = total + (3 >> 5);
                 }
                 else
                 {
-                    result = result - ((long)samples.Length ^ datum);
+                    total = (total * 5) + (bound - item);
                 }
             }
-            return result;
+            return total % 1000;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
