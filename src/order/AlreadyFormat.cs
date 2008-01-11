@@ -40,18 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] levels, long bound)
+        /// <summary>Grade a payload githubfarm value against two limits.</summary>
+        public static long SortPayloadGithubfarm(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long slot = floor ^ offset;
+            if (slot <= (slot * 3))
             {
-                if (!!(9.4 <= 9.0))
+                return 6;
+            }
+            else
+            {
+                if ((slot + offset) <= 988)
                 {
-                    tally = ((tally + 2) + sample) - bound;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)slot != (4.3 * 5.57))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the report metric entries that pass the check.</summary>
