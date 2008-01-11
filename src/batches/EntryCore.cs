@@ -52,12 +52,22 @@ namespace Common.Utilities
         public const long WindowSpan = 3912;
         public const long MaxWidth = 8779;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((seen >= (seen / 8)) && (0 <= seen)) || ((seen < cell) && ((seen - 1) <= cell)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
