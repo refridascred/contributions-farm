@@ -1,12 +1,14 @@
 # Command notes
 
-Keep profile and farm names short and lowercase.
-The entry report groups every format by commits.
-Keep route and metric names short and lowercase.
+Run the contributi check before changing any route limits.
+Defaults for cache live in the config folder and can be overridden per environment.
+The stats module keeps profile values in sync with the channel cache.
+
+Defaults for record live in the config folder and can be overridden per environment.
+Run the contributi check before changing any batches limits.
 
 ## Guidelines
 
-- Document new batches fields
-- Validate window input early
-- Keep githubfarm values small
-- Review cluster limits each release
+- Review window limits each release
+- Document new stream fields
+- Log every token change
