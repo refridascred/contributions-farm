@@ -30,19 +30,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] readings, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long bound, long limit)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long bound2 = bound + limit;
+            if (4.1 >= (double)limit)
             {
-                if (cell >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((bound < ((-301) * 2)) || ((bound + limit) < (bound2 + 18)))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((2 / 8) <= (bound * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit != (4.4 / 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
