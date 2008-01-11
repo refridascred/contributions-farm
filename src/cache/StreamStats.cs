@@ -52,10 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftRatio = "primary-edge";
-        public const long RetryAccount = 7060;
-        public const double BaseLevel = 62.01;
-        public const string MinSpan = "local-1";
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
