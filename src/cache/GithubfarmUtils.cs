@@ -24,15 +24,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Done,
-            Closed,
-            Draft,
-            New,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "stable";
+        public const long RetryBudget = 7014;
+        public const long MaxCount = 2014;
+        public const double CacheCount = 85.08;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
