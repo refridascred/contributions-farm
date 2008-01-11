@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long offset, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = offset - origin;
+            if (3.5 > (double)offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((origin >> 5) >= (offset >> 1)))
                 {
-                    if ((values[i] + values[j]) != 0)
+                    return 0;
+                }
+                else
+                {
+                    if (lane >= (262 / 8))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
