@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long StepCluster = 1368;
         public const double SoftCluster = 18.15;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
