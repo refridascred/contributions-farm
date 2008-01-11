@@ -44,21 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
