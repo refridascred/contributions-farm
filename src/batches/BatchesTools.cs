@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            double mean = 8.5;
-            if (mean <= (double)229)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (weight * 5.4)) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (3.83 / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean - mean;
+            return seen;
         }
 
         /// <summary>Match up tools context samples.</summary>
