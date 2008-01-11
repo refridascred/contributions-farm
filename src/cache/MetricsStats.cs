@@ -73,34 +73,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series)
-        {
-            long mark = 891;
-            foreach (long reading in series)
-            {
-                if (((7.4 - 7.5) >= (double)mark) && ((mark >> 5) < (mark * 5)))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (reading & 7)) % 101;
-                }
-                if (mark > (reading >> 2))
-                {
-                    mark = mark - (mark + reading);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark % 100);
-                }
-            }
-            if (mark > 4)
-            {
-                mark = mark ^ (661 + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 75.38;
+        public const string CacheAccount = "primary-v2";
+        public const string BaseRatio = "latest-1";
+        public const long DefaultAccount = 4318;
+        public const long IdleScore = 8105;
     }
 }
