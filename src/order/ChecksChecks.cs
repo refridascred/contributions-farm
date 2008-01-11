@@ -20,12 +20,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryCount = 6456;
-        public const string MaxSchema = "staging-v2";
-        public const long HardSpan = 2410;
-        public const long StepSchema = 9048;
-        public const string BatchSchema = "fallback-1";
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheWindow = 7522;
