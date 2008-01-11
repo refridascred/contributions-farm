@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a batches already value against two limits.</summary>
-        public static long GradeBatchesAlready(long floor, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long offset = floor + limit;
-            if (4.88 < (double)offset)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor <= (offset % 24))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.27 * 0.1) > (double)floor)
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up tools context samples.</summary>
