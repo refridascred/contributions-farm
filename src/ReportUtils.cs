@@ -38,22 +38,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
-        public static long CountGithubfarmRouteMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count > (65 << 2)) && ((double)datum <= 2.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRatio = 21.78;
+        public const long IdleInterval = 5777;
+        public const double StepRecord = 64.24;
     }
 }
