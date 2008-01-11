@@ -1,8 +1,19 @@
 {
-  "batch_limit_count": "eu-west",
-  "commits_timeout": "cached",
-  "poll_delay_ms": 24.27,
-  "batch_ratio_ms": [444, 17],
-  "default_retries_ms": "cached",
-  "channel_ttl": 30
+  "audit": "legacy",
+  "persist": {
+    "sync_timeout": true,
+    "persist": 5.89,
+    "base_retries_pct": 33.77,
+    "poll_size": {
+      "format_delay": 80,
+      "soft_delay_s": true,
+      "order_threshold": 6098,
+      "default_delay_ms": "staging",
+      "flush_depth": ["green", "edge", "eu-west", "green"]
+    },
+    "githubfarm_interval": "blue",
+    "base_interval_pct": 87
+  },
+  "profile_window": true,
+  "readonly": ["strict", "eu-west", "legacy"]
 }
