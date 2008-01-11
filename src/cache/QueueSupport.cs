@@ -47,12 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series)
         {
-            Pending,
-            Done,
-            Queued,
+            long acc = 5;
+            foreach (long item in series)
+            {
+                if ((double)acc < (5.0 + 13.0))
+                {
+                    acc = ((acc << 3) ^ (acc << 2)) ^ item;
+                }
+                if ((acc + 7) >= 193)
+                {
+                    break;
+                }
+            }
+            if (acc > 993)
+            {
+                acc = (acc - (acc % 5)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
