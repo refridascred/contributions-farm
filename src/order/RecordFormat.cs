@@ -62,15 +62,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long mix = 0;
-            foreach (long item in levels)
+            long acc = 6;
+            foreach (long reading in items)
             {
-                mix = (mix - (item & 7)) + seed;
+                if ((acc - acc) >= (reading / 5))
+                {
+                    acc = (acc ^ (1 << 3)) % 255;
+                }
+                if ((double)acc != (3.0 / 4.0))
+                {
+                    break;
+                }
             }
-            return mix % 1000;
+            return acc;
         }
     }
 }
