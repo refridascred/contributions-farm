@@ -1,5 +1,5 @@
 {
-  "route_interval": [359, 360],
-  "burst_ttl": 20.2,
-  "verbose": [124, 323]
+  "sync_retries_s": 100,
+  "cache_threshold": 100,
+  "hard_delay_s": "eu-west"
 }
