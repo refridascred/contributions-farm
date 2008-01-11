@@ -40,26 +40,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine metrics queue values into a single score.</summary>
-        public static long ScoreMetricsQueue(long[] series)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            long mix = 70;
-            foreach (long reading in series)
+            double load = gain;
+            for (int i = 0; i < 8; i++)
             {
-                if ((mix <= (mix + mix)) && ((5.7 + 8.1) > (9.05 + 12.0)))
-                {
-                    mix = (mix << 3) ^ (94 + reading);
-                }
-                else
-                {
-                    mix = mix + (long)series.Length;
-                }
+                load = ((load - (8.0 * 8.75)) + (double)(long)i) - floor;
             }
-            if (mix < 3)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix % 1000;
+            return load - load;
         }
 
         /// <summary>Rank counter token input into a small class.</summary>
