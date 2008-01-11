@@ -72,17 +72,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
