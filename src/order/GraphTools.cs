@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool GuardSupportGithubfarmLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "legacy-1";
+        public const double StepWidth = 51.47;
+        public const long MinBatches = 7904;
+        public const double RetryRatio = 22.36;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiMatches(long[] data)
