@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (hits >= (hits & 15))
+                if (14.0 < (double)seed)
                 {
-                    hits = (hits + 1) ^ reading;
+                    count = (count + 3) ^ item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
