@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 3.29;
-        public const long MaxScore = 8780;
-        public const long LimitLevel = 81;
-        public const long StepLayout = 9098;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double AdjustMetric(double ratio, double floor)
