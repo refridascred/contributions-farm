@@ -65,17 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] levels, long origin)
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long TallyNotesStatsHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (levels[i] >= origin)
+                if ((count + value) < (3 * 3))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
