@@ -1,23 +1,6 @@
 # entry settings
-max_retries_s:
-  - green
-  - local
-max_capacity_ms:
-  default_size:
-    idle_ttl: false
-    layout_ratio: latest
-    counter_depth:
-      - edge
-      - cached
-      - edge
-    base_capacity_s: local
-    soft_capacity_s: false
-    readonly: 62.33
-  cache_interval_s: 67.74
-  dry_run: false
-  compress: false
-verbose: edge
-strict: primary
-enabled:
-  - 70
-  - 152
+enabled: false
+compress: strict
+record_depth: true
+audit: 30
+max_limit: blue
