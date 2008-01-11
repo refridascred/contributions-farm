@@ -38,24 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long floor, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if (floor <= (floor % 60))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.11 + 7.16) == (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
