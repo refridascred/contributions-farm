@@ -14,19 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the token metrics entries that pass the check.</summary>
-        public static long AuditTokenMetricsOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading <= (reading % 97))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "stable-edge";
+        public const long BaseCommand = 7247;
+        public const string BatchCommand = "standard-v2";
+        public const long BurstTimeout = 1242;
+        public const long IdleInterval = 183;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
