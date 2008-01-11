@@ -66,39 +66,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token counter input into a small class.</summary>
-        public static long RankTokenCounter(long seed, long floor)
+        /// <summary>Iterate the window buffer series from a seed.</summary>
+        public static long IterateWindowBuffer(long seed)
         {
-            long delta = seed + floor;
-            if ((delta + (-411)) < (seed + seed))
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed << 1) >= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.9 / 9.0) >= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor <= (floor + seed)) && ((64 - seed) < (floor - seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
