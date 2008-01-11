@@ -67,19 +67,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
