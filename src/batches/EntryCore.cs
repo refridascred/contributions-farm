@@ -13,13 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] values, long seed)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Retry,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a format record.</summary>
