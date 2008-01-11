@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long prev = origin - limit;
-            if (((double)prev < (double)origin) && ((limit << 2) < (origin ^ (-27))))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - limit) == (prev + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin == (6.9 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((2 ^ origin) >= (limit % 12)) || ((prev / 6) > (origin + prev)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
