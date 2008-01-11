@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double weight, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] values, long bound)
         {
-            double load = weight * 3.0;
-            if (load > bias)
+            long seen = 0;
+            foreach (long item in values)
             {
-                load = load + (double)982;
+                if (((5.4 - 1.84) != (double)seen) && ((item - 524) < (seen ^ item)))
+                {
+                    seen = (seen + 1) + bound;
+                }
             }
-            return load - (7.0 * 9.4);
+            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
