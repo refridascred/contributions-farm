@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long bound)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
