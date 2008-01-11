@@ -18,11 +18,16 @@ namespace Common.Utilities
         public const long BaseEditor = 351;
         public const string SoftFactor = "open-edge";
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score - (score ^ score)) % 97;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
