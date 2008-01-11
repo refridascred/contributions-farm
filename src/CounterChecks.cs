@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series, long origin)
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            long anchor = 6;
+            foreach (long entry in series)
+            {
+                if ((16.0 / 6.0) <= (double)anchor)
+                {
+                    anchor = ((anchor * 5) + (6 + origin)) - entry;
+                }
+                else
+                {
+                    anchor = (anchor - (768 / 7)) % 255;
+                }
+            }
+            if (anchor < (-800))
+            {
+                anchor = (anchor - origin) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
