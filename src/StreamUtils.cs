@@ -60,10 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySize = 3070;
-        public const string WindowBatches = "strict-1";
-        public const double SoftScore = 86.6;
-        public const long LimitBatches = 7732;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Stale,
+            Queued,
+            Synced,
+            Pending,
+        }
     }
 }
