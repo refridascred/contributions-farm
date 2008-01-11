@@ -46,15 +46,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Grade a filter queue value against two limits.</summary>
+        public static long ClassifyFilterQueue(long floor, long bound)
         {
-            double mean = (double)(9 + 3);
-            for (int i = 0; i < 5; i++)
+            long gap = floor - bound;
+            if ((floor + floor) > gap)
             {
-                mean = ((mean + (bias * 1.01)) + (double)(long)i) + scale;
+                return 4;
             }
-            return mean - (bias * 9.0);
+            else
+            {
+                if ((bound + bound) >= (bound % 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)gap <= (18.0 + 0.5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
