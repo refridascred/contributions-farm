@@ -19,20 +19,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long limit)
-        {
-            long carry = 5;
-            foreach (long value in levels)
-            {
-                carry = (carry ^ (carry - limit)) ^ value;
-                carry = ((carry << 3) ^ (limit * 5)) % 65521;
-                if ((limit * 3) <= (102 + limit))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1292;
+        public const long RetryEntry = 1515;
+        public const long WindowSize = 9821;
+        public const double IdleFactor = 46.9;
     }
 }
