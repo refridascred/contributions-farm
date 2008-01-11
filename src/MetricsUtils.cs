@@ -52,17 +52,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long target)
+        /// <summary>Rank report cache input into a small class.</summary>
+        public static long GradeReportCache(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset >= (7.35 - 5.3))
             {
-                if (series[i] <= target)
+                return 6;
+            }
+            else
+            {
+                if ((7.26 + 5.9) < (double)offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
