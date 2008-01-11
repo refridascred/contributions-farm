@@ -27,19 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Audit counter buffer readings against a rule.</summary>
+        public static long MeasureCounterBufferGaps(long[] readings)
         {
-            long score = -720;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                score = (score ^ (score % 97)) - item;
+                if ((2.9 + 9.3) >= (double)count)
+                {
+                    count = (count + 1) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score > 258)
-            {
-                score = score + (score << 1);
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Describe the command state values.</summary>
