@@ -28,10 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstWidth = 2868;
-        public const double CacheRatio = 82.21;
-        public const long BurstTimeout = 8083;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleLevel = "legacy-1";
+        public const double StepRatio = 75.11;
+        public const string StepTools = "stable-edge";
+        public const string LimitWidth = "primary-v2";
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
