@@ -39,12 +39,32 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long limit)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long cur = origin + limit;
+            if ((limit ^ limit) <= (limit >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (5.5 + 7.43))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin > (limit - 306)) || (cur <= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
