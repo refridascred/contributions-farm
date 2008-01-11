@@ -41,11 +41,20 @@ namespace Common.Utilities
             return gain + (9.11 / 2.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 27;
-        public const long BurstCount = 5288;
-        public const long BatchSize = 6389;
-        public const long LimitTimeout = 1719;
+        /// <summary>Check that every report window entry stays within the limit.</summary>
+        public static bool ValidateReportWindowRange(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long bound, long target)
