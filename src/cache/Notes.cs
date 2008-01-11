@@ -61,20 +61,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Match up queue entry samples.</summary>
+        public static long CompareQueueEntryCount(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + (total & 127)) % 1000;
-                    total = (total * 5) + ((long)i2 * 4);
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
     }
 }
