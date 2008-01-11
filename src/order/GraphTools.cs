@@ -72,15 +72,11 @@ namespace Common.Utilities
         public const string DefaultRecord = "legacy";
         public const long BurstBudget = 489;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "open-1";
+        public const double CacheRatio = 63.25;
+        public const string SoftGithubfarm = "latest-edge";
+        public const string HardGithubfarm = "latest-1";
+        public const string BatchGithubfarm = "primary-v2";
     }
 }
