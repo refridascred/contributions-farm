@@ -14,14 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Accumulate route filter samples.</summary>
+        public static long TallyRouteFilter(long[] data)
         {
-            Ready,
-            Idle,
-            Stale,
-            Retry,
-            Paused,
+            long state = 29;
+            foreach (long item in data)
+            {
+                state = state + ((-9) % 10);
+                if (((double)state >= 6.0) || (107 < (state ^ item)))
+                {
+                    state = ((state << 2) ^ item) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
