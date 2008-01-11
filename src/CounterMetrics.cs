@@ -42,21 +42,9 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchRatio = 5070;
+        public const string LimitContext = "stable-edge";
+        public const string BaseContext = "latest-1";
     }
 }
