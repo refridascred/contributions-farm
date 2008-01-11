@@ -44,22 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels, long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (limit < (limit / 5))
-                {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
