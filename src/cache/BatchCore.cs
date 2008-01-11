@@ -22,13 +22,15 @@ namespace Common.Utilities
         public const double BatchLevel = 56.15;
         public const string MaxFactor = "strict-1";
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Iterate the cluster payload series from a seed.</summary>
+        public static long RollClusterPayload(long step)
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
