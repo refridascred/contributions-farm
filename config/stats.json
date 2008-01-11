@@ -1,8 +1,14 @@
 {
-  "poll_ratio_pct": 48.34,
-  "readonly": "edge",
-  "compress": false,
-  "profile_threshold": [409, 77, 269, 99],
-  "cache_delay": true,
-  "base_interval_s": 32.82
+  "default_timeout_ms": [136, 126],
+  "warm_limit_count": {
+    "verbose": ["edge", "blue", "standard", "stable"],
+    "record_size": true,
+    "readonly": 30,
+    "stats_ratio": "primary",
+    "batch_threshold": "local",
+    "context_delay": "latest"
+  },
+  "strict": true,
+  "base_threshold": 50.25,
+  "batches_ratio": "latest"
 }
