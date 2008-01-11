@@ -31,9 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowScore = 3613;
-        public const long BurstDepth = 4131;
-        public const long StepWindow = 7182;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
     }
 }
