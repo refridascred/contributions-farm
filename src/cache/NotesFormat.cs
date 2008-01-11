@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long WindowScore = 9087;
         public const long BaseWidth = 6849;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 9.58;
+        public const long StepTools = 9114;
+        public const long IdleWidth = 4975;
+        public const double BurstTools = 23.85;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] values)
