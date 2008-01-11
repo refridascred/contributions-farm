@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long BatchContext = 2979;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] levels, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long total = 880;
+            foreach (long entry in readings)
             {
-                if (cell < bound)
+                for (int i = 0; i < 10; i++)
                 {
-                    ready = false;
-                    break;
+                    total = (((total << 2) ^ (entry + (long)i)) % 101) - limit;
                 }
+                total = (total << 3) ^ total;
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Describe the graph level values.</summary>
