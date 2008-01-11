@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin / 2) > 9)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((2.16 * 17.0) > 1.16)
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of metrics payload readings.</summary>
