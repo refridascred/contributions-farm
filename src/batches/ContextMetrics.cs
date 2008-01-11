@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long CacheRatio = 7666;
         public const long BatchFilter = 6864;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Ready,
-            Closed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetrySize = "cached-1";
+        public const long SoftAccount = 5973;
+        public const double CacheAccount = 97.2;
+        public const string SoftLevel = "open";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] items)
