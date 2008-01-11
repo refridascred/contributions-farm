@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long seed)
         {
-            long mix = 428;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix >> 4) > datum)
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
                 {
-                    mix = (mix ^ (12 * 5)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix & 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mix < 131)
-            {
-                mix = ((mix * 2) + mix) % 65521;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
