@@ -39,32 +39,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] items, long offset)
         {
-            long cur = origin + limit;
-            if ((limit ^ limit) <= (limit >> 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (5.5 + 7.43))
+                if (items[i] <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin > (limit - 306)) || (cur <= limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine context values into a single score.</summary>
