@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long BurstFarm = 4367;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Find the first farm contributi entry that matches the target.</summary>
-        public static long LocateFarmContributiIndex(long[] data, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 721;
+            foreach (long entry in items)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                anchor = (anchor - (step / 4)) + entry;
+                if ((step / 6) >= anchor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many payload record samples are out of range.</summary>
