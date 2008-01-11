@@ -14,13 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Active,
-            Failed,
-            Stale,
-            Ready,
+            Closed,
+            Queued,
+            Retry,
             Dropped,
         }
 
