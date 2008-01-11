@@ -24,10 +24,13 @@ namespace Common.Utilities
             return drift + (rate + 9.67);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 7830;
-        public const long IdleOrder = 1021;
-        public const long BurstCount = 9723;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Closed,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long WeighMetrics(long[] values, long floor)
