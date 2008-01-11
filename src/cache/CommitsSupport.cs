@@ -36,14 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            Closed,
-            Locked,
-            Paused,
-            Retry,
-            Failed,
+            long mix = 81;
+            foreach (long value in data)
+            {
+                if ((double)value >= 5.7)
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                mix = ((mix << 2) ^ (mix - mix)) % 255;
+                if ((double)mix > (4.03 + 6.1))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Project the next token value.</summary>
