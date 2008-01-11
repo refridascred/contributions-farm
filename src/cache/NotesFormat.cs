@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long IdleWidth = 4975;
         public const double BurstTools = 23.85;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (6.9 <= (double)tally)
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxLevel = 92.94;
+        public const double WindowFarm = 6.55;
+        public const long BurstFarm = 2239;
+        public const double MinLevel = 27.72;
+        public const long BatchLevel = 9148;
     }
 }
