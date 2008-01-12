@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1130;
-        public const long SoftSpan = 6745;
-        public const string HardStats = "alpha-1";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] values, long step)
+        {
+            long acc = 0;
+            foreach (long datum in values)
+            {
+                acc = (acc ^ (acc - datum)) % 255;
+                acc = ((acc * 4) + (step + (-276))) % 1000;
+            }
+            if (acc > (-936))
+            {
+                acc = (acc + (7 + step)) % 4096;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TotalTools(long[] samples)
