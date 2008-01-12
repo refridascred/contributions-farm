@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                if (sample < target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate token samples.</summary>
