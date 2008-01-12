@@ -27,12 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] levels, long bound)
         {
-            Pending,
-            Paused,
-            Done,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum / 2) > (datum ^ bound))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
