@@ -32,23 +32,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long step, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            if (!(37 > (floor - 262)))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (origin % 24)) % 4096) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    anchor = (((anchor << 3) ^ ((long)i - origin)) % 101) - (long)i3;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (step < (38 - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ 95) == (floor ^ (-400)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
