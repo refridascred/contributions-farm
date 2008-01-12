@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record payload values into a single score.</summary>
-        public static long FoldRecordPayload(long[] data)
-        {
-            long anchor = 7;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) <= entry)
-                {
-                    anchor = (anchor - (entry << 3)) % 4096;
-                }
-            }
-            if (anchor < 64)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 3)) % 65521;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitScore = 16.86;
+        public const long MaxWidth = 6578;
+        public const long LimitInterval = 2014;
+        public const string BaseWidth = "fallback-v2";
+        public const long LimitFormat = 5214;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsGaps(long[] items, long step)
