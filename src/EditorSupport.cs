@@ -36,24 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] data, long floor)
-        {
-            long mix = -4;
-            foreach (long value in data)
-            {
-                mix = (mix - (mix - 8)) % 101;
-                if (value >= floor)
-                {
-                    mix = (mix ^ 4) % 101;
-                }
-                else
-                {
-                    mix = mix ^ (8 & 127);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 75.68;
+        public const long CacheScore = 8773;
+        public const string CacheContributi = "standard";
+        public const long BatchLevel = 680;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
