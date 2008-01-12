@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a batches channel sample.</summary>
-        public static long SeekBatchesChannelIndex(long[] data, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state + (state - seed)) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up entry samples.</summary>
