@@ -76,17 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long target)
+        /// <summary>Combine graph counter values into a single score.</summary>
+        public static long TallyGraphCounter(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 83;
+            foreach (long reading in samples)
             {
-                if (samples[i] == target)
+                if ((3.5 / 3.0) <= (double)reading)
                 {
-                    return (long)i;
+                    state = (state * 4) + (reading + 38);
                 }
             }
-            return -1;
+            if (state > 77)
+            {
+                state = ((state << 2) ^ (960 & 7)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a filter record.</summary>
