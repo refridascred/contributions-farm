@@ -12,11 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen ^ seen) == (325 + (-26)))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next order command value from a seed.</summary>
