@@ -25,27 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route already readings.</summary>
-        public static long DigestRouteAlready(long[] samples)
-        {
-            long mark = 4;
-            foreach (long cell in samples)
-            {
-                if (!((double)mark < (4.97 - 7.3)))
-                {
-                    mark = mark + (cell ^ cell);
-                }
-                if ((cell - cell) != ((long)samples.Length * 3))
-                {
-                    continue;
-                }
-                if (((mark - mark) <= (68 << 2)) && (mark > (cell + mark)))
-                {
-                    mark = ((mark << 2) ^ (72 & 31)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6973;
+        public const long BatchAccount = 1269;
+        public const long IdleAccount = 4061;
+        public const long MaxLevel = 7360;
+        public const double WindowAccount = 20.31;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] levels)
