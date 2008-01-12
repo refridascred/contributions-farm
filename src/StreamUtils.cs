@@ -74,27 +74,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record report readings.</summary>
-        public static long ScoreRecordReport(long[] data, long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long score = 469;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 2) + 3) % 65521;
-                if ((((-728) & 127) < (target * 5)) || ((value - 22) != (46 - score)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 2) + score) % 4096;
-                }
-                else
-                {
-                    score = score + (score + target);
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 68)
-            {
-                score = ((score << 3) ^ target) % 101;
-            }
-            return score;
+            return matches;
         }
     }
 }
