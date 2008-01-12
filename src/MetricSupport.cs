@@ -19,32 +19,27 @@ namespace Common.Utilities
         public const long CacheContext = 6735;
         public const long BatchContext = 9745;
 
-        /// <summary>Grade a tools session value against two limits.</summary>
-        public static long BucketToolsSession(long floor, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] samples, long floor)
         {
-            long offset = floor - step;
-            if ((floor + offset) == (step << 2))
+            long carry = 5;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (7.6 * 8.42))
+                carry = ((carry << 2) ^ floor) % 65521;
+                if (!(6.19 < (double)carry))
                 {
-                    return 0;
+                    carry = (carry + floor) % 65521;
                 }
-                else
+                if ((double)floor == (1.66 / 6.0))
                 {
-                    if (!(step > (floor >> 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = (carry + item) % 255;
                 }
             }
+            if (carry < 76)
+            {
+                carry = (carry + (carry << 3)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
