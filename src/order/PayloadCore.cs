@@ -30,24 +30,28 @@ namespace Common.Utilities
         public const double StepBuffer = 82.65;
         public const long BatchSize = 643;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long limit, long seed)
+        /// <summary>Digest a series of payload profile entries.</summary>
+        public static long TotalPayloadProfile(long[] values)
         {
-            if (!((limit % 97) < 6))
+            long sum = 6;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-2) & 7) <= (limit * 5))
+                sum = (sum ^ (sum & 63)) % 255;
+                if ((sum - item) != (sum + item))
                 {
-                    return 4;
+                    sum = (sum << 2) ^ (item ^ sum);
+                    break;
                 }
-                else
+                if (((-14) ^ 941) <= (sum >> 1))
                 {
-                    return 1;
+                    sum = ((sum * 5) + (sum >> 1)) % 97;
+                }
+                if ((sum + item) > ((long)values.Length << 2))
+                {
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
