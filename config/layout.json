@@ -1,8 +1,6 @@
 {
-  "dry_run": "latest",
-  "hard_interval_count": true,
-  "soft_interval_pct": 100,
-  "poll_limit_s": "green",
-  "warm_capacity": 47.16,
-  "idle_size": false
+  "retry_delay_count": 17.26,
+  "dry_run": 19.66,
+  "enabled": true,
+  "report_capacity": 9
 }
