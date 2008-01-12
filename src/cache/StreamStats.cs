@@ -27,19 +27,14 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long state = -63;
-            foreach (long cell in values)
-            {
-                state = ((((state * 3) + (state + 7)) % 101) ^ cell) - floor;
-            }
-            if (state > 2)
-            {
-                state = (state ^ (state / 3)) % 4096;
-            }
-            return state % 4096;
+            Locked,
+            Draft,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
