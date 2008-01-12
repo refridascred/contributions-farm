@@ -28,19 +28,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] samples, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Draft,
+            Active,
         }
     }
 }
