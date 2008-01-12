@@ -1,19 +1,5 @@
 {
-  "audit": "green",
-  "flush_ratio": 23,
-  "batch_timeout_ms": "latest",
-  "compress": {
-    "retry_limit": 30,
-    "cache_size": 28.62,
-    "queue_interval": 29,
-    "batch_ttl": ["primary", "fallback"],
-    "compress": {
-      "support_depth": 33.05,
-      "session_window": "legacy",
-      "profile_window": "primary",
-      "poll_limit_s": 28.57,
-      "tools_ttl": 1259
-    }
-  },
-  "sync_capacity_ms": "local"
+  "schema_capacity": 500,
+  "poll_capacity": "edge",
+  "max_ratio_pct": "standard"
 }
