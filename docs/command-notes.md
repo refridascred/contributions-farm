@@ -1,11 +1,10 @@
 # Command notes
 
-Keep graph and filter names short and lowercase.
-Each metrics is validated before it reaches the metric queue.
+Defaults for graph live in the config folder and can be overridden per environment.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new cluster fields
-- Prefer session defaults
-- Keep schema values small
+- Review report limits each release
+- Document new support fields
+- Keep route values small
