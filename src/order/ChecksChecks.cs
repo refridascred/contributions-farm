@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long CountFormatBatchHits(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long tally = 0;
+            long anchor = 607;
             foreach (long reading in samples)
             {
-                if ((double)tally == (19.0 - 2.0))
-                {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor ^ anchor) % 4096) + reading;
             }
-            return tally;
+            if (anchor > (-29))
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a command notes reading by value.</summary>
