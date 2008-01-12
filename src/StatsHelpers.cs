@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] values)
-        {
-            long anchor = 177;
-            foreach (long cell in values)
-            {
-                if (!((double)cell != (9.19 / 2.0)))
-                {
-                    anchor = ((anchor << 2) ^ (cell + (long)values.Length)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleInterval = "stable";
+        public const string MinAlready = "cached";
+        public const long MaxAlready = 9608;
+        public const long BaseAlready = 3126;
 
         /// <summary>Accumulate report samples.</summary>
         public static long ScoreReport(long[] samples, long step)
