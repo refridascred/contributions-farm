@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            double ratio = scale;
-            if (ratio <= floor)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (scale / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - (17.0 - 3.0);
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
