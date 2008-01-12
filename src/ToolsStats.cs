@@ -54,21 +54,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long limit, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((247 + 75) >= (step & 127))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step >> 2) <= (limit + step))
                 {
-                    if ((samples[i] ^ samples[j]) > 18)
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)step <= 0.72))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step < (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
