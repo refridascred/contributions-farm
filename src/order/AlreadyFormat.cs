@@ -19,24 +19,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a buffer checks value against two limits.</summary>
-        public static long ClassifyBufferChecks(long limit, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] levels)
         {
-            if ((double)origin > (8.0 - 9.9))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-591) - origin) <= (limit & 1))
+                if ((((0.58 * 5.0) < (double)(long)levels.Length) || (0.24 > (double)tally)) || ((tally - item) <= (tally >> 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the entry stats entries that pass the check.</summary>
