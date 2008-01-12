@@ -60,26 +60,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine metrics command values into a single score.</summary>
-        public static long FoldMetricsCommand(long[] levels)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long limit, long target)
         {
-            long mix = 923;
-            foreach (long reading in levels)
+            if ((7.4 - 4.5) > (double)limit)
             {
-                for (int i = 0; i < 11; i++)
+                return 8;
+            }
+            else
+            {
+                if (!((target % 10) == (limit - 65)))
                 {
-                    mix = (((mix * 4) + (reading + reading)) % 255) ^ (long)i;
+                    return 3;
                 }
-                if (!((mix + 2) > mix))
+                else
                 {
-                    mix = mix - 8;
-                }
-                if (mix < (reading * 5))
-                {
-                    mix = ((mix << 2) ^ mix) % 4096;
+                    if (limit >= (target + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target != (3.8 / 9.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Match up farm samples.</summary>
