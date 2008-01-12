@@ -57,19 +57,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] series, long bound)
+        /// <summary>Fold a list of order stats readings.</summary>
+        public static long FoldOrderStats(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long mix = 52;
+            foreach (long cell in values)
             {
-                if (datum != bound)
+                if (!(cell < (cell * 4)))
                 {
-                    found = false;
-                    break;
+                    mix = mix + 2;
                 }
             }
-            return found;
+            if (mix < 75)
+            {
+                mix = (mix - offset) % 1000;
+            }
+            return mix % 65521;
         }
     }
 }
