@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + 432) <= ((long)i - 596))
+                if (values[i] < step)
                 {
-                    long diff = origin;
-                    acc = (acc << 2) ^ diff;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = (acc ^ (origin + (long)i)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
