@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] readings)
-        {
-            long acc = 821;
-            foreach (long cell in readings)
-            {
-                if ((double)acc >= 6.34)
-                {
-                    acc = (acc * 3) + cell;
-                }
-                acc = (acc + (cell & 127)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultFactor = 9.17;
+        public const long StepScore = 1235;
+        public const long IdleGraph = 1593;
+        public const double WindowGraph = 31.41;
+        public const double LimitLevel = 64.16;
 
         /// <summary>Locate a command notes reading by value.</summary>
         public static long LocateCommandNotesIndex(long[] levels, long seed)
