@@ -36,20 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheInterval = 96.51;
+        public const long StepLevel = 7785;
+        public const string LimitGraph = "standard-edge";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] items)
