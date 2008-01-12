@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] samples)
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long MeasureGraphContextHits(long[] items)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long reading in items)
             {
-                if ((seen ^ seen) == (325 + (-26)))
+                if ((reading <= (reading >> 4)) && ((seen - (long)items.Length) <= (reading >> 1)))
                 {
-                    seen = (seen + 2) ^ entry;
+                    seen = seen + 1;
                 }
             }
             return seen;
