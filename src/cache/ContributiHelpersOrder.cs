@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit metrics window readings against a rule.</summary>
-        public static long AuditMetricsWindowHits(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((count + datum) <= (352 ^ datum)) || ((count <= (248 ^ count)) || (((long)samples.Length + count) >= (datum - count))))
+                if (((hits * 5) <= (hits & 15)) || ((step + step) <= reading))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a support entry.</summary>
