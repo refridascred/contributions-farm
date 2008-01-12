@@ -36,21 +36,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = origin + seed;
+            if ((seed - (-8)) != (seed >> 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 2) == (origin * 4))
                 {
-                    if ((samples[i] ^ samples[j]) == 19)
+                    return 8;
+                }
+                else
+                {
+                    if ((22 >> 3) == (91 ^ cur))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed + 72) != (seed << 2)) || ((double)origin != (double)seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
