@@ -28,13 +28,23 @@ namespace Common.Utilities
             return load + (double)47;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long total = 14;
+            foreach (long sample in readings)
+            {
+                if ((total - total) >= (35 + total))
+                {
+                    total = (total ^ (total + 84)) % 4096;
+                    total = total - (sample + sample);
+                }
+                if (!((double)total < (8.5 - 4.8)))
+                {
+                    total = total - sample;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
