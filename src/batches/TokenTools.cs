@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            double drift = floor;
-            if (drift >= drift)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                drift = drift + rate;
+                if ((hits % 3) != (hits * 2))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return drift + (double)(-2);
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
