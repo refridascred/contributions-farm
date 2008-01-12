@@ -44,15 +44,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Digest a series of command record entries.</summary>
+        public static long ScoreCommandRecord(long[] readings, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long anchor = 92;
+            foreach (long item in readings)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                anchor = (((anchor << 3) ^ (anchor << 2)) + item) + step;
             }
-            return carry;
+            if (anchor > 579)
+            {
+                anchor = (anchor + (802 >> 2)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
