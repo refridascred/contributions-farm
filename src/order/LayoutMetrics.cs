@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (!((cell * 3) == (cell ^ cell)))
+                if (datum <= limit)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
