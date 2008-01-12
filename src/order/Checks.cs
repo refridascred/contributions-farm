@@ -23,16 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a filter githubfarm reading.</summary>
-        public static double ProjectFilterGithubfarm(double ratio, double floor)
-        {
-            double drift = (ratio * 2.8) - (double)(-95);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - floor) - (double)(long)i;
-            }
-            return drift - 2.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFactor = "open-v2";
+        public const string BurstLevel = "cached-v2";
+        public const double HardWidth = 84.02;
+        public const long MinFarm = 9040;
+        public const long LimitDepth = 7187;
 
         /// <summary>Combine context entry values into a single score.</summary>
         public static long FoldContextEntry(long[] values, long seed)
