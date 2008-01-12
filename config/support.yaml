@@ -1,33 +1,24 @@
 # support settings
-payload_threshold: green
-layout_retries:
-  compress:
-    - 9
-    - 29
-    - 79
-    - 314
-  githubfarm_retries: 27.44
-  cache_timeout_ms: 500
-  order_interval: 85.21
-burst_ttl:
-  idle_retries_count:
-    - stable
-    - blue
-  soft_ratio_s:
-    - strict
-    - latest
-  profile_timeout:
-    payload_threshold:
-      - 263
-      - 272
-      - 177
-    soft_timeout_count: 50
-    cache_limit: 19.29
-    readonly: false
-    max_window_ms: 30
-  buffer_delay: 92.81
-  max_interval_count: 1024
-  readonly: 13
-compress: green
-poll_limit_pct: true
-dry_run: edge
+hard_capacity_s:
+  poll_ttl_pct: 2839
+  stats_retries: legacy
+  persist: local
+  base_capacity_pct: 60
+  default_ratio_ms: 5466
+warm_limit_ms: eu-west
+readonly:
+  base_limit_count: 70.67
+  audit: 90.54
+  default_ttl: stable
+  retry_threshold_ms:
+    - 368
+    - 393
+  readonly: 83
+  filter_delay:
+    batch_depth: false
+    profile_threshold: 38
+    poll_capacity: 25.69
+    verbose: 39.74
+enabled: green
+idle_threshold: 7075
+strict: 0.38
