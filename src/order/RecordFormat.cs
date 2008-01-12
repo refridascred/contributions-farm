@@ -23,21 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics already samples.</summary>
-        public static long MatchMetricsAlreadyCount(long[] readings)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (ratio - 3.1) / 4.0;
+            if (bias2 < (1.0 + ratio))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + bias2;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
