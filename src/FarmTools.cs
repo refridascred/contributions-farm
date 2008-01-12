@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a cache commits counter forward.</summary>
-        public static long DeriveCacheCommits(long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
