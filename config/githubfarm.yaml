@@ -1,5 +1,7 @@
 # githubfarm settings
-cache_delay_ms: false
-retry_limit_pct: eu-west
-readonly: 100
-compress: 1024
+warm_timeout_ms: 78.29
+profile_capacity: false
+profile_threshold: cached
+audit: legacy
+order_retries: false
+batch_interval: open
