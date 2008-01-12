@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many metrics layout samples are out of range.</summary>
-        public static long CountMetricsLayoutMatches(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (2.0 < (double)matches)
+                if (sample != limit)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
