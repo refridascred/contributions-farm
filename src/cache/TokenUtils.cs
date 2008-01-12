@@ -23,21 +23,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(3 + 607);
+            if (load >= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - (load - load)) - bias2;
             }
-            return matches;
+            return load + (double)50;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
