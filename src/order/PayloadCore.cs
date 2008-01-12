@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
