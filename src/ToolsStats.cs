@@ -30,19 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] readings, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= target)
+                if (items[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the queue mode values.</summary>
