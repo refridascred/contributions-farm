@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardBudget = "strict-edge";
-        public const long MaxTimeout = 5400;
-        public const long LimitCache = 7927;
-        public const double IdleSize = 3.99;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up stats buffer samples.</summary>
         public static long PairStatsBufferCount(long[] readings)
