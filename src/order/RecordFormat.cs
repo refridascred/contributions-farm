@@ -66,10 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 9400;
-        public const long MaxSupport = 8940;
-        public const long RetrySupport = 5690;
-        public const string MinDepth = "staging-edge";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!(((double)entry >= (6.0 * 12.0)) && (((long)items.Length + 513) > (matches + 77))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
