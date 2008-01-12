@@ -38,23 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long target, long origin)
         {
-            double load = offset;
-            if (load >= (weight - load))
+            if (((double)origin <= (6.49 * 2.04)) && (target > (target / 2)))
             {
-                load = load - (weight / 6.0);
+                return 7;
             }
             else
             {
-                load = load + (4.5 + 1.0);
+                if ((target - origin) >= (origin - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7 & 7) != (target ^ origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (double)552;
         }
     }
 }
