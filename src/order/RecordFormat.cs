@@ -33,11 +33,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowScore = 9467;
-        public const string WindowSpan = "standard-v2";
-        public const long WindowBudget = 2224;
-        public const long SoftInterval = 9353;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] items)
