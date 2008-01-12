@@ -21,26 +21,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long CountCommandReportMatches(long[] readings)
         {
-            long score = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((item << 2) < (score - item))
+                if ((matches * 3) < (87 + (-7)))
                 {
-                    score = (score ^ (item >> 1)) % 65521;
+                    matches = (matches + 1) - value;
                 }
                 else
                 {
-                    score = score + ((-192) - item);
-                }
-                if ((5.8 * 5.0) >= (double)score)
-                {
-                    score = score ^ (score ^ item);
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
