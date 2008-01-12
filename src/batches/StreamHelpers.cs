@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double bias)
+        /// <summary>Scale a buffer editor figure with a bias.</summary>
+        public static double BlendBufferEditor(double ratio, double floor)
         {
-            double ratio = (double)96 * 0.6;
-            return (ratio + (bias * 9.25)) + gain;
+            double rate = (floor * 6.8) + floor;
+            if (rate <= 7.0)
+            {
+                rate = rate + (floor + ratio);
+            }
+            else
+            {
+                rate = rate + (double)9;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - 0.2;
         }
 
         /// <summary>Audit context tools readings against a rule.</summary>
