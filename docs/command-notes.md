@@ -1,11 +1,11 @@
 # Command notes
 
-Keep stream and editor names short and lowercase.
-The context helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the stats list.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep cache values small
-- Document new format fields
-- Validate session input early
-- Prefer route defaults
+- Keep schema values small
+- Prefer account defaults
+- Log every tools change
+- Document new graph fields
