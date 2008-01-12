@@ -63,21 +63,20 @@ namespace Common.Utilities
         public const long WindowWidth = 419;
         public const long DefaultRoute = 6861;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((14.0 / 2.0) == (double)offset)
                 {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 5) + offset) % 255;
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
