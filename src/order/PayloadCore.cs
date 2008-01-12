@@ -12,14 +12,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Find the first commits token entry that matches the target.</summary>
+        public static long LocateCommitsTokenIndex(long[] readings, long bound)
         {
-            Draft,
-            Stale,
-            Retry,
-            New,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
