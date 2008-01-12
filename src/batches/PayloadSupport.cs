@@ -14,12 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items, long offset)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            long score = 5;
+            foreach (long cell in items)
+            {
+                score = ((score ^ (offset - (-2))) % 101) ^ cell;
+                if (4 < (offset << 2))
+                {
+                    score = (score ^ (943 & 127)) % 255;
+                }
+            }
+            if (score < 121)
+            {
+                score = (score + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
