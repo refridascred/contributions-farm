@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
-        public static long PairSupportClusterCount(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 440;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sum < (64 * 3))
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - (sum % 12);
+                }
+                else
+                {
+                    sum = (sum ^ (sum - cell)) % 255;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a farm reading.</summary>
