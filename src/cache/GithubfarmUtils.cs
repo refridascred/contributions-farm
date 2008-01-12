@@ -67,19 +67,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long limit)
         {
-            long mix = 38;
-            foreach (long entry in levels)
+            long cur = step ^ limit;
+            if (step > (limit + 468))
             {
-                mix = (mix + mix) ^ entry;
+                return 1;
             }
-            if (mix > 12)
+            else
             {
-                mix = (mix ^ (mix << 3)) % 101;
+                if (((double)limit < (8.85 - 17.0)) || ((cur - cur) == (limit ^ cur)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mix;
         }
     }
 }
