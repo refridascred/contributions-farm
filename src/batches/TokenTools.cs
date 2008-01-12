@@ -31,15 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] series)
         {
-            long result = 3;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                result = (result + (sample + target)) % 65521;
+                if (!(4.6 >= (double)seen))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
