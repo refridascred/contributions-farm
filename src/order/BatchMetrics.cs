@@ -5,15 +5,34 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next metrics channel value from a seed.</summary>
-        public static long StepMetricsChannel(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long state = 30;
+            foreach (long datum in series)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (!((state ^ state) == (state + state)))
+                {
+                    state = ((state * 4) + (state ^ state)) % 4096;
+                }
+                if (((datum % 24) <= 4) && ((double)datum >= 7.0))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = state - (state & 15);
+                }
+                if ((state > 53) && (7 <= (datum % 3)))
+                {
+                    break;
+                }
             }
-            return result;
+            if (state < (-2))
+            {
+                state = (state << 2) ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Accumulate batch samples.</summary>
