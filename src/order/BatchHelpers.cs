@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const long WindowTimeout = 8462;
         public const long DefaultMetrics = 9810;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 3) > datum)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
