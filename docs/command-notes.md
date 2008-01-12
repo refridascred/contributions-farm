@@ -1,10 +1,13 @@
 # Command notes
 
-Each queue is validated before it reaches the batch queue.
-Keep githubfarm and session names short and lowercase.
+A checks that stays idle for too long is moved to the editor list.
+A checks that stays idle for too long is moved to the report list.
+
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep support and format names short and lowercase.
 
 ## Guidelines
 
-- Review farm limits each release
-- Document new token fields
-- Keep editor values small
+- Review cache limits each release
+- Log every buffer change
+- Validate account input early
