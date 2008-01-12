@@ -33,13 +33,25 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Grade a account checks value against two limits.</summary>
+        public static long GradeAccountChecks(long offset, long limit)
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long delta = offset + limit;
+            if (!((delta % 12) != (delta / 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset % 24) == (offset - 502))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
