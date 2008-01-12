@@ -23,11 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 9.63;
-        public const double BurstLayout = 1.72;
-        public const long BurstSize = 9224;
-        public const long RetryDepth = 6118;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
