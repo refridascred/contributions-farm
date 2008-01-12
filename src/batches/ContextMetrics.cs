@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 1803;
-        public const string SoftSession = "fallback";
-        public const long RetryLevel = 5342;
-        public const long MaxBudget = 1094;
-        public const long DefaultSession = 2270;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Closed,
+            Active,
+            Done,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] samples, long bound)
