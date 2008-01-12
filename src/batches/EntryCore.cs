@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Combine command cluster values into a single score.</summary>
