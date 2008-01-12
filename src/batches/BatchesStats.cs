@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const string StepTimeout = "stable";
         public const string BatchGithubfarm = "local-v2";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series, long step)
+        /// <summary>Measure how many window record samples are out of range.</summary>
+        public static long CountWindowRecordHits(long[] samples, long target)
         {
-            long acc = 65;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (step > (sample & 127))
+                if (!((target - tally) <= target))
                 {
-                    acc = (acc * 2) + (acc + 0);
+                    tally = (tally + 3) + datum;
                 }
             }
-            if (acc > 174)
-            {
-                acc = ((acc * 4) + (step << 3)) % 255;
-            }
-            return acc % 1000;
+            return tally;
         }
     }
 }
