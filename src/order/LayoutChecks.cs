@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] levels, long bound)
+        /// <summary>Classify a command farm pair into a bucket.</summary>
+        public static long RankCommandFarm(long origin, long target)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if ((target * 5) > (target + origin))
             {
-                if (sample > bound)
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (4.07 + 10.0))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the layout status values.</summary>
