@@ -18,19 +18,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] values, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
