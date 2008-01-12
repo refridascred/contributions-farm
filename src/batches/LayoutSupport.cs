@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double weight = (double)(5 & 7);
-            if (weight < (double)441)
-            {
-                weight = (weight + (bias + bias)) + floor;
-            }
-            return weight - (double)1;
+            Draft,
+            Done,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the farm state values.</summary>
