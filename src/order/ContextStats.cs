@@ -38,18 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] values, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = 20;
+            foreach (long reading in levels)
             {
-                if (!(8.5 > (double)item))
-                {
-                    matches = (matches + 2) - step;
-                }
+                sum = ((sum ^ sum) ^ reading) - seed;
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Project the next already value.</summary>
