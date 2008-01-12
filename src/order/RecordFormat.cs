@@ -53,13 +53,10 @@ namespace Common.Utilities
         public const string DefaultTimeout = "fallback";
         public const long MaxRoute = 4653;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 6422;
+        public const double BasePayload = 4.99;
+        public const long MinRatio = 5773;
+        public const long IdleRatio = 22;
     }
 }
