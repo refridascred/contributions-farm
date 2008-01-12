@@ -42,38 +42,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series)
         {
-            if ((origin ^ limit) >= (limit - origin))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit != (6.23 / 8.0))
+                if (((5.9 / 5.0) >= (double)reading) && ((-4) < (hits - reading)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 4) > origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((9.35 + 12.0) != (double)limit) && ((origin + origin) >= (limit + 968)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine graph counter values into a single score.</summary>
