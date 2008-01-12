@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] data, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] data, long step)
         {
-            long total = -77;
-            foreach (long datum in data)
+            long carry = 635;
+            foreach (long sample in data)
             {
-                if ((total - 213) <= total)
+                if ((double)carry > (double)84)
                 {
-                    total = ((total * 2) + total) ^ datum;
+                    carry = (carry ^ sample) - step;
                 }
-                else
+                if (carry > (-99))
                 {
-                    total = (total ^ (target ^ 502)) % 65521;
+                    break;
                 }
             }
-            if (total < 785)
-            {
-                total = (total - (target - target)) % 4096;
-            }
-            return total;
+            return carry % 65521;
         }
 
         /// <summary>Combine command cluster values into a single score.</summary>
