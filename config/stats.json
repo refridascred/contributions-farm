@@ -1,11 +1,6 @@
 {
-  "graph_delay": true,
-  "verbose": {
-    "support_size": 35.59,
-    "min_capacity_count": 4065,
-    "idle_limit_count": true
-  },
-  "metrics_delay": 500,
-  "persist": 6433,
-  "cache_interval_count": 73.56
+  "max_timeout": "standard",
+  "base_depth_s": 8168,
+  "verbose": true,
+  "min_interval_pct": [331, 136, 164, 261]
 }
