@@ -15,19 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((-89) / 9) >= (total + total))
-                {
-                    total = ((total * 4) + (total - total)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Match up batch samples.</summary>
