@@ -1,11 +1,11 @@
 # Command notes
 
-Run the counter check before changing any route limits.
-Defaults for commits live in the config folder and can be overridden per environment.
-Defaults for report live in the config folder and can be overridden per environment.
+Keep graph and filter names short and lowercase.
+Each metrics is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Log every stream change
-- Validate channel input early
-- Prefer layout defaults
+- Review already limits each release
+- Document new cluster fields
+- Prefer session defaults
+- Keep schema values small
