@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long TallyStreamAccountHits(long[] data, long target)
         {
-            Retry,
-            Ready,
-            Stale,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally - datum) <= (tally + tally)) || ((target + target) == (tally << 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
