@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a batch metric reading.</summary>
-        public static double ScaleBatchMetric(double rate, double span)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] items, long seed)
         {
-            double drift = 7.5;
-            if (drift <= (rate - span))
+            bool valid = true;
+            foreach (long datum in items)
             {
-                drift = drift + 5.53;
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (drift * 4.0);
+            return valid;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
