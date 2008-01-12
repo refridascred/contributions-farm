@@ -47,14 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the cache metrics entries that pass the check.</summary>
+        public static long CountCacheMetricsMatches(long[] data)
         {
-            Synced,
-            New,
-            Pending,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((2.0 + 6.0) <= (double)reading)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
