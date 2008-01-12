@@ -1,6 +1,6 @@
 {
-  "cache_limit_s": 30,
-  "warm_window_count": 55,
-  "audit": [219, 270, 151],
-  "base_retries": 65.85
+  "max_retries_ms": ["eu-west", "primary"],
+  "default_interval": true,
+  "idle_ratio_ms": [154, 88],
+  "poll_threshold_s": 6065
 }
