@@ -38,11 +38,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches - matches) < (matches % 12))
+                {
+                    matches = (matches + 3) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
