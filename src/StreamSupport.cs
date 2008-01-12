@@ -13,10 +13,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxScore = 9342;
-        public const long BurstLevel = 9494;
-        public const double MinToken = 35.88;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Queued,
+            Ready,
+            New,
+            Closed,
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double BlendCommand(double bias, double floor)
