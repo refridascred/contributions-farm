@@ -19,12 +19,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCount = "fallback-edge";
-        public const long SoftCount = 8193;
-        public const long BaseWidth = 3843;
-        public const long BurstTimeout = 2699;
-        public const long LimitCache = 2748;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Dropped,
+            Done,
+            Failed,
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long IterateCache(long seed)
