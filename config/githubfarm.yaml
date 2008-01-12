@@ -1,16 +1,5 @@
 # githubfarm settings
-metric_size: staging
-strict:
-  verbose: true
-  batch_threshold_s: true
-  default_depth_s: 6.96
-  cluster_threshold: 27.41
-  sync_retries: 1024
-compress:
-  poll_retries_s: 93
-  hard_size_ms: local
-  batch_interval_count: staging
-  poll_threshold_ms: 26.58
-  retry_size_ms: blue
-  channel_limit: stable
-flush_capacity_count: strict
+cache_delay_ms: false
+retry_limit_pct: eu-west
+readonly: 100
+compress: 1024
