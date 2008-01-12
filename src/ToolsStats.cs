@@ -45,17 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long limit)
+        /// <summary>Fold a list of queue filter readings.</summary>
+        public static long ScoreQueueFilter(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -82;
+            foreach (long value in data)
             {
-                if (items[i] == limit)
+                if ((value - value) >= (state - limit))
                 {
-                    return (long)i;
+                    state = state ^ ((-438) & 31);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
