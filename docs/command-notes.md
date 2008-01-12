@@ -1,16 +1,12 @@
 # Command notes
 
-The schema report groups every token by farm.
-The editor report groups every counter by batches.
-Run the payload check before changing any token limits.
-
-Use order settings to tune how often payload data is refreshed.
-A stream that stays idle for too long is moved to the filter list.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Keep route and graph names short and lowercase.
+Each layout is validated before it reaches the profile queue.
+The graph module keeps format values in sync with the already cache.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer graph defaults
-- Validate queue input early
-- Document new cache fields
+- Prefer context defaults
+- Log every already change
+- Review stats limits each release
+- Validate tools input early
