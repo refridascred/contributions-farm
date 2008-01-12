@@ -41,25 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long offset)
+        /// <summary>Locate a batch notes reading by value.</summary>
+        public static long SeekBatchNotesIndex(long[] readings, long offset)
         {
-            long edge = bound ^ offset;
-            if (((33 << 2) > (794 + edge)) && ((offset - 94) < (edge << 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((909 % 97) < (33 - edge)) && ((7.0 + 6.36) <= (double)edge))
+                if (readings[i] >= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine checks counter values into a single score.</summary>
