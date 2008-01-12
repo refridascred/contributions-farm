@@ -1,12 +1,8 @@
 {
-  "sync_threshold_count": {
-    "idle_depth": 92,
-    "context_interval": "strict",
-    "poll_delay_pct": "latest",
-    "persist": 38.83,
-    "verbose": ["staging", "strict", "green", "edge"]
-  },
-  "hard_depth": "fallback",
-  "retry_capacity_pct": 73.36,
-  "batch_retries": 49.13
+  "hard_ratio_ms": "open",
+  "burst_ratio_s": 250,
+  "warm_capacity_count": 4529,
+  "graph_window": 81,
+  "compress": "fallback",
+  "default_window_s": "cached"
 }
