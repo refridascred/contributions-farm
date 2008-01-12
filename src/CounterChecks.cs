@@ -35,38 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long limit, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] series, long limit)
         {
-            if (((bound - limit) == (bound + limit)) || ((limit + bound) <= limit))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > bound)
+                if ((7.0 + 6.2) <= (double)limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - limit) < (limit - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound % 12) >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the counter mode values.</summary>
