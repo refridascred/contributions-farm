@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] levels, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long target, long floor)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            if ((double)target >= (7.7 - 9.6))
             {
-                if (item != offset)
+                return 6;
+            }
+            else
+            {
+                if (floor <= (floor % 24))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.5 + 4.67) <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + floor) > floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
