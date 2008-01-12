@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRatio = 5631;
+        public const string SoftSize = "stable";
+        public const long WindowRoute = 7585;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
