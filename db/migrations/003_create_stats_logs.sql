@@ -2,12 +2,8 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new',
-    level INTEGER
+    rank INTEGER,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
-
-INSERT INTO stats_logs (ratio, state, level) VALUES (21.01, 'strict', 15);
-INSERT INTO stats_logs (ratio, state, level) VALUES (82.36, 'strict', 1);
-INSERT INTO stats_logs (ratio, state, level) VALUES (61.44, 'staging', 35);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
