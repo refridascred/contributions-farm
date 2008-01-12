@@ -24,19 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] levels, long limit)
         {
-            long anchor = -357;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 5) + (item << 1)) % 65521;
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (anchor << 2)) % 4096;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
