@@ -1,8 +1,13 @@
 {
-  "strict": [126, 298, 11],
-  "max_window": false,
-  "flush_threshold_count": 48.36,
-  "persist": "cached",
-  "commits_size": [231, 242],
-  "retry_depth": ["latest", "standard"]
+  "graph_retries": ["strict", "staging"],
+  "warm_window": {
+    "batch_capacity": [54, 42, 464, 316],
+    "burst_interval_ms": ["green", "blue"],
+    "idle_ttl_pct": ["cached", "legacy", "cached", "legacy"],
+    "batch_limit": false,
+    "verbose": ["latest", "legacy", "legacy", "cached"]
+  },
+  "layout_delay": 27.38,
+  "stats_timeout": 500,
+  "idle_retries": "edge"
 }
