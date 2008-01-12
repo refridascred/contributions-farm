@@ -14,23 +14,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) != (datum & 31))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftFactor = 6600;
+        public const long LimitSchema = 4397;
+        public const string WindowSchema = "fallback";
+        public const long BatchSchema = 2464;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] levels, long step)
