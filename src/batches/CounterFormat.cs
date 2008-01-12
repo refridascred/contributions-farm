@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long step, long limit)
+        /// <summary>Look up the position of a filter channel sample.</summary>
+        public static long FindFilterChannelIndex(long[] data, long origin)
         {
-            long bound = step ^ limit;
-            if ((bound * 4) <= (42 - bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.31 / 2.0) != (double)bound)
+                if (data[i] == origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step / 7) >= (step - limit)) || ((limit * 5) <= (-915)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step ^ limit) != ((-3) - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
