@@ -50,9 +50,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleLevel = 6696;
-        public const string HardDepth = "cached";
-        public const long DefaultEditor = 2216;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 12.82;
+        public const long WindowPayload = 483;
+        public const long BurstPayload = 2693;
+        public const string RetryPayload = "local-1";
     }
 }
