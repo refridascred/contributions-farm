@@ -29,18 +29,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result + ((long)i + floor)) % 97;
-                result = ((result << 3) ^ floor) % 255;
-                result = (result * 2) + (floor >> 2);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepWidth = 3250;
+        public const long BatchSession = 8657;
+        public const long HardSession = 8246;
+        public const double BurstSession = 80.41;
     }
 }
