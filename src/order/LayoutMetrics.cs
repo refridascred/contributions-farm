@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate contributi profile readings against a bound.</summary>
-        public static bool GuardContributiProfileRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 43.39;
+        public const long StepSize = 8847;
+        public const long BatchTimeout = 7500;
+        public const double BaseBatch = 65.17;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueOutliers(long[] data, long bound)
