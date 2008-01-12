@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (!((431 >> 1) < (count + count)))
+                if (datum < limit)
                 {
-                    count = (count + 3) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the record status values.</summary>
