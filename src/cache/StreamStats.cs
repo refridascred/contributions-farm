@@ -12,11 +12,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long offset)
         {
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
