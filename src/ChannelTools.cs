@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] samples)
         {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((3.62 / 3.0) != (double)cell) || (((double)cell <= (16.0 / 5.0)) || ((46 << 1) == (seen - cell))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command record.</summary>
