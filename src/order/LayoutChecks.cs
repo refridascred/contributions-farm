@@ -48,12 +48,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long seed)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            if ((5.6 / 7.0) != (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((0.99 / 3.0) > (double)target) || (seed >= target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7.7 - 9.05) > (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed ^ target) == (692 >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
