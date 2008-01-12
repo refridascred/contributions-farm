@@ -27,15 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Queued,
-            Stale,
-            Paused,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitInterval = "standard";
+        public const long CacheRatio = 9646;
+        public const long BaseFarm = 7047;
+        public const double BurstFarm = 40.51;
 
         /// <summary>Adjust a account reading.</summary>
         public static double ScaleAccount(double scale, double offset)
