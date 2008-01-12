@@ -21,10 +21,16 @@ namespace Common.Utilities
         public const long BurstTimeout = 2699;
         public const long LimitCache = 2748;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "standard";
-        public const long StepCount = 2198;
-        public const long MaxTimeout = 9219;
-        public const string RetryDepth = "staging-1";
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result ^ (seed - (-28));
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
