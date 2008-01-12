@@ -1,12 +1,7 @@
 # support settings
-dry_run:
-  - strict
-  - green
-min_retries_pct: edge
-warm_depth_pct: 9.05
-batch_limit:
-  - cached
-  - staging
+max_capacity:
+  - blue
   - fallback
-  - edge
-min_size: 3405
+  - eu-west
+warm_ttl_count: standard
+verbose: primary
