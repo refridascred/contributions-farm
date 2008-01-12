@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long target, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] series, long bound)
         {
-            if ((4.2 - 1.0) <= (double)seed)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target >> 4) > (target << 3)) && ((target - seed) < (target / 9)))
+                if (reading <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed << 1) != (target + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((16.0 / 4.0) == (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a report summary.</summary>
