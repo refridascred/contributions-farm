@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = -62;
+            foreach (long sample in items)
             {
-                if (hits >= 40)
+                if ((floor & 31) == (561 ^ result))
                 {
-                    hits = (hits + 1) ^ entry;
+                    result = ((result << 3) ^ (result >> 2)) % 101;
+                    break;
                 }
+                result = ((result * 5) + (floor ^ sample)) % 4096;
             }
-            return hits;
+            if (result > 8)
+            {
+                result = (result << 2) ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
