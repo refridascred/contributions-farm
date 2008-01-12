@@ -82,13 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            Failed,
+            Locked,
+            Closed,
         }
     }
 }
