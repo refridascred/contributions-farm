@@ -26,17 +26,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a command farm reading by value.</summary>
-        public static long FindCommandFarmIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "fallback";
+        public const long BatchFactor = 3480;
+        public const long WindowScore = 6917;
     }
 }
