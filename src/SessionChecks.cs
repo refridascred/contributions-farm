@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long total = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total - (total / 8)) % 255;
+                total = ((total * 2) + (long)i) % 4096;
+                total = total ^ (floor + floor);
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Rank command order input into a small class.</summary>
