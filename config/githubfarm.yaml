@@ -1,13 +1,25 @@
 # githubfarm settings
-token_limit:
-  - stable
-  - blue
-verbose: 67
-enabled: staging
-queue_ratio:
-  - standard
+idle_retries: edge
+persist:
+  - staging
   - eu-west
-burst_timeout:
-  - 113
-  - 378
-  - 299
+  - blue
+poll_size:
+  burst_ratio:
+    default_retries: 66.07
+    queue_capacity:
+      - latest
+      - strict
+    account_window: eu-west
+    enabled: stable
+    cache_limit: false
+    graph_window: 56.43
+  report_delay: open
+  strict: 100
+  sync_threshold_ms: 19.01
+max_limit_ms:
+  - 342
+  - 468
+  - 462
+burst_size_count: 1024
+hard_threshold_ms: false
