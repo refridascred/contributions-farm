@@ -38,22 +38,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Validate editor stream readings against a bound.</summary>
+        public static bool VerifyEditorStreamRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((matches - matches) < (matches % 12))
+                if (datum < origin)
                 {
-                    matches = (matches + 3) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
