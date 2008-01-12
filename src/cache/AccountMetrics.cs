@@ -47,11 +47,19 @@ namespace Common.Utilities
         public const long RetryCache = 8957;
         public const long StepLevel = 4222;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 6912;
-        public const string StepFactor = "local-1";
-        public const double SoftEditor = 22.84;
-        public const double SoftBudget = 46.26;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (matches >= (reading >> 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
