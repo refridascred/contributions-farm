@@ -1,6 +1,5 @@
 {
-  "persist": "cached",
-  "layout_ratio": 25.32,
-  "cache_interval_count": [283, 219, 218],
-  "retry_size_pct": "green"
+  "min_interval_s": 11,
+  "hard_limit_ms": 64.02,
+  "poll_window_s": 95.73
 }
