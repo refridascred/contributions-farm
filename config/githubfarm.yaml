@@ -1,9 +1,4 @@
 # githubfarm settings
-sync_ttl_count: 44.43
-min_ratio: 467
-idle_limit_count: 500
-readonly: strict
-counter_depth: cached
-batch_interval_pct:
-  - stable
-  - strict
+default_capacity_s: 250
+retry_limit: 17
+counter_delay: edge
