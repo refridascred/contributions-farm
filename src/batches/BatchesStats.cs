@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] items, long limit)
+        /// <summary>Adjust a notes context reading.</summary>
+        public static double BlendNotesContext(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double mean = (double)(398 % 12);
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (((mean + mean) - (double)(long)i) - scale) + offset;
             }
-            return valid;
+            return mean - (double)490;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
