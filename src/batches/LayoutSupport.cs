@@ -51,21 +51,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Roll a context batches counter forward.</summary>
+        public static long DeriveContextBatches(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (acc << 2) ^ ((long)i & 7);
+                if ((3.09 * 3.9) < (double)acc)
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 5) + (acc + acc)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
