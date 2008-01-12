@@ -1,13 +1,4 @@
 # support settings
-readonly:
-  - latest
-  - primary
-  - cached
-  - fallback
-idle_window_count:
-  - 348
-  - 49
-  - 84
-  - 413
-flush_ratio_pct: eu-west
-max_interval: 9181
+burst_depth_count: staging
+persist: open
+cache_capacity_s: 11.25
