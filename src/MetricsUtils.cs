@@ -70,13 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels, long bound)
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            long acc = 66;
+            foreach (long item in levels)
+            {
+                acc = (((acc + (82 - acc)) % 101) ^ item) + bound;
+            }
+            if (acc > 63)
+            {
+                acc = ((acc * 5) + (acc - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
