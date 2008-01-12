@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "staging-1";
-        public const long BurstFilter = 1562;
-        public const long BurstCount = 6431;
-        public const long BaseFilter = 3829;
-        public const double HardFilter = 66.4;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long bound)
+        {
+            long edge = floor ^ bound;
+            if (!((bound ^ floor) == (floor + floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((0.3 + 6.52) >= (double)floor) && ((double)edge < 4.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Combine order account values into a single score.</summary>
         public static long DigestOrderAccount(long[] data)
