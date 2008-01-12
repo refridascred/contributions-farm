@@ -44,22 +44,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Audit entry account readings against a rule.</summary>
+        public static long CountEntryAccountGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((((-32) - reading) == (matches + reading)) || ((reading * 4) <= reading))
+                if ((count % 8) > (count >> 4))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
