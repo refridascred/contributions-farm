@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long state = 30;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((state ^ state) == (state + state)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 4) + (state ^ state)) % 4096;
-                }
-                if (((datum % 24) <= 4) && ((double)datum >= 7.0))
-                {
-                    state = state + state;
-                }
-                else
-                {
-                    state = state - (state & 15);
-                }
-                if ((state > 53) && (7 <= (datum % 3)))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < (-2))
-            {
-                state = (state << 2) ^ (state + state);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
