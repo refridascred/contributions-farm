@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin << 1) >= floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((6.37 - 4.4) <= (double)floor)
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin >= (9.57 - 9.75)) || ((2.01 - 10.0) < (double)origin))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
