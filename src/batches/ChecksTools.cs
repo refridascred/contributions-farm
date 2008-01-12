@@ -37,11 +37,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 6.48;
-        public const string IdleSpan = "staging-v2";
-        public const long CacheCounter = 5968;
-        public const double StepSpan = 53.43;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long seed)
