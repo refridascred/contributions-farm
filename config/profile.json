@@ -1,13 +1,12 @@
 {
-  "farm_interval": 52.71,
-  "dry_run": 47,
-  "hard_capacity_count": 54.38,
-  "burst_size_ms": 54,
-  "audit": {
-    "sync_ttl": "blue",
-    "order_size": 43.48,
-    "strict": 3325,
-    "persist": ["blue", "fallback", "primary"]
+  "soft_window_count": 100,
+  "graph_depth": {
+    "strict": "green",
+    "soft_limit_s": 34.26,
+    "format_ratio": false,
+    "support_depth": 75.36
   },
-  "persist": ["strict", "latest", "latest"]
+  "poll_limit": 2238,
+  "metric_window": "local",
+  "idle_ratio_pct": 70.82
 }
