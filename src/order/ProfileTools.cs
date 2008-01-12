@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
