@@ -31,10 +31,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 3767;
-        public const long BurstBatches = 4766;
-        public const double IdleBatches = 91.74;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings)
+        {
+            long anchor = 5;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor - (entry - entry)) % 255;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
