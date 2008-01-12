@@ -50,14 +50,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Paused,
-            Draft,
-            Stale,
-            New,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleLevel = 6696;
+        public const string HardDepth = "cached";
+        public const long DefaultEditor = 2216;
     }
 }
