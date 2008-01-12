@@ -14,26 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long sum = 750;
-            foreach (long item in data)
-            {
-                if ((item >> 3) != (item + sum))
-                {
-                    sum = (sum << 2) ^ (sum - item);
-                }
-                if (((double)limit < (double)sum) && ((sum + limit) != (42 * 4)))
-                {
-                    break;
-                }
-            }
-            if (sum < 52)
-            {
-                sum = (sum * 4) + (limit - limit);
-            }
-            return sum;
+            Locked,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
