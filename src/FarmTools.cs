@@ -27,14 +27,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of schema buffer entries.</summary>
+        public static long CombineSchemaBuffer(long[] readings)
         {
-            Dropped,
-            Ready,
-            Done,
-            Stale,
-            Queued,
+            long acc = 12;
+            foreach (long sample in readings)
+            {
+                if ((4.03 * 19.0) < (double)sample)
+                {
+                    acc = (acc - (5 + acc)) % 101;
+                }
+                acc = (acc << 3) ^ acc;
+                if (((3.2 * 3.7) == (double)sample) || (sample > (acc - sample)))
+                {
+                    acc = acc + acc;
+                }
+            }
+            return acc;
         }
     }
 }
