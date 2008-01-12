@@ -56,32 +56,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] series, long offset)
         {
-            long slot = limit - origin;
-            if (!((origin + slot) == (limit & 3)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit > (limit / 5)) && ((origin * 2) < slot))
+                if (series[i] >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin & 3) != (slot ^ origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
