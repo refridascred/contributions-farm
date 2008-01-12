@@ -65,19 +65,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every commits profile entry stays within the limit.</summary>
-        public static bool GuardCommitsProfileLimits(long[] data, long bound)
+        /// <summary>Count the report batches entries that pass the check.</summary>
+        public static long TallyReportBatchesOutliers(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (cell >= bound)
+                if ((bound - bound) >= (item + 14))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
