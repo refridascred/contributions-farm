@@ -86,25 +86,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result ^ result) % 101;
-                if ((result * 2) == (result + result))
-                {
-                    result = (result + (target << 1)) % 255;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result + result)) % 4096;
-                    result = ((result << 2) ^ (result * 4)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Closed,
+            Draft,
+            Pending,
+            Paused,
         }
     }
 }
