@@ -54,18 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record window entries that pass the check.</summary>
-        public static long TallyRecordWindowHits(long[] data, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches <= (offset >> 3)) || !((8 + item) <= 370))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Closed,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a report stats.</summary>
