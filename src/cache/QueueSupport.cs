@@ -44,15 +44,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a editor graph reading.</summary>
-        public static double ScaleEditorGraph(double weight, double span)
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long MeasureSessionPayloadGaps(long[] levels)
         {
-            double load = (double)(324 + 892);
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                load = (((load + load) + (double)(long)i) + weight) - span;
+                if (((double)datum != (2.0 - 0.43)) && ((seen + seen) > (436 / 3)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return load + (double)2;
+            return seen;
         }
     }
 }
