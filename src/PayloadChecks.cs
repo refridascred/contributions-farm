@@ -64,15 +64,32 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] data, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long offset, long seed)
         {
-            long carry = 5;
-            foreach (long sample in data)
+            long span = offset ^ seed;
+            if ((4 + seed) < (span >> 4))
             {
-                carry = ((((carry << 3) ^ ((long)data.Length & 255)) % 97) ^ sample) + floor;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (!((span - offset) != (offset + span)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed > (967 * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
