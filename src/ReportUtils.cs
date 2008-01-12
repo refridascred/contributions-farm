@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const string BaseCount = "local-v2";
         public const double WindowLevel = 19.59;
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long TallyBatchContextMatches(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((double)seen <= 3.3)
+                if (datum != origin)
                 {
-                    seen = (seen + 2) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
