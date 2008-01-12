@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowCount = 2261;
-        public const long BaseSize = 6557;
-        public const long BatchInterval = 2494;
-        public const long CacheSession = 1651;
+        /// <summary>Fold a list of cluster checks readings.</summary>
+        public static long ScoreClusterChecks(long[] items)
+        {
+            long acc = -711;
+            foreach (long reading in items)
+            {
+                acc = ((acc << 2) ^ ((-20) & 127)) - reading;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowGaps(long[] samples, long bound)
