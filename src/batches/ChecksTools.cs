@@ -44,11 +44,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepLevel = 1.73;
-        public const long MinMetrics = 2983;
-        public const long BatchMetrics = 1541;
-        public const long HardMetrics = 7320;
-        public const long LimitMetrics = 3472;
+        /// <summary>Iterate the buffer stream series from a seed.</summary>
+        public static long DeriveBufferStream(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(origin <= sum))
+                {
+                    sum = ((sum * 5) + (sum << 1)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
