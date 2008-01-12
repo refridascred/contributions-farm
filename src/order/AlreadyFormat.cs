@@ -17,21 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of account batches readings.</summary>
-        public static long MatchAccountBatchesCount(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score ^ 14) - sample;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the metric kind values.</summary>
