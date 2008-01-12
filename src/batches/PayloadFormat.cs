@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
