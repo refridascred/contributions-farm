@@ -33,18 +33,10 @@ namespace Common.Utilities
         public const string BaseWidth = "fallback-v2";
         public const long LimitFormat = 5214;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (matches >= (matches + matches))
-                {
-                    matches = ((matches + 2) + cell) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "fallback-edge";
+        public const string BatchLevel = "stable-v2";
+        public const long WindowWidth = 7874;
+        public const long LimitProfile = 9958;
     }
 }
