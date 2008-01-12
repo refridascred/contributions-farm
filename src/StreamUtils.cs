@@ -48,12 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            Ready,
-            New,
-            Dropped,
+            double ratio = gain;
+            if (ratio >= (offset / 8.0))
+            {
+                ratio = ratio + (offset / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + 0.3;
         }
     }
 }
