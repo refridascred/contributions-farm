@@ -1,19 +1,6 @@
 {
-  "default_window_s": "local",
-  "retry_limit_count": {
-    "enabled": ["eu-west", "green", "strict"],
-    "queue_ttl": {
-      "max_retries_count": "eu-west",
-      "idle_size_ms": 89,
-      "idle_timeout": 62,
-      "record_ttl": "strict",
-      "burst_interval": "open",
-      "enabled": "legacy"
-    },
-    "default_limit_pct": 1024,
-    "soft_delay_s": "stable"
-  },
-  "idle_threshold_s": "staging",
-  "cluster_depth": 33.72,
-  "cache_window": true
+  "max_retries_pct": "standard",
+  "warm_capacity": 500,
+  "batches_delay": "eu-west",
+  "cache_ratio_pct": "green"
 }
