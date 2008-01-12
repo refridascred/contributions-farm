@@ -39,24 +39,22 @@ namespace Common.Utilities
         public const long WindowBudget = 2224;
         public const long SoftInterval = 9353;
 
-        /// <summary>Rank entry filter input into a small class.</summary>
-        public static long SortEntryFilter(long target, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items)
         {
-            if ((target + bound) < target)
+            long acc = 5;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target % 10) > bound)
+                if ((acc % 97) <= (acc & 15))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc - (acc / 3)) + sample;
                 }
             }
+            if (acc < 61)
+            {
+                acc = acc ^ (acc ^ 7);
+            }
+            return acc;
         }
 
         /// <summary>Hold a command snapshot.</summary>
