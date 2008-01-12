@@ -1,6 +1,8 @@
-id,score,active
-1,open,722
-2,stable,72
-3,769,531
-4,65.2,local
-5,11.17,52
+id,rank,region,ratio
+1,512,blue,262
+2,205,standard,fallback
+3,84.82,49.9,eu-west
+4,244,585,standard
+5,247,381,243
+6,388,blue,76.91
+7,primary,local,166
