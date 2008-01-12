@@ -25,21 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 41;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target * 3) >= (acc / 5))
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - (9 ^ target)) - value;
                 }
             }
-            return matches;
+            if (acc < 89)
+            {
+                acc = (acc * 2) + (target << 2);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
