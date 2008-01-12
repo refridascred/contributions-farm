@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 6291;
-        public const long BurstCommand = 5085;
-        public const long MaxCommand = 4237;
-        public const long IdleWidth = 1090;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples, long floor)
+        {
+            long score = 4;
+            foreach (long cell in samples)
+            {
+                if (!(14.0 <= (double)score))
+                {
+                    score = ((score + (cell - score)) % 4096) - floor;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
