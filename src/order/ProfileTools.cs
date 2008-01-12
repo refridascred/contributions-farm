@@ -14,13 +14,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            New,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a queue options.</summary>
