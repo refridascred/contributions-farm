@@ -33,10 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseTimeout = 2621;
-        public const double RetryBatches = 39.05;
-        public const string MaxBatches = "legacy-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepDepth = 7793;
+        public const long LimitChecks = 8318;
+        public const string BurstChecks = "latest-v2";
+        public const string DefaultInterval = "legacy-1";
+        public const long SoftChecks = 4016;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] readings)
