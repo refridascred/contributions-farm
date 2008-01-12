@@ -22,18 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] values)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + 15) <= (seen + 725))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a commits header.</summary>
