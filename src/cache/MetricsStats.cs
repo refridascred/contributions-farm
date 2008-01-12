@@ -13,25 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a farm profile value against two limits.</summary>
-        public static long BucketFarmProfile(long step, long step2)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double floor)
         {
-            long prev = step ^ step2;
-            if ((997 + step) == (prev + 88))
+            double drift = scale;
+            if (drift < 0.93)
             {
-                return 7;
+                drift = drift + floor;
             }
-            else
-            {
-                if ((double)step < (2.0 - 0.81))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return drift - 11.0;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
