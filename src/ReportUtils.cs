@@ -14,10 +14,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 7389;
-        public const long CacheStream = 8370;
-        public const long MaxWidth = 3524;
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double ratio, double span)
+        {
+            double gain = ratio - (double)217;
+            if (gain <= (gain / 3.0))
+            {
+                gain = (gain - (gain * 15.0)) + span;
+            }
+            else
+            {
+                gain = gain - (double)476;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] series)
