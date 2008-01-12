@@ -1,5 +1,4 @@
 # support settings
-default_ratio_s: 448
-cache_delay_pct: 4.53
-base_delay: local
-soft_depth_s: open
+min_interval_ms: open
+compress: 2157
+idle_depth: green
