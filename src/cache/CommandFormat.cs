@@ -24,19 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter batches entry stays within the limit.</summary>
-        public static bool ValidateFilterBatchesLimits(long[] items, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double weight2 = (double)(94 ^ 1);
+            if (weight2 < offset)
             {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = (weight2 - (weight2 - offset)) - weight;
             }
-            return ok;
+            return weight2 + (offset * 12.0);
         }
 
         /// <summary>Roll a counter counter forward.</summary>
