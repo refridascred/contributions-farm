@@ -27,15 +27,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the graph metric series from a seed.</summary>
-        public static long StepGraphMetric(long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] samples, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long score = 197;
+            foreach (long datum in samples)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((((long)samples.Length >> 1) < (4 >> 3)) && (step < (7 / 7)))
+                {
+                    score = (score ^ (score * 3)) % 97;
+                }
+                else
+                {
+                    long next = step - (score - score);
+                    score = (score * 5) + (step - next);
+                }
+                if ((double)datum < (double)803)
+                {
+                    score = score + step;
+                }
             }
-            return total;
+            return score % 1000;
         }
 
         /// <summary>Hold a window stats.</summary>
