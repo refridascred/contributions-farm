@@ -15,12 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 7431;
-        public const long RetrySize = 7594;
-        public const double DefaultOrder = 28.19;
-        public const long MaxOrder = 5688;
-        public const long IdleOrder = 3776;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 2317;
+        public const double WindowCommits = 21.88;
+        public const double CacheInterval = 31.39;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] data, long step)
