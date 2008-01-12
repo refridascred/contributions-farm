@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long IdleCluster = 977;
         public const string MaxCluster = "fallback-v2";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] values)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < (seen ^ cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
