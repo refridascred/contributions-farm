@@ -26,38 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long limit)
         {
-            if (((offset << 3) <= (target + target)) || ((offset / 5) > (target & 3)))
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                state = state - 62;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (3.13 > (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset ^ target) != (offset % 10)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target <= (9.7 - 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
