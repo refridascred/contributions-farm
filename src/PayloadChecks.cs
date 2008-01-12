@@ -37,15 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double scale = floor + weight;
-            if (scale < scale)
-            {
-                scale = scale + (double)78;
-            }
-            return scale - weight;
+            Active,
+            Stale,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
