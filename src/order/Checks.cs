@@ -12,38 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if ((limit - 8) > (693 + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin < limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 4) <= (origin % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)619 <= (double)origin) && ((origin - origin) < (origin + origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
