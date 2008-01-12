@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long StepFarm = 8572;
         public const long CacheFarm = 1359;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long step)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            if (step > origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.36 / 9.0) <= (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
