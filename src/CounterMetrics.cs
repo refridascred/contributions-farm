@@ -60,22 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)entry >= 6.0))
+                if ((step - seen) > (step + step))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
