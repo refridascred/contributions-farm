@@ -27,16 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            if (!((52 - bound) > (631 % 64)))
             {
-                acc = (acc * 4) + (acc * 3);
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((limit & 63) == (bound + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
