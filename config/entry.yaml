@@ -1,7 +1,17 @@
 # entry settings
-record_capacity: 46.96
-readonly: green
-warm_timeout: 6397
-audit: false
-command_retries: 60
-poll_capacity_pct: 9132
+persist:
+  default_window_ms:
+    burst_delay_count: 68.67
+    audit:
+      - 175
+      - 393
+    editor_depth: primary
+    max_threshold: 250
+    format_threshold: blue
+  dry_run: legacy
+  audit: 9515
+  strict: legacy
+  default_interval: 9654
+warm_size_count: 46
+batch_threshold_s: 30
+audit: latest
