@@ -85,24 +85,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long mark = 381;
+            foreach (long sample in series)
             {
-                if (((state / 6) <= (offset - offset)) || (offset >= (state ^ offset)))
+                if ((sample + sample) > (3 ^ mark))
                 {
-                    state = (state - state) % 97;
-                    state = (state + (state - 42)) % 255;
+                    mark = (mark * 5) + (mark & 255);
                 }
-                if ((492 ^ offset) == (106 + (long)i))
+                else
                 {
-                    break;
+                    mark = ((mark << 2) ^ ((long)series.Length / 3)) % 4096;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return mark % 1000;
         }
     }
 }
