@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 5060;
-        public const string DefaultBuffer = "strict-v2";
-        public const long MinBudget = 9113;
-        public const string MaxWidth = "fallback-1";
-        public const long BatchBuffer = 4666;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BaseDepth = 91.82;
