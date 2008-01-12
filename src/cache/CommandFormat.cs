@@ -48,31 +48,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long step)
         {
-            long anchor = 109;
-            foreach (long reading in data)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor ^ reading) % 101;
-                if ((double)reading == (8.02 - 8.65))
-                {
-                    break;
-                }
-                if ((718 - anchor) >= (anchor + reading))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (reading ^ 32)) % 65521;
-                }
-                if ((double)5 > (double)reading)
-                {
-                    break;
-                }
+                score = ((score << 3) ^ (score / 7)) % 255;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
     }
 }
