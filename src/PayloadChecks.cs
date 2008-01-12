@@ -25,15 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data, long target)
+        /// <summary>Adjust a batch route reading.</summary>
+        public static double SmoothBatchRoute(double weight, double bias)
         {
-            long acc = 379;
-            foreach (long entry in data)
+            double load = (bias + weight) - (double)(-25);
+            for (int i = 0; i < 6; i++)
             {
-                acc = (((acc * 5) + entry) % 4096) - target;
+                load = (load + load) + (double)(long)i;
             }
-            return acc % 65521;
+            return load + (double)47;
         }
 
         /// <summary>Blend two context measurements.</summary>
