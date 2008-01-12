@@ -45,22 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] series)
+        /// <summary>Locate a stats commits reading by value.</summary>
+        public static long FindStatsCommitsIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((368 - 39) > (seen + datum))
+                if (samples[i] == offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
