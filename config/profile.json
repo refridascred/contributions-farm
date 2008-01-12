@@ -1,6 +1,7 @@
 {
-  "default_size": 39.14,
-  "audit": 8710,
-  "command_threshold": "stable",
-  "base_retries_s": [461, 269]
+  "graph_ttl": "eu-west",
+  "retry_ratio_ms": true,
+  "readonly": [61, 8, 117],
+  "strict": 10,
+  "min_capacity_s": 18
 }
