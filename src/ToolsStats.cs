@@ -45,23 +45,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data, long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] items, long limit)
         {
-            long score = 141;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score * 2) + score;
-                if ((reading - seed) >= (score % 64))
+                if (items[i] == limit)
                 {
-                    score = (score - (score >> 5)) % 65521;
+                    return (long)i;
                 }
             }
-            if (score < 6)
-            {
-                score = (score + (score ^ score)) % 4096;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
