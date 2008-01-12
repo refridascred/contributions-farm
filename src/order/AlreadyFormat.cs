@@ -35,11 +35,20 @@ namespace Common.Utilities
             return gain + (double)37;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 5499;
-        public const long BaseEntry = 9861;
-        public const long RetryTimeout = 9725;
-        public const long LimitEntry = 5148;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((floor % 60) > 649))
+                {
+                    total = ((total * 3) + total) % 97;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Count the cache metrics entries that pass the check.</summary>
         public static long CountCacheMetricsMatches(long[] data)
