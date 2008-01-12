@@ -1,4 +1,4 @@
 # support settings
-burst_depth_count: staging
-persist: open
-cache_capacity_s: 11.25
+min_limit_ms: false
+batch_depth: 100
+flush_depth_pct: legacy
