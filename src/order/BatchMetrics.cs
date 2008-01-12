@@ -91,19 +91,18 @@ namespace Common.Utilities
             return mean + (double)33;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] series, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (datum >= seed)
+                if (((double)seen >= (8.9 / 3.0)) && ((reading + reading) < reading))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
