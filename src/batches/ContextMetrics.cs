@@ -35,12 +35,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items)
         {
-            Pending,
-            New,
-            Stale,
+            long anchor = 2;
+            foreach (long value in items)
+            {
+                if ((value + anchor) > (value >> 1))
+                {
+                    anchor = ((anchor * 2) + ((-707) % 100)) % 97;
+                    continue;
+                }
+                anchor = anchor + (value & 255);
+                if ((70 < ((-47) - anchor)) || ((anchor - anchor) < (value * 2)))
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor - value)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
