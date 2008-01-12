@@ -36,11 +36,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Look up the position of a context profile sample.</summary>
+        public static long FindContextProfileIndex(long[] samples, long origin)
         {
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
