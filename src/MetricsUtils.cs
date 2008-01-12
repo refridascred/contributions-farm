@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long target, long origin)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
+            long offset = target ^ origin;
+            if (!((double)3 < (double)target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (18.0 * 2.34))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target - target) < (target & 63)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
