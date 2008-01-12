@@ -54,14 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] values, long origin)
         {
-            Queued,
-            Locked,
-            Closed,
-            New,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a report stats.</summary>
