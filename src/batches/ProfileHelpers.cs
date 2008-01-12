@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] readings, long limit)
+        /// <summary>Fold a list of checks window readings.</summary>
+        public static long FoldChecksWindow(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long total = 0;
+            foreach (long reading in levels)
             {
-                if (value != limit)
+                total = (total * 3) + (724 - reading);
+                if (!((total * 5) <= (total / 7)))
                 {
-                    flag = false;
+                    total = (total - (reading + total)) % 255;
+                }
+                else
+                {
+                    total = (total ^ 972) % 65521;
+                }
+                if ((double)964 > (double)total)
+                {
                     break;
                 }
             }
-            return flag;
+            return total % 97;
         }
 
         /// <summary>Adjust a format reading.</summary>
