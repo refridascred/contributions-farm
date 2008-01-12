@@ -44,15 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] data, long bound)
+        /// <summary>Count the already payload entries that pass the check.</summary>
+        public static long AuditAlreadyPayloadMatches(long[] data)
         {
             long matches = 0;
-            foreach (long value in data)
+            foreach (long cell in data)
             {
-                if (!((value >> 5) > (value - bound)))
+                if (((matches ^ cell) < (matches & 3)) && ((double)matches <= (14.0 + 2.6)))
                 {
-                    matches = matches + 3;
+                    matches = matches + 2;
                 }
             }
             return matches;
