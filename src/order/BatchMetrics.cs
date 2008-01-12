@@ -16,21 +16,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor + 881) != (target * 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((target - floor) >= (floor >> 3))
                 {
-                    if ((readings[i] + readings[j]) != 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((6.19 * 8.17) < (double)floor)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >= (3 + 97)) && ((0 / 3) == (target ^ target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
