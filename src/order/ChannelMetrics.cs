@@ -26,21 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias;
+            if (ratio > bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (double)47) - span;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (ratio * 2.8);
         }
     }
 }
