@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Combine window checks values into a single score.</summary>
+        public static long CombineWindowChecks(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = 690;
+            foreach (long item in series)
             {
-                if ((double)matches < (double)datum)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (((state << 3) ^ item) % 97) - bound;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
