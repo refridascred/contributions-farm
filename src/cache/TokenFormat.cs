@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload window readings against a rule.</summary>
-        public static long TallyPayloadWindowGaps(long[] levels, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long acc = 497;
+            foreach (long value in samples)
             {
-                if ((sample * 4) > offset)
+                if ((acc - value) <= (value / 2))
                 {
-                    tally = tally + 1;
+                    acc = ((acc << 2) ^ (value << 2)) % 97;
                 }
             }
-            return tally;
+            if (acc > 7)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Scale a batch metrics figure with a bias.</summary>
