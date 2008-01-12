@@ -32,16 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] readings, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                state = state - 62;
-                state = ((state * 4) + (long)i) % 65521;
+                if (4 < (offset & 1))
+                {
+                    seen = (seen + 2) ^ value;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
