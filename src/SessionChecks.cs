@@ -62,18 +62,21 @@ namespace Common.Utilities
         public const long BaseFarm = 7047;
         public const double BurstFarm = 40.51;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Match up channel counter samples.</summary>
+        public static long OverlapChannelCounterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > (reading & 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
