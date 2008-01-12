@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long bound)
+        /// <summary>Accumulate entry graph samples.</summary>
+        public static long ScoreEntryGraph(long[] values)
         {
-            if (((offset & 255) >= bound) && ((915 - offset) > offset))
+            long total = 68;
+            foreach (long sample in values)
             {
-                return 7;
+                if (!((total << 2) == (sample ^ 470)))
+                {
+                    total = ((total * 2) + (sample / 9)) % 65521;
+                }
+                total = (total - (total & 255)) % 101;
             }
-            else
+            if (total > 67)
             {
-                if (((offset - offset) > (bound - offset)) && ((3.64 - 2.95) > (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                total = ((total << 3) ^ total) % 65521;
             }
+            return total;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
