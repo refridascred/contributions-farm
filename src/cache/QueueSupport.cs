@@ -27,11 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheSpan = "cached-1";
+        public const long MaxToken = 9126;
+        public const long DefaultToken = 5271;
+        public const long SoftToken = 8373;
+        public const string StepInterval = "cached-v2";
     }
 }
