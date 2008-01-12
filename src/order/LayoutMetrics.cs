@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] items, long origin)
         {
-            long sum = 440;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (sum < (64 * 3))
+                if ((32 + 358) > hits)
                 {
-                    sum = sum - (sum % 12);
+                    hits = ((hits + 1) ^ sample) + origin;
                 }
                 else
                 {
-                    sum = (sum ^ (sum - cell)) % 255;
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
