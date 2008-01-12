@@ -27,12 +27,31 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a metric profile value against two limits.</summary>
+        public static long BucketMetricProfile(long target, long bound)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            if ((target * 2) <= (target ^ target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target >= (target + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + target) != (24 + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
