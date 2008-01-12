@@ -37,11 +37,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double rate, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            double load = (9.0 / 8.0) * 4.15;
-            return ((load + (load - load)) + rate) + offset;
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((sample ^ (long)items.Length) > (-91)) && (((sample << 2) < (matches / 6)) && (sample < (sample + 8))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
