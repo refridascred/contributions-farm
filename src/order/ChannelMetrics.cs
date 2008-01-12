@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long IdleCluster = 977;
         public const string MaxCluster = "fallback-v2";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long seed)
         {
-            New,
-            Retry,
-            Paused,
+            if ((double)seed != (2.0 + 3.1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
