@@ -1,14 +1,16 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the session list.
-Keep context and format names short and lowercase.
-Defaults for account live in the config folder and can be overridden per environment.
+Use contributi settings to tune how often commits data is refreshed.
+Run the metric check before changing any notes limits.
+The stream module keeps editor values in sync with the metrics cache.
 
-Run the context check before changing any account limits.
-Keep batches and farm names short and lowercase.
+Each cache is validated before it reaches the notes queue.
+A queue that stays idle for too long is moved to the cache list.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep record values small
-- Validate schema input early
-- Prefer already defaults
+- Document new cache fields
+- Review payload limits each release
+- Prefer layout defaults
+- Keep command values small
