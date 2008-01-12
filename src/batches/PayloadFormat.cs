@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support farm reading.</summary>
-        public static double ScaleSupportFarm(double bias, double bias2)
-        {
-            double load = bias2;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + 6.9) + (double)(long)i) + bias;
-            }
-            return load + 9.2;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 6914;
+        public const double MinBudget = 70.0;
+        public const double DefaultQueue = 4.24;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] levels, long seed)
