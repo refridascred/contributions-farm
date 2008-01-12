@@ -40,21 +40,24 @@ namespace Common.Utilities
             return scale + 8.5;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((mix - floor) < (floor + (long)i)))
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix ^ ((long)i ^ (long)i);
+                    mix = mix + (mix + (long)i);
                 }
+                if ((mix <= (mix * 5)) || ((mix << 2) != (floor & 15)))
+                {
+                    mix = (mix - 33) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
