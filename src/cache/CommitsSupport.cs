@@ -62,11 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((((9.47 / 8.0) > (double)offset) && ((count ^ (-66)) == (value + value))) || ((count > (offset ^ offset)) || ((value << 3) >= (93 - offset))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
