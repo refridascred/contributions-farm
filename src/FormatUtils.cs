@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Validate filter layout readings against a bound.</summary>
+        public static bool VerifyFilterLayoutRange(long[] samples, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Blend two layout commits measurements.</summary>
