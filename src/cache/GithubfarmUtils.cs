@@ -41,19 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] series, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Dropped,
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the layout kind values.</summary>
