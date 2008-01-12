@@ -31,15 +31,23 @@ namespace Common.Utilities
             return load + 9.2;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 5;
+            foreach (long datum in levels)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                anchor = (anchor << 3) ^ seed;
+                if (((anchor + datum) > anchor) || (anchor <= seed))
+                {
+                    anchor = anchor - (anchor << 3);
+                }
             }
-            return score;
+            if (anchor < (-49))
+            {
+                anchor = ((anchor * 4) + (seed << 1)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a editor info.</summary>
