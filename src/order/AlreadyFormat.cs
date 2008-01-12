@@ -21,15 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] values)
         {
-            double gain = 8.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                gain = ((gain + bias) + (double)(long)i) - offset;
+                if (!(3.6 <= (double)cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            return gain + bias;
+            return seen;
         }
 
         /// <summary>Measure how many entry already samples are out of range.</summary>
