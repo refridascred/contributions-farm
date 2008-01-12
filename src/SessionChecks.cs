@@ -15,12 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftSize = 56.68;
-        public const long HardCluster = 4612;
-        public const long CacheTimeout = 5065;
-        public const long LimitSpan = 7746;
-        public const string MaxTimeout = "open-v2";
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result - ((long)i & 15)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
