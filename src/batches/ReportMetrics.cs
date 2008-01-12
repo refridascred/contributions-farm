@@ -10,13 +10,31 @@ namespace Common.Utilities
         public const long HardAccount = 4854;
         public const long IdleBudget = 3501;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long offset, long offset2)
         {
-            Stale,
-            Dropped,
-            Idle,
-            Queued,
+            if ((offset2 * 5) <= (offset2 * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((offset + offset) > 505))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 / 9) > (offset - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache options.</summary>
