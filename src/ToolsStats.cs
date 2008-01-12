@@ -41,17 +41,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] items, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 141;
+            foreach (long reading in data)
             {
-                if (items[i] >= step)
+                score = (score * 2) + score;
+                if ((reading - seed) >= (score % 64))
                 {
-                    return (long)i;
+                    score = (score - (score >> 5)) % 65521;
                 }
             }
-            return -1;
+            if (score < 6)
+            {
+                score = (score + (score ^ score)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the queue mode values.</summary>
