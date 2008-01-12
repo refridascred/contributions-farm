@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double floor)
+        /// <summary>Blend two githubfarm notes measurements.</summary>
+        public static double AdjustGithubfarmNotes(double scale, double offset)
         {
-            double load = ratio;
-            if (load <= (double)18)
+            double weight = offset;
+            if (weight <= (5.8 - scale))
             {
-                load = (load - (load / 7.0)) - floor;
+                weight = weight + (scale - offset);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                load = load + (ratio / 9.0);
+                weight = (weight - 9.64) + (double)(long)i;
             }
-            return load + 6.7;
+            return weight - (7.0 + offset);
         }
 
         /// <summary>Count the batches stats entries that pass the check.</summary>
