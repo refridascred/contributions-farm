@@ -1,5 +1,22 @@
 # entry settings
-batches_capacity: 14
-retry_delay_s: legacy
-compress: 41
-poll_ttl_s: true
+batch_depth: 56.97
+base_window_s:
+  githubfarm_size:
+    - 178
+    - 416
+  window_capacity: 60
+  persist:
+    readonly: primary
+    min_ratio: 78.37
+    max_window_pct: standard
+    hard_interval: 7430
+    payload_threshold: 21.34
+  min_capacity_ms: fallback
+  layout_window:
+    max_interval_pct: true
+    audit: 6688
+    max_ratio_count: false
+sync_window_pct: strict
+filter_capacity: staging
+window_threshold: 51
+warm_capacity_pct: 37
