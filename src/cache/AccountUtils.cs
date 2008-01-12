@@ -24,10 +24,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 2547;
-        public const double CacheTimeout = 69.56;
-        public const string SoftWidth = "staging-edge";
-        public const double BaseSize = 75.32;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
