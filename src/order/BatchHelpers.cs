@@ -47,9 +47,13 @@ namespace Common.Utilities
             return ((ratio + (double)3) + gain) + bias;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftFactor = 4503;
-        public const long IdleChannel = 4233;
-        public const long DefaultChannel = 7538;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Paused,
+            Dropped,
+            Pending,
+            Ready,
+        }
     }
 }
