@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchLevel = 9180;
-        public const long IdleFactor = 6260;
-        public const long HardCommits = 8082;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long step)
+        {
+            long result = 512;
+            foreach (long cell in series)
+            {
+                if ((step >> 4) <= result)
+                {
+                    result = (result << 2) ^ cell;
+                }
+                else
+                {
+                    result = ((result << 3) ^ cell) % 65521;
+                }
+            }
+            if (result < 22)
+            {
+                result = result ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] series, long offset)
