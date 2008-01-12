@@ -14,12 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first cache profile entry that matches the target.</summary>
+        public static long LookupCacheProfileIndex(long[] values, long target)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank channel commits input into a small class.</summary>
