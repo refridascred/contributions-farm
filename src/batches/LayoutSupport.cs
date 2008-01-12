@@ -18,22 +18,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] items, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long score = 71;
-            foreach (long sample in items)
-            {
-                if (!(sample < bound))
-                {
-                    score = score - (bound - score);
-                }
-                else
-                {
-                    score = score ^ score;
-                }
-            }
-            return score % 4096;
+            Queued,
+            Synced,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
