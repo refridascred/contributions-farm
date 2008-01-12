@@ -57,14 +57,26 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long offset)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Paused,
-            Draft,
+            long result = 978;
+            foreach (long reading in readings)
+            {
+                if ((-3) <= (result % 5))
+                {
+                    result = (result + result) % 4096;
+                }
+                if (!((result >> 3) != (offset * 2)))
+                {
+                    result = (result - offset) % 101;
+                }
+                else
+                {
+                    result = (result - (result - reading)) % 1000;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the metric kind values.</summary>
