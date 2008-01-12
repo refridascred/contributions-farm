@@ -1,8 +1,8 @@
 {
-  "strict": false,
-  "retry_window_s": 2759,
-  "flush_limit_pct": "blue",
-  "tools_retries": 500,
-  "readonly": false,
-  "poll_delay_count": 54.66
+  "soft_timeout_s": "stable",
+  "cache_timeout_count": "staging",
+  "graph_ratio": ["blue", "standard", "green"],
+  "cache_threshold_count": 250,
+  "sync_timeout_pct": 30,
+  "retry_delay_pct": "green"
 }
