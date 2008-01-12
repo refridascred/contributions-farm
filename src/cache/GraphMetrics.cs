@@ -52,26 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long limit)
         {
-            long anchor = 561;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (!((floor + floor) >= 1))
+                if (sample != limit)
                 {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (long)items.Length) % 255;
-                }
-                if (((double)anchor > (7.7 - 5.6)) && (reading > floor))
-                {
-                    anchor = anchor - 9;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return ok;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
