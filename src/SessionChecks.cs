@@ -59,18 +59,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the report batches entries that pass the check.</summary>
-        public static long TallyReportBatchesOutliers(long[] items, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((bound - bound) >= (item + 14))
+                if (((matches ^ 775) != (sample - matches)) || ((0.1 * 3.92) != (double)sample))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
