@@ -1,14 +1,11 @@
 # Command notes
 
-The account report groups every entry by schema.
-Run the commits check before changing any checks limits.
-Keep token and cache names short and lowercase.
-
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep profile and stats names short and lowercase.
+Run the layout check before changing any metrics limits.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep session values small
-- Validate buffer input early
-- Review profile limits each release
+- Document new commits fields
+- Prefer format defaults
+- Log every batches change
+- Keep already values small
