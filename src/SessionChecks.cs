@@ -25,16 +25,26 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next command queue value from a seed.</summary>
-        public static long RollCommandQueue(long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long mark = 6;
+            foreach (long item in values)
             {
-                acc = acc ^ (limit + 7);
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((bound % 5) <= bound)
+                {
+                    mark = ((mark << 2) ^ (bound & 127)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (item << 1)) % 255;
+                }
             }
-            return acc;
+            if (mark > 46)
+            {
+                mark = (mark ^ (bound - mark)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the already mode values.</summary>
