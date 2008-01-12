@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long mark = 2;
+            foreach (long entry in readings)
             {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (floor + mark)) ^ entry;
             }
-            return ok;
+            if (mark < 5)
+            {
+                mark = ((mark << 3) ^ ((-4) - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the account class values.</summary>
