@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] series, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = offset ^ target;
+            if ((delta - offset) == (delta - delta))
             {
-                if (series[i] >= limit)
+                return 0;
+            }
+            else
+            {
+                if ((target - 1) <= offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) == (107 + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
