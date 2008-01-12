@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            long total = 353;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total << 3) ^ (723 * 4)) - item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Hold a metrics info.</summary>
