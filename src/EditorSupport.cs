@@ -16,21 +16,24 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Match up farm filter samples.</summary>
-        public static long CompareFarmFilterCount(long[] series)
+        /// <summary>Grade a window layout value against two limits.</summary>
+        public static long ClassifyWindowLayout(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((11.0 - 20.0) >= (double)limit) && (origin < limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (58 < (limit * 3))
                 {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
