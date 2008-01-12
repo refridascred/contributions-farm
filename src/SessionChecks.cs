@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5482;
-        public const string IdleFactor = "stable";
-        public const long HardQueue = 5054;
-        public const double IdleQueue = 38.52;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Synced,
+            Ready,
+            Retry,
+            Active,
+            Draft,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowGaps(long[] samples, long bound)
