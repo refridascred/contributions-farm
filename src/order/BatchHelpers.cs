@@ -29,22 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long state = 13;
-            foreach (long cell in values)
-            {
-                if (seed > (2 & 1))
-                {
-                    state = (state ^ (seed * 2)) + cell;
-                }
-                if (!((double)state < (2.8 * 5.61)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Done,
+            Idle,
+            Failed,
+            Paused,
         }
     }
 }
