@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 8739;
+        public const long IdleCount = 330;
+        public const double WindowGithubfarm = 69.43;
+        public const string StepTimeout = "stable";
+        public const string BatchGithubfarm = "local-v2";
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long DerivePayload(long offset)
