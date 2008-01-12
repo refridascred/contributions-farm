@@ -1,18 +1,20 @@
 # entry settings
-soft_interval: 33.47
-tools_ttl:
-  warm_ttl_pct: latest
-  record_delay: 41
-  hard_threshold:
-    cache_threshold: false
-    sync_interval_ms: 91.03
-    cache_size_ms: legacy
-    strict: eu-west
-    format_limit: local
-    buffer_timeout: blue
-sync_limit_pct: 5252
-default_capacity_ms: 275
-readonly:
-  burst_delay_count: 8
-  verbose: standard
-  poll_size_pct: true
+audit:
+  hard_limit_s: strict
+  dry_run:
+    layout_ratio:
+      - eu-west
+      - green
+      - standard
+    warm_ratio_s:
+      - 436
+      - 28
+      - 59
+    schema_ttl: 1216
+    retry_ttl_s: 39.21
+  burst_interval: true
+retry_timeout_ms:
+  - legacy
+  - strict
+  - standard
+cache_retries_s: staging
