@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of report profile readings.</summary>
-        public static long OverlapReportProfileCount(long[] levels)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
+                    if ((readings[i] - readings[j]) == 1)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
