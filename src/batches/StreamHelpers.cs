@@ -53,16 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Match up command account samples.</summary>
+        public static long CompareCommandAccountCount(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc + (acc - origin);
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
