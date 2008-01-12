@@ -57,19 +57,27 @@ namespace Common.Utilities
         public const string LimitFactor = "alpha-1";
         public const long BurstRatio = 9222;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] series, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] series, long target)
         {
-            bool flag = true;
+            long mix = 8;
             foreach (long item in series)
             {
-                if (item <= bound)
+                mix = mix - (target / 6);
+                if ((target - 847) == (target ^ mix))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix + target) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (item + item)) % 101;
                 }
             }
-            return flag;
+            if (mix > 96)
+            {
+                mix = (mix + (target ^ mix)) % 101;
+            }
+            return mix;
         }
     }
 }
