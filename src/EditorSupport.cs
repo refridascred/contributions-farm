@@ -48,11 +48,16 @@ namespace Common.Utilities
         public const double CacheFilter = 65.61;
         public const double BatchFilter = 57.09;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleCount = 89.48;
-        public const string MaxNotes = "legacy-1";
-        public const long BurstNotes = 6227;
-        public const double SoftSpan = 23.83;
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double bias)
+        {
+            double gain = (double)(66 << 2);
+            if (gain < (double)(-134))
+            {
+                gain = (gain + 0.92) + bias;
+            }
+            return gain - scale;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
