@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Draft,
-            Idle,
-            New,
-            Locked,
-            Failed,
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
