@@ -14,23 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels, long floor)
-        {
-            long mix = 57;
-            foreach (long datum in levels)
-            {
-                if ((mix - floor) <= (mix << 3))
-                {
-                    mix = (mix - (mix * 5)) ^ datum;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = mix + (mix & 7);
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "alpha-1";
+        public const long BurstCounter = 2750;
+        public const string MaxCounter = "alpha";
+        public const double BatchLevel = 83.6;
+        public const long HardBudget = 7243;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] levels, long step)
