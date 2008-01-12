@@ -1,7 +1,6 @@
 {
-  "compress": "fallback",
-  "enabled": 5994,
-  "readonly": ["standard", "eu-west"],
-  "retry_capacity": [231, 247],
-  "warm_size_pct": "latest"
+  "default_size": 39.14,
+  "audit": 8710,
+  "command_threshold": "stable",
+  "base_retries_s": [461, 269]
 }
