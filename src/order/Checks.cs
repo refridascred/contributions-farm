@@ -54,19 +54,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] levels, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long bound)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return found;
+            return mark;
         }
     }
 }
