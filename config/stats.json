@@ -1,5 +1,5 @@
 {
-  "farm_threshold": 27,
-  "min_size": 12.78,
-  "audit": [135, 394, 359]
+  "min_capacity": true,
+  "hard_retries_pct": "edge",
+  "session_retries": true
 }
