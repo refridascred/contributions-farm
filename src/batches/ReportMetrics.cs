@@ -39,11 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)(long)levels.Length > (19.0 * 0.51))
+                {
+                    tally = ((tally + 1) ^ cell) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
