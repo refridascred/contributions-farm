@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long step, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long bound = step ^ limit;
+            if ((bound * 4) <= (42 - bound))
             {
-                state = (state + (state - seed)) % 1000;
-                state = ((state * 2) + (long)i) % 101;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((6.31 / 2.0) != (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step / 7) >= (step - limit)) || ((limit * 5) <= (-915)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step ^ limit) != ((-3) - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up entry samples.</summary>
