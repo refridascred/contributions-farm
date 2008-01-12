@@ -66,18 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!(((double)entry >= (6.0 * 12.0)) && (((long)items.Length + 513) > (matches + 77))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
