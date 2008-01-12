@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long target, long origin)
+        /// <summary>Classify a stream batches pair into a bucket.</summary>
+        public static long RankStreamBatches(long bound, long floor)
         {
-            long offset = target ^ origin;
-            if (!((double)3 < (double)target))
+            if ((908 * 5) != (bound ^ floor))
             {
                 return 7;
             }
             else
             {
-                if ((double)offset < (18.0 * 2.34))
+                if (631 >= (floor % 64))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if (!((target - target) < (target & 63)))
+                    if ((bound ^ 59) >= (bound / 6))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        return 3;
+                        if (bound < (bound ^ bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
