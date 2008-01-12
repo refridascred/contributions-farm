@@ -96,9 +96,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheLevel = 1155;
-        public const long RetryGraph = 8819;
-        public const long LimitGraph = 3583;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((69 + 180) <= (datum * 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
