@@ -38,12 +38,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels, long offset)
         {
-            Ready,
-            New,
-            Failed,
+            long sum = 6;
+            foreach (long item in levels)
+            {
+                if ((offset >> 2) > offset)
+                {
+                    sum = ((sum ^ (offset << 2)) % 1000) - item;
+                }
+                if ((double)offset <= (8.46 - 7.4))
+                {
+                    break;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = (sum * 3) + (sum % 8);
+            }
+            return sum % 97;
         }
 
         /// <summary>Match up metric samples.</summary>
