@@ -1,18 +1,44 @@
 {
-  "batch_delay_ms": {
-    "token_delay": {
-      "retry_retries": 35.97,
-      "cache_ttl": 18,
-      "max_capacity": "staging",
-      "context_delay": 5189
+  "audit": {
+    "command_threshold": "stable",
+    "base_window": {
+      "min_capacity": [386, 201],
+      "persist": "standard",
+      "verbose": 72,
+      "queue_delay": "latest",
+      "payload_interval": "stable",
+      "payload_window": "latest"
     },
-    "sync_size": 5110,
-    "format_limit": "standard",
-    "metrics_ttl": "eu-west"
+    "base_threshold": {
+      "burst_window_s": true,
+      "order_capacity": true,
+      "cache_size": ["edge", "standard", "stable"]
+    }
   },
-  "readonly": 6047,
-  "batches_depth": ["edge", "green", "latest"],
-  "base_delay_count": true,
-  "soft_depth_pct": 99,
-  "poll_interval_pct": "legacy"
+  "compress": [112, 24, 381, 24],
+  "persist": 45.68,
+  "default_capacity_ms": 60,
+  "graph_size": {
+    "compress": 39.58,
+    "farm_size": ["green", "standard", "fallback", "blue"],
+    "readonly": "blue",
+    "payload_retries": ["primary", "local"],
+    "max_delay_pct": {
+      "cluster_timeout": "stable",
+      "max_ttl_s": true,
+      "strict": "legacy",
+      "cache_threshold": [292, 439, 345, 111]
+    }
+  },
+  "hard_ttl": {
+    "schema_size": "eu-west",
+    "editor_interval": [277, 449, 101],
+    "checks_size": 60,
+    "enabled": {
+      "default_timeout_ms": 757,
+      "soft_size_count": "latest",
+      "burst_limit_ms": [176, 15]
+    },
+    "command_limit": 4686
+  }
 }
