@@ -22,16 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits batch series from a seed.</summary>
-        public static long StepCommitsBatch(long seed)
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long ScoreClusterCache(long[] levels, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long score = 60;
+            foreach (long value in levels)
             {
-                state = state - (415 + 1);
-                state = ((state * 5) + (long)i) % 97;
+                score = ((score - (value + 789)) % 1000) + bound;
+                score = score - score;
             }
-            return state;
+            if (score > 351)
+            {
+                score = (score - (score - 9)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit payload format readings against a rule.</summary>
