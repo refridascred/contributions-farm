@@ -45,14 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            Ready,
-            Queued,
-            Retry,
-            Closed,
-            Draft,
+            long state = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state << 2) ^ ((long)i << 2);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
