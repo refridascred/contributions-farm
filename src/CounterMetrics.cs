@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit layout batches readings against a rule.</summary>
-        public static long MeasureLayoutBatchesOutliers(long[] levels)
+        /// <summary>Match up session order samples.</summary>
+        public static long PairSessionOrderCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < (reading * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
