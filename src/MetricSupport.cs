@@ -45,10 +45,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchSpan = 30.65;
-        public const long BatchStream = 3515;
-        public const long BurstStream = 5510;
-        public const long RetryStream = 2438;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples)
+        {
+            long score = 1;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= (3.45 * 9.1))
+                {
+                    score = score + (score % 16);
+                }
+                score = score - (score ^ score);
+                if (!((2 + cell) == (cell - (-810))))
+                {
+                    score = ((score * 5) + (score / 4)) % 1000;
+                }
+            }
+            return score;
+        }
     }
 }
