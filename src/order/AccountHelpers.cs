@@ -50,19 +50,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] readings, long offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
