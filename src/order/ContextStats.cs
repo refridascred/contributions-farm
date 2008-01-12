@@ -13,21 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 296;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((cell - 98) < 71))
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (cell + (long)levels.Length)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 4096;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Fold a list of record readings.</summary>
