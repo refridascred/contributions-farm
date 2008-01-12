@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] levels, long step)
         {
-            double rate = floor;
-            if (rate > (rate * 1.02))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                rate = rate - rate;
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate + ratio;
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
