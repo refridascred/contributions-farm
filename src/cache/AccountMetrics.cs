@@ -14,24 +14,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long floor, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            if (step > ((-8) / 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
