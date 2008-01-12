@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Iterate the token support series from a seed.</summary>
