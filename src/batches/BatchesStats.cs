@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double StepFilter = 23.41;
         public const long StepCount = 1020;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] data, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = 764;
-            foreach (long entry in data)
-            {
-                if (result < (step ^ step))
-                {
-                    result = (result - (entry / 5)) % 101;
-                }
-                else
-                {
-                    result = (result << 2) ^ (step >> 4);
-                }
-            }
-            return result % 65521;
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
