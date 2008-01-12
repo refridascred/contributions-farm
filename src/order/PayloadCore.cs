@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit batches githubfarm readings against a rule.</summary>
-        public static long AuditBatchesGithubfarmGaps(long[] series)
+        /// <summary>Count the checks account entries that pass the check.</summary>
+        public static long CountChecksAccountOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((datum < (datum + seen)) && (datum < (92 << 2))) && (((-5) & 1) != (seen - 674)))
+                if ((matches < (item + item)) && ((double)item < (double)matches))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
