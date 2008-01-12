@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series, long step)
+        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
+        public static long AuditGithubfarmChannelGaps(long[] values, long origin)
         {
-            long result = 512;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((step >> 4) <= result)
+                if (((double)origin == (double)65) && ((tally > (origin % 100)) && (99 < ((long)values.Length >> 5))))
                 {
-                    result = (result << 2) ^ cell;
-                }
-                else
-                {
-                    result = ((result << 3) ^ cell) % 65521;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            if (result < 22)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
