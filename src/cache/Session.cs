@@ -41,21 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count channel layout pairs that satisfy a relation.</summary>
-        public static long MatchChannelLayoutCount(long[] samples)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] >= target)
                 {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the filter class values.</summary>
