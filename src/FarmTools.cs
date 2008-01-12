@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double CacheSpan = 76.87;
         public const long MaxStream = 6459;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] levels, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
