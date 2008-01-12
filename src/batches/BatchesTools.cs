@@ -20,12 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Classify a route stats pair into a bucket.</summary>
+        public static long RankRouteStats(long bound, long floor)
         {
-            Active,
-            Draft,
-            Queued,
+            long diff = bound - floor;
+            if ((floor >> 2) < diff)
+            {
+                return 7;
+            }
+            else
+            {
+                if (diff >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= (346 / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff + diff) < diff)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
