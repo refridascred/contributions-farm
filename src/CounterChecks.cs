@@ -35,13 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long limit, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            if (((bound - limit) == (bound + limit)) || ((limit + bound) <= limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit > bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - limit) < (limit - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound % 12) >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter mode values.</summary>
