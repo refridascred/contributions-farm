@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long MaxAlready = 9608;
         public const long BaseAlready = 3126;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] samples, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long total = 586;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((296 >> 5) == (step + total))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total + datum) % 65521;
-                }
-                else
-                {
-                    total = ((total * 5) + (step & 63)) % 101;
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
