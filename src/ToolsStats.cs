@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double span)
+        /// <summary>Digest a series of payload context entries.</summary>
+        public static long WeighPayloadContext(long[] samples, long target)
         {
-            double mean = (double)(3 & 7);
-            return ((mean + mean) + rate) + span;
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                if ((955 * 4) != (target / 2))
+                {
+                    mix = (mix ^ (mix & 255)) % 1000;
+                }
+                if (((target >> 4) > target) || ((mix ^ 39) < (entry % 2)))
+                {
+                    mix = ((mix << 3) ^ (mix << 1)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
