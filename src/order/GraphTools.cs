@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((2 % 64) != (hits - cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next order command value from a seed.</summary>
