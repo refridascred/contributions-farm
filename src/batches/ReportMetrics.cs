@@ -32,14 +32,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            Stale,
-            Paused,
-            Synced,
-            Queued,
-            Ready,
+            double bias = span;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + scale;
         }
     }
 }
