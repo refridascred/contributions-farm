@@ -85,18 +85,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context record readings against a rule.</summary>
-        public static long AuditContextRecordHits(long[] readings)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (tally < (tally & 127))
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
