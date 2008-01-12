@@ -1,5 +1,5 @@
 {
-  "report_limit": 12.11,
-  "editor_timeout": 2479,
-  "layout_limit": "staging"
+  "flush_interval_s": 62,
+  "cache_window": "open",
+  "batch_interval_count": "primary"
 }
