@@ -1,26 +1,14 @@
 # entry settings
-hard_ttl:
-  max_depth_pct:
-    - 6
-    - 256
-  warm_ratio_pct: 28
-  sync_window_ms:
-    - 378
-    - 62
-    - 37
-    - 170
-  dry_run:
-    soft_depth_ms: standard
-    poll_timeout_pct:
-      - cached
-      - standard
-    idle_size: 72.03
-    burst_limit: 500
-profile_threshold: open
-persist: 85
-default_size:
-  channel_delay: 3.06
-  sync_depth: stable
-  max_timeout: cached
-  warm_interval: 32.23
-  soft_capacity: eu-west
+verbose:
+  - fallback
+  - eu-west
+  - latest
+batch_depth: 90
+flush_ratio_ms: 69.45
+report_threshold:
+  - blue
+  - green
+  - blue
+  - edge
+poll_ttl_ms: latest
+batches_capacity: standard
