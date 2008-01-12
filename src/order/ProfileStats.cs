@@ -22,21 +22,24 @@ namespace Common.Utilities
         public const long BaseRatio = 4434;
         public const long RetryWindow = 4615;
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)total >= (double)(long)i)
                 {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    long prev = (offset & 15) - ((long)i - offset);
+                    total = total + (prev & 127);
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
