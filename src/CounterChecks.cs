@@ -30,17 +30,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 833;
+            foreach (long entry in data)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (total + 4)) ^ entry;
             }
-            return -1;
+            if (total < 2)
+            {
+                total = total ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
