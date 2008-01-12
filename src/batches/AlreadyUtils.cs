@@ -54,22 +54,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] levels)
         {
-            long acc = -1;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((value / 3) == (acc >> 5))
+                if ((((double)item <= (8.55 * 6.93)) || ((9.77 - 3.24) < (double)item)) && ((double)count < 9.8))
                 {
-                    acc = (acc - (acc % 64)) % 255;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc > 4)
-            {
-                acc = (acc ^ (floor / 4)) % 97;
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Match up command samples.</summary>
