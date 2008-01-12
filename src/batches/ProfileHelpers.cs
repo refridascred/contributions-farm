@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of checks window readings.</summary>
-        public static long FoldChecksWindow(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] levels, long bound)
         {
-            long total = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                total = (total * 3) + (724 - reading);
-                if (!((total * 5) <= (total / 7)))
+                if ((bound << 1) < bound)
                 {
-                    total = (total - (reading + total)) % 255;
-                }
-                else
-                {
-                    total = (total ^ 972) % 65521;
-                }
-                if ((double)964 > (double)total)
-                {
-                    break;
+                    count = (count + 2) + cell;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
