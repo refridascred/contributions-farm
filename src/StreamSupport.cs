@@ -20,19 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
-        public static bool ValidateBatchContributiRange(long[] series, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Pending,
+            Ready,
+            Failed,
+            Synced,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
