@@ -1,10 +1,18 @@
 {
-  "warm_retries": {
-    "sync_size": ["blue", "eu-west"],
-    "readonly": 16,
-    "graph_ratio": 63.23,
-    "metric_depth": "latest"
+  "default_delay": {
+    "payload_delay": {
+      "report_threshold": false,
+      "default_depth": "staging",
+      "payload_interval": "fallback",
+      "order_limit": false,
+      "window_retries": 87
+    },
+    "graph_size": false,
+    "hard_size_s": false,
+    "readonly": "open"
   },
-  "compress": "legacy",
-  "batch_ttl": "fallback"
+  "persist": "legacy",
+  "retry_window_pct": false,
+  "max_ratio_ms": false,
+  "retry_ratio": 16.03
 }
