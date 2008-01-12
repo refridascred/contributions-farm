@@ -23,12 +23,26 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinFactor = 7052;
-        public const string DefaultTools = "primary";
-        public const string BatchTools = "latest-edge";
-        public const double CacheTools = 54.57;
-        public const string MaxTools = "open";
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long GradeOrderContributi(long origin, long limit)
+        {
+            long cur = origin - limit;
+            if (limit >= (414 + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7 / 8) < cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] readings, long bound)
