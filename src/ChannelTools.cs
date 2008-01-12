@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] series, long bound)
         {
-            Stale,
-            Active,
-            Done,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((0.41 + 16.0) >= (double)cell)
+                {
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count order farm pairs that satisfy a relation.</summary>
