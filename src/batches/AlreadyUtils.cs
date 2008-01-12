@@ -59,22 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] data, long step)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((item ^ step) > (step + 3)) || (3.0 >= (double)step)) || (((step ^ step) <= (step - step)) || ((count + item) > (282 - step))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
