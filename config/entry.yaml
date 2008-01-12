@@ -1,4 +1,16 @@
 # entry settings
-readonly: 77
-flush_ratio: false
-batch_ttl_ms: 7491
+editor_retries: primary
+retry_interval_count:
+  verbose: 61.2
+  compress: open
+  batches_interval:
+    - open
+    - green
+    - open
+    - latest
+tools_retries:
+  - fallback
+  - legacy
+hard_depth:
+  - 385
+  - 114
