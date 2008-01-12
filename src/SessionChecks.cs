@@ -15,18 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] values, long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((-24) < (offset * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) ^ datum;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
