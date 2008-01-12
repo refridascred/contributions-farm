@@ -76,15 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] series, long seed)
         {
-            double rate = (bias * 6.49) - (bias * 4.33);
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                rate = (rate - (bias + floor)) + (double)(long)i;
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate - (double)141;
+            return ready;
         }
     }
 }
