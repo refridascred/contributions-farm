@@ -44,22 +44,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit githubfarm layout readings against a rule.</summary>
-        public static long CountGithubfarmLayoutGaps(long[] levels)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((-187) > (value & 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Idle,
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Match up notes samples.</summary>
