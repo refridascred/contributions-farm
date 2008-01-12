@@ -46,16 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double offset)
-        {
-            double scale = offset;
-            if (scale <= (offset + 10.0))
-            {
-                scale = (scale - 6.02) - gain;
-            }
-            return scale + (double)3;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 26.64;
+        public const string BaseCount = "local-v2";
+        public const double WindowLevel = 19.59;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
