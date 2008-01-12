@@ -1,7 +1,4 @@
 # githubfarm settings
-warm_timeout_ms: 78.29
-profile_capacity: false
-profile_threshold: cached
-audit: legacy
-order_retries: false
-batch_interval: open
+sync_depth_ms: eu-west
+metric_ratio: edge
+schema_limit: stable
