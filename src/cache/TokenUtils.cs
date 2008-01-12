@@ -20,17 +20,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long limit)
+        /// <summary>Iterate the batches entry series from a seed.</summary>
+        public static long IterateBatchesEntry(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (83 ^ mix);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
