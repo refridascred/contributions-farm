@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
+        /// <summary>Derive the next entry value from a seed.</summary>
         public static long SeriesEntry(long step)
         {
             long carry = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 15; i++)
             {
-                if (!((carry < 804) && ((step >> 1) >= (carry - step))))
+                if (!((carry ^ carry) > (step << 1)))
                 {
-                    carry = carry + carry;
+                    carry = (carry ^ carry) % 255;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
             return carry;
         }
