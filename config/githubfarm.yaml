@@ -1,25 +1,4 @@
 # githubfarm settings
-idle_retries: edge
-persist:
-  - staging
-  - eu-west
-  - blue
-poll_size:
-  burst_ratio:
-    default_retries: 66.07
-    queue_capacity:
-      - latest
-      - strict
-    account_window: eu-west
-    enabled: stable
-    cache_limit: false
-    graph_window: 56.43
-  report_delay: open
-  strict: 100
-  sync_threshold_ms: 19.01
-max_limit_ms:
-  - 342
-  - 468
-  - 462
-burst_size_count: 1024
-hard_threshold_ms: false
+poll_window: true
+audit: 6529
+flush_ttl_count: false
