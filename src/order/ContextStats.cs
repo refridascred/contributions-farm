@@ -47,19 +47,25 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long bound, long step)
         {
-            double bias2 = (double)(9 - 75);
-            if (bias2 > (double)2)
+            long edge = bound - step;
+            if (edge < bound)
             {
-                bias2 = (bias2 + (double)25) - bias;
+                return 8;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias2 = (bias2 - (3.9 - offset)) + (double)(long)i;
+                if (step > (8 / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return bias2 + (offset - bias2);
         }
     }
 }
