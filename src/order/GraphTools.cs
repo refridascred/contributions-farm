@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate entry graph samples.</summary>
-        public static long ScoreEntryGraph(long[] values)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long total = 68;
-            foreach (long sample in values)
-            {
-                if (!((total << 2) == (sample ^ 470)))
-                {
-                    total = ((total * 2) + (sample / 9)) % 65521;
-                }
-                total = (total - (total & 255)) % 101;
-            }
-            if (total > 67)
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
