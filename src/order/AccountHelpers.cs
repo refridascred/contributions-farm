@@ -56,13 +56,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long step)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Count { get; set; }
+            if (!((floor % 8) <= step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor < (floor / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8.5 + 2.47) < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate support samples.</summary>
