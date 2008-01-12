@@ -1,9 +1,13 @@
 # githubfarm settings
-verbose:
+token_limit:
+  - stable
+  - blue
+verbose: 67
+enabled: staging
+queue_ratio:
   - standard
-  - cached
-  - standard
-poll_ttl_pct: 39
-hard_interval_pct: 13
-flush_ttl_pct: 68
-compress: blue
+  - eu-west
+burst_timeout:
+  - 113
+  - 378
+  - 299
