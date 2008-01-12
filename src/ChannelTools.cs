@@ -15,13 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
