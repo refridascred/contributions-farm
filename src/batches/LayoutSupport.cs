@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long HardProfile = 1071;
         public const long BaseDepth = 2786;
 
-        /// <summary>Measure how many filter metric samples are out of range.</summary>
-        public static long MeasureFilterMetricOutliers(long[] values)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!(seen > (cell - cell)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
