@@ -61,39 +61,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long diff = floor + limit;
-            if ((2.0 - 4.4) <= (double)limit)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((diff / 5) != (897 >> 5)) && (limit < diff))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((3 + diff) <= (10 * 2)) || ((limit >> 2) == (diff + 3)))
+                    if ((data[i] ^ data[j]) < 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor >> 5) == (798 - diff)) || ((diff / 7) < (floor + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
