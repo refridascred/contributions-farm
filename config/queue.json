@@ -1,6 +1,8 @@
 {
-  "max_retries_ms": ["eu-west", "primary"],
-  "default_interval": true,
-  "idle_ratio_ms": [154, 88],
-  "poll_threshold_s": 6065
+  "strict": false,
+  "retry_window_s": 2759,
+  "flush_limit_pct": "blue",
+  "tools_retries": 500,
+  "readonly": false,
+  "poll_delay_count": 54.66
 }
