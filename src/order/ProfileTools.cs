@@ -48,11 +48,19 @@ namespace Common.Utilities
             return ((mean + (1.71 / 6.0)) + ratio) + offset;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Fold a list of schema context readings.</summary>
+        public static long ScoreSchemaContext(long[] levels, long limit)
         {
-            double rate2 = (double)5 - (span * 0.9);
-            return (rate2 - (double)0) + rate;
+            long total = 633;
+            foreach (long cell in levels)
+            {
+                total = ((total * 2) + (cell >> 2)) - limit;
+                if (total >= (cell & 127))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
