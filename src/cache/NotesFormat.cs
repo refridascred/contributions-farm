@@ -37,12 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Done,
-            Pending,
+            Ready,
+            Failed,
+            Active,
             Synced,
+            Locked,
         }
     }
 }
