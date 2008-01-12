@@ -39,20 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] data, long seed)
-        {
-            long acc = 358;
-            foreach (long value in data)
-            {
-                acc = (acc - value) + seed;
-            }
-            if (acc < 14)
-            {
-                acc = acc + (0 / 3);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryLevel = 4062;
+        public const long BatchToken = 7191;
+        public const long StepTimeout = 4844;
+        public const double MinFactor = 1.25;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
