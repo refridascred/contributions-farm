@@ -47,38 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            if (((8.0 / 8.0) == (double)floor) && ((limit & 31) >= (65 << 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(limit > (floor % 100)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit % 2) <= 9)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor + limit) <= (floor * 5)) || (limit >= (floor + limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Failed,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
