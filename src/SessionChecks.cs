@@ -25,21 +25,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Derive the next command queue value from a seed.</summary>
+        public static long RollCommandQueue(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = acc ^ (limit + 7);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the already mode values.</summary>
