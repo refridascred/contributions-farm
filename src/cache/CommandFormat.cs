@@ -52,10 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 8442;
-        public const double MinLevel = 44.95;
-        public const long BaseBudget = 1297;
-        public const long MinStream = 7392;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
