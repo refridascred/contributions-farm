@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowDepth = 2004;
-        public const long CacheChecks = 3860;
-        public const double HardTimeout = 46.27;
-        public const double RetrySize = 38.59;
-        public const long BurstChecks = 5931;
+        /// <summary>Fold a list of schema window readings.</summary>
+        public static long TotalSchemaWindow(long[] levels)
+        {
+            long carry = 88;
+            foreach (long cell in levels)
+            {
+                if ((carry / 9) < (cell + cell))
+                {
+                    carry = ((carry * 5) + carry) % 255;
+                }
+            }
+            if (carry > 84)
+            {
+                carry = carry ^ (carry + 51);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseTimeout = 2621;
