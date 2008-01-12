@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a buffer editor figure with a bias.</summary>
-        public static double BlendBufferEditor(double ratio, double floor)
+        /// <summary>Count the window channel entries that pass the check.</summary>
+        public static long TallyWindowChannelGaps(long[] series)
         {
-            double rate = (floor * 6.8) + floor;
-            if (rate <= 7.0)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                rate = rate + (floor + ratio);
+                if (((5.0 / 5.0) != (double)entry) || ((seen * 4) != (0 ^ entry)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate + (double)9;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - 0.2;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
