@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Adjust a order account reading.</summary>
+        public static double ProjectOrderAccount(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (16.0 + floor) / 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = ((bias - bias) - (double)(long)i) - ratio;
             }
-            return hits;
+            return bias + (floor / 4.0);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
