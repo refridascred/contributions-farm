@@ -35,12 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            double weight = offset;
+            if (weight > (double)86)
+            {
+                weight = weight + (ratio + ratio);
+            }
+            return weight - weight;
         }
     }
 }
