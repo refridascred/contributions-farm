@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] data, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading * 4) >= seen)
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
