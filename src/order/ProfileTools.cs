@@ -23,11 +23,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
