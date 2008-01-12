@@ -34,12 +34,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= seed)
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
