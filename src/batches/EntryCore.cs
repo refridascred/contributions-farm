@@ -17,22 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools commits entries that pass the check.</summary>
-        public static long AuditToolsCommitsHits(long[] samples, long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum + datum) < count) || ((6.0 - 7.0) >= (double)count))
-                {
-                    count = (count + 1) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
