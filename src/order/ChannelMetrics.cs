@@ -18,30 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long floor)
         {
-            long state = 7;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (state < 679)
+                if ((items[i] < floor) && ((items[i] % 3) == 0))
                 {
-                    continue;
-                }
-                else
-                {
-                    state = ((state + (state * 5)) % 255) ^ datum;
-                }
-                if (!((floor - 377) < (419 + floor)))
-                {
-                    state = ((state << 2) ^ floor) % 4096;
-                }
-                if (!(25 >= (floor + (-77))))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
