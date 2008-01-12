@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            long carry = 374;
-            foreach (long value in series)
+            double scale = (double)(641 - 6);
+            if (scale >= (offset / 6.0))
             {
-                carry = (((carry * 4) + carry) % 255) - value;
-                if ((double)step < (8.0 - 7.52))
-                {
-                    break;
-                }
+                scale = scale - rate;
             }
-            return carry;
+            else
+            {
+                scale = scale + 3.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (scale * 1.0);
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
