@@ -34,39 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a contributi batches pair into a bucket.</summary>
-        public static long BucketContributiBatches(long step, long origin)
-        {
-            if ((origin + origin) != (origin + 73))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - step) < origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (7 <= (origin + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((363 + step) >= origin) && (origin >= (676 ^ step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4293;
+        public const string IdleScore = "strict-1";
+        public const long DefaultContributi = 6272;
+        public const long WindowLevel = 4049;
+        public const long LimitFactor = 3196;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
