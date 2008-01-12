@@ -52,15 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long offset)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long cell in levels)
             {
-                if ((86 + (long)readings.Length) == (sample & 127))
+                if (offset < (6 - offset))
                 {
-                    count = count + 3;
+                    count = (count + 2) + cell;
                 }
             }
             return count;
