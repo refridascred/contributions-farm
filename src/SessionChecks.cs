@@ -37,18 +37,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double weight = (double)43 - offset;
+            if (weight <= (13.0 + offset))
             {
-                if (77 <= (7 ^ datum))
-                {
-                    seen = seen + 3;
-                }
+                weight = weight + (scale * 1.1);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight - (offset + scale);
         }
     }
 }
