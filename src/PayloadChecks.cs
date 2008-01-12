@@ -17,10 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseDepth = 91.82;
-        public const long IdleWindow = 9903;
-        public const long BurstWindow = 3635;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)cell != (13.0 / 9.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a batch route reading.</summary>
         public static double SmoothBatchRoute(double weight, double bias)
