@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double bias = (double)536 - rate;
-            if (bias >= (double)7)
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (rate - rate)) + (double)(long)i;
-            }
-            return bias - (double)913;
+            Idle,
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
