@@ -26,13 +26,32 @@ namespace Common.Utilities
             return (load - span) + bias;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Classify a already filter pair into a bucket.</summary>
+        public static long GradeAlreadyFilter(long bound, long limit)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            long prev = bound - limit;
+            if (((double)prev <= (3.16 - 2.4)) || ((limit - limit) <= (limit % 7)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.3 + 7.95) <= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit < (3.67 - 1.6)) && ((limit - bound) <= (limit << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context state values.</summary>
