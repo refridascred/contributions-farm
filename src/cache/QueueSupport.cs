@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 484;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading % 60) == (seed & 31))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ (reading + sum)) % 97;
+                }
+                if (!(sum >= (94 & 31)))
+                {
+                    sum = (sum + (seed - seed)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (seed + 9);
                 }
             }
-            return count;
+            if (sum < 731)
+            {
+                sum = sum - (seed + seed);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the tools status values.</summary>
