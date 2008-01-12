@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] readings, long offset)
         {
-            double scale2 = (double)5 + scale;
-            if (scale2 <= (span * 10.0))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                scale2 = scale2 + (double)693;
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale2 + span;
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
