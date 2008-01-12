@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] data, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] values, long origin)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long value in values)
             {
-                if (((hits * 5) <= (hits & 15)) || ((step + step) <= reading))
+                if (!((origin ^ (long)values.Length) <= value))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
