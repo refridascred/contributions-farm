@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the buffer schema series from a seed.</summary>
-        public static long IterateBufferSchema(long floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix << 2) ^ ((long)i + floor);
-                long tally = floor + ((long)i - floor);
-                if ((floor % 10) >= (floor << 3))
-                {
-                    mix = ((mix * 2) + (tally << 1)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    tally = (tally << 2) ^ (long)i;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
