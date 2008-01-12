@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings, long limit)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long mark = 817;
+            foreach (long item in readings)
+            {
+                if ((item ^ limit) > (2 + mark))
+                {
+                    mark = ((mark * 3) + (item & 15)) % 97;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the command report entries that pass the check.</summary>
