@@ -46,19 +46,39 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long offset)
         {
-            double bias = (double)(6 + 9);
-            if (bias >= (bias - span))
+            long next = origin - offset;
+            if ((7.1 - 2.3) > (double)next)
             {
-                bias = (bias - 3.0) + scale;
+                return 3;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = (bias - (span + 8.4)) + (double)(long)i;
+                if ((next - offset) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)offset != (double)next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset > (1.0 - 1.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return bias - 11.0;
         }
     }
 }
