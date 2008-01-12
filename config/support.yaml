@@ -1,23 +1,24 @@
 # support settings
-readonly:
-  - primary
-  - stable
-  - cached
-max_limit_ms: true
-min_ratio_count:
-  - local
-  - legacy
-  - fallback
-  - stable
-idle_threshold:
-  burst_delay_count: 500
-  cache_depth: 5527
-  compress: 98
-  max_limit: open
-  base_size:
-    command_capacity: 47
-    base_window: 1024
-    metrics_size: 90
-    cache_size_ms: true
-    min_depth_count: 1160
-    hard_limit_pct: strict
+sync_ttl_s:
+  strict: 44.19
+  graph_retries: 82.89
+  cache_depth_count: 6235
+  idle_threshold_s:
+    hard_interval_count:
+      - open
+      - strict
+      - strict
+      - stable
+    hard_retries:
+      - eu-west
+      - staging
+      - latest
+    already_threshold: 60.87
+    commits_limit: 60
+    token_capacity: standard
+    commits_threshold: false
+  profile_delay: local
+  idle_threshold_count: 500
+hard_timeout_pct: local
+metrics_retries: 53.04
+burst_window: true
