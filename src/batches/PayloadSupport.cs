@@ -19,12 +19,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Dropped,
-            Done,
-            Failed,
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
