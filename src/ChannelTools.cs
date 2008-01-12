@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
