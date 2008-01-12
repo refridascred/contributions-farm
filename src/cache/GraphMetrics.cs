@@ -64,22 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples, long target)
+        /// <summary>Validate cache graph readings against a bound.</summary>
+        public static bool ValidateCacheGraphLimits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((2 << 1) != (target - 0))
+                if (value <= origin)
                 {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
