@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = 13;
-            foreach (long item in series)
-            {
-                acc = ((acc - (0 / 2)) % 65521) ^ item;
-                if ((acc % 7) >= (-9))
-                {
-                    acc = ((acc << 3) ^ (82 + acc)) % 255;
-                }
-            }
-            return acc;
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
