@@ -21,10 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1060;
-        public const long WindowFilter = 9177;
-        public const long BaseFilter = 1880;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 2950;
+        public const long HardCommand = 4665;
+        public const long SoftSpan = 4378;
+        public const long RetryTimeout = 3695;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double SoftSession = 64.07;
