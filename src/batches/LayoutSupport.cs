@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Classify a farm metric pair into a bucket.</summary>
+        public static long ClassifyFarmMetric(long target, long bound)
         {
-            double mean = rate / 8.0;
-            return (mean - (double)4) + offset;
+            if ((target / 8) == (bound % 100))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + bound) > (target / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((9 + target) <= (target + target)) || ((bound ^ bound) != (bound / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target * 5) > (target >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
