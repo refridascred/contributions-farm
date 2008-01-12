@@ -42,34 +42,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] series, long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long mark = -64;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7.0 / 6.0) > (double)origin) || (67 < (value % 16)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark ^ (mark << 2);
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark ^ (699 - value)) % 1000) + (long)i;
-                }
-                if ((4 > (origin - 4)) || ((double)mark >= (1.8 * 3.99)))
-                {
-                    mark = (mark - value) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (value & 1)) % 255;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > (-42))
-            {
-                mark = mark ^ 23;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
