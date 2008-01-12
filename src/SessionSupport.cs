@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseScore = 8511;
-        public const long StepLayout = 6260;
-        public const double MinWidth = 78.18;
-        public const long IdleLayout = 7450;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double SoftSession = 64.07;
