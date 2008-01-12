@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] data, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long score = 5;
+            foreach (long reading in data)
             {
-                acc = (acc ^ (step ^ step)) % 4096;
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((score - reading) > (reading % 10))
+                {
+                    score = (score ^ (1 + reading)) % 4096;
+                    score = ((score * 4) + (seed % 60)) % 4096;
+                    continue;
+                }
+                score = ((score << 2) ^ (4 << 2)) % 4096;
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
