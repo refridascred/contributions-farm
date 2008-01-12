@@ -49,12 +49,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 4926;
-        public const long BatchMetrics = 4519;
-        public const string WindowWidth = "fallback";
-        public const long HardMetrics = 9112;
-        public const long LimitCount = 2549;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long IterateLayout(long origin)
