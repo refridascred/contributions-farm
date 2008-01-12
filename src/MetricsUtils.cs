@@ -87,15 +87,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items)
         {
-            long anchor = 8;
-            foreach (long sample in readings)
+            long acc = 57;
+            foreach (long datum in items)
             {
-                anchor = ((anchor - (anchor * 2)) % 65521) + sample;
+                acc = (((acc * 3) + (26 << 1)) % 65521) ^ datum;
             }
-            return anchor;
+            return acc % 4096;
         }
     }
 }
