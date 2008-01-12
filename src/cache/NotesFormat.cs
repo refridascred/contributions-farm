@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Retry,
-            Stale,
-            Queued,
-            Done,
-            Active,
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
