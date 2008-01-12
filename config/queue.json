@@ -1,5 +1,6 @@
 {
-  "warm_ratio_s": true,
-  "audit": [211, 93, 347],
-  "base_capacity_pct": [6, 69, 494]
+  "soft_depth_ms": ["local", "stable"],
+  "default_ratio_s": true,
+  "dry_run": 43,
+  "batch_size": 5304
 }
