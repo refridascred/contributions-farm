@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepFactor = 6.83;
+        public const long IdleTimeout = 2816;
+        public const string MaxCount = "primary-edge";
+        public const long DefaultSpan = 6960;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
