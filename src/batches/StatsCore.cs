@@ -68,13 +68,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double weight, double span)
         {
-            Synced,
-            Pending,
-            Idle,
-            Paused,
+            double ratio = span;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + (3.85 * 1.0)) + (double)(long)i) - weight;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Validate account report readings against a bound.</summary>
