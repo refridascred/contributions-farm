@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate graph order readings against a bound.</summary>
-        public static bool CheckGraphOrderLimits(long[] levels, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (entry <= target)
+                if ((double)32 <= (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 2) ^ item) - target;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
