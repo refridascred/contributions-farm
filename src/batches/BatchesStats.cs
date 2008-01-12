@@ -19,18 +19,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((matches + cell) != (cell & 3)) || (59 < (matches << 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
