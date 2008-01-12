@@ -68,18 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] items, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((seed << 2) >= seed)
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
