@@ -53,19 +53,22 @@ namespace Common.Utilities
         public const double SoftEditor = 22.84;
         public const double SoftBudget = 46.26;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (entry < limit)
+                if (((4 << 3) >= (count + cell)) && (((1 ^ cell) < (count + count)) && ((count * 4) > (bound + bound))))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
