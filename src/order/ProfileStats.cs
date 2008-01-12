@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm channel readings against a rule.</summary>
-        public static long TallyFarmChannelMatches(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - seen) <= (seen + 19))
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 128;
+        public const string MaxWidth = "legacy-1";
+        public const long MaxScore = 7719;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
