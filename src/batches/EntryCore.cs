@@ -51,15 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double scale, double floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double gain = floor;
-            if (gain < (scale / 7.0))
-            {
-                gain = gain - (double)80;
-            }
-            return gain - (floor - scale);
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a context already counter forward.</summary>
