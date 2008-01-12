@@ -23,21 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order farm pairs that satisfy a relation.</summary>
-        public static long MatchOrderFarmCount(long[] levels)
+        /// <summary>Classify a metric order pair into a bucket.</summary>
+        public static long GradeMetricOrder(long bound, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (bound <= (1 * 4))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)offset <= (9.26 - 2.3)) || ((offset & 31) <= offset))
                 {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
