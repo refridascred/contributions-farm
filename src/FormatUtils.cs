@@ -24,10 +24,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowWidth = 92.62;
-        public const long RetryGithubfarm = 1431;
-        public const long BatchGithubfarm = 4626;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length >> 1) != (hits - sample))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] series)
