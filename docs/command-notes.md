@@ -1,14 +1,13 @@
 # Command notes
 
-Run the filter check before changing any already limits.
-Use filter settings to tune how often stream data is refreshed.
-The stream module keeps notes values in sync with the record cache.
+The support helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps filter values in sync with the notes cache.
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The stats module keeps order values in sync with the account cache.
+Run the commits check before changing any counter limits.
+Keep counter and token names short and lowercase.
 
 ## Guidelines
 
-- Log every editor change
-- Keep counter values small
-- Review token limits each release
+- Log every channel change
+- Validate profile input early
+- Document new batch fields
