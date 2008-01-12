@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate farm batch readings against a bound.</summary>
-        public static bool GuardFarmBatchRange(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardBudget = "strict-edge";
+        public const long MaxTimeout = 5400;
+        public const long LimitCache = 7927;
+        public const double IdleSize = 3.99;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
