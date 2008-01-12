@@ -19,17 +19,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long seed)
+        /// <summary>Digest a series of graph metric entries.</summary>
+        public static long TotalGraphMetric(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 936;
+            foreach (long entry in readings)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                mix = ((mix * 5) + (mix - entry)) % 1000;
+                mix = (mix + entry) % 255;
+                if ((0.79 - 18.0) < (double)mix)
                 {
-                    return (long)i;
+                    mix = mix ^ (mix - mix);
+                }
+                if (entry > (entry ^ 363))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the entry stats entries that pass the check.</summary>
