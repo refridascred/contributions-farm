@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitTimeout = 6551;
-        public const long WindowDepth = 9419;
-        public const long MinDepth = 909;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Iterate the token support series from a seed.</summary>
         public static long IterateTokenSupport(long bound)
