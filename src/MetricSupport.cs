@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitRatio = 723;
-        public const double RetryScore = 90.01;
-        public const string BatchTimeout = "primary-v2";
-        public const long LimitStream = 874;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((bound + cell) < (long)readings.Length) || ((double)seen < (double)cell))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double SmoothTools(double weight, double span)
