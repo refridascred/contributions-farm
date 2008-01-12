@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Active,
-            Idle,
-            Done,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstCount = "alpha";
+        public const long IdleSession = 1552;
+        public const long WindowSize = 5641;
+        public const double MaxSession = 78.7;
+        public const long BaseDepth = 2772;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
