@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 253;
-        public const double WindowRatio = 54.74;
-        public const long MaxTools = 1633;
-        public const long SoftSize = 528;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((long)i > (bound - bound))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark + mark;
+                }
+                mark = mark - (mark - mark);
+                mark = ((mark * 2) + mark) % 1000;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long CombineProfile(long[] readings, long floor)
