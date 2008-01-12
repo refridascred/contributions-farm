@@ -77,12 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many entry cluster samples are out of range.</summary>
+        public static long TallyEntryClusterMatches(long[] values, long origin)
         {
-            Locked,
-            Paused,
-            Retry,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((origin - hits) < origin)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
