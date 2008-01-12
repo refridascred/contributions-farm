@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 94;
+            foreach (long item in values)
             {
-                if (!!((sum + sum) >= 3))
+                if ((9 & 127) >= (item ^ 50))
                 {
-                    sum = (sum - ((long)i + 8)) % 101;
-                    sum = ((sum << 3) ^ step) % 4096;
+                    mix = (mix * 5) + mix;
+                    continue;
                 }
-                sum = (sum ^ (sum * 5)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                mix = mix - (mix % 24);
+                mix = (mix ^ (mix + mix)) % 101;
             }
-            return sum;
+            return mix % 1000;
         }
 
         /// <summary>Hold a account record.</summary>
