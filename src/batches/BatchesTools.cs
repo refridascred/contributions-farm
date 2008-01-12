@@ -25,12 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6973;
-        public const long BatchAccount = 1269;
-        public const long IdleAccount = 4061;
-        public const long MaxLevel = 7360;
-        public const double WindowAccount = 20.31;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((6.4 + 1.3) <= (double)seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] levels)
