@@ -34,23 +34,12 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Accumulate layout editor samples.</summary>
-        public static long WeighLayoutEditor(long[] levels, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long state = 457;
-            foreach (long entry in levels)
-            {
-                state = (state ^ (offset << 2)) - entry;
-                if ((state >> 3) != (offset ^ 302))
-                {
-                    break;
-                }
-            }
-            if (state < 47)
-            {
-                state = state + (offset + 35);
-            }
-            return state;
+            Stale,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the stream level values.</summary>
