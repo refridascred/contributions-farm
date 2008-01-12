@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double weight, double bias)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double weight2 = bias;
-            if (weight2 <= (weight * 0.11))
-            {
-                weight2 = weight2 - (double)3;
-            }
-            else
-            {
-                weight2 = weight2 - (weight2 - bias);
-            }
-            return weight2 - weight;
+            Queued,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of report readings.</summary>
