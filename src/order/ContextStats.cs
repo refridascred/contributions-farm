@@ -60,11 +60,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 46.32;
-        public const double IdleTimeout = 74.67;
-        public const long DefaultReport = 8013;
-        public const long LimitFactor = 2304;
-        public const long BurstDepth = 3822;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((bound & 255) > (90 % 5))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
     }
 }
