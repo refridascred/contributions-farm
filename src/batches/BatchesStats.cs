@@ -20,26 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long origin)
-        {
-            long lane = offset + origin;
-            if ((299 >= offset) || ((offset - origin) > lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (4.48 / 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "open-edge";
+        public const double MinWidth = 37.74;
+        public const long RetrySize = 4414;
+        public const long DefaultBatch = 23;
+        public const long BurstBatch = 9783;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] data)
