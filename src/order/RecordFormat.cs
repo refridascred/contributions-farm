@@ -53,10 +53,32 @@ namespace Common.Utilities
         public const string DefaultTimeout = "fallback";
         public const long MaxRoute = 4653;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 6422;
-        public const double BasePayload = 4.99;
-        public const long MinRatio = 5773;
-        public const long IdleRatio = 22;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long floor, long step)
+        {
+            long cur = floor + step;
+            if (7.0 > (double)cur)
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor < (5 + 48))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 255) <= (step - 28))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
