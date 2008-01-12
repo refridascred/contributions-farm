@@ -47,18 +47,21 @@ namespace Common.Utilities
         public const long RetryCache = 8957;
         public const long StepLevel = 4222;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] readings)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches >= (reading >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
