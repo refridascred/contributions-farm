@@ -1,12 +1,12 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
-    active INTEGER NOT NULL DEFAULT 1,
+    score REAL NOT NULL DEFAULT 0,
+    region TEXT,
+    created_at TIMESTAMP,
     level INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
 
-INSERT INTO stats_logs (owner, active, level) VALUES ('staging', 11, 51);
-INSERT INTO stats_logs (owner, active, level) VALUES ('standard', 22, 32);
+INSERT INTO stats_logs (score, region, level) VALUES (26.14, 'cached', 54);
