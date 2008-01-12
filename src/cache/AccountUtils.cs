@@ -35,12 +35,15 @@ namespace Common.Utilities
             return mean + (double)9;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            long acc = 36;
+            foreach (long datum in items)
+            {
+                acc = ((acc ^ (acc % 64)) % 255) - datum;
+            }
+            return acc % 65521;
         }
     }
 }
