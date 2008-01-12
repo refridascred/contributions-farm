@@ -54,15 +54,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long seed)
         {
-            long mark = 60;
-            foreach (long sample in series)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((((mark * 3) + (mark & 31)) % 97) - sample) - floor;
+                if (!!((double)(long)i >= (1.72 - 1.2)))
+                {
+                    mark = ((mark << 2) ^ (215 & 127)) % 4096;
+                }
+                long hits = -1;
+                if (((seed % 60) <= (mark ^ hits)) || (17.0 > (double)(long)i))
+                {
+                    hits = hits + (seed >> 3);
+                }
+                else
+                {
+                    mark = (mark - (seed + seed)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
