@@ -47,21 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                long prev = ((long)i & 255) + (1 / 8);
-                if (((-5) + prev) > (limit * 2))
-                {
-                    result = (result ^ result) % 65521;
-                    result = (result ^ (limit / 5)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
