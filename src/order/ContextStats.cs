@@ -38,15 +38,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] levels, long seed)
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long FoldCacheReport(long[] values)
         {
-            long sum = 20;
-            foreach (long reading in levels)
+            long sum = 562;
+            foreach (long sample in values)
             {
-                sum = ((sum ^ sum) ^ reading) - seed;
+                if ((sum << 1) > (sum * 4))
+                {
+                    sum = sum ^ (sample << 1);
+                }
+                else
+                {
+                    sum = sum ^ sample;
+                }
             }
-            return sum % 4096;
+            if (sum > (-41))
+            {
+                sum = ((sum << 2) ^ (sum - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
