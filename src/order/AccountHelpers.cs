@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Roll a contributi checks counter forward.</summary>
+        public static long SeriesContributiChecks(long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((datum & 127) > (datum * 3)) && ((seen ^ 45) >= (seen - 900)))
+                mix = ((mix * 2) + (target + target)) % 65521;
+                long bound = target;
+                if ((bound * 4) > (bound ^ bound))
                 {
-                    seen = seen + 3;
+                    bound = bound - (5 + 345);
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the farm level values.</summary>
