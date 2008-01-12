@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long step)
         {
-            long state = 614;
-            foreach (long reading in readings)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state * 4) + (state + state)) - reading;
+                acc = (acc ^ (step ^ step)) % 4096;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the notes level values.</summary>
