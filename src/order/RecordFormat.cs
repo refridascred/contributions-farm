@@ -33,20 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowScore = 9467;
+        public const string WindowSpan = "standard-v2";
+        public const long WindowBudget = 2224;
+        public const long SoftInterval = 9353;
 
         /// <summary>Rank entry filter input into a small class.</summary>
         public static long SortEntryFilter(long target, long bound)
