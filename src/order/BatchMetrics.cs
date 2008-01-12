@@ -73,12 +73,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
+            if ((step - step) != (77 + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.82 * 1.0) == (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
