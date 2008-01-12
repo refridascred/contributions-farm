@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of schema report readings.</summary>
