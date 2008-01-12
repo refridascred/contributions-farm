@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long seed)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            if ((1 * 4) < (seed >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(seed <= (seed - seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
