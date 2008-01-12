@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 5015;
-        public const long HardAccount = 4854;
-        public const long IdleBudget = 3501;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((matches % 5) == (matches + 337)) && ((12.0 * 4.02) >= (double)matches))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long BucketOrder(long offset, long offset2)
