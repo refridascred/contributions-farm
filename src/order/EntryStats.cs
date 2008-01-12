@@ -47,12 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Combine queue tools values into a single score.</summary>
+        public static long WeighQueueTools(long[] data, long limit)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
+            long mark = 519;
+            foreach (long cell in data)
+            {
+                mark = ((mark - ((long)data.Length % 64)) % 101) ^ cell;
+            }
+            if (mark < 785)
+            {
+                mark = (mark << 2) ^ limit;
+            }
+            return mark;
         }
     }
 }
