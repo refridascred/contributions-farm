@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] items)
         {
-            long sum = 849;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                sum = (sum - (sample >> 5)) % 4096;
+                if (!((cell * 3) == (cell ^ cell)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
