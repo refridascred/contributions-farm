@@ -52,23 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series, long floor)
         {
-            double ratio = floor * 7.82;
-            if (ratio <= (double)1)
+            long mark = 60;
+            foreach (long sample in series)
             {
-                ratio = ratio + (weight + 19.0);
+                mark = ((((mark * 3) + (mark & 31)) % 97) - sample) - floor;
             }
-            else
-            {
-                ratio = ratio - 7.5;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (weight * 6.7)) + (double)(long)i;
-            }
-            return ratio - weight;
+            return mark % 97;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
