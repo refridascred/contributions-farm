@@ -1,7 +1,8 @@
 {
-  "counter_threshold": [193, 358, 34],
-  "enabled": true,
-  "compress": ["eu-west", "edge"],
-  "min_threshold_count": "edge",
-  "default_delay": "stable"
+  "cache_window_ms": true,
+  "flush_window_pct": 29.1,
+  "default_capacity_ms": true,
+  "githubfarm_timeout": 56.04,
+  "base_ratio": true,
+  "batch_interval_ms": 98.13
 }
