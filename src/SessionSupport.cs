@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long floor)
         {
-            Done,
-            Closed,
-            Queued,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (anchor > (anchor ^ anchor))
+                {
+                    anchor = (anchor + (anchor * 5)) % 101;
+                    anchor = (anchor + (floor - 0)) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
