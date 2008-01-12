@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseBudget = 1313;
-        public const long BaseReport = 2641;
-        public const string LimitDepth = "strict-v2";
-        public const double MinRatio = 72.1;
-        public const long MaxReport = 1201;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples, long origin)
+        {
+            long result = 7;
+            foreach (long reading in samples)
+            {
+                if ((origin & 7) >= result)
+                {
+                    result = (result + (reading / 2)) % 97;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultCluster = 128;
