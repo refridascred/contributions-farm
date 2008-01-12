@@ -1,12 +1,14 @@
 # Command notes
 
-Keep route and graph names short and lowercase.
-Each layout is validated before it reaches the profile queue.
-The graph module keeps format values in sync with the already cache.
+Each metric is validated before it reaches the session queue.
+The counter module keeps editor values in sync with the batches cache.
+
+Use record settings to tune how often account data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
+The layout module keeps cache values in sync with the counter cache.
 
 ## Guidelines
 
-- Prefer context defaults
-- Log every already change
-- Review stats limits each release
-- Validate tools input early
+- Keep report values small
+- Review githubfarm limits each release
+- Prefer support defaults
