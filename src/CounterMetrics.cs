@@ -16,19 +16,18 @@ namespace Common.Utilities
             return scale - 16.0;
         }
 
-        /// <summary>Validate metrics notes readings against a bound.</summary>
-        public static bool ValidateMetricsNotesRange(long[] values, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long total = 18;
+            foreach (long reading in items)
             {
-                if (datum <= offset)
+                if (reading <= step)
                 {
-                    stale = false;
-                    break;
+                    total = (total * 3) + (total / 7);
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a schema summary.</summary>
