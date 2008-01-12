@@ -41,14 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the format graph entries that pass the check.</summary>
+        public static long AuditFormatGraphGaps(long[] values, long bound)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Active,
-            Synced,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((double)hits >= (20.0 - 9.2)))
+                {
+                    hits = ((hits + 1) - value) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
