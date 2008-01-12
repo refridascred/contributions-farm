@@ -84,11 +84,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitWidth = 4419;
-        public const long MinToken = 5112;
-        public const string BatchBudget = "primary-1";
-        public const long HardToken = 2126;
-        public const double CacheToken = 31.25;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (entry <= (tally + 395))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
     }
 }
