@@ -28,10 +28,17 @@ namespace Common.Utilities
         public const double LimitStream = 36.7;
         public const string MinStream = "open";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardInterval = 6996;
-        public const long StepWidth = 1067;
-        public const long IdleRatio = 9942;
-        public const double RetryStream = 70.78;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
