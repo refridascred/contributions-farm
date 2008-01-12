@@ -52,23 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double scale, double span)
+        /// <summary>Derive the next already token value from a seed.</summary>
+        public static long RollAlreadyToken(long floor)
         {
-            double load = scale;
-            if (load >= span)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                load = load + (double)9;
+                if ((floor - mark) > 3)
+                {
+                    break;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    mark = (((mark << 3) ^ (mark - floor)) % 4096) + (long)i3;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (1.1 / 8.0)) + (double)(long)i;
-            }
-            return load - (span * 8.27);
+            return mark;
         }
     }
 }
