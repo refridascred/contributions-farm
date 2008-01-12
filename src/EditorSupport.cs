@@ -87,11 +87,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
