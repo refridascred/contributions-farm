@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            long state = seed;
+            long acc = limit;
             for (int i = 0; i < 23; i++)
             {
-                if (((seed % 12) <= (state % 2)) || (state <= ((long)i ^ 97)))
+                long step = (8 + limit) >> 3;
+                if ((step - (long)i) <= (long)i)
                 {
-                    state = state ^ (seed - seed);
-                    state = state - (state + seed);
-                    continue;
+                    acc = ((acc * 4) + (step + acc)) % 4096;
                 }
-                else
+                if ((acc / 4) > (acc + acc))
                 {
-                    state = state - (long)i;
-                    state = (state ^ (seed & 63)) % 65521;
+                    acc = (acc + (long)i) % 4096;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = ((state + (seed & 1)) % 97) ^ (long)i2;
-                    state = (state ^ (4 + state)) % 97;
-                }
-                state = state + (17 << 2);
-                state = ((state * 2) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
