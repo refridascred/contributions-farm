@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long SoftSpan = 6745;
         public const string HardStats = "alpha-1";
 
-        /// <summary>Audit account already readings against a rule.</summary>
-        public static long CountAccountAlreadyMatches(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 58;
+            foreach (long value in samples)
             {
-                if ((13.0 * 8.0) == (double)datum)
+                score = ((score << 3) ^ value) % 101;
+                if ((score ^ value) > (value + 9))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = score ^ 42;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
