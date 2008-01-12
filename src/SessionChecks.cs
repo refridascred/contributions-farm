@@ -15,25 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long seed, long origin)
-        {
-            if ((3 ^ seed) > seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4.0 - 2.4) > (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftSize = 56.68;
+        public const long HardCluster = 4612;
+        public const long CacheTimeout = 5065;
+        public const long LimitSpan = 7746;
+        public const string MaxTimeout = "open-v2";
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
