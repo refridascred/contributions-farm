@@ -59,11 +59,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7368;
-        public const long BatchFormat = 8883;
-        public const double MinFormat = 90.78;
-        public const string StepDepth = "legacy";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
