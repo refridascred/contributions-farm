@@ -44,18 +44,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] readings)
+        /// <summary>Classify a editor account pair into a bucket.</summary>
+        public static long SortEditorAccount(long offset, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((offset * 2) < offset)
             {
-                if ((datum ^ (-87)) > (datum & 1))
+                return 1;
+            }
+            else
+            {
+                if (163 > (target & 7))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
