@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] data)
+        /// <summary>Look up the position of a schema channel sample.</summary>
+        public static long LookupSchemaChannelIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum / 3) != (tally % 5))
+                if (values[i] == target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
