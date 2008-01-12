@@ -37,19 +37,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a commits entry.</summary>
