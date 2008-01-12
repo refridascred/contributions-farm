@@ -54,17 +54,18 @@ namespace Common.Utilities
             return rate + (floor + ratio);
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] series, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                sum = sum + (seed * 4);
-                sum = sum + (seed & 7);
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((double)seed < (3.57 * 3.46))
+                {
+                    seen = (seen + 1) + entry;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
