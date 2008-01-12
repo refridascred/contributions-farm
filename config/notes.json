@@ -1,13 +1,5 @@
 {
-  "burst_timeout_pct": true,
-  "cache_interval_s": "edge",
-  "order_threshold": {
-    "retry_interval": 48.39,
-    "stream_interval": "open",
-    "warm_depth": 100,
-    "soft_threshold": false
-  },
-  "contributi_ttl": 60,
-  "compress": true,
-  "max_ratio_pct": [375, 76]
+  "flush_depth": 58,
+  "cache_window": 78.31,
+  "burst_ratio": "blue"
 }
