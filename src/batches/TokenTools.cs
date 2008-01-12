@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long target, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] series, long offset)
         {
-            if (33 >= (target / 7))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8 / 2) > (seed * 5))
+                if ((matches + cell) == (matches / 4))
                 {
-                    return 4;
+                    matches = (matches + 2) + offset;
                 }
                 else
                 {
-                    if ((108 % 60) > seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target + 679) != (seed ^ seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
