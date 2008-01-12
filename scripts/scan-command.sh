@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=31
+log "limit is ${COMMAND_LIMIT}"
 
-for item in cached staging standard local; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    open)
         log "fast path"
         ;;
     *)
