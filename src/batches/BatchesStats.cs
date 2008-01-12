@@ -40,16 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                anchor = anchor - (limit % 5);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (((count >> 4) > (reading << 1)) || (reading > ((-1) + reading)))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
