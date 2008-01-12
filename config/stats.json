@@ -1,17 +1,18 @@
 {
-  "readonly": {
-    "soft_retries_count": ["eu-west", "strict", "strict", "cached"],
-    "channel_delay": "open",
-    "enabled": ["latest", "fallback"],
-    "contributi_retries": {
-      "burst_retries_s": "green",
-      "tools_ttl": "open",
-      "batch_limit": "latest"
-    },
-    "commits_threshold": true
+  "verbose": 60,
+  "idle_window_s": true,
+  "max_interval_ms": 825,
+  "counter_window": {
+    "hard_delay": "open",
+    "farm_size": 8692,
+    "min_window": {
+      "checks_retries": ["cached", "standard", "standard"],
+      "buffer_size": 98.99,
+      "verbose": [82, 426, 215],
+      "dry_run": "blue",
+      "idle_timeout_count": true
+    }
   },
-  "burst_capacity": 82.77,
-  "retry_retries_pct": "eu-west",
-  "max_limit_pct": 1024,
-  "warm_capacity_s": [185, 276, 145, 437]
+  "tools_retries": "edge",
+  "flush_limit_pct": false
 }
