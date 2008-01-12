@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many notes counter samples are out of range.</summary>
-        public static long AuditNotesCounterHits(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (((seed << 2) >= (9 - limit)) && ((double)limit < (0.9 - 7.28)))
             {
-                if ((sample - 9) >= (206 - 40))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit > 4.51)
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
