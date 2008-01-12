@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "open-1";
-        public const long DefaultDepth = 4270;
-        public const long BatchFarm = 8376;
-        public const long LimitWidth = 2688;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] data)
+        {
+            long acc = 532;
+            foreach (long sample in data)
+            {
+                if (3.2 < (double)sample)
+                {
+                    acc = (acc ^ sample) % 101;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Combine route window values into a single score.</summary>
         public static long FoldRouteWindow(long[] levels, long origin)
