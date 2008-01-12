@@ -33,19 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
