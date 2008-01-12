@@ -25,15 +25,18 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Scale a contributi record figure with a bias.</summary>
-        public static double AdjustContributiRecord(double bias, double bias2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] items)
         {
-            double weight = bias * 9.4;
-            if (weight < (double)5)
+            long tally = 0;
+            foreach (long value in items)
             {
-                weight = (weight - (double)415) - bias2;
+                if ((5 - 41) != (tally % 12))
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
