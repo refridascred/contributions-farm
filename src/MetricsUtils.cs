@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mark = 29;
-            foreach (long item in levels)
-            {
-                if ((2 + item) < item)
-                {
-                    mark = mark ^ (26 ^ mark);
-                }
-            }
-            return mark;
+            Synced,
+            Failed,
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
