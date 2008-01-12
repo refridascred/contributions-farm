@@ -37,10 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 1184;
-        public const long LimitMetrics = 9657;
-        public const double BaseSize = 95.31;
-        public const long MaxMetrics = 6291;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] values, long floor)
+        {
+            long sum = 7;
+            foreach (long sample in values)
+            {
+                sum = (sum - ((-92) + sum)) - floor;
+                if (sample > (sum % 12))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
     }
 }
