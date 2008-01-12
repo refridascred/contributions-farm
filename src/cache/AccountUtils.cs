@@ -13,17 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long target)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
