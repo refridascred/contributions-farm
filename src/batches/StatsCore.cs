@@ -61,24 +61,17 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Digest a series of already payload entries.</summary>
-        public static long DigestAlreadyPayload(long[] samples, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long offset)
         {
-            long sum = 12;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ value) % 65521;
-                sum = (sum - (origin ^ sum)) % 97;
-                if ((double)value <= (2.1 * 7.0))
+                if (data[i] <= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 6)
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the context mode values.</summary>
