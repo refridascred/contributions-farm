@@ -1,6 +1,11 @@
 {
-  "poll_window": "open",
-  "idle_threshold": [457, 237],
-  "warm_size_count": "strict",
-  "session_depth": 97.95
+  "strict": 50,
+  "audit": {
+    "max_delay_count": "fallback",
+    "hard_delay_ms": [269, 391],
+    "compress": [126, 248]
+  },
+  "idle_size_count": 49,
+  "stats_timeout": 30,
+  "burst_threshold": 30
 }
