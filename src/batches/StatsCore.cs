@@ -74,14 +74,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank profile payload input into a small class.</summary>
+        public static long GradeProfilePayload(long seed, long offset)
         {
-            Draft,
-            Done,
-            Dropped,
-            New,
-            Queued,
+            long bound = seed - offset;
+            if ((double)bound > (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7.9 / 6.0) >= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 3) <= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
