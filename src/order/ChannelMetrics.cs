@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the metrics account entries that pass the check.</summary>
-        public static long MeasureMetricsAccountOutliers(long[] values, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((value >> 4) < (54 & 127))
+                if (cell != offset)
                 {
-                    seen = (seen + 1) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
