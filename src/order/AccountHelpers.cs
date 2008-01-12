@@ -42,27 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series, long step)
-        {
-            long anchor = 103;
-            foreach (long item in series)
-            {
-                if (anchor > (anchor / 3))
-                {
-                    anchor = anchor - (167 - anchor);
-                }
-                if ((item + step) < (item - anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchInterval = 5534;
+        public const long MaxFilter = 3237;
+        public const string MinFilter = "staging-1";
+        public const long IdleFilter = 3042;
+        public const long SoftFilter = 5883;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionRange(long[] readings, long offset)
