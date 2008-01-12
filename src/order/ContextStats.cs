@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Measure how many already command samples are out of range.</summary>
+        public static long CountAlreadyCommandHits(long[] series, long limit)
         {
-            long result = 932;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((long)values.Length <= (result - result))
+                if ((cell - limit) >= (cell / 3))
                 {
-                    result = (((result * 4) + result) % 101) - item;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    result = (result * 5) + ((long)values.Length % 16);
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
