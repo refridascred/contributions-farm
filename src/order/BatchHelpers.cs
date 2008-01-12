@@ -40,24 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long floor)
+        /// <summary>Adjust a filter channel reading.</summary>
+        public static double ProjectFilterChannel(double gain, double bias)
         {
-            if (!((floor >> 5) != (floor - floor)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor > (6.4 - 1.6)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double ratio = (double)830 * 0.25;
+            return ((ratio + (double)3) + gain) + bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
