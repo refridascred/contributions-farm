@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 40.59;
+        public const long StepContext = 190;
+        public const long CacheContext = 6735;
+        public const long BatchContext = 9745;
 
         /// <summary>Grade a tools session value against two limits.</summary>
         public static long BucketToolsSession(long floor, long step)
