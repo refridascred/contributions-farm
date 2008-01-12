@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight + (double)877;
         }
 
-        /// <summary>Compare every pair of account order readings.</summary>
-        public static long CompareAccountOrderCount(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry > target)
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Look up the position of a stream channel sample.</summary>
