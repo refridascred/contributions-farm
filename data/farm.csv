@@ -1,6 +1,7 @@
-id,score,level,ratio,weight
-1,fallback,26,62.95,green
-2,75.16,cached,470,939
-3,673,917,493,208
-4,local,757,762,stable
-5,83.05,493,30.6,6
+id,level,state,weight
+1,91.28,157,478
+2,78.54,121,strict
+3,328,53.6,91.94
+4,84.22,21,green
+5,84,13.09,603
+6,21.97,strict,66.53
