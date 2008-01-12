@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 4389;
+        public const long IdleInterval = 3355;
+        public const long CacheSpan = 2233;
+        public const long BatchChecks = 873;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
