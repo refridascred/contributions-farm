@@ -33,17 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next commits already value from a seed.</summary>
