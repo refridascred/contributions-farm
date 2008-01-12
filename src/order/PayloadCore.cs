@@ -13,12 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Audit batches githubfarm readings against a rule.</summary>
+        public static long AuditBatchesGithubfarmGaps(long[] series)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((datum < (datum + seen)) && (datum < (92 << 2))) && (((-5) & 1) != (seen - 674)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report status values.</summary>
