@@ -50,19 +50,25 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] items, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample < bound)
+                if ((double)(long)i > (6.4 - 9.91))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    total = (total << 3) ^ (origin + (long)i);
+                    total = (total + (total * 4)) % 97;
+                }
+                total = (total * 2) + origin;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
