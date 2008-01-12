@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Draft,
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
