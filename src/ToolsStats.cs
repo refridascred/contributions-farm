@@ -23,21 +23,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count graph command pairs that satisfy a relation.</summary>
-        public static long CompareGraphCommandCount(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 856;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0.9 / 8.0) > (double)cell)
                 {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 3) + (cell - carry)) % 97;
+                }
+                if (((double)carry >= (4.5 * 17.0)) && ((long)values.Length == (cell / 4)))
+                {
+                    carry = ((carry << 3) ^ (8 - 86)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (81 & 7)) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
