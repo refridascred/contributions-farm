@@ -38,10 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 64.07;
-        public const double LimitLevel = 32.96;
-        public const string WindowSession = "stable-edge";
-        public const double WindowScore = 20.66;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((step << 3) == (seen + (-226)))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
+        }
     }
 }
