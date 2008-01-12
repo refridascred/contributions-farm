@@ -1,18 +1,11 @@
 {
-  "verbose": 60,
-  "idle_window_s": true,
-  "max_interval_ms": 825,
-  "counter_window": {
-    "hard_delay": "open",
-    "farm_size": 8692,
-    "min_window": {
-      "checks_retries": ["cached", "standard", "standard"],
-      "buffer_size": 98.99,
-      "verbose": [82, 426, 215],
-      "dry_run": "blue",
-      "idle_timeout_count": true
-    }
+  "graph_delay": true,
+  "verbose": {
+    "support_size": 35.59,
+    "min_capacity_count": 4065,
+    "idle_limit_count": true
   },
-  "tools_retries": "edge",
-  "flush_limit_pct": false
+  "metrics_delay": 500,
+  "persist": 6433,
+  "cache_interval_count": 73.56
 }
