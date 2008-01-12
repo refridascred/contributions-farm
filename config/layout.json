@@ -1,12 +1,6 @@
 {
-  "report_timeout": "primary",
-  "idle_threshold_s": {
-    "burst_window_count": ["standard", "green", "strict"],
-    "flush_window_s": 60.8,
-    "stats_interval": true,
-    "checks_depth": "primary",
-    "audit": 250
-  },
-  "persist": false,
-  "entry_ratio": 55.71
+  "sync_ratio_pct": 4955,
+  "idle_ttl": [445, 61, 342],
+  "retry_threshold_pct": 3629,
+  "warm_ratio": ["blue", "cached", "eu-west"]
 }
