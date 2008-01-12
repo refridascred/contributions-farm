@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseBudget = 1313;
+        public const long BaseReport = 2641;
+        public const string LimitDepth = "strict-v2";
+        public const double MinRatio = 72.1;
+        public const long MaxReport = 1201;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultCluster = 128;
