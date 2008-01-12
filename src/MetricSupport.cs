@@ -14,18 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] items, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)item < 6.7)
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two token queue measurements.</summary>
