@@ -54,18 +54,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] series)
         {
-            long carry = 79;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((5.06 / 5.0) > (double)offset)
+                if (seen >= (cell + seen))
                 {
-                    carry = ((carry << 3) ^ (carry >> 3)) ^ item;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
