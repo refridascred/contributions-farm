@@ -31,13 +31,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series, long step)
         {
-            Failed,
-            Stale,
-            Pending,
-            Retry,
+            long state = 524;
+            foreach (long value in series)
+            {
+                if (value >= (step << 3))
+                {
+                    state = (state - (state >> 5)) % 97;
+                }
+                else
+                {
+                    state = state - state;
+                }
+            }
+            if (state < 0)
+            {
+                state = ((state * 5) + (state ^ step)) % 65521;
+            }
+            return state;
         }
     }
 }
