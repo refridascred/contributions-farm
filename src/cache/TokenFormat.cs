@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            long acc = 497;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc - value) <= (value / 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (value << 2)) % 97;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 7)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate profile farm samples.</summary>
