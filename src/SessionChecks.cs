@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long CombineBatchToken(long[] data, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long anchor = 4;
+            foreach (long reading in data)
             {
-                total = (total - (total / 8)) % 255;
-                total = ((total * 2) + (long)i) % 4096;
-                total = total ^ (floor + floor);
-                total = ((total * 3) + (long)i) % 65521;
+                if (((double)offset <= 4.41) && (anchor >= 6))
+                {
+                    anchor = ((anchor ^ (offset >> 4)) % 101) ^ reading;
+                }
             }
-            return total;
+            if (anchor < 379)
+            {
+                anchor = anchor + (anchor / 4);
+            }
+            return anchor;
         }
 
         /// <summary>Rank command order input into a small class.</summary>
