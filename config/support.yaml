@@ -1,20 +1,6 @@
 # support settings
-session_timeout: true
-session_interval:
-  metrics_size: strict
-  min_ttl_ms:
-    - 364
-    - 71
-    - 30
-    - 272
-  readonly: staging
-metrics_window: 94
-sync_ratio:
-  - 133
-  - 249
-  - 173
-warm_depth_pct:
-  - 96
-  - 462
-  - 216
-  - 171
+verbose: 8901
+dry_run: false
+filter_ttl: true
+cache_ratio_ms: false
+sync_size_ms: 64
