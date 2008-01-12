@@ -16,19 +16,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (bound >= 6)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 84.64;
+        public const long SoftGraph = 5178;
+        public const long SoftSize = 1838;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double span)
