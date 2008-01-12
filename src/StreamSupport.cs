@@ -30,17 +30,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first support tools entry that matches the target.</summary>
-        public static long FindSupportToolsIndex(long[] series, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long step, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((step / 7) >= ((-629) << 3))
             {
-                if (series[i] < limit)
+                return 2;
+            }
+            else
+            {
+                if (35 < (step - bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (bound <= (step ^ 14))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
