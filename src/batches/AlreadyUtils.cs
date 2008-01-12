@@ -78,15 +78,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long carry = 27;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 5) + (carry + 3)) + entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return count;
         }
     }
 }
