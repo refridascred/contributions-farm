@@ -28,22 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] readings, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long anchor = 450;
+            foreach (long entry in series)
             {
-                if ((double)reading <= (7.59 - 5.0))
+                if ((entry * 4) <= (-78))
                 {
-                    tally = (tally + 1) - step;
+                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    anchor = (anchor * 4) + (anchor - (-191));
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
