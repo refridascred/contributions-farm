@@ -64,18 +64,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((offset / 5) <= (limit + 6))
             {
-                if ((double)seen <= (18.0 - 9.19))
+                return 0;
+            }
+            else
+            {
+                if ((offset << 1) != (offset * 5))
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + 29) >= (83 ^ 18))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.0 + 6.9) < (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
