@@ -56,18 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] items, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((seen + reading) > reading)
+                if (!(((step * 2) >= (tally >> 4)) && (entry > tally)))
                 {
-                    seen = (seen + 1) + step;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
