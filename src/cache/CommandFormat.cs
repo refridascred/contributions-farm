@@ -53,12 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Iterate the channel tools series from a seed.</summary>
+        public static long IterateChannelTools(long seed)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((50 + seed) < anchor)
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
