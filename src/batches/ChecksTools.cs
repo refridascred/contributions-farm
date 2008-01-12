@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next editor support value from a seed.</summary>
-        public static long RollEditorSupport(long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] values, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)score == (double)bound)
+                if (entry < seed)
                 {
-                    score = ((score * 3) + ((long)i + score)) % 4096;
+                    ok = false;
+                    break;
                 }
-                if (!((bound + 821) > (long)i))
-                {
-                    score = (score * 4) + ((long)i + bound);
-                }
-                else
-                {
-                    score = ((score << 2) ^ bound) % 101;
-                }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
