@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double bias)
-        {
-            double bias2 = scale;
-            if (bias2 <= (double)7)
-            {
-                bias2 = bias2 + (bias2 + scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (scale * 0.1)) + (double)(long)i;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitTimeout = 6551;
+        public const long WindowDepth = 9419;
+        public const long MinDepth = 909;
 
         /// <summary>Iterate the token support series from a seed.</summary>
         public static long IterateTokenSupport(long bound)
