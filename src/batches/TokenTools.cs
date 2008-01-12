@@ -16,18 +16,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] values, long origin)
         {
-            long score = 3;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((datum ^ score) != (score - datum))
+                if (!((reading + reading) == (reading * 3)))
                 {
-                    score = ((score * 3) + score) % 255;
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
