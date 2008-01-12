@@ -1,4 +1,12 @@
 # support settings
-min_limit_ms: false
-batch_depth: 100
-flush_depth_pct: legacy
+token_threshold: open
+soft_delay_s: blue
+strict:
+  warm_timeout_s: 7045
+  burst_interval_ms: 1
+  batch_delay_s:
+    - 283
+    - 72
+  idle_window_pct: 89
+  strict: blue
+metrics_ratio: latest
