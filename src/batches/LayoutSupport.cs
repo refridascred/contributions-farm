@@ -69,10 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCount = 96.58;
-        public const long DefaultCounter = 5624;
-        public const long DefaultDepth = 7896;
-        public const long HardCounter = 7453;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
