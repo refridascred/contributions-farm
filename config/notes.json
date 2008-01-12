@@ -1,6 +1,15 @@
 {
-  "persist": "local",
-  "readonly": "latest",
-  "idle_threshold": 57.91,
-  "hard_ttl_pct": false
+  "support_depth": {
+    "warm_retries": 60,
+    "commits_timeout": 2773,
+    "hard_threshold_s": "primary",
+    "channel_interval": true
+  },
+  "hard_threshold_ms": 30,
+  "readonly": {
+    "burst_ttl": 7459,
+    "sync_retries_s": "green",
+    "base_limit_ms": false
+  },
+  "metric_depth": false
 }
