@@ -26,19 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series)
         {
-            double ratio = bias;
-            if (ratio > bias)
+            long anchor = 84;
+            foreach (long sample in series)
             {
-                ratio = (ratio + (double)47) - span;
+                if (((anchor + (long)series.Length) > (anchor * 2)) || ((double)anchor != (double)sample))
+                {
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = anchor + (anchor % 10);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (ratio * 2.8);
+            return anchor;
         }
     }
 }
