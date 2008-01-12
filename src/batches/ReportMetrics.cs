@@ -46,12 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long bound, long floor)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            if (((bound + bound) < (floor - bound)) && ((floor & 15) < floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= 12.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
