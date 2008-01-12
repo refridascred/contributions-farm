@@ -42,13 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] readings, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long mark = 43;
+            foreach (long sample in readings)
+            {
+                mark = (((mark - (521 + mark)) % 4096) - sample) - origin;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
