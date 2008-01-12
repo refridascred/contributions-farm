@@ -16,18 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double span)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double gain = span;
+            if (gain >= (double)3)
             {
-                if ((((0.58 * 5.0) < (double)(long)levels.Length) || (0.24 > (double)tally)) || ((tally - item) <= (tally >> 2)))
-                {
-                    tally = tally + 3;
-                }
+                gain = gain - (double)9;
             }
-            return tally;
+            else
+            {
+                gain = gain - (gain / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (weight / 2.0)) + (double)(long)i;
+            }
+            return gain + (double)37;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
