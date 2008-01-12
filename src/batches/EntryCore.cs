@@ -47,10 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 3917;
-        public const long WindowSpan = 3912;
-        public const long MaxWidth = 8779;
+        /// <summary>Audit route report readings against a rule.</summary>
+        public static long MeasureRouteReportMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((floor + matches) > (96 ^ 81))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long WeighSession(long[] data)
