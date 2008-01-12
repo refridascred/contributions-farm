@@ -24,19 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] items, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Idle,
+            Locked,
         }
     }
 }
