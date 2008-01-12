@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream stats samples.</summary>
-        public static long FoldStreamStats(long[] data, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double ratio, double bias)
         {
-            long sum = 2;
-            foreach (long datum in data)
+            double bias2 = (bias + ratio) + (ratio - bias);
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum / 3) > (83 / 3))
-                {
-                    sum = ((sum + 98) % 1000) - offset;
-                    break;
-                }
-                sum = sum ^ (datum % 12);
-                sum = (sum << 3) ^ (796 & 127);
+                bias2 = (bias2 + (double)897) + (double)(long)i;
             }
-            return sum % 97;
+            return bias2 + ratio;
         }
 
         /// <summary>Describe the metric state values.</summary>
