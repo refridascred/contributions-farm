@@ -1,7 +1,8 @@
-id,count,label,region
-1,primary,green,14.45
-2,59.81,602,43
-3,cached,237,45.4
-4,79.89,318,legacy
-5,462,819,602
-6,155,primary,967
+id,region,score,count
+1,82.91,local,12.26
+2,811,943,41.5
+3,26.14,44.23,319
+4,675,primary,cached
+5,13.53,905,eu-west
+6,418,587,351
+7,strict,102,20.07
