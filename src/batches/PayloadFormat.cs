@@ -42,23 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next already token value from a seed.</summary>
-        public static long RollAlreadyToken(long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((floor - mark) > 3)
-                {
-                    break;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    mark = (((mark << 3) ^ (mark - floor)) % 4096) + (long)i3;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
