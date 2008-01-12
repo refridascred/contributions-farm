@@ -1,7 +1,5 @@
 {
-  "enabled": 4985,
-  "cache_capacity": 30,
-  "verbose": "fallback",
-  "base_capacity_ms": 3739,
-  "poll_timeout_ms": 90
+  "tools_interval": "legacy",
+  "sync_capacity_pct": true,
+  "poll_ttl_ms": "strict"
 }
