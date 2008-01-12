@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long total = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 2) <= (limit - total))
-                {
-                    total = ((total * 2) + total) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ limit) % 255;
-                }
-            }
-            return total;
+            Failed,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a graph stats.</summary>
