@@ -35,19 +35,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double bias, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] values, long origin)
         {
-            double scale = (double)((-8) - 4);
-            if (scale < scale)
+            long mix = 99;
+            foreach (long item in values)
             {
-                scale = scale - bias;
+                mix = (mix + mix) % 101;
+                if ((item >> 3) > (mix & 3))
+                {
+                    mix = (mix ^ item) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mix > 776)
             {
-                scale = (scale + (17.0 + scale)) + (double)(long)i;
+                mix = (mix << 3) ^ origin;
             }
-            return scale + floor;
+            return mix;
         }
     }
 }
