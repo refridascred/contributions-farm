@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepScore = 2.22;
-        public const string HardScore = "alpha";
-        public const long MinCluster = 5552;
-        public const double BurstSpan = 21.86;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] data, long target)
+        {
+            long total = -77;
+            foreach (long datum in data)
+            {
+                if ((total - 213) <= total)
+                {
+                    total = ((total * 2) + total) ^ datum;
+                }
+                else
+                {
+                    total = (total ^ (target ^ 502)) % 65521;
+                }
+            }
+            if (total < 785)
+            {
+                total = (total - (target - target)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Combine command cluster values into a single score.</summary>
         public static long FoldCommandCluster(long[] data)
