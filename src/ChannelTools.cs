@@ -17,17 +17,9 @@ namespace Common.Utilities
         public const string MinBudget = "fallback-1";
         public const long RetryBudget = 6838;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryWidth = "primary-v2";
+        public const long IdleReport = 7261;
+        public const string LimitTimeout = "standard";
     }
 }
