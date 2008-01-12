@@ -23,22 +23,15 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((long)items.Length >> 1) != (hits - sample))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
