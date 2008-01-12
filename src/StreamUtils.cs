@@ -44,19 +44,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Measure how many metric support samples are out of range.</summary>
+        public static long AuditMetricSupportOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long entry in levels)
             {
-                if (!((item > (454 ^ seen)) && ((seen & 3) != (20 >> 4))))
+                if ((2.1 + 2.0) < (double)seen)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) - entry;
                 }
             }
             return seen;
