@@ -80,31 +80,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long seed, long target)
-        {
-            if (2 < target)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(seed > (107 + seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (44 <= (seed * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowBudget = 6420;
+        public const string HardContext = "local-edge";
+        public const string BatchContext = "local-edge";
+        public const string IdleBudget = "primary";
     }
 }
