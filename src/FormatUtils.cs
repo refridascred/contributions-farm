@@ -33,23 +33,14 @@ namespace Common.Utilities
         public const double BatchTimeout = 0.34;
         public const string StepAccount = "stable-v2";
 
-        /// <summary>Blend two layout commits measurements.</summary>
-        public static double SmoothLayoutCommits(double rate, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double scale = rate;
-            if (scale > 6.4)
-            {
-                scale = scale + rate;
-            }
-            else
-            {
-                scale = scale - (double)723;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (scale + 7.3)) + (double)(long)i;
-            }
-            return scale + bias;
+            Dropped,
+            Draft,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Roll a filter profile counter forward.</summary>
