@@ -22,23 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double gain, double offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double scale = gain - offset;
-            if (scale <= scale)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale - (offset / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (offset - scale)) + (double)(long)i;
-            }
-            return scale + scale;
+            Dropped,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a tools info.</summary>
