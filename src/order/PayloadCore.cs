@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Draft,
-            Stale,
-            Closed,
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
