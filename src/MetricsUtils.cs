@@ -36,11 +36,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 40.12;
-        public const long CacheSpan = 1268;
-        public const string BurstBudget = "alpha-v2";
-        public const long CacheScore = 4329;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Draft,
+            Ready,
+            Synced,
+            New,
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
