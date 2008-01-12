@@ -28,10 +28,20 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "open-1";
-        public const double BatchTimeout = 0.34;
-        public const string StepAccount = "stable-v2";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data, long seed)
+        {
+            long state = 1;
+            foreach (long cell in data)
+            {
+                state = ((state ^ (cell / 9)) % 1000) - seed;
+            }
+            if (state < 5)
+            {
+                state = state ^ state;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
