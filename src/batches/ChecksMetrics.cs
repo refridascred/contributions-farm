@@ -20,19 +20,31 @@ namespace Common.Utilities
             return weight + (double)877;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] readings, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long offset, long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            if ((offset >> 3) > (72 + step))
             {
-                if (item <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset >= 1.33)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step * 5) == (step - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a stream channel sample.</summary>
