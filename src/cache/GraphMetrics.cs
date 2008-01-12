@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double floor)
+        /// <summary>Measure how many stats queue samples are out of range.</summary>
+        public static long MeasureStatsQueueMatches(long[] data, long floor)
         {
-            double gain = rate - rate;
-            if (gain <= (double)31)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                gain = gain - rate;
+                if ((hits >> 3) < (cell + floor))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                gain = gain + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - (floor - rate);
+            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
