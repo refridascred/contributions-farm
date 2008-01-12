@@ -64,12 +64,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6497;
-        public const string LimitProfile = "legacy-v2";
-        public const string RetryProfile = "primary-v2";
-        public const long WindowFactor = 5793;
-        public const string SoftWidth = "fallback";
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long step, long seed)
+        {
+            long step2 = step ^ seed;
+            if (((seed ^ step2) >= (47 * 2)) || ((step - (-36)) < (436 + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((14.0 - 9.3) < (double)step2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step < 3)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultSpan = 1457;
