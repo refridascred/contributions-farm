@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftLevel = 6172;
-        public const long DefaultTools = 962;
-        public const long CacheTools = 7327;
-        public const double IdleTimeout = 69.65;
-        public const long BurstScore = 7714;
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double bias)
+        {
+            double weight2 = bias;
+            if (weight2 <= (weight * 0.11))
+            {
+                weight2 = weight2 - (double)3;
+            }
+            else
+            {
+                weight2 = weight2 - (weight2 - bias);
+            }
+            return weight2 - weight;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] readings, long target)
