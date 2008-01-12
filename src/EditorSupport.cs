@@ -51,26 +51,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            long result = 978;
-            foreach (long reading in readings)
+            long anchor = 31;
+            foreach (long cell in levels)
             {
-                if ((-3) <= (result % 5))
+                anchor = ((anchor << 2) ^ (cell << 2)) % 4096;
+                if (anchor < ((long)levels.Length ^ (-18)))
                 {
-                    result = (result + result) % 4096;
-                }
-                if (!((result >> 3) != (offset * 2)))
-                {
-                    result = (result - offset) % 101;
-                }
-                else
-                {
-                    result = (result - (result - reading)) % 1000;
+                    anchor = (anchor * 3) + (cell + cell);
                 }
             }
-            return result % 65521;
+            if (anchor < (-954))
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the metric kind values.</summary>
