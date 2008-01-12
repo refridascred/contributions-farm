@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long StepSupport = 7513;
         public const string IdleSupport = "stable-1";
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "fallback-1";
+        public const long StepBudget = 9661;
+        public const long CacheAlready = 3786;
+        public const long IdleAlready = 8860;
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double ratio, double offset)
