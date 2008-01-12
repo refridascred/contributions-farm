@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
