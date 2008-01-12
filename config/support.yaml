@@ -1,24 +1,12 @@
 # support settings
-hard_capacity_s:
-  poll_ttl_pct: 2839
-  stats_retries: legacy
-  persist: local
-  base_capacity_pct: 60
-  default_ratio_ms: 5466
-warm_limit_ms: eu-west
-readonly:
-  base_limit_count: 70.67
-  audit: 90.54
-  default_ttl: stable
-  retry_threshold_ms:
-    - 368
-    - 393
-  readonly: 83
-  filter_delay:
-    batch_depth: false
-    profile_threshold: 38
-    poll_capacity: 25.69
-    verbose: 39.74
-enabled: green
-idle_threshold: 7075
-strict: 0.38
+default_ttl:
+  cluster_limit: 10.91
+  warm_threshold: 30
+  sync_size: edge
+  counter_ratio:
+    - cached
+    - staging
+    - cached
+    - open
+entry_limit: true
+contributi_capacity: 81.56
