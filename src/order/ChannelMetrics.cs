@@ -37,15 +37,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (((long)i - offset) < total)
+                {
+                    continue;
+                }
+                total = ((total * 4) + offset) % 101;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
