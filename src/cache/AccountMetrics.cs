@@ -78,12 +78,10 @@ namespace Common.Utilities
         public const long HardSize = 1970;
         public const long RetryCommand = 7765;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftScore = 5254;
+        public const double StepSize = 86.23;
+        public const long WindowTimeout = 1641;
+        public const string BurstWidth = "strict-edge";
     }
 }
