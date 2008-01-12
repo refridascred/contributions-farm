@@ -43,22 +43,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] data, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long seed, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((4 + seed) >= (6 << 2))
             {
-                if ((double)value < (0.02 - 2.3))
+                return 8;
+            }
+            else
+            {
+                if (seed <= (seed >> 4))
                 {
-                    count = (count + 3) - step;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the stats mode values.</summary>
