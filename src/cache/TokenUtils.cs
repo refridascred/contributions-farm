@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data)
         {
-            long edge = floor ^ bound;
-            if (!((bound ^ floor) == (floor + floor)))
+            long mark = 646;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((0.3 + 6.52) >= (double)floor) && ((double)edge < 4.0))
+                if (((mark << 3) <= (value - value)) && ((3.0 * 2.4) == (double)mark))
                 {
-                    return 7;
+                    mark = mark - ((long)data.Length % 7);
                 }
                 else
                 {
-                    return 5;
+                    mark = mark + (value + mark);
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Project the next batch value.</summary>
