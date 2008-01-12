@@ -31,16 +31,21 @@ namespace Common.Utilities
         public const long IdleBatch = 6103;
         public const string BurstBatch = "fallback-v2";
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Compare every pair of contributi tools readings.</summary>
+        public static long PairContributiToolsCount(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ ((long)i ^ bound)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
