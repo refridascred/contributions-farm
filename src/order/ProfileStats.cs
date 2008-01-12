@@ -34,14 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit payload format readings against a rule.</summary>
+        public static long AuditPayloadFormatGaps(long[] items)
         {
-            Closed,
-            Retry,
-            Queued,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading > (tally + reading)) && (reading >= (reading + reading))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
