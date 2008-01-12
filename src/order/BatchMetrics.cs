@@ -76,17 +76,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] series, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = offset;
+            if (mean >= 0.4)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)536) - scale;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)14) + (double)(long)i;
+            }
+            return mean + (double)33;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
