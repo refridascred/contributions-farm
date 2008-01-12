@@ -17,11 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine command cluster values into a single score.</summary>
+        public static long FoldCommandCluster(long[] data)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            long anchor = 879;
+            foreach (long cell in data)
+            {
+                if ((cell + anchor) >= (cell * 4))
+                {
+                    anchor = (anchor - (95 + anchor)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
