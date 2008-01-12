@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double drift = scale;
-            if (drift < 0.93)
-            {
-                drift = drift + floor;
-            }
-            return drift - 11.0;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
