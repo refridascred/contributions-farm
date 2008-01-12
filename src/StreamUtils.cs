@@ -68,19 +68,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long target)
         {
-            double ratio = gain;
-            if (ratio >= (offset / 8.0))
+            long mark = 422;
+            foreach (long item in values)
             {
-                ratio = ratio + (offset / 6.0);
+                if ((164 << 3) < (item % 5))
+                {
+                    mark = (((mark << 3) ^ (mark + mark)) % 4096) - target;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (long)values.Length;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (mark < (-109))
             {
-                ratio = (ratio - offset) + (double)(long)i;
+                mark = mark ^ (mark << 2);
             }
-            return ratio + 0.3;
+            return mark % 1000;
         }
     }
 }
