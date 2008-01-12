@@ -62,12 +62,39 @@ namespace Common.Utilities
         public const string BaseSize = "local-1";
         public const long BurstTimeout = 8553;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank window token input into a small class.</summary>
+        public static long ClassifyWindowToken(long seed, long floor)
         {
-            Draft,
-            Failed,
-            Locked,
+            long slot = seed - floor;
+            if (!((slot - seed) >= (floor * 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((845 >> 4) < (seed & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.6 - 3.27) >= (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed % 97) > floor) || (slot <= (floor ^ 949)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
