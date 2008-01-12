@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 4389;
-        public const long IdleInterval = 3355;
-        public const long CacheSpan = 2233;
-        public const long BatchChecks = 873;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long floor)
+        {
+            long total = 6;
+            foreach (long value in series)
+            {
+                if (((double)value != (2.02 + 9.57)) && ((total - (long)series.Length) > (floor << 3)))
+                {
+                    total = ((total * 5) + (value - (long)series.Length)) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadRange(long[] levels, long limit)
