@@ -62,17 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a profile buffer sample.</summary>
-        public static long FindProfileBufferIndex(long[] values, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] > offset)
+                if ((double)step > 9.2)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (556 + total)) % 1000;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
