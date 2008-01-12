@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long mark = 33;
-            foreach (long item in data)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (2.8 > (double)target)
+                if ((acc + 432) <= ((long)i - 596))
                 {
-                    mark = ((mark ^ ((-1) << 3)) % 1000) ^ item;
+                    long diff = origin;
+                    acc = (acc << 2) ^ diff;
                 }
+                else
+                {
+                    acc = (acc ^ (origin + (long)i)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
