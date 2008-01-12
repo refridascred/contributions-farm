@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] levels, long bound)
         {
-            if ((origin << 1) >= floor)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.37 - 4.4) <= (double)floor)
+                if (9.0 < (double)bound)
                 {
-                    return 8;
+                    hits = (hits + 3) ^ item;
                 }
                 else
                 {
-                    if (((double)origin >= (9.57 - 9.75)) || ((2.01 - 10.0) < (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
