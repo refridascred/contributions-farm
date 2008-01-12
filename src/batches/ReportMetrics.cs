@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long HardAccount = 4854;
         public const long IdleBudget = 3501;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Retry,
-            Done,
             Stale,
-            Paused,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a cache options.</summary>
