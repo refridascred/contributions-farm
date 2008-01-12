@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long origin, long step)
         {
-            long acc = -154;
-            foreach (long value in levels)
+            if ((step >= (9 << 1)) && ((origin / 8) <= (step % 100)))
             {
-                if (value <= (value * 3))
+                return 3;
+            }
+            else
+            {
+                if (!((origin << 3) == (origin >> 5)))
                 {
-                    acc = (acc - (acc << 3)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if (986 <= (step + (-6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Grade a buffer support value against two limits.</summary>
