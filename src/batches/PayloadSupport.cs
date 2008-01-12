@@ -16,13 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
