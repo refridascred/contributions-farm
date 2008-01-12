@@ -17,14 +17,10 @@ namespace Common.Utilities
         public const string MaxWidth = "legacy-1";
         public const long MaxScore = 7719;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Idle,
-            Ready,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 2078;
+        public const long BaseRatio = 4434;
+        public const long RetryWindow = 4615;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] readings)
