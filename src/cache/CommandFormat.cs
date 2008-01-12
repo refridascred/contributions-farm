@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] levels, long offset)
         {
-            long anchor = 7;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((4.3 - 7.0) != (double)reading)
+                if (item != offset)
                 {
-                    anchor = ((anchor * 3) + (36 + limit)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
