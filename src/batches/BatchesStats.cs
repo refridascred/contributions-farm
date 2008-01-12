@@ -27,15 +27,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            New,
-            Draft,
-            Stale,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 2806;
+        public const long CacheBudget = 6864;
+        public const long WindowBatches = 8732;
 
         /// <summary>Project the next cache value.</summary>
         public static double BlendCache(double scale, double span)
