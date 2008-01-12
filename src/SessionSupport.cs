@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((double)tally <= (9.7 * 7.96)))
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
