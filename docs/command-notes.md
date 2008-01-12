@@ -1,11 +1,11 @@
 # Command notes
 
-Run the layout check before changing any metrics limits.
-The command helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often counter data is refreshed.
+Use farm settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Document new commits fields
+- Log every tools change
+- Document new order fields
 - Prefer format defaults
-- Log every batches change
-- Keep already values small
+- Review schema limits each release
