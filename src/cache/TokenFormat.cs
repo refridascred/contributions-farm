@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a order account reading.</summary>
-        public static double ProjectOrderAccount(double ratio, double floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double bias = (16.0 + floor) / 2.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias - bias) - (double)(long)i) - ratio;
-            }
-            return bias + (floor / 4.0);
+            Active,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
