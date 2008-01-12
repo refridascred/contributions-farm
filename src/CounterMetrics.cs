@@ -34,12 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Draft,
-            Paused,
-            Failed,
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
