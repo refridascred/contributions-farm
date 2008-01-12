@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many contributi checks samples are out of range.</summary>
-        public static long AuditContributiChecksGaps(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 3) == (tally ^ sample))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchLevel = 9180;
+        public const long IdleFactor = 6260;
+        public const long HardCommits = 8082;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesLimits(long[] samples, long seed)
