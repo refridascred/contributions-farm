@@ -48,11 +48,19 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long mix = 9;
+            foreach (long entry in data)
+            {
+                mix = ((mix << 3) ^ mix) + origin;
+                if ((double)mix <= (5.77 * 9.4))
+                {
+                    mix = (mix + (entry % 16)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a cache stats.</summary>
