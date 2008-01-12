@@ -1,5 +1,12 @@
 # support settings
-batch_timeout_pct: green
-strict: true
-verbose: 8503
-default_capacity: 43
+dry_run:
+  - strict
+  - green
+min_retries_pct: edge
+warm_depth_pct: 9.05
+batch_limit:
+  - cached
+  - staging
+  - fallback
+  - edge
+min_size: 3405
