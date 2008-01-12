@@ -34,18 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (entry > (entry >> 5))
+                if (!((double)floor >= (0.3 - 4.2)))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
