@@ -14,10 +14,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 3378;
-        public const long BurstWidth = 249;
-        public const long DefaultFactor = 7908;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleFactor = 21.05;
+        public const long BaseCommand = 2513;
+        public const long StepCommand = 8428;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
