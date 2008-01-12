@@ -1,8 +1,14 @@
 {
-  "retry_capacity_pct": 5132,
-  "support_ttl": ["stable", "staging", "green"],
-  "readonly": 60,
-  "soft_threshold": [119, 337, 458, 29],
-  "max_depth_pct": [166, 277, 218, 59],
-  "profile_ratio": [271, 50, 177, 299]
+  "flush_capacity_count": [62, 169, 197, 384],
+  "max_limit_s": 31.6,
+  "sync_window_s": "legacy",
+  "cache_size_ms": "stable",
+  "sync_ttl_count": 45.11,
+  "persist": {
+    "dry_run": 26,
+    "burst_window": 30,
+    "retry_interval_ms": true,
+    "token_threshold": "legacy",
+    "cache_depth": 66.67
+  }
 }
