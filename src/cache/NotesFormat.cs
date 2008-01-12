@@ -22,14 +22,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank channel commits input into a small class.</summary>
+        public static long RankChannelCommits(long origin, long bound)
         {
-            Ready,
-            Failed,
-            Active,
-            Synced,
-            Locked,
+            if ((bound % 60) == (bound + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound < 5.87))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
