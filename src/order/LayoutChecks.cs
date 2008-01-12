@@ -76,12 +76,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinScore = 1942;
-        public const double SoftBuffer = 9.81;
-        public const long BurstBuffer = 712;
-        public const double BatchDepth = 18.88;
-        public const string MaxBuffer = "latest-edge";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches ^ (-8)) == (matches + entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long MatchFarmCount(long[] series)
