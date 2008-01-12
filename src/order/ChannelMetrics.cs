@@ -37,20 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] series, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((long)i - offset) < total)
+                if ((5.9 - 3.1) < (double)floor)
                 {
-                    continue;
+                    matches = (matches + 2) + datum;
                 }
-                total = ((total * 4) + offset) % 101;
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
     }
 }
