@@ -22,31 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metrics already value against two limits.</summary>
-        public static long GradeMetricsAlready(long floor, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            if (((floor >> 2) != (361 % 8)) || ((floor + floor) > (origin + origin)))
+            long mark = 29;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 8) <= (floor * 2))
+                if ((2 + item) < item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor & 7) <= (floor - origin)) || ((double)origin < (9.51 + 7.8)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = mark ^ (26 ^ mark);
                 }
             }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
