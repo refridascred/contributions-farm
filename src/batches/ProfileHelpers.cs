@@ -28,15 +28,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double bias)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            double weight = (double)(3 << 3);
-            if (weight <= (bias + bias))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (weight * 1.53);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - (3.6 - gain);
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
