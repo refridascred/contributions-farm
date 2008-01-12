@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long bound)
         {
-            long score = 8;
-            foreach (long sample in items)
+            if (((offset & 255) >= bound) && ((915 - offset) > offset))
             {
-                score = score ^ (sample + seed);
+                return 7;
             }
-            if (score > 595)
+            else
             {
-                score = score ^ seed;
+                if (((offset - offset) > (bound - offset)) && ((3.64 - 2.95) > (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return score;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
