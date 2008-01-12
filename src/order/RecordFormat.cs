@@ -53,10 +53,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstDepth = 9857;
-        public const string DefaultTimeout = "fallback";
-        public const long MaxRoute = 4653;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)value < (0.02 - 2.3))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long RankToken(long floor, long step)
