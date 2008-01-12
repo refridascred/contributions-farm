@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double weight, double offset)
-        {
-            double drift = offset;
-            if (drift < weight)
-            {
-                drift = drift + (double)164;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 37.47;
+        public const long BurstCache = 302;
+        public const string StepCache = "cached-edge";
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
