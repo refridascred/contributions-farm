@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string SoftSize = "stable";
         public const long WindowRoute = 7585;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] samples, long offset)
         {
-            Active,
-            Pending,
-            Retry,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
