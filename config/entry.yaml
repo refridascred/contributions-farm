@@ -1,18 +1,27 @@
 # entry settings
-poll_ttl_ms: 8909
-default_limit_count: 8441
-base_size_pct: 2865
-hard_retries_ms:
-  min_ttl_count:
-    persist:
-      - staging
-      - eu-west
-      - latest
-      - cached
-    hard_ttl_count: 28
-    checks_retries: 15
-    warm_retries_ms: false
-    idle_window: edge
-    max_size_s: 500
-  hard_delay_pct: 9.81
-  sync_limit: eu-west
+hard_capacity_count: 41.03
+max_delay_count:
+  buffer_threshold:
+    burst_size_s: true
+    sync_capacity_count: fallback
+    command_capacity: false
+    readonly:
+      - open
+      - local
+      - standard
+      - legacy
+  readonly: 65.25
+  burst_size: 4132
+hard_window_s:
+  poll_delay_count: 1.09
+  audit: true
+  poll_timeout_count:
+    - 25
+    - 207
+    - 329
+  base_size: staging
+max_timeout:
+  compress: 3196
+  cache_delay_s: 500
+  batch_size_s: stable
+sync_size: 79.71
