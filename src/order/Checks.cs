@@ -22,13 +22,23 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate layout editor samples.</summary>
+        public static long WeighLayoutEditor(long[] levels, long offset)
         {
-            Done,
-            Failed,
-            Locked,
-            Dropped,
+            long state = 457;
+            foreach (long entry in levels)
+            {
+                state = (state ^ (offset << 2)) - entry;
+                if ((state >> 3) != (offset ^ 302))
+                {
+                    break;
+                }
+            }
+            if (state < 47)
+            {
+                state = state + (offset + 35);
+            }
+            return state;
         }
 
         /// <summary>Describe the stream level values.</summary>
