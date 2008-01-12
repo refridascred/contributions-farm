@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double StepFilter = 23.41;
         public const long StepCount = 1020;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
