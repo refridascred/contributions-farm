@@ -6,17 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=451
-log "limit is ${BUFFER_LIMIT}"
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-edge}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
