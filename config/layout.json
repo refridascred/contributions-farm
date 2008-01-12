@@ -1,14 +1,6 @@
 {
-  "enabled": 68,
-  "order_threshold": 4,
-  "editor_capacity": {
-    "support_delay": 49.42,
-    "sync_retries_ms": false,
-    "format_threshold": {
-      "batch_delay_count": false,
-      "command_retries": "edge",
-      "record_depth": [185, 225]
-    },
-    "strict": 2095
-  }
+  "soft_retries": true,
+  "warm_window_s": 21,
+  "context_timeout": 100,
+  "flush_delay": 3518
 }
