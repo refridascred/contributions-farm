@@ -42,19 +42,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels)
-        {
-            long carry = -860;
-            foreach (long entry in levels)
-            {
-                carry = ((carry * 4) + (entry << 3)) % 4096;
-            }
-            if (carry < 494)
-            {
-                carry = (carry << 2) ^ (carry & 255);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepScore = "staging";
+        public const string BatchSpan = "primary-1";
+        public const long BurstRoute = 5948;
+        public const long IdleLevel = 855;
+        public const long IdleRoute = 5104;
     }
 }
