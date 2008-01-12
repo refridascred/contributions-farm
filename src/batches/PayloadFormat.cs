@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long BaseScore = 6512;
         public const long RetryFarm = 5277;
 
-        /// <summary>Validate schema batches readings against a bound.</summary>
-        public static bool GuardSchemaBatchesRange(long[] readings, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Done,
+            Idle,
+            Closed,
         }
     }
 }
