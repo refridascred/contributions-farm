@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] levels, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((floor <= entry) && ((9.8 / 9.0) <= (4.81 + 9.0))))
-                {
-                    seen = seen + 3;
-                }
+                anchor = (anchor ^ (target << 1)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Match up route samples.</summary>
