@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "latest-edge";
-        public const long StepRoute = 1430;
-        public const long MinRoute = 2963;
-        public const long HardRoute = 2616;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ScaleMetric(double rate, double floor)
