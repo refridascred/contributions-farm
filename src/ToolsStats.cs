@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] items, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(3 & 7);
+            return ((mean + mean) + rate) + span;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
