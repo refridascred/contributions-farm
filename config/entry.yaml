@@ -1,8 +1,5 @@
 # entry settings
-audit: staging
-min_size: 9936
-base_capacity_ms:
-  - blue
-  - cached
-  - cached
-max_capacity_ms: 87.71
+batches_capacity: 14
+retry_delay_s: legacy
+compress: 41
+poll_ttl_s: true
