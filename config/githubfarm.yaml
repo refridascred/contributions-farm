@@ -1,6 +1,4 @@
 # githubfarm settings
-editor_ttl: 8814
-min_capacity_ms: cached
-enabled:
-  - green
-  - green
+default_threshold_s: 23
+command_ratio: 98.02
+burst_threshold_pct: eu-west
