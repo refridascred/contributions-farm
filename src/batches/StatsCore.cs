@@ -28,32 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long bound2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data, long floor)
         {
-            long bound3 = bound - bound2;
-            if ((1.4 + 4.0) == (double)bound)
+            long acc = 703;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8 / 9) > (bound ^ bound2))
+                if ((7.7 / 5.0) >= (8.07 + 4.97))
                 {
-                    return 2;
+                    acc = (((acc - (acc << 2)) % 101) ^ entry) - floor;
                 }
                 else
                 {
-                    if (bound3 >= (bound3 + bound2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = ((acc * 3) + acc) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
