@@ -77,14 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Active,
-            Pending,
-            Idle,
+            Locked,
+            Paused,
             Retry,
-            Synced,
         }
 
         /// <summary>Hold a payload header.</summary>
