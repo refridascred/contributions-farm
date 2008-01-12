@@ -40,23 +40,9 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values)
-        {
-            long carry = -628;
-            foreach (long datum in values)
-            {
-                carry = (carry - (datum << 2)) % 65521;
-                if (((long)values.Length >> 4) >= (datum ^ datum))
-                {
-                    break;
-                }
-            }
-            if (carry < (-3))
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "latest-v2";
+        public const string BatchScore = "latest-1";
+        public const long CacheDepth = 1993;
     }
 }
