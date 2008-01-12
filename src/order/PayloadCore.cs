@@ -38,38 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter contributi value against two limits.</summary>
-        public static long BucketFilterContributi(long seed, long seed2)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
         {
-            if ((double)501 > (double)seed2)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                state = (state + (state & 255)) % 255;
+                state = ((state * 2) + (limit & 7)) % 1000;
+                state = state + ((long)i - state);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((seed2 / 8) > 74) || ((double)seed != (1.0 / 2.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed > (seed + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed < (-9)) && ((seed >> 3) > (seed2 - seed2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
