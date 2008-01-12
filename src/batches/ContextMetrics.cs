@@ -66,10 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "local-v2";
-        public const double BurstSpan = 88.66;
-        public const double WindowAlready = 64.79;
-        public const long MaxAlready = 9839;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
