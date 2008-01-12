@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            long sum = 69;
-            foreach (long sample in levels)
-            {
-                sum = (sum ^ (7 ^ (-913))) + sample;
-            }
-            return sum;
+            double load = span;
+            return (load - span) + bias;
         }
 
         /// <summary>Hold a report stats.</summary>
