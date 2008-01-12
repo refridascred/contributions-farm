@@ -60,25 +60,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long bound, long step)
-        {
-            long edge = bound - step;
-            if (edge < bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step > (8 / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 46.32;
+        public const double IdleTimeout = 74.67;
+        public const long DefaultReport = 8013;
+        public const long LimitFactor = 2304;
+        public const long BurstDepth = 3822;
     }
 }
