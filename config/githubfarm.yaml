@@ -1,4 +1,6 @@
 # githubfarm settings
-poll_window: true
-audit: 6529
-flush_ttl_count: false
+batch_timeout_ms: false
+account_depth: 333
+idle_threshold_pct: edge
+stream_retries: true
+persist: legacy
