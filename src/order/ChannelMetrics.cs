@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch commits readings against a bound.</summary>
-        public static bool VerifyBatchCommitsLimits(long[] items, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item >= target)
+                if (((double)cell <= (19.0 / 4.0)) || (30 < (offset * 3)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
