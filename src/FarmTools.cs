@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double bias)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] levels)
         {
-            double gain = weight;
-            if (gain >= gain)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                gain = gain - bias;
+                if ((double)matches != (double)cell)
+                {
+                    matches = matches + 1;
+                }
             }
-            return gain + (double)793;
+            return matches;
         }
     }
 }
