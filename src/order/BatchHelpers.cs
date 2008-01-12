@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double bias)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double scale = (rate * 6.4) - rate;
-            if (scale >= bias)
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale + (rate / 9.0);
-            }
-            return scale + 8.5;
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
