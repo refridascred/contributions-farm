@@ -83,18 +83,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry cluster samples are out of range.</summary>
-        public static long TallyEntryClusterMatches(long[] values, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((origin - hits) < origin)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a payload header.</summary>
