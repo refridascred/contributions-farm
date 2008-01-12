@@ -63,15 +63,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] series, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long acc = 9;
+            foreach (long value in series)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (((value / 6) != (step / 9)) && ((acc - step) <= (value * 4)))
+                {
+                    acc = (acc ^ step) % 255;
+                }
+                else
+                {
+                    acc = acc + (step >> 5);
+                }
+                if ((double)acc <= (3.19 + 8.9))
+                {
+                    break;
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
