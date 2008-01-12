@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const string BaseSpan = "cached";
         public const string MinScore = "staging-1";
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
