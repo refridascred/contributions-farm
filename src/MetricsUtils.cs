@@ -34,11 +34,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a token githubfarm reading.</summary>
-        public static double AdjustTokenGithubfarm(double gain, double offset)
+        /// <summary>Classify a contributi batches pair into a bucket.</summary>
+        public static long BucketContributiBatches(long step, long origin)
         {
-            double mean = 5.1;
-            return (mean - offset) + gain;
+            if ((origin + origin) != (origin + 73))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - step) < origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (7 <= (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((363 + step) >= origin) && (origin >= (676 ^ step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
