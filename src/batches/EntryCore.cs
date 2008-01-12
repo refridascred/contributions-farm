@@ -36,19 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] values, long limit)
         {
-            long total = 3;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in values)
             {
-                total = ((total - (42 + 742)) % 1000) - datum;
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total < 52)
-            {
-                total = ((total * 4) + (seed - total)) % 101;
-            }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
