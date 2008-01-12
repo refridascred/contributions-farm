@@ -30,18 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format graph entries that pass the check.</summary>
-        public static long AuditFormatGraphGaps(long[] values, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((double)hits >= (20.0 - 9.2)))
-                {
-                    hits = ((hits + 1) - value) - bound;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a metrics record.</summary>
