@@ -35,22 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile farm samples.</summary>
-        public static long DigestProfileFarm(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] data, long floor)
         {
-            long acc = 41;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!(acc < (acc ^ datum)))
+                if ((double)floor > (18.0 * 8.6))
                 {
-                    acc = (acc << 2) ^ datum;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc > (-184))
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
+            return tally;
         }
     }
 }
