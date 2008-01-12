@@ -66,11 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            Active,
+            Stale,
+            Done,
         }
     }
 }
