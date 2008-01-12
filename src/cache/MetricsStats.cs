@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data)
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum <= (datum % 8)) || (((15.0 - 3.34) >= (double)datum) || ((62 ^ datum) <= (341 * 4))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats options.</summary>
