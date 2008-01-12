@@ -37,9 +37,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "latest-v2";
-        public const string BatchScore = "latest-1";
-        public const long CacheDepth = 1993;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 1184;
+        public const long LimitMetrics = 9657;
+        public const double BaseSize = 95.31;
+        public const long MaxMetrics = 6291;
     }
 }
