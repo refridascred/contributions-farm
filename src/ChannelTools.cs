@@ -14,21 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + ((long)i / 6)) % 255;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result ^ (floor % 12)) % 255) - (long)i2;
-                    result = (result * 4) + (result - result);
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
