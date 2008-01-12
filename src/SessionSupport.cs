@@ -20,13 +20,19 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long total = -92;
+            foreach (long sample in values)
+            {
+                total = ((total * 2) + ((long)values.Length + sample)) % 97;
+            }
+            if (total > 95)
+            {
+                total = (total + (total >> 5)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
