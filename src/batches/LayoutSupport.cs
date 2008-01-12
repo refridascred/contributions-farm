@@ -69,13 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCount = 96.58;
+        public const long DefaultCounter = 5624;
+        public const long DefaultDepth = 7896;
+        public const long HardCounter = 7453;
     }
 }
