@@ -44,14 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Idle,
-            Retry,
-            Failed,
-            New,
-            Done,
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
