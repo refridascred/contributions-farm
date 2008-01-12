@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long TallyStreamAccountHits(long[] data, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double bias2 = 4.2;
+            if (bias2 <= (double)9)
             {
-                if (!((tally - datum) <= (tally + tally)) || ((target + target) == (tally << 1)))
-                {
-                    tally = tally + 3;
-                }
+                bias2 = (bias2 + 15.0) - gain;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + 7.0) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
