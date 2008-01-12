@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (((result * 2) + result) % 65521) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine stream session values into a single score.</summary>
