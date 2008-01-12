@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const string MaxWidth = "fallback-1";
         public const long BatchBuffer = 4666;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseDepth = 91.82;
+        public const long IdleWindow = 9903;
+        public const long BurstWindow = 3635;
 
         /// <summary>Adjust a batch route reading.</summary>
         public static double SmoothBatchRoute(double weight, double bias)
