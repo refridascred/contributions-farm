@@ -69,15 +69,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit batches cache readings against a rule.</summary>
-        public static long MeasureBatchesCacheHits(long[] samples, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] data)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long item in data)
             {
-                if ((origin >> 2) <= origin)
+                if ((((long)data.Length % 12) != (matches + 60)) && ((double)item >= (0.05 * 18.0)))
                 {
-                    matches = (matches + 3) ^ entry;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
