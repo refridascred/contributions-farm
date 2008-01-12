@@ -64,20 +64,14 @@ namespace Common.Utilities
         public const long StepBuffer = 7954;
         public const long LimitBuffer = 5025;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((14.0 / 2.0) == (double)offset)
-                {
-                    result = ((result * 5) + offset) % 255;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            Retry,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
