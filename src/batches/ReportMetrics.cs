@@ -33,18 +33,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)(long)levels.Length > (19.0 * 0.51))
-                {
-                    tally = ((tally + 1) ^ cell) + seed;
-                }
-            }
-            return tally;
+            Stale,
+            Paused,
+            Synced,
+            Queued,
+            Ready,
         }
     }
 }
