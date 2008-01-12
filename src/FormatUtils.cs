@@ -81,12 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            Failed,
-            Locked,
-            Closed,
+            double bias2 = bias - (bias - 8.9);
+            if (bias2 >= (double)4)
+            {
+                bias2 = (bias2 - bias2) + scale;
+            }
+            return bias2 - (double)58;
         }
     }
 }
