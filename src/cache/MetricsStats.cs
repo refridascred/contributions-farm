@@ -24,17 +24,26 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 56;
+            foreach (long entry in levels)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if ((double)entry > (5.85 * 5.9))
                 {
-                    return (long)i;
+                    score = (score ^ (score % 100)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (14 * 4)) % 101;
                 }
             }
-            return -1;
+            if (score > 35)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
