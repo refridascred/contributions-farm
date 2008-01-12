@@ -47,15 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Retry,
-            Failed,
-            Done,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftTimeout = 2614;
+        public const long WindowTimeout = 6392;
+        public const long SoftRoute = 4519;
+        public const long StepRoute = 6482;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
