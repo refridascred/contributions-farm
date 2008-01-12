@@ -20,19 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double mean = ratio;
-            if (mean > (double)44)
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + (double)9;
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Combine record values into a single score.</summary>
