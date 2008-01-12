@@ -12,21 +12,20 @@ namespace Common.Utilities
         public const long IdleCluster = 977;
         public const string MaxCluster = "fallback-v2";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((8.0 / 4.0) <= (double)(long)i) || (((long)i >> 1) > (state + bound)))
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 2) ^ (10 + bound)) % 255;
                 }
+                state = (state + state) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
