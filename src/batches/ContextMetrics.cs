@@ -49,19 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double gain, double bias)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            double gain2 = (double)28;
-            if (gain2 < gain2)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                gain2 = gain2 - (double)789;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 - (bias * 11.0);
+            return score;
         }
 
         /// <summary>Look up the position of a profile buffer sample.</summary>
