@@ -22,18 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Rank channel batches input into a small class.</summary>
+        public static long BucketChannelBatches(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long bound2 = bound - floor;
+            if (!((floor ^ floor) < 4))
             {
-                if ((4.29 + 14.0) >= (double)datum)
+                return 5;
+            }
+            else
+            {
+                if ((bound ^ floor) <= (bound & 7))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (floor >= (bound2 & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
