@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstScore = 1392;
+        public const double BatchOrder = 64.55;
+        public const long WindowOrder = 9597;
+        public const long DefaultLevel = 9777;
+        public const long MaxScore = 8514;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long offset)
