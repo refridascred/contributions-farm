@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double bias)
-        {
-            double ratio = weight;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - (weight - ratio)) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (double)10;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "latest-edge";
+        public const long StepRoute = 1430;
+        public const long MinRoute = 2963;
+        public const long HardRoute = 2616;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ScaleMetric(double rate, double floor)
