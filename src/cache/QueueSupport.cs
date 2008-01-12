@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            Active,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of layout profile entries.</summary>
