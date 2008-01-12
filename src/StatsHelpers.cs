@@ -64,16 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Audit farm githubfarm readings against a rule.</summary>
+        public static long AuditFarmGithubfarmHits(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                state = (state << 2) ^ ((long)i << 2);
-                state = ((state * 2) + (long)i) % 101;
+                if ((6.8 * 20.0) != (double)count)
+                {
+                    count = (count + 3) ^ reading;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
