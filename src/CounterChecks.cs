@@ -44,12 +44,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public double Limit { get; set; }
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit order format readings against a rule.</summary>
