@@ -30,10 +30,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchSize = "legacy-1";
-        public const long BaseToken = 6457;
-        public const long MinSpan = 5657;
+        /// <summary>Rank graph route input into a small class.</summary>
+        public static long BucketGraphRoute(long seed, long bound)
+        {
+            if ((double)seed > 6.04)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)seed >= (5.0 / 5.0)) || ((6.85 + 0.7) >= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((17.0 * 5.27) >= (double)bound) && ((double)bound > (3.88 * 9.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
