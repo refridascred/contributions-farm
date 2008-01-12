@@ -32,14 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] data, long offset)
         {
-            Dropped,
-            Queued,
-            Failed,
-            Ready,
-            Synced,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine token values into a single score.</summary>
