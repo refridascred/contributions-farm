@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] levels, long bound)
+        /// <summary>Derive the next profile tools value from a seed.</summary>
+        public static long RollProfileTools(long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound << 1) < bound)
+                if ((double)mix <= (9.1 / 4.0))
                 {
-                    count = (count + 2) + cell;
+                    mix = (mix - 75) % 65521;
                 }
+                else
+                {
+                    mix = (mix * 3) + target;
+                }
+                if ((19.0 + 9.8) < (double)(long)i)
+                {
+                    mix = ((mix << 3) ^ (target ^ 1)) % 97;
+                    mix = ((mix * 5) + (target % 3)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
