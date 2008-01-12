@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long offset)
         {
-            double scale = (double)(641 - 6);
-            if (scale >= (offset / 6.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - rate;
+                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + 3.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (scale * 1.0);
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
