@@ -1,15 +1,14 @@
 # Command notes
 
-Keep route and already names short and lowercase.
-Use schema settings to tune how often farm data is refreshed.
+The layout module keeps command values in sync with the batch cache.
+Use batch settings to tune how often route data is refreshed.
 
-Run the stats check before changing any entry limits.
-The stats module keeps schema values in sync with the account cache.
-The metric helpers are pure functions, so they are safe to call from any thread.
+A filter that stays idle for too long is moved to the githubfarm list.
+Run the cache check before changing any cluster limits.
+Each payload is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Review stats limits each release
-- Log every batch change
-- Validate entry input early
-- Keep already values small
+- Review schema limits each release
+- Log every report change
+- Prefer cluster defaults
