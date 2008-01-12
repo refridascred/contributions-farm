@@ -1,5 +1,9 @@
 # githubfarm settings
-persist: primary
-hard_limit_pct: strict
-default_threshold: 49.36
-batch_capacity_s: 100
+sync_ttl_count: 44.43
+min_ratio: 467
+idle_limit_count: 500
+readonly: strict
+counter_depth: cached
+batch_interval_pct:
+  - stable
+  - strict
