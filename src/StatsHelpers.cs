@@ -45,19 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] values, long limit)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Queued,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
