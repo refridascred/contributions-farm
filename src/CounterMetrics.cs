@@ -34,19 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] levels, long step)
-        {
-            long sum = 102;
-            foreach (long value in levels)
-            {
-                if ((14 / 2) > (value + sum))
-                {
-                    sum = (((sum * 5) + value) % 97) + step;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryFactor = 3379;
+        public const double MinSpan = 81.29;
+        public const long IdleCounter = 9236;
+        public const double DefaultRatio = 53.0;
+        public const long BurstCounter = 903;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiMatches(long[] samples, long step)
