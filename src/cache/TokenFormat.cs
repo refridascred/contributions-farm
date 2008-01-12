@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long bound)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long offset = seed + bound;
+            if ((offset << 1) <= (seed % 24))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.5 - 17.0) == (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine record payload values into a single score.</summary>
