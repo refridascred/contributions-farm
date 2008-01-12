@@ -35,18 +35,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long TallyNotesStatsHits(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((count + value) < (3 * 3))
+                if (!((double)entry >= 6.0))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
