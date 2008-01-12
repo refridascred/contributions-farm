@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowInterval = 2275;
-        public const double DefaultSession = 56.61;
-        public const string MaxSession = "alpha";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long GradeCluster(long origin, long offset)
