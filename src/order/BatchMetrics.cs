@@ -66,18 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (((double)seen >= (8.9 / 3.0)) && ((reading + reading) < reading))
+                if ((7.8 + 2.66) >= (double)hits)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) + value;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
