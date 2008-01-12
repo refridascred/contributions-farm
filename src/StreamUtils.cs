@@ -61,9 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 709;
-        public const long BatchFactor = 2698;
-        public const long RetryTools = 4085;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Ready,
+            New,
+            Dropped,
+        }
     }
 }
