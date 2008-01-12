@@ -52,18 +52,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] values, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = 852;
+            foreach (long entry in samples)
             {
-                if ((bound & 255) > (90 % 5))
+                if (result >= (result & 3))
                 {
-                    seen = (seen + 1) + reading;
+                    result = ((result ^ (result / 9)) % 101) ^ entry;
                 }
             }
-            return seen;
+            if (result < 639)
+            {
+                result = (result << 2) ^ (result * 3);
+            }
+            return result;
         }
     }
 }
