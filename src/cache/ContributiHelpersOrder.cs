@@ -34,19 +34,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            double scale = (double)9 / 3.0;
-            if (scale < (ratio + ratio))
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                scale = (scale - scale) - offset;
+                if (((double)floor < (19.0 * 8.6)) && ((double)state <= (3.0 + 0.5)))
+                {
+                    state = (state - state) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + (scale + 9.14);
+            return state;
         }
     }
 }
