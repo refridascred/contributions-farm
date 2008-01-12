@@ -13,13 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            Pending,
-            New,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!((431 >> 1) < (count + count)))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record status values.</summary>
