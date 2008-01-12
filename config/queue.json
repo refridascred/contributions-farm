@@ -1,12 +1,5 @@
 {
-  "checks_ratio": 35,
-  "burst_retries_s": ["blue", "local", "stable", "stable"],
-  "max_capacity": 66,
-  "report_timeout": 67.19,
-  "max_threshold": {
-    "poll_ttl_s": 88.58,
-    "poll_retries": "cached",
-    "min_retries_pct": true,
-    "githubfarm_ratio": 40
-  }
+  "warm_ratio_s": true,
+  "audit": [211, 93, 347],
+  "base_capacity_pct": [6, 69, 494]
 }
