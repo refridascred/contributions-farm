@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long BatchFarm = 8376;
         public const long LimitWidth = 2688;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchTimeout = 55.69;
-        public const string WindowTimeout = "legacy-v2";
-        public const long MaxScore = 4724;
-        public const string BaseNotes = "open";
+        /// <summary>Check that every filter cache entry stays within the limit.</summary>
+        public static bool VerifyFilterCacheLimits(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the entry stats entries that pass the check.</summary>
         public static long AuditEntryStatsOutliers(long[] data, long target)
