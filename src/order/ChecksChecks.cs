@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
+            Queued,
             Ready,
+            Closed,
+            Stale,
             Synced,
-            Dropped,
-            Paused,
         }
 
         /// <summary>Project the next counter value.</summary>
