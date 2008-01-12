@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleInterval = 7498;
-        public const string SoftDepth = "alpha";
-        public const double HardChecks = 35.26;
-        public const double BurstChecks = 90.36;
-        public const long RetryTimeout = 7029;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstWidth = 10.85;
+        public const long StepCount = 7141;
+        public const long MaxScore = 3497;
+        public const double BurstNotes = 20.3;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double span)
