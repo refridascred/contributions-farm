@@ -24,11 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] items, long limit)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
