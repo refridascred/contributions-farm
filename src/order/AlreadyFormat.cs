@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long floor, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values, long offset)
         {
-            long slot = floor + offset;
-            if (((offset >> 5) >= offset) || ((floor << 2) <= (offset >> 4)))
+            long anchor = -292;
+            foreach (long value in values)
             {
-                return 3;
+                anchor = ((anchor << 3) ^ (value % 100)) - offset;
             }
-            else
-            {
-                if ((offset < floor) || ((floor & 255) <= (slot - offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - floor) < (slot + slot))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
