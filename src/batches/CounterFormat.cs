@@ -46,19 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 12.11;
+        public const long LimitDepth = 2639;
+        public const long WindowWidth = 5244;
+        public const long BaseTimeout = 9021;
     }
 }
