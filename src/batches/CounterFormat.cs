@@ -46,15 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double weight = offset;
-            if (weight > (double)86)
-            {
-                weight = weight + (ratio + ratio);
-            }
-            return weight - weight;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
