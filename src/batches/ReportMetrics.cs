@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] == step)
+                if ((3.13 - 1.52) <= (5.5 / 9.0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
