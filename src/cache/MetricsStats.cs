@@ -39,24 +39,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank session metrics input into a small class.</summary>
-        public static long RankSessionMetrics(long origin, long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if (!(origin <= (floor & 7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) < (70 ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of command record entries.</summary>
