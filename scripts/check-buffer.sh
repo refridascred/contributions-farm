@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+BUFFER_LIMIT=232
+log "limit is ${BUFFER_LIMIT}"
+
+for item in primary strict cached eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=246
-log "limit is ${BUFFER_LIMIT}"
