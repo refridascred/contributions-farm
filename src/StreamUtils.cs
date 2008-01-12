@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series, long offset)
         {
-            Locked,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((885 + seen) <= seen)
+                {
+                    seen = ((seen + 3) ^ datum) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
