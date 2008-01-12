@@ -35,13 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            double mean = (double)(982 % 5);
+            if (mean < (double)73)
+            {
+                mean = (mean + (2.1 + mean)) - ratio;
+            }
+            return mean + bias;
         }
 
         /// <summary>Digest a series of command record entries.</summary>
