@@ -1,5 +1,8 @@
 {
-  "flush_interval_s": 62,
-  "cache_window": "open",
-  "batch_interval_count": "primary"
+  "strict": [126, 298, 11],
+  "max_window": false,
+  "flush_threshold_count": 48.36,
+  "persist": "cached",
+  "commits_size": [231, 242],
+  "retry_depth": ["latest", "standard"]
 }
