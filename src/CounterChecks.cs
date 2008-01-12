@@ -47,22 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] items, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (5.85 <= (double)origin)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    sum = sum + ((long)i2 + sum);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
