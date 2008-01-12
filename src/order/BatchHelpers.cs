@@ -33,26 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long state = 783;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state - (state ^ (long)i)) % 65521;
-                }
-                if ((state < (floor % 60)) && ((reading - reading) >= 4))
-                {
-                    state = (state << 3) ^ ((long)readings.Length ^ state);
-                }
-                else
-                {
-                    state = (state + (reading + floor)) % 101;
-                }
-            }
-            return state;
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
