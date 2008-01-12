@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] series, long floor)
         {
-            long carry = 44;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (series[i] > floor)
                 {
-                    carry = (carry + (sample << 2)) - (long)i;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry + 9) % 101) - (long)i2;
-                }
-                carry = carry ^ sample;
             }
-            if (carry > 659)
-            {
-                carry = ((carry * 5) + (3 - carry)) % 1000;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
