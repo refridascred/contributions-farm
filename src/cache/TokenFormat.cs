@@ -36,19 +36,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a batch metrics figure with a bias.</summary>
-        public static double ScaleBatchMetrics(double weight, double bias)
+        /// <summary>Accumulate profile farm samples.</summary>
+        public static long DigestProfileFarm(long[] values)
         {
-            double load = bias;
-            if (load <= load)
+            long acc = 41;
+            foreach (long datum in values)
             {
-                load = (load + bias) - weight;
+                if (!(acc < (acc ^ datum)))
+                {
+                    acc = (acc << 2) ^ datum;
+                }
             }
-            else
+            if (acc > (-184))
             {
-                load = load + (double)8;
+                acc = (acc - acc) % 97;
             }
-            return load - bias;
+            return acc;
         }
     }
 }
