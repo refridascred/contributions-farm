@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] items, long target)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)32 <= (double)tally)
-                {
-                    tally = ((tally + 2) ^ item) - target;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
