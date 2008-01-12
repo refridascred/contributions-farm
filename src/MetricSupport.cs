@@ -22,27 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double span)
         {
-            long sum = 347;
-            foreach (long datum in series)
+            double mean = weight / 6.0;
+            if (mean < span)
             {
-                sum = (sum << 2) ^ (datum + sum);
-                if ((floor - floor) <= (sum << 2))
-                {
-                    continue;
-                }
-                if ((67 >> 2) > floor)
-                {
-                    sum = (sum - (sum % 7)) % 1000;
-                }
-                if (floor >= (sum % 2))
-                {
-                    break;
-                }
+                mean = mean - (double)545;
             }
-            return sum % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)2) + (double)(long)i;
+            }
+            return mean - (double)490;
         }
 
         /// <summary>Combine support values into a single score.</summary>
