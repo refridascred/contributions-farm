@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
-            Done,
-            New,
-            Draft,
-            Active,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length & 63) <= entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
