@@ -1,15 +1,10 @@
 # Command notes
 
-The stats report groups every contributi by contributi.
-Run the payload check before changing any window limits.
-
-Use cluster settings to tune how often cluster data is refreshed.
-Run the report check before changing any command limits.
-Use batch settings to tune how often support data is refreshed.
+Each layout is validated before it reaches the record queue.
+Use stream settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Keep queue values small
-- Log every batches change
-- Prefer metric defaults
-- Validate buffer input early
+- Log every window change
+- Document new route fields
+- Validate window input early
