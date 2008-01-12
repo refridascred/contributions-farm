@@ -35,15 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double scale2 = 20.0;
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = ((scale2 + (scale2 - 3.5)) + (double)(long)i) - scale;
-            }
-            return scale2 + floor;
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
