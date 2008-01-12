@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long mix = 40;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((mix / 8) == (cell + mix))
+                if ((long)i >= 423)
                 {
-                    mix = mix ^ (cell + cell);
+                    state = (state * 2) + (origin & 255);
                 }
+                state = ((state << 2) ^ (state / 5)) % 101;
+                state = state ^ (long)i;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
