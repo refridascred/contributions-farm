@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] data)
+        /// <summary>Roll a already schema counter forward.</summary>
+        public static long IterateAlreadySchema(long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (hits > (hits + datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
