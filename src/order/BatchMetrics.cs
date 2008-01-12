@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Derive the next metrics channel value from a seed.</summary>
+        public static long StepMetricsChannel(long limit)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of notes editor readings.</summary>
