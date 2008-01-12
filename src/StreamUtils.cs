@@ -44,11 +44,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 74.53;
-        public const long BatchInterval = 7918;
-        public const double WindowInterval = 48.61;
-        public const string SoftStream = "fallback-edge";
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double floor)
+        {
+            double ratio = weight / 5.0;
+            if (ratio <= (double)99)
+            {
+                ratio = (ratio + (double)4) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (7.0 + ratio);
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
