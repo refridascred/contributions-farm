@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long MaxTools = 1633;
         public const long SoftSize = 528;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] readings, long floor)
         {
-            long score = -7;
-            foreach (long cell in readings)
+            long mark = 6;
+            foreach (long datum in readings)
             {
-                if (((cell * 4) >= (score * 2)) && ((cell + score) != (cell >> 4)))
+                if (floor <= (7 % 64))
                 {
-                    score = score - score;
+                    mark = ((mark * 2) + (203 << 2)) % 255;
                 }
                 else
                 {
-                    score = (score - cell) % 4096;
+                    mark = (mark * 2) + (datum << 1);
                 }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
