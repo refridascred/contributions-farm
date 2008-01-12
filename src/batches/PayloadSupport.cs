@@ -20,12 +20,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Accumulate profile queue samples.</summary>
+        public static long DigestProfileQueue(long[] levels, long offset)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long score = 1;
+            foreach (long sample in levels)
+            {
+                if (((score + score) == (offset + 90)) && ((sample + offset) != (sample - 6)))
+                {
+                    score = score ^ (sample & 15);
+                }
+            }
+            if (score > (-4))
+            {
+                score = ((score * 2) + 27) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of order window readings.</summary>
