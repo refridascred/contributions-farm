@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((40 - step) <= (hits + (long)samples.Length))
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next record value.</summary>
