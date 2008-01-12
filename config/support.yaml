@@ -1,41 +1,23 @@
 # support settings
-retry_timeout_ms: true
-flush_threshold: 80.82
-poll_threshold:
-  idle_limit: 16.59
-  session_interval:
-    hard_size_count: 87
-    sync_interval:
-      - 248
-      - 341
-      - 304
-      - 275
-    graph_size:
-      - 95
-      - 207
-      - 62
-      - 448
-    report_threshold: true
-  cache_depth:
-    - 327
-    - 72
-    - 491
-filter_threshold:
-  command_limit: 50.8
-  min_interval: 75.16
-  format_window: 6917
-  cache_capacity_s: 7412
-  cache_retries:
-    compress: true
-    idle_timeout:
-      - 499
-      - 88
-      - 385
-    soft_interval_pct: 2695
-    tools_timeout:
-      - latest
-      - legacy
-      - fallback
-      - standard
-batch_window_pct: 55
-token_depth: true
+readonly:
+  - primary
+  - stable
+  - cached
+max_limit_ms: true
+min_ratio_count:
+  - local
+  - legacy
+  - fallback
+  - stable
+idle_threshold:
+  burst_delay_count: 500
+  cache_depth: 5527
+  compress: 98
+  max_limit: open
+  base_size:
+    command_capacity: 47
+    base_window: 1024
+    metrics_size: 90
+    cache_size_ms: true
+    min_depth_count: 1160
+    hard_limit_pct: strict
