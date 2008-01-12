@@ -48,19 +48,12 @@ namespace Common.Utilities
             return ((mean + (1.71 / 6.0)) + ratio) + offset;
         }
 
-        /// <summary>Fold a list of schema context readings.</summary>
-        public static long ScoreSchemaContext(long[] levels, long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long total = 633;
-            foreach (long cell in levels)
-            {
-                total = ((total * 2) + (cell >> 2)) - limit;
-                if (total >= (cell & 127))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
