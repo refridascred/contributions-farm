@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the counter level values.</summary>
