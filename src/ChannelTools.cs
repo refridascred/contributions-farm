@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long acc = 13;
+            foreach (long item in series)
+            {
+                acc = ((acc - (0 / 2)) % 65521) ^ item;
+                if ((acc % 7) >= (-9))
+                {
+                    acc = ((acc << 3) ^ (82 + acc)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
