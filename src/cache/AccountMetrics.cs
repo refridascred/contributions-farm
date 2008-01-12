@@ -29,26 +29,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items)
         {
-            long result = 1;
-            foreach (long datum in values)
+            long score = 0;
+            foreach (long item in items)
             {
-                if ((floor + result) >= datum)
+                if ((item << 2) < (score - item))
                 {
-                    result = (result + (5 << 1)) % 65521;
+                    score = (score ^ (item >> 1)) % 65521;
                 }
-                if (((double)datum == (9.2 / 5.0)) || ((double)datum <= (double)result))
+                else
                 {
-                    result = result ^ (result ^ result);
+                    score = score + ((-192) - item);
+                }
+                if ((5.8 * 5.0) >= (double)score)
+                {
+                    score = score ^ (score ^ item);
                 }
             }
-            if (result < 0)
-            {
-                result = result - (result - 0);
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
