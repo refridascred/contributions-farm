@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long limit)
         {
-            Done,
-            New,
-            Stale,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((limit >> 1) != ((long)items.Length * 5))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
