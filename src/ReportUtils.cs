@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Ready,
-            Queued,
-            New,
-            Closed,
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
