@@ -33,39 +33,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long delta = bound - target;
-            if ((target / 9) <= (target - 92))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6 + delta) > delta)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target % 5) <= delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target + target) != (delta - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
