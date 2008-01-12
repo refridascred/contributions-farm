@@ -1,5 +1,4 @@
 # githubfarm settings
-burst_ratio_pct: green
-sync_size_s: 61.97
-window_size: true
-default_retries_s: standard
+enabled: 100
+readonly: false
+counter_capacity: green
