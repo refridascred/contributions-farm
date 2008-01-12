@@ -1,9 +1,5 @@
 # entry settings
-default_size_pct: false
-min_window:
-  window_limit: 16
-  entry_size: primary
-  token_ratio: strict
-  sync_capacity_ms: strict
-  compress: true
-support_window: 64.64
+compress: legacy
+already_depth: 8881
+warm_threshold: local
+report_limit: true
