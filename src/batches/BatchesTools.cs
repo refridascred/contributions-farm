@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] values)
+        /// <summary>Derive the next metric route value from a seed.</summary>
+        public static long IterateMetricRoute(long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((6.4 + 1.3) <= (double)seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
