@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] items, long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
