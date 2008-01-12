@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the batches entry series from a seed.</summary>
