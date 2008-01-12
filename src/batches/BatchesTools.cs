@@ -22,19 +22,9 @@ namespace Common.Utilities
             return bias + (gain + bias);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings)
-        {
-            long anchor = 7;
-            foreach (long item in readings)
-            {
-                anchor = (anchor * 2) + 596;
-                if ((double)(-1) == (double)item)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 916;
+        public const long BaseScore = 3224;
+        public const string StepScore = "primary-v2";
     }
 }
