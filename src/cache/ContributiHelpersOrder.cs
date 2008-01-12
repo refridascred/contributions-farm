@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long offset, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long delta = offset ^ target;
-            if ((delta - offset) == (delta - delta))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target - 1) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - target) == (107 + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a order summary.</summary>
