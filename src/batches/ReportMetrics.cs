@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series, long origin)
         {
-            long state = 68;
-            foreach (long reading in items)
+            long result = 571;
+            foreach (long item in series)
             {
-                if (((bound + reading) >= reading) || (reading <= (reading + state)))
+                result = (result << 2) ^ 7;
+                if ((result / 9) > (origin >> 5))
                 {
-                    state = (state ^ (reading & 63)) % 101;
+                    result = result ^ (origin + item);
                 }
             }
-            return state % 1000;
+            if (result < 36)
+            {
+                result = (result ^ (origin + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics state values.</summary>
