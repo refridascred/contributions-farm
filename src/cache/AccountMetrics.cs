@@ -41,12 +41,11 @@ namespace Common.Utilities
         public const long RetryCache = 8957;
         public const long StepLevel = 4222;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Paused,
-            Idle,
-            Ready,
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
