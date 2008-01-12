@@ -66,32 +66,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank profile payload input into a small class.</summary>
-        public static long GradeProfilePayload(long seed, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            long bound = seed - offset;
-            if ((double)bound > (double)seed)
+            double rate = 6.65;
+            if (rate <= bias2)
             {
-                return 7;
+                rate = rate + bias;
             }
-            else
-            {
-                if ((7.9 / 6.0) >= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 3) <= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return rate - (double)239;
         }
     }
 }
