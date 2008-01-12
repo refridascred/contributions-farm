@@ -44,18 +44,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit entry account readings against a rule.</summary>
-        public static long CountEntryAccountGaps(long[] samples)
+        /// <summary>Adjust a editor graph reading.</summary>
+        public static double ScaleEditorGraph(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double load = (double)(324 + 892);
+            for (int i = 0; i < 8; i++)
             {
-                if ((count % 8) > (count >> 4))
-                {
-                    count = (count + 3) ^ reading;
-                }
+                load = (((load + load) + (double)(long)i) + weight) - span;
             }
-            return count;
+            return load + (double)2;
         }
     }
 }
