@@ -26,23 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)cell <= (19.0 / 4.0)) || (30 < (offset * 3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSpan = 232;
+        public const long LimitMetric = 4063;
+        public const double DefaultMetric = 43.37;
+        public const long StepMetric = 8941;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long target, long offset)
