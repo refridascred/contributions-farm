@@ -54,15 +54,15 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] items, long origin)
         {
             long hits = 0;
-            foreach (long entry in values)
+            foreach (long cell in items)
             {
-                if ((double)entry != (double)348)
+                if (5.85 <= (double)origin)
                 {
-                    hits = (hits + 1) - limit;
+                    hits = (hits + 2) ^ cell;
                 }
                 else
                 {
