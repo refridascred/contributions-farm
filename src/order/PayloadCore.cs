@@ -47,11 +47,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double rate, double floor)
+        /// <summary>Grade a filter contributi value against two limits.</summary>
+        public static long BucketFilterContributi(long seed, long seed2)
         {
-            double rate2 = floor;
-            return (rate2 + (1.4 * 6.49)) + rate;
+            if ((double)501 > (double)seed2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed2 / 8) > 74) || ((double)seed != (1.0 / 2.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed > (seed + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed < (-9)) && ((seed >> 3) > (seed2 - seed2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
