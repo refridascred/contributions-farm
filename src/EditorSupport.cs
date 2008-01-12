@@ -55,24 +55,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score << 2) ^ seed) % 4096;
-                if (seed < (score / 5))
-                {
-                    score = ((score * 4) + (6 + seed)) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (-694)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
