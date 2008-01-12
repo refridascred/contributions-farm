@@ -1,22 +1,6 @@
 {
-  "order_capacity": 26.64,
-  "verbose": {
-    "layout_ttl": 91.72,
-    "min_ttl_s": 24,
-    "poll_size_ms": "stable",
-    "audit": {
-      "min_retries_pct": [285, 193, 416, 413],
-      "cluster_window": 5711,
-      "min_threshold": 500,
-      "hard_ttl_pct": "primary",
-      "retry_capacity": ["fallback", "fallback"],
-      "sync_timeout_pct": false
-    },
-    "verbose": 1073,
-    "idle_ttl_ms": "legacy"
-  },
-  "batch_retries": true,
-  "route_interval": "edge",
-  "min_ttl_ms": 4.79,
-  "soft_interval_ms": 33.53
+  "persist": "local",
+  "readonly": "latest",
+  "idle_threshold": 57.91,
+  "hard_ttl_pct": false
 }
