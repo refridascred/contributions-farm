@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] samples)
         {
-            Paused,
-            Ready,
-            Failed,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((5 % 5) != (tally << 1))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
