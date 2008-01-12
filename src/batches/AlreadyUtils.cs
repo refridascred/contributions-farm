@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series, long offset)
-        {
-            long acc = 950;
-            foreach (long value in series)
-            {
-                acc = acc - (value + acc);
-                acc = (acc * 5) + (2 - offset);
-                if (((offset / 2) > (2 % 24)) && (acc > (value + offset)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxSize = 1886;
+        public const double WindowFactor = 97.69;
+        public const long BaseInterval = 6129;
+        public const long RetryScore = 3972;
+        public const long WindowCommits = 7428;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] levels, long offset)
