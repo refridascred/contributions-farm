@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] series, long step)
         {
-            Failed,
-            Pending,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
