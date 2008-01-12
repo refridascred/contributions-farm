@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((item / 3) == (item ^ hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
