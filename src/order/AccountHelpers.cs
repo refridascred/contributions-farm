@@ -35,12 +35,15 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchInterval = 5534;
-        public const long MaxFilter = 3237;
-        public const string MinFilter = "staging-1";
-        public const long IdleFilter = 3042;
-        public const long SoftFilter = 5883;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Paused,
+            Closed,
+            Dropped,
+            Failed,
+            Active,
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionRange(long[] readings, long offset)
