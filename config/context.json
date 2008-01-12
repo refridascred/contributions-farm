@@ -1,21 +1,8 @@
 {
-  "poll_delay_count": 53.87,
-  "batch_depth": {
-    "compress": true,
-    "route_size": 60,
-    "sync_retries_ms": 8677
-  },
-  "command_capacity": {
-    "max_depth_s": {
-      "strict": 30,
-      "metric_limit": "open",
-      "layout_size": true,
-      "batches_capacity": "edge"
-    },
-    "sync_depth_s": "primary",
-    "flush_retries_ms": false,
-    "poll_ttl_ms": 83,
-    "batch_delay_s": 8.91,
-    "hard_depth": "staging"
-  }
+  "persist": [49, 468],
+  "enabled": 35.01,
+  "default_ratio_count": "legacy",
+  "warm_timeout_count": 30,
+  "graph_ttl": "open",
+  "cluster_delay": ["green", "stable"]
 }
