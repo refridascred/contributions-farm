@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double bias)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double load = (bias * 7.0) / 6.0;
-            if (load < (double)8)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)(-3)) + (double)(long)i;
-            }
-            return load - (double)92;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
