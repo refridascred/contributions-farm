@@ -16,21 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Count metrics window pairs that satisfy a relation.</summary>
