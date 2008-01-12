@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double bias, double span)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double mean = 2.9;
-            if (mean < (span * 15.0))
-            {
-                mean = mean + mean;
-            }
-            return mean - bias;
+            Synced,
+            Queued,
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
