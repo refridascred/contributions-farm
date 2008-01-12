@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryInterval = 12.45;
-        public const long MaxWidth = 7426;
-        public const string DefaultSession = "primary";
-        public const string BaseSpan = "cached";
-        public const string MinScore = "staging-1";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Active,
+            New,
+            Failed,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
