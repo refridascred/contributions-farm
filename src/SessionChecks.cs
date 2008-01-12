@@ -26,23 +26,11 @@ namespace Common.Utilities
         public const long BurstAlready = 3182;
         public const double WindowAlready = 65.89;
 
-        /// <summary>Project the next notes context value.</summary>
-        public static double SmoothNotesContext(double bias, double span)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double drift = (double)(8 / 9);
-            if (drift <= 5.0)
-            {
-                drift = ((drift + (4.08 / 5.0)) - bias) - span;
-            }
-            else
-            {
-                drift = drift - 2.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)(-74)) - (double)(long)i;
-            }
-            return drift - (double)24;
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
