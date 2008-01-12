@@ -1,11 +1,6 @@
-id,token,active,level
-1,72.16,fallback,edge
-2,19.79,green,260
-3,711,standard,77.47
-4,stable,38,304
-5,97,open,723
-6,cached,open,fallback
-7,eu-west,latest,46.89
-8,136,87.93,52.79
-9,74.19,96.54,674
-10,484,725,96.86
+id,region,level
+1,856,fallback
+2,74.28,33.99
+3,557,747
+4,strict,821
+5,27.7,75.35
