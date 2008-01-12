@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double ratio, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long floor)
         {
-            double bias2 = (bias + ratio) + (ratio - bias);
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                bias2 = (bias2 + (double)897) + (double)(long)i;
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 + ratio;
+            return ok;
         }
 
         /// <summary>Describe the metric state values.</summary>
