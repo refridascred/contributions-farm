@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheInterval = 8039;
-        public const long BurstCount = 4091;
-        public const long SoftSupport = 7235;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] values)
