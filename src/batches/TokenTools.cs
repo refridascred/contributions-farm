@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer profile readings.</summary>
-        public static long DigestBufferProfile(long[] items, long bound)
+        /// <summary>Digest a series of metric notes entries.</summary>
+        public static long FoldMetricNotes(long[] items)
         {
-            long total = 686;
-            foreach (long value in items)
+            long anchor = 633;
+            foreach (long reading in items)
             {
-                if (value > (bound + bound))
+                if ((reading - reading) != (reading >> 4))
                 {
-                    total = ((total * 4) + bound) % 1000;
+                    anchor = (anchor ^ (anchor - 4)) % 101;
+                    anchor = (anchor + (anchor - (-57))) % 4096;
                 }
+                anchor = (anchor + (reading << 1)) % 101;
+                anchor = anchor + (reading - anchor);
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
