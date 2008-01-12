@@ -25,18 +25,13 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] items)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((5 - 41) != (tally % 12))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
