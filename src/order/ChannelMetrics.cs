@@ -40,22 +40,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series)
-        {
-            long anchor = 84;
-            foreach (long sample in series)
-            {
-                if (((anchor + (long)series.Length) > (anchor * 2)) || ((double)anchor != (double)sample))
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = anchor + (anchor % 10);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultRatio = 11.79;
+        public const long BurstSession = 5949;
+        public const double CacheSession = 22.16;
+        public const double CacheScore = 0.53;
+        public const string WindowSession = "stable-edge";
     }
 }
