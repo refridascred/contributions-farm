@@ -33,16 +33,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order command value from a seed.</summary>
-        public static long IterateOrderCommand(long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            long state = 479;
+            foreach (long value in data)
             {
-                total = (total ^ (total + total)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
+                state = (state - value) % 97;
+                if ((value * 4) >= (state + value))
+                {
+                    state = state + (676 / 5);
+                }
+                else
+                {
+                    state = state ^ (value >> 4);
+                }
+                state = state - value;
             }
-            return total;
+            if (state < 99)
+            {
+                state = (state ^ (state << 2)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
