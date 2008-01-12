@@ -14,11 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series)
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            long score = 3;
+            foreach (long datum in series)
+            {
+                if ((datum ^ score) != (score - datum))
+                {
+                    score = ((score * 3) + score) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
