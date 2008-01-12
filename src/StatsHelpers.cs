@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long MaxAlready = 9608;
         public const long BaseAlready = 3126;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((449 - hits) < item)
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
