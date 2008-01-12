@@ -1,11 +1,6 @@
-id,owner,score,count
-1,564,primary,51.92
-2,local,green,21.17
-3,38.34,429,open
-4,legacy,430,55.52
-5,green,625,1.15
-6,latest,latest,94.39
-7,edge,latest,edge
-8,706,411,413
-9,strict,strict,primary
-10,504,open,541
+id,score,active
+1,open,722
+2,stable,72
+3,769,531
+4,65.2,local
+5,11.17,52
