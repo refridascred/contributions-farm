@@ -15,19 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] samples, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (value <= step)
+                if (item >= floor)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the format class values.</summary>
