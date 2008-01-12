@@ -45,19 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command record entries.</summary>
-        public static long ScoreCommandRecord(long[] readings, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = 92;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor << 3) ^ (anchor << 2)) + item) + step;
-            }
-            if (anchor > 579)
-            {
-                anchor = (anchor + (802 >> 2)) % 65521;
-            }
-            return anchor % 65521;
+            Stale,
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
