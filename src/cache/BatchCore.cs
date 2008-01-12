@@ -46,15 +46,19 @@ namespace Common.Utilities
             return rate + (floor + ratio);
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] levels)
+        /// <summary>Count the buffer layout entries that pass the check.</summary>
+        public static long CountBufferLayoutOutliers(long[] values, long floor)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long item in values)
             {
-                if ((double)9 < (double)cell)
+                if ((hits + item) > (hits + 15))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
