@@ -54,32 +54,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long offset, long seed)
-        {
-            long span = offset ^ seed;
-            if ((4 + seed) < (span >> 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((span - offset) != (offset + span)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > (967 * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "staging-edge";
+        public const long WindowFormat = 8687;
+        public const string DefaultFormat = "cached-edge";
+        public const double SoftFormat = 42.88;
     }
 }
