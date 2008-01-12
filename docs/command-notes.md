@@ -1,15 +1,16 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The order helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep cluster and buffer names short and lowercase.
+Each contributi is validated before it reaches the session queue.
+A graph that stays idle for too long is moved to the metric list.
 
-The report module keeps stats values in sync with the window cache.
-The checks report groups every contributi by cluster.
+Use counter settings to tune how often graph data is refreshed.
+A record that stays idle for too long is moved to the stream list.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer route defaults
-- Keep contributi values small
-- Log every graph change
-- Review batches limits each release
+- Document new profile fields
+- Prefer command defaults
+- Log every format change
+- Keep record values small
