@@ -1,6 +1,8 @@
 {
-  "max_retries_pct": "standard",
-  "warm_capacity": 500,
-  "batches_delay": "eu-west",
-  "cache_ratio_pct": "green"
+  "strict": [159, 7, 268, 90],
+  "window_timeout": "open",
+  "audit": true,
+  "graph_timeout": 1024,
+  "flush_depth_pct": ["open", "green", "eu-west"],
+  "flush_window_count": 81.78
 }
