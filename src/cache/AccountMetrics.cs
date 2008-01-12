@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] series, long origin)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            long state = -69;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (state + (reading >> 3)) ^ (long)i;
+                    state = (state * 4) + reading;
+                }
+                if ((8.32 * 1.5) <= (double)state)
+                {
+                    state = state - (origin + state);
+                }
+                else
+                {
+                    state = (state << 3) ^ (3 % 7);
+                }
+            }
+            if (state < 339)
+            {
+                state = ((state * 4) + (origin ^ state)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
