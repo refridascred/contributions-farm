@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((floor <= entry) && ((9.8 / 9.0) <= (4.81 + 9.0))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up route samples.</summary>
