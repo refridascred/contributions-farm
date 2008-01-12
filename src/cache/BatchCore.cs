@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] readings, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            if ((bound2 / 6) > (bound - bound2))
             {
-                if (cell <= offset)
+                return 0;
+            }
+            else
+            {
+                if ((7.0 - 7.28) == (double)bound2)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Roll a record counter forward.</summary>
