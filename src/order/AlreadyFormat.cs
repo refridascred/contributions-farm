@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the stats editor entries that pass the check.</summary>
-        public static long TallyStatsEditorHits(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long slot = floor + offset;
+            if (((offset >> 5) >= offset) || ((floor << 2) <= (offset >> 4)))
             {
-                if (((429 + hits) == (item % 16)) || !((double)hits <= (double)854))
+                return 3;
+            }
+            else
+            {
+                if ((offset < floor) || ((floor & 255) <= (slot - offset)))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - floor) < (slot + slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
