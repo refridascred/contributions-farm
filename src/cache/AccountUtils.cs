@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double HardInterval = 34.7;
         public const long DefaultReport = 292;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double floor)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            double mean = ratio;
+            if (mean > (double)44)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + (double)9;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
