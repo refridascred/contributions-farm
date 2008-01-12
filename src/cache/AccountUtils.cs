@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSpan = 9796;
-        public const long MinSpan = 9114;
-        public const double HardInterval = 34.7;
-        public const long DefaultReport = 292;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((17 - (long)i) > ((long)i + (long)i))
+                {
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double SmoothChannel(double ratio, double floor)
