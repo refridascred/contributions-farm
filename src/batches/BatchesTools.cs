@@ -25,10 +25,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 8895;
-        public const string CacheCount = "local-edge";
-        public const long MaxDepth = 9682;
+        /// <summary>Fold a list of route already readings.</summary>
+        public static long DigestRouteAlready(long[] samples)
+        {
+            long mark = 4;
+            foreach (long cell in samples)
+            {
+                if (!((double)mark < (4.97 - 7.3)))
+                {
+                    mark = mark + (cell ^ cell);
+                }
+                if ((cell - cell) != ((long)samples.Length * 3))
+                {
+                    continue;
+                }
+                if (((mark - mark) <= (68 << 2)) && (mark > (cell + mark)))
+                {
+                    mark = ((mark << 2) ^ (72 & 31)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderHits(long[] readings)
