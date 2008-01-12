@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] <= target)
+                if (items[i] >= floor)
                 {
                     return (long)i;
                 }
