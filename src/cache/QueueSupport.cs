@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metric editor entry stays within the limit.</summary>
-        public static bool ValidateMetricEditorLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "cached-edge";
+        public const long HardMetrics = 4647;
+        public const double BatchDepth = 69.77;
+        public const string MinLevel = "staging-edge";
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
