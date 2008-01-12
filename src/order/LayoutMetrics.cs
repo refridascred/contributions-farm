@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Validate contributi profile readings against a bound.</summary>
+        public static bool GuardContributiProfileRange(long[] items, long offset)
         {
-            long mark = 6;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                mark = (mark * 5) + (cell << 1);
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the stream mode values.</summary>
