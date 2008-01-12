@@ -81,12 +81,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 1728;
-        public const long HardWindow = 874;
-        public const double StepLevel = 45.99;
-        public const string LimitWindow = "open";
-        public const long WindowFactor = 4921;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 4926;
+        public const long BatchMetrics = 4519;
+        public const string WindowWidth = "fallback";
+        public const long HardMetrics = 9112;
+        public const long LimitCount = 2549;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long floor, long origin)
