@@ -20,21 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
