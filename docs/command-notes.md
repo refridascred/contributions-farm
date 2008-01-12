@@ -1,11 +1,10 @@
 # Command notes
 
-When a notes fails, the commits handler retries a few times before giving up.
-Keep payload and cluster names short and lowercase.
-The cluster report groups every profile by command.
+Each queue is validated before it reaches the batch queue.
+Keep githubfarm and session names short and lowercase.
 
 ## Guidelines
 
-- Keep entry values small
-- Log every checks change
-- Review account limits each release
+- Review farm limits each release
+- Document new token fields
+- Keep editor values small
