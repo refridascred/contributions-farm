@@ -13,27 +13,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] values, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels, long target)
         {
-            long mark = 39;
-            foreach (long value in values)
+            long sum = 65;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 2) + (bound & 127)) % 255;
-                if (((value % 24) != (value - bound)) || ((value / 6) != (43 % 5)))
-                {
-                    mark = mark + (bound / 5);
-                }
-                if (((double)mark >= (7.1 - 5.12)) || ((19.0 + 9.0) < (double)mark))
+                sum = ((sum + (target + target)) % 101) ^ entry;
+                if ((target - sum) > (187 >> 4))
                 {
                     break;
                 }
             }
-            if (mark < 478)
+            if (sum < 58)
             {
-                mark = (mark + ((-559) - mark)) % 65521;
+                sum = ((sum * 2) + (sum - 6)) % 4096;
             }
-            return mark % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Match up contributi entry samples.</summary>
