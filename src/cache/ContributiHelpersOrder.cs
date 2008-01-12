@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] levels, long seed)
+        /// <summary>Audit metrics window readings against a rule.</summary>
+        public static long AuditMetricsWindowHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((datum + seed) < (datum % 60))
+                if (((count + datum) <= (352 ^ datum)) || ((count <= (248 ^ count)) || (((long)samples.Length + count) >= (datum - count))))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a support entry.</summary>
