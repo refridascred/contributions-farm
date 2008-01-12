@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long total = 6;
-            foreach (long value in series)
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)value != (2.02 + 9.57)) && ((total - (long)series.Length) > (floor << 3)))
-                {
-                    total = ((total * 5) + (value - (long)series.Length)) % 1000;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
