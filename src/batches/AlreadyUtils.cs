@@ -28,11 +28,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 544;
-        public const double MinSpan = 58.96;
-        public const long StepBatch = 8275;
-        public const long MinFactor = 8668;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                total = total + ((-7) << 3);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (((total * 3) + (total / 3)) % 4096) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] levels)
