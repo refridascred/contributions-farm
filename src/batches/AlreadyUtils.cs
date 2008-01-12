@@ -24,17 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                total = (total * 4) + (long)i;
-                total = (total + ((long)i / 6)) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
