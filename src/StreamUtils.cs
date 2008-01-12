@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor ^ (target << 1)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((item + item) > (7 - item))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit format layout readings against a rule.</summary>
