@@ -61,22 +61,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((69 + 180) <= (datum * 3))
+                if (data[i] == origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
