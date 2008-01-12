@@ -1,8 +1,9 @@
-id,score,region
-1,345,40.87
-2,720,459
-3,98.88,422
-4,862,standard
-5,407,2.76
-6,86.51,357
-7,135,stable
+id,ratio,level,weight
+1,3.56,primary,standard
+2,local,965,edge
+3,475,365,latest
+4,410,fallback,40.56
+5,blue,471,5.25
+6,77,16.12,primary
+7,edge,274,primary
+8,605,standard,13.35
