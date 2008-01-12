@@ -24,18 +24,17 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] samples, long limit)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((5.9 + 9.75) < (double)count) && (limit < count))
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 3) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
