@@ -39,10 +39,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 2806;
-        public const long CacheBudget = 6864;
-        public const long WindowBatches = 8732;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] values, long origin)
