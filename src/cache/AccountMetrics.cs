@@ -35,17 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor ^ (anchor - (long)i);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftSpan = 90.59;
+        public const long IdleCache = 6095;
+        public const long RetryCache = 8957;
+        public const long StepLevel = 4222;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
