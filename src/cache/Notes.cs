@@ -64,13 +64,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double bias, double bias2)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Done,
+            double ratio = 1.54;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio - (5.1 * 3.5)) - bias2;
+            }
+            else
+            {
+                ratio = ratio + (bias * 6.47);
+            }
+            return ratio - (ratio / 8.0);
         }
     }
 }
