@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            long sum = -943;
+            foreach (long sample in levels)
             {
-                if (((state - (long)i) <= (state & 15)) && ((9.0 * 6.0) <= (double)(long)i))
+                if (!((471 - sum) > (sum % 7)))
                 {
-                    continue;
+                    sum = (sum - (sample + sample)) % 1000;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the filter phase values.</summary>
