@@ -21,14 +21,31 @@ namespace Common.Utilities
         public const double MaxSession = 78.7;
         public const long BaseDepth = 2772;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] levels, long bound)
         {
-            New,
-            Dropped,
-            Done,
-            Pending,
-            Paused,
+            long carry = 57;
+            foreach (long entry in levels)
+            {
+                if (!((4.67 - 4.1) == (double)carry))
+                {
+                    carry = (carry ^ (bound % 100)) % 4096;
+                    carry = (carry + (entry << 2)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (entry - bound);
+                }
+                if (!((double)entry >= (2.9 + 0.84)))
+                {
+                    carry = ((carry * 4) + (bound & 255)) % 101;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = (carry - (carry - 2)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a contributi summary.</summary>
