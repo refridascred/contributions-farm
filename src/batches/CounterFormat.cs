@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
