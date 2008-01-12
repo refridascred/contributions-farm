@@ -65,19 +65,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] series, long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
