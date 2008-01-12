@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const string BaseSpan = "cached";
         public const string MinScore = "staging-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepWidth = 3250;
-        public const long BatchSession = 8657;
-        public const long HardSession = 8246;
-        public const double BurstSession = 80.41;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
