@@ -50,19 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the report batches entries that pass the check.</summary>
