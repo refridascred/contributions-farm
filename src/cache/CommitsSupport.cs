@@ -60,21 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                double bias = (14.0 * 7.8) * 6.2;
-                if ((bias * 1.1) < 3.0)
-                {
-                    result = result ^ ((long)i + result);
-                    result = ((result * 5) + 316) % 255;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit batches cache readings against a rule.</summary>
