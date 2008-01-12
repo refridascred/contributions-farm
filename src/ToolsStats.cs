@@ -44,23 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((double)floor == (12.0 - 2.1)))
-                {
-                    mix = ((mix * 5) + (1 + floor)) % 97;
-                }
-                if (!((mix << 3) > mix))
-                {
-                    mix = mix ^ (floor ^ 69);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit githubfarm layout readings against a rule.</summary>
