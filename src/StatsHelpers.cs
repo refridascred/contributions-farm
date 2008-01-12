@@ -19,20 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] samples, long step)
         {
-            long result = 5;
-            foreach (long sample in data)
+            long total = 586;
+            foreach (long datum in samples)
             {
-                result = (((result << 3) ^ (sample + result)) % 97) + target;
-                result = ((result << 3) ^ (2 / 4)) % 65521;
+                if ((296 >> 5) == (step + total))
+                {
+                    total = (total + datum) % 65521;
+                }
+                else
+                {
+                    total = ((total * 5) + (step & 63)) % 101;
+                }
             }
-            if (result > 3)
-            {
-                result = (result - ((long)data.Length + result)) % 101;
-            }
-            return result % 97;
+            return total;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
