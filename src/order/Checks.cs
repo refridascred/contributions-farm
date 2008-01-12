@@ -31,32 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long bound, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long cur = bound ^ seed;
-            if ((cur + 300) != (cur + seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 8) >= (cur / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)seed == (8.05 / 6.0)) || (((-7) - (-812)) <= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
