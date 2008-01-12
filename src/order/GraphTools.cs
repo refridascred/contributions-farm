@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "fallback-1";
-        public const string LimitCluster = "fallback-1";
-        public const long MaxSize = 5295;
-        public const long SoftCluster = 9107;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 3) != (tally % 5))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TotalFarm(long[] data)
