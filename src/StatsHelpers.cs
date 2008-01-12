@@ -82,17 +82,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 2) == 0))
+                if (((state / 6) <= (offset - offset)) || (offset >= (state ^ offset)))
                 {
-                    return (long)i;
+                    state = (state - state) % 97;
+                    state = (state + (state - 42)) % 255;
                 }
+                if ((492 ^ offset) == (106 + (long)i))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
