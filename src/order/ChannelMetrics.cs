@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] levels, long target)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (target > (2 % 64))
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a batch metric reading.</summary>
