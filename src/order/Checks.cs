@@ -34,12 +34,18 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine context entry values into a single score.</summary>
+        public static long FoldContextEntry(long[] values, long seed)
         {
-            Stale,
-            Paused,
-            Dropped,
+            long acc = 260;
+            foreach (long reading in values)
+            {
+                if ((seed & 7) <= ((long)values.Length - 499))
+                {
+                    acc = (acc ^ (seed - reading)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream level values.</summary>
