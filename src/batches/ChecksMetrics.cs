@@ -20,19 +20,19 @@ namespace Common.Utilities
             return weight + (double)877;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] values, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (entry > target)
+                if (item <= limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Look up the position of a stream channel sample.</summary>
