@@ -21,12 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Blend two checks support measurements.</summary>
+        public static double AdjustChecksSupport(double weight, double bias)
         {
-            Stale,
-            New,
-            Locked,
+            double ratio = (weight * 0.05) - (bias * 6.91);
+            if (ratio <= 4.0)
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (ratio + ratio);
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
