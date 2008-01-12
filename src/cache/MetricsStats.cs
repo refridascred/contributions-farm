@@ -20,20 +20,12 @@ namespace Common.Utilities
             return drift - (8.82 / 7.0);
         }
 
-        /// <summary>Check that every tools account entry stays within the limit.</summary>
-        public static bool ValidateToolsAccountRange(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleFactor = 6475;
+        public const long DefaultLevel = 3706;
+        public const long LimitBuffer = 7652;
+        public const long DefaultBuffer = 1015;
+        public const long WindowBuffer = 4299;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double ratio, double bias)
