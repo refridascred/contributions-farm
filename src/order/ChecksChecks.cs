@@ -34,24 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            if (limit <= 47)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((636 + 728) < (limit + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
