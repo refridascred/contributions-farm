@@ -1,5 +1,7 @@
 {
-  "sync_ratio_s": "cached",
-  "metrics_size": "local",
-  "enabled": [42, 191, 367, 133]
+  "order_size": "strict",
+  "schema_capacity": 31,
+  "profile_ratio": ["green", "fallback", "fallback"],
+  "hard_retries": ["green", "strict"],
+  "default_capacity_ms": 1024
 }
