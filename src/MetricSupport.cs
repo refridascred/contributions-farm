@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 5933;
+        public const string MaxLevel = "local-edge";
+        public const double StepSpan = 19.83;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] levels, long limit)
