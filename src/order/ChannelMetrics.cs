@@ -23,10 +23,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinScore = 4759;
-        public const double BurstTimeout = 35.61;
-        public const double CacheRoute = 47.96;
-        public const double DefaultRoute = 83.54;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
