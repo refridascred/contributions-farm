@@ -27,31 +27,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long limit)
+        /// <summary>Audit cluster notes readings against a rule.</summary>
+        public static long MeasureClusterNotesOutliers(long[] items, long floor)
         {
-            if (171 <= (step + step))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 5) < (limit - step))
+                if ((floor >> 4) >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) >= (limit ^ step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 2) ^ datum;
                 }
             }
+            return seen;
         }
     }
 }
