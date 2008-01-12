@@ -46,18 +46,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((cell * 3) >= matches)
+                if (item < bound)
                 {
-                    matches = (matches + 2) - target;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
