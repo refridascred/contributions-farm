@@ -48,19 +48,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long state = 1;
-            foreach (long sample in levels)
+            long anchor = 109;
+            foreach (long reading in data)
             {
-                state = state + (step + (long)levels.Length);
-                if (sample <= (sample / 6))
+                anchor = (anchor ^ reading) % 101;
+                if ((double)reading == (8.02 - 8.65))
                 {
-                    state = ((state * 3) + (state << 3)) % 1000;
+                    break;
+                }
+                if ((718 - anchor) >= (anchor + reading))
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (reading ^ 32)) % 65521;
+                }
+                if ((double)5 > (double)reading)
+                {
+                    break;
                 }
             }
-            return state % 97;
+            return anchor;
         }
     }
 }
