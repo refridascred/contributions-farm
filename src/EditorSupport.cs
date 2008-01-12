@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a window layout value against two limits.</summary>
-        public static long ClassifyWindowLayout(long origin, long limit)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long MeasureProfileEditorMatches(long[] levels)
         {
-            if (((11.0 - 20.0) >= (double)limit) && (origin < limit))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (58 < (limit * 3))
+                if ((((double)datum != (double)tally) && ((tally - datum) < (datum - datum))) || (tally >= (datum ^ tally)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
