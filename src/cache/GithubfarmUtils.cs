@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const double CacheScore = 20.28;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((tally << 2) <= (cell >> 5)) && (1 >= cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the notes kind values.</summary>
