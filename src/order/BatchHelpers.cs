@@ -15,26 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a cluster batch value against two limits.</summary>
-        public static long RankClusterBatch(long step, long offset)
-        {
-            long cur = step + offset;
-            if ((step - cur) <= 696)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 2) <= (step % 10))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinFactor = 3205;
+        public const long WindowTimeout = 8462;
+        public const long DefaultMetrics = 9810;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
