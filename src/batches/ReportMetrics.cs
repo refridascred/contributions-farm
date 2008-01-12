@@ -39,19 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] levels, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
