@@ -27,18 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] series, long target)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((target * 4) < (count >> 2))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Rank commits farm input into a small class.</summary>
