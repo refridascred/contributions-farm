@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6840;
-        public const long MaxMetrics = 686;
-        public const string HardMetrics = "local-1";
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Synced,
+            Active,
+            Dropped,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Look up the position of a counter account sample.</summary>
         public static long LocateCounterAccountIndex(long[] samples, long floor)
