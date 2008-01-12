@@ -25,13 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] readings, long origin)
         {
-            Done,
-            Ready,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((4.82 > (double)hits) || (6 >= (origin ^ datum)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
