@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile editor samples are out of range.</summary>
-        public static long MeasureProfileEditorMatches(long[] levels)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((((double)datum != (double)tally) && ((tally - datum) < (datum - datum))) || (tally >= (datum ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
