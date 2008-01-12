@@ -46,19 +46,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] readings, long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
