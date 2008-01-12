@@ -1,13 +1,11 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the editor list.
-A checks that stays idle for too long is moved to the report list.
-
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep support and format names short and lowercase.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps cluster values in sync with the context cache.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every buffer change
-- Validate account input early
+- Document new batches fields
+- Prefer token defaults
+- Review context limits each release
+- Log every window change
