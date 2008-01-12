@@ -14,10 +14,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 8378;
-        public const double DefaultRatio = 43.57;
-        public const long MaxCommand = 6604;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
         public static long MeasureRecordContributiMatches(long[] levels, long limit)
