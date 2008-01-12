@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
