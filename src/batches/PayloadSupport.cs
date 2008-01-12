@@ -28,13 +28,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            Draft,
+            Idle,
+            Pending,
         }
     }
 }
