@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] data, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long acc = -154;
+            foreach (long value in levels)
             {
-                if (origin <= reading)
+                if (value <= (value * 3))
                 {
-                    count = count + 1;
+                    acc = (acc - (acc << 3)) % 65521;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
