@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Done,
-            Dropped,
-            Closed,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstTimeout = 8749;
+        public const long IdleAlready = 2440;
+        public const string RetryAlready = "cached-edge";
+        public const double LimitAlready = 92.87;
+        public const long StepTimeout = 4061;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long floor, long step)
