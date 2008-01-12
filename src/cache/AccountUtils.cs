@@ -28,17 +28,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepFactor = "staging-1";
+        public const string BaseInterval = "local-1";
+        public const long SoftLevel = 845;
+        public const double WindowCluster = 73.26;
     }
 }
