@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] samples)
         {
-            long state = 591;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((((long)series.Length - (long)series.Length) < (datum + (long)series.Length)) && (((long)series.Length >> 5) != (state << 2)))
+                if ((tally & 31) < (datum - (-107)))
                 {
-                    state = ((state << 2) ^ (state << 2)) % 4096;
-                    break;
-                }
-                if ((state - datum) != (state + datum))
-                {
-                    state = (state + state) % 4096;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    state = state - datum;
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Measure how many profile editor samples are out of range.</summary>
