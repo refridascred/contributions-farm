@@ -13,18 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] series)
+        /// <summary>Measure how many notes channel samples are out of range.</summary>
+        public static long AuditNotesChannelHits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (!(sample < ((long)series.Length & 7)) && (((long)series.Length + count) > (8 - count)))
+                if (!((double)item > (9.0 * 9.51)) && ((double)item > (11.0 / 8.0)))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
