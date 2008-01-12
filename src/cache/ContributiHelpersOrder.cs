@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples, long step)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value ^ matches) < (value + matches))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format info.</summary>
