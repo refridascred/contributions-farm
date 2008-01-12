@@ -36,12 +36,14 @@ namespace Common.Utilities
             return load + (double)47;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxSize = 8154;
-        public const long LimitFormat = 4862;
-        public const long HardFormat = 6909;
-        public const string DefaultFormat = "legacy-edge";
-        public const long StepFormat = 9233;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
