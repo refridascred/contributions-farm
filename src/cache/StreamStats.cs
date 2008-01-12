@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor ^ seed) == (seed + floor))
             {
-                if ((readings[i] <= offset) && ((readings[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (seed >= 0)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (seed < 8)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
