@@ -1,8 +1,9 @@
-id,rank,region,ratio
-1,512,blue,262
-2,205,standard,fallback
-3,84.82,49.9,eu-west
-4,244,585,standard
-5,247,381,243
-6,388,blue,76.91
-7,primary,local,166
+id,state,token,score
+1,34.77,open,62.14
+2,342,625,37.93
+3,937,79.04,legacy
+4,9.88,437,81.91
+5,staging,open,0.03
+6,fallback,local,61.91
+7,24.99,2.11,557
+8,31.99,primary,699
