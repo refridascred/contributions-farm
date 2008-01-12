@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long MeasureEditorCommitsGaps(long[] readings)
         {
-            long total = 910;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)cell >= (7.48 - 8.0)))
+                if ((double)entry != (11.0 + 15.0))
                 {
-                    total = total - (cell ^ total);
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
