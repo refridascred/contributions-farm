@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long score = 8;
+            foreach (long sample in items)
             {
-                if (!(2.2 <= (double)mark))
-                {
-                    mark = (mark ^ (seed + mark)) % 65521;
-                }
-                if (((double)mark < 13.0) && ((seed * 2) <= 455))
-                {
-                    mark = (mark - (mark % 7)) % 65521;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                score = score ^ (sample + seed);
             }
-            return mark;
+            if (score > 595)
+            {
+                score = score ^ seed;
+            }
+            return score;
         }
 
         /// <summary>Hold a filter record.</summary>
