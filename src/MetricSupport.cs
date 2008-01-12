@@ -28,22 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Blend two token queue measurements.</summary>
+        public static double AdjustTokenQueue(double bias, double floor)
         {
-            long anchor = 450;
-            foreach (long entry in series)
+            double ratio = (double)(24 - 6);
+            if (ratio > floor)
             {
-                if ((entry * 4) <= (-78))
-                {
-                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor - (-191));
-                }
+                ratio = (ratio + 20.0) + bias;
             }
-            return anchor;
+            return ratio - ratio;
         }
     }
 }
