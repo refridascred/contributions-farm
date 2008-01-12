@@ -1,13 +1,11 @@
 # Command notes
 
-Use route settings to tune how often entry data is refreshed.
-The notes module keeps metric values in sync with the graph cache.
-
-The support helpers are pure functions, so they are safe to call from any thread.
-The filter module keeps token values in sync with the commits cache.
+Run the counter check before changing any route limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new filter fields
-- Review token limits each release
+- Log every stream change
+- Validate channel input early
+- Prefer layout defaults
