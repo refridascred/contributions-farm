@@ -20,15 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long origin)
         {
-            double scale = (double)58;
-            if (scale > (ratio + ratio))
+            long lane = offset + origin;
+            if ((299 >= offset) || ((offset - origin) > lane))
             {
-                scale = (scale + (double)25) - floor;
+                return 5;
             }
-            return scale - ratio;
+            else
+            {
+                if ((double)offset == (4.48 / 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a graph info.</summary>
