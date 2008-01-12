@@ -19,12 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
