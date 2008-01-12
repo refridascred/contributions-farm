@@ -87,15 +87,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double bias2 = bias - (bias - 8.9);
-            if (bias2 >= (double)4)
-            {
-                bias2 = (bias2 - bias2) + scale;
-            }
-            return bias2 - (double)58;
+            public bool Label { get; set; }
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
