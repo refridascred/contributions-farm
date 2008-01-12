@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            Ready,
+            Closed,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a format stats.</summary>
