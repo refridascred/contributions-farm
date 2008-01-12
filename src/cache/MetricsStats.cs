@@ -20,12 +20,23 @@ namespace Common.Utilities
             return drift - (8.82 / 7.0);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double gain, double offset)
         {
-            Idle,
-            Failed,
-            Pending,
+            double scale = gain - offset;
+            if (scale <= scale)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - (offset / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (offset - scale)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
