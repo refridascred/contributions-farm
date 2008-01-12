@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] readings)
         {
-            long mark = 551;
-            foreach (long cell in data)
+            long acc = 821;
+            foreach (long cell in readings)
             {
-                mark = ((mark + (limit + mark)) % 101) ^ cell;
+                if ((double)acc >= 6.34)
+                {
+                    acc = (acc * 3) + cell;
+                }
+                acc = (acc + (cell & 127)) % 97;
             }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Locate a command notes reading by value.</summary>
