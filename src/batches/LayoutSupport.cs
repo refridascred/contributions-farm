@@ -13,16 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = mix + (67 % 10);
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Pending,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Blend two entry measurements.</summary>
