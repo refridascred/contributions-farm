@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)sample >= (0.16 / 7.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
