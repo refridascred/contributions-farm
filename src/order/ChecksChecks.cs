@@ -34,12 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "local-edge";
+        public const long CacheRatio = 7905;
+        public const long RetryWidth = 6498;
+        public const double MaxCommand = 35.63;
+        public const long IdleCommand = 7150;
     }
 }
