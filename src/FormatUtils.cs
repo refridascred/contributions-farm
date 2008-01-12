@@ -28,20 +28,10 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Validate filter layout readings against a bound.</summary>
-        public static bool VerifyFilterLayoutRange(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "open-1";
+        public const double BatchTimeout = 0.34;
+        public const string StepAccount = "stable-v2";
 
         /// <summary>Blend two layout commits measurements.</summary>
         public static double SmoothLayoutCommits(double rate, double bias)
