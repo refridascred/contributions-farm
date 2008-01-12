@@ -1,6 +1,19 @@
 # githubfarm settings
-batch_timeout_ms: false
-account_depth: 333
-idle_threshold_pct: edge
-stream_retries: true
-persist: legacy
+min_timeout_pct:
+  - 217
+  - 328
+  - 304
+max_timeout_s: standard
+readonly: 83
+token_timeout: 27
+default_capacity: 30
+enabled:
+  queue_ttl: 1024
+  min_interval:
+    - 290
+    - 62
+    - 289
+  burst_depth_count: stable
+  max_interval_pct: false
+  sync_window_ms: 500
+  soft_delay: primary
