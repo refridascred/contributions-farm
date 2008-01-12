@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
