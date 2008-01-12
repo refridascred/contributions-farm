@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] values, long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double bias = gain;
+            if (bias < (3.0 * 5.9))
             {
-                if (!((entry - entry) <= (75 % 7)) && ((matches >= (seed * 2)) || ((6.4 - 17.0) > (double)entry)))
-                {
-                    matches = matches + 3;
-                }
+                bias = bias + (offset - 3.1);
             }
-            return matches;
+            return bias + (double)6;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
