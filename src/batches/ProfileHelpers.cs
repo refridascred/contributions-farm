@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double floor)
         {
-            double load = span;
-            return (load - span) + bias;
+            double rate = (bias + 1.1) * 2.1;
+            return (rate + (double)804) + floor;
         }
 
         /// <summary>Describe the profile class values.</summary>
