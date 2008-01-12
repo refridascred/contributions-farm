@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if ((1 * 4) < (seed >> 5))
             {
-                if ((3.13 - 1.52) <= (5.5 / 9.0))
+                return 0;
+            }
+            else
+            {
+                if (!(seed <= (seed - seed)))
                 {
-                    matches = (matches + 1) - sample;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
