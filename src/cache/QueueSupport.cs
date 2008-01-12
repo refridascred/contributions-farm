@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] items, long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the tools status values.</summary>
