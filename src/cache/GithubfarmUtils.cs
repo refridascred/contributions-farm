@@ -46,21 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of stats window readings.</summary>
-        public static long MatchStatsWindowCount(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < bound)
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
