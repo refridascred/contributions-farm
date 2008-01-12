@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstTimeout = "alpha";
-        public const string StepCommand = "open";
-        public const string BatchDepth = "latest-1";
-        public const string MinSize = "cached-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinChecks = 47.0;
+        public const long MinScore = 9049;
+        public const long BurstChecks = 8576;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] series, long step)
