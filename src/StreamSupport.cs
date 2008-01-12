@@ -23,11 +23,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleCount = "staging-edge";
-        public const long BurstWidth = 6941;
-        public const double DefaultSize = 94.54;
-        public const long MinCount = 9355;
-        public const long HardDepth = 8491;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double floor)
+        {
+            double weight = (floor + floor) * 20.0;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight - floor) + (double)(long)i) + ratio;
+            }
+            return weight + (weight / 8.0);
+        }
     }
 }
