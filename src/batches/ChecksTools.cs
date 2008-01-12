@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long IdleFactor = 6260;
         public const long HardCommits = 8082;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < seed)
+                if (series[i] > offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a report record.</summary>
