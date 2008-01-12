@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] series, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 374;
+            foreach (long value in series)
             {
-                if (series[i] > floor)
+                carry = (((carry * 4) + carry) % 255) - value;
+                if ((double)step < (8.0 - 7.52))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
