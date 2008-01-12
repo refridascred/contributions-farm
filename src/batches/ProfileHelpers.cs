@@ -60,17 +60,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long seed, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (2 < target)
             {
-                if (data[i] == origin)
+                return 2;
+            }
+            else
+            {
+                if (!(seed > (107 + seed)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (44 <= (seed * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
