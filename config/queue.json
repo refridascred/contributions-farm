@@ -1,5 +1,13 @@
 {
-  "stream_capacity": [116, 443],
-  "sync_ttl_ms": "local",
-  "notes_timeout": 3860
+  "persist": {
+    "sync_retries": "strict",
+    "soft_depth": "open",
+    "stream_ratio": 2119,
+    "readonly": 59.91,
+    "hard_timeout_s": "open"
+  },
+  "default_depth_count": 250,
+  "dry_run": 67,
+  "warm_depth_s": 71,
+  "stats_delay": 3521
 }
