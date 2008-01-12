@@ -23,11 +23,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryLevel = "standard-edge";
-        public const long BurstCommand = 631;
-        public const long HardDepth = 1063;
-        public const long IdleBudget = 2086;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            New,
+            Dropped,
+            Done,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double StepSize = 7.28;
