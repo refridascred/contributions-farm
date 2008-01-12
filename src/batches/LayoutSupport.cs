@@ -22,17 +22,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] levels, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mix = mix + (67 % 10);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the cache level values.</summary>
