@@ -27,21 +27,17 @@ namespace Common.Utilities
         public const long DefaultBatch = 23;
         public const long BurstBatch = 9783;
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
