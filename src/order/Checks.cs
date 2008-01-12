@@ -24,17 +24,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit - 8) > (693 + origin))
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (origin < limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 4) <= (origin % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)619 <= (double)origin) && ((origin - origin) < (origin + origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
