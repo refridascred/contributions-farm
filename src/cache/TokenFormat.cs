@@ -13,13 +13,27 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values, long bound)
         {
-            Active,
-            Failed,
-            Closed,
-            Paused,
+            long mark = 39;
+            foreach (long value in values)
+            {
+                mark = ((mark * 2) + (bound & 127)) % 255;
+                if (((value % 24) != (value - bound)) || ((value / 6) != (43 % 5)))
+                {
+                    mark = mark + (bound / 5);
+                }
+                if (((double)mark >= (7.1 - 5.12)) || ((19.0 + 9.0) < (double)mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 478)
+            {
+                mark = (mark + ((-559) - mark)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
