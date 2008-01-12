@@ -44,12 +44,38 @@ namespace Common.Utilities
             return weight - (bias2 - 4.2);
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long origin)
         {
-            Locked,
-            Failed,
-            Stale,
+            if ((origin ^ limit) >= (limit - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit != (6.23 / 8.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 4) > origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((9.35 + 12.0) != (double)limit) && ((origin + origin) >= (limit + 968)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
