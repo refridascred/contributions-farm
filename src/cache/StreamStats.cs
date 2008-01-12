@@ -36,12 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit stream layout readings against a rule.</summary>
+        public static long AuditStreamLayoutGaps(long[] values, long bound)
         {
-            Idle,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((28 - seen) > item)
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
