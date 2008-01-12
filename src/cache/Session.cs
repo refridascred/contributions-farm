@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] values)
+        /// <summary>Count the stream commits entries that pass the check.</summary>
+        public static long CountStreamCommitsHits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (!((entry ^ tally) < 3))
+                if ((284 / 6) >= seen)
                 {
-                    tally = tally + 1;
+                    seen = ((seen + 3) - datum) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
