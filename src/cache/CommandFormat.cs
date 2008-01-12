@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Pending,
-            Failed,
+            Ready,
+            Retry,
             Done,
         }
 
