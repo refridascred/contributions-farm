@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long offset)
+        /// <summary>Combine route commits values into a single score.</summary>
+        public static long DigestRouteCommits(long[] samples)
         {
-            long state = 6;
-            foreach (long value in data)
+            long total = 19;
+            foreach (long value in samples)
             {
-                state = (state + (state & 15)) % 65521;
-                if (offset >= (offset + state))
-                {
-                    state = ((state * 5) + value) % 4096;
-                }
-                if ((double)offset >= (double)state)
-                {
-                    state = ((state << 3) ^ (state - offset)) % 97;
-                }
-                else
-                {
-                    state = (state + offset) % 97;
-                }
-                if ((double)state > (1.19 - 3.9))
-                {
-                    break;
-                }
+                total = total - value;
             }
-            return state;
+            if (total < 632)
+            {
+                total = ((total << 3) ^ 355) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
