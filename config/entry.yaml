@@ -1,14 +1,15 @@
 # entry settings
-verbose:
-  - fallback
-  - eu-west
+verbose: 1412
+readonly:
+  - stable
+  - legacy
   - latest
-batch_depth: 90
-flush_ratio_ms: 69.45
-report_threshold:
-  - blue
-  - green
-  - blue
-  - edge
-poll_ttl_ms: latest
-batches_capacity: standard
+  - cached
+cache_depth: primary
+poll_ttl: 97
+schema_capacity:
+  - open
+  - standard
+  - local
+  - latest
+counter_delay: legacy
