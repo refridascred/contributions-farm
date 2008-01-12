@@ -57,11 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
