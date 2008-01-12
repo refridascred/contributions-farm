@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
-            Synced,
-            Ready,
-            Retry,
-            Active,
-            Draft,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (hits > (hits + datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
