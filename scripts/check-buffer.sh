@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green strict; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=401
+log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-standard}"
 case "${mode}" in
-    green)
+    stable)
         log "fast path"
         ;;
     *)
