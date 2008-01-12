@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] levels, long seed)
+        /// <summary>Measure how many metrics layout samples are out of range.</summary>
+        public static long CountMetricsLayoutMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                if (2.0 < (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
