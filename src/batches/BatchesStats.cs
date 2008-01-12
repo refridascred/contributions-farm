@@ -58,17 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                if (!((value >> 5) > (value - bound)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
