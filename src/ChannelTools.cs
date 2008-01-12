@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Stale,
-            Queued,
-            Active,
-            Locked,
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
