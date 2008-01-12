@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double CacheSpan = 76.87;
         public const long MaxStream = 6459;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Draft,
-            Done,
-            Idle,
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
