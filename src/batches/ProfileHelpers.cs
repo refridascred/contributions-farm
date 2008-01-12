@@ -71,12 +71,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] samples, long step)
+        /// <summary>Find the first order filter entry that matches the target.</summary>
+        public static long FindOrderFilterIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == step)
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
