@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy primary; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=355
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-latest}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
