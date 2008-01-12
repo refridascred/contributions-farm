@@ -33,19 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry stats entries that pass the check.</summary>
-        public static long AuditEntryStatsOutliers(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally > (tally / 8)) && !((sample + 617) >= (target % 24)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 5499;
+        public const long BaseEntry = 9861;
+        public const long RetryTimeout = 9725;
+        public const long LimitEntry = 5148;
 
         /// <summary>Count the cache metrics entries that pass the check.</summary>
         public static long CountCacheMetricsMatches(long[] data)
