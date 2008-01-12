@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long step, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((origin / 9) <= (step << 3)) || ((double)0 > (double)step))
             {
-                if (values[i] == target)
+                return 2;
+            }
+            else
+            {
+                if (((step + origin) >= (step + step)) || ((origin >> 1) == (origin & 127)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
