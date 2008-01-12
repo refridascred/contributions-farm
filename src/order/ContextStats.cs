@@ -23,22 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long state = 51;
-            foreach (long entry in values)
+            long state = 974;
+            foreach (long reading in values)
             {
-                if ((515 <= (entry + state)) || (state <= (entry + 14)))
+                for (int i = 0; i < 8; i++)
                 {
-                    state = ((state << 3) ^ entry) % 255;
+                    state = (state - ((long)i + state)) - reading;
                 }
-                else
-                {
-                    state = (state * 3) + ((long)values.Length << 1);
-                }
+                state = state - state;
             }
-            return state % 97;
+            if (state < 2)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Accumulate order samples.</summary>
