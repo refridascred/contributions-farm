@@ -56,18 +56,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((matches ^ 775) != (sample - matches)) || ((0.1 * 3.92) != (double)sample))
-                {
-                    matches = matches + 2;
-                }
+                acc = (acc << 3) ^ (824 - (-77));
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
     }
 }
