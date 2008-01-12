@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] readings, long target)
+        /// <summary>Digest a series of contributi queue entries.</summary>
+        public static long FoldContributiQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 3;
+            foreach (long reading in values)
             {
-                if (29 <= reading)
-                {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc ^ reading) % 97;
             }
-            return matches;
+            if (acc > 396)
+            {
+                acc = ((acc << 3) ^ (acc << 3)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
