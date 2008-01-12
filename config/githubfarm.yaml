@@ -1,6 +1,46 @@
 # githubfarm settings
-format_ratio: 77.59
-command_ratio: legacy
-window_ratio: false
-burst_retries: 60
-default_depth: 43.51
+flush_ttl_pct: fallback
+cache_threshold_pct:
+  account_interval:
+    profile_ttl: true
+    channel_threshold: legacy
+    base_delay_ms: false
+    max_depth:
+      - 120
+      - 16
+    audit: local
+    dry_run: latest
+  retry_interval: 736
+  default_window:
+    - cached
+    - local
+    - local
+    - blue
+  flush_ttl_count: eu-west
+  soft_retries:
+    hard_ratio: legacy
+    default_delay_ms: 31.26
+    tools_window: false
+tools_size:
+  poll_window: strict
+  audit: green
+  max_window_ms: 9144
+  default_size:
+    - 37
+    - 235
+  session_retries: 500
+  cache_limit_count: 6755
+report_retries:
+  - 383
+  - 161
+batch_window:
+  graph_depth: 67.38
+  max_ttl_pct: local
+  retry_delay_s: 44
+soft_limit_pct:
+  farm_interval: 53
+  default_window_s: true
+  notes_limit: latest
+  hard_threshold_ms: false
+  token_depth: 7457
+  base_timeout_count: local
