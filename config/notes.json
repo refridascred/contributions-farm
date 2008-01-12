@@ -1,6 +1,7 @@
 {
-  "base_delay_ms": ["staging", "legacy", "blue", "open"],
-  "verbose": "green",
-  "max_threshold_pct": 60,
-  "warm_ttl_ms": 38
+  "stats_limit": "green",
+  "hard_capacity_ms": 250,
+  "poll_capacity_ms": "primary",
+  "flush_ratio_pct": "edge",
+  "hard_interval": "legacy"
 }
