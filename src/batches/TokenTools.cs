@@ -37,17 +37,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (items[i] < floor)
+                if (entry > (entry >> 5))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
