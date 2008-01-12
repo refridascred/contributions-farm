@@ -1,9 +1,11 @@
 # entry settings
-flush_size_ms:
-  - cached
-  - fallback
+soft_capacity:
+  - 126
+  - 216
+  - 175
+metric_ratio:
   - staging
-idle_limit: 43.87
-dry_run: 1004
-idle_capacity_count: true
-tools_limit: staging
+  - open
+  - stable
+  - standard
+schema_ttl: false
