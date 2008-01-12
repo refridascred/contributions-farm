@@ -33,13 +33,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long target)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            if ((offset / 5) != (492 % 24))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target >= (9.0 * 18.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 5) == ((-637) + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order info.</summary>
