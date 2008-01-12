@@ -1,15 +1,13 @@
 # Command notes
 
-Use metrics settings to tune how often record data is refreshed.
-Run the entry check before changing any filter limits.
+A graph that stays idle for too long is moved to the format list.
+The buffer module keeps githubfarm values in sync with the format cache.
 
-Use route settings to tune how often metrics data is refreshed.
-The format module keeps format values in sync with the cluster cache.
-A cache that stays idle for too long is moved to the farm list.
+Use support settings to tune how often account data is refreshed.
+Each commits is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Log every window change
-- Keep entry values small
-- Validate batches input early
+- Validate counter input early
+- Document new payload fields
+- Keep record values small
