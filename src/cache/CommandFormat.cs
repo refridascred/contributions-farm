@@ -44,21 +44,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Rank commits farm input into a small class.</summary>
+        public static long ClassifyCommitsFarm(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed ^ origin) < (origin * 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed != (0.78 / 4.0))
                 {
-                    if ((values[i] ^ values[j]) > 5)
+                    return 6;
+                }
+                else
+                {
+                    if ((origin > (seed & 63)) && ((-500) > (origin << 2)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
