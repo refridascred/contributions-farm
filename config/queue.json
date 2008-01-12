@@ -1,17 +1,7 @@
 {
-  "format_ratio": {
-    "entry_depth": true,
-    "format_capacity": true,
-    "batch_ttl": true
-  },
-  "cache_ratio_count": [232, 66, 490, 347],
-  "sync_delay": {
-    "burst_retries": true,
-    "already_retries": "edge",
-    "hard_threshold_pct": false,
-    "flush_window": 41.52
-  },
-  "max_interval_pct": 1024,
-  "compress": 19,
-  "strict": "standard"
+  "sync_depth_count": "local",
+  "default_limit": "fallback",
+  "audit": true,
+  "readonly": false,
+  "max_size": 84.37
 }
