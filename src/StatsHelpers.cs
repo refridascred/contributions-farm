@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((bound >> 3) < (bound % 7))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 6776;
+        public const long DefaultLevel = 2126;
+        public const string LimitScore = "alpha-v2";
 
         /// <summary>Count format farm pairs that satisfy a relation.</summary>
         public static long OverlapFormatFarmCount(long[] values)
