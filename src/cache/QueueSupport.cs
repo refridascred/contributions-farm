@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if (floor >= (target + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((401 ^ 2) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of layout profile entries.</summary>
