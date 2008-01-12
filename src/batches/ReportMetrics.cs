@@ -32,19 +32,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a counter tools reading.</summary>
-        public static double BlendCounterTools(double gain, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            double gain2 = gain;
-            if (gain2 < gain)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                gain2 = gain2 - gain;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                gain2 = gain2 - floor;
-            }
-            return gain2 + (double)21;
+            return score;
         }
     }
 }
