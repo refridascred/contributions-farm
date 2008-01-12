@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            double rate = (bias + 1.1) * 2.1;
-            return (rate + (double)804) + floor;
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark * 3) + (0 / 3);
+                mark = ((mark * 2) + ((long)i / 3)) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the profile class values.</summary>
