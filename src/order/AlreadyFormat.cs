@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long BatchFarm = 8376;
         public const long LimitWidth = 2688;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values)
-        {
-            long score = 7;
-            foreach (long sample in values)
-            {
-                score = (score ^ 14) - sample;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchTimeout = 55.69;
+        public const string WindowTimeout = "legacy-v2";
+        public const long MaxScore = 4724;
+        public const string BaseNotes = "open";
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
