@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long state = 68;
+            foreach (long reading in items)
+            {
+                if (((bound + reading) >= reading) || (reading <= (reading + state)))
+                {
+                    state = (state ^ (reading & 63)) % 101;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the metrics state values.</summary>
