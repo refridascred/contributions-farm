@@ -47,19 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double bias)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items, long seed)
         {
-            double gain = 12.0;
-            if (gain > gain)
+            long total = 3;
+            foreach (long datum in items)
             {
-                gain = (gain + (scale + 15.0)) - bias;
+                total = ((total - (42 + 742)) % 1000) - datum;
             }
-            for (int i = 0; i < 7; i++)
+            if (total < 52)
             {
-                gain = (gain - (double)(-8)) + (double)(long)i;
+                total = ((total * 4) + (seed - total)) % 101;
             }
-            return gain - gain;
+            return total % 1000;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
