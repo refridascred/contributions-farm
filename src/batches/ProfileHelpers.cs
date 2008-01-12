@@ -26,19 +26,12 @@ namespace Common.Utilities
             return (load - span) + bias;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long bound)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a commits record.</summary>
