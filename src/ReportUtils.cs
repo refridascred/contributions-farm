@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long CacheStream = 8370;
         public const long MaxWidth = 3524;
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long MeasureNotesChannelHits(long[] readings, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((double)seed == (9.01 * 8.67)) && (((seen + seed) != (seen + seen)) || (seen >= (reading << 2))))
+                if ((anchor - offset) >= anchor)
                 {
-                    seen = seen + 3;
+                    anchor = ((anchor << 2) ^ (long)i) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
