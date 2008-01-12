@@ -26,12 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double rate, double offset)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            double gain = 5.3;
+            if (gain > 3.96)
+            {
+                gain = gain + 3.2;
+            }
+            else
+            {
+                gain = gain - (rate * 8.72);
+            }
+            return gain + (offset / 4.0);
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
