@@ -59,12 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Dropped,
-            Locked,
-            Retry,
+            Failed,
+            Stale,
+            Synced,
         }
     }
 }
