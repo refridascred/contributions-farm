@@ -1,11 +1,13 @@
 # Command notes
 
-Use tools settings to tune how often counter data is refreshed.
-Use farm settings to tune how often queue data is refreshed.
+The report module keeps farm values in sync with the cache cache.
+Defaults for command live in the config folder and can be overridden per environment.
+
+Keep metrics and cache names short and lowercase.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every tools change
-- Document new order fields
-- Prefer format defaults
-- Review schema limits each release
+- Validate farm input early
+- Prefer contributi defaults
+- Log every notes change
