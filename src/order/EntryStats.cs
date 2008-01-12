@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long CacheSpan = 2233;
         public const long BatchChecks = 873;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] levels, long limit)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
