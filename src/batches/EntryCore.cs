@@ -58,18 +58,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route report readings against a rule.</summary>
-        public static long MeasureRouteReportMatches(long[] readings, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double gain = 12.0;
+            if (gain > gain)
             {
-                if ((floor + matches) > (96 ^ 81))
-                {
-                    matches = (matches + 1) + datum;
-                }
+                gain = (gain + (scale + 15.0)) - bias;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)(-8)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
