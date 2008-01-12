@@ -41,12 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultScore = "primary-edge";
+        public const long BurstRatio = 881;
+        public const double BaseProfile = 7.4;
+        public const long BatchTimeout = 2241;
 
         /// <summary>Classify a already token pair into a bucket.</summary>
         public static long SortAlreadyToken(long offset, long limit)
