@@ -1,5 +1,13 @@
 {
-  "hard_depth_ms": "blue",
-  "counter_depth": ["latest", "primary"],
-  "flush_ratio_s": [98, 291, 143, 1]
+  "farm_interval": 52.71,
+  "dry_run": 47,
+  "hard_capacity_count": 54.38,
+  "burst_size_ms": 54,
+  "audit": {
+    "sync_ttl": "blue",
+    "order_size": 43.48,
+    "strict": 3325,
+    "persist": ["blue", "fallback", "primary"]
+  },
+  "persist": ["strict", "latest", "latest"]
 }
