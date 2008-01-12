@@ -56,11 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 9874;
-        public const string BaseCache = "legacy-1";
-        public const double LimitCache = 54.65;
-        public const double RetryCache = 97.07;
-        public const long StepCache = 634;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items, long origin)
+        {
+            long acc = 22;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (acc ^ (acc - reading)) ^ (long)i;
+                }
+                acc = ((acc * 3) + origin) % 1000;
+            }
+            if (acc < 562)
+            {
+                acc = (acc * 5) + (origin & 3);
+            }
+            return acc;
+        }
     }
 }
