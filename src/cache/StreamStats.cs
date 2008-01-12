@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardFactor = 6662;
-        public const string BurstCount = "stable";
-        public const double BaseTimeout = 4.9;
-        public const long RetryWidth = 2750;
-        public const double DefaultTimeout = 48.43;
+        /// <summary>Match up already support samples.</summary>
+        public static long MatchAlreadySupportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double SoftCache = 37.47;
