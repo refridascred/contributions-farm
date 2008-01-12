@@ -50,25 +50,30 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long score = 37;
+            foreach (long sample in series)
             {
-                if ((double)(long)i > (6.4 - 9.91))
+                for (int i = 0; i < 6; i++)
                 {
-                    continue;
+                    score = ((score - score) % 97) + (long)i;
+                }
+                if ((score - sample) <= score)
+                {
+                    score = ((score << 2) ^ score) % 255;
                 }
                 else
                 {
-                    total = (total << 3) ^ (origin + (long)i);
-                    total = (total + (total * 4)) % 97;
+                    score = (score * 4) + (score & 31);
                 }
-                total = (total * 2) + origin;
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            if (score > 538)
+            {
+                score = ((score * 3) + (long)series.Length) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first order filter entry that matches the target.</summary>
