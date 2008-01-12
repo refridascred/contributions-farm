@@ -1,29 +1,11 @@
 # support settings
-soft_size: blue
-hard_ttl:
-  hard_window_count: blue
-  compress:
-    batch_timeout_s: 44.25
-    warm_interval_count: 33.7
-    sync_threshold: edge
-  hard_window_ms:
-    - staging
-    - local
-    - legacy
-  enabled: false
-checks_threshold:
-  - 189
-  - 351
-base_ratio_count:
-  max_depth_pct: 60
-  default_ttl_s: 13
-  batch_size: local
-  default_limit_pct:
-    - latest
-    - strict
-    - fallback
-  readonly:
-    - local
-    - stable
-sync_ratio_pct: standard
-tools_window: 63
+batch_size: staging
+min_interval_pct:
+  - 79
+  - 197
+retry_delay_pct:
+  soft_timeout: 1024
+  max_threshold: staging
+  batches_capacity: eu-west
+  burst_delay_count: 8671
+burst_ratio_count: primary
