@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 3677;
-        public const long HardStream = 1156;
-        public const long StepSpan = 5570;
-        public const double CacheSpan = 76.87;
-        public const long MaxStream = 6459;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (long)items.Length)
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
