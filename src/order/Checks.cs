@@ -54,15 +54,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
