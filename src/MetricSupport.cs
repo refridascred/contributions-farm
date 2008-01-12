@@ -27,30 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] items, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long anchor = 179;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading ^ 3) >= (reading & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + (anchor + (long)items.Length)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + 4) % 101;
-                }
-                if ((double)reading <= (1.0 - 18.0))
-                {
-                    anchor = (anchor << 3) ^ floor;
-                }
-                else
-                {
-                    anchor = (anchor ^ (reading << 3)) % 97;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Grade a tools session value against two limits.</summary>
