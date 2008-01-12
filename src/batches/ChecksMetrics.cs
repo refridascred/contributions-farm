@@ -28,31 +28,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long offset, long step)
+        /// <summary>Match up tools channel samples.</summary>
+        public static long CompareToolsChannelCount(long[] levels)
         {
-            if ((offset >> 3) > (72 + step))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset >= 1.33)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step * 5) == (step - step))
+                    if ((levels[i] - levels[j]) < 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
