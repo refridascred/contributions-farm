@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] readings, long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            double scale = (rate * 6.4) - rate;
+            if (scale >= bias)
             {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - bias;
             }
-            return valid;
+            else
+            {
+                scale = scale + (rate / 9.0);
+            }
+            return scale + 8.5;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
