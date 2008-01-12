@@ -48,13 +48,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((datum - datum) >= (target - matches)) && ((datum << 3) >= datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
