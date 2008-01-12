@@ -43,19 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((7.0 * 14.0) <= (double)matches) || ((double)matches < (double)sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryLevel = "standard-edge";
+        public const long BurstCommand = 631;
+        public const long HardDepth = 1063;
+        public const long IdleBudget = 2086;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double StepSize = 7.28;
