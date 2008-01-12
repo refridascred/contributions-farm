@@ -19,18 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Classify a window graph pair into a bucket.</summary>
+        public static long RankWindowGraph(long floor, long bound)
         {
-            long mix = 814;
-            foreach (long entry in items)
+            if ((double)bound >= (20.0 / 6.0))
             {
-                if ((mix + mix) >= entry)
+                return 0;
+            }
+            else
+            {
+                if ((floor % 97) != (bound + bound))
                 {
-                    mix = (mix ^ (entry + entry)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor + floor) > (bound >> 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
