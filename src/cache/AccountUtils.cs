@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
