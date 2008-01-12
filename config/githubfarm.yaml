@@ -1,7 +1,4 @@
 # githubfarm settings
-tools_retries:
-  - latest
-  - local
-  - fallback
-max_ttl_s: eu-west
-dry_run: 67.88
+hard_limit: false
+notes_interval: 59.54
+cluster_ttl: 30.16
