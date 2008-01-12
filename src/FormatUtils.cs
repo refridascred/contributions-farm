@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Stale,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 9234;
+        public const long HardNotes = 2356;
+        public const long SoftWidth = 2838;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
