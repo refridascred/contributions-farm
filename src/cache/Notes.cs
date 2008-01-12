@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardSpan = "standard-1";
-        public const long WindowFarm = 1331;
-        public const long StepFarm = 8572;
-        public const long CacheFarm = 1359;
+        /// <summary>Fold a list of metric payload readings.</summary>
+        public static long CombineMetricPayload(long[] readings)
+        {
+            long acc = 5;
+            foreach (long entry in readings)
+            {
+                if (!(entry > (entry % 24)))
+                {
+                    acc = ((acc << 3) ^ (entry & 3)) % 101;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long GradeAlready(long origin, long step)
