@@ -38,22 +38,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] levels, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long mark = -10;
-            foreach (long item in levels)
+            long carry = 14;
+            foreach (long datum in levels)
             {
-                if ((item % 12) >= (item & 3))
-                {
-                    mark = ((mark << 3) ^ item) % 1000;
-                }
-                if ((item ^ origin) != (330 - (-778)))
+                carry = (carry - (carry - carry)) % 1000;
+                carry = (carry ^ carry) % 255;
+                carry = (carry ^ ((long)levels.Length % 7)) % 65521;
+                if ((carry << 1) > (datum + datum))
                 {
                     break;
                 }
             }
-            return mark % 4096;
+            return carry % 65521;
         }
     }
 }
