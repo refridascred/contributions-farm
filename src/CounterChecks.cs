@@ -47,15 +47,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long bound)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = (ratio + (double)(long)i) - floor;
+                total = ((total << 2) ^ ((long)i ^ bound)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ratio + bias;
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
