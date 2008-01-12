@@ -39,13 +39,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result - (result * 2)) % 97) ^ (long)i2;
+                    result = (result + (result * 5)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
