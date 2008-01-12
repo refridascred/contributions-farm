@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] values, long origin)
+        /// <summary>Fold a list of buffer profile readings.</summary>
+        public static long DigestBufferProfile(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long total = 686;
+            foreach (long value in items)
             {
-                if (!((reading + reading) == (reading * 3)))
+                if (value > (bound + bound))
                 {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = ((total * 4) + bound) % 1000;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
