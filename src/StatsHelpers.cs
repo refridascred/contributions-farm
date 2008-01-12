@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format farm pairs that satisfy a relation.</summary>
-        public static long OverlapFormatFarmCount(long[] values)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
