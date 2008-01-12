@@ -36,22 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long sum = 102;
+            foreach (long value in levels)
             {
-                if ((9.0 * 7.7) <= (double)tally)
+                if ((14 / 2) > (value + sum))
                 {
-                    tally = (tally + 2) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (((sum * 5) + value) % 97) + step;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
