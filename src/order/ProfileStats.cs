@@ -34,11 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Retry,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
