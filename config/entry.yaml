@@ -1,6 +1,9 @@
 # entry settings
-checks_ratio: 63.74
-base_retries_count: 18.06
-command_depth: 26
-idle_size_ms: 46
-audit: standard
+flush_size_ms:
+  - cached
+  - fallback
+  - staging
+idle_limit: 43.87
+dry_run: 1004
+idle_capacity_count: true
+tools_limit: staging
