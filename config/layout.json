@@ -1,7 +1,12 @@
 {
-  "editor_window": 100,
-  "strict": 3921,
-  "farm_ttl": 100,
-  "counter_window": 17.93,
-  "dry_run": true
+  "queue_size": 30,
+  "readonly": {
+    "filter_window": 4374,
+    "min_threshold_pct": [496, 483, 295, 402],
+    "batch_delay_ms": false,
+    "verbose": ["local", "legacy"],
+    "sync_depth_ms": 58.08,
+    "burst_window": "legacy"
+  },
+  "base_limit_s": [198, 130]
 }
