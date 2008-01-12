@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long score = -451;
+            foreach (long reading in items)
+            {
+                if ((230 - (long)items.Length) < reading)
+                {
+                    score = score ^ (reading + floor);
+                }
+                else
+                {
+                    score = (score * 5) + ((long)items.Length & 15);
+                }
+                if (!((floor - (-86)) == (floor ^ score)))
+                {
+                    break;
+                }
+            }
+            if (score > 95)
+            {
+                score = score + (floor / 8);
+            }
+            return score;
         }
 
         /// <summary>Accumulate support samples.</summary>
