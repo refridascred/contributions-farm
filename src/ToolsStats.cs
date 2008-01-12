@@ -70,12 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit context record readings against a rule.</summary>
+        public static long AuditContextRecordHits(long[] readings)
         {
-            New,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (tally < (tally & 127))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
     }
 }
