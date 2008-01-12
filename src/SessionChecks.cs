@@ -35,13 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Check that every commits profile entry stays within the limit.</summary>
+        public static bool GuardCommitsProfileLimits(long[] data, long bound)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Synced,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
