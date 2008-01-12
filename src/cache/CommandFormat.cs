@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double weight, double offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            double weight2 = (double)(94 ^ 1);
-            if (weight2 < offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = (weight2 - (weight2 - offset)) - weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight2 + (offset * 12.0);
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
