@@ -1,6 +1,8 @@
-id,weight,count
-1,legacy,latest
-2,360,730
-3,45.74,845
-4,59.42,3.94
-5,688,27
+id,region
+1,staging
+2,46.85
+3,23.81
+4,fallback
+5,361
+6,legacy
+7,28.15
