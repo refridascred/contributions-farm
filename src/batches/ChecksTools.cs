@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 84.06;
+        public const string StepDepth = "primary-v2";
+        public const long MaxChannel = 9747;
+        public const double DefaultDepth = 28.87;
+        public const long BaseCount = 492;
 
         /// <summary>Audit notes entry readings against a rule.</summary>
         public static long MeasureNotesEntryMatches(long[] values)
