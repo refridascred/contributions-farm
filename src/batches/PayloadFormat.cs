@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] values, long seed)
         {
-            Paused,
-            Active,
-            Synced,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits << 1) >= ((-8) + cell))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
