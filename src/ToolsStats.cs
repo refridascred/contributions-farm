@@ -23,22 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] readings, long floor)
+        /// <summary>Count graph command pairs that satisfy a relation.</summary>
+        public static long CompareGraphCommandCount(long[] data)
         {
-            long mark = 6;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (floor <= (7 % 64))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 2) + (203 << 2)) % 255;
-                }
-                else
-                {
-                    mark = (mark * 2) + (datum << 1);
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
