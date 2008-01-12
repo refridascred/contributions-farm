@@ -13,17 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long score = 3;
-            foreach (long reading in samples)
-            {
-                score = score - (reading >> 5);
-                score = (score ^ (score * 4)) % 1000;
-                score = (score << 3) ^ (reading / 8);
-            }
-            return score;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
