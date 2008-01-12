@@ -19,22 +19,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 6807;
+        public const string RetryMetric = "standard";
+        public const long HardMetric = 6278;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 8420;
