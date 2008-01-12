@@ -41,17 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
