@@ -1,13 +1,15 @@
 # Command notes
 
-The report module keeps farm values in sync with the cache cache.
-Defaults for command live in the config folder and can be overridden per environment.
+Use metrics settings to tune how often record data is refreshed.
+Run the entry check before changing any filter limits.
 
-Keep metrics and cache names short and lowercase.
-Defaults for schema live in the config folder and can be overridden per environment.
+Use route settings to tune how often metrics data is refreshed.
+The format module keeps format values in sync with the cluster cache.
+A cache that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer contributi defaults
-- Log every notes change
+- Prefer already defaults
+- Log every window change
+- Keep entry values small
+- Validate batches input early
