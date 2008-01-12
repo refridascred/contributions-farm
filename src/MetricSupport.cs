@@ -22,32 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel batches input into a small class.</summary>
-        public static long BucketChannelBatches(long bound, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series, long floor)
         {
-            long bound2 = bound - floor;
-            if (!((floor ^ floor) < 4))
+            long sum = 347;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ floor) <= (bound & 7))
+                sum = (sum << 2) ^ (datum + sum);
+                if ((floor - floor) <= (sum << 2))
                 {
-                    return 7;
+                    continue;
                 }
-                else
+                if ((67 >> 2) > floor)
                 {
-                    if (floor >= (bound2 & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum - (sum % 7)) % 1000;
+                }
+                if (floor >= (sum % 2))
+                {
+                    break;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
