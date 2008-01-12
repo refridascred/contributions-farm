@@ -1,10 +1,5 @@
 {
-  "idle_ttl_pct": {
-    "idle_capacity": false,
-    "persist": 91.75,
-    "cache_capacity_pct": 77,
-    "schema_interval": false
-  },
-  "base_depth": "cached",
-  "counter_ratio": 5133
+  "hard_depth_ms": "blue",
+  "counter_depth": ["latest", "primary"],
+  "flush_ratio_s": [98, 291, 143, 1]
 }
