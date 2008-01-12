@@ -37,14 +37,13 @@ namespace Common.Utilities
         public const double MaxEditor = 25.85;
         public const long BurstFactor = 9543;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            New,
-            Closed,
             Synced,
-            Ready,
-            Queued,
+            Failed,
+            Paused,
+            Dropped,
         }
     }
 }
