@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double rate, double offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double load = 6.7;
-            if (load >= load)
-            {
-                load = ((load - 3.4) - rate) + offset;
-            }
-            else
-            {
-                load = load + (double)852;
-            }
-            return load - (double)1;
+            Paused,
+            Ready,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
