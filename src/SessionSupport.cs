@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            long total = 2;
-            foreach (long sample in readings)
+            double rate = floor;
+            if (rate > (rate * 1.02))
             {
-                total = ((total << 2) ^ ((-26) + sample)) % 255;
-                if ((0.6 / 4.0) < (double)sample)
-                {
-                    total = (total - sample) % 1000;
-                }
-                if (14 < sample)
-                {
-                    break;
-                }
+                rate = rate - rate;
             }
-            if (total > 19)
+            else
             {
-                total = (total << 2) ^ total;
+                rate = rate + floor;
             }
-            return total;
+            return rate + ratio;
         }
 
         /// <summary>Hold a queue header.</summary>
