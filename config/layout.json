@@ -1,13 +1,6 @@
 {
-  "idle_ratio_count": false,
-  "context_capacity": [291, 183, 6, 417],
-  "already_limit": "strict",
-  "editor_threshold": {
-    "poll_timeout_pct": ["green", "strict", "primary"],
-    "warm_capacity_ms": "legacy",
-    "base_ratio_count": 63.08,
-    "retry_retries_pct": "green",
-    "command_limit": 63,
-    "metrics_depth": 30
-  }
+  "poll_window": "open",
+  "idle_threshold": [457, 237],
+  "warm_size_count": "strict",
+  "session_depth": 97.95
 }
