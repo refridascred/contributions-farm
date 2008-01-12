@@ -1,5 +1,7 @@
 {
-  "default_ttl_pct": true,
-  "max_capacity_count": 100,
-  "min_threshold_count": "strict"
+  "idle_size_s": "green",
+  "record_depth": 8367,
+  "cache_ratio": 250,
+  "audit": "staging",
+  "burst_capacity_count": 250
 }
