@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] readings, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
