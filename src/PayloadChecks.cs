@@ -31,15 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch route reading.</summary>
-        public static double SmoothBatchRoute(double weight, double bias)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double load = (bias + weight) - (double)(-25);
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)47;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
