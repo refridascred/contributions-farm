@@ -47,18 +47,14 @@ namespace Common.Utilities
         public const double WindowInterval = 48.61;
         public const string SoftStream = "fallback-edge";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] data, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value % 3) > (590 % 16))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Locked,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the entry level values.</summary>
