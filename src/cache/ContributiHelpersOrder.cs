@@ -29,19 +29,31 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long step, long limit)
         {
-            long acc = 3;
-            foreach (long item in values)
+            if (171 <= (step + step))
             {
-                acc = (acc + acc) % 65521;
-                if (((acc % 2) > (item + (-259))) && ((acc + 66) >= 881))
+                return 0;
+            }
+            else
+            {
+                if ((step / 5) < (limit - step))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) >= (limit ^ step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc % 65521;
         }
     }
 }
