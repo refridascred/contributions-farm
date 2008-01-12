@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Ready,
-            Synced,
-            New,
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
