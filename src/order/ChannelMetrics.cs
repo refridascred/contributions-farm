@@ -15,26 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of tools queue readings.</summary>
-        public static long ScoreToolsQueue(long[] series)
+        /// <summary>Adjust a batch metric reading.</summary>
+        public static double ScaleBatchMetric(double rate, double span)
         {
-            long mix = 157;
-            foreach (long value in series)
+            double drift = 7.5;
+            if (drift <= (rate - span))
             {
-                if (!(value <= (387 - mix)))
-                {
-                    mix = mix ^ (value - value);
-                }
-                if ((double)(long)series.Length <= (double)mix)
-                {
-                    mix = ((mix << 2) ^ (660 - 4)) % 1000;
-                }
-                if ((mix % 97) >= mix)
-                {
-                    break;
-                }
+                drift = drift + 5.53;
             }
-            return mix;
+            return drift - (drift * 4.0);
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
