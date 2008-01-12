@@ -55,25 +55,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long limit, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            long edge = limit ^ seed;
-            if (((edge + limit) >= edge) && ((edge + limit) > (limit % 12)))
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (edge >= seed)
+                score = ((score << 2) ^ seed) % 4096;
+                if (seed < (score / 5))
                 {
-                    return 4;
+                    score = ((score * 4) + (6 + seed)) % 101;
                 }
                 else
                 {
-                    return 2;
+                    score = ((score << 3) ^ (-694)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Describe the commits phase values.</summary>
