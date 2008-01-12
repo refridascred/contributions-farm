@@ -25,22 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                long gap = ((long)i + limit) - limit;
-                gap = gap ^ 86;
-                if ((gap & 255) <= (limit * 4))
-                {
-                    gap = ((gap * 3) + (gap ^ gap)) % 97;
-                    gap = ((gap << 3) ^ (result - result)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
