@@ -20,19 +20,19 @@ namespace Common.Utilities
             return bias + (rate * 7.22);
         }
 
-        /// <summary>Iterate the token support series from a seed.</summary>
-        public static long IterateTokenSupport(long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            double rate = 1.0;
+            if (rate > floor)
             {
-                if (!(bound >= (mix + mix)))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                rate = (rate + 10.0) + gain;
             }
-            return mix;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + floor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
