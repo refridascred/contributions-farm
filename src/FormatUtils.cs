@@ -17,15 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Locked,
-            Queued,
-            Draft,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 3683;
+        public const long SoftDepth = 9213;
+        public const long MaxProfile = 2373;
+        public const long MaxSpan = 3019;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] items, long offset)
