@@ -27,22 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit payload format readings against a rule.</summary>
-        public static long AuditPayloadFormatGaps(long[] items)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double rate = 5.08 * 19.0;
+            if (rate >= weight)
             {
-                if (!((reading > (tally + reading)) && (reading >= (reading + reading))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate - bias;
             }
-            return tally;
+            else
+            {
+                rate = rate + (rate / 4.0);
+            }
+            return rate + 4.2;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
