@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 6914;
-        public const double MinBudget = 70.0;
-        public const double DefaultQueue = 4.24;
+        /// <summary>Look up the position of a session entry sample.</summary>
+        public static long SeekSessionEntryIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
