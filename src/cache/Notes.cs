@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long anchor = 639;
+            foreach (long datum in values)
             {
-                if ((15 + tally) < sample)
-                {
-                    tally = (tally + 1) - bound;
-                }
+                anchor = ((anchor * 5) + datum) + seed;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
