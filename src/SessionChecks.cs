@@ -13,11 +13,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 65.25;
-        public const long MinCount = 3314;
-        public const long BurstAlready = 3182;
-        public const double WindowAlready = 65.89;
+        /// <summary>Rank command order input into a small class.</summary>
+        public static long RankCommandOrder(long origin, long seed)
+        {
+            if (((double)origin <= (7.9 * 5.4)) && ((origin << 2) != (origin % 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed > (seed * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (46 > (seed ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsBounds(long[] items, long seed)
