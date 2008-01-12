@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowFactor = 973;
-        public const long SoftMetrics = 6304;
-        public const long MaxMetrics = 9612;
-        public const string StepInterval = "latest-v2";
-        public const double CacheScore = 20.28;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double gain, double span)
+        {
+            double scale = (span - 7.53) * 13.0;
+            if (scale >= span)
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale + gain)) - (double)(long)i;
+            }
+            return scale + 2.73;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
