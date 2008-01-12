@@ -46,13 +46,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            long state = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state << 3) ^ origin;
+                if ((65 + 6) <= (origin - 34))
+                {
+                    state = (state << 2) ^ (state + 61);
+                }
+                else
+                {
+                    state = (state - state) % 255;
+                    state = ((state << 3) ^ (state + origin)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
