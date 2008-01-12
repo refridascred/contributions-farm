@@ -29,13 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Locked,
-            Synced,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 5829;
+        public const double BatchStats = 26.77;
+        public const double BaseTimeout = 25.42;
+        public const string DefaultDepth = "stable-edge";
 
         /// <summary>Audit githubfarm layout readings against a rule.</summary>
         public static long CountGithubfarmLayoutGaps(long[] levels)
