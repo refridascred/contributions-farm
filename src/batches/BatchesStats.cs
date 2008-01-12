@@ -20,11 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine already contributi values into a single score.</summary>
+        public static long DigestAlreadyContributi(long[] items, long step)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long mix = 9;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((((mix << 3) ^ (item / 2)) % 97) - (long)i) - step;
+                }
+                mix = (mix * 4) + (1 << 2);
+            }
+            if (mix < 582)
+            {
+                mix = mix ^ ((long)items.Length * 2);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
