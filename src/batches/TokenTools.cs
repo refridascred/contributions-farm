@@ -53,13 +53,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data, long target)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long result = 3;
+            foreach (long sample in data)
+            {
+                result = (result + (sample + target)) % 65521;
+            }
+            return result;
         }
     }
 }
