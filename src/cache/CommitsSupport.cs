@@ -76,22 +76,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] data)
+        /// <summary>Match up session cluster samples.</summary>
+        public static long PairSessionClusterCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((long)data.Length % 12) != (matches + 60)) && ((double)item >= (0.05 * 18.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
