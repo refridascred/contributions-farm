@@ -1,5 +1,29 @@
 # support settings
-batch_threshold_pct: false
-route_retries: strict
-flush_ttl_s: strict
-warm_threshold_pct: blue
+soft_size: blue
+hard_ttl:
+  hard_window_count: blue
+  compress:
+    batch_timeout_s: 44.25
+    warm_interval_count: 33.7
+    sync_threshold: edge
+  hard_window_ms:
+    - staging
+    - local
+    - legacy
+  enabled: false
+checks_threshold:
+  - 189
+  - 351
+base_ratio_count:
+  max_depth_pct: 60
+  default_ttl_s: 13
+  batch_size: local
+  default_limit_pct:
+    - latest
+    - strict
+    - fallback
+  readonly:
+    - local
+    - stable
+sync_ratio_pct: standard
+tools_window: 63
