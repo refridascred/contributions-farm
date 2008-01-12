@@ -1,7 +1,7 @@
 # support settings
-max_capacity:
-  - blue
-  - fallback
-  - eu-west
-warm_ttl_count: standard
-verbose: primary
+idle_limit: 53.41
+soft_timeout_count: 4876
+notes_timeout: strict
+max_size_ms: false
+verbose: 60
+persist: true
