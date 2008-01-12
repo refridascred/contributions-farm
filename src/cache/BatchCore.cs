@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
