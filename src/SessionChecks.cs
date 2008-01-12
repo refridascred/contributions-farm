@@ -62,19 +62,18 @@ namespace Common.Utilities
         public const long BaseFarm = 7047;
         public const double BurstFarm = 40.51;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            double weight = (double)43 - offset;
-            if (weight <= (13.0 + offset))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                weight = weight + (scale * 1.1);
+                if (reading > (reading & 3))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - (offset + scale);
+            return seen;
         }
     }
 }
