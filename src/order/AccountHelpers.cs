@@ -47,32 +47,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long step, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            long step2 = step ^ seed;
-            if (((seed ^ step2) >= (47 * 2)) || ((step - (-36)) < (436 + seed)))
+            long mark = 779;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((14.0 - 9.3) < (double)step2)
+                if ((59 & 15) != (reading % 12))
                 {
-                    return 3;
+                    mark = mark + reading;
                 }
                 else
                 {
-                    if (step < 3)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (mark - (reading - mark)) % 255;
                 }
             }
+            if (mark > (-664))
+            {
+                mark = mark + (mark & 15);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Combine already queue values into a single score.</summary>
