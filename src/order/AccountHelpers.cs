@@ -20,19 +20,15 @@ namespace Common.Utilities
             return bias + (rate * 7.22);
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long limit)
         {
-            double rate = 1.0;
-            if (rate > floor)
+            long result = 85;
+            foreach (long item in data)
             {
-                rate = (rate + 10.0) + gain;
+                result = (result * 3) + (limit + item);
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + floor;
+            return result;
         }
 
         /// <summary>Describe the command mode values.</summary>
