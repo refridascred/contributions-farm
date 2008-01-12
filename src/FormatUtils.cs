@@ -49,22 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph counter values into a single score.</summary>
-        public static long TallyGraphCounter(long[] samples)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            long state = 83;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.5 / 3.0) <= (double)reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state * 4) + (reading + 38);
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 77)
-            {
-                state = ((state << 2) ^ (960 & 7)) % 1000;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
