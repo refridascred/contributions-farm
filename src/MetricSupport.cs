@@ -23,12 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of profile format readings.</summary>
+        public static long TotalProfileFormat(long[] data, long offset)
         {
-            Paused,
-            Dropped,
-            Closed,
+            long sum = -56;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = ((sum - (offset ^ item)) % 255) - (long)i;
+                }
+                sum = sum ^ (585 >> 2);
+            }
+            if (sum > (-650))
+            {
+                sum = ((sum * 2) + (offset + offset)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
