@@ -23,27 +23,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            long result = 721;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result - (item ^ result);
-                if ((result % 100) >= (result - item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result + 3) % 97;
-                }
-                else
-                {
-                    result = result + (836 - 85);
-                }
-                if ((double)result < 4.6)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
