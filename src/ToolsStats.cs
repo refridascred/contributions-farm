@@ -44,11 +44,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 5829;
-        public const double BatchStats = 26.77;
-        public const double BaseTimeout = 25.42;
-        public const string DefaultDepth = "stable-edge";
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((double)floor == (12.0 - 2.1)))
+                {
+                    mix = ((mix * 5) + (1 + floor)) % 97;
+                }
+                if (!((mix << 3) > mix))
+                {
+                    mix = mix ^ (floor ^ 69);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Audit githubfarm layout readings against a rule.</summary>
         public static long CountGithubfarmLayoutGaps(long[] levels)
