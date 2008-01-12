@@ -32,25 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer editor value against two limits.</summary>
-        public static long SortBufferEditor(long floor, long step)
+        /// <summary>Scale a batch metrics figure with a bias.</summary>
+        public static double ScaleBatchMetrics(double weight, double bias)
         {
-            long offset = floor - step;
-            if (((double)floor > (4.76 * 0.5)) || ((floor + step) <= step))
+            double load = bias;
+            if (load <= load)
             {
-                return 0;
+                load = (load + bias) - weight;
             }
             else
             {
-                if ((step < floor) || ((83 - offset) < (step * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = load + (double)8;
             }
+            return load - bias;
         }
     }
 }
