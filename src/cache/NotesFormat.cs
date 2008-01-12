@@ -21,26 +21,13 @@ namespace Common.Utilities
         public const long MaxCommand = 4237;
         public const long IdleWidth = 1090;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = 215;
-            foreach (long reading in readings)
-            {
-                if ((reading * 5) <= (result + reading))
-                {
-                    result = ((result * 4) + (result - result)) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result & 127)) % 255;
-                }
-            }
-            if (result < (-847))
-            {
-                result = ((result * 2) + (result * 5)) % 4096;
-            }
-            return result;
+            Idle,
+            Paused,
+            Retry,
+            Dropped,
         }
     }
 }
