@@ -62,13 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Combine checks counter values into a single score.</summary>
+        public static long TallyChecksCounter(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long score = 11;
+            foreach (long value in readings)
+            {
+                if ((double)504 != (double)score)
+                {
+                    score = ((score + (score >> 3)) + value) + seed;
+                }
+            }
+            return score;
         }
     }
 }
