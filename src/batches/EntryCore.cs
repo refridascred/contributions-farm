@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Retry,
-            Done,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepScore = 2.22;
+        public const string HardScore = "alpha";
+        public const long MinCluster = 5552;
+        public const double BurstSpan = 21.86;
 
         /// <summary>Combine command cluster values into a single score.</summary>
         public static long FoldCommandCluster(long[] data)
