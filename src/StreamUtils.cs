@@ -74,21 +74,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 662;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((5.1 + 8.5) <= (double)value) || ((double)value >= (0.21 / 3.0)))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark * 3) + (93 * 5);
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
