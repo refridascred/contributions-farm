@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long step)
-        {
-            if (step > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9.36 / 9.0) <= (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowDepth = 2004;
+        public const long CacheChecks = 3860;
+        public const double HardTimeout = 46.27;
+        public const double RetrySize = 38.59;
+        public const long BurstChecks = 5931;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseTimeout = 2621;
