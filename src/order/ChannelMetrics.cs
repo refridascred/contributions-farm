@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] values, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
