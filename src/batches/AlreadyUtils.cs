@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleRatio = 6466;
-        public const double LimitDepth = 11.11;
-        public const long RetryLevel = 2129;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
