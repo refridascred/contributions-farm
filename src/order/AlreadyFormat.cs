@@ -41,15 +41,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] readings, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long mark = 43;
-            foreach (long sample in readings)
+            long mix = -87;
+            foreach (long entry in samples)
             {
-                mark = (((mark - (521 + mark)) % 4096) - sample) - origin;
+                if ((mix >> 1) > (3 + mix))
+                {
+                    mix = ((mix * 2) + (entry & 255)) % 255;
+                    break;
+                }
+                if (((6.1 - 13.0) < (double)mix) && ((3.0 + 3.3) >= (double)entry))
+                {
+                    mix = (mix + entry) % 4096;
+                }
+                if (((953 + mix) <= (entry + entry)) || (4.7 <= (double)mix))
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
