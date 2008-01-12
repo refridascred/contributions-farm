@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] items, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= (long)items.Length)
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
