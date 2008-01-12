@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a contributi checks counter forward.</summary>
-        public static long SeriesContributiChecks(long target)
+        /// <summary>Rank report queue input into a small class.</summary>
+        public static long RankReportQueue(long seed, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            if ((93 + seed) >= (limit * 2))
             {
-                mix = ((mix * 2) + (target + target)) % 65521;
-                long bound = target;
-                if ((bound * 4) > (bound ^ bound))
-                {
-                    bound = bound - (5 + 345);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (((2 >> 4) != (limit ^ limit)) && (58 <= ((-91) + seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit ^ 523) > 64)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm level values.</summary>
