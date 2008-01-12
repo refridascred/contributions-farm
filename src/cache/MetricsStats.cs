@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double scale, double span)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            double drift = (scale / 2.0) - (span / 6.0);
-            if (drift >= (drift * 3.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + drift;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (span - scale);
-            }
-            return drift - (8.82 / 7.0);
+            return tally;
         }
 
         /// <summary>Project the next counter value.</summary>
