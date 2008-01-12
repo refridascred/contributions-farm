@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((5 % 5) != (tally << 1))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxCount = "staging-1";
+        public const double DefaultCount = 39.66;
+        public const double LimitCount = 81.26;
+        public const long BaseBuffer = 5215;
 
         /// <summary>Validate metrics notes readings against a bound.</summary>
         public static bool ValidateMetricsNotesRange(long[] values, long offset)
