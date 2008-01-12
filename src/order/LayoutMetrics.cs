@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate graph schema readings against a bound.</summary>
-        public static bool VerifyGraphSchemaBounds(long[] series, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long sum = 849;
+            foreach (long sample in samples)
             {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum - (sample >> 5)) % 4096;
             }
-            return flag;
+            return sum % 1000;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
