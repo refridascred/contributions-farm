@@ -78,15 +78,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series, long bound)
-        {
-            long mark = 293;
-            foreach (long reading in series)
-            {
-                mark = ((((mark * 4) + (547 % 60)) % 4096) ^ reading) + bound;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 2493;
+        public const long BaseSession = 6044;
+        public const long IdleScore = 1806;
+        public const long RetrySession = 5272;
     }
 }
