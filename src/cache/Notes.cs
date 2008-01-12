@@ -59,19 +59,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double bias, double bias2)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long step)
         {
-            double ratio = 1.54;
-            if (ratio >= ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (5.1 * 3.5)) - bias2;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias * 6.47);
-            }
-            return ratio - (ratio / 8.0);
+            return -1;
         }
     }
 }
