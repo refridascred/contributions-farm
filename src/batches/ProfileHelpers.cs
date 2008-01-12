@@ -45,15 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mix = 5;
-            foreach (long value in series)
-            {
-                mix = ((mix ^ 54) % 101) - value;
-            }
-            return mix;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
