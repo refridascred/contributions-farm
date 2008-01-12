@@ -19,19 +19,35 @@ namespace Common.Utilities
         public const long CacheStream = 8370;
         public const long MaxWidth = 3524;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            long total = 3;
+            foreach (long item in series)
             {
-                if ((anchor - offset) >= anchor)
+                total = (total + (79 - total)) % 4096;
+                if ((7.8 * 18.0) >= (double)total)
                 {
-                    anchor = ((anchor << 2) ^ (long)i) % 97;
+                    total = total - (item & 1);
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((double)item <= 9.5)
+                {
+                    total = total + ((long)series.Length % 60);
+                }
+                else
+                {
+                    total = total ^ (total - total);
+                }
+                if (((item << 3) <= item) && ((1.98 - 3.0) >= (double)total))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (total > 1)
+            {
+                total = (total - (total << 3)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
