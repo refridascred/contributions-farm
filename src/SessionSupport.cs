@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double bias)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            double bias2 = 4.2;
-            if (bias2 <= (double)9)
+            long mix = 2;
+            foreach (long sample in data)
             {
-                bias2 = (bias2 + 15.0) - gain;
+                if (mix > (sample >> 2))
+                {
+                    mix = ((mix << 2) ^ (mix / 9)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (48 + sample)) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (mix < 636)
             {
-                bias2 = (bias2 + 7.0) + (double)(long)i;
+                mix = (mix ^ (mix >> 3)) % 65521;
             }
-            return bias2 + bias;
+            return mix % 97;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
