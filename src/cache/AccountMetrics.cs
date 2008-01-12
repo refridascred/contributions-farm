@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstTimeout = 8749;
-        public const long IdleAlready = 2440;
-        public const string RetryAlready = "cached-edge";
-        public const double LimitAlready = 92.87;
-        public const long StepTimeout = 4061;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long floor, long step)
