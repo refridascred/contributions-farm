@@ -42,17 +42,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] series, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 103;
+            foreach (long item in series)
             {
-                if (series[i] < limit)
+                if (anchor > (anchor / 3))
                 {
-                    return (long)i;
+                    anchor = anchor - (167 - anchor);
+                }
+                if ((item + step) < (item - anchor))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 3)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
