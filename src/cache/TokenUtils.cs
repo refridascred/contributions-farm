@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long limit, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] values, long origin)
         {
-            if (!((origin ^ limit) > (origin * 2)))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (origin & 1))
+                if (((double)reading > 2.8) || ((6 - origin) < origin))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
