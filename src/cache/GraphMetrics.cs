@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats queue samples are out of range.</summary>
-        public static long MeasureStatsQueueMatches(long[] data, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((hits >> 3) < (cell + floor))
+                if (origin <= reading)
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
