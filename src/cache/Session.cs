@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] data, long floor)
+        /// <summary>Validate session payload readings against a bound.</summary>
+        public static bool CheckSessionPayloadRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((7.39 * 7.4) <= (double)(long)data.Length)
+                if (cell > bound)
                 {
-                    matches = ((matches + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a cluster stats.</summary>
