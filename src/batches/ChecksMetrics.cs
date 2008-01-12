@@ -74,24 +74,21 @@ namespace Common.Utilities
         public const long HardMetrics = 9112;
         public const long LimitCount = 2549;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long floor, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            if (((floor + origin) != (563 + 44)) || ((0.58 * 8.69) <= (double)origin))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 31) >= (origin + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
