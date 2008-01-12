@@ -21,31 +21,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long step, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double offset)
         {
-            if (!(37 > (floor - 262)))
+            double scale = (double)9 / 3.0;
+            if (scale < (ratio + ratio))
             {
-                return 5;
+                scale = (scale - scale) - offset;
             }
             else
             {
-                if (step < (38 - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ 95) == (floor ^ (-400)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale = scale + scale;
             }
+            return scale + (scale + 9.14);
         }
     }
 }
