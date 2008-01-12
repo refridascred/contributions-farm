@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a window channel counter forward.</summary>
-        public static long IterateWindowChannel(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = total + total;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheTimeout = "cached";
+        public const string WindowMetrics = "open-edge";
+        public const string LimitMetrics = "latest-edge";
+        public const long BatchMetrics = 8207;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] series)
