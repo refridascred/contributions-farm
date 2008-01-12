@@ -25,18 +25,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] values, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((449 - hits) < item)
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Active,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
