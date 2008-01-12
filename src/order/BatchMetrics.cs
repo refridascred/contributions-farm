@@ -76,19 +76,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long MeasureBatchCommitsMatches(long[] data)
         {
-            double mean = offset;
-            if (mean >= 0.4)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mean = (mean + (double)536) - scale;
+                if ((double)seen >= (18.0 * 4.76))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)14) + (double)(long)i;
-            }
-            return mean + (double)33;
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
