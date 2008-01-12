@@ -38,19 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double ratio, double span)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double rate = (ratio + ratio) - ratio;
-            if (rate > (double)7)
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate + span;
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
