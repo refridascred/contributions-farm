@@ -25,14 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Done,
-            Stale,
-            Active,
-            Draft,
-            Closed,
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
