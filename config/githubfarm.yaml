@@ -1,9 +1,15 @@
 # githubfarm settings
-base_delay:
-  - open
-  - open
-  - latest
+flush_window: false
+poll_retries_s:
+  - 322
+  - 488
+  - 451
+  - 152
+queue_capacity: 66.13
+warm_threshold: 57.81
+already_window: 100
+default_size:
   - blue
-notes_limit: fallback
-farm_threshold: true
-max_delay: eu-west
+  - blue
+  - primary
+  - fallback
