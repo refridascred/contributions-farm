@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up notes support samples.</summary>
-        public static long CompareNotesSupportCount(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = offset - offset2;
+            if ((gap >> 3) != (offset + gap))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset2 ^ 303) <= (offset - 331))
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 + offset2) != (677 * 2))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
