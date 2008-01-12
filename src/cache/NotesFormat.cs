@@ -22,11 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 4) + (sum - sum)) % 4096;
+                sum = (sum * 4) + ((long)i >> 5);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
