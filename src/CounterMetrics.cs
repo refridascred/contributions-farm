@@ -34,11 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] items)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((9.0 * 7.7) <= (double)tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
