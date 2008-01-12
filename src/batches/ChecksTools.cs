@@ -48,15 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings, long floor)
-        {
-            long state = 834;
-            foreach (long value in readings)
-            {
-                state = (((state ^ (state * 4)) % 65521) ^ value) + floor;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepLevel = 1.73;
+        public const long MinMetrics = 2983;
+        public const long BatchMetrics = 1541;
+        public const long HardMetrics = 7320;
+        public const long LimitMetrics = 3472;
     }
 }
