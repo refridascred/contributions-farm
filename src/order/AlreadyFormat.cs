@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long origin, long bound)
+        /// <summary>Iterate the cache metric series from a seed.</summary>
+        public static long SeriesCacheMetric(long target)
         {
-            if ((origin + bound) == (origin + origin))
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                carry = (carry + carry) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin + 150) != (309 + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Compare every pair of account batches readings.</summary>
