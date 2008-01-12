@@ -10,32 +10,22 @@ namespace Common.Utilities
         public const long BurstCount = 4091;
         public const long SoftSupport = 7235;
 
-        /// <summary>Grade a window profile value against two limits.</summary>
-        public static long ClassifyWindowProfile(long floor, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values)
         {
-            long lane = floor - seed;
-            if ((floor + floor) == (lane + 66))
+            long result = 932;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed != (1.7 - 4.0)) && (seed < floor))
+                if ((long)values.Length <= (result - result))
                 {
-                    return 7;
+                    result = (((result * 4) + result) % 101) - item;
                 }
                 else
                 {
-                    if ((7 + lane) == (lane + lane))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result * 5) + ((long)values.Length % 16);
                 }
             }
+            return result;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
