@@ -15,12 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count order farm pairs that satisfy a relation.</summary>
+        public static long MatchOrderFarmCount(long[] levels)
         {
-            Paused,
-            Locked,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
