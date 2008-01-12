@@ -40,31 +40,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long bound, long bound2)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            if ((32 * 4) > (bound2 & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4.5 + 9.04) <= (double)bound2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) <= bound2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
