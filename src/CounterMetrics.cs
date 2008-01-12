@@ -33,20 +33,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next contributi report value from a seed.</summary>
-        public static long DeriveContributiReport(long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((seed ^ seed) == (long)i))
-                {
-                    acc = ((acc << 2) ^ (acc << 2)) % 255;
-                }
-                acc = ((acc * 3) + (1 + (long)i)) % 101;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of token entries.</summary>
