@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 6776;
-        public const long DefaultLevel = 2126;
-        public const string LimitScore = "alpha-v2";
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Count format farm pairs that satisfy a relation.</summary>
         public static long OverlapFormatFarmCount(long[] values)
