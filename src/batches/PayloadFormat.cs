@@ -20,15 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
