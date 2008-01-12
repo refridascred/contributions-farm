@@ -24,16 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum << 3) ^ (offset + offset)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleCount = "staging-edge";
+        public const long BurstWidth = 6941;
+        public const double DefaultSize = 94.54;
+        public const long MinCount = 9355;
+        public const long HardDepth = 8491;
     }
 }
