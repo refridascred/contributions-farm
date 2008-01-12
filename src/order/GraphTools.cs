@@ -38,22 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Derive the next order command value from a seed.</summary>
+        public static long IterateOrderCommand(long bound)
         {
-            long sum = 11;
-            foreach (long item in readings)
+            long total = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sum << 3) <= sum)
-                {
-                    sum = (sum * 4) + (item >> 3);
-                }
+                total = (total ^ (total + total)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (sum < 7)
-            {
-                sum = sum ^ (sum * 4);
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the cluster class values.</summary>
