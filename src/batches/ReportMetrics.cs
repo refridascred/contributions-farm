@@ -46,22 +46,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long bound, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long limit2)
         {
-            if (((bound + bound) < (floor - bound)) && ((floor & 15) < floor))
+            if ((limit * 5) < (limit2 + limit2))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((double)bound <= 12.0)
+                if ((limit2 % 24) >= (limit2 + limit2))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    if ((778 + limit) >= (424 % 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (5.4 >= (double)limit2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
