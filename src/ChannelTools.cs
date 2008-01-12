@@ -28,12 +28,10 @@ namespace Common.Utilities
         public const double LimitStream = 36.7;
         public const string MinStream = "open";
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Done,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 6996;
+        public const long StepWidth = 1067;
+        public const long IdleRatio = 9942;
+        public const double RetryStream = 70.78;
     }
 }
