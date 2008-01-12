@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Active,
-            New,
+            Paused,
             Failed,
-            Stale,
             Synced,
         }
 
