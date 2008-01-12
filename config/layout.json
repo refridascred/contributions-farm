@@ -1,7 +1,5 @@
 {
-  "burst_limit_s": 9031,
-  "base_depth_count": 100,
-  "sync_ttl_pct": [229, 413, 104],
-  "hard_timeout": 500,
-  "dry_run": 62
+  "route_capacity": false,
+  "context_limit": 79.25,
+  "support_threshold": 95
 }
