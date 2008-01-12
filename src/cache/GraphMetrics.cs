@@ -84,17 +84,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (items[i] <= offset)
+                if ((sample + seen) < sample)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
