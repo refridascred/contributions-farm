@@ -46,11 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] series)
         {
-            double ratio2 = (double)(885 & 127);
-            return ((ratio2 + (double)129) + ratio) + span;
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((7.0 * 6.82) < (double)hits)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
     }
 }
