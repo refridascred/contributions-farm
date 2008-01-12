@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long edge = bound - limit;
-            if (((8.7 * 7.8) > (double)limit) || ((edge >> 1) <= (7 ^ (-621))))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(2.0 > (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (6.31 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((edge % 100) > bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a filter channel reading.</summary>
