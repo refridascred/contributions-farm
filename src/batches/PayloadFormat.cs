@@ -32,18 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches stats entries that pass the check.</summary>
-        public static long MeasureBatchesStatsMatches(long[] readings, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)hits < (17.0 / 8.0))
-                {
-                    hits = ((hits + 2) ^ cell) - step;
-                }
+                score = (score - ((long)i + (long)i)) % 255;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate schema batches readings against a bound.</summary>
