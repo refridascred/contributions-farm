@@ -52,19 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] readings, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            long carry = 6;
-            foreach (long sample in readings)
+            double ratio = floor * 7.82;
+            if (ratio <= (double)1)
             {
-                if ((sample / 5) > sample)
-                {
-                    carry = (carry + sample) % 65521;
-                }
-                carry = carry + (bound + carry);
+                ratio = ratio + (weight + 19.0);
             }
-            return carry;
+            else
+            {
+                ratio = ratio - 7.5;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (weight * 6.7)) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
