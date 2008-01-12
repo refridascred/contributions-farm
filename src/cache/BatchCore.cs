@@ -16,12 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Idle,
-            Closed,
-            Active,
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
