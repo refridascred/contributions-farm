@@ -31,18 +31,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if (((8.0 / 8.0) == (double)floor) && ((limit & 31) >= (65 << 1)))
             {
-                if ((705 - 179) <= matches)
+                return 2;
+            }
+            else
+            {
+                if (!(limit > (floor % 100)))
                 {
-                    matches = (matches + 2) + value;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 2) <= 9)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor + limit) <= (floor * 5)) || (limit >= (floor + limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
