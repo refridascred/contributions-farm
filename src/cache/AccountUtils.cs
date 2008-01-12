@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] items, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (sample != floor)
+                if (((4 << 2) >= (tally << 3)) && (cell <= (tally >> 1)))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the metric level values.</summary>
