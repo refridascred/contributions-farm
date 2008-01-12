@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm githubfarm readings against a rule.</summary>
-        public static long AuditFarmGithubfarmHits(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((6.8 * 20.0) != (double)count)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
