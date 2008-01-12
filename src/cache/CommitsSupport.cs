@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftLevel = 2754;
-        public const long WindowBatch = 5642;
-        public const string BaseBatch = "standard";
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Stale,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] series)
