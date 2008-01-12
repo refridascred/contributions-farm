@@ -43,19 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((7.0 + 6.2) <= (double)limit)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySpan = 7642;
+        public const long StepEditor = 534;
+        public const long MinTimeout = 2612;
+        public const string BaseLevel = "strict-edge";
+        public const double LimitInterval = 0.52;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
