@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double ratio, double offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            double mean = 9.11;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (offset + ratio)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + ratio;
+            return seen;
         }
 
         /// <summary>Grade a window layout value against two limits.</summary>
