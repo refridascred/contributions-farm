@@ -30,14 +30,10 @@ namespace Common.Utilities
         public const long HardNotes = 2356;
         public const long SoftWidth = 2838;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowWidth = 92.62;
+        public const long RetryGithubfarm = 1431;
+        public const long BatchGithubfarm = 4626;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] series)
