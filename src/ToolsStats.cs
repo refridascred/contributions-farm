@@ -71,13 +71,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSpan = 2133;
+        public const long MaxEntry = 1309;
+        public const string CacheEntry = "strict-edge";
     }
 }
