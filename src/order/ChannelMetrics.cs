@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] readings)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!((datum / 6) >= 50))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Accumulate checks samples.</summary>
