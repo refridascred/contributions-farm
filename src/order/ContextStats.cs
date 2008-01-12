@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleTimeout = 38.56;
-        public const long RetrySize = 467;
-        public const long BaseMetrics = 9081;
-        public const double BurstMetrics = 84.14;
-        public const string IdleMetrics = "cached-edge";
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Dropped,
+            Idle,
+            Active,
+        }
 
         /// <summary>Measure how many already command samples are out of range.</summary>
         public static long CountAlreadyCommandHits(long[] series, long limit)
