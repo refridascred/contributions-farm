@@ -14,19 +14,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] values, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long target, long target2)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            if ((target >> 3) >= (target + 29))
             {
-                if (cell <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((target ^ 9) == (target2 - 741))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((target ^ target) < (target2 << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.0 - 5.36) <= (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
