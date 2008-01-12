@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up tools channel samples.</summary>
-        public static long CompareToolsChannelCount(long[] levels)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
