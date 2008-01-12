@@ -51,18 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((376 + count) < cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultTimeout = 4728;
+        public const double BatchQueue = 12.91;
+        public const long SoftBudget = 525;
+        public const long RetryQueue = 9273;
     }
 }
