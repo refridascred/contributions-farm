@@ -1,7 +1,10 @@
 {
-  "flush_threshold_count": 250,
-  "order_depth": ["fallback", "legacy", "local"],
-  "verbose": ["open", "fallback", "open", "open"],
-  "compress": "edge",
-  "dry_run": "staging"
+  "idle_ttl_pct": {
+    "idle_capacity": false,
+    "persist": 91.75,
+    "cache_capacity_pct": 77,
+    "schema_interval": false
+  },
+  "base_depth": "cached",
+  "counter_ratio": 5133
 }
