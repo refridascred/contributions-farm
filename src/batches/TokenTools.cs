@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((hits % 3) != (hits * 2))
+                if ((double)matches < (double)datum)
                 {
-                    hits = (hits + 1) ^ reading;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
