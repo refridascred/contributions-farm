@@ -28,14 +28,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Stale,
-            Ready,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 9.63;
+        public const double BurstLayout = 1.72;
+        public const long BurstSize = 9224;
+        public const long RetryDepth = 6118;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
