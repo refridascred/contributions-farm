@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] series)
+        /// <summary>Fold a list of notes editor readings.</summary>
+        public static long TallyNotesEditor(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = 4;
+            foreach (long reading in readings)
             {
-                if ((double)item > 1.3)
+                if (!((result << 3) >= reading))
                 {
-                    seen = seen + 3;
+                    result = ((result << 3) ^ (32 / 8)) % 101;
                 }
             }
-            return seen;
+            if (result < 11)
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate format samples.</summary>
