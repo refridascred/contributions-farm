@@ -62,18 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (offset < (6 - offset))
+                if (item != bound)
                 {
-                    count = (count + 2) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
