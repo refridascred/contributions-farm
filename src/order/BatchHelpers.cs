@@ -21,11 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
