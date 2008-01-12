@@ -75,19 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] items, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double mean = bias + (double)7;
+            if (mean > 6.0)
             {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (mean + 20.0);
             }
-            return flag;
+            else
+            {
+                mean = mean - (8.1 * 20.0);
+            }
+            return mean + bias2;
         }
     }
 }
