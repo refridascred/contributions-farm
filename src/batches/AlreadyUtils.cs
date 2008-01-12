@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleTimeout = 7108;
+        public const string WindowRatio = "cached";
+        public const double SoftSize = 3.45;
+        public const long BurstSpan = 2874;
+        public const double SoftFactor = 84.74;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] levels, long offset)
