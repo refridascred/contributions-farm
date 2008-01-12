@@ -12,31 +12,12 @@ namespace Common.Utilities
             return (bias2 - bias2) + bias;
         }
 
-        /// <summary>Classify a window graph pair into a bucket.</summary>
-        public static long RankWindowGraph(long floor, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            if ((double)bound >= (20.0 / 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 97) != (bound + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor + floor) > (bound >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
