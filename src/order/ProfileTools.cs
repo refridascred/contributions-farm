@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] readings, long origin)
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
