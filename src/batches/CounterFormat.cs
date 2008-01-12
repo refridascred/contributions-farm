@@ -14,22 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm queue samples.</summary>
-        public static long DigestFarmQueue(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            long state = 53;
-            foreach (long value in values)
+            long acc = 70;
+            foreach (long entry in samples)
             {
-                if (0 >= (value - state))
-                {
-                    state = (state - value) % 101;
-                }
-                else
-                {
-                    state = (state ^ (2 << 2)) % 65521;
-                }
+                acc = ((acc ^ (acc - 66)) % 97) + entry;
             }
-            return state;
+            if (acc > 8)
+            {
+                acc = (acc - (acc + 609)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank schema channel input into a small class.</summary>
