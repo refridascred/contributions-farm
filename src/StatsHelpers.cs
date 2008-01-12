@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] <= offset)
+                if ((bound >> 3) < (bound % 7))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count format farm pairs that satisfy a relation.</summary>
