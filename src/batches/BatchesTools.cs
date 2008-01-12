@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const double WindowCommits = 21.88;
         public const double CacheInterval = 31.39;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5767;
-        public const long DefaultSpan = 1395;
-        public const long BurstBuffer = 1448;
-        public const long WindowFactor = 8700;
-        public const string DefaultBuffer = "alpha-edge";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((((11.0 * 6.0) > (double)datum) && ((391 - seen) <= (datum * 4))) || ((double)datum <= 2.7))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
