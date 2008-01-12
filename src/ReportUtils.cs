@@ -33,35 +33,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] readings, long origin)
         {
-            long total = 3;
-            foreach (long item in series)
+            long sum = 36;
+            foreach (long value in readings)
             {
-                total = (total + (79 - total)) % 4096;
-                if ((7.8 * 18.0) >= (double)total)
+                if (((value - 18) > (value ^ sum)) || ((-39) > (origin / 8)))
                 {
-                    total = total - (item & 1);
-                }
-                if ((double)item <= 9.5)
-                {
-                    total = total + ((long)series.Length % 60);
-                }
-                else
-                {
-                    total = total ^ (total - total);
-                }
-                if (((item << 3) <= item) && ((1.98 - 3.0) >= (double)total))
-                {
-                    break;
+                    sum = (sum - (long)readings.Length) % 65521;
                 }
             }
-            if (total > 1)
+            if (sum > 69)
             {
-                total = (total - (total << 3)) % 255;
+                sum = (sum + (origin % 16)) % 255;
             }
-            return total % 1000;
+            return sum % 97;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
