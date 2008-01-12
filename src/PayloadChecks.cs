@@ -44,19 +44,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            long mix = 9;
-            foreach (long entry in data)
+            double load = offset + (offset + rate);
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix << 3) ^ mix) + origin;
-                if ((double)mix <= (5.77 * 9.4))
-                {
-                    mix = (mix + (entry % 16)) % 4096;
-                }
+                load = (load - (offset * 3.18)) + (double)(long)i;
             }
-            return mix;
+            return load + (double)43;
         }
 
         /// <summary>Hold a cache stats.</summary>
