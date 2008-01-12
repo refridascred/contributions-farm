@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long IdleCluster = 977;
         public const string MaxCluster = "fallback-v2";
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((8.0 / 4.0) <= (double)(long)i) || (((long)i >> 1) > (state + bound)))
-                {
-                    state = ((state << 2) ^ (10 + bound)) % 255;
-                }
-                state = (state + state) % 101;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
