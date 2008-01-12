@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] series)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((7.0 * 6.82) < (double)hits)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
