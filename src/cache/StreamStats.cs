@@ -42,12 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Active,
-            Ready,
-            New,
+            Idle,
+            Locked,
+            Done,
         }
     }
 }
