@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a cache stats.</summary>
