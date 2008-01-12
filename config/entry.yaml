@@ -1,13 +1,4 @@
 # entry settings
-burst_delay: false
-cache_capacity_pct:
-  - strict
-  - eu-west
-  - eu-west
-  - blue
-strict:
-  - legacy
-  - green
-  - green
-  - stable
-route_size: true
+readonly: 77
+flush_ratio: false
+batch_ttl_ms: 7491
