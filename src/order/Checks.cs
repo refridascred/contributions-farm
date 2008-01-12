@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Draft,
-            Retry,
-            Stale,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 7922;
+        public const long HardAccount = 3149;
+        public const long WindowAccount = 6202;
+        public const string SoftAccount = "open-edge";
 
         /// <summary>Adjust a filter githubfarm reading.</summary>
         public static double ProjectFilterGithubfarm(double ratio, double floor)
