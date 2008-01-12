@@ -47,11 +47,18 @@ namespace Common.Utilities
         public const long RetryCache = 8957;
         public const long StepLevel = 4222;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] series, long seed)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally % 24) > (tally - seed))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
