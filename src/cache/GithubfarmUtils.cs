@@ -24,26 +24,12 @@ namespace Common.Utilities
             return scale + 2.73;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long anchor = -2;
-            foreach (long sample in readings)
-            {
-                if (((sample % 8) > (anchor & 3)) && (anchor <= (anchor << 2)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor % 10)) % 97;
-                }
-                if (0 < anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
