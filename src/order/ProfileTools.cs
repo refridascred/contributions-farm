@@ -28,12 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels, long step)
         {
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long state = -3;
+            foreach (long value in levels)
+            {
+                state = (state - (value / 8)) - step;
+            }
+            return state;
         }
 
         /// <summary>Accumulate report samples.</summary>
