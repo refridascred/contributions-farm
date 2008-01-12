@@ -48,12 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ seen) < (seen + sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
