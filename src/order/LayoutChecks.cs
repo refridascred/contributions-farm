@@ -47,31 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if ((target - 58) > floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target >= floor) || ((target << 3) != (floor * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((3 >> 4) != (floor % 12)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine metrics command values into a single score.</summary>
