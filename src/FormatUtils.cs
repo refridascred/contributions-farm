@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches entry readings against a rule.</summary>
-        public static long AuditBatchesEntryOutliers(long[] items, long step)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally + tally) != (step & 63))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Adjust a notes reading.</summary>
