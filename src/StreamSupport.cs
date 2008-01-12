@@ -10,18 +10,28 @@ namespace Common.Utilities
         public const long SoftMetric = 4965;
         public const long CacheDepth = 6665;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mix = 668;
+            foreach (long datum in readings)
             {
-                if ((1.67 + 9.0) > (double)count)
+                mix = mix ^ (399 - mix);
+                if ((double)target > 2.24)
                 {
-                    count = (count + 3) + cell;
+                    mix = mix ^ (datum - target);
+                    break;
+                }
+                if (!((target % 7) >= (mix / 8)))
+                {
+                    mix = ((mix * 4) + datum) % 101;
                 }
             }
-            return count;
+            if (mix > (-622))
+            {
+                mix = ((mix << 2) ^ (target % 97)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
