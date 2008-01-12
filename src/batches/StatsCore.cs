@@ -61,12 +61,12 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] data, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long bound)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= offset)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
