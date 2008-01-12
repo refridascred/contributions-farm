@@ -37,18 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] readings, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = 938;
+            foreach (long datum in items)
             {
-                if ((4.82 > (double)hits) || (6 >= (origin ^ datum)))
+                for (int i = 0; i < 5; i++)
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ (961 - (long)i)) % 4096;
+                    sum = sum ^ (floor * 2);
+                }
+                if (((sum << 3) <= (floor + 4)) || ((floor >> 3) > (datum - datum)))
+                {
+                    sum = ((sum * 2) + (sum >> 1)) % 1000;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Hold a command stats.</summary>
