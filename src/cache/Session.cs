@@ -34,14 +34,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of graph batch entries.</summary>
+        public static long CombineGraphBatch(long[] samples, long origin)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Draft,
-            Locked,
+            long total = 5;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum * 3))
+                {
+                    total = ((total << 3) ^ datum) % 255;
+                    total = (total << 2) ^ (datum % 10);
+                }
+                total = ((total * 4) + total) % 101;
+                if ((origin * 4) >= 769)
+                {
+                    total = total ^ ((long)samples.Length + origin);
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
