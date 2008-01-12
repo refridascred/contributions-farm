@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] samples, long bound)
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate farm samples.</summary>
