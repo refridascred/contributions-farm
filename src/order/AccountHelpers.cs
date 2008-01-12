@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank report queue input into a small class.</summary>
-        public static long RankReportQueue(long seed, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] values)
         {
-            if ((93 + seed) >= (limit * 2))
+            long sum = 581;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((2 >> 4) != (limit ^ limit)) && (58 <= ((-91) + seed)))
+                if (sample > sum)
                 {
-                    return 1;
+                    sum = sum - (sample / 8);
                 }
-                else
+                if ((double)sample > (14.0 + 2.51))
                 {
-                    if ((limit ^ 523) > 64)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = ((sum << 3) ^ (sum + sample)) % 255;
                 }
             }
+            if (sum < 629)
+            {
+                sum = sum + sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the farm level values.</summary>
