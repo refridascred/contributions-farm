@@ -22,31 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            long acc = 983;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((datum - 0) <= (datum & 31))
+                if ((double)hits <= 7.1)
                 {
-                    acc = ((acc * 4) + (datum << 2)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc + acc);
-                    acc = ((acc * 3) + (datum - (-3))) % 65521;
-                }
-                if ((datum - acc) <= (long)series.Length)
-                {
-                    acc = (acc * 3) + (datum >> 3);
-                }
-                else
-                {
-                    acc = (acc - acc) % 4096;
+                    hits = (hits + 2) + item;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
