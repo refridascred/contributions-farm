@@ -39,11 +39,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "staging-edge";
-        public const long BaseEntry = 9857;
-        public const long StepEntry = 3136;
-        public const long RetryWidth = 9259;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
