@@ -30,12 +30,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryFactor = 3379;
-        public const double MinSpan = 81.29;
-        public const long IdleCounter = 9236;
-        public const double DefaultRatio = 53.0;
-        public const long BurstCounter = 903;
+        /// <summary>Derive the next contributi report value from a seed.</summary>
+        public static long DeriveContributiReport(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((seed ^ seed) == (long)i))
+                {
+                    acc = ((acc << 2) ^ (acc << 2)) % 255;
+                }
+                acc = ((acc * 3) + (1 + (long)i)) % 101;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] samples)
