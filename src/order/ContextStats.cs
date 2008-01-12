@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleTimeout = 38.56;
+        public const long RetrySize = 467;
+        public const long BaseMetrics = 9081;
+        public const double BurstMetrics = 84.14;
+        public const string IdleMetrics = "cached-edge";
 
         /// <summary>Measure how many already command samples are out of range.</summary>
         public static long CountAlreadyCommandHits(long[] series, long limit)
