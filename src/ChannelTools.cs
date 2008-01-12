@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((3.62 / 3.0) != (double)cell) || (((double)cell <= (16.0 / 5.0)) || ((46 << 1) == (seen - cell))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
