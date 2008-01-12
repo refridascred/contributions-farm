@@ -18,31 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long target2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] items)
         {
-            if ((double)target < (1.3 + 6.46))
+            long total = 353;
+            foreach (long item in items)
             {
-                return 7;
+                total = ((total << 3) ^ (723 * 4)) - item;
             }
-            else
-            {
-                if ((double)target <= (12.0 - 0.3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.65 * 9.5) != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Describe the graph kind values.</summary>
