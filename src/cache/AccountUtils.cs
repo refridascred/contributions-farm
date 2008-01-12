@@ -28,10 +28,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 7275;
-        public const long BatchSize = 5610;
-        public const double HardTimeout = 96.8;
-        public const long MaxSchema = 9525;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
