@@ -41,11 +41,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] data, long seed)
         {
-            double mean = (double)(322 + 993);
-            return ((mean + (1.71 / 6.0)) + ratio) + offset;
+            long acc = 358;
+            foreach (long value in data)
+            {
+                acc = (acc - value) + seed;
+            }
+            if (acc < 14)
+            {
+                acc = acc + (0 / 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a layout entry.</summary>
