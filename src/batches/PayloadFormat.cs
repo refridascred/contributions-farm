@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm notes measurements.</summary>
-        public static double AdjustGithubfarmNotes(double scale, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] series, long floor)
         {
-            double weight = offset;
-            if (weight <= (5.8 - scale))
+            long hits = 0;
+            foreach (long item in series)
             {
-                weight = weight + (scale - offset);
+                if (((floor & 127) >= 429) || ((floor / 9) <= (floor >> 1)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - 9.64) + (double)(long)i;
-            }
-            return weight - (7.0 + offset);
+            return hits;
         }
 
         /// <summary>Count the batches stats entries that pass the check.</summary>
