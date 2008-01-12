@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long step, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data)
         {
-            if (((origin / 9) <= (step << 3)) || ((double)0 > (double)step))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step + origin) >= (step + step)) || ((origin >> 1) == (origin & 127)))
+                if (!((double)sample >= (0.16 / 7.0)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
