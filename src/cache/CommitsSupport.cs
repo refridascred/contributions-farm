@@ -62,18 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] values, long offset)
+        /// <summary>Digest a series of cache profile entries.</summary>
+        public static long TotalCacheProfile(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            long sum = 82;
+            foreach (long sample in items)
             {
-                if ((((9.47 / 8.0) > (double)offset) && ((count ^ (-66)) == (value + value))) || ((count > (offset ^ offset)) || ((value << 3) >= (93 - offset))))
-                {
-                    count = count + 2;
-                }
+                sum = (sum + (sample - sum)) - origin;
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Match up session cluster samples.</summary>
