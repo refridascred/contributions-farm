@@ -14,10 +14,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseBudget = 84.73;
-        public const double LimitMetrics = 31.15;
-        public const long BatchSize = 3479;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (29 <= reading)
+                {
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
         public static long MeasureNotesChannelHits(long[] readings, long seed)
