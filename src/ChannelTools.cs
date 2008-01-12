@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter token measurements.</summary>
-        public static double ProjectCounterToken(double weight, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            double gain = (double)((-790) - 3);
-            if (gain < gain)
+            long score = 3;
+            foreach (long reading in samples)
             {
-                gain = gain - (weight * 14.0);
+                score = score - (reading >> 5);
+                score = (score ^ (score * 4)) % 1000;
+                score = (score << 3) ^ (reading / 8);
             }
-            else
-            {
-                gain = gain + (gain * 4.03);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain - bias;
+            return score;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
