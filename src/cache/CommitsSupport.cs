@@ -69,16 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache profile entries.</summary>
-        public static long TotalCacheProfile(long[] items, long origin)
-        {
-            long sum = 82;
-            foreach (long sample in items)
-            {
-                sum = (sum + (sample - sum)) - origin;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxBudget = 692;
+        public const string DefaultDepth = "fallback-edge";
+        public const long RetryDepth = 7818;
+        public const long DefaultChecks = 7256;
+        public const long BurstLevel = 5120;
 
         /// <summary>Match up session cluster samples.</summary>
         public static long PairSessionClusterCount(long[] items)
