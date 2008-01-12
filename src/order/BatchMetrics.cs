@@ -45,18 +45,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context stream samples are out of range.</summary>
-        public static long AuditContextStreamHits(long[] readings, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((1.0 + 7.0) > (double)tally))
+                long prev = ((long)i & 255) + (1 / 8);
+                if (((-5) + prev) > (limit * 2))
                 {
-                    tally = ((tally + 3) - item) + bound;
+                    result = (result ^ result) % 65521;
+                    result = (result ^ (limit / 5)) % 65521;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
