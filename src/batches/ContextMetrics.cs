@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 2518;
+        public const long HardChannel = 1029;
+        public const long BatchChannel = 9351;
+        public const double SoftBudget = 24.09;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetrySize = "cached-1";
