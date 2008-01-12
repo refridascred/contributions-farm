@@ -24,21 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsWindowCount(long[] levels)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
