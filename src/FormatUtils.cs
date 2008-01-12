@@ -43,11 +43,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Classify a already token pair into a bucket.</summary>
+        public static long SortAlreadyToken(long offset, long limit)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            if ((limit < (offset & 15)) || ((offset + 36) <= (offset * 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit << 3) >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >= (offset % 8)) || (limit < (offset << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - offset) > offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter record.</summary>
