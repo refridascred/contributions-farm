@@ -54,23 +54,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((((double)item <= (8.55 * 6.93)) || ((9.77 - 3.24) < (double)item)) && ((double)count < 9.8))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 544;
+        public const double MinSpan = 58.96;
+        public const long StepBatch = 8275;
+        public const long MinFactor = 8668;
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] levels)
