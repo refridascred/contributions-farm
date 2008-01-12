@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
