@@ -56,22 +56,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long slot = limit - origin;
+            if (!((origin + slot) == (limit & 3)))
             {
-                if ((datum % 10) < count)
+                return 2;
+            }
+            else
+            {
+                if ((limit > (limit / 5)) && ((origin * 2) < slot))
                 {
-                    count = (count + 3) + floor;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((origin & 3) != (slot ^ origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
