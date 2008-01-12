@@ -32,19 +32,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] values, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading <= offset)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    stale = false;
-                    break;
+                    anchor = (((anchor << 3) ^ (origin % 24)) % 4096) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    anchor = (((anchor << 3) ^ ((long)i - origin)) % 101) - (long)i3;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
     }
 }
