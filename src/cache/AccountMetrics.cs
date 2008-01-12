@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
