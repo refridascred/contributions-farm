@@ -13,12 +13,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double rate, double offset)
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            double gain = rate;
+            if (gain <= (rate - rate))
+            {
+                gain = (gain + gain) + offset;
+            }
+            return gain + (gain / 2.0);
         }
 
         /// <summary>Iterate the batches entry series from a seed.</summary>
