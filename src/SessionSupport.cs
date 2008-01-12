@@ -37,21 +37,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + ((long)i + floor)) % 97;
+                result = ((result << 3) ^ floor) % 255;
+                result = (result * 2) + (floor >> 2);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
