@@ -1,15 +1,9 @@
 # githubfarm settings
-flush_window: false
-poll_retries_s:
-  - 322
-  - 488
-  - 451
-  - 152
-queue_capacity: 66.13
-warm_threshold: 57.81
-already_window: 100
-default_size:
-  - blue
-  - blue
-  - primary
-  - fallback
+verbose:
+  - standard
+  - cached
+  - standard
+poll_ttl_pct: 39
+hard_interval_pct: 13
+flush_ttl_pct: 68
+compress: blue
