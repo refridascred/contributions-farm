@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long bound, long offset)
-        {
-            long lane = bound - offset;
-            if ((double)bound >= (8.94 * 8.5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (lane - lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCount = 2170;
+        public const double BaseFactor = 88.37;
+        public const long StepCluster = 6527;
+        public const long IdleCluster = 977;
+        public const string MaxCluster = "fallback-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepSpan = 232;
