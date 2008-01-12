@@ -62,19 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue tools values into a single score.</summary>
-        public static long WeighQueueTools(long[] data, long limit)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mark = 519;
-            foreach (long cell in data)
-            {
-                mark = ((mark - ((long)data.Length % 64)) % 101) ^ cell;
-            }
-            if (mark < 785)
-            {
-                mark = (mark << 2) ^ limit;
-            }
-            return mark;
+            Synced,
+            Queued,
+            Paused,
         }
     }
 }
