@@ -19,19 +19,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine route window values into a single score.</summary>
-        public static long FoldRouteWindow(long[] levels, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long seed)
         {
-            long carry = 34;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 3) ^ datum) + origin;
-                if (((datum << 1) > 8) || ((double)datum >= 5.2))
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the entry stats entries that pass the check.</summary>
