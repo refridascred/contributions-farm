@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series, long offset)
         {
-            if (((seed << 2) >= (9 - limit)) && ((double)limit < (0.9 - 7.28)))
+            long acc = 950;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit > 4.51)
+                acc = acc - (value + acc);
+                acc = (acc * 5) + (2 - offset);
+                if (((offset / 2) > (2 % 24)) && (acc > (value + offset)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
