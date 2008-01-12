@@ -34,24 +34,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank channel commits input into a small class.</summary>
-        public static long RankChannelCommits(long origin, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            if ((bound % 60) == (bound + origin))
+            long result = 215;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound < 5.87))
+                if ((reading * 5) <= (result + reading))
                 {
-                    return 1;
+                    result = ((result * 4) + (result - result)) % 97;
                 }
                 else
                 {
-                    return 3;
+                    result = ((result << 3) ^ (result & 127)) % 255;
                 }
             }
+            if (result < (-847))
+            {
+                result = ((result * 2) + (result * 5)) % 4096;
+            }
+            return result;
         }
     }
 }
