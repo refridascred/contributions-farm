@@ -1,22 +1,12 @@
 # entry settings
-batch_depth: 56.97
-base_window_s:
-  githubfarm_size:
-    - 178
-    - 416
-  window_capacity: 60
-  persist:
-    readonly: primary
-    min_ratio: 78.37
-    max_window_pct: standard
-    hard_interval: 7430
-    payload_threshold: 21.34
-  min_capacity_ms: fallback
-  layout_window:
-    max_interval_pct: true
-    audit: 6688
-    max_ratio_count: false
-sync_window_pct: strict
-filter_capacity: staging
-window_threshold: 51
-warm_capacity_pct: 37
+graph_interval: 18.51
+hard_ratio_pct:
+  warm_retries_ms: fallback
+  cache_threshold_s: true
+  stream_size:
+    - 274
+    - 306
+    - 184
+    - 456
+  schema_window: legacy
+channel_timeout: 12.09
