@@ -57,12 +57,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels, long offset)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long mark = 40;
+            foreach (long cell in levels)
+            {
+                mark = (mark ^ (24 + offset)) % 97;
+                if ((offset * 3) != (offset - offset))
+                {
+                    mark = mark + cell;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark + (long)levels.Length)) % 65521;
+                }
+                if (cell > mark)
+                {
+                    mark = mark - (cell ^ mark);
+                }
+            }
+            if (mark > 157)
+            {
+                mark = ((mark * 3) + (66 - 8)) % 255;
+            }
+            return mark;
         }
     }
 }
