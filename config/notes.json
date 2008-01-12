@@ -1,13 +1,8 @@
 {
-  "audit": {
-    "dry_run": true,
-    "strict": 79,
-    "burst_retries_pct": "edge",
-    "already_delay": 5379,
-    "report_ttl": "open",
-    "poll_interval_ms": 5965
-  },
-  "min_ratio_pct": false,
-  "readonly": true,
-  "githubfarm_limit": 44.34
+  "record_retries": false,
+  "dry_run": 2,
+  "layout_delay": true,
+  "sync_timeout": 65,
+  "metrics_retries": true,
+  "flush_delay": 52
 }
