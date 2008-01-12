@@ -22,12 +22,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double bias)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            double gain = weight;
+            if (gain >= gain)
+            {
+                gain = gain - bias;
+            }
+            return gain + (double)793;
         }
     }
 }
