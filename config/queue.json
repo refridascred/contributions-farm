@@ -1,8 +1,8 @@
 {
-  "base_ttl_count": 91,
-  "readonly": ["eu-west", "local", "green"],
-  "retry_interval_pct": false,
-  "support_delay": true,
-  "cluster_capacity": "latest",
-  "cache_ttl": false
+  "strict": "green",
+  "readonly": "legacy",
+  "dry_run": "primary",
+  "stream_capacity": 91.86,
+  "flush_timeout_pct": false,
+  "already_limit": 828
 }
