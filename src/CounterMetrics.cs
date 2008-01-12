@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Validate metrics notes readings against a bound.</summary>
+        public static bool ValidateMetricsNotesRange(long[] values, long offset)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a schema summary.</summary>
