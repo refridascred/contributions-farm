@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (cell >= offset)
+                if (reading > bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
