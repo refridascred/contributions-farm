@@ -41,17 +41,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batch notes reading by value.</summary>
-        public static long SeekBatchNotesIndex(long[] readings, long offset)
+        /// <summary>Count channel layout pairs that satisfy a relation.</summary>
+        public static long MatchChannelLayoutCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] >= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the filter class values.</summary>
