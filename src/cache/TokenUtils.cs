@@ -23,16 +23,18 @@ namespace Common.Utilities
             return gain + (gain / 2.0);
         }
 
-        /// <summary>Iterate the batches entry series from a seed.</summary>
-        public static long IterateBatchesEntry(long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                mix = mix ^ (83 ^ mix);
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (sample <= (sample % 8))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
