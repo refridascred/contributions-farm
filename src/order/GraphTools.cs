@@ -70,10 +70,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxFactor = 5031;
-        public const long CacheWidth = 4876;
-        public const double SoftStream = 4.73;
-        public const string IdleTimeout = "open-1";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
