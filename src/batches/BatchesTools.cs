@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data, long target)
         {
-            Pending,
-            Stale,
-            Ready,
-            Synced,
-            Locked,
+            long mark = 33;
+            foreach (long item in data)
+            {
+                if (2.8 > (double)target)
+                {
+                    mark = ((mark ^ ((-1) << 3)) % 1000) ^ item;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
