@@ -20,18 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] values, long floor)
+        /// <summary>Roll a context token counter forward.</summary>
+        public static long IterateContextToken(long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)value == (5.68 + 8.76))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    count = (count + 2) + floor;
+                    result = (((result << 3) ^ (result - 2)) % 65521) - (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
