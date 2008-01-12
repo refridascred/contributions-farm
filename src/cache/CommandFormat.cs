@@ -55,16 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long state = 7;
+            foreach (long datum in values)
             {
-                score = ((score << 3) ^ (score / 7)) % 255;
-                score = ((score * 3) + (long)i) % 97;
+                if ((datum + state) > (datum & 3))
+                {
+                    state = ((state << 3) ^ (datum - datum)) % 4096;
+                }
             }
-            return score;
+            if (state > (-9))
+            {
+                state = ((state * 2) + state) % 65521;
+            }
+            return state;
         }
     }
 }
