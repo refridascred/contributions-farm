@@ -33,12 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 7809;
-        public const long LimitRatio = 7859;
-        public const long RetryReport = 2939;
-        public const long BurstReport = 7024;
-        public const long BatchReport = 3500;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double IdleStream = 74.53;
