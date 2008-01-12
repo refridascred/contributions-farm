@@ -20,13 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
+        public static bool ValidateBatchContributiRange(long[] series, long origin)
         {
-            Queued,
-            Ready,
-            New,
-            Closed,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
