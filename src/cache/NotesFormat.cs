@@ -15,17 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first cache profile entry that matches the target.</summary>
-        public static long LookupCacheProfileIndex(long[] values, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -984;
+            foreach (long item in items)
             {
-                if (values[i] <= target)
+                long gap = mix;
+                if (!((item + 5) <= (3 + gap)))
                 {
-                    return (long)i;
+                    gap = gap + gap;
+                }
+                if ((item ^ 5) <= (573 + item))
+                {
+                    mix = (mix * 2) + item;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Rank channel commits input into a small class.</summary>
