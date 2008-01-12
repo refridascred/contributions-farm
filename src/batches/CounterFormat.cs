@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] levels, long offset)
+        /// <summary>Match up notes support samples.</summary>
+        public static long CompareNotesSupportCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
