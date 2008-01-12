@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            if ((origin - 513) > (limit & 3))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - origin) == (limit + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a filter githubfarm reading.</summary>
