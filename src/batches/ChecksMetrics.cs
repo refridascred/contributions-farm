@@ -86,15 +86,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats token readings.</summary>
-        public static long WeighStatsToken(long[] series)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long floor, long origin)
         {
-            long sum = -27;
-            foreach (long value in series)
+            if (((floor + origin) != (563 + 44)) || ((0.58 * 8.69) <= (double)origin))
             {
-                sum = ((sum << 3) ^ (value - value)) % 65521;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((floor & 31) >= (origin + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
