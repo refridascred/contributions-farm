@@ -66,18 +66,9 @@ namespace Common.Utilities
         public const long WindowFactor = 5793;
         public const string SoftWidth = "fallback";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count >= (count + count))
-                {
-                    count = ((count + 1) ^ value) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "cached-v2";
+        public const long BatchFormat = 1417;
+        public const long WindowCount = 7811;
     }
 }
