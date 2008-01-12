@@ -1,6 +1,8 @@
-id,weight,ratio
-1,14,local
-2,33.6,45.18
-3,76.51,195
-4,70.07,fallback
-5,46.81,56.51
+id,count,owner,active
+1,local,44.46,staging
+2,24.22,standard,762
+3,open,471,latest
+4,latest,731,950
+5,299,edge,38.42
+6,55.23,2.65,419
+7,stable,local,55.13
