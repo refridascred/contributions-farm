@@ -42,14 +42,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFactor = 7474;
+        public const double WindowFilter = 78.98;
+        public const double CacheFilter = 65.61;
+        public const double BatchFilter = 57.09;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] levels)
