@@ -78,12 +78,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxBudget = 692;
-        public const string DefaultDepth = "fallback-edge";
-        public const long RetryDepth = 7818;
-        public const long DefaultChecks = 7256;
-        public const long BurstLevel = 5120;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public double Offset { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Match up session cluster samples.</summary>
         public static long PairSessionClusterCount(long[] items)
