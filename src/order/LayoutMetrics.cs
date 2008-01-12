@@ -30,12 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Queued,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftWidth = 3551;
+        public const long SoftTimeout = 1804;
+        public const long WindowCount = 706;
+        public const string BurstFactor = "standard";
+        public const long MaxSize = 3087;
     }
 }
