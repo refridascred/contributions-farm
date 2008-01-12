@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            double ratio2 = (double)(885 & 127);
+            return ((ratio2 + (double)129) + ratio) + span;
         }
     }
 }
