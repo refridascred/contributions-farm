@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxSize = 1886;
-        public const double WindowFactor = 97.69;
-        public const long BaseInterval = 6129;
-        public const long RetryScore = 3972;
-        public const long WindowCommits = 7428;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long target, long seed)
+        {
+            if ((4.2 - 1.0) <= (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target >> 4) > (target << 3)) && ((target - seed) < (target / 9)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed << 1) != (target + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((16.0 / 4.0) == (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] levels, long offset)
