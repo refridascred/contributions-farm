@@ -38,24 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] samples)
         {
-            if ((target / 6) > (offset >> 5))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((target + offset) > (652 - offset)))
+                if ((hits ^ hits) > (datum ^ 747))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
