@@ -1,4 +1,24 @@
 # githubfarm settings
-burst_ttl_count: standard
-cache_ratio_pct: false
-soft_window_ms: 2717
+cache_limit_pct: 80.61
+sync_size_s: 250
+readonly:
+  - 29
+  - 249
+flush_timeout_pct: false
+min_ratio:
+  readonly: false
+  audit:
+    - standard
+    - staging
+  filter_capacity: 72.78
+  max_retries_count: 31
+  strict: staging
+  burst_depth:
+    min_delay: 13.36
+    dry_run: 1482
+    min_depth_s: 428
+    enabled:
+      - strict
+      - blue
+      - standard
+    batch_delay_ms: green
