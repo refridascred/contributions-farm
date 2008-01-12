@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double bias)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double bias2 = bias - (double)0;
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (weight / 6.0)) + (double)(long)i;
-            }
-            return bias2 - weight;
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
