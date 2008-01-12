@@ -1,8 +1,18 @@
 {
-  "readonly": "open",
-  "min_ttl_pct": [88, 79, 476],
-  "cache_timeout": 44,
-  "idle_capacity_count": true,
-  "batch_timeout_pct": [256, 366],
-  "batch_threshold_count": 7438
+  "max_ttl": 97,
+  "checks_threshold": "legacy",
+  "retry_size_pct": [210, 291],
+  "base_timeout": "edge",
+  "verbose": {
+    "max_interval_s": 84.39,
+    "max_window_ms": {
+      "flush_capacity": false,
+      "warm_capacity_count": "standard",
+      "route_ttl": 3626,
+      "flush_interval": 13.73,
+      "schema_capacity": [147, 15]
+    },
+    "persist": "fallback",
+    "burst_limit_ms": "edge"
+  }
 }
