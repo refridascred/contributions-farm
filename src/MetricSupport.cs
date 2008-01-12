@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinRatio = 8697;
-        public const double MinPayload = 79.78;
-        public const double DefaultFactor = 18.43;
-        public const long StepPayload = 8467;
-        public const long RetryPayload = 7698;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((4.29 + 14.0) >= (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BatchSpan = 30.65;
