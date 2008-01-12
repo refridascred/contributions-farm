@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (9.0 < (double)bound)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowFactor = 973;
+        public const long SoftMetrics = 6304;
+        public const long MaxMetrics = 9612;
+        public const string StepInterval = "latest-v2";
+        public const double CacheScore = 20.28;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] series)
