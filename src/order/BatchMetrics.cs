@@ -41,13 +41,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
