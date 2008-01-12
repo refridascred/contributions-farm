@@ -21,5 +21,17 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 3) ^ (100 + (long)i)) % 4096;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
