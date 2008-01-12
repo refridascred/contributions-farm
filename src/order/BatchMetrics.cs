@@ -27,18 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] levels, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long anchor = 980;
+            foreach (long sample in items)
             {
-                if ((datum / 2) > (datum ^ bound))
-                {
-                    seen = seen + 1;
-                }
+                anchor = (anchor ^ (floor ^ floor)) + sample;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
