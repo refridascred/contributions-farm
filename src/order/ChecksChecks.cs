@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data, long limit)
         {
-            long anchor = 607;
-            foreach (long reading in samples)
+            long mark = 551;
+            foreach (long cell in data)
             {
-                anchor = ((anchor ^ anchor) % 4096) + reading;
+                mark = ((mark + (limit + mark)) % 101) ^ cell;
             }
-            if (anchor > (-29))
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return mark % 4096;
         }
 
         /// <summary>Locate a command notes reading by value.</summary>
