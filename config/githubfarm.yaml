@@ -1,19 +1,5 @@
 # githubfarm settings
-audit: 500
-idle_ttl_pct:
-  - blue
-  - standard
-  - edge
-sync_capacity:
-  stream_retries: 7788
-  verbose: false
-  queue_ratio: true
-  poll_threshold: strict
-  sync_size_count: false
-  max_size_s:
-    hard_ratio: staging
-    readonly: 22.89
-    persist: standard
-    dry_run: 31
-    retry_limit_count: 100
-    hard_ttl: 9619
+persist: primary
+hard_limit_pct: strict
+default_threshold: 49.36
+batch_capacity_s: 100
