@@ -1,5 +1,39 @@
 # entry settings
-idle_interval: 1024
-soft_capacity_ms: 26.38
-burst_threshold_count: 30
-already_ttl: standard
+poll_interval:
+  enabled: false
+  default_ratio: 10
+  retry_delay: green
+  base_interval_pct: latest
+  sync_size_s: eu-west
+idle_threshold_ms: edge
+notes_limit: open
+record_ttl: cached
+stream_capacity:
+  checks_depth: primary
+  idle_interval_s:
+    idle_delay_s: false
+    readonly: 2.86
+    dry_run: 7706
+    record_ratio:
+      - 364
+      - 10
+      - 234
+      - 83
+    base_ttl_count: 23.97
+  queue_window:
+    - primary
+    - green
+    - green
+    - local
+  hard_ratio:
+    - 128
+    - 58
+  soft_ttl_pct:
+    cache_depth_ms: 94.24
+    metric_delay: eu-west
+    soft_size:
+      - blue
+      - latest
+    cache_size_ms: cached
+  flush_delay_s: 30
+default_threshold_s: true
