@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = 485;
+            foreach (long reading in series)
             {
-                if (((4 << 2) >= (tally << 3)) && (cell <= (tally >> 1)))
-                {
-                    tally = (tally + 3) - limit;
-                }
+                state = (((state << 2) ^ (36 ^ (long)series.Length)) % 255) - reading;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Look up the position of a session route sample.</summary>
