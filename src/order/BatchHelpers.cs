@@ -29,22 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 13;
+            foreach (long cell in values)
             {
-                if ((datum >> 3) > datum)
+                if (seed > (2 & 1))
                 {
-                    hits = hits + 2;
+                    state = (state ^ (seed * 2)) + cell;
                 }
-                else
+                if (!((double)state < (2.8 * 5.61)))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
