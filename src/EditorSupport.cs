@@ -48,24 +48,11 @@ namespace Common.Utilities
         public const double CacheFilter = 65.61;
         public const double BatchFilter = 57.09;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels)
-        {
-            long anchor = 31;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor << 2) ^ (cell << 2)) % 4096;
-                if (anchor < ((long)levels.Length ^ (-18)))
-                {
-                    anchor = (anchor * 3) + (cell + cell);
-                }
-            }
-            if (anchor < (-954))
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleCount = 89.48;
+        public const string MaxNotes = "legacy-1";
+        public const long BurstNotes = 6227;
+        public const double SoftSpan = 23.83;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
