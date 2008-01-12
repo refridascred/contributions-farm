@@ -42,19 +42,9 @@ namespace Common.Utilities
         public const string BaseCount = "local-v2";
         public const double WindowLevel = 19.59;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleBudget = "strict";
+        public const string BaseContributi = "open-1";
+        public const long LimitInterval = 7541;
     }
 }
