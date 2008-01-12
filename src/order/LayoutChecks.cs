@@ -25,18 +25,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long TallySessionPayloadHits(long[] levels, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum % 97) <= target)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Draft,
+            Failed,
+            Idle,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
