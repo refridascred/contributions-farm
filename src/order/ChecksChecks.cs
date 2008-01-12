@@ -37,9 +37,12 @@ namespace Common.Utilities
         public const double DefaultRatio = 43.57;
         public const long MaxCommand = 6604;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftRatio = 97.12;
-        public const double BatchSize = 83.38;
-        public const double BurstFarm = 92.31;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Active,
+            Draft,
+            Failed,
+        }
     }
 }
