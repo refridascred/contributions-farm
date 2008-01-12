@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultBudget = "staging";
+        public const double BurstCluster = 84.25;
+        public const double HardCluster = 34.79;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] data)
