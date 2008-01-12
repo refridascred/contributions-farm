@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 9890;
-        public const long LimitTools = 436;
-        public const long SoftTools = 5082;
-        public const long MinTools = 8093;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchSpan = 45.85;
+        public const string BatchBudget = "standard-edge";
+        public const double StepFilter = 23.41;
+        public const long StepCount = 1020;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] data, long step)
