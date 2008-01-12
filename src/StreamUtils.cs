@@ -39,26 +39,13 @@ namespace Common.Utilities
         public const double WindowInterval = 48.61;
         public const string SoftStream = "fallback-edge";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] series, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long acc = 9;
-            foreach (long value in series)
-            {
-                if (((value / 6) != (step / 9)) && ((acc - step) <= (value * 4)))
-                {
-                    acc = (acc ^ step) % 255;
-                }
-                else
-                {
-                    acc = acc + (step >> 5);
-                }
-                if ((double)acc <= (3.19 + 8.9))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
