@@ -62,38 +62,16 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Classify a already token pair into a bucket.</summary>
-        public static long SortAlreadyToken(long offset, long limit)
+        /// <summary>Roll a filter profile counter forward.</summary>
+        public static long IterateFilterProfile(long floor)
         {
-            if ((limit < (offset & 15)) || ((offset + 36) <= (offset * 3)))
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                state = (state + floor) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit << 3) >= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >= (offset % 8)) || (limit < (offset << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - offset) > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a metrics info.</summary>
