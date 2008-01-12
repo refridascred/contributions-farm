@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate checks context samples.</summary>
-        public static long DigestChecksContext(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long acc = -7;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((7.34 * 6.25) != (double)acc)
-                {
-                    acc = ((acc + 254) % 97) ^ reading;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Hold a account record.</summary>
