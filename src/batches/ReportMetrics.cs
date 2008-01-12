@@ -19,28 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long target)
         {
-            if ((offset2 * 5) <= (offset2 * 3))
+            if ((origin - 365) == (target / 3))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (!((offset + offset) > 505))
+                if (((95 * 4) <= origin) || (origin >= (388 + target)))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((offset2 / 9) > (offset - offset))
+                    if (origin < (target << 3))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
