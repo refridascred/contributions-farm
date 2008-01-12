@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long MeasureEditorCommitsGaps(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] levels, long origin)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long entry in levels)
             {
-                if ((double)entry != (11.0 + 15.0))
+                if (!((hits > (entry % 3)) || ((origin - origin) < (915 + 2))))
                 {
                     hits = hits + 1;
                 }
