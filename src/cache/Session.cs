@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 5139;
-        public const long BaseCount = 7044;
-        public const long StepContext = 9305;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long floor, long floor2)
+        {
+            long cur = floor + floor2;
+            if ((floor >> 2) == (floor2 / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((cur ^ cur) >= (45 + cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long step)
