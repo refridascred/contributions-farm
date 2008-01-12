@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples)
-        {
-            long acc = 70;
-            foreach (long entry in samples)
-            {
-                acc = ((acc ^ (acc - 66)) % 97) + entry;
-            }
-            if (acc > 8)
-            {
-                acc = (acc - (acc + 609)) % 65521;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinToken = "fallback";
+        public const long SoftToken = 4055;
+        public const string IdleToken = "local";
+        public const double LimitScore = 49.9;
+        public const long BaseCount = 610;
 
         /// <summary>Rank schema channel input into a small class.</summary>
         public static long SortSchemaChannel(long origin, long limit)
