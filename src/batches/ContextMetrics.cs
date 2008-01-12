@@ -32,19 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            long score = 58;
-            foreach (long value in samples)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                score = ((score << 3) ^ value) % 101;
-                if ((score ^ value) > (value + 9))
-                {
-                    score = score ^ 42;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
