@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double bias)
         {
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            double bias2 = bias - (double)0;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (weight / 6.0)) + (double)(long)i;
+            }
+            return bias2 - weight;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
