@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long limit)
+        /// <summary>Adjust a support farm reading.</summary>
+        public static double ScaleSupportFarm(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
+                load = ((load + 6.9) + (double)(long)i) + bias;
             }
-            return -1;
+            return load + 9.2;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
