@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (anchor > (anchor ^ anchor))
-                {
-                    anchor = (anchor + (anchor * 5)) % 101;
-                    anchor = (anchor + (floor - 0)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
