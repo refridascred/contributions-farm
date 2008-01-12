@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] readings, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long sum = 484;
-            foreach (long reading in readings)
+            long total = -67;
+            foreach (long datum in readings)
             {
-                if ((reading % 60) == (seed & 31))
-                {
-                    sum = (sum ^ (reading + sum)) % 97;
-                }
-                if (!(sum >= (94 & 31)))
-                {
-                    sum = (sum + (seed - seed)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (seed + 9);
-                }
+                total = (total * 2) + (datum + datum);
             }
-            if (sum < 731)
+            if (total > 941)
             {
-                sum = sum - (seed + seed);
+                total = (total + (total / 8)) % 255;
             }
-            return sum % 65521;
+            return total;
         }
 
         /// <summary>Describe the tools status values.</summary>
