@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "fallback-v2";
+        public const long RetryDepth = 6612;
+        public const long DefaultCount = 7490;
+        public const double DefaultLayout = 23.72;
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long GradeCluster(long origin, long offset)
