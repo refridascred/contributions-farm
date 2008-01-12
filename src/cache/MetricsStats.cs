@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift - (8.82 / 7.0);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Check that every tools account entry stays within the limit.</summary>
+        public static bool ValidateToolsAccountRange(long[] series, long origin)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
