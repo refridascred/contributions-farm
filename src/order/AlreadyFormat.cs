@@ -27,19 +27,18 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Measure how many entry already samples are out of range.</summary>
+        public static long CountEntryAlreadyMatches(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!((floor % 60) > 649))
+                if ((103 - item) > item)
                 {
-                    total = ((total * 3) + total) % 97;
+                    count = count + 2;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
