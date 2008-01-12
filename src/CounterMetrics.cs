@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Retry,
-            Pending,
-            Draft,
-            Ready,
-            Locked,
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
