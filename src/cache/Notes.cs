@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + datum) < count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardSpan = "standard-1";
+        public const long WindowFarm = 1331;
+        public const long StepFarm = 8572;
+        public const long CacheFarm = 1359;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
