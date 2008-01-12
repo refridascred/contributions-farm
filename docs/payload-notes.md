@@ -1,10 +1,13 @@
 # Payload notes
 
-Use buffer settings to tune how often profile data is refreshed.
-The checks report groups every stats by context.
+Each account is validated before it reaches the booking queue.
+Defaults for route live in the config folder and can be overridden per environment.
+
+The token module keeps command values in sync with the support cache.
+Use report settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Log every stats change
-- Document new graph fields
-- Review tools limits each release
+- Review record limits each release
+- Validate queue input early
+- Document new farm fields
