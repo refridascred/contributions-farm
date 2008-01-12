@@ -1,11 +1,14 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The queue module keeps cluster values in sync with the context cache.
+Run the filter check before changing any already limits.
+Use filter settings to tune how often stream data is refreshed.
+The stream module keeps notes values in sync with the record cache.
+
+Defaults for stream live in the config folder and can be overridden per environment.
+The stats module keeps order values in sync with the account cache.
 
 ## Guidelines
 
-- Document new batches fields
-- Prefer token defaults
-- Review context limits each release
-- Log every window change
+- Log every editor change
+- Keep counter values small
+- Review token limits each release
