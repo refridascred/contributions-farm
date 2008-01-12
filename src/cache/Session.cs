@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
