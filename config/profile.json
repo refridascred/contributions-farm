@@ -1,15 +1,7 @@
 {
-  "min_delay_count": 79,
-  "batch_delay_ms": ["eu-west", "stable"],
-  "enabled": {
-    "batch_ratio_s": 4275,
-    "burst_delay": {
-      "min_capacity": "standard",
-      "compress": 42.83,
-      "enabled": "standard",
-      "burst_size_s": 93,
-      "warm_depth": "open"
-    },
-    "compress": ["open", "legacy", "staging"]
-  }
+  "batch_retries_ms": 64.46,
+  "soft_depth": "blue",
+  "cache_retries": true,
+  "verbose": [442, 396, 131, 327],
+  "cache_depth_s": "stable"
 }
