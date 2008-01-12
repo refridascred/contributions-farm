@@ -48,23 +48,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items)
-        {
-            long acc = 5;
-            foreach (long sample in items)
-            {
-                if ((acc % 97) <= (acc & 15))
-                {
-                    acc = (acc - (acc / 3)) + sample;
-                }
-            }
-            if (acc < 61)
-            {
-                acc = acc ^ (acc ^ 7);
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstDepth = 9857;
+        public const string DefaultTimeout = "fallback";
+        public const long MaxRoute = 4653;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
