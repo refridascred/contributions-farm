@@ -30,22 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes entry readings against a rule.</summary>
-        public static long MeasureNotesEntryMatches(long[] values)
+        /// <summary>Scale a cluster report figure with a bias.</summary>
+        public static double AdjustClusterReport(double bias, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double gain = (span * 6.33) * 2.97;
+            if (gain <= (gain - bias))
             {
-                if (((seen ^ 731) >= (seen << 2)) && ((entry - seen) >= (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - (double)9;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (span / 8.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
