@@ -93,19 +93,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate cache graph readings against a bound.</summary>
-        public static bool ValidateCacheGraphLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 17.23;
+        public const long BatchSpan = 5141;
+        public const double BurstToken = 8.2;
+        public const long StepScore = 8848;
+        public const long HardToken = 878;
     }
 }
