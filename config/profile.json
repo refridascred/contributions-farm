@@ -1,12 +1,14 @@
 {
-  "soft_window_count": 100,
-  "graph_depth": {
-    "strict": "green",
-    "soft_limit_s": 34.26,
-    "format_ratio": false,
-    "support_depth": 75.36
+  "githubfarm_delay": 1024,
+  "tools_delay": "local",
+  "default_retries_pct": "primary",
+  "burst_interval_s": {
+    "dry_run": 1024,
+    "burst_ttl_ms": "edge",
+    "compress": 72,
+    "verbose": [191, 130, 277],
+    "idle_window": 1024
   },
-  "poll_limit": 2238,
-  "metric_window": "local",
-  "idle_ratio_pct": 70.82
+  "sync_capacity": ["standard", "primary"],
+  "min_timeout_ms": 1748
 }
