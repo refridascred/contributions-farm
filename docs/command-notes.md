@@ -1,10 +1,11 @@
 # Command notes
 
-Each layout is validated before it reaches the record queue.
-Use stream settings to tune how often payload data is refreshed.
+Keep stream and editor names short and lowercase.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every window change
-- Document new route fields
-- Validate window input early
+- Keep cache values small
+- Document new format fields
+- Validate session input early
+- Prefer route defaults
