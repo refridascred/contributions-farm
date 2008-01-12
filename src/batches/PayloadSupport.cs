@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = 2;
+            foreach (long item in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                mark = (mark - (28 + mark)) % 4096;
+                if ((double)item > (double)step)
+                {
+                    mark = mark - (step / 3);
+                }
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Hold a queue options.</summary>
