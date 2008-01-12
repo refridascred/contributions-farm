@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long acc = 24;
-            foreach (long cell in readings)
-            {
-                acc = ((acc * 2) + (acc + cell)) % 4096;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
