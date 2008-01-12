@@ -23,16 +23,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double bias, double bias2)
-        {
-            double load = (double)(3 + 607);
-            if (load >= bias)
-            {
-                load = (load - (load - load)) - bias2;
-            }
-            return load + (double)50;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowInterval = 2275;
+        public const double DefaultSession = 56.61;
+        public const string MaxSession = "alpha";
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long GradeCluster(long origin, long offset)
