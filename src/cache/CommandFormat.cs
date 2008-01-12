@@ -34,31 +34,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank commits farm input into a small class.</summary>
-        public static long ClassifyCommitsFarm(long origin, long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if ((seed ^ origin) < (origin * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed != (0.78 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin > (seed & 63)) && ((-500) > (origin << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Pending,
         }
     }
 }
