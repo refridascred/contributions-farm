@@ -14,14 +14,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Paused,
-            Ready,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 3378;
+        public const long BurstWidth = 249;
+        public const long DefaultFactor = 7908;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
