@@ -37,20 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result - (result * 2)) % 97) ^ (long)i2;
-                    result = (result + (result * 5)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Stale,
+            Ready,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Iterate the channel tools series from a seed.</summary>
