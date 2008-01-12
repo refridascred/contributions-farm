@@ -1,15 +1,5 @@
 {
-  "readonly": 91.54,
-  "enabled": ["eu-west", "fallback"],
-  "dry_run": [350, 254],
-  "report_limit": {
-    "report_ttl": "standard",
-    "githubfarm_retries": false,
-    "batch_delay_count": 10.93,
-    "batch_ttl_ms": {
-      "batch_interval_s": "fallback",
-      "checks_ratio": ["cached", "strict", "primary"],
-      "base_retries_count": "blue"
-    }
-  }
+  "default_ttl_pct": true,
+  "max_capacity_count": 100,
+  "min_threshold_count": "strict"
 }
