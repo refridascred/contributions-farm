@@ -1,26 +1,13 @@
 # entry settings
-retry_depth_pct: 9886
-default_timeout_s: 23
-warm_retries_s:
-  account_depth: 17.7
-  persist:
-    enabled: stable
-    tools_size: 909
-    max_capacity_s: 2730
-    flush_window_s:
-      - eu-west
-      - latest
-    flush_retries_s: open
-    idle_depth_count: strict
-  warm_capacity_pct: strict
-  readonly: 3972
-  session_size: 36
-  filter_depth:
-    report_retries:
-      - 21
-      - 226
-      - 79
-    base_delay_count: standard
-    filter_interval: green
-audit: false
-dry_run: true
+burst_delay: false
+cache_capacity_pct:
+  - strict
+  - eu-west
+  - eu-west
+  - blue
+strict:
+  - legacy
+  - green
+  - green
+  - stable
+route_size: true
