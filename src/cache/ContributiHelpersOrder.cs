@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Match up support cache samples.</summary>
+        public static long MatchSupportCacheCount(long[] items)
         {
-            long mark = 14;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark * 3) + (entry & 63);
-                if ((2.5 * 2.6) == (double)mark)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark - (entry - mark);
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Hold a order summary.</summary>
