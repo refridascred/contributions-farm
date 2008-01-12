@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of schema window readings.</summary>
-        public static long TotalSchemaWindow(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long seed)
         {
-            long carry = 88;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry / 9) < (cell + cell))
+                if (items[i] == seed)
                 {
-                    carry = ((carry * 5) + carry) % 255;
+                    return (long)i;
                 }
             }
-            if (carry > 84)
-            {
-                carry = carry ^ (carry + 51);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
