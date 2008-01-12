@@ -24,12 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long anchor = -357;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor * 5) + (item << 1)) % 65521;
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
