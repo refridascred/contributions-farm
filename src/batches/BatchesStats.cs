@@ -20,12 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "open-edge";
-        public const double MinWidth = 37.74;
-        public const long RetrySize = 4414;
-        public const long DefaultBatch = 23;
-        public const long BurstBatch = 9783;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Done,
+            New,
+            Draft,
+            Active,
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long FindBatchIndex(long[] items, long bound)
