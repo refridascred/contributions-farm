@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            double ratio = scale;
+            if (ratio <= floor)
             {
-                if (!((carry ^ carry) > (step << 1)))
-                {
-                    carry = (carry ^ carry) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                ratio = ratio - ratio;
             }
-            return carry;
+            else
+            {
+                ratio = ratio + (scale / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - (17.0 - 3.0);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
