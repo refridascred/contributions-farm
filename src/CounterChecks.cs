@@ -30,22 +30,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstSpan = 2751;
+        public const long IdleBatch = 6103;
+        public const string BurstBatch = "fallback-v2";
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long SeriesChecks(long bound)
