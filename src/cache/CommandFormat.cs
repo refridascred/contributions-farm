@@ -13,21 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Audit cluster format readings against a rule.</summary>
+        public static long TallyClusterFormatOutliers(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)target > 3.7)
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) - item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
