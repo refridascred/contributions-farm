@@ -72,26 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items, long offset)
+        /// <summary>Audit report support readings against a rule.</summary>
+        public static long MeasureReportSupportOutliers(long[] samples, long step)
         {
-            long mark = 66;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((value <= (offset - mark)) || ((mark + value) == (offset % 3)))
+                if (((tally << 3) >= ((-102) - entry)) || ((double)step != (3.24 / 8.0)))
                 {
-                    mark = (mark - (value << 2)) % 255;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    mark = ((mark * 5) + (mark + offset)) % 101;
-                }
-                if ((mark >= (value & 31)) || ((value ^ offset) == (offset ^ offset)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
