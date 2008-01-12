@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the metrics account entries that pass the check.</summary>
+        public static long MeasureMetricsAccountOutliers(long[] values, long origin)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 4) < (54 & 127))
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
