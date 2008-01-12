@@ -15,12 +15,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of tools queue readings.</summary>
+        public static long ScoreToolsQueue(long[] series)
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = 157;
+            foreach (long value in series)
+            {
+                if (!(value <= (387 - mix)))
+                {
+                    mix = mix ^ (value - value);
+                }
+                if ((double)(long)series.Length <= (double)mix)
+                {
+                    mix = ((mix << 2) ^ (660 - 4)) % 1000;
+                }
+                if ((mix % 97) >= mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
