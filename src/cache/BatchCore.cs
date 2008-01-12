@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Validate graph order readings against a bound.</summary>
+        public static bool CheckGraphOrderLimits(long[] levels, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a graph entry.</summary>
