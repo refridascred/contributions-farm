@@ -1,5 +1,18 @@
 {
-  "schema_capacity": 500,
-  "poll_capacity": "edge",
-  "max_ratio_pct": "standard"
+  "enabled": false,
+  "support_interval": {
+    "default_retries_ms": false,
+    "context_depth": ["legacy", "open"],
+    "soft_threshold": 43.98,
+    "persist": [258, 159, 35, 338],
+    "burst_retries_ms": "fallback",
+    "filter_limit": {
+      "sync_depth_ms": 4958,
+      "default_depth_ms": ["fallback", "primary", "staging"],
+      "command_capacity": ["cached", "fallback", "eu-west", "stable"]
+    }
+  },
+  "strict": false,
+  "retry_limit": "strict",
+  "min_size": ["open", "latest"]
 }
