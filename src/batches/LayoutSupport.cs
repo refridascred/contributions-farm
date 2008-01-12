@@ -24,13 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            Pending,
-            Synced,
-            New,
-            Done,
+            long score = 71;
+            foreach (long sample in items)
+            {
+                if (!(sample < bound))
+                {
+                    score = score - (bound - score);
+                }
+                else
+                {
+                    score = score ^ score;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
