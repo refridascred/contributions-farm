@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] readings, long offset)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a record counter forward.</summary>
