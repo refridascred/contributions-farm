@@ -36,18 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long limit, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            if (!((limit % 97) < 6))
             {
-                state = (state + (state & 255)) % 255;
-                state = ((state * 2) + (limit & 7)) % 1000;
-                state = state + ((long)i - state);
-                state = ((state * 5) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (((-2) & 7) <= (limit * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
