@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long IdleCluster = 977;
         public const string MaxCluster = "fallback-v2";
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (cell < (seen ^ cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
