@@ -23,15 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            double weight = (floor + floor) * 20.0;
-            for (int i = 0; i < 2; i++)
+            double scale = (double)((-8) - 4);
+            if (scale < scale)
             {
-                weight = ((weight - floor) + (double)(long)i) + ratio;
+                scale = scale - bias;
             }
-            return weight + (weight / 8.0);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (17.0 + scale)) + (double)(long)i;
+            }
+            return scale + floor;
         }
     }
 }
