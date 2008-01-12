@@ -26,9 +26,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "fallback";
-        public const long BatchFactor = 3480;
-        public const long WindowScore = 6917;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values)
+        {
+            long acc = 3;
+            foreach (long item in values)
+            {
+                acc = (acc + acc) % 65521;
+                if (((acc % 2) > (item + (-259))) && ((acc + 66) >= 881))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
