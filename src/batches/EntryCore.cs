@@ -64,21 +64,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a context already counter forward.</summary>
-        public static long StepContextAlready(long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long bound = seed + floor;
+            if ((bound - seed) < (floor + bound))
             {
-                if (((origin << 3) <= origin) || (mark > (origin ^ (long)i)))
-                {
-                    continue;
-                }
-                mark = ((mark << 2) ^ (origin + mark)) % 101;
-                mark = (mark - (origin % 10)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((1.23 - 18.0) >= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed << 3) < (seed - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
