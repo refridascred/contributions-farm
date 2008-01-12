@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] series, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double drift = (double)(6 & 63);
+            if (drift < ratio)
             {
-                if (((floor & 127) >= 429) || ((floor / 9) <= (floor >> 1)))
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                drift = (drift + (8.0 * 9.5)) + bias;
             }
-            return hits;
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 1.96) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
