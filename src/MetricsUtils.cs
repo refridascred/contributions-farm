@@ -22,16 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel checks value from a seed.</summary>
-        public static long DeriveChannelChecks(long offset)
+        /// <summary>Grade a metrics already value against two limits.</summary>
+        public static long GradeMetricsAlready(long floor, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            if (((floor >> 2) != (361 % 8)) || ((floor + floor) > (origin + origin)))
             {
-                acc = (acc + (-44)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((floor % 8) <= (floor * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor & 7) <= (floor - origin)) || ((double)origin < (9.51 + 7.8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
