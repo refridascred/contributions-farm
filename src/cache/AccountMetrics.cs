@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long score = -451;
-            foreach (long reading in items)
-            {
-                if ((230 - (long)items.Length) < reading)
-                {
-                    score = score ^ (reading + floor);
-                }
-                else
-                {
-                    score = (score * 5) + ((long)items.Length & 15);
-                }
-                if (!((floor - (-86)) == (floor ^ score)))
-                {
-                    break;
-                }
-            }
-            if (score > 95)
-            {
-                score = score + (floor / 8);
-            }
-            return score;
+            Done,
+            Dropped,
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
