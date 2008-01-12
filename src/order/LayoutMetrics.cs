@@ -33,31 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long floor, long floor2)
+        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsWindowCount(long[] levels)
         {
-            if (((double)floor < (double)929) || ((3.1 - 5.3) <= (double)floor2))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2.0 - 9.4) >= (double)floor2) || ((6.4 - 7.2) <= (3.9 - 1.27)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 >> 1) <= (floor + 19))
+                    if ((levels[i] ^ levels[j]) != 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
