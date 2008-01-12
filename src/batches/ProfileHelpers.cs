@@ -28,17 +28,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] items, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((step >> 2) > 474)
             {
-                if ((items[i] > limit) && ((items[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((double)target < (double)60) || ((double)step > 2.1))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a report stats.</summary>
