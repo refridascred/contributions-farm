@@ -76,9 +76,11 @@ namespace Common.Utilities
         public const long WindowFactor = 5793;
         public const string SoftWidth = "fallback";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "cached-v2";
-        public const long BatchFormat = 1417;
-        public const long WindowCount = 7811;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSpan = 1457;
+        public const double RetryReport = 76.11;
+        public const double IdleReport = 31.08;
+        public const long StepRatio = 2690;
+        public const long SoftReport = 4809;
     }
 }
