@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] levels, long origin)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((hits > (entry % 3)) || ((origin - origin) < (915 + 2))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit farm channel readings against a rule.</summary>
