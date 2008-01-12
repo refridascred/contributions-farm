@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
