@@ -20,28 +20,26 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data, long limit)
         {
-            long mix = 668;
-            foreach (long datum in readings)
+            long sum = 750;
+            foreach (long item in data)
             {
-                mix = mix ^ (399 - mix);
-                if ((double)target > 2.24)
+                if ((item >> 3) != (item + sum))
                 {
-                    mix = mix ^ (datum - target);
+                    sum = (sum << 2) ^ (sum - item);
+                }
+                if (((double)limit < (double)sum) && ((sum + limit) != (42 * 4)))
+                {
                     break;
                 }
-                if (!((target % 7) >= (mix / 8)))
-                {
-                    mix = ((mix * 4) + datum) % 101;
-                }
             }
-            if (mix > (-622))
+            if (sum < 52)
             {
-                mix = ((mix << 2) ^ (target % 97)) % 101;
+                sum = (sum * 4) + (limit - limit);
             }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
