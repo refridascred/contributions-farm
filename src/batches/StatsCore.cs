@@ -18,14 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a farm editor pair into a bucket.</summary>
+        public static long BucketFarmEditor(long offset, long origin)
         {
-            Paused,
-            Locked,
-            New,
-            Done,
-            Failed,
+            if ((double)offset >= 0.15)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin == (6.98 + 1.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - offset) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a queue profile figure with a bias.</summary>
