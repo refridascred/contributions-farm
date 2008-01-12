@@ -58,11 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] samples, long target)
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((long)samples.Length < target)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up session cluster samples.</summary>
