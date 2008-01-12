@@ -57,22 +57,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of order stats readings.</summary>
-        public static long FoldOrderStats(long[] values, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long target)
         {
-            long mix = 52;
-            foreach (long cell in values)
+            if (target <= (origin - origin))
             {
-                if (!(cell < (cell * 4)))
+                return 2;
+            }
+            else
+            {
+                if (origin <= (target >> 5))
                 {
-                    mix = mix + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target > (9.63 + 4.15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mix < 75)
-            {
-                mix = (mix - offset) % 1000;
-            }
-            return mix % 65521;
         }
     }
 }
