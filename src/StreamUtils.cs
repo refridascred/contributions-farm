@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format layout readings against a rule.</summary>
-        public static long TallyFormatLayoutHits(long[] levels)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value * 4) >= (value + (-7)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
