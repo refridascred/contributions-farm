@@ -92,11 +92,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultSpan = 1457;
-        public const double RetryReport = 76.11;
-        public const double IdleReport = 31.08;
-        public const long StepRatio = 2690;
-        public const long SoftReport = 4809;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSize = 7975;
+        public const long BaseSupport = 6891;
+        public const long RetryDepth = 8312;
+        public const string StepSupport = "legacy-edge";
     }
 }
