@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a already schema counter forward.</summary>
-        public static long IterateAlreadySchema(long limit)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long limit, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            if ((8.0 - 4.0) <= (double)limit)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (((limit / 7) >= (limit - floor)) || ((limit ^ 49) != (limit >> 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3 >> 5) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit % 3) < floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
