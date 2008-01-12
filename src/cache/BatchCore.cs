@@ -35,23 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] values)
         {
-            double rate = (double)941 - 5.0;
-            if (rate < rate)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                rate = rate - rate;
+                if (((7.0 * 14.0) <= (double)matches) || ((double)matches < (double)sample))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (2.4 * 5.44)) + (double)(long)i;
-            }
-            return rate + (floor + ratio);
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
