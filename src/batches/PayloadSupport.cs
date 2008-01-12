@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate tools channel samples.</summary>
-        public static long CombineToolsChannel(long[] data, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            long acc = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((8.31 - 5.2) >= (double)acc)
+                if (!((hits + (-839)) >= (entry ^ hits)))
                 {
-                    acc = ((acc - (origin / 7)) % 1000) - sample;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Hold a account stats.</summary>
