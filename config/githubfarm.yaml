@@ -1,4 +1,8 @@
 # githubfarm settings
-default_threshold_s: 23
-command_ratio: 98.02
-burst_threshold_pct: eu-west
+readonly: latest
+flush_limit:
+  - fallback
+  - cached
+  - strict
+  - edge
+command_retries: legacy
