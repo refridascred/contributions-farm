@@ -58,18 +58,13 @@ namespace Common.Utilities
         public const string StepContext = "alpha-1";
         public const long StepDepth = 5595;
 
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long MeasureClusterSupportOutliers(long[] series, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)hits == (9.57 + 7.16))
-                {
-                    hits = ((hits + 3) ^ sample) + limit;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
