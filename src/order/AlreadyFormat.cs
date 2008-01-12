@@ -16,23 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double span)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            double gain = span;
-            if (gain >= (double)3)
-            {
-                gain = gain - (double)9;
-            }
-            else
-            {
-                gain = gain - (gain / 6.0);
-            }
+            double gain = 8.0;
             for (int i = 0; i < 2; i++)
             {
-                gain = (gain - (weight / 2.0)) + (double)(long)i;
+                gain = ((gain + bias) + (double)(long)i) - offset;
             }
-            return gain + (double)37;
+            return gain + bias;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
