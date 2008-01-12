@@ -1,13 +1,13 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the format list.
-The buffer module keeps githubfarm values in sync with the format cache.
+Use route settings to tune how often entry data is refreshed.
+The notes module keeps metric values in sync with the graph cache.
 
-Use support settings to tune how often account data is refreshed.
-Each commits is validated before it reaches the order queue.
+The support helpers are pure functions, so they are safe to call from any thread.
+The filter module keeps token values in sync with the commits cache.
 
 ## Guidelines
 
-- Validate counter input early
-- Document new payload fields
-- Keep record values small
+- Prefer commits defaults
+- Document new filter fields
+- Review token limits each release
