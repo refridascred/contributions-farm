@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long seed)
         {
-            Pending,
-            Paused,
-            Queued,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
