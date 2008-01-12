@@ -24,17 +24,11 @@ namespace Common.Utilities
         public const double WindowCommits = 21.88;
         public const double CacheInterval = 31.39;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5767;
+        public const long DefaultSpan = 1395;
+        public const long BurstBuffer = 1448;
+        public const long WindowFactor = 8700;
+        public const string DefaultBuffer = "alpha-edge";
     }
 }
