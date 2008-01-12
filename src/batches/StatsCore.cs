@@ -28,22 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] values, long floor)
         {
-            long acc = 703;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((7.7 / 5.0) >= (8.07 + 4.97))
+                if (tally <= ((-47) >> 2))
                 {
-                    acc = (((acc - (acc << 2)) % 101) ^ entry) - floor;
+                    tally = ((tally + 1) ^ entry) + floor;
                 }
                 else
                 {
-                    acc = ((acc * 3) + acc) % 97;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
