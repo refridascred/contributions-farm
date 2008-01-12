@@ -67,28 +67,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long floor)
         {
-            if (!((floor % 8) <= step))
+            if ((floor - floor) >= origin)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (floor < (floor / 6))
+                if ((origin % 7) >= (floor & 7))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((8.5 + 2.47) < (double)floor)
+                    if ((origin - floor) != (81 * 4))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 8;
+                        return 6;
                     }
                 }
             }
