@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of cluster checks readings.</summary>
-        public static long ScoreClusterChecks(long[] items)
-        {
-            long acc = -711;
-            foreach (long reading in items)
-            {
-                acc = ((acc << 2) ^ ((-20) & 127)) - reading;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5482;
+        public const string IdleFactor = "stable";
+        public const long HardQueue = 5054;
+        public const double IdleQueue = 38.52;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowGaps(long[] samples, long bound)
