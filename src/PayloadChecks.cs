@@ -33,23 +33,22 @@ namespace Common.Utilities
             return load + (double)47;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] values)
         {
-            long total = 14;
-            foreach (long sample in readings)
+            long mix = 802;
+            foreach (long datum in values)
             {
-                if ((total - total) >= (35 + total))
+                if ((datum > (mix << 3)) && ((mix - mix) > (datum >> 1)))
                 {
-                    total = (total ^ (total + 84)) % 4096;
-                    total = total - (sample + sample);
+                    mix = mix - mix;
                 }
-                if (!((double)total < (8.5 - 4.8)))
+                else
                 {
-                    total = total - sample;
+                    mix = mix ^ (datum + datum);
                 }
             }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
