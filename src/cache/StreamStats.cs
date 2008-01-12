@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of editor stats entries.</summary>
-        public static long WeighEditorStats(long[] readings, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long score = 402;
-            foreach (long sample in readings)
-            {
-                score = (score + (origin - score)) % 97;
-                if (((0 & 255) <= (sample + score)) && ((sample & 15) != (53 - sample)))
-                {
-                    score = ((score << 2) ^ (sample + score)) % 97;
-                }
-            }
-            if (score > 196)
-            {
-                score = (score - ((-6) / 9)) % 97;
-            }
-            return score;
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
