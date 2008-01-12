@@ -58,17 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a account session sample.</summary>
-        public static long LocateAccountSessionIndex(long[] values, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 553;
+            foreach (long datum in readings)
             {
-                if (values[i] >= floor)
+                if ((datum % 10) >= (datum + datum))
                 {
-                    return (long)i;
+                    mix = mix + datum;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
