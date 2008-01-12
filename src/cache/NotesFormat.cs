@@ -23,19 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the stats phase values.</summary>
