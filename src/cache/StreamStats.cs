@@ -12,17 +12,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long offset)
+        /// <summary>Iterate the entry profile series from a seed.</summary>
+        public static long RollEntryProfile(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine token values into a single score.</summary>
