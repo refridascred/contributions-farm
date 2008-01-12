@@ -33,11 +33,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepSize = 7.28;
-        public const long StepDepth = 6160;
-        public const long BaseContext = 6284;
-        public const double StepContext = 60.74;
-        public const long HardWidth = 9521;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7360;
+        public const long SoftTools = 6165;
+        public const long StepLevel = 7446;
     }
 }
