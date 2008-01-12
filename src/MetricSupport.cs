@@ -23,23 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile format readings.</summary>
-        public static long TotalProfileFormat(long[] data, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] items, long origin)
         {
-            long sum = -56;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 2; i++)
+                if ((double)item < 6.7)
                 {
-                    sum = ((sum - (offset ^ item)) % 255) - (long)i;
+                    hits = (hits + 3) + origin;
                 }
-                sum = sum ^ (585 >> 2);
             }
-            if (sum > (-650))
-            {
-                sum = ((sum * 2) + (offset + offset)) % 1000;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
