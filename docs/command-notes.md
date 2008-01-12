@@ -1,13 +1,13 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-The layout module keeps filter values in sync with the notes cache.
+Run the metrics check before changing any report limits.
+Use stream settings to tune how often command data is refreshed.
 
-Run the commits check before changing any counter limits.
-Keep counter and token names short and lowercase.
+Use session settings to tune how often order data is refreshed.
+Use account settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Log every channel change
-- Validate profile input early
-- Document new batch fields
+- Validate support input early
+- Log every filter change
+- Document new profile fields
