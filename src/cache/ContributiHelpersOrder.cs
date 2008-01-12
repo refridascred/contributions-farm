@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((seen ^ (long)samples.Length) >= (seen + reading))
+                {
+                    seen = seen + 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate context record samples.</summary>
