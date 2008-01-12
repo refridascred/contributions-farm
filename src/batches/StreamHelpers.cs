@@ -24,26 +24,18 @@ namespace Common.Utilities
             return rate - 0.2;
         }
 
-        /// <summary>Fold a list of format route readings.</summary>
-        public static long ScoreFormatRoute(long[] series, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items)
         {
-            long state = 74;
-            foreach (long entry in series)
+            long mix = 814;
+            foreach (long entry in items)
             {
-                if ((double)target >= 3.75)
+                if ((mix + mix) >= entry)
                 {
-                    state = state ^ (target + state);
-                }
-                else
-                {
-                    state = (state << 3) ^ (729 + entry);
+                    mix = (mix ^ (entry + entry)) % 4096;
                 }
             }
-            if (state < 357)
-            {
-                state = (state << 3) ^ (state / 5);
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
