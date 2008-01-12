@@ -15,12 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 6547;
+        public const long MinSpan = 6365;
+        public const double LimitLevel = 19.18;
+        public const string MinBudget = "fallback-1";
+        public const long RetryBudget = 6838;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] data, long bound)
