@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of contributi queue entries.</summary>
-        public static long FoldContributiQueue(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long acc = 3;
-            foreach (long reading in values)
-            {
-                acc = (acc ^ reading) % 97;
-            }
-            if (acc > 396)
-            {
-                acc = ((acc << 3) ^ (acc << 3)) % 101;
-            }
-            return acc;
+            Ready,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
