@@ -84,18 +84,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] samples, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((double)79 != (double)hits)
+                if (((bound >> 4) <= seen) && ((bound ^ bound) >= seen))
                 {
-                    hits = ((hits + 3) ^ datum) + step;
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
