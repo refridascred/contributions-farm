@@ -32,38 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
-            if (((limit / 7) >= limit) || ((limit + target) > (target + 67)))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(target < limit))
+                if (((tally << 2) <= (cell >> 5)) && (1 >= cell))
                 {
-                    return 6;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (5.1 >= (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((76 - limit) <= 2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
