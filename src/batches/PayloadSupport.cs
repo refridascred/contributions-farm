@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepFactor = 6.83;
-        public const long IdleTimeout = 2816;
-        public const string MaxCount = "primary-edge";
-        public const long DefaultSpan = 6960;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + 15) <= (seen + 725))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
