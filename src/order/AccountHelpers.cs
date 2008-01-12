@@ -27,19 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Iterate the token support series from a seed.</summary>
+        public static long IterateTokenSupport(long bound)
         {
-            double gain = (double)(944 >> 4);
-            if (gain > (10.0 - gain))
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                gain = (gain - rate) + span;
+                if (!(bound >= (mix + mix)))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (rate + gain)) + (double)(long)i;
-            }
-            return gain - (gain - gain);
+            return mix;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
