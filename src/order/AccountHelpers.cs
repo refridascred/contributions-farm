@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            Closed,
-            Active,
-            Failed,
-            Draft,
+            double bias = 12.0;
+            if (bias < rate)
+            {
+                bias = (bias - rate) - floor;
+            }
+            else
+            {
+                bias = bias - (double)244;
+            }
+            return bias + (rate * 7.22);
         }
 
         /// <summary>Iterate the token support series from a seed.</summary>
