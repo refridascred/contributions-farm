@@ -37,10 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 26.64;
-        public const string BaseCount = "local-v2";
-        public const double WindowLevel = 19.59;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen <= (18.0 - 9.19))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] series, long bound)
