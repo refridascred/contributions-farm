@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] samples, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double offset)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double drift = offset / 3.0;
+            if (drift > gain)
             {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (drift * 1.0);
             }
-            return found;
+            return drift - (9.19 + offset);
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
