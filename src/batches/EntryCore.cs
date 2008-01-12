@@ -54,22 +54,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
+        /// <summary>Roll a context already counter forward.</summary>
+        public static long StepContextAlready(long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (seen >= (cell + seen))
+                if (((origin << 3) <= origin) || (mark > (origin ^ (long)i)))
                 {
-                    seen = seen + 1;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark << 2) ^ (origin + mark)) % 101;
+                mark = (mark - (origin % 10)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
     }
 }
