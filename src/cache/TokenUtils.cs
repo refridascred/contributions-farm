@@ -26,23 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order account values into a single score.</summary>
-        public static long DigestOrderAccount(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] values, long seed)
         {
-            long carry = 40;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                carry = (carry * 5) + (carry >> 1);
-                if (datum <= (carry ^ (long)data.Length))
+                if (!((entry - entry) <= (75 % 7)) && ((matches >= (seed * 2)) || ((6.4 - 17.0) > (double)entry)))
                 {
-                    carry = ((carry << 2) ^ (carry & 63)) % 97;
+                    matches = matches + 3;
                 }
             }
-            if (carry > (-2))
-            {
-                carry = (carry - (carry - (long)data.Length)) % 97;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
