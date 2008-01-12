@@ -1,8 +1,8 @@
-id,token,label,rank,ratio
-1,82.98,23,81.34,strict
-2,858,301,29.3,703
-3,1.76,379,856,local
-4,963,latest,163,open
-5,6.43,33.08,primary,9.74
-6,edge,998,79.81,70.45
-7,11.36,9.99,873,68.9
+id,owner,active,count,ratio
+1,85.35,537,local,206
+2,eu-west,236,548,18.02
+3,28.54,436,standard,91.91
+4,23.83,27.49,blue,fallback
+5,267,green,cached,91.35
+6,485,230,local,563
+7,686,42.17,66.75,fallback
