@@ -23,23 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] data, long bound)
         {
-            long state = 974;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 8; i++)
+                if ((bound >> 3) >= (bound - bound))
                 {
-                    state = (state - ((long)i + state)) - reading;
+                    matches = (matches + 3) ^ value;
                 }
-                state = state - state;
             }
-            if (state < 2)
-            {
-                state = state - state;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the cache status values.</summary>
