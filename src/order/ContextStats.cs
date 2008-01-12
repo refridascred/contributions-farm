@@ -32,26 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double offset)
         {
-            long result = -1;
-            foreach (long sample in levels)
+            double bias2 = (double)(9 - 75);
+            if (bias2 > (double)2)
             {
-                if ((sample - sample) == (sample & 63))
-                {
-                    result = result - (16 + 2);
-                }
-                else
-                {
-                    result = (result - 27) % 101;
-                }
+                bias2 = (bias2 + (double)25) - bias;
             }
-            if (result > 59)
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result << 3) ^ (result + (long)levels.Length)) % 101;
+                bias2 = (bias2 - (3.9 - offset)) + (double)(long)i;
             }
-            return result % 4096;
+            return bias2 + (offset - bias2);
         }
     }
 }
