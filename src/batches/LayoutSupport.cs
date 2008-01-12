@@ -51,11 +51,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultSize = 26.53;
-        public const double SoftSize = 1.82;
-        public const double RetrySize = 45.71;
-        public const long CacheLevel = 1014;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double scale, double floor)
+        {
+            double scale2 = scale;
+            if (scale2 > scale)
+            {
+                scale2 = (scale2 - scale) - floor;
+            }
+            return scale2 + scale2;
+        }
 
         /// <summary>Accumulate graph metric samples.</summary>
         public static long CombineGraphMetric(long[] samples)
