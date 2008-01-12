@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] values, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (entry < seed)
+                if ((((datum + datum) > datum) && ((seen - datum) == (datum ^ datum))) || (((double)seen <= (double)33) || ((4.0 * 12.0) != (double)seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
