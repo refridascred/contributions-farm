@@ -81,11 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 8833;
-        public const long SoftWidth = 5467;
-        public const string StepContext = "alpha-1";
-        public const long StepDepth = 5595;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
