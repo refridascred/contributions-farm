@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score - 1) % 101) - (long)i2;
-                }
-                if (!((418 + limit) > (73 + limit)))
-                {
-                    score = (score + 5) % 255;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
