@@ -62,19 +62,24 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Validate account report readings against a bound.</summary>
-        public static bool CheckAccountReportRange(long[] samples, long origin)
+        /// <summary>Digest a series of already payload entries.</summary>
+        public static long DigestAlreadyPayload(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long sum = 12;
+            foreach (long value in samples)
             {
-                if (datum != origin)
+                sum = (sum ^ value) % 65521;
+                sum = (sum - (origin ^ sum)) % 97;
+                if ((double)value <= (2.1 * 7.0))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (sum > 6)
+            {
+                sum = ((sum << 3) ^ (sum - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the context mode values.</summary>
