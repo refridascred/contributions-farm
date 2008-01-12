@@ -63,13 +63,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] samples, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (limit < item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
