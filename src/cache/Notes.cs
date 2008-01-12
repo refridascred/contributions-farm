@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + hits) > (hits / 5))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6840;
+        public const long MaxMetrics = 686;
+        public const string HardMetrics = "local-1";
 
         /// <summary>Look up the position of a counter account sample.</summary>
         public static long LocateCounterAccountIndex(long[] samples, long floor)
