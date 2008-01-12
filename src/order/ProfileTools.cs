@@ -32,11 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryLevel = 4062;
-        public const long BatchToken = 7191;
-        public const long StepTimeout = 4844;
-        public const double MinFactor = 1.25;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Synced,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
