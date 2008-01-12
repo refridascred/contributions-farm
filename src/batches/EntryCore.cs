@@ -72,23 +72,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Project the next format window value.</summary>
+        public static double ProjectFormatWindow(double scale, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            double weight = (floor - floor) * 5.87;
+            if (weight > floor)
             {
-                if (((long)i ^ acc) < step)
-                {
-                    acc = ((acc * 5) + (step + step)) % 255;
-                }
-                else
-                {
-                    acc = acc ^ (acc & 255);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                weight = (weight + (floor / 6.0)) - scale;
             }
-            return acc;
+            return weight - (floor - 5.19);
         }
     }
 }
