@@ -23,19 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel notes value from a seed.</summary>
-        public static long SeriesChannelNotes(long offset)
+        /// <summary>Audit notes entry readings against a rule.</summary>
+        public static long MeasureNotesEntryMatches(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((seen ^ 731) >= (seen << 2)) && ((entry - seen) >= (seen + seen)))
                 {
-                    anchor = (anchor + (offset + offset)) + (long)i2;
+                    seen = seen + 3;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
