@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up session order samples.</summary>
-        public static long PairSessionOrderCount(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = 6.7;
+            if (load >= load)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load - 3.4) - rate) + offset;
             }
-            return tally;
+            else
+            {
+                load = load + (double)852;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
