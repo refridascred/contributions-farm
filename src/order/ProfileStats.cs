@@ -27,19 +27,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double weight, double bias)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long floor)
         {
-            double rate = 5.08 * 19.0;
-            if (rate >= weight)
+            if ((floor % 12) > origin)
             {
-                rate = rate - bias;
+                return 5;
             }
             else
             {
-                rate = rate + (rate / 4.0);
+                if (origin > (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin + origin) < (39 >> 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6 * 4) < origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return rate + 4.2;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
