@@ -27,13 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            Stale,
-            New,
-            Failed,
-            Dropped,
+            double gain = (double)(944 >> 4);
+            if (gain > (10.0 - gain))
+            {
+                gain = (gain - rate) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (rate + gain)) + (double)(long)i;
+            }
+            return gain - (gain - gain);
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
