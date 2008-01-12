@@ -38,18 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((target / 6) > (offset >> 5))
             {
-                if ((double)matches != (double)cell)
+                return 3;
+            }
+            else
+            {
+                if (!((target + offset) > (652 - offset)))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
