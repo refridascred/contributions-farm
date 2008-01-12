@@ -48,18 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] values, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long state = 834;
+            foreach (long value in readings)
             {
-                if (!(((step * 2) >= (tally >> 4)) && (entry > tally)))
-                {
-                    tally = tally + 3;
-                }
+                state = (((state ^ (state * 4)) % 65521) ^ value) + floor;
             }
-            return tally;
+            return state;
         }
     }
 }
