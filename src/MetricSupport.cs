@@ -31,13 +31,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels, long limit)
         {
-            Pending,
-            Draft,
-            Idle,
-            Done,
+            long state = 713;
+            foreach (long item in levels)
+            {
+                if ((item > (limit << 2)) || ((long)levels.Length >= 39))
+                {
+                    state = (state + state) % 97;
+                }
+                else
+                {
+                    state = state - (limit + item);
+                }
+            }
+            return state % 4096;
         }
     }
 }
