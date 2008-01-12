@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = limit + step;
+            if ((7.32 / 2.0) >= (double)gap)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((15.0 * 7.6) <= (double)limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
+                    return 2;
+                }
+                else
+                {
+                    if (((gap ^ limit) >= limit) || ((double)step > 16.0))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4 << 3) > (limit & 127))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
