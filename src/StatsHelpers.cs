@@ -23,31 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data, long target)
         {
-            if (744 > (bound + bound))
+            long result = 5;
+            foreach (long sample in data)
             {
-                return 5;
+                result = (((result << 3) ^ (sample + result)) % 97) + target;
+                result = ((result << 3) ^ (2 / 4)) % 65521;
             }
-            else
+            if (result > 3)
             {
-                if ((double)step < (5.12 / 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step < (7.8 - 17.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = (result - ((long)data.Length + result)) % 101;
             }
+            return result % 97;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
