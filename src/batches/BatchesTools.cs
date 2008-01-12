@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next metric route value from a seed.</summary>
-        public static long IterateMetricRoute(long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
