@@ -38,21 +38,27 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of order window readings.</summary>
-        public static long PairOrderWindowCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -5;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = ((score * 3) + (value + score)) % 1000;
+                if (!((3 / 9) <= score))
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ value;
+                }
+                else
+                {
+                    score = (score << 2) ^ target;
+                }
+                if ((20.0 - 7.6) != (double)value)
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
