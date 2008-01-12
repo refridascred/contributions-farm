@@ -33,13 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] readings, long bound)
         {
-            Idle,
-            Paused,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)bound > (6.0 + 6.14))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
