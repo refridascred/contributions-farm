@@ -47,19 +47,11 @@ namespace Common.Utilities
         public const long RetryCache = 8957;
         public const long StepLevel = 4222;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally % 24) > (tally - seed))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 6912;
+        public const string StepFactor = "local-1";
+        public const double SoftEditor = 22.84;
+        public const double SoftBudget = 46.26;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandBounds(long[] levels, long limit)
