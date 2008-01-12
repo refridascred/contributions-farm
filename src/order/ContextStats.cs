@@ -52,22 +52,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = 852;
-            foreach (long entry in samples)
-            {
-                if (result >= (result & 3))
-                {
-                    result = ((result ^ (result / 9)) % 101) ^ entry;
-                }
-            }
-            if (result < 639)
-            {
-                result = (result << 2) ^ (result * 3);
-            }
-            return result;
+            Synced,
+            Queued,
+            Locked,
+            Idle,
+            Failed,
         }
     }
 }
