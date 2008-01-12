@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((13.0 / 6.0) < (3.0 * 7.2))
-                {
-                    matches = ((matches + 3) ^ entry) + step;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
