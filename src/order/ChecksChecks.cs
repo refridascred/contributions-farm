@@ -35,11 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "local-edge";
-        public const long CacheRatio = 7905;
-        public const long RetryWidth = 6498;
-        public const double MaxCommand = 35.63;
-        public const long IdleCommand = 7150;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
