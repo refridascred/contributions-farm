@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples, long bound)
         {
-            Failed,
-            Closed,
-            Dropped,
+            long carry = 661;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (carry - (carry & 31)) + (long)i;
+                }
+                carry = ((carry * 2) + carry) % 255;
+                if ((double)cell != (9.7 / 7.0))
+                {
+                    carry = (carry + (bound + carry)) % 101;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry * 2)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
