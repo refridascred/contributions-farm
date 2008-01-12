@@ -36,11 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepScore = "staging";
-        public const string BatchSpan = "primary-1";
-        public const long BurstRoute = 5948;
-        public const long IdleLevel = 855;
-        public const long IdleRoute = 5104;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
