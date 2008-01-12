@@ -38,17 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a contributi payload sample.</summary>
-        public static long SeekContributiPayloadIndex(long[] data, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                if (77 <= (7 ^ datum))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
