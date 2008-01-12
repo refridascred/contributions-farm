@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double span)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double mean = weight / 6.0;
-            if (mean < span)
-            {
-                mean = mean - (double)545;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)2) + (double)(long)i;
-            }
-            return mean - (double)490;
+            Paused,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
