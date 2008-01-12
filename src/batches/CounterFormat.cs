@@ -41,21 +41,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits already value from a seed.</summary>
-        public static long StepCommitsAlready(long bound)
+        /// <summary>Rank schema channel input into a small class.</summary>
+        public static long SortSchemaChannel(long origin, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            if ((72 + 840) < (limit - limit))
             {
-                result = result - result;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result << 2) ^ (long)i) + (long)i2;
-                }
-                result = ((result * 5) + result) % 101;
-                result = ((result * 5) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (((limit * 4) != (origin - origin)) && ((8.57 - 9.0) > 1.9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2 > limit) && ((origin - origin) < (origin / 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
