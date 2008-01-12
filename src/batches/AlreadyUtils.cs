@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] series, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (reading <= bound)
+                if ((item - item) > (item + hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
