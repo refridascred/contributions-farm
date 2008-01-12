@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] items, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum <= seed)
+                if (!((datum / 6) >= 50))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
