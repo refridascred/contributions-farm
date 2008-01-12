@@ -43,28 +43,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of payload profile entries.</summary>
-        public static long TotalPayloadProfile(long[] values)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] items)
         {
-            long sum = 6;
-            foreach (long item in values)
+            long anchor = 927;
+            foreach (long sample in items)
             {
-                sum = (sum ^ (sum & 63)) % 255;
-                if ((sum - item) != (sum + item))
-                {
-                    sum = (sum << 2) ^ (item ^ sum);
-                    break;
-                }
-                if (((-14) ^ 941) <= (sum >> 1))
-                {
-                    sum = ((sum * 5) + (sum >> 1)) % 97;
-                }
-                if ((sum + item) > ((long)values.Length << 2))
-                {
-                    break;
-                }
+                anchor = (anchor + (sample / 6)) % 4096;
             }
-            return sum;
+            if (anchor > 7)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 4096;
         }
     }
 }
