@@ -1,14 +1,5 @@
 {
-  "persist": 100,
-  "soft_timeout_s": {
-    "sync_interval_pct": "stable",
-    "audit": false,
-    "enabled": 35.35,
-    "cache_size_s": 304,
-    "queue_retries": 46.48,
-    "hard_ratio_count": "primary"
-  },
-  "soft_depth_pct": 250,
-  "retry_threshold": 500,
-  "command_size": "staging"
+  "sync_ratio_s": "cached",
+  "metrics_size": "local",
+  "enabled": [42, 191, 367, 133]
 }
