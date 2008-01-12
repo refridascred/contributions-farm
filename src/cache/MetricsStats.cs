@@ -39,15 +39,24 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Rank session metrics input into a small class.</summary>
+        public static long RankSessionMetrics(long origin, long floor)
         {
-            double mean = (double)(982 % 5);
-            if (mean < (double)73)
+            if (!(origin <= (floor & 7)))
             {
-                mean = (mean + (2.1 + mean)) - ratio;
+                return 2;
             }
-            return mean + bias;
+            else
+            {
+                if ((floor << 2) < (70 ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of command record entries.</summary>
