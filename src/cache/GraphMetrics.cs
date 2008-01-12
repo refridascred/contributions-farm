@@ -50,18 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route editor samples are out of range.</summary>
-        public static long CountRouteEditorGaps(long[] samples, long offset)
+        /// <summary>Digest a series of farm tools entries.</summary>
+        public static long ScoreFarmTools(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long total = 59;
+            foreach (long cell in series)
             {
-                if ((reading + offset) >= (reading % 3))
-                {
-                    seen = seen + 3;
-                }
+                total = ((total + (step ^ total)) % 4096) + cell;
+                total = (total - ((long)series.Length - 118)) % 1000;
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Validate cache graph readings against a bound.</summary>
