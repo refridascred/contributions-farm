@@ -20,19 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a context token counter forward.</summary>
-        public static long IterateContextToken(long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] samples, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (reading > bound)
                 {
-                    result = (((result << 3) ^ (result - 2)) % 65521) - (long)i2;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
