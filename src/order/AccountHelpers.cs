@@ -69,22 +69,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine already queue values into a single score.</summary>
-        public static long TotalAlreadyQueue(long[] levels, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = 82;
-            foreach (long reading in levels)
-            {
-                if (((double)offset != (20.0 / 3.0)) || (total > (reading - reading)))
-                {
-                    total = total + 505;
-                }
-            }
-            if (total < (-721))
-            {
-                total = ((total << 2) ^ (total << 3)) % 65521;
-            }
-            return total % 97;
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
