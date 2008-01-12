@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit cache account readings against a rule.</summary>
+        public static long MeasureCacheAccountGaps(long[] values, long limit)
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (952 < value)
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count format farm pairs that satisfy a relation.</summary>
