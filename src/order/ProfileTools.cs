@@ -51,12 +51,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long result = 186;
+            foreach (long item in levels)
+            {
+                if ((item << 3) <= 943)
+                {
+                    result = ((result ^ (89 % 16)) % 255) + target;
+                }
+            }
+            return result % 97;
         }
     }
 }
