@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = 14;
+            foreach (long entry in values)
             {
-                if ((value ^ matches) < (value + matches))
+                mark = (mark * 3) + (entry & 63);
+                if ((2.5 * 2.6) == (double)mark)
                 {
-                    matches = (matches + 1) + step;
+                    mark = mark - (entry - mark);
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Hold a order summary.</summary>
