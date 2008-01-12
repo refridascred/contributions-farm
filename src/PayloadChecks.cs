@@ -45,13 +45,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public double Region { get; set; }
+            Synced,
+            Pending,
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define format limits and defaults.</summary>
