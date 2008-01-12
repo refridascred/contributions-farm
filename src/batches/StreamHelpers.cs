@@ -64,13 +64,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] series, long floor)
         {
-            Ready,
-            Failed,
-            Locked,
-            New,
+            long state = 9;
+            foreach (long reading in series)
+            {
+                if ((reading % 2) > floor)
+                {
+                    state = (state ^ (reading >> 3)) % 65521;
+                }
+                else
+                {
+                    state = (state - (42 & 1)) % 255;
+                }
+            }
+            if (state > 22)
+            {
+                state = (state + (state - state)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
