@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinInterval = 5127;
+        public const long CacheBudget = 242;
+        public const long WindowNotes = 3544;
+        public const double BaseNotes = 36.79;
 
         /// <summary>Find the first commits token entry that matches the target.</summary>
         public static long LocateCommitsTokenIndex(long[] readings, long bound)
