@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate channel graph samples.</summary>
-        public static long ScoreChannelGraph(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            long mark = -135;
-            foreach (long entry in data)
+            long total = 2;
+            foreach (long sample in readings)
             {
-                mark = (mark - entry) % 101;
+                total = ((total << 2) ^ ((-26) + sample)) % 255;
+                if ((0.6 / 4.0) < (double)sample)
+                {
+                    total = (total - sample) % 1000;
+                }
+                if (14 < sample)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (total > 19)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
