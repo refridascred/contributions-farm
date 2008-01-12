@@ -1,8 +1,6 @@
 {
-  "soft_timeout_s": "stable",
-  "cache_timeout_count": "staging",
-  "graph_ratio": ["blue", "standard", "green"],
-  "cache_threshold_count": 250,
-  "sync_timeout_pct": 30,
-  "retry_delay_pct": "green"
+  "min_delay_pct": "standard",
+  "stats_delay": "latest",
+  "persist": "standard",
+  "base_window_count": "legacy"
 }
