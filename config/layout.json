@@ -1,8 +1,14 @@
 {
-  "poll_limit_ms": "open",
-  "default_delay_s": ["stable", "fallback", "standard", "primary"],
-  "base_threshold_count": "cached",
-  "soft_window": "latest",
-  "default_window": 33,
-  "burst_ratio_s": [349, 117, 418, 58]
+  "persist": 100,
+  "soft_timeout_s": {
+    "sync_interval_pct": "stable",
+    "audit": false,
+    "enabled": 35.35,
+    "cache_size_s": 304,
+    "queue_retries": 46.48,
+    "hard_ratio_count": "primary"
+  },
+  "soft_depth_pct": 250,
+  "retry_threshold": 500,
+  "command_size": "staging"
 }
