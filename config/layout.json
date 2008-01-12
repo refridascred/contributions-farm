@@ -1,5 +1,23 @@
 {
-  "min_interval_s": 11,
-  "hard_limit_ms": 64.02,
-  "poll_window_s": 95.73
+  "default_capacity_ms": {
+    "poll_limit_pct": 41,
+    "contributi_delay": ["cached", "latest", "cached", "open"],
+    "verbose": "fallback",
+    "compress": ["legacy", "stable", "edge", "edge"],
+    "githubfarm_ratio": "strict",
+    "hard_size_count": {
+      "entry_window": 15,
+      "warm_ttl_s": 27,
+      "strict": 8559,
+      "warm_ratio_count": "primary"
+    }
+  },
+  "sync_interval_count": "blue",
+  "poll_limit": 38.81,
+  "audit": ["eu-west", "staging"],
+  "hard_retries_ms": {
+    "farm_limit": true,
+    "enabled": "edge",
+    "verbose": [397, 129, 213]
+  }
 }
