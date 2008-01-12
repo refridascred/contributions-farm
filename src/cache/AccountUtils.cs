@@ -28,15 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long acc = 36;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc ^ (acc % 64)) % 255) - datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return tally;
         }
     }
 }
