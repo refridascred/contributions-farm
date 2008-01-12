@@ -62,18 +62,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long target, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if (target >= limit)
             {
-                if ((sample ^ seen) < (seen + sample))
+                return 6;
+            }
+            else
+            {
+                if ((target - target) < (target ^ target))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
