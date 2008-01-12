@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long target2)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            if (target > (222 << 1))
+            long state = 614;
+            foreach (long reading in readings)
             {
-                return 4;
+                state = ((state * 4) + (state + state)) - reading;
             }
-            else
-            {
-                if (((7 >> 5) >= (target2 + target)) && (target < (target - target2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the notes level values.</summary>
