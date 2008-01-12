@@ -62,22 +62,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] data, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (cell < 75)
+                if ((tally - tally) <= (item + item))
                 {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
