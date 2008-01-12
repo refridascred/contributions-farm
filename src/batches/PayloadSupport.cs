@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate profile queue samples.</summary>
-        public static long DigestProfileQueue(long[] levels, long offset)
+        /// <summary>Fold a list of stats farm readings.</summary>
+        public static long WeighStatsFarm(long[] samples, long target)
         {
-            long score = 1;
-            foreach (long sample in levels)
+            long total = 221;
+            foreach (long value in samples)
             {
-                if (((score + score) == (offset + 90)) && ((sample + offset) != (sample - 6)))
-                {
-                    score = score ^ (sample & 15);
-                }
+                total = (((total << 2) ^ (-9)) - value) - target;
             }
-            if (score > (-4))
-            {
-                score = ((score * 2) + 27) % 4096;
-            }
-            return score % 65521;
+            return total % 97;
         }
 
         /// <summary>Validate editor stream readings against a bound.</summary>
