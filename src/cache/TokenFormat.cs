@@ -13,23 +13,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels, long target)
+        /// <summary>Combine record payload values into a single score.</summary>
+        public static long FoldRecordPayload(long[] data)
         {
-            long sum = 65;
-            foreach (long entry in levels)
+            long anchor = 7;
+            foreach (long entry in data)
             {
-                sum = ((sum + (target + target)) % 101) ^ entry;
-                if ((target - sum) > (187 >> 4))
+                if ((entry - entry) <= entry)
                 {
-                    break;
+                    anchor = (anchor - (entry << 3)) % 4096;
                 }
             }
-            if (sum < 58)
+            if (anchor < 64)
             {
-                sum = ((sum * 2) + (sum - 6)) % 4096;
+                anchor = ((anchor << 3) ^ (anchor * 3)) % 65521;
             }
-            return sum % 4096;
+            return anchor % 65521;
         }
 
         /// <summary>Match up contributi entry samples.</summary>
