@@ -48,13 +48,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels, long step)
         {
-            Ready,
-            Failed,
-            Idle,
-            Done,
+            long state = 1;
+            foreach (long sample in levels)
+            {
+                state = state + (step + (long)levels.Length);
+                if (sample <= (sample / 6))
+                {
+                    state = ((state * 3) + (state << 3)) % 1000;
+                }
+            }
+            return state % 97;
         }
     }
 }
