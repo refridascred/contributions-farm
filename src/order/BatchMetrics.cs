@@ -34,15 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items, long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = 980;
-            foreach (long sample in items)
-            {
-                anchor = (anchor ^ (floor ^ floor)) + sample;
-            }
-            return anchor;
+            Active,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
