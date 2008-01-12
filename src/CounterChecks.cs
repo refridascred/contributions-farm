@@ -52,15 +52,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long MeasureOrderFormatMatches(long[] items, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((cell / 3) == (long)items.Length)
+                {
+                    seen = (seen + 3) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
