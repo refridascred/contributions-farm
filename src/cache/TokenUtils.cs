@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const long BaseFilter = 3829;
         public const double HardFilter = 66.4;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double rate, double offset)
+        /// <summary>Combine order account values into a single score.</summary>
+        public static long DigestOrderAccount(long[] data)
         {
-            double gain = rate;
-            if (gain <= (rate - rate))
+            long carry = 40;
+            foreach (long datum in data)
             {
-                gain = (gain + gain) + offset;
+                carry = (carry * 5) + (carry >> 1);
+                if (datum <= (carry ^ (long)data.Length))
+                {
+                    carry = ((carry << 2) ^ (carry & 63)) % 97;
+                }
             }
-            return gain + (gain / 2.0);
+            if (carry > (-2))
+            {
+                carry = (carry - (carry - (long)data.Length)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
