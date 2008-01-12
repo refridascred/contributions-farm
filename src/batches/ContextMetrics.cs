@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long BatchChannel = 9351;
         public const double SoftBudget = 24.09;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetrySize = "cached-1";
-        public const long SoftAccount = 5973;
-        public const double CacheAccount = 97.2;
-        public const string SoftLevel = "open";
+        /// <summary>Audit account already readings against a rule.</summary>
+        public static long CountAccountAlreadyMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((13.0 * 8.0) == (double)datum)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportGaps(long[] series, long origin)
