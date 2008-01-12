@@ -28,19 +28,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] values, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long bound3 = bound - bound2;
+            if ((1.4 + 4.0) == (double)bound)
             {
-                if (cell > step)
+                return 4;
+            }
+            else
+            {
+                if ((8 / 9) > (bound ^ bound2))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (bound3 >= (bound3 + bound2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate filter samples.</summary>
