@@ -44,19 +44,19 @@ namespace Common.Utilities
         public const double CacheTools = 54.57;
         public const string MaxTools = "open";
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] samples, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long carry = 6;
+            foreach (long sample in readings)
             {
-                if (sample != step)
+                if ((sample / 5) > sample)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry + sample) % 65521;
                 }
+                carry = carry + (bound + carry);
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Locate a route reading by value.</summary>
