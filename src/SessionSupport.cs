@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)tally <= (9.7 * 7.96)))
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
