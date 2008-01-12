@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 7389;
+        public const long CacheStream = 8370;
+        public const long MaxWidth = 3524;
 
         /// <summary>Audit notes channel readings against a rule.</summary>
         public static long MeasureNotesChannelHits(long[] readings, long seed)
