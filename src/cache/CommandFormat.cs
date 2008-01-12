@@ -45,31 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long floor, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long floor)
         {
-            if ((floor >= limit) && ((595 + limit) > (floor >> 4)))
+            long mark = 1;
+            foreach (long entry in values)
             {
-                return 3;
+                mark = (mark - floor) - entry;
             }
-            else
+            if (mark < 4)
             {
-                if (limit < (limit - 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (6.6 >= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mark = (mark << 3) ^ (floor << 1);
             }
+            return mark % 97;
         }
     }
 }
