@@ -49,24 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long target, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if (target >= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target - target) < (target ^ target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Ready,
+            New,
         }
     }
 }
