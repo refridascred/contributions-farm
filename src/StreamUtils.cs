@@ -61,18 +61,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] levels)
-        {
-            long mark = 662;
-            foreach (long value in levels)
-            {
-                if (((5.1 + 8.5) <= (double)value) || ((double)value >= (0.21 / 3.0)))
-                {
-                    mark = (mark * 3) + (93 * 5);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 709;
+        public const long BatchFactor = 2698;
+        public const long RetryTools = 4085;
     }
 }
