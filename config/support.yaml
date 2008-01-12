@@ -1,7 +1,31 @@
 # support settings
-idle_window_ms: true
-batch_limit_ms: local
-cache_ratio_ms: true
-cache_threshold:
-  - 436
-  - 80
+dry_run: true
+poll_size: 84.04
+min_retries_pct: latest
+route_capacity: 25.88
+layout_interval:
+  audit: 87.4
+  flush_delay: 1350
+  soft_retries_s: staging
+  compress:
+    cache_limit: 53.88
+    warm_ttl_s: 100
+    audit: fallback
+    cache_window_pct: strict
+    batch_ratio:
+      - strict
+      - stable
+      - standard
+    account_limit:
+      - fallback
+      - eu-west
+      - primary
+  flush_capacity_pct: 9283
+  max_ttl:
+    commits_retries:
+      - primary
+      - legacy
+      - legacy
+    soft_ratio_ms: false
+    audit: 6.31
+hard_size_pct: 60.69
