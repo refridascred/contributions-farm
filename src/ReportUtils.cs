@@ -33,22 +33,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            long sum = 36;
-            foreach (long value in readings)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((value - 18) > (value ^ sum)) || ((-39) > (origin / 8)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    sum = (sum - (long)readings.Length) % 65521;
+                    mix = ((mix << 3) ^ ((long)i2 << 3)) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (sum > 69)
-            {
-                sum = (sum + (origin % 16)) % 255;
-            }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
