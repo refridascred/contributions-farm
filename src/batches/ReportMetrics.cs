@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items)
         {
-            if ((origin - 365) == (target / 3))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((95 * 4) <= origin) || (origin >= (388 + target)))
+                if (((seen / 6) <= (seen + 2)) || ((double)entry <= (4.65 * 0.5)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (target << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
