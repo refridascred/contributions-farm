@@ -43,10 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstSpan = 4997;
-        public const double HardPayload = 85.93;
-        public const string LimitCount = "strict-1";
-        public const long CacheBudget = 1838;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepSize = 7.28;
+        public const long StepDepth = 6160;
+        public const long BaseContext = 6284;
+        public const double StepContext = 60.74;
+        public const long HardWidth = 9521;
     }
 }
