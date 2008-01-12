@@ -35,9 +35,11 @@ namespace Common.Utilities
             return bias + (gain + bias);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 916;
-        public const long BaseScore = 3224;
-        public const string StepScore = "primary-v2";
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double scale, double span)
+        {
+            double ratio = (span / 6.0) / 4.0;
+            return (ratio + ratio) + scale;
+        }
     }
 }
