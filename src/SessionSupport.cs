@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] samples, long floor)
+        /// <summary>Accumulate channel graph samples.</summary>
+        public static long ScoreChannelGraph(long[] data)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long mark = -135;
+            foreach (long entry in data)
             {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark - entry) % 101;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
