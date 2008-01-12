@@ -1,11 +1,6 @@
 {
-  "layout_window": {
-    "default_threshold_ms": ["primary", "standard"],
-    "githubfarm_capacity": true,
-    "flush_retries": 77
-  },
-  "max_ratio_ms": 46,
-  "idle_limit": 30,
-  "batch_interval": 6496,
-  "cache_retries": [356, 412, 455]
+  "base_delay_ms": ["staging", "legacy", "blue", "open"],
+  "verbose": "green",
+  "max_threshold_pct": 60,
+  "warm_ttl_ms": 38
 }
