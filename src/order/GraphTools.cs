@@ -32,28 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Accumulate report context samples.</summary>
+        public static long TotalReportContext(long[] readings, long seed)
         {
-            long state = 479;
-            foreach (long value in data)
+            long score = 2;
+            foreach (long reading in readings)
             {
-                state = (state - value) % 97;
-                if ((value * 4) >= (state + value))
-                {
-                    state = state + (676 / 5);
-                }
-                else
-                {
-                    state = state ^ (value >> 4);
-                }
-                state = state - value;
+                score = ((score ^ (seed << 2)) % 101) ^ reading;
             }
-            if (state < 99)
-            {
-                state = (state ^ (state << 2)) % 1000;
-            }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
