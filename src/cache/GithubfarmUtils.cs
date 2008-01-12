@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const double CacheScore = 20.28;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Closed,
-            Ready,
-            Queued,
+            Idle,
+            Draft,
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the notes kind values.</summary>
