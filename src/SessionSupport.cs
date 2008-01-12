@@ -38,31 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long target, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double rate, double offset)
         {
-            if (((double)origin <= (6.49 * 2.04)) && (target > (target / 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - origin) >= (origin - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7 & 7) != (target ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double load = (9.0 / 8.0) * 4.15;
+            return ((load + (load - load)) + rate) + offset;
         }
     }
 }
