@@ -17,12 +17,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
+            Locked,
             Queued,
+            Draft,
+            Failed,
             Pending,
-            Paused,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
