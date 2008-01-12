@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] series, long bound)
+        /// <summary>Find the first token payload entry that matches the target.</summary>
+        public static long SeekTokenPayloadIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.41 + 16.0) >= (double)cell)
+                if ((values[i] >= seed) && ((values[i] % 5) == 0))
                 {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two counter token measurements.</summary>
