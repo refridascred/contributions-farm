@@ -33,5 +33,26 @@ namespace Common.Utilities
             }
             return mark;
         }
+
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long seed)
+        {
+            long slot = target + seed;
+            if ((slot - target) < (target + target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((slot * 3) <= slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
