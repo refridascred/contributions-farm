@@ -33,18 +33,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long MeasureSessionPayloadGaps(long[] levels)
+        /// <summary>Audit counter command readings against a rule.</summary>
+        public static long AuditCounterCommandOutliers(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (((double)datum != (2.0 - 0.43)) && ((seen + seen) > (436 / 3)))
+                if ((origin * 5) >= origin)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
