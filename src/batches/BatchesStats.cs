@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const string StepTimeout = "stable";
         public const string BatchGithubfarm = "local-v2";
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] readings, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                score = (score * 5) + (score + score);
-                score = ((score << 3) ^ (long)i) % 4096;
-                score = ((score * 3) + (long)i) % 65521;
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
