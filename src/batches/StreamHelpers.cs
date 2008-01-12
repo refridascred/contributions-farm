@@ -81,27 +81,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] series, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 8;
-            foreach (long item in series)
-            {
-                mix = mix - (target / 6);
-                if ((target - 847) == (target ^ mix))
-                {
-                    mix = (mix + target) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (item + item)) % 101;
-                }
-            }
-            if (mix > 96)
-            {
-                mix = (mix + (target ^ mix)) % 101;
-            }
-            return mix;
+            Done,
+            Failed,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
