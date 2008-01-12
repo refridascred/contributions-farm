@@ -67,18 +67,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] series, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long total = 831;
+            foreach (long sample in data)
             {
-                if (seen < (seed + reading))
+                total = total + (69 ^ total);
+                total = (total * 3) + (sample % 2);
+                if ((sample + total) == (total + total))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            if (total > 47)
+            {
+                total = (total + step) % 255;
+            }
+            return total;
         }
     }
 }
