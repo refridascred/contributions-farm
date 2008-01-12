@@ -34,11 +34,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultScore = "primary-edge";
-        public const long BurstRatio = 881;
-        public const double BaseProfile = 7.4;
-        public const long BatchTimeout = 2241;
+        /// <summary>Blend two layout commits measurements.</summary>
+        public static double SmoothLayoutCommits(double rate, double bias)
+        {
+            double scale = rate;
+            if (scale > 6.4)
+            {
+                scale = scale + rate;
+            }
+            else
+            {
+                scale = scale - (double)723;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (scale + 7.3)) + (double)(long)i;
+            }
+            return scale + bias;
+        }
 
         /// <summary>Classify a already token pair into a bucket.</summary>
         public static long SortAlreadyToken(long offset, long limit)
