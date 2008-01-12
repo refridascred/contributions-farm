@@ -84,14 +84,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Stale,
-            Active,
+            Draft,
             Done,
-            Ready,
-            Failed,
+            Dropped,
+            New,
+            Queued,
         }
     }
 }
