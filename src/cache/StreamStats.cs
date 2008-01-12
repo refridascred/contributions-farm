@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the entry profile series from a seed.</summary>
-        public static long RollEntryProfile(long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double weight, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            double drift = offset;
+            if (drift < weight)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                drift = drift + (double)164;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Combine token values into a single score.</summary>
