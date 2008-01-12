@@ -28,12 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 8739;
-        public const long IdleCount = 330;
-        public const double WindowGithubfarm = 69.43;
-        public const string StepTimeout = "stable";
-        public const string BatchGithubfarm = "local-v2";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((matches + cell) != (cell & 3)) || (59 < (matches << 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many window record samples are out of range.</summary>
         public static long CountWindowRecordHits(long[] samples, long target)
