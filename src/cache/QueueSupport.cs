@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every metric editor entry stays within the limit.</summary>
+        public static bool ValidateMetricEditorLimits(long[] levels, long bound)
         {
-            Active,
-            Draft,
-            Pending,
-            Idle,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the tools status values.</summary>
