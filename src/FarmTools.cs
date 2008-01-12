@@ -21,17 +21,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                state = state - (step * 4);
-                state = (state ^ state) % 97;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
