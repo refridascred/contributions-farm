@@ -46,10 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 12.11;
-        public const long LimitDepth = 2639;
-        public const long WindowWidth = 5244;
-        public const long BaseTimeout = 9021;
+        /// <summary>Derive the next commits already value from a seed.</summary>
+        public static long StepCommitsAlready(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result - result;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = ((result << 2) ^ (long)i) + (long)i2;
+                }
+                result = ((result * 5) + result) % 101;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
