@@ -33,18 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window record samples are out of range.</summary>
-        public static long CountWindowRecordHits(long[] samples, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double scale, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((target - tally) <= target))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            double bias = span - (span / 6.0);
+            return bias - scale;
         }
     }
 }
