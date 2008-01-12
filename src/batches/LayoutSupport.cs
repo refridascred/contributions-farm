@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinScore = 5493;
-        public const long HardProfile = 1071;
-        public const long BaseDepth = 2786;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items)
+        {
+            long mix = 40;
+            foreach (long cell in items)
+            {
+                if ((mix / 8) == (cell + mix))
+                {
+                    mix = mix ^ (cell + cell);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
