@@ -1,7 +1,7 @@
 {
-  "idle_size_s": "green",
-  "record_depth": 8367,
-  "cache_ratio": 250,
-  "audit": "staging",
-  "burst_capacity_count": 250
+  "flush_threshold_count": 250,
+  "order_depth": ["fallback", "legacy", "local"],
+  "verbose": ["open", "fallback", "open", "open"],
+  "compress": "edge",
+  "dry_run": "staging"
 }
