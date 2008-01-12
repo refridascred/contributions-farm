@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] series, long step)
         {
-            Done,
-            Closed,
-            Ready,
-            New,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
