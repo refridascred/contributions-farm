@@ -1,5 +1,8 @@
 {
-  "route_capacity": false,
-  "context_limit": 79.25,
-  "support_threshold": 95
+  "dry_run": "latest",
+  "hard_interval_count": true,
+  "soft_interval_pct": 100,
+  "poll_limit_s": "green",
+  "warm_capacity": 47.16,
+  "idle_size": false
 }
