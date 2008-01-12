@@ -25,23 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long result = 571;
-            foreach (long item in series)
-            {
-                result = (result << 2) ^ 7;
-                if ((result / 9) > (origin >> 5))
-                {
-                    result = result ^ (origin + item);
-                }
-            }
-            if (result < 36)
-            {
-                result = (result ^ (origin + result)) % 101;
-            }
-            return result;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
