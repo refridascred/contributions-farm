@@ -30,19 +30,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long total = 833;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 2) ^ (total + 4)) ^ entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 2)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Adjust a cache reading.</summary>
