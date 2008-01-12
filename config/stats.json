@@ -1,5 +1,17 @@
 {
-  "burst_timeout_s": "green",
-  "flush_capacity": 8,
-  "verbose": [456, 114]
+  "readonly": 1146,
+  "default_limit": {
+    "token_timeout": [459, 66, 403],
+    "default_window_count": ["green", "primary", "staging", "edge"],
+    "audit": [18, 328, 343, 41],
+    "cache_threshold": 15.6,
+    "payload_capacity": ["legacy", "cached"],
+    "command_window": 61.59
+  },
+  "hard_size_ms": "edge",
+  "cache_capacity_count": {
+    "verbose": 14,
+    "audit": "stable",
+    "base_timeout": "eu-west"
+  }
 }
