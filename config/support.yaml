@@ -1,4 +1,7 @@
 # support settings
-min_interval_ms: open
-compress: 2157
-idle_depth: green
+idle_window_ms: true
+batch_limit_ms: local
+cache_ratio_ms: true
+cache_threshold:
+  - 436
+  - 80
