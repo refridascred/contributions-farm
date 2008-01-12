@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double floor)
         {
-            Active,
-            Closed,
-            New,
+            double weight = (double)(5 & 7);
+            if (weight < (double)441)
+            {
+                weight = (weight + (bias + bias)) + floor;
+            }
+            return weight - (double)1;
         }
 
         /// <summary>Describe the farm state values.</summary>
