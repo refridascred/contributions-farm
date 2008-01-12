@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long CombineBatchToken(long[] data, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] samples)
         {
-            long anchor = 4;
-            foreach (long reading in data)
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                if (((double)offset <= 4.41) && (anchor >= 6))
+                for (int i = 0; i < 6; i++)
                 {
-                    anchor = ((anchor ^ (offset >> 4)) % 101) ^ reading;
+                    acc = acc ^ (acc + (long)i);
+                    acc = (acc << 3) ^ (acc + 2);
                 }
+                acc = (acc + (entry << 3)) % 255;
             }
-            if (anchor < 379)
+            if (acc < 77)
             {
-                anchor = anchor + (anchor / 4);
+                acc = (acc ^ (acc - acc)) % 101;
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
