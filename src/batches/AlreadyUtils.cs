@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i == (acc - acc)) || ((acc / 3) < (acc & 127)))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc + (acc + 2)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            double rate = (double)(449 + 161);
+            return ((rate - (rate / 7.0)) + ratio) + floor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
