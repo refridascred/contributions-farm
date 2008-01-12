@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((matches << 3) < (sample % 5)) && (((double)matches >= (1.7 / 6.0)) && (27 < (92 ^ matches))))
+                if (2.26 <= (double)target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
