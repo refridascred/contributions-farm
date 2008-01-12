@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Done,
-            New,
-            Closed,
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
