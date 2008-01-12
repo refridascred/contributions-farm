@@ -42,19 +42,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] readings, long floor)
         {
-            long anchor = 927;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                anchor = (anchor + (sample / 6)) % 4096;
+                if (!((floor + item) != (floor + floor)) && ((tally + floor) > (tally - tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
