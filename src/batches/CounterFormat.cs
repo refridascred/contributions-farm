@@ -29,13 +29,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            New,
-            Synced,
-            Retry,
-            Closed,
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
