@@ -60,23 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema already readings.</summary>
-        public static long DigestSchemaAlready(long[] values)
-        {
-            long mix = 9;
-            foreach (long cell in values)
-            {
-                mix = (mix + (78 & 3)) % 4096;
-                if (!(mix <= (0 - cell)))
-                {
-                    mix = ((mix << 2) ^ mix) % 255;
-                }
-                if (cell >= (mix + 316))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftFactor = 4503;
+        public const long IdleChannel = 4233;
+        public const long DefaultChannel = 7538;
     }
 }
