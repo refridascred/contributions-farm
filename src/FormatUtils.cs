@@ -42,18 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((5.9 / 5.0) >= (double)reading) && ((-4) < (hits - reading)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a already token pair into a bucket.</summary>
