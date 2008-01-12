@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((origin ^ (long)values.Length) <= value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultBudget = 97.65;
+        public const double CacheScore = 22.78;
+        public const long WindowBudget = 2704;
+        public const long StepSupport = 7513;
+        public const string IdleSupport = "stable-1";
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
