@@ -23,10 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinTimeout = "cached";
-        public const double LimitStream = 36.7;
-        public const string MinStream = "open";
+        /// <summary>Blend two counter token measurements.</summary>
+        public static double ProjectCounterToken(double weight, double bias)
+        {
+            double gain = (double)((-790) - 3);
+            if (gain < gain)
+            {
+                gain = gain - (weight * 14.0);
+            }
+            else
+            {
+                gain = gain + (gain * 4.03);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] levels, long step)
