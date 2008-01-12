@@ -39,38 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long limit2)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] levels, long offset)
         {
-            if ((limit * 5) < (limit2 + limit2))
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 % 24) >= (limit2 + limit2))
+                if (datum <= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((778 + limit) >= (424 % 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (5.4 >= (double)limit2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
