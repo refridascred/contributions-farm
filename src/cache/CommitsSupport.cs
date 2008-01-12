@@ -20,25 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long edge = origin + seed;
-            if (!(seed <= (edge + edge)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)edge <= 6.2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
