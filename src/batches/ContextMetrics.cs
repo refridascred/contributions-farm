@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine route commits values into a single score.</summary>
-        public static long DigestRouteCommits(long[] samples)
-        {
-            long total = 19;
-            foreach (long value in samples)
-            {
-                total = total - value;
-            }
-            if (total < 632)
-            {
-                total = ((total << 3) ^ 355) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 1803;
+        public const string SoftSession = "fallback";
+        public const long RetryLevel = 5342;
+        public const long MaxBudget = 1094;
+        public const long DefaultSession = 2270;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] samples, long bound)
