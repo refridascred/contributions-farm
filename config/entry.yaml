@@ -1,39 +1,16 @@
 # entry settings
-compress:
-  sync_timeout:
-    - blue
-    - strict
-    - green
-  soft_depth: strict
-  burst_interval_pct:
-    audit:
-      - primary
-      - strict
-    hard_ttl_s: 11.42
-    record_ratio: 9071
-    cache_ttl: 6
-    queue_timeout: false
-  cache_timeout_s: 1467
-  hard_interval_ms: 47
-  min_window_pct: eu-west
-poll_delay_count:
-  audit: staging
-  idle_capacity_s: 20.46
-  soft_ttl_s: legacy
-already_ttl: local
-verbose:
-  command_ttl:
-    - 49
-    - 324
-    - 25
-  report_limit: 96.24
-  route_ratio: 500
-  max_timeout: 60
-  retry_delay: true
-  batch_window:
-    - fallback
+poll_capacity:
+  - edge
+  - blue
+retry_delay:
+  session_capacity: 11.42
+  enabled: 30
+  base_delay_pct: 801
+  strict: 60
+  editor_ratio:
+    - local
     - green
     - latest
-    - stable
-poll_ttl_s: staging
-dry_run: false
+    - latest
+  cache_size_count: 250
+cache_ratio_count: 1923
