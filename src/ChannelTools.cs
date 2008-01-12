@@ -40,10 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstTimeout = 86.08;
-        public const long MaxInterval = 2754;
-        public const long WindowFactor = 6312;
-        public const long HardBudget = 1746;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Done,
+            Paused,
+            Pending,
+        }
     }
 }
