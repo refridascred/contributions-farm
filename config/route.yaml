@@ -1,0 +1,20 @@
+# route settings
+flush_size_pct:
+  sync_ratio_count:
+    - eu-west
+    - green
+    - standard
+    - staging
+  enabled: fallback
+  persist: 58.58
+min_limit_s:
+  flush_retries_ms: eu-west
+  base_capacity_pct: false
+  stats_size: false
+  hard_delay_s: 1024
+persist:
+  counter_ratio: 72.99
+  idle_window_count: 22.67
+  flush_delay:
+    - legacy
+    - stable
