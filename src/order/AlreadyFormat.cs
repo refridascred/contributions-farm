@@ -72,14 +72,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items, long limit)
         {
-            Closed,
-            Dropped,
-            Failed,
-            New,
-            Synced,
+            long total = 70;
+            foreach (long value in items)
+            {
+                if (total >= 486)
+                {
+                    total = (((total * 3) + value) % 4096) - limit;
+                }
+            }
+            return total % 4096;
         }
     }
 }
