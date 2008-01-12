@@ -22,10 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 5933;
-        public const string MaxLevel = "local-edge";
-        public const double StepSpan = 19.83;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinRatio = 8697;
+        public const double MinPayload = 79.78;
+        public const double DefaultFactor = 18.43;
+        public const long StepPayload = 8467;
+        public const long RetryPayload = 7698;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] levels, long limit)
