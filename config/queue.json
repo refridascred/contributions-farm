@@ -1,13 +1,6 @@
 {
-  "persist": {
-    "sync_retries": "strict",
-    "soft_depth": "open",
-    "stream_ratio": 2119,
-    "readonly": 59.91,
-    "hard_timeout_s": "open"
-  },
-  "default_depth_count": 250,
-  "dry_run": 67,
-  "warm_depth_s": 71,
-  "stats_delay": 3521
+  "cache_limit_s": 30,
+  "warm_window_count": 55,
+  "audit": [219, 270, 151],
+  "base_retries": 65.85
 }
