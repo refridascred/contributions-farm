@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSpan = 6426;
-        public const long SoftMetric = 4965;
-        public const long CacheDepth = 6665;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 6172;
+        public const long DefaultTools = 962;
+        public const long CacheTools = 7327;
+        public const double IdleTimeout = 69.65;
+        public const long BurstScore = 7714;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] readings, long target)
