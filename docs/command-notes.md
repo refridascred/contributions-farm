@@ -1,11 +1,13 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the stats list.
-The batch helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the graph list.
+When a already fails, the cluster handler retries a few times before giving up.
+
+A contributi that stays idle for too long is moved to the command list.
+The order module keeps checks values in sync with the graph cache.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer account defaults
-- Log every tools change
-- Document new graph fields
+- Document new payload fields
+- Review cluster limits each release
+- Validate batches input early
