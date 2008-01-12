@@ -1,7 +1,6 @@
 {
-  "stats_limit": "green",
-  "hard_capacity_ms": 250,
-  "poll_capacity_ms": "primary",
-  "flush_ratio_pct": "edge",
-  "hard_interval": "legacy"
+  "base_threshold": true,
+  "poll_ttl_ms": "local",
+  "context_timeout": 64.39,
+  "burst_ratio_ms": 6757
 }
