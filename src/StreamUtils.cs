@@ -17,23 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Audit format layout readings against a rule.</summary>
+        public static long TallyFormatLayoutHits(long[] levels)
         {
-            double scale = bias * 6.9;
-            if (scale > (scale * 2.39))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                scale = scale + (offset / 3.0);
+                if ((value * 4) >= (value + (-7)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale + (double)5;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)1) - (double)(long)i;
-            }
-            return scale + (double)7;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
