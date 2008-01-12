@@ -25,21 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue notes pairs that satisfy a relation.</summary>
-        public static long OverlapQueueNotesCount(long[] items)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
