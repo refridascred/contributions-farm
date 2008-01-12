@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((16.0 < (4.0 / 2.0)) || ((step ^ step) >= count))
                 {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
