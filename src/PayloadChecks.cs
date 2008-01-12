@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string MaxWidth = "fallback-1";
         public const long BatchBuffer = 4666;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] series, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                if (cell >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Adjust a batch route reading.</summary>
