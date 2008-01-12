@@ -27,12 +27,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 84.06;
-        public const string StepDepth = "primary-v2";
-        public const long MaxChannel = 9747;
-        public const double DefaultDepth = 28.87;
-        public const long BaseCount = 492;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Audit notes entry readings against a rule.</summary>
         public static long MeasureNotesEntryMatches(long[] values)
