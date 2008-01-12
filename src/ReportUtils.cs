@@ -14,12 +14,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseBudget = 84.73;
+        public const double LimitMetrics = 31.15;
+        public const long BatchSize = 3479;
 
         /// <summary>Audit notes channel readings against a rule.</summary>
         public static long MeasureNotesChannelHits(long[] readings, long seed)
