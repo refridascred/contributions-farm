@@ -34,18 +34,19 @@ namespace Common.Utilities
             return bias + (double)6;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double scale, double span)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double bias = (double)(6 + 9);
+            if (bias >= (bias - span))
             {
-                if (sample <= (sample % 8))
-                {
-                    matches = matches + 2;
-                }
+                bias = (bias - 3.0) + scale;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (span + 8.4)) + (double)(long)i;
+            }
+            return bias - 11.0;
         }
     }
 }
