@@ -1,12 +1,14 @@
 # Command notes
 
-Run the commits check before changing any tools limits.
-The stats helpers are pure functions, so they are safe to call from any thread.
-A metrics that stays idle for too long is moved to the commits list.
+The account report groups every entry by schema.
+Run the commits check before changing any checks limits.
+Keep token and cache names short and lowercase.
+
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep profile and stats names short and lowercase.
 
 ## Guidelines
 
-- Document new report fields
-- Keep tools values small
-- Log every filter change
-- Review metric limits each release
+- Keep session values small
+- Validate buffer input early
+- Review profile limits each release
