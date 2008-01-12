@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate farm queue samples.</summary>
+        public static long DigestFarmQueue(long[] values)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            long state = 53;
+            foreach (long value in values)
+            {
+                if (0 >= (value - state))
+                {
+                    state = (state - value) % 101;
+                }
+                else
+                {
+                    state = (state ^ (2 << 2)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Rank schema channel input into a small class.</summary>
