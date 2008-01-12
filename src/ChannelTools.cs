@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string CacheTools = "staging-v2";
         public const long MaxDepth = 9977;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 6547;
-        public const long MinSpan = 6365;
-        public const double LimitLevel = 19.18;
-        public const string MinBudget = "fallback-1";
-        public const long RetryBudget = 6838;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Queued,
+            Dropped,
+            Failed,
+            Stale,
+            Active,
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
