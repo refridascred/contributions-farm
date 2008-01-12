@@ -1,4 +1,4 @@
 # githubfarm settings
-enabled: 100
-readonly: false
-counter_capacity: green
+burst_ttl_count: standard
+cache_ratio_pct: false
+soft_window_ms: 2717
