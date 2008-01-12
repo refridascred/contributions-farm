@@ -48,16 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc << 2) ^ (long)i) % 4096;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstSpan = 4997;
+        public const double HardPayload = 85.93;
+        public const string LimitCount = "strict-1";
+        public const long CacheBudget = 1838;
     }
 }
