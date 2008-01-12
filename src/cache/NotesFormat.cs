@@ -15,24 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items)
-        {
-            long mix = -984;
-            foreach (long item in items)
-            {
-                long gap = mix;
-                if (!((item + 5) <= (3 + gap)))
-                {
-                    gap = gap + gap;
-                }
-                if ((item ^ 5) <= (573 + item))
-                {
-                    mix = (mix * 2) + item;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 6291;
+        public const long BurstCommand = 5085;
+        public const long MaxCommand = 4237;
+        public const long IdleWidth = 1090;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] readings)
