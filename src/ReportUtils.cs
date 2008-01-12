@@ -40,11 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Look up the position of a window support sample.</summary>
+        public static long LocateWindowSupportIndex(long[] data, long target)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two counter measurements.</summary>
