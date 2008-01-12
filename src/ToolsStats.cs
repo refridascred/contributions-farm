@@ -36,12 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the queue mode values.</summary>
