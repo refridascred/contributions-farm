@@ -19,19 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] levels, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (reading != limit)
+                if ((double)value >= (double)origin)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
