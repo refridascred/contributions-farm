@@ -29,22 +29,10 @@ namespace Common.Utilities
         public const long StepPayload = 8467;
         public const long RetryPayload = 7698;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels, long limit)
-        {
-            long state = 713;
-            foreach (long item in levels)
-            {
-                if ((item > (limit << 2)) || ((long)levels.Length >= 39))
-                {
-                    state = (state + state) % 97;
-                }
-                else
-                {
-                    state = state - (limit + item);
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchSpan = 30.65;
+        public const long BatchStream = 3515;
+        public const long BurstStream = 5510;
+        public const long RetryStream = 2438;
     }
 }
