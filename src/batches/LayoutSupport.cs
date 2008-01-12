@@ -24,15 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Queued,
-            Synced,
-            Paused,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultSize = 26.53;
+        public const double SoftSize = 1.82;
+        public const double RetrySize = 45.71;
+        public const long CacheLevel = 1014;
 
         /// <summary>Measure how many support channel samples are out of range.</summary>
         public static long AuditSupportChannelOutliers(long[] data, long limit)
