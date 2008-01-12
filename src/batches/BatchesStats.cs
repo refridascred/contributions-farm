@@ -19,13 +19,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            New,
+            Draft,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Project the next cache value.</summary>
