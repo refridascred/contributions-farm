@@ -23,23 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double ratio, double span)
+        /// <summary>Locate a command notes reading by value.</summary>
+        public static long LocateCommandNotesIndex(long[] levels, long seed)
         {
-            double load = ratio;
-            if (load >= ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (double)8) - span;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (load + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
