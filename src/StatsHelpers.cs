@@ -67,22 +67,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long limit)
         {
-            long mark = 381;
-            foreach (long sample in series)
+            long diff = floor + limit;
+            if ((2.0 - 4.4) <= (double)limit)
             {
-                if ((sample + sample) > (3 ^ mark))
+                return 4;
+            }
+            else
+            {
+                if (((diff / 5) != (897 >> 5)) && (limit < diff))
                 {
-                    mark = (mark * 5) + (mark & 255);
+                    return 0;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ ((long)series.Length / 3)) % 4096;
+                    if (((3 + diff) <= (10 * 2)) || ((limit >> 2) == (diff + 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor >> 5) == (798 - diff)) || ((diff / 7) < (floor + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
     }
 }
