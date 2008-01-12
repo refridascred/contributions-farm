@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine report token values into a single score.</summary>
-        public static long WeighReportToken(long[] values)
+        /// <summary>Iterate the buffer schema series from a seed.</summary>
+        public static long IterateBufferSchema(long floor)
         {
-            long acc = 78;
-            foreach (long item in values)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc * 2) + (item * 4);
+                mix = (mix << 2) ^ ((long)i + floor);
+                long tally = floor + ((long)i - floor);
+                if ((floor % 10) >= (floor << 3))
+                {
+                    mix = ((mix * 2) + (tally << 1)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    tally = (tally << 2) ^ (long)i;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
