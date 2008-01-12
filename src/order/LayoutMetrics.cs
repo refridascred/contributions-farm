@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftWidth = 3551;
-        public const long SoftTimeout = 1804;
-        public const long WindowCount = 706;
-        public const string BurstFactor = "standard";
-        public const long MaxSize = 3087;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double span)
+        {
+            double rate = (ratio + ratio) - ratio;
+            if (rate > (double)7)
+            {
+                rate = rate + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + span;
+        }
     }
 }
