@@ -48,11 +48,11 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
