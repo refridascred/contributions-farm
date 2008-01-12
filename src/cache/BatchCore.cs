@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] series, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long limit)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample != origin)
+                long gap = ((long)i + limit) - limit;
+                gap = gap ^ 86;
+                if ((gap & 255) <= (limit * 4))
                 {
-                    ok = false;
-                    break;
+                    gap = ((gap * 3) + (gap ^ gap)) % 97;
+                    gap = ((gap << 3) ^ (result - result)) % 101;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
