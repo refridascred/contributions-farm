@@ -43,18 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] readings, long seed)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((datum * 2) < datum) || (6.78 >= (double)seed)))
-                {
-                    tally = tally + 2;
-                }
+                ratio = (ratio + (double)(long)i) - floor;
             }
-            return tally;
+            return ratio + bias;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
