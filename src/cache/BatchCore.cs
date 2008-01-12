@@ -31,18 +31,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] values)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits > ((long)values.Length / 2))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
