@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a metrics route reading by value.</summary>
-        public static long LocateMetricsRouteIndex(long[] data, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                if (values[i] == target)
                 {
                     return (long)i;
                 }
