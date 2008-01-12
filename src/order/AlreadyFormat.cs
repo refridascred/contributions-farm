@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Count the stats editor entries that pass the check.</summary>
+        public static long TallyStatsEditorHits(long[] samples)
         {
-            long acc = 532;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (3.2 < (double)sample)
+                if (((429 + hits) == (item % 16)) || !((double)hits <= (double)854))
                 {
-                    acc = (acc ^ sample) % 101;
+                    hits = hits + 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
