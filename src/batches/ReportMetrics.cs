@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 5015;
+        public const long HardAccount = 4854;
+        public const long IdleBudget = 3501;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] items, long bound)
