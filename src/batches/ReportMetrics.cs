@@ -32,28 +32,28 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long origin, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long offset2)
         {
-            if (!((floor % 100) <= origin))
+            if ((offset2 + offset) <= (offset2 - (-432)))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (!((origin / 3) >= (origin - origin)))
+                if ((6.1 + 10.0) <= (double)offset2)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (floor <= (floor + origin))
+                    if ((double)offset2 >= (9.81 / 4.0))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        return 5;
                     }
                 }
             }
