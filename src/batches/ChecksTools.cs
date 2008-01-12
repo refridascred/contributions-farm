@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstScore = 1392;
-        public const double BatchOrder = 64.55;
-        public const long WindowOrder = 9597;
-        public const long DefaultLevel = 9777;
-        public const long MaxScore = 8514;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((8.4 - 5.3) <= (double)entry) || !((entry + origin) >= entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long offset)
