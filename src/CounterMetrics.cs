@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxCount = "staging-1";
-        public const double DefaultCount = 39.66;
-        public const double LimitCount = 81.26;
-        public const long BaseBuffer = 5215;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double bias)
+        {
+            double scale = (bias * 5.8) / 6.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (scale * 4.5)) + (double)(long)i) - gain;
+            }
+            return scale - 16.0;
+        }
 
         /// <summary>Validate metrics notes readings against a bound.</summary>
         public static bool ValidateMetricsNotesRange(long[] values, long offset)
