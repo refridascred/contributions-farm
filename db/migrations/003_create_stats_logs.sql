@@ -1,13 +1,9 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    rank INTEGER,
-    created_at TIMESTAMP,
-    token TEXT,
-    region TEXT,
-    ratio REAL
+    weight REAL,
+    level INTEGER,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
-
-INSERT INTO stats_logs (rank, token, region, ratio) VALUES (86, 'staging', 'fallback', 4.74);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
