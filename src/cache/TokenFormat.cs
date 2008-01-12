@@ -28,10 +28,11 @@ namespace Common.Utilities
             return load + (span / 2.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "fallback-edge";
-        public const string BatchLevel = "stable-v2";
-        public const long WindowWidth = 7874;
-        public const long LimitProfile = 9958;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+        }
     }
 }
