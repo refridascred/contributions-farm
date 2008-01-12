@@ -66,21 +66,19 @@ namespace Common.Utilities
         public const long HardMetrics = 9112;
         public const long LimitCount = 2549;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (((acc << 3) ^ (origin * 2)) % 1000) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
