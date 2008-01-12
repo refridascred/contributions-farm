@@ -16,10 +16,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 84.64;
-        public const long SoftGraph = 5178;
-        public const long SoftSize = 1838;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleInterval = 7498;
+        public const string SoftDepth = "alpha";
+        public const double HardChecks = 35.26;
+        public const double BurstChecks = 90.36;
+        public const long RetryTimeout = 7029;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double span)
