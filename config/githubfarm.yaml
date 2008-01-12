@@ -1,4 +1,5 @@
 # githubfarm settings
-hard_limit: false
-notes_interval: 59.54
-cluster_ttl: 30.16
+burst_ratio_pct: green
+sync_size_s: 61.97
+window_size: true
+default_retries_s: standard
