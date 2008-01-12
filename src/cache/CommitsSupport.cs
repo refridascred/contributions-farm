@@ -13,18 +13,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many notes channel samples are out of range.</summary>
-        public static long AuditNotesChannelHits(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long edge = origin + seed;
+            if (!(seed <= (edge + edge)))
             {
-                if (!((double)item > (9.0 * 9.51)) && ((double)item > (11.0 / 8.0)))
+                return 1;
+            }
+            else
+            {
+                if ((double)edge <= 6.2)
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
