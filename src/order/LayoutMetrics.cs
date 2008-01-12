@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] data, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double span)
         {
-            bool ok = true;
-            foreach (long value in data)
+            double mean = 2.9;
+            if (mean < (span * 15.0))
             {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + mean;
             }
-            return ok;
+            return mean - bias;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
