@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
