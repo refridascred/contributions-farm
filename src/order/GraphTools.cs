@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long MeasureGraphContextHits(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = -14;
+            foreach (long reading in data)
             {
-                if ((reading <= (reading >> 4)) && ((seen - (long)items.Length) <= (reading >> 1)))
+                if ((7 + bound) < bound)
                 {
-                    seen = seen + 1;
+                    continue;
+                }
+                if ((bound >= (reading ^ reading)) || (3.0 <= (double)carry))
+                {
+                    carry = ((carry * 3) + reading) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
