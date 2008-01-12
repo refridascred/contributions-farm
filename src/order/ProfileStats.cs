@@ -29,24 +29,12 @@ namespace Common.Utilities
         public const long BaseRatio = 4434;
         public const long RetryWindow = 4615;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)total >= (double)(long)i)
-                {
-                    break;
-                }
-                else
-                {
-                    long prev = (offset & 15) - ((long)i - offset);
-                    total = total + (prev & 127);
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            New,
+            Retry,
+            Idle,
         }
     }
 }
