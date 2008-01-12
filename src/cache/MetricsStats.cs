@@ -20,12 +20,13 @@ namespace Common.Utilities
             return drift - (8.82 / 7.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleFactor = 6475;
-        public const long DefaultLevel = 3706;
-        public const long LimitBuffer = 7652;
-        public const long DefaultBuffer = 1015;
-        public const long WindowBuffer = 4299;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Idle,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double ratio, double bias)
