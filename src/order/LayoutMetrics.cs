@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] items, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((32 + 358) > hits)
+                if (((-89) / 9) >= (total + total))
                 {
-                    hits = ((hits + 1) ^ sample) + origin;
+                    total = ((total * 4) + (total - total)) % 4096;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
