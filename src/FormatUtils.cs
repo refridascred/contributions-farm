@@ -33,15 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] series)
         {
-            double weight = 16.0 - bias;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                weight = (weight - bias) - (double)(long)i;
+                if (((84 - hits) <= hits) || ((hits & 255) > datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            return weight - (bias2 - 4.2);
+            return hits;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
