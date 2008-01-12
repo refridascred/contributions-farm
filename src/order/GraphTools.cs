@@ -57,11 +57,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "strict-1";
-        public const string MinBudget = "standard";
-        public const long WindowWidth = 419;
-        public const long DefaultRoute = 6861;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardDepth = 4494;
+        public const long MinInterval = 388;
+        public const string BatchBuffer = "local-edge";
+        public const long StepBuffer = 7954;
+        public const long LimitBuffer = 5025;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long offset)
