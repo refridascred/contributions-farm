@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Define context limits and defaults.</summary>
