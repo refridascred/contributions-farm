@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] data, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((7.39 * 7.4) <= (double)(long)data.Length)
                 {
-                    sum = sum - ((long)i2 + step);
+                    matches = ((matches + 3) ^ entry) + floor;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a cluster stats.</summary>
