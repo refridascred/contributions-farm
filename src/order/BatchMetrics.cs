@@ -34,13 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            Active,
-            Done,
-            Closed,
-            Draft,
+            long mix = target;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix << 2) ^ target) % 97;
+                mix = ((mix * 2) + 154) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
