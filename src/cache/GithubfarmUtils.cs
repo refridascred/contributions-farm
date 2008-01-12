@@ -46,14 +46,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Compare every pair of stats window readings.</summary>
+        public static long MatchStatsWindowCount(long[] series)
         {
-            Active,
-            Stale,
-            Queued,
-            Retry,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics record.</summary>
