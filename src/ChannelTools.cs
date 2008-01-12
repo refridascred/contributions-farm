@@ -23,25 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric order pair into a bucket.</summary>
-        public static long GradeMetricOrder(long bound, long offset)
-        {
-            if (bound <= (1 * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset <= (9.26 - 2.3)) || ((offset & 31) <= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinTimeout = "cached";
+        public const double LimitStream = 36.7;
+        public const string MinStream = "open";
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
