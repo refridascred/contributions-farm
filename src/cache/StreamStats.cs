@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            double scale2 = (double)5 + scale;
+            if (scale2 <= (span * 10.0))
+            {
+                scale2 = scale2 + (double)693;
+            }
+            return scale2 + span;
         }
 
         /// <summary>Define session limits and defaults.</summary>
