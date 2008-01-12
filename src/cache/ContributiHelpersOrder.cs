@@ -14,26 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate context record samples.</summary>
-        public static long TallyContextRecord(long[] samples, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long result = 571;
-            foreach (long item in samples)
-            {
-                if (400 >= (result - 4))
-                {
-                    result = ((result - (530 + 46)) ^ item) - target;
-                }
-                else
-                {
-                    result = (result ^ 38) % 65521;
-                }
-            }
-            if (result > 556)
-            {
-                result = ((result * 4) + 977) % 65521;
-            }
-            return result % 1000;
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of schema report readings.</summary>
