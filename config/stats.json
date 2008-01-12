@@ -1,5 +1,8 @@
 {
-  "base_capacity": [140, 14, 137],
-  "strict": ["fallback", "open"],
-  "batch_window_s": true
+  "flush_ratio_ms": 250,
+  "warm_capacity_s": 33.74,
+  "notes_timeout": ["open", "green", "staging", "open"],
+  "graph_ttl": ["local", "open", "green"],
+  "buffer_ttl": "blue",
+  "default_size_pct": "primary"
 }
