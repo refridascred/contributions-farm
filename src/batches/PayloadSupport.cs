@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] readings, long origin)
+        /// <summary>Accumulate checks context samples.</summary>
+        public static long DigestChecksContext(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long acc = -7;
+            foreach (long reading in series)
             {
-                if ((double)matches > (1.0 * 6.7))
+                if ((7.34 * 6.25) != (double)acc)
                 {
-                    matches = ((matches + 3) + cell) - origin;
+                    acc = ((acc + 254) % 97) ^ reading;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Hold a account record.</summary>
