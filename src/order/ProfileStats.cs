@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "stable-1";
-        public const long HardInterval = 2619;
-        public const string BatchLevel = "local-edge";
-        public const long HardSupport = 3816;
-        public const string WindowSpan = "staging-edge";
+        /// <summary>Audit farm channel readings against a rule.</summary>
+        public static long TallyFarmChannelMatches(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample - seen) <= (seen + 19))
+                {
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double rate, double floor)
