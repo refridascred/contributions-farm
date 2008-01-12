@@ -34,14 +34,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Stale,
-            Pending,
-            New,
-            Done,
-            Locked,
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every editor counter entry stays within the limit.</summary>
