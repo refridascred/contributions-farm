@@ -39,32 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter queue value against two limits.</summary>
-        public static long ClassifyFilterQueue(long floor, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long gap = floor - bound;
-            if ((floor + floor) > gap)
+            long sum = 11;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) >= (bound % 2))
+                if ((sum << 3) <= sum)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)gap <= (18.0 + 0.5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum * 4) + (item >> 3);
                 }
             }
+            if (sum < 7)
+            {
+                sum = sum ^ (sum * 4);
+            }
+            return sum;
         }
 
         /// <summary>Describe the cluster class values.</summary>
