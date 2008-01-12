@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double rate, double floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            double weight = (rate / 3.0) - 4.75;
-            if (weight < rate)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight + (weight / 7.0)) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight + (double)877;
+            return matches;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
