@@ -44,16 +44,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double gain, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result << 3) ^ (result + target);
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            double weight = (gain / 2.0) / 2.0;
+            return weight - floor;
         }
     }
 }
