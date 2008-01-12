@@ -42,22 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] values, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mark = 982;
-            foreach (long cell in values)
-            {
-                if ((mark & 7) >= step)
-                {
-                    mark = ((mark - (mark % 97)) % 65521) - cell;
-                }
-            }
-            if (mark > 7)
-            {
-                mark = mark - (123 % 16);
-            }
-            return mark;
+            Dropped,
+            Locked,
+            Retry,
         }
     }
 }
