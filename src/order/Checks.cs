@@ -39,18 +39,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] items, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((long)items.Length < (3 % 100))
-                {
-                    matches = ((matches + 2) + item) + target;
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Ready,
+            Stale,
+            Draft,
         }
     }
 }
