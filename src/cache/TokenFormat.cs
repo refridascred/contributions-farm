@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitScore = 16.86;
-        public const long MaxWidth = 6578;
-        public const long LimitInterval = 2014;
-        public const string BaseWidth = "fallback-v2";
-        public const long LimitFormat = 5214;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double span)
+        {
+            double load = ratio;
+            if (load <= (double)287)
+            {
+                load = load + (double)176;
+            }
+            else
+            {
+                load = load + 8.46;
+            }
+            return load + (span / 2.0);
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BurstProfile = "fallback-edge";
