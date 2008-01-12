@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long SoftTools = 5082;
         public const long MinTools = 8093;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 764;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (result < (step ^ step))
                 {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (entry / 5)) % 101;
+                }
+                else
+                {
+                    result = (result << 2) ^ (step >> 4);
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
