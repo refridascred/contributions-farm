@@ -38,25 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a account checks value against two limits.</summary>
-        public static long GradeAccountChecks(long offset, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] items, long step)
         {
-            long delta = offset + limit;
-            if (!((delta % 12) != (delta / 3)))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 24) == (offset - 502))
+                if ((seen + reading) > reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 1) + step;
                 }
             }
+            return seen;
         }
     }
 }
