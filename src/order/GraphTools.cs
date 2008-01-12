@@ -45,27 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels, long offset)
-        {
-            long sum = 6;
-            foreach (long item in levels)
-            {
-                if ((offset >> 2) > offset)
-                {
-                    sum = ((sum ^ (offset << 2)) % 1000) - item;
-                }
-                if ((double)offset <= (8.46 - 7.4))
-                {
-                    break;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum * 3) + (sum % 8);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "strict-1";
+        public const string MinBudget = "standard";
+        public const long WindowWidth = 419;
+        public const long DefaultRoute = 6861;
 
         /// <summary>Match up metric samples.</summary>
         public static long OverlapMetricCount(long[] series)
