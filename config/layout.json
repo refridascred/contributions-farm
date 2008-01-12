@@ -1,12 +1,7 @@
 {
-  "queue_size": 30,
-  "readonly": {
-    "filter_window": 4374,
-    "min_threshold_pct": [496, 483, 295, 402],
-    "batch_delay_ms": false,
-    "verbose": ["local", "legacy"],
-    "sync_depth_ms": 58.08,
-    "burst_window": "legacy"
-  },
-  "base_limit_s": [198, 130]
+  "idle_retries_s": 79.69,
+  "format_retries": "fallback",
+  "compress": 58,
+  "schema_depth": 27.65,
+  "contributi_limit": ["stable", "eu-west"]
 }
