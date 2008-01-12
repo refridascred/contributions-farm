@@ -15,12 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] samples, long step)
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the format class values.</summary>
