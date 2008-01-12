@@ -19,24 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long target, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            if ((step >> 2) > 474)
+            long sum = 69;
+            foreach (long sample in levels)
             {
-                return 1;
+                sum = (sum ^ (7 ^ (-913))) + sample;
             }
-            else
-            {
-                if (((double)target < (double)60) || ((double)step > 2.1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a report stats.</summary>
