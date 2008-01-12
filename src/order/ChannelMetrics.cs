@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long IdleCluster = 977;
         public const string MaxCluster = "fallback-v2";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSpan = 232;
-        public const long LimitMetric = 4063;
-        public const double DefaultMetric = 43.37;
-        public const long StepMetric = 8941;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long target, long offset)
