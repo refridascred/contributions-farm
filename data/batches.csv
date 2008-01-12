@@ -1,10 +1,6 @@
-id,ratio,active
-1,cached,strict
-2,432,eu-west
-3,local,strict
-4,645,49.79
-5,470,309
-6,208,stable
-7,859,744
-8,136,266
-9,276,standard
+id,owner,active
+1,501,open
+2,41,60.61
+3,fallback,28.64
+4,open,44.24
+5,748,39
