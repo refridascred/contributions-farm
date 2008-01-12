@@ -54,19 +54,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metric already readings against a bound.</summary>
-        public static bool CheckMetricAlreadyLimits(long[] data, long floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
