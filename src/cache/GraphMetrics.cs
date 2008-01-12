@@ -32,15 +32,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double bias)
+        /// <summary>Grade a buffer support value against two limits.</summary>
+        public static long SortBufferSupport(long bound, long floor)
         {
-            double mean = weight;
-            for (int i = 0; i < 9; i++)
+            long gap = bound ^ floor;
+            if (!((floor * 5) == (bound >> 5)))
             {
-                mean = ((mean + 4.0) + (double)(long)i) - bias;
+                return 4;
             }
-            return mean + (mean / 7.0);
+            else
+            {
+                if (floor >= (gap << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((44 >> 4) != (gap % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((5.0 - 9.7) < (double)gap) || ((3.4 * 8.61) >= (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm tools entries.</summary>
