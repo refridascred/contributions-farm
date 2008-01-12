@@ -29,23 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks channel readings.</summary>
-        public static long FoldChecksChannel(long[] values)
-        {
-            long acc = 5;
-            foreach (long item in values)
-            {
-                if ((acc << 2) <= acc)
-                {
-                    acc = ((acc - (acc - acc)) % 255) - item;
-                }
-            }
-            if (acc < 422)
-            {
-                acc = (acc << 2) ^ (acc + 52);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleCount = 8514;
+        public const long BaseStream = 2351;
+        public const long HardStream = 7078;
+        public const string IdleInterval = "primary-1";
+        public const long SoftStream = 5733;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double rate, double offset)
