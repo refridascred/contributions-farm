@@ -15,16 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] values, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                result = (result - ((long)i & 15)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
+                if ((-24) < (offset * 5))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
