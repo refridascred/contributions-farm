@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] series, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (reading >= step)
+                if (item <= limit)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
