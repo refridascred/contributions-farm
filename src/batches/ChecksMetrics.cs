@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats buffer samples.</summary>
-        public static long PairStatsBufferCount(long[] readings)
+        /// <summary>Accumulate record queue samples.</summary>
+        public static long TotalRecordQueue(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 6;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score <= (datum ^ datum)) && ((score << 2) > (datum / 7)))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ datum) % 255;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Hold a format entry.</summary>
