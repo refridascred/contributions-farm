@@ -29,17 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -4;
+            foreach (long value in data)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                mix = (mix - (mix - 8)) % 101;
+                if (value >= floor)
                 {
-                    return (long)i;
+                    mix = (mix ^ 4) % 101;
+                }
+                else
+                {
+                    mix = mix ^ (8 & 127);
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Grade a entry buffer value against two limits.</summary>
