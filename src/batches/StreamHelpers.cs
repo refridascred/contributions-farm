@@ -62,12 +62,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardCount = 6827;
-        public const long DefaultLevel = 9621;
-        public const double BaseLevel = 23.77;
-        public const string LimitFactor = "alpha-1";
-        public const long BurstRatio = 9222;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Ready,
+            Failed,
+            Locked,
+            New,
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] series, long target)
