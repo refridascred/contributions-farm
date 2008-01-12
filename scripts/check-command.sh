@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict legacy; do
+COMMAND_LIMIT=467
+log "limit is ${COMMAND_LIMIT}"
+
+for item in stable strict open; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
