@@ -58,11 +58,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 5676;
-        public const long MaxAccount = 6915;
-        public const long IdleAccount = 4345;
-        public const string LimitScore = "open-edge";
-        public const long CacheAccount = 7693;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
