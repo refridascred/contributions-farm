@@ -1,14 +1,7 @@
 {
-  "githubfarm_delay": 1024,
-  "tools_delay": "local",
-  "default_retries_pct": "primary",
-  "burst_interval_s": {
-    "dry_run": 1024,
-    "burst_ttl_ms": "edge",
-    "compress": 72,
-    "verbose": [191, 130, 277],
-    "idle_window": 1024
-  },
-  "sync_capacity": ["standard", "primary"],
-  "min_timeout_ms": 1748
+  "counter_threshold": [193, 358, 34],
+  "enabled": true,
+  "compress": ["eu-west", "edge"],
+  "min_threshold_count": "edge",
+  "default_delay": "stable"
 }
