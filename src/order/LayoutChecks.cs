@@ -77,22 +77,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate format filter samples.</summary>
-        public static long DigestFormatFilter(long[] data, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            long mix = 466;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.06 + 8.2) < (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix ^ (step * 2)) % 255;
-                }
-                else
-                {
-                    mix = (mix + (value << 2)) % 1000;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
