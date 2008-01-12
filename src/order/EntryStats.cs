@@ -67,13 +67,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Pending,
-            Dropped,
-            Retry,
-            Done,
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
