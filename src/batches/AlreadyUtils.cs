@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels, long limit)
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((limit >> 4) == (matches / 3))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
