@@ -44,24 +44,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a editor account pair into a bucket.</summary>
-        public static long SortEditorAccount(long offset, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] items, long step)
         {
-            if ((offset * 2) < offset)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (163 > (target & 7))
+                if (matches >= (matches + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    matches = ((matches + 2) + cell) + step;
                 }
             }
+            return matches;
         }
     }
 }
