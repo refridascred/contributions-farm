@@ -45,15 +45,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Synced,
-            Pending,
-            Draft,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftLevel = 3330;
+        public const double RetrySize = 94.03;
+        public const double WindowGraph = 97.81;
+        public const double CacheGraph = 98.87;
+        public const long MinGraph = 9505;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MinFormat = "staging-edge";
