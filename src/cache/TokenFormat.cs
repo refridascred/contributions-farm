@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit payload window readings against a rule.</summary>
+        public static long TallyPayloadWindowGaps(long[] levels, long offset)
         {
-            Ready,
-            Closed,
-            Stale,
-            Locked,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample * 4) > offset)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a buffer editor value against two limits.</summary>
