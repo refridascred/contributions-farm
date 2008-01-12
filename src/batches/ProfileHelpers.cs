@@ -74,17 +74,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first order filter entry that matches the target.</summary>
-        public static long FindOrderFilterIndex(long[] levels, long step)
+        /// <summary>Combine stream session values into a single score.</summary>
+        public static long ScoreStreamSession(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 229;
+            foreach (long sample in levels)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
+                if (8.0 >= (double)step)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ sample) % 255;
                 }
             }
-            return -1;
+            if (anchor < 17)
+            {
+                anchor = (anchor + 629) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
