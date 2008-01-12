@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BatchFarm = 8376;
         public const long LimitWidth = 2688;
 
-        /// <summary>Check that every filter cache entry stays within the limit.</summary>
-        public static bool VerifyFilterCacheLimits(long[] data, long step)
+        /// <summary>Combine route window values into a single score.</summary>
+        public static long FoldRouteWindow(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long carry = 34;
+            foreach (long datum in levels)
             {
-                if (item < step)
+                carry = ((carry << 3) ^ datum) + origin;
+                if (((datum << 1) > 8) || ((double)datum >= 5.2))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Count the entry stats entries that pass the check.</summary>
