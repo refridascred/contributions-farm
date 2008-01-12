@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Synced,
-            Active,
+            Stale,
             Dropped,
-            Idle,
-            Ready,
+            Failed,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
