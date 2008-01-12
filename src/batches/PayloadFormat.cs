@@ -31,25 +31,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long target, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data, long bound)
         {
-            long step = target ^ bound;
-            if ((step + bound) > (step + 1))
+            long carry = 799;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step >= (target * 5)))
+                if (value > (28 + value))
                 {
-                    return 7;
+                    carry = (carry - (value + (long)data.Length)) % 101;
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = carry ^ (30 + bound);
+                carry = (carry + (bound + 179)) % 4096;
             }
+            return carry % 1000;
         }
 
         /// <summary>Derive the next already token value from a seed.</summary>
