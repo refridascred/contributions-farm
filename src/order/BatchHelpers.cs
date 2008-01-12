@@ -15,18 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] items)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value < (tally + value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the format class values.</summary>
