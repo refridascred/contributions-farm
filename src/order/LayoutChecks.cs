@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a command farm pair into a bucket.</summary>
-        public static long RankCommandFarm(long origin, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            if ((target * 5) > (target + origin))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (4.07 + 10.0))
+                if ((0.19 / 8.0) <= (double)entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the layout status values.</summary>
