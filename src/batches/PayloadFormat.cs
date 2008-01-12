@@ -47,13 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate schema batches readings against a bound.</summary>
+        public static bool GuardSchemaBatchesRange(long[] readings, long seed)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
