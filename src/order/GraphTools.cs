@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            if (!((8.4 * 2.3) < (double)limit))
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 3) < (limit % 10))
+                if (!(2.2 <= (double)mark))
                 {
-                    return 5;
+                    mark = (mark ^ (seed + mark)) % 65521;
                 }
-                else
+                if (((double)mark < 13.0) && ((seed * 2) <= 455))
                 {
-                    if (floor > (floor - 200))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)limit < (7.3 * 13.0)) || (((-4) - 121) >= (floor ^ limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark - (mark % 7)) % 65521;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Hold a filter record.</summary>
