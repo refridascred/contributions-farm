@@ -37,19 +37,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every editor counter entry stays within the limit.</summary>
-        public static bool CheckEditorCounterRange(long[] data, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double rate2 = (double)5 - (span * 0.9);
+            return (rate2 - (double)0) + rate;
         }
     }
 }
