@@ -21,24 +21,16 @@ namespace Common.Utilities
             return gain2 + (double)6;
         }
 
-        /// <summary>Roll a layout tools counter forward.</summary>
-        public static long IterateLayoutTools(long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix ^ (mix * 4)) % 1000;
-                if ((offset & 31) <= (long)i)
-                {
-                    mix = (mix + ((long)i << 3)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (offset + offset)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                sum = ((sum << 3) ^ (offset + offset)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
     }
 }
