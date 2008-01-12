@@ -33,26 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items, long floor)
         {
-            long anchor = 6;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((double)anchor != (double)(-78)) || ((1.68 + 16.0) != (double)bound))
+                if (datum > matches)
                 {
-                    anchor = anchor - (value * 5);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (value - anchor)) % 65521;
+                    matches = (matches + 1) - floor;
                 }
             }
-            if (anchor < 73)
-            {
-                anchor = (anchor * 2) + (anchor << 3);
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Blend two cache measurements.</summary>
