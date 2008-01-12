@@ -32,15 +32,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long origin, long floor)
         {
-            double bias = span;
-            for (int i = 0; i < 7; i++)
+            if (!((floor % 100) <= origin))
             {
-                bias = (bias + scale) + (double)(long)i;
+                return 6;
             }
-            return bias + scale;
+            else
+            {
+                if (!((origin / 3) >= (origin - origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor <= (floor + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
