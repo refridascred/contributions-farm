@@ -42,22 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cache metrics entries that pass the check.</summary>
-        public static long CountCacheMetricsMatches(long[] data)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((2.0 + 6.0) <= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
