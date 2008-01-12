@@ -1,16 +1,6 @@
 {
-  "readonly": "eu-west",
-  "verbose": "strict",
-  "cache_ratio_ms": 49.84,
-  "idle_timeout_count": {
-    "stream_size": 123,
-    "strict": {
-      "readonly": [295, 290, 154, 168],
-      "max_limit_count": "cached",
-      "cache_ttl": "edge"
-    },
-    "commits_size": 61.89,
-    "audit": 17.16,
-    "burst_depth_s": [321, 474, 422, 378]
-  }
+  "window_capacity": 8163,
+  "soft_ttl_pct": "primary",
+  "max_interval_s": 55,
+  "idle_depth": "legacy"
 }
