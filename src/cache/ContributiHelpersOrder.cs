@@ -34,19 +34,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)floor < (19.0 * 8.6)) && ((double)state <= (3.0 + 0.5)))
-                {
-                    state = (state - state) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 1038;
+        public const long MinGithubfarm = 9382;
+        public const string IdleTimeout = "open-edge";
+        public const double CacheGithubfarm = 60.15;
+        public const double IdleInterval = 81.96;
     }
 }
