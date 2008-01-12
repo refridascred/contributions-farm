@@ -29,9 +29,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 7360;
-        public const long SoftTools = 6165;
-        public const long StepLevel = 7446;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits > ((long)values.Length / 2))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
