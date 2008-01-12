@@ -45,23 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items, long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long acc = 22;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ (acc - reading)) ^ (long)i;
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 3) + origin) % 1000;
             }
-            if (acc < 562)
-            {
-                acc = (acc * 5) + (origin & 3);
-            }
-            return acc;
+            return count;
         }
     }
 }
