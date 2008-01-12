@@ -26,16 +26,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                result = result ^ (seed - (-28));
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
