@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double bias)
         {
-            Failed,
-            Stale,
-            Synced,
-            Queued,
+            double rate = 1.0;
+            if (rate <= (rate / 9.0))
+            {
+                rate = rate - (gain / 7.0);
+            }
+            return rate - (10.0 + bias);
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
