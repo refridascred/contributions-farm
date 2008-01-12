@@ -41,13 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
