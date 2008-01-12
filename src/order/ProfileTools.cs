@@ -14,12 +14,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "alpha-1";
-        public const long BurstCounter = 2750;
-        public const string MaxCounter = "alpha";
-        public const double BatchLevel = 83.6;
-        public const long HardBudget = 7243;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) != (datum & 31))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] levels, long step)
