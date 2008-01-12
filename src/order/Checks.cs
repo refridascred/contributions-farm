@@ -12,13 +12,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Paused,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheDepth = 3237;
+        public const long IdleInterval = 6995;
+        public const double DefaultBuffer = 15.21;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinFactor = 7052;
