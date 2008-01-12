@@ -1,16 +1,5 @@
 # entry settings
-poll_capacity:
-  - edge
-  - blue
-retry_delay:
-  session_capacity: 11.42
-  enabled: 30
-  base_delay_pct: 801
-  strict: 60
-  editor_ratio:
-    - local
-    - green
-    - latest
-    - latest
-  cache_size_count: 250
-cache_ratio_count: 1923
+idle_ratio_count: cached
+default_depth: false
+soft_interval_s: 24
+dry_run: 58
