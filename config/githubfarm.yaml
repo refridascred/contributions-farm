@@ -1,5 +1,6 @@
 # githubfarm settings
-base_size_pct: staging
-compress: local
-poll_ttl_pct: 4499
-burst_timeout: local
+format_ratio: 77.59
+command_ratio: legacy
+window_ratio: false
+burst_retries: 60
+default_depth: 43.51
