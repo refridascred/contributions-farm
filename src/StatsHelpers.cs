@@ -57,31 +57,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long origin, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long floor)
         {
-            if (target <= (origin - origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (target >> 5))
+                if ((data[i] == floor) && ((data[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target > (9.63 + 4.15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
