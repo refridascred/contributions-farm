@@ -98,10 +98,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftInterval = "local-edge";
-        public const double BaseSize = 72.11;
-        public const long CacheContributi = 5888;
-        public const long HardTimeout = 4739;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
