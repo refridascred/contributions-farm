@@ -1,13 +1,14 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    ratio REAL,
+    label TEXT,
     active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL
+    created_at TIMESTAMP,
+    ratio REAL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
 
-INSERT INTO commits_records (score, ratio, active, owner) VALUES (77.09, 40.67, 91, 'cached');
-INSERT INTO commits_records (score, ratio, active, owner) VALUES (1.32, 62.71, 22, 'local');
+INSERT INTO commits_records (label, active, ratio, count) VALUES ('stable', 56, 11.63, 24);
+INSERT INTO commits_records (label, active, ratio, count) VALUES ('standard', 64, 10.75, 60);
