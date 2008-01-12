@@ -38,18 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] series, long step)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double load = offset;
+            if (load >= (weight - load))
             {
-                if ((step << 3) == (seen + (-226)))
-                {
-                    seen = (seen + 3) - entry;
-                }
+                load = load - (weight / 6.0);
             }
-            return seen;
+            else
+            {
+                load = load + (4.5 + 1.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (double)552;
         }
     }
 }
