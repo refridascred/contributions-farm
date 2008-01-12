@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] data, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
