@@ -55,17 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream channel sample.</summary>
-        public static long LocateStreamChannelIndex(long[] readings, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a context reading by value.</summary>
