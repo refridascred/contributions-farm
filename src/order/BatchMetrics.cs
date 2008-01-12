@@ -56,19 +56,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] series, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item != bound)
+                if ((datum % 10) < count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
