@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 2518;
-        public const long HardChannel = 1029;
-        public const long BatchChannel = 9351;
-        public const double SoftBudget = 24.09;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1130;
+        public const long SoftSpan = 6745;
+        public const string HardStats = "alpha-1";
 
         /// <summary>Audit account already readings against a rule.</summary>
         public static long CountAccountAlreadyMatches(long[] data)
