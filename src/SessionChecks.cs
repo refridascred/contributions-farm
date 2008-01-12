@@ -15,22 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] samples, long bound)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((3 ^ seed) > seed)
             {
-                if ((tally ^ tally) >= (86 / 8))
+                return 8;
+            }
+            else
+            {
+                if ((4.0 - 2.4) > (double)origin)
                 {
-                    tally = ((tally + 3) ^ sample) + bound;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the entry class values.</summary>
