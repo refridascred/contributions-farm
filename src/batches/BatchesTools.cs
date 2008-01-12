@@ -20,39 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a route stats pair into a bucket.</summary>
-        public static long RankRouteStats(long bound, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long offset)
         {
-            long diff = bound - floor;
-            if ((floor >> 2) < diff)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (diff >= bound)
+                if (cell >= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (346 / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff + diff) < diff)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
