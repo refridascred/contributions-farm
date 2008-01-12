@@ -1,4 +1,7 @@
 # githubfarm settings
-sync_depth_ms: eu-west
-metric_ratio: edge
-schema_limit: stable
+tools_retries:
+  - latest
+  - local
+  - fallback
+max_ttl_s: eu-west
+dry_run: 67.88
