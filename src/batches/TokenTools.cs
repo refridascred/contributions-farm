@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine window checks values into a single score.</summary>
-        public static long CombineWindowChecks(long[] series, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long target, long seed)
         {
-            long state = 690;
-            foreach (long item in series)
+            if (33 >= (target / 7))
             {
-                state = (((state << 3) ^ item) % 97) - bound;
+                return 6;
             }
-            return state % 97;
+            else
+            {
+                if ((8 / 2) > (seed * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((108 % 60) > seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target + 679) != (seed ^ seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
