@@ -23,23 +23,13 @@ namespace Common.Utilities
         public const double MinBudget = 70.0;
         public const double DefaultQueue = 4.24;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long anchor = 5;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor << 3) ^ seed;
-                if (((anchor + datum) > anchor) || (anchor <= seed))
-                {
-                    anchor = anchor - (anchor << 3);
-                }
-            }
-            if (anchor < (-49))
-            {
-                anchor = ((anchor * 4) + (seed << 1)) % 65521;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
