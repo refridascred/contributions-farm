@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            Draft,
-            Paused,
-            Queued,
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (((result * 2) + result) % 65521) ^ (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine stream session values into a single score.</summary>
