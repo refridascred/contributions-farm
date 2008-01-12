@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series, long bound)
+        /// <summary>Locate a editor notes reading by value.</summary>
+        public static long SeekEditorNotesIndex(long[] readings, long origin)
         {
-            long sum = -9;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum & 255) < (15 + cell))
+                if (readings[i] < origin)
                 {
-                    sum = sum ^ bound;
+                    return (long)i;
                 }
             }
-            if (sum < 766)
-            {
-                sum = (sum - sum) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
