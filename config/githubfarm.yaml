@@ -1,10 +1,6 @@
 # githubfarm settings
-context_limit: fallback
-poll_timeout: 100
-cache_delay_s: false
-cache_capacity_s: green
-notes_delay:
-  - 282
-  - 205
-  - 194
-  - 64
+burst_threshold_count: 500
+cache_delay: 77
+min_timeout_count: 1024
+strict: primary
+default_delay_pct: 4374
