@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultBudget = 97.65;
-        public const double CacheScore = 22.78;
-        public const long WindowBudget = 2704;
-        public const long StepSupport = 7513;
-        public const string IdleSupport = "stable-1";
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate context record samples.</summary>
         public static long TallyContextRecord(long[] samples, long target)
