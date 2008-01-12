@@ -14,12 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
