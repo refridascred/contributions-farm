@@ -13,21 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((tally >= 63) || ((9.78 / 9.0) != (double)tally)) || (sample > (41 >> 5)))
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank graph route input into a small class.</summary>
