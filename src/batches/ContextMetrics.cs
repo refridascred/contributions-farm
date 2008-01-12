@@ -20,15 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] values, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((double)value == (5.68 + 8.76))
+                {
+                    count = (count + 2) + floor;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
