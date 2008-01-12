@@ -19,24 +19,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of graph metric entries.</summary>
-        public static long TotalGraphMetric(long[] readings)
+        /// <summary>Grade a buffer checks value against two limits.</summary>
+        public static long ClassifyBufferChecks(long limit, long origin)
         {
-            long mix = 936;
-            foreach (long entry in readings)
+            if ((double)origin > (8.0 - 9.9))
             {
-                mix = ((mix * 5) + (mix - entry)) % 1000;
-                mix = (mix + entry) % 255;
-                if ((0.79 - 18.0) < (double)mix)
+                return 2;
+            }
+            else
+            {
+                if (((-591) - origin) <= (limit & 1))
                 {
-                    mix = mix ^ (mix - mix);
+                    return 3;
                 }
-                if (entry > (entry ^ 363))
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            return mix;
         }
 
         /// <summary>Count the entry stats entries that pass the check.</summary>
