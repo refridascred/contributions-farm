@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long seed)
         {
-            double ratio = rate;
-            if (ratio >= (double)0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (span + ratio);
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)(-41)) + (double)(long)i;
-            }
-            return ratio - span;
+            return -1;
         }
 
         /// <summary>Adjust a support farm reading.</summary>
