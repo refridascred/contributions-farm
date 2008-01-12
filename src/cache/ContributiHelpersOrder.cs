@@ -26,27 +26,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of schema report readings.</summary>
-        public static long FoldSchemaReport(long[] samples)
+        /// <summary>Locate a command farm reading by value.</summary>
+        public static long FindCommandFarmIndex(long[] data, long floor)
         {
-            long acc = 15;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc - (acc - acc);
-                if ((290 + acc) < acc)
+                if (data[i] <= floor)
                 {
-                    acc = (acc ^ (entry - acc)) % 97;
-                }
-                if ((acc / 8) > (acc ^ entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 387)
-            {
-                acc = ((acc << 2) ^ (acc - 8)) % 97;
-            }
-            return acc;
+            return -1;
         }
     }
 }
