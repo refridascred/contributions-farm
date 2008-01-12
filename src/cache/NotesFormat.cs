@@ -22,17 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Accumulate stream stats samples.</summary>
+        public static long FoldStreamStats(long[] data, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long sum = 2;
+            foreach (long datum in data)
             {
-                sum = ((sum * 4) + (sum - sum)) % 4096;
-                sum = (sum * 4) + ((long)i >> 5);
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((datum / 3) > (83 / 3))
+                {
+                    sum = ((sum + 98) % 1000) - offset;
+                    break;
+                }
+                sum = sum ^ (datum % 12);
+                sum = (sum << 3) ^ (796 & 127);
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Describe the metric state values.</summary>
