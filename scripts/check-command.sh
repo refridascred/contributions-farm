@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard open; do
-    log "checking ${item}"
-done
+mode="${1:-eu-west}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=366
+COMMAND_LIMIT=160
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in green latest eu-west open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
