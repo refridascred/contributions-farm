@@ -40,12 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Validate metric already readings against a bound.</summary>
+        public static bool CheckMetricAlreadyLimits(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of window entries.</summary>
