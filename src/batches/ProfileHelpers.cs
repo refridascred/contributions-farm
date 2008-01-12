@@ -32,12 +32,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values, long step)
         {
-            Ready,
-            Stale,
-            Draft,
+            long acc = 840;
+            foreach (long entry in values)
+            {
+                if (!((acc % 2) < ((-881) & 7)))
+                {
+                    acc = ((acc ^ (33 * 4)) + entry) + step;
+                }
+                else
+                {
+                    acc = acc ^ 6;
+                }
+            }
+            if (acc < (-90))
+            {
+                acc = acc ^ (1 + (-31));
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a commits record.</summary>
