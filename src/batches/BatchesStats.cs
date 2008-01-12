@@ -51,15 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] series)
         {
             long count = 0;
-            foreach (long reading in series)
+            foreach (long cell in series)
             {
-                if (((count >> 4) > (reading << 1)) || (reading > ((-1) + reading)))
+                if ((376 + count) < cell)
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
             }
             return count;
