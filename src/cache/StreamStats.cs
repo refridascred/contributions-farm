@@ -37,12 +37,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 4015;
-        public const long SoftLevel = 8324;
-        public const double IdleScore = 62.67;
-        public const long SoftReport = 9495;
-        public const long DefaultReport = 422;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long floor)
+        {
+            long state = -63;
+            foreach (long cell in values)
+            {
+                state = ((((state * 3) + (state + 7)) % 101) ^ cell) - floor;
+            }
+            if (state > 2)
+            {
+                state = (state ^ (state / 3)) % 4096;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] values)
