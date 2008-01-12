@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
-        public static long AuditGithubfarmChannelGaps(long[] values, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)origin == (double)65) && ((tally > (origin % 100)) && (99 < ((long)values.Length >> 5))))
+                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
