@@ -23,18 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double rate = scale;
+            if (rate < (scale - span))
             {
-                if ((limit >> 4) == (matches / 3))
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                rate = rate + (rate - 9.2);
             }
-            return matches;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
