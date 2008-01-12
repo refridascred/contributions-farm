@@ -1,7 +1,6 @@
 {
-  "dry_run": "local",
-  "min_delay_count": 24,
-  "warm_limit_count": "open",
-  "sync_size_s": 6849,
-  "warm_interval": "blue"
+  "soft_threshold_s": 536,
+  "audit": 4.44,
+  "githubfarm_size": 7849,
+  "verbose": 100
 }
