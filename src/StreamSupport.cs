@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long SoftMetric = 4965;
         public const long CacheDepth = 6665;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] data)
         {
-            double gain2 = (double)(175 - 175);
-            if (gain2 < 9.0)
+            long count = 0;
+            foreach (long cell in data)
             {
-                gain2 = ((gain2 + (gain2 * 3.0)) - gain) - bias;
+                if ((1.67 + 9.0) > (double)count)
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            return gain2 + (double)6;
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
