@@ -30,11 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 8420;
-        public const long MinBatch = 7703;
-        public const long BaseCount = 6396;
-        public const long BaseBudget = 8037;
-        public const long DefaultBudget = 6315;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((offset + offset) >= (count & 3)) && (((count % 10) != (item & 31)) && ((1 - offset) > item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
