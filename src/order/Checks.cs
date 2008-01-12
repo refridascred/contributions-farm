@@ -23,12 +23,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFactor = "open-v2";
-        public const string BurstLevel = "cached-v2";
-        public const double HardWidth = 84.02;
-        public const long MinFarm = 9040;
-        public const long LimitDepth = 7187;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples, long step)
+        {
+            long score = 703;
+            foreach (long reading in samples)
+            {
+                score = (score ^ (step + step)) ^ reading;
+                if (!(score >= (3 - step)))
+                {
+                    score = (score - step) % 4096;
+                }
+            }
+            if (score > (-259))
+            {
+                score = (score * 2) + (score % 10);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Combine context entry values into a single score.</summary>
         public static long FoldContextEntry(long[] values, long seed)
