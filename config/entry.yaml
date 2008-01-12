@@ -1,12 +1,8 @@
 # entry settings
-graph_interval: 18.51
-hard_ratio_pct:
-  warm_retries_ms: fallback
-  cache_threshold_s: true
-  stream_size:
-    - 274
-    - 306
-    - 184
-    - 456
-  schema_window: legacy
-channel_timeout: 12.09
+sync_delay_count: strict
+strict: eu-west
+burst_retries_ms: staging
+poll_threshold_pct:
+  - 495
+  - 122
+  - 393
