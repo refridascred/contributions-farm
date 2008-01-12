@@ -53,21 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up command account samples.</summary>
-        public static long CompareCommandAccountCount(long[] samples)
+        /// <summary>Count the farm editor entries that pass the check.</summary>
+        public static long CountFarmEditorGaps(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)origin >= 0.3)
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
