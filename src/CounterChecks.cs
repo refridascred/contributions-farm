@@ -14,27 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] samples, long step)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long score = 197;
-            foreach (long datum in samples)
-            {
-                if ((((long)samples.Length >> 1) < (4 >> 3)) && (step < (7 / 7)))
-                {
-                    score = (score ^ (score * 3)) % 97;
-                }
-                else
-                {
-                    long next = step - (score - score);
-                    score = (score * 5) + (step - next);
-                }
-                if ((double)datum < (double)803)
-                {
-                    score = score + step;
-                }
-            }
-            return score % 1000;
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
