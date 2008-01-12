@@ -62,20 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    sum = ((sum ^ ((-512) * 3)) % 65521) ^ (long)i3;
-                    sum = ((sum * 5) + ((long)i ^ sum)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Pending,
+            Dropped,
+            Retry,
+            Done,
         }
     }
 }
