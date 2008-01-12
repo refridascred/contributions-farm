@@ -35,18 +35,22 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] readings, long seed)
         {
-            long score = 136;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((8 << 2) <= (score & 7))
+                if ((reading - hits) >= seed)
                 {
-                    score = ((score - (score / 7)) % 1000) ^ reading;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Roll a context batches counter forward.</summary>
