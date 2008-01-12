@@ -1,7 +1,20 @@
 {
-  "batch_retries_ms": 64.46,
-  "soft_depth": "blue",
-  "cache_retries": true,
-  "verbose": [442, 396, 131, 327],
-  "cache_depth_s": "stable"
+  "min_size_s": {
+    "warm_window_count": 500,
+    "hard_interval": "fallback",
+    "poll_threshold": [421, 158]
+  },
+  "warm_size_count": {
+    "stream_threshold": false,
+    "min_timeout_pct": "latest",
+    "idle_delay": 500,
+    "graph_depth": true
+  },
+  "soft_delay": "latest",
+  "window_limit": {
+    "audit": "latest",
+    "poll_limit_pct": [279, 358],
+    "warm_retries": true,
+    "sync_interval": 100
+  }
 }
