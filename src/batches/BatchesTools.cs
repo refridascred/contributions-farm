@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long CacheInterval = 3170;
         public const string HardCount = "latest-1";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > bound)
+                if ((((long)i << 2) <= (sum << 2)) || ((double)limit > (2.0 / 4.0)))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum ^ (limit ^ sum)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
