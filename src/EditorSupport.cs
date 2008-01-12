@@ -37,11 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 75.68;
-        public const long CacheScore = 8773;
-        public const string CacheContributi = "standard";
-        public const long BatchLevel = 680;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 3767;
+        public const long BurstBatches = 4766;
+        public const double IdleBatches = 91.74;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
