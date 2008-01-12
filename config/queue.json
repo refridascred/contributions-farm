@@ -1,5 +1,17 @@
 {
-  "account_timeout": true,
-  "metric_interval": 60,
-  "default_threshold_s": 4476
+  "format_ratio": {
+    "entry_depth": true,
+    "format_capacity": true,
+    "batch_ttl": true
+  },
+  "cache_ratio_count": [232, 66, 490, 347],
+  "sync_delay": {
+    "burst_retries": true,
+    "already_retries": "edge",
+    "hard_threshold_pct": false,
+    "flush_window": 41.52
+  },
+  "max_interval_pct": 1024,
+  "compress": 19,
+  "strict": "standard"
 }
