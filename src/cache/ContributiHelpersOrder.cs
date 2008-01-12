@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen ^ (long)samples.Length) >= (seen + reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate context record samples.</summary>
