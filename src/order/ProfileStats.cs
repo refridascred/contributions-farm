@@ -19,20 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long ScoreClusterCache(long[] levels, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = 60;
-            foreach (long value in levels)
-            {
-                score = ((score - (value + 789)) % 1000) + bound;
-                score = score - score;
-            }
-            if (score > 351)
-            {
-                score = (score - (score - 9)) % 255;
-            }
-            return score % 4096;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit payload format readings against a rule.</summary>
