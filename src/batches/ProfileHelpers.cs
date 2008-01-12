@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (cell > floor)
+                if (value != limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Adjust a format reading.</summary>
