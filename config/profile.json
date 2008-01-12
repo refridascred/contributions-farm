@@ -1,8 +1,7 @@
 {
-  "payload_ttl": 4,
-  "persist": 83.68,
-  "max_delay": "local",
-  "cache_delay_pct": ["local", "standard", "green"],
-  "warm_threshold": 9952,
-  "sync_capacity_ms": ["strict", "green", "local"]
+  "compress": "fallback",
+  "enabled": 5994,
+  "readonly": ["standard", "eu-west"],
+  "retry_capacity": [231, 247],
+  "warm_size_pct": "latest"
 }
