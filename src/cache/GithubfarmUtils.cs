@@ -69,25 +69,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long cur = step ^ limit;
-            if (step > (limit + 468))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit < (8.85 - 17.0)) || ((cur - cur) == (limit ^ cur)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Retry,
+            Failed,
+            New,
+            Done,
         }
     }
 }
