@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] levels, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long total = 0;
+            foreach (long sample in readings)
             {
-                if ((16.0 < (4.0 / 2.0)) || ((step ^ step) >= count))
+                if ((sample * 2) <= (limit - total))
                 {
-                    count = (count + 1) + reading;
+                    total = ((total * 2) + total) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ limit) % 255;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
