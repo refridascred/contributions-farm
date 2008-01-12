@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double CacheSpan = 76.87;
         public const long MaxStream = 6459;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (value > offset)
+                if (value >= origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
