@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm editor entries that pass the check.</summary>
-        public static long CountFarmEditorGaps(long[] readings, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)origin >= 0.3)
+                if ((tally & 31) > (sample + sample))
                 {
-                    hits = (hits + 3) ^ sample;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
