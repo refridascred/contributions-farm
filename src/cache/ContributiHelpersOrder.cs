@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] levels, long seed)
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + seed) < (datum % 60))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
