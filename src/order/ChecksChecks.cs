@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultFactor = 9.17;
-        public const long StepScore = 1235;
-        public const long IdleGraph = 1593;
-        public const double WindowGraph = 31.41;
-        public const double LimitLevel = 64.16;
+        /// <summary>Combine profile farm values into a single score.</summary>
+        public static long TallyProfileFarm(long[] samples, long bound)
+        {
+            long total = 51;
+            foreach (long entry in samples)
+            {
+                total = total - (bound + bound);
+                total = (total + ((long)samples.Length * 4)) % 101;
+                if (!(((-280) - (-9)) >= (entry / 8)))
+                {
+                    total = (total ^ (bound + entry)) % 1000;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Locate a command notes reading by value.</summary>
         public static long LocateCommandNotesIndex(long[] levels, long seed)
