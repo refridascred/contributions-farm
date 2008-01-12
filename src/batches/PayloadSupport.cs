@@ -28,12 +28,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] samples, long target)
         {
-            Draft,
-            Idle,
-            Pending,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
