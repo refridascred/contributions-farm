@@ -14,23 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of layout profile entries.</summary>
-        public static long FoldLayoutProfile(long[] samples)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mark = 54;
-            foreach (long reading in samples)
-            {
-                mark = ((mark * 4) + 361) % 101;
-                if ((reading ^ reading) <= mark)
-                {
-                    mark = (mark - (mark + 828)) % 4096;
-                }
-                else
-                {
-                    mark = mark - (reading + (long)samples.Length);
-                }
-            }
-            return mark % 1000;
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
