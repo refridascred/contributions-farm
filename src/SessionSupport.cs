@@ -26,21 +26,10 @@ namespace Common.Utilities
         public const long WindowFilter = 9177;
         public const long BaseFilter = 1880;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 64.07;
+        public const double LimitLevel = 32.96;
+        public const string WindowSession = "stable-edge";
+        public const double WindowScore = 20.66;
     }
 }
