@@ -51,22 +51,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long floor, long limit)
         {
-            long state = 7;
-            foreach (long datum in values)
+            if ((floor >= limit) && ((595 + limit) > (floor >> 4)))
             {
-                if ((datum + state) > (datum & 3))
+                return 3;
+            }
+            else
+            {
+                if (limit < (limit - 4))
                 {
-                    state = ((state << 3) ^ (datum - datum)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    if (6.6 >= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (state > (-9))
-            {
-                state = ((state * 2) + state) % 65521;
-            }
-            return state;
         }
     }
 }
