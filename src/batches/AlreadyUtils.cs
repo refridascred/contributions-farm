@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double rate = (double)(449 + 161);
-            return ((rate - (rate / 7.0)) + ratio) + floor;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
