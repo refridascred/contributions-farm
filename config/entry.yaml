@@ -1,11 +1,9 @@
 # entry settings
-soft_capacity:
-  - 126
-  - 216
-  - 175
-metric_ratio:
-  - staging
+verbose:
   - open
-  - stable
   - standard
-schema_ttl: false
+checks_ttl: 60
+flush_window: 55
+channel_ttl: cached
+base_delay_ms: 7368
+graph_ratio: 100
