@@ -1,6 +1,10 @@
-id,token,active,rank,region
-1,49.55,942,787,440
-2,874,20,75.71,legacy
-3,836,97.21,15.26,346
-4,stable,40.13,blue,586
-5,cached,52.94,853,133
+id,score,rank,token
+1,edge,0.91,854
+2,latest,65.83,local
+3,13.87,edge,95
+4,8.42,72.0,0.8
+5,889,187,standard
+6,37.51,strict,82
+7,365,11.78,29.22
+8,latest,617,61
+9,local,386,86.57
