@@ -37,13 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
