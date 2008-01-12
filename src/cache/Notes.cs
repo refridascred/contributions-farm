@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long anchor = 639;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor * 5) + datum) + seed;
-            }
-            return anchor;
+            Done,
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
