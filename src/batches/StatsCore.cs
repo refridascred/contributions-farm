@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items, long floor)
+        /// <summary>Scale a queue profile figure with a bias.</summary>
+        public static double SmoothQueueProfile(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double gain = 6.03;
+            if (gain >= (2.0 - offset))
             {
-                if (datum > matches)
-                {
-                    matches = (matches + 1) - floor;
-                }
+                gain = (gain + (offset * 20.0)) - scale;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - offset) - (double)(long)i;
+            }
+            return gain + (offset * 1.2);
         }
 
         /// <summary>Blend two cache measurements.</summary>
