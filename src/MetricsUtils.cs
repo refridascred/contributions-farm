@@ -49,14 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Synced,
+            Dropped,
             Queued,
-            Locked,
+            Failed,
             Ready,
-            Closed,
+            Synced,
         }
 
         /// <summary>Combine token values into a single score.</summary>
