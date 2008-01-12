@@ -1,8 +1,13 @@
 {
-  "sync_window_ms": "standard",
-  "poll_limit_ms": true,
-  "support_capacity": 84,
-  "editor_depth": "primary",
-  "contributi_limit": 30,
-  "buffer_timeout": "primary"
+  "idle_ratio_count": false,
+  "context_capacity": [291, 183, 6, 417],
+  "already_limit": "strict",
+  "editor_threshold": {
+    "poll_timeout_pct": ["green", "strict", "primary"],
+    "warm_capacity_ms": "legacy",
+    "base_ratio_count": 63.08,
+    "retry_retries_pct": "green",
+    "command_limit": 63,
+    "metrics_depth": 30
+  }
 }
