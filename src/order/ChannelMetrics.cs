@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long bound, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = bound - offset;
+            if ((double)bound >= (8.94 * 8.5))
             {
-                if (values[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if (offset >= (lane - lane))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
