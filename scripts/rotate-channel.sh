@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard open local green; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=259
+log "limit is ${CHANNEL_LIMIT}"
