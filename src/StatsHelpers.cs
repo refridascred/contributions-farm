@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long MeasureToolsCacheHits(long[] levels, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = 177;
+            foreach (long cell in values)
             {
-                if ((hits >> 3) < (origin - datum))
+                if (!((double)cell != (9.19 / 2.0)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = ((anchor << 2) ^ (cell + (long)values.Length)) % 101;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
