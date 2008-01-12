@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxTimeout = 2233;
+        public const string SoftSession = "stable-edge";
+        public const string SoftCount = "alpha-v2";
+        public const long LimitInterval = 5036;
+        public const double MaxCount = 71.76;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long StepSchema(long limit)
