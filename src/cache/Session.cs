@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the stream commits entries that pass the check.</summary>
-        public static long CountStreamCommitsHits(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((284 / 6) >= seen)
-                {
-                    seen = ((seen + 3) - datum) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 5139;
+        public const long BaseCount = 7044;
+        public const long StepContext = 9305;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long step)
