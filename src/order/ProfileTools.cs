@@ -14,23 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate commits session samples.</summary>
-        public static long CombineCommitsSession(long[] levels, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] readings, long step)
         {
-            long mark = 5;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark << 3) ^ mark) % 65521;
-                if ((value - value) == (49 >> 5))
+                if ((((sample - step) < sample) || ((step % 2) >= (step + step))) || ((sample - (-3)) == (sample - step)))
                 {
-                    mark = (mark - origin) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 3) + origin) % 97;
+                    matches = matches + 2;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Hold a farm summary.</summary>
