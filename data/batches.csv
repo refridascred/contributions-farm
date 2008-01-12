@@ -1,10 +1,6 @@
-id,owner,label,level
-1,17.15,edge,2
-2,0.66,448,blue
-3,latest,34.54,latest
-4,staging,39.07,369
-5,795,991,latest
-6,514,48.87,open
-7,820,375,55.93
-8,26,blue,127
-9,96.66,43.36,947
+id,state,count
+1,legacy,14.56
+2,2.03,3.31
+3,local,edge
+4,28.77,453
+5,710,blue
