@@ -51,15 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            long acc = 57;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc * 3) + (26 << 1)) % 65521) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 4096;
+            return seen;
         }
     }
 }
