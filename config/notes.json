@@ -1,6 +1,14 @@
 {
-  "contributi_threshold": 6159,
-  "batch_threshold": 30,
-  "hard_interval": false,
-  "retry_threshold_pct": 30
+  "sync_size": "edge",
+  "audit": "open",
+  "default_ttl_count": [201, 54, 74, 239],
+  "account_ttl": "local",
+  "batch_depth_ms": "blue",
+  "default_interval_s": {
+    "metrics_depth": true,
+    "audit": ["standard", "stable", "strict", "eu-west"],
+    "flush_depth_s": "open",
+    "default_depth": 96,
+    "flush_depth_pct": 3109
+  }
 }
