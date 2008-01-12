@@ -74,14 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Pending,
-            Queued,
-            Paused,
-            Retry,
-            Locked,
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
