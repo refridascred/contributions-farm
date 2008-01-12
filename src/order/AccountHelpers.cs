@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            long sum = 581;
-            foreach (long sample in values)
+            double bias2 = scale;
+            if (bias2 <= (double)7)
             {
-                if (sample > sum)
-                {
-                    sum = sum - (sample / 8);
-                }
-                if ((double)sample > (14.0 + 2.51))
-                {
-                    sum = ((sum << 3) ^ (sum + sample)) % 255;
-                }
+                bias2 = bias2 + (bias2 + scale);
             }
-            if (sum < 629)
+            for (int i = 0; i < 5; i++)
             {
-                sum = sum + sum;
+                bias2 = (bias2 - (scale * 0.1)) + (double)(long)i;
             }
-            return sum % 97;
+            return bias2 - bias;
         }
 
         /// <summary>Iterate the token support series from a seed.</summary>
