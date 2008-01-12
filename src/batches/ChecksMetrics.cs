@@ -73,18 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 1728;
+        public const long HardWindow = 874;
+        public const double StepLevel = 45.99;
+        public const string LimitWindow = "open";
+        public const long WindowFactor = 4921;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long floor, long origin)
