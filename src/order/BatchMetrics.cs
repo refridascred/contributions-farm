@@ -16,22 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes editor readings.</summary>
-        public static long TallyNotesEditor(long[] readings)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            long result = 4;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((result << 3) >= reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 3) ^ (32 / 8)) % 101;
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 11)
-            {
-                result = (result - result) % 97;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
