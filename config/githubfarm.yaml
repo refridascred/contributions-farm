@@ -1,8 +1,9 @@
 # githubfarm settings
-readonly: latest
-flush_limit:
-  - fallback
-  - cached
-  - strict
-  - edge
-command_retries: legacy
+base_delay:
+  - open
+  - open
+  - latest
+  - blue
+notes_limit: fallback
+farm_threshold: true
+max_delay: eu-west
