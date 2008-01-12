@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double ratio, double bias)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            double ratio2 = bias / 8.0;
+            if (ratio2 < bias)
+            {
+                ratio2 = (ratio2 + 3.0) - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - (bias - bias);
         }
 
         /// <summary>Project the next stats value.</summary>
