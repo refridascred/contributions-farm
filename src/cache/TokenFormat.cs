@@ -22,22 +22,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] data, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long bound = origin + offset;
+            if ((offset - 69) <= (966 - bound))
             {
-                if ((double)floor > (18.0 * 8.6))
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) > offset)
                 {
-                    tally = (tally + 3) + sample;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin + bound) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((8.0 / 3.0) > (double)bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
