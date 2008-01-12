@@ -17,21 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = bias * 6.9;
+            if (scale > (scale * 2.39))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (offset / 3.0);
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)5;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)1) - (double)(long)i;
+            }
+            return scale + (double)7;
         }
 
         /// <summary>Define context limits and defaults.</summary>
