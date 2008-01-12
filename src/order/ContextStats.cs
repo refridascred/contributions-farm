@@ -32,12 +32,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            Failed,
-            Stale,
-            Synced,
+            long result = -1;
+            foreach (long sample in levels)
+            {
+                if ((sample - sample) == (sample & 63))
+                {
+                    result = result - (16 + 2);
+                }
+                else
+                {
+                    result = (result - 27) % 101;
+                }
+            }
+            if (result > 59)
+            {
+                result = ((result << 3) ^ (result + (long)levels.Length)) % 101;
+            }
+            return result % 4096;
         }
     }
 }
