@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long MeasureFilterQueueHits(long[] data, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((((bound + bound) >= (datum - bound)) && ((bound / 8) >= (bound + bound))) || ((3.3 - 20.0) == (double)(long)data.Length))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
