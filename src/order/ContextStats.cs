@@ -45,15 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] data, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] values, long step)
         {
             long matches = 0;
-            foreach (long value in data)
+            foreach (long item in values)
             {
-                if ((bound >> 3) >= (bound - bound))
+                if (!(8.5 > (double)item))
                 {
-                    matches = (matches + 3) ^ value;
+                    matches = (matches + 2) - step;
                 }
             }
             return matches;
