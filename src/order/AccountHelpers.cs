@@ -47,26 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mark = 779;
-            foreach (long reading in readings)
-            {
-                if ((59 & 15) != (reading % 12))
-                {
-                    mark = mark + reading;
-                }
-                else
-                {
-                    mark = (mark - (reading - mark)) % 255;
-                }
-            }
-            if (mark > (-664))
-            {
-                mark = mark + (mark & 15);
-            }
-            return mark % 4096;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
