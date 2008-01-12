@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Synced,
-            Ready,
+            Idle,
+            New,
             Draft,
-            Stale,
-            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
