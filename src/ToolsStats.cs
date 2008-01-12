@@ -58,39 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long floor, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] levels, long offset)
         {
-            long lane = floor - offset;
-            if ((9.47 * 2.6) == (double)floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)lane >= (4.0 * 5.0))
+                if (levels[i] >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((3.0 * 5.3) == (double)lane) || ((double)floor != (2.96 + 6.6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (lane < (floor >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
