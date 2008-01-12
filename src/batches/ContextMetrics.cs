@@ -46,32 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cache batch pair into a bucket.</summary>
-        public static long SortCacheBatch(long origin, long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double gain, double bias)
         {
-            long slot = origin - floor;
-            if ((double)slot > (double)origin)
+            double gain2 = (double)28;
+            if (gain2 < gain2)
             {
-                return 0;
+                gain2 = gain2 - (double)789;
             }
             else
             {
-                if ((origin * 4) == (floor - slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= (9.0 + 3.3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain2 = gain2 - gain;
             }
+            return gain2 - (bias * 11.0);
         }
 
         /// <summary>Adjust a account reading.</summary>
