@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long target, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            if ((double)target >= (7.7 - 9.6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (floor % 24))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.5 + 4.67) <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + floor) > floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
