@@ -1,15 +1,19 @@
 {
-  "support_depth": {
-    "warm_retries": 60,
-    "commits_timeout": 2773,
-    "hard_threshold_s": "primary",
-    "channel_interval": true
+  "audit": "green",
+  "flush_ratio": 23,
+  "batch_timeout_ms": "latest",
+  "compress": {
+    "retry_limit": 30,
+    "cache_size": 28.62,
+    "queue_interval": 29,
+    "batch_ttl": ["primary", "fallback"],
+    "compress": {
+      "support_depth": 33.05,
+      "session_window": "legacy",
+      "profile_window": "primary",
+      "poll_limit_s": 28.57,
+      "tools_ttl": 1259
+    }
   },
-  "hard_threshold_ms": 30,
-  "readonly": {
-    "burst_ttl": 7459,
-    "sync_retries_s": "green",
-    "base_limit_ms": false
-  },
-  "metric_depth": false
+  "sync_capacity_ms": "local"
 }
