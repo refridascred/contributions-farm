@@ -53,16 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result + (result + result);
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Synced,
+            New,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
