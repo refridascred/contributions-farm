@@ -133,9 +133,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSpan = 2133;
-        public const long MaxEntry = 1309;
-        public const string CacheEntry = "strict-edge";
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
