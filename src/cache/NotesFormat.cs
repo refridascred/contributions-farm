@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window farm entry stays within the limit.</summary>
-        public static bool ValidateWindowFarmLimits(long[] data, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
