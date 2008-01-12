@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long origin, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if ((origin - 513) > (limit & 3))
             {
-                if (entry >= origin)
+                return 4;
+            }
+            else
+            {
+                if ((origin - origin) == (limit + origin))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Adjust a filter githubfarm reading.</summary>
