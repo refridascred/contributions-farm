@@ -32,17 +32,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + 4.0) + (double)(long)i) - bias;
             }
-            return -1;
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Digest a series of farm tools entries.</summary>
