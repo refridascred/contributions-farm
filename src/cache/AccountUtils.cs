@@ -16,17 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a session route sample.</summary>
-        public static long LookupSessionRouteIndex(long[] data, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
