@@ -23,15 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            if (744 > (bound + bound))
             {
-                total = ((total * 5) + (long)i) % 4093;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((double)step < (5.12 / 8.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step < (7.8 - 17.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
