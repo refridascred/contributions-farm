@@ -25,16 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4015;
+        public const long SoftLevel = 8324;
+        public const double IdleScore = 62.67;
+        public const long SoftReport = 9495;
+        public const long DefaultReport = 422;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long ScoreAccount(long[] levels)
