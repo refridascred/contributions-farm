@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((double)hits <= 7.1)
+                if (value > offset)
                 {
-                    hits = (hits + 2) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the support state values.</summary>
