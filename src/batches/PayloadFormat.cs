@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] values, long seed)
+        /// <summary>Adjust a metric session reading.</summary>
+        public static double BlendMetricSession(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits << 1) >= ((-8) + cell))
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
+            double drift = offset;
+            return drift - ratio;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
