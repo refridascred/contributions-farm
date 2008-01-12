@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((hits >= value) || (value >= (value - hits))) || ((double)hits >= (8.0 + 15.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 7277;
+        public const double StepBuffer = 82.65;
+        public const long BatchSize = 643;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long limit, long seed)
