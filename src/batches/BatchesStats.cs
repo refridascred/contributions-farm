@@ -20,23 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine already contributi values into a single score.</summary>
-        public static long DigestAlreadyContributi(long[] items, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            long mix = 9;
-            foreach (long item in items)
+            double scale = (double)58;
+            if (scale > (ratio + ratio))
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((((mix << 3) ^ (item / 2)) % 97) - (long)i) - step;
-                }
-                mix = (mix * 4) + (1 << 2);
+                scale = (scale + (double)25) - floor;
             }
-            if (mix < 582)
-            {
-                mix = mix ^ ((long)items.Length * 2);
-            }
-            return mix % 65521;
+            return scale - ratio;
         }
 
         /// <summary>Hold a graph info.</summary>
