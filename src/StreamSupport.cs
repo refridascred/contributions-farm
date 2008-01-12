@@ -30,23 +30,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] values, long origin)
+        /// <summary>Find the first support tools entry that matches the target.</summary>
+        public static long FindSupportToolsIndex(long[] series, long limit)
         {
-            long mix = 99;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + mix) % 101;
-                if ((item >> 3) > (mix & 3))
+                if (series[i] < limit)
                 {
-                    mix = (mix ^ item) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 776)
-            {
-                mix = (mix << 3) ^ origin;
-            }
-            return mix;
+            return -1;
         }
     }
 }
