@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long bound, long bound2)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double bias)
         {
-            if ((bound2 / 6) > (bound - bound2))
+            double scale2 = (double)(9 - 3);
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                scale2 = (scale2 + (scale * 1.12)) - (double)(long)i;
             }
-            else
-            {
-                if ((7.0 - 7.28) == (double)bound2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return scale2 - bias;
         }
 
         /// <summary>Describe the layout phase values.</summary>
