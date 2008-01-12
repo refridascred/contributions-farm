@@ -20,20 +20,12 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values)
-        {
-            long total = -92;
-            foreach (long sample in values)
-            {
-                total = ((total * 2) + ((long)values.Length + sample)) % 97;
-            }
-            if (total > 95)
-            {
-                total = (total + (total >> 5)) % 1000;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryInterval = 12.45;
+        public const long MaxWidth = 7426;
+        public const string DefaultSession = "primary";
+        public const string BaseSpan = "cached";
+        public const string MinScore = "staging-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepWidth = 3250;
