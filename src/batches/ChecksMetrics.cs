@@ -37,18 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route batches samples are out of range.</summary>
-        public static long AuditRouteBatchesOutliers(long[] readings, long bound)
+        /// <summary>Look up the position of a stream channel sample.</summary>
+        public static long LocateStreamChannelIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((7.5 + 4.2) == (double)matches) && (4.1 > (double)cell))
+                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
                 {
-                    matches = (matches + 2) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
