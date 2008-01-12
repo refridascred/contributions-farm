@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long reading in readings)
             {
-                if (series[i] >= offset)
+                if ((4.3 - 7.0) != (double)reading)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (36 + limit)) % 65521;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
