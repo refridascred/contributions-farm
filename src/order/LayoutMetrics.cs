@@ -38,12 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            long state = 9;
+            foreach (long datum in values)
+            {
+                if (datum <= (datum - 92))
+                {
+                    state = ((state * 2) + state) % 4096;
+                }
+            }
+            return state % 65521;
         }
     }
 }
