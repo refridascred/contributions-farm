@@ -71,14 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            New,
+            Failed,
+            Closed,
             Queued,
-            Pending,
-            Ready,
-            Draft,
         }
     }
 }
