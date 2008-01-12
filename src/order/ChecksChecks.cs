@@ -35,21 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
