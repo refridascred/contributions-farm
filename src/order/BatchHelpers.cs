@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            Locked,
+            Idle,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Adjust a filter channel reading.</summary>
