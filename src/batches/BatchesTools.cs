@@ -19,12 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepFactor = "local-v2";
-        public const double BurstFactor = 34.08;
-        public const long MinEditor = 7378;
-        public const string SoftEditor = "latest-1";
-        public const long BatchInterval = 4119;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 8895;
+        public const string CacheCount = "local-edge";
+        public const long MaxDepth = 9682;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderHits(long[] readings)
