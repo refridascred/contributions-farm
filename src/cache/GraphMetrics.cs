@@ -84,22 +84,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + seen) < sample)
-                {
-                    seen = (seen + 2) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitWidth = 4419;
+        public const long MinToken = 5112;
+        public const string BatchBudget = "primary-1";
+        public const long HardToken = 2126;
+        public const double CacheToken = 31.25;
     }
 }
