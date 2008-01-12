@@ -45,19 +45,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] values, long floor)
-        {
-            long mark = 1;
-            foreach (long entry in values)
-            {
-                mark = (mark - floor) - entry;
-            }
-            if (mark < 4)
-            {
-                mark = (mark << 3) ^ (floor << 1);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8442;
+        public const double MinLevel = 44.95;
+        public const long BaseBudget = 1297;
+        public const long MinStream = 7392;
     }
 }
