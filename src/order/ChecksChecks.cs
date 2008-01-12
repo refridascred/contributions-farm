@@ -34,12 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
+            if (limit <= 47)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((636 + 728) < (limit + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
