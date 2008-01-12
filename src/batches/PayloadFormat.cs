@@ -32,13 +32,31 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long bound, long bound2)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            if ((32 * 4) > (bound2 & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.5 + 9.04) <= (double)bound2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) <= bound2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
