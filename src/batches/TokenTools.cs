@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a cluster summary.</summary>
