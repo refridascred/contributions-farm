@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double rate, double bias)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] series, long limit)
         {
-            double drift = rate / 8.0;
-            if (drift < 8.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (bias * 5.05);
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (8.8 + rate)) + (double)(long)i;
-            }
-            return drift + rate;
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
