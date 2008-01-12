@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchSpan = 45.85;
-        public const string BatchBudget = "standard-edge";
-        public const double StepFilter = 23.41;
-        public const long StepCount = 1020;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
