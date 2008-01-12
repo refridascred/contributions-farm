@@ -1,8 +1,6 @@
-id,active,region,ratio,token
-1,stable,primary,13,primary
-2,161,456,166,fallback
-3,11.43,27.8,93.47,green
-4,eu-west,873,26.88,92.93
-5,local,green,852,19.63
-6,237,34.15,150,4.18
-7,cached,35.15,609,244
+id,token,active,rank,region
+1,49.55,942,787,440
+2,874,20,75.71,legacy
+3,836,97.21,15.26,346
+4,stable,40.13,blue,586
+5,cached,52.94,853,133
