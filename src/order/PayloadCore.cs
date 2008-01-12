@@ -34,17 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] levels, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (levels[i] <= bound)
+                if (((hits >= value) || (value >= (value - hits))) || ((double)hits >= (8.0 + 15.0)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a filter contributi value against two limits.</summary>
