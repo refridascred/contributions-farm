@@ -1,17 +1,6 @@
 # entry settings
-session_retries: staging
-readonly:
-  token_capacity: 100
-  burst_ratio: 64.96
-  poll_depth_s: strict
-  base_window: 78.2
-  min_depth: 45
-enabled: stable
-persist:
-  - staging
-  - edge
-poll_interval:
-  - 38
-  - 366
-  - 38
-cache_delay_pct: 4.46
+checks_ratio: 63.74
+base_retries_count: 18.06
+command_depth: 26
+idle_size_ms: 46
+audit: standard
