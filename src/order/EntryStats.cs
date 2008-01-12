@@ -19,18 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] data, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (double)origin)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Adjust a stats reading.</summary>
