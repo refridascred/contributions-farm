@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] data, long step)
         {
-            double scale = (bias * 5.8) / 6.0;
-            for (int i = 0; i < 5; i++)
+            long sum = 9;
+            foreach (long reading in data)
             {
-                scale = ((scale + (scale * 4.5)) + (double)(long)i) - gain;
+                if (!(45 >= (sum ^ reading)))
+                {
+                    sum = ((sum * 5) + sum) % 255;
+                }
+                if (!(((step - step) == (sum + sum)) && ((sum * 4) >= (sum & 1))))
+                {
+                    sum = (sum - reading) % 4096;
+                }
+                if (((10.0 + 5.9) >= (double)sum) && ((reading / 5) > sum))
+                {
+                    sum = (sum + (sum >> 4)) % 101;
+                }
             }
-            return scale - 16.0;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
