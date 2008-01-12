@@ -39,28 +39,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long bound, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long cur = bound ^ seed;
+            if ((cur + 300) != (cur + seed))
             {
-                if (!!((double)(long)i >= (1.72 - 1.2)))
+                return 3;
+            }
+            else
+            {
+                if ((bound / 8) >= (cur / 3))
                 {
-                    mark = ((mark << 2) ^ (215 & 127)) % 4096;
-                }
-                long hits = -1;
-                if (((seed % 60) <= (mark ^ hits)) || (17.0 > (double)(long)i))
-                {
-                    hits = hits + (seed >> 3);
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark - (seed + seed)) % 1000;
+                    if (((double)seed == (8.05 / 6.0)) || (((-7) - (-812)) <= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
