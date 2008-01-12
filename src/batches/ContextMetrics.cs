@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 4) + ((long)i << 3)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstTimeout = "alpha";
+        public const string StepCommand = "open";
+        public const string BatchDepth = "latest-1";
+        public const string MinSize = "cached-1";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] samples, long bound)
