@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] readings, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count & 63) >= offset)
+                if (data[i] < limit)
                 {
-                    count = (count + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema channel sample.</summary>
