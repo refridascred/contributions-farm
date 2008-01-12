@@ -14,24 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items, long offset)
-        {
-            long score = 5;
-            foreach (long cell in items)
-            {
-                score = ((score ^ (offset - (-2))) % 101) ^ cell;
-                if (4 < (offset << 2))
-                {
-                    score = (score ^ (943 & 127)) % 255;
-                }
-            }
-            if (score < 121)
-            {
-                score = (score + score) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCount = "fallback-edge";
+        public const long SoftCount = 8193;
+        public const long BaseWidth = 3843;
+        public const long BurstTimeout = 2699;
+        public const long LimitCache = 2748;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string StepBuffer = "standard";
