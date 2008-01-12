@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long state = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((state - (long)i) <= (state & 15)) && ((9.0 * 6.0) <= (double)(long)i))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the report class values.</summary>
