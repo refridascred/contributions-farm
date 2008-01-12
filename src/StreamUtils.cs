@@ -27,11 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstInterval = "fallback";
-        public const long BurstContext = 5423;
-        public const long StepContext = 6656;
-        public const string MinContext = "primary";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 7809;
+        public const long LimitRatio = 7859;
+        public const long RetryReport = 2939;
+        public const long BurstReport = 7024;
+        public const long BatchReport = 3500;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double IdleStream = 74.53;
