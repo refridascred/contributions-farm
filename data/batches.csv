@@ -1,6 +1,6 @@
-id,owner,active
-1,501,open
-2,41,60.61
-3,fallback,28.64
-4,open,44.24
-5,748,39
+id,weight,ratio
+1,14,local
+2,33.6,45.18
+3,76.51,195
+4,70.07,fallback
+5,46.81,56.51
