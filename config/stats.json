@@ -1,9 +1,5 @@
 {
-  "readonly": {
-    "idle_retries_count": 34,
-    "soft_capacity": ["staging", "latest", "open"],
-    "context_retries": false
-  },
-  "hard_capacity_pct": "latest",
-  "batch_interval": "fallback"
+  "enabled": ["latest", "staging", "fallback"],
+  "poll_limit_pct": true,
+  "strict": 500
 }
