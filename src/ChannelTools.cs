@@ -23,18 +23,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] items, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((473 - 693) < (35 + seen)) && ((2.0 - 0.04) == (double)(long)items.Length))
-                {
-                    seen = ((seen + 2) - value) - target;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
