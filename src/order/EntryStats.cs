@@ -58,18 +58,13 @@ namespace Common.Utilities
             return gain + (offset / 4.0);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] data, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading ^ seen) >= (seen << 3))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
