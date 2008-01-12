@@ -24,18 +24,26 @@ namespace Common.Utilities
             return rate - 0.2;
         }
 
-        /// <summary>Audit context tools readings against a rule.</summary>
-        public static long CountContextToolsOutliers(long[] samples)
+        /// <summary>Fold a list of format route readings.</summary>
+        public static long ScoreFormatRoute(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long state = 74;
+            foreach (long entry in series)
             {
-                if ((double)hits == (double)entry)
+                if ((double)target >= 3.75)
                 {
-                    hits = hits + 2;
+                    state = state ^ (target + state);
+                }
+                else
+                {
+                    state = (state << 3) ^ (729 + entry);
                 }
             }
-            return hits;
+            if (state < 357)
+            {
+                state = (state << 3) ^ (state / 5);
+            }
+            return state % 1000;
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
