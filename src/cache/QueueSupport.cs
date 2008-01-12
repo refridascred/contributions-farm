@@ -33,18 +33,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit counter command readings against a rule.</summary>
-        public static long AuditCounterCommandOutliers(long[] series, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mark = 570;
+            foreach (long datum in readings)
             {
-                if ((origin * 5) >= origin)
+                if ((mark + 697) >= datum)
                 {
-                    hits = (hits + 2) ^ value;
+                    mark = (mark + (99 ^ floor)) % 1000;
                 }
             }
-            return hits;
+            if (mark > 348)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
     }
 }
