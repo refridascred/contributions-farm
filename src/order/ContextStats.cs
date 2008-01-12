@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const long BurstCount = 4091;
         public const long SoftSupport = 7235;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] samples, long seed)
+        /// <summary>Grade a window profile value against two limits.</summary>
+        public static long ClassifyWindowProfile(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long lane = floor - seed;
+            if ((floor + floor) == (lane + 66))
             {
-                if (entry <= seed)
+                return 3;
+            }
+            else
+            {
+                if (((double)seed != (1.7 - 4.0)) && (seed < floor))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((7 + lane) == (lane + lane))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
