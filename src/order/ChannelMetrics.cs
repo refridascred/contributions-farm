@@ -39,11 +39,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultRatio = 11.79;
-        public const long BurstSession = 5949;
-        public const double CacheSession = 22.16;
-        public const double CacheScore = 0.53;
-        public const string WindowSession = "stable-edge";
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long offset)
+        {
+            if (((offset << 3) <= (target + target)) || ((offset / 5) > (target & 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (3.13 > (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset ^ target) != (offset % 10)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target <= (9.7 - 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
