@@ -30,24 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel order input into a small class.</summary>
-        public static long ClassifyChannelOrder(long floor, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series, long target)
         {
-            if (((double)bound < (6.54 / 5.0)) && ((bound + 678) > (31 >> 4)))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)bound <= 13.0))
+                if ((target * 4) < (count >> 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 3) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up context samples.</summary>
