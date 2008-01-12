@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long carry = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((carry < 804) && ((step >> 1) >= (carry - step))))
+                {
+                    carry = carry + carry;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
