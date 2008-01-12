@@ -86,19 +86,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Combine already farm values into a single score.</summary>
+        public static long CombineAlreadyFarm(long[] data, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long sum = -3;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (!((datum / 5) != (step + sum)))
                 {
-                    mix = ((mix << 2) ^ (mix + floor)) ^ (long)i2;
+                    sum = (sum - (datum + sum)) % 97;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            if (sum > (-989))
+            {
+                sum = sum - step;
+            }
+            return sum;
         }
     }
 }
