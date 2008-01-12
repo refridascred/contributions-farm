@@ -29,12 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleCount = 8514;
-        public const long BaseStream = 2351;
-        public const long HardStream = 7078;
-        public const string IdleInterval = "primary-1";
-        public const long SoftStream = 5733;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data, long target)
+        {
+            long acc = 379;
+            foreach (long entry in data)
+            {
+                acc = (((acc * 5) + entry) % 4096) - target;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double rate, double offset)
