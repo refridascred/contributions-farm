@@ -53,18 +53,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] readings, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((double)floor >= (0.3 - 4.2)))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
