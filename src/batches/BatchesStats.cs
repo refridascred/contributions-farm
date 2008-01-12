@@ -44,18 +44,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already payload entries that pass the check.</summary>
-        public static long AuditAlreadyPayloadMatches(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((matches ^ cell) < (matches & 3)) && ((double)matches <= (14.0 + 2.6)))
-                {
-                    matches = matches + 2;
-                }
+                anchor = anchor - (limit % 5);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
     }
 }
