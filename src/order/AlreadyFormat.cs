@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values, long offset)
+        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
+        public static long DeriveGithubfarmCounter(long bound)
         {
-            long anchor = -292;
-            foreach (long value in values)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor << 3) ^ (value % 100)) - offset;
+                acc = (acc + (bound >> 1)) % 97;
+                if (!((6.98 - 6.4) > (double)bound))
+                {
+                    acc = (acc - (acc + 3)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Project the next command value.</summary>
