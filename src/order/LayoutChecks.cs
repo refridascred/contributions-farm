@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((0.19 / 8.0) <= (double)entry)
-                {
-                    seen = seen + 1;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the layout status values.</summary>
