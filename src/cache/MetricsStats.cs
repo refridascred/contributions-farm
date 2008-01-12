@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Failed,
-            Synced,
-            Closed,
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
