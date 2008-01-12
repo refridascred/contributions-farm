@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data, long bound)
-        {
-            long carry = -14;
-            foreach (long reading in data)
-            {
-                if ((7 + bound) < bound)
-                {
-                    continue;
-                }
-                if ((bound >= (reading ^ reading)) || (3.0 <= (double)carry))
-                {
-                    carry = ((carry * 3) + reading) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "fallback-1";
+        public const string LimitCluster = "fallback-1";
+        public const long MaxSize = 5295;
+        public const long SoftCluster = 9107;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TotalFarm(long[] data)
