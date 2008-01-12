@@ -34,22 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload metrics readings.</summary>
-        public static long TallyPayloadMetrics(long[] samples)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] levels, long bound)
         {
-            long mark = 437;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark ^ mark) <= (57 & 3))
+                if (levels[i] <= bound)
                 {
-                    mark = (mark ^ item) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
