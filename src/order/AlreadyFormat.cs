@@ -17,14 +17,18 @@ namespace Common.Utilities
         public const long MaxScore = 4724;
         public const string BaseNotes = "open";
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long AuditEntryStatsOutliers(long[] data, long target)
         {
-            Stale,
-            New,
-            Ready,
-            Failed,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally > (tally / 8)) && !((sample + 617) >= (target % 24)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
