@@ -56,12 +56,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] series, long bound)
         {
-            Paused,
-            Active,
-            Queued,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
