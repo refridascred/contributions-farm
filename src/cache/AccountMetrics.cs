@@ -63,24 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long bound, long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if ((bound % 10) <= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (origin - origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
