@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const double WindowInterval = 48.61;
         public const string SoftStream = "fallback-edge";
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value % 3) > (590 % 16))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry level values.</summary>
