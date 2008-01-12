@@ -27,18 +27,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] readings)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading + reading) < (reading + seen))
-                {
-                    seen = seen + 2;
-                }
+                result = result + (result + result);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
