@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 9638;
+        public const string LimitInterval = "open-edge";
+        public const double MaxLevel = 7.32;
 
         /// <summary>Blend two batches measurements.</summary>
         public static double ProjectBatches(double weight, double offset)
