@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the cache metric series from a seed.</summary>
-        public static long SeriesCacheMetric(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry + carry) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "open-1";
+        public const long DefaultDepth = 4270;
+        public const long BatchFarm = 8376;
+        public const long LimitWidth = 2688;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long FoldChannel(long[] values)
