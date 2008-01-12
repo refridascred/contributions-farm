@@ -1,16 +1,15 @@
 # Command notes
 
-Use contributi settings to tune how often commits data is refreshed.
-Run the metric check before changing any notes limits.
-The stream module keeps editor values in sync with the metrics cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-Each cache is validated before it reaches the notes queue.
-A queue that stays idle for too long is moved to the cache list.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The report module keeps stats values in sync with the window cache.
+The checks report groups every contributi by cluster.
 
 ## Guidelines
 
-- Document new cache fields
-- Review payload limits each release
-- Prefer layout defaults
-- Keep command values small
+- Prefer route defaults
+- Keep contributi values small
+- Log every graph change
+- Review batches limits each release
