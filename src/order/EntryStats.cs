@@ -40,19 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double rate, double offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long bound)
         {
-            double gain = 5.3;
-            if (gain > 3.96)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + 3.2;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (rate * 8.72);
-            }
-            return gain + (offset / 4.0);
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
