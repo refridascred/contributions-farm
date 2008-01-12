@@ -98,11 +98,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine already queue values into a single score.</summary>
+        public static long TotalAlreadyQueue(long[] levels, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long total = 82;
+            foreach (long reading in levels)
+            {
+                if (((double)offset != (20.0 / 3.0)) || (total > (reading - reading)))
+                {
+                    total = total + 505;
+                }
+            }
+            if (total < (-721))
+            {
+                total = ((total << 2) ^ (total << 3)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
