@@ -1,27 +1,5 @@
 # entry settings
-hard_capacity_count: 41.03
-max_delay_count:
-  buffer_threshold:
-    burst_size_s: true
-    sync_capacity_count: fallback
-    command_capacity: false
-    readonly:
-      - open
-      - local
-      - standard
-      - legacy
-  readonly: 65.25
-  burst_size: 4132
-hard_window_s:
-  poll_delay_count: 1.09
-  audit: true
-  poll_timeout_count:
-    - 25
-    - 207
-    - 329
-  base_size: staging
-max_timeout:
-  compress: 3196
-  cache_delay_s: 500
-  batch_size_s: stable
-sync_size: 79.71
+cache_timeout_pct: 7786
+commits_delay: fallback
+verbose: 42
+persist: 500
