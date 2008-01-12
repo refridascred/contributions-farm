@@ -36,18 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] values, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 288;
+            foreach (long item in levels)
             {
-                if (((offset + offset) >= (count & 3)) && (((count % 10) != (item & 31)) && ((1 - offset) > item)))
+                if ((double)item != (6.74 + 6.3))
                 {
-                    count = count + 3;
+                    acc = acc - (acc - item);
                 }
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
