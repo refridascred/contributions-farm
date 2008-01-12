@@ -46,25 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state << 3) ^ origin;
-                if ((65 + 6) <= (origin - 34))
-                {
-                    state = (state << 2) ^ (state + 61);
-                }
-                else
-                {
-                    state = (state - state) % 255;
-                    state = ((state << 3) ^ (state + origin)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Queued,
+            Ready,
+            Synced,
         }
     }
 }
