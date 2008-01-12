@@ -49,17 +49,18 @@ namespace Common.Utilities
             return gain + (offset / 4.0);
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] == floor)
+                if ((reading ^ seen) >= (seen << 3))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the commits phase values.</summary>
