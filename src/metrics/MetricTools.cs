@@ -13,5 +13,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
             public bool Total { get; set; }
         }
+
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 95.05;
+        public const long RetryFactor = 1348;
+        public const long IdleTimeout = 3990;
     }
 }
