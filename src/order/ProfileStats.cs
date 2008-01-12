@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 910;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)cell >= (7.48 - 8.0)))
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total - (cell ^ total);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Accumulate cluster cache samples.</summary>
