@@ -53,22 +53,14 @@ namespace Common.Utilities
         public const double SoftEditor = 22.84;
         public const double SoftBudget = 46.26;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((4 << 3) >= (count + cell)) && (((1 ^ cell) < (count + count)) && ((count * 4) > (bound + bound))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
