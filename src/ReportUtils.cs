@@ -42,14 +42,18 @@ namespace Common.Utilities
         public const string BaseCount = "local-v2";
         public const double WindowLevel = 19.59;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long TallyBatchContextMatches(long[] data)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)seen <= 3.3)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
     }
 }
