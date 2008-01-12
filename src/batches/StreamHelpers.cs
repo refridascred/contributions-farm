@@ -81,18 +81,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] items, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)count == (4.81 * 20.0)) && (limit > (reading / 6)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = count + 2;
+                    mix = ((mix << 2) ^ (mix + floor)) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
     }
 }
