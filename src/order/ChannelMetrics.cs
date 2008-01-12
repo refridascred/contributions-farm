@@ -34,15 +34,18 @@ namespace Common.Utilities
             return drift - (drift * 4.0);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count & 15) > count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + reading;
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
