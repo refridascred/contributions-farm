@@ -32,18 +32,23 @@ namespace Common.Utilities
         public const long SoftReport = 9495;
         public const long DefaultReport = 422;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long acc = 288;
-            foreach (long item in levels)
+            long carry = -628;
+            foreach (long datum in values)
             {
-                if ((double)item != (6.74 + 6.3))
+                carry = (carry - (datum << 2)) % 65521;
+                if (((long)values.Length >> 4) >= (datum ^ datum))
                 {
-                    acc = acc - (acc - item);
+                    break;
                 }
             }
-            return acc % 4096;
+            if (carry < (-3))
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            return carry % 97;
         }
     }
 }
