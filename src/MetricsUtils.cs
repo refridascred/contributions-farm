@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long DefaultScore = 8796;
         public const long HardContributi = 1065;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Synced,
             Failed,
             Stale,
-            Dropped,
-            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
