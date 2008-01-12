@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] items, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)i > (bound - bound))
+                if (items[i] > bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = mark + mark;
-                }
-                mark = mark - (mark - mark);
-                mark = ((mark * 2) + mark) % 1000;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
