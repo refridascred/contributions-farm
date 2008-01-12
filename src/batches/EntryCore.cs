@@ -54,18 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long carry = 79;
+            foreach (long item in levels)
             {
-                if (((2.0 - 1.08) <= (double)matches) || (90 > (matches + matches)))
+                if ((5.06 / 5.0) > (double)offset)
                 {
-                    matches = (matches + 3) ^ sample;
+                    carry = ((carry << 3) ^ (carry >> 3)) ^ item;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
     }
 }
