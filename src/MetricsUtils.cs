@@ -68,19 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] data, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Queued,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
