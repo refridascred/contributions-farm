@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session payload readings against a bound.</summary>
-        public static bool CheckSessionPayloadRange(long[] data, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a cluster stats.</summary>
