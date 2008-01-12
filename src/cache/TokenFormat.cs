@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long offset = seed + bound;
-            if ((offset << 1) <= (seed % 24))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3.5 - 17.0) == (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Adjust a batch reading.</summary>
