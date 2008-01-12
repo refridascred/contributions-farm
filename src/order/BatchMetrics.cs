@@ -73,13 +73,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
