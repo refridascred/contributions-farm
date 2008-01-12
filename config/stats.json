@@ -1,17 +1,9 @@
 {
-  "readonly": 1146,
-  "default_limit": {
-    "token_timeout": [459, 66, 403],
-    "default_window_count": ["green", "primary", "staging", "edge"],
-    "audit": [18, 328, 343, 41],
-    "cache_threshold": 15.6,
-    "payload_capacity": ["legacy", "cached"],
-    "command_window": 61.59
+  "readonly": {
+    "idle_retries_count": 34,
+    "soft_capacity": ["staging", "latest", "open"],
+    "context_retries": false
   },
-  "hard_size_ms": "edge",
-  "cache_capacity_count": {
-    "verbose": 14,
-    "audit": "stable",
-    "base_timeout": "eu-west"
-  }
+  "hard_capacity_pct": "latest",
+  "batch_interval": "fallback"
 }
