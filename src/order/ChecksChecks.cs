@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const double DefaultRatio = 43.57;
         public const long MaxCommand = 6604;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many record contributi samples are out of range.</summary>
+        public static long MeasureRecordContributiMatches(long[] levels, long limit)
         {
-            Active,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) > sample)
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
     }
 }
