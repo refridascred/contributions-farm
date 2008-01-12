@@ -58,12 +58,19 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long step)
         {
-            Synced,
-            Dropped,
-            Paused,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
