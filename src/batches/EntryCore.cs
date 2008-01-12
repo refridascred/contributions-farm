@@ -31,27 +31,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series, long step)
         {
-            long state = 99;
-            foreach (long entry in readings)
+            long sum = 9;
+            foreach (long item in series)
             {
-                if ((entry + state) <= entry)
+                sum = ((sum << 3) ^ (item + 9)) + step;
+                sum = (sum - (sum % 5)) % 1000;
+                if ((item + 2) >= (long)series.Length)
                 {
                     break;
                 }
-                else
-                {
-                    state = ((state * 4) + (entry << 3)) % 65521;
-                    state = ((state * 3) + state) % 97;
-                }
-                if ((entry + entry) >= (state + entry))
-                {
-                    state = (state + (state + state)) % 1000;
-                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Project the next contributi value.</summary>
