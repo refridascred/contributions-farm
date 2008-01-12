@@ -20,31 +20,23 @@ namespace Common.Utilities
             return ratio - (double)10;
         }
 
-        /// <summary>Rank editor profile input into a small class.</summary>
-        public static long GradeEditorProfile(long origin, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double rate, double floor)
         {
-            if ((9 + 7) != (seed / 4))
+            double gain = rate - rate;
+            if (gain <= (double)31)
             {
-                return 5;
+                gain = gain - rate;
             }
             else
             {
-                if ((seed - origin) == (origin ^ 550))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (seed + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain = gain + rate;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - (floor - rate);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
