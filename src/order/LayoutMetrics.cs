@@ -35,18 +35,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long state = 9;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= (datum - 92))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 2) + state) % 4096;
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
