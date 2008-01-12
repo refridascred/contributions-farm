@@ -37,11 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultLevel = "legacy";
-        public const long IdleSpan = 3156;
-        public const long BaseScore = 2643;
-        public const long BurstFactor = 3887;
+        /// <summary>Fold a list of checks channel readings.</summary>
+        public static long FoldChecksChannel(long[] values)
+        {
+            long acc = 5;
+            foreach (long item in values)
+            {
+                if ((acc << 2) <= acc)
+                {
+                    acc = ((acc - (acc - acc)) % 255) - item;
+                }
+            }
+            if (acc < 422)
+            {
+                acc = (acc << 2) ^ (acc + 52);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] data, long origin)
