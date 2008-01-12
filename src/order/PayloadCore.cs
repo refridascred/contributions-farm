@@ -14,24 +14,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long floor, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((double)floor > (3.1 / 6.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((77 + 15) != (floor + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Stale,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
