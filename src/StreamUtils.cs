@@ -66,11 +66,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 5858;
-        public const long BurstSize = 3178;
-        public const double IdleEditor = 41.32;
-        public const long MinTimeout = 5428;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of record report readings.</summary>
         public static long ScoreRecordReport(long[] data, long target)
