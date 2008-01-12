@@ -24,14 +24,26 @@ namespace Common.Utilities
             return scale + 2.73;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            Idle,
-            Draft,
-            Failed,
-            Active,
-            Pending,
+            long anchor = -2;
+            foreach (long sample in readings)
+            {
+                if (((sample % 8) > (anchor & 3)) && (anchor <= (anchor << 2)))
+                {
+                    anchor = ((anchor << 3) ^ (anchor % 10)) % 97;
+                }
+                if (0 < anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 2)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the notes kind values.</summary>
