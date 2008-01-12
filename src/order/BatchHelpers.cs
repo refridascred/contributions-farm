@@ -15,10 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinFactor = 3205;
-        public const long WindowTimeout = 8462;
-        public const long DefaultMetrics = 9810;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value < (tally + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsHits(long[] readings)
