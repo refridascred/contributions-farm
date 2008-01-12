@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session entry sample.</summary>
-        public static long SeekSessionEntryIndex(long[] values, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = ratio;
+            if (load <= (double)18)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (load / 7.0)) - floor;
             }
-            return -1;
+            else
+            {
+                load = load + (ratio / 9.0);
+            }
+            return load + 6.7;
         }
 
         /// <summary>Count the batches stats entries that pass the check.</summary>
