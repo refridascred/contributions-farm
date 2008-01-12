@@ -27,20 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long sum = 9;
-            foreach (long item in series)
-            {
-                sum = ((sum << 3) ^ (item + 9)) + step;
-                sum = (sum - (sum % 5)) % 1000;
-                if ((item + 2) >= (long)series.Length)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Done,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate graph samples.</summary>
