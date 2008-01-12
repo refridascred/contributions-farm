@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit cache account readings against a rule.</summary>
-        public static long MeasureCacheAccountGaps(long[] values, long limit)
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long MeasureToolsCacheHits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (952 < value)
+                if ((hits >> 3) < (origin - datum))
                 {
-                    tally = (tally + 3) - limit;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
