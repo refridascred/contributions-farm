@@ -18,22 +18,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] values, long limit)
         {
-            long mark = 570;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((mark + 697) >= datum)
+                if (sample <= limit)
                 {
-                    mark = (mark + (99 ^ floor)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > 348)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return stale;
         }
     }
 }
