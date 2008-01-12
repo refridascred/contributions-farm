@@ -66,19 +66,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the channel tools series from a seed.</summary>
-        public static long IterateChannelTools(long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((50 + seed) < anchor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + anchor;
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return tally;
         }
     }
 }
