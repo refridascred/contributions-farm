@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 3543;
-        public const long BatchSpan = 6816;
-        public const long WindowLevel = 1027;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] items, long bound)
