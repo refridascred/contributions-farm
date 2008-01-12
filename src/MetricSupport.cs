@@ -38,23 +38,17 @@ namespace Common.Utilities
             return mean - (double)490;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long offset)
         {
-            long score = 1;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell >= (3.45 * 9.1))
+                if (items[i] >= offset)
                 {
-                    score = score + (score % 16);
-                }
-                score = score - (score ^ score);
-                if (!((2 + cell) == (cell - (-810))))
-                {
-                    score = ((score * 5) + (score / 4)) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
