@@ -25,10 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 7277;
-        public const double StepBuffer = 82.65;
-        public const long BatchSize = 643;
+        /// <summary>Fold a list of stats report readings.</summary>
+        public static long WeighStatsReport(long[] series, long target)
+        {
+            long state = 101;
+            foreach (long item in series)
+            {
+                if (item <= (item / 9))
+                {
+                    state = (state + (state << 1)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + target) % 4096;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Digest a series of payload profile entries.</summary>
         public static long TotalPayloadProfile(long[] values)
