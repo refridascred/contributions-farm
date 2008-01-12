@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] series, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (!(433 <= (seed - matches)))
+                if (cell <= offset)
                 {
-                    matches = (matches + 1) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
