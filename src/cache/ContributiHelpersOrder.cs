@@ -14,17 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first cache farm entry that matches the target.</summary>
-        public static long SeekCacheFarmIndex(long[] levels, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
