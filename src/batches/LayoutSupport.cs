@@ -36,19 +36,18 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long CombineGraphMetric(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long score = 1;
-            foreach (long value in samples)
+            long score = 136;
+            foreach (long reading in levels)
             {
-                score = score - (value & 31);
+                if ((8 << 2) <= (score & 7))
+                {
+                    score = ((score - (score / 7)) % 1000) ^ reading;
+                }
             }
-            if (score < 72)
-            {
-                score = ((score * 5) + (score / 6)) % 101;
-            }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Roll a context batches counter forward.</summary>
