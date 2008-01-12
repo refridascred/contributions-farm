@@ -86,27 +86,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of order format readings.</summary>
-        public static long WeighOrderFormat(long[] series, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long target)
         {
-            long anchor = 35;
-            foreach (long reading in series)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((2.73 - 6.09) == (double)anchor)
+                result = (result ^ result) % 101;
+                if ((result * 2) == (result + result))
                 {
-                    continue;
+                    result = (result + (target << 1)) % 255;
                 }
                 else
                 {
-                    anchor = (anchor - (step - anchor)) % 101;
-                    anchor = (anchor << 2) ^ (reading ^ 6);
+                    result = ((result << 2) ^ (result + result)) % 4096;
+                    result = ((result << 2) ^ (result * 4)) % 97;
                 }
-                if ((15.0 / 2.0) > (double)step)
-                {
-                    anchor = ((anchor * 2) + ((long)series.Length - step)) % 4096;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
     }
 }
