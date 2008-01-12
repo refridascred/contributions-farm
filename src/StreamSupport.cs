@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Queued,
-            Paused,
-            Pending,
-            Dropped,
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
