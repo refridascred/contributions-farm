@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long BurstCount = 4091;
         public const long SoftSupport = 7235;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] items, long limit)
         {
-            long mix = 296;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((cell - 98) < 71))
+                if (items[i] == limit)
                 {
-                    mix = (mix + (cell + (long)levels.Length)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
