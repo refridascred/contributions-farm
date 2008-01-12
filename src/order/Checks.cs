@@ -25,25 +25,15 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long GradeOrderContributi(long origin, long limit)
+        /// <summary>Scale a contributi record figure with a bias.</summary>
+        public static double AdjustContributiRecord(double bias, double bias2)
         {
-            long cur = origin - limit;
-            if (limit >= (414 + limit))
+            double weight = bias * 9.4;
+            if (weight < (double)5)
             {
-                return 5;
+                weight = (weight - (double)415) - bias2;
             }
-            else
-            {
-                if ((7 / 8) < cur)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return weight + weight;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
