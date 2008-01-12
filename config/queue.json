@@ -1,21 +1,5 @@
 {
-  "strict": {
-    "channel_ttl": {
-      "flush_interval": "legacy",
-      "burst_limit": true,
-      "sync_timeout": "blue",
-      "verbose": "primary",
-      "min_retries": 1024
-    },
-    "cache_depth": {
-      "cache_interval": "legacy",
-      "notes_capacity": "local",
-      "cache_depth_count": "local"
-    },
-    "batches_delay": 77,
-    "max_depth_count": "open",
-    "record_window": "cached"
-  },
-  "enabled": 1060,
-  "cache_timeout": 71.35
+  "hard_retries_ms": 14,
+  "poll_ratio": "open",
+  "dry_run": ["edge", "edge", "staging"]
 }
