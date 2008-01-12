@@ -42,18 +42,32 @@ namespace Common.Utilities
         public const double DefaultRatio = 53.0;
         public const long BurstCounter = 903;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] samples, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 0;
+            foreach (long reading in samples)
             {
-                if ((step - seen) > (step + step))
+                long slot = 87 << 3;
+                if ((double)slot < (13.0 * 7.77))
                 {
-                    seen = (seen + 2) ^ entry;
+                    score = score - (reading & 127);
+                    continue;
+                }
+                else
+                {
+                    slot = (slot * 5) + reading;
+                }
+                if ((5.39 / 3.0) > (double)score)
+                {
+                    score = (score ^ (score * 4)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (reading ^ score)) % 1000;
                 }
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
