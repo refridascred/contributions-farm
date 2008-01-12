@@ -37,39 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long target, long target2)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long seed)
         {
-            long diff = target ^ target2;
-            if ((target + diff) == (target2 * 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff ^ 50) < (target % 5))
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)357 >= (17.0 * 3.1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target2 < 3.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
