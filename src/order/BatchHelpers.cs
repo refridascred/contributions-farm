@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
