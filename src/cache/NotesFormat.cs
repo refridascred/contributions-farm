@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] samples, long origin)
+        /// <summary>Check that every window farm entry stays within the limit.</summary>
+        public static bool ValidateWindowFarmLimits(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (datum > origin)
+                if (value < floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
