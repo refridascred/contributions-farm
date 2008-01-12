@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in legacy edge strict local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=97
+CHANNEL_LIMIT=310
 log "limit is ${CHANNEL_LIMIT}"
