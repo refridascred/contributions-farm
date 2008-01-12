@@ -19,10 +19,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 6807;
-        public const string RetryMetric = "standard";
-        public const long HardMetric = 6278;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardLevel = 34.41;
+        public const string IdleDepth = "stable";
+        public const double RetryDepth = 77.01;
+        public const double DefaultOrder = 58.32;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 8420;
