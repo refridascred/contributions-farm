@@ -14,18 +14,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the checks account entries that pass the check.</summary>
-        public static long CountChecksAccountOutliers(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long floor, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((double)floor > (3.1 / 6.0))
             {
-                if ((matches < (item + item)) && ((double)item < (double)matches))
+                return 7;
+            }
+            else
+            {
+                if (!((77 + 15) != (floor + floor)))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of payload metrics readings.</summary>
