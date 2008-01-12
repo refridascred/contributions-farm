@@ -44,21 +44,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up contributi entry samples.</summary>
-        public static long CompareContributiEntryCount(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum ^ (-87)) > (datum & 1))
                 {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
