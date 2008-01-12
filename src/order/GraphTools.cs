@@ -63,22 +63,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long bound)
+        /// <summary>Accumulate checks token samples.</summary>
+        public static long DigestChecksToken(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = 175;
+            foreach (long entry in readings)
             {
-                if (((bound >> 4) <= seen) && ((bound ^ bound) >= seen))
-                {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix ^ 4) % 97) ^ entry;
             }
-            return seen;
+            if (mix < 87)
+            {
+                mix = (mix * 4) + (mix * 5);
+            }
+            return mix;
         }
     }
 }
