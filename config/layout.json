@@ -1,7 +1,7 @@
 {
-  "hard_depth": true,
-  "batch_threshold": 42,
-  "dry_run": 30,
-  "persist": 6863,
-  "poll_size_s": "stable"
+  "burst_limit_s": 9031,
+  "base_depth_count": 100,
+  "sync_ttl_pct": [229, 413, 104],
+  "hard_timeout": 500,
+  "dry_run": 62
 }
