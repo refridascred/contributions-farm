@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Active,
-            Idle,
-            Done,
-            Locked,
+            Pending,
             Stale,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
