@@ -15,19 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] values, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
