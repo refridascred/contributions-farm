@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 9234;
-        public const long HardNotes = 2356;
-        public const long SoftWidth = 2838;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Queued,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowWidth = 92.62;
