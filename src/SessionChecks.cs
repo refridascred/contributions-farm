@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long BurstAlready = 3182;
         public const double WindowAlready = 65.89;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long seed)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the schema class values.</summary>
