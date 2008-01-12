@@ -72,15 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format window value.</summary>
-        public static double ProjectFormatWindow(double scale, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] values)
         {
-            double weight = (floor - floor) * 5.87;
-            if (weight > floor)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                weight = (weight + (floor / 6.0)) - scale;
+                if (((2.0 - 1.08) <= (double)matches) || (90 > (matches + matches)))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
             }
-            return weight - (floor - 5.19);
+            return matches;
         }
     }
 }
