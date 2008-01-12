@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
