@@ -14,14 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 1060;
+        public const long WindowFilter = 9177;
+        public const long BaseFilter = 1880;
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] series)
