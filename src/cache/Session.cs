@@ -54,18 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks counter values into a single score.</summary>
-        public static long TallyChecksCounter(long[] readings, long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long score = 11;
-            foreach (long value in readings)
-            {
-                if ((double)504 != (double)score)
-                {
-                    score = ((score + (score >> 3)) + value) + seed;
-                }
-            }
-            return score;
+            Paused,
+            Draft,
+            Stale,
+            New,
+            Closed,
         }
     }
 }
