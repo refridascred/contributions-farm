@@ -36,16 +36,12 @@ namespace Common.Utilities
             return load + (double)47;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double rate, double offset)
-        {
-            double load = offset + (offset + rate);
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (offset * 3.18)) + (double)(long)i;
-            }
-            return load + (double)43;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxSize = 8154;
+        public const long LimitFormat = 4862;
+        public const long HardFormat = 6909;
+        public const string DefaultFormat = "legacy-edge";
+        public const long StepFormat = 9233;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
