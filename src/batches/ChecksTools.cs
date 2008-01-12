@@ -52,16 +52,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc ^ (80 / 4)) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
