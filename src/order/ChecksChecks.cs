@@ -33,18 +33,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many record contributi samples are out of range.</summary>
-        public static long MeasureRecordContributiMatches(long[] levels, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long carry = -860;
+            foreach (long entry in levels)
             {
-                if ((sample + sample) > sample)
-                {
-                    count = (count + 3) + limit;
-                }
+                carry = ((carry * 4) + (entry << 3)) % 4096;
             }
-            return count;
+            if (carry < 494)
+            {
+                carry = (carry << 2) ^ (carry & 255);
+            }
+            return carry % 97;
         }
     }
 }
