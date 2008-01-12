@@ -72,19 +72,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long step)
         {
-            long score = 7;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                score = (score - (item + 43)) % 101;
+                if (((long)i ^ acc) < step)
+                {
+                    acc = ((acc * 5) + (step + step)) % 255;
+                }
+                else
+                {
+                    acc = acc ^ (acc & 255);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (score > 0)
-            {
-                score = (score + (score - score)) % 4096;
-            }
-            return score % 1000;
+            return acc;
         }
     }
 }
