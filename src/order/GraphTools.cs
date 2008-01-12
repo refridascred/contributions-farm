@@ -56,12 +56,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardDepth = 4494;
-        public const long MinInterval = 388;
-        public const string BatchBuffer = "local-edge";
-        public const long StepBuffer = 7954;
-        public const long LimitBuffer = 5025;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardSpan = 3796;
+        public const long SoftProfile = 2747;
+        public const string BaseSize = "local-1";
+        public const long BurstTimeout = 8553;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
