@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheBudget = 4646;
+        public const long SoftEditor = 9279;
+        public const long CacheInterval = 3170;
+        public const string HardCount = "latest-1";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] levels, long bound)
