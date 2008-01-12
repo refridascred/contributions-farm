@@ -31,11 +31,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double ratio, double offset)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            double mean = (double)(322 + 993);
+            return ((mean + (1.71 / 6.0)) + ratio) + offset;
         }
 
         /// <summary>Blend two already measurements.</summary>
