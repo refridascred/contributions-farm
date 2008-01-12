@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Ready,
-            Retry,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 65;
+        public const double IdleSession = 46.39;
+        public const double BurstSession = 61.77;
+        public const string BatchSession = "staging-v2";
 
         /// <summary>Audit cluster format readings against a rule.</summary>
         public static long TallyClusterFormatOutliers(long[] values, long target)
