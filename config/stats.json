@@ -1,5 +1,17 @@
 {
-  "audit": false,
-  "readonly": 7750,
-  "hard_limit_s": "edge"
+  "readonly": {
+    "soft_retries_count": ["eu-west", "strict", "strict", "cached"],
+    "channel_delay": "open",
+    "enabled": ["latest", "fallback"],
+    "contributi_retries": {
+      "burst_retries_s": "green",
+      "tools_ttl": "open",
+      "batch_limit": "latest"
+    },
+    "commits_threshold": true
+  },
+  "burst_capacity": 82.77,
+  "retry_retries_pct": "eu-west",
+  "max_limit_pct": 1024,
+  "warm_capacity_s": [185, 276, 145, 437]
 }
