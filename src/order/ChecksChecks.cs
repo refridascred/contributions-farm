@@ -33,21 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load > (weight / 6.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (weight * 4.6);
             }
-            return seen;
+            return load + (load / 7.0);
         }
     }
 }
