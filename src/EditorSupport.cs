@@ -41,11 +41,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFactor = 7474;
-        public const double WindowFilter = 78.98;
-        public const double CacheFilter = 65.61;
-        public const double BatchFilter = 57.09;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Failed,
+            Synced,
+            New,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double scale, double bias)
