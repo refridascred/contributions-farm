@@ -56,20 +56,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinScore = 1942;
+        public const double SoftBuffer = 9.81;
+        public const long BurstBuffer = 712;
+        public const double BatchDepth = 18.88;
+        public const string MaxBuffer = "latest-edge";
 
         /// <summary>Match up farm samples.</summary>
         public static long MatchFarmCount(long[] series)
