@@ -36,39 +36,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long origin, long offset)
+        /// <summary>Match up contributi entry samples.</summary>
+        public static long CompareContributiEntryCount(long[] items)
         {
-            long bound = origin + offset;
-            if ((offset - 69) <= (966 - bound))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - origin) > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + bound) < bound)
+                    if ((items[i] ^ items[j]) < 19)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((8.0 / 3.0) > (double)bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
