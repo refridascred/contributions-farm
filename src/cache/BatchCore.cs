@@ -54,22 +54,17 @@ namespace Common.Utilities
             return rate + (floor + ratio);
         }
 
-        /// <summary>Count the buffer layout entries that pass the check.</summary>
-        public static long CountBufferLayoutOutliers(long[] values, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((hits + item) > (hits + 15))
-                {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = sum + (seed * 4);
+                sum = sum + (seed & 7);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
     }
 }
