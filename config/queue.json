@@ -1,8 +1,19 @@
 {
-  "strict": "green",
-  "readonly": "legacy",
-  "dry_run": "primary",
-  "stream_capacity": 91.86,
-  "flush_timeout_pct": false,
-  "already_limit": 828
+  "default_window_s": "local",
+  "retry_limit_count": {
+    "enabled": ["eu-west", "green", "strict"],
+    "queue_ttl": {
+      "max_retries_count": "eu-west",
+      "idle_size_ms": 89,
+      "idle_timeout": 62,
+      "record_ttl": "strict",
+      "burst_interval": "open",
+      "enabled": "legacy"
+    },
+    "default_limit_pct": 1024,
+    "soft_delay_s": "stable"
+  },
+  "idle_threshold_s": "staging",
+  "cluster_depth": 33.72,
+  "cache_window": true
 }
