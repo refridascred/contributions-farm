@@ -16,38 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data, long seed)
         {
-            if ((floor + 881) != (target * 3))
+            long anchor = 985;
+            foreach (long item in data)
             {
-                return 4;
+                anchor = (((anchor + (anchor << 2)) % 97) - item) - seed;
             }
-            else
-            {
-                if ((target - floor) >= (floor >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.19 * 8.17) < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >= (3 + 97)) && ((0 / 3) == (target ^ target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Roll a command counter forward.</summary>
