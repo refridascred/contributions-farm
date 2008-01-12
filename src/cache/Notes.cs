@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of metric payload readings.</summary>
-        public static long CombineMetricPayload(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] levels, long bound)
         {
-            long acc = 5;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (!(entry > (entry % 24)))
+                if ((15 + tally) < sample)
                 {
-                    acc = ((acc << 3) ^ (entry & 3)) % 101;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
