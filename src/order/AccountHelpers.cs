@@ -65,12 +65,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public double Rank { get; set; }
+            long score = 44;
+            foreach (long item in readings)
+            {
+                score = score ^ (item + score);
+                score = score - (item - score);
+            }
+            if (score < 841)
+            {
+                score = ((score * 2) + (score + score)) % 97;
+            }
+            return score % 65521;
         }
     }
 }
