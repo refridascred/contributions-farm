@@ -21,17 +21,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a command notes reading by value.</summary>
-        public static long LocateCommandNotesIndex(long[] levels, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] == seed)
+                if (((hits >> 1) == (reading ^ reading)) && ((reading - reading) >= (reading << 1)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
