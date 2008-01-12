@@ -61,19 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double bias2)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long offset)
         {
-            double mean = 2.29;
-            if (mean > mean)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (mean - mean)) - bias;
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + bias2) + (double)(long)i;
-            }
-            return mean + 16.0;
+            return -1;
         }
 
         /// <summary>Fold a list of stats token readings.</summary>
