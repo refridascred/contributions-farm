@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] readings, long offset)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count & 63) >= offset)
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
