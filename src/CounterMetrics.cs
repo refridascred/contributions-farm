@@ -23,11 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            Retry,
+            Pending,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Derive the next contributi report value from a seed.</summary>
