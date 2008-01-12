@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long origin)
         {
-            Ready,
-            Retry,
-            Stale,
-            Locked,
+            if (!((origin ^ limit) > (origin * 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit <= (origin & 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count queue notes pairs that satisfy a relation.</summary>
