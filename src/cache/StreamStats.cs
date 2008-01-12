@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long floor, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] series, long step)
         {
-            if ((floor ^ seed) == (seed + floor))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed >= 0)
+                if ((13.0 / 6.0) < (3.0 * 7.2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < 8)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = ((matches + 3) ^ entry) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
