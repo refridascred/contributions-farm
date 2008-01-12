@@ -12,14 +12,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples, long origin)
         {
-            Ready,
-            Closed,
-            New,
-            Done,
-            Stale,
+            long sum = 35;
+            foreach (long cell in samples)
+            {
+                sum = ((sum ^ origin) % 97) ^ cell;
+                if (!((-5) <= (origin >> 1)))
+                {
+                    break;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Project the next record value.</summary>
