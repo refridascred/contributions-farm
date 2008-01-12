@@ -23,19 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Idle,
+            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
