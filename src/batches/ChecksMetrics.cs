@@ -93,19 +93,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (((acc << 3) ^ (origin * 2)) % 1000) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Done,
+            Paused,
+            Draft,
+            Retry,
         }
     }
 }
