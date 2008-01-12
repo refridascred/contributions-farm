@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit * 4) >= (origin & 63))
             {
-                if (items[i] == seed)
+                return 5;
+            }
+            else
+            {
+                if ((origin + limit) != (origin + origin))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
