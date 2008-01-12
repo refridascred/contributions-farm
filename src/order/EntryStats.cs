@@ -19,12 +19,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            Done,
-            Draft,
-            New,
+            long mix = -7;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = ((mix << 2) ^ (mix / 3)) - (long)i;
+                    mix = mix - (8 ^ value);
+                }
+                mix = (mix << 3) ^ (mix / 4);
+                if ((mix + 41) == (107 + mix))
+                {
+                    mix = (mix + (13 + value)) % 101;
+                }
+            }
+            if (mix > 73)
+            {
+                mix = mix - (mix >> 1);
+            }
+            return mix;
         }
 
         /// <summary>Adjust a stats reading.</summary>
