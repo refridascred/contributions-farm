@@ -32,10 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepFactor = "staging-1";
-        public const string BaseInterval = "local-1";
-        public const long SoftLevel = 845;
-        public const double WindowCluster = 73.26;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 2547;
+        public const double CacheTimeout = 69.56;
+        public const string SoftWidth = "staging-edge";
+        public const double BaseSize = 75.32;
     }
 }
