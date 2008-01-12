@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Closed,
-            Failed,
-            Stale,
-            Active,
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
