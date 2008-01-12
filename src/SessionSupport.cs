@@ -28,19 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double ratio, double bias)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double ratio2 = bias / 8.0;
-            if (ratio2 < bias)
-            {
-                ratio2 = (ratio2 + 3.0) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - (bias - bias);
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next stats value.</summary>
