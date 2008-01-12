@@ -1,5 +1,5 @@
 {
-  "account_interval": 1024,
-  "min_threshold_pct": [153, 427, 20],
-  "warm_size_s": 3
+  "burst_timeout_s": "green",
+  "flush_capacity": 8,
+  "verbose": [456, 114]
 }
