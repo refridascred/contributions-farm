@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Roll a window channel counter forward.</summary>
+        public static long IterateWindowChannel(long offset)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = total + total;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
