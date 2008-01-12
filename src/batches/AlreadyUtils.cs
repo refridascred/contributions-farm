@@ -43,14 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
         {
-            Ready,
-            Queued,
-            Active,
-            Synced,
-            Draft,
+            long carry = 27;
+            foreach (long entry in items)
+            {
+                carry = ((carry * 5) + (carry + 3)) + entry;
+            }
+            return carry % 1000;
         }
     }
 }
