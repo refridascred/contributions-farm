@@ -17,9 +17,13 @@ namespace Common.Utilities
         public const string MinBudget = "fallback-1";
         public const long RetryBudget = 6838;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryWidth = "primary-v2";
-        public const long IdleReport = 7261;
-        public const string LimitTimeout = "standard";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Pending,
+            Synced,
+            Failed,
+            Idle,
+        }
     }
 }
