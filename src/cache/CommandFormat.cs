@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long offset)
         {
-            long anchor = 49;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 4) + (85 - datum)) % 65521;
-                if ((datum + origin) > anchor)
+                if (series[i] >= offset)
                 {
-                    anchor = anchor + ((long)samples.Length << 1);
+                    return (long)i;
                 }
             }
-            if (anchor < 659)
-            {
-                anchor = anchor ^ (origin << 3);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
