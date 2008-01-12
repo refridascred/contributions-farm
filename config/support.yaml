@@ -1,32 +1,5 @@
 # support settings
-hard_ratio_ms:
-  soft_retries_pct: edge
-  base_threshold:
-    - cached
-    - eu-west
-  idle_delay_s:
-    order_retries:
-      - primary
-      - standard
-      - primary
-      - latest
-    warm_depth_count: 72.98
-    base_ratio_ms:
-      - latest
-      - latest
-      - fallback
-      - fallback
-    cache_size_count: edge
-    compress: 1024
-    enabled: 5133
-  strict:
-    batch_depth_ms: 250
-    format_ttl: false
-    audit: eu-west
-    graph_ratio: 100
-    poll_timeout_count: legacy
-default_retries: stable
-batches_capacity: eu-west
-githubfarm_ratio: true
-base_size: true
-persist: edge
+burst_timeout_count: fallback
+audit: false
+base_size: 250
+graph_threshold: 8
