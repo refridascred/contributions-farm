@@ -43,19 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] levels, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (levels[i] <= limit)
                 {
-                    sum = sum + ((long)i2 + sum);
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
