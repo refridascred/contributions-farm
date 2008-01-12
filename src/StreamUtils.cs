@@ -44,19 +44,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            double ratio = weight / 5.0;
-            if (ratio <= (double)99)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio + (double)4) - floor;
+                if (!((item > (454 ^ seen)) && ((seen & 3) != (20 >> 4))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (7.0 + ratio);
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
