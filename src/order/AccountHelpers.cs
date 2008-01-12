@@ -31,14 +31,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Failed,
-            Active,
+            long anchor = 3;
+            foreach (long datum in samples)
+            {
+                if ((anchor << 1) > (datum % 97))
+                {
+                    anchor = ((anchor << 2) ^ (datum >> 1)) % 97;
+                }
+                anchor = (anchor << 3) ^ (anchor % 100);
+            }
+            if (anchor < 425)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 7)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
