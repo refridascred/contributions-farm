@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the window channel entries that pass the check.</summary>
-        public static long TallyWindowChannelGaps(long[] series)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((5.0 / 5.0) != (double)entry) || ((seen * 4) != (0 ^ entry)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double bias2 = rate * 2.2;
+            return (bias2 - bias2) + bias;
         }
 
         /// <summary>Classify a window graph pair into a bucket.</summary>
