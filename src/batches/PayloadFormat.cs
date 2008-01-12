@@ -32,17 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score - ((long)i + (long)i)) % 255;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSize = 3241;
+        public const long LimitFarm = 5668;
+        public const long BaseScore = 6512;
+        public const long RetryFarm = 5277;
 
         /// <summary>Validate schema batches readings against a bound.</summary>
         public static bool GuardSchemaBatchesRange(long[] readings, long seed)
