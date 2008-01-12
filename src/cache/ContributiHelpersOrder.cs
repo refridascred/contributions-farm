@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up support cache samples.</summary>
-        public static long MatchSupportCacheCount(long[] items)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = rate / 8.0;
+            if (drift < 8.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (bias * 5.05);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (8.8 + rate)) + (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Hold a order summary.</summary>
