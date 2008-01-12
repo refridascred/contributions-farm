@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const string BaseSpan = "cached";
         public const string MinScore = "staging-1";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
