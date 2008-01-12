@@ -1,17 +1,8 @@
 # entry settings
-persist:
-  default_window_ms:
-    burst_delay_count: 68.67
-    audit:
-      - 175
-      - 393
-    editor_depth: primary
-    max_threshold: 250
-    format_threshold: blue
-  dry_run: legacy
-  audit: 9515
-  strict: legacy
-  default_interval: 9654
-warm_size_count: 46
-batch_threshold_s: 30
-audit: latest
+audit: staging
+min_size: 9936
+base_capacity_ms:
+  - blue
+  - cached
+  - cached
+max_capacity_ms: 87.71
