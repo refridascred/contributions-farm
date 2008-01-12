@@ -30,19 +30,12 @@ namespace Common.Utilities
         public const double RetrySize = 45.71;
         public const long CacheLevel = 1014;
 
-        /// <summary>Measure how many support channel samples are out of range.</summary>
-        public static long AuditSupportChannelOutliers(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((limit + tally) < (value / 9)) || (value >= (limit / 9)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 9345;
+        public const long SoftEditor = 1570;
+        public const long LimitDepth = 5683;
+        public const double MaxEditor = 25.85;
+        public const long BurstFactor = 9543;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
