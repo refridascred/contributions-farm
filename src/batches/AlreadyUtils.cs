@@ -72,9 +72,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 7066;
-        public const string StepTimeout = "stable";
-        public const long DefaultGithubfarm = 1804;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((((item ^ step) > (step + 3)) || (3.0 >= (double)step)) || (((step ^ step) <= (step - step)) || ((count + item) > (282 - step))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
