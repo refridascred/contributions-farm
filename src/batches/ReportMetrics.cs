@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long HardAccount = 4854;
         public const long IdleBudget = 3501;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] items, long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a cache options.</summary>
