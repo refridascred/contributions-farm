@@ -35,30 +35,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long score = 37;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score - score) % 97) + (long)i;
-                }
-                if ((score - sample) <= score)
-                {
-                    score = ((score << 2) ^ score) % 255;
-                }
-                else
-                {
-                    score = (score * 4) + (score & 31);
-                }
-            }
-            if (score > 538)
-            {
-                score = ((score * 3) + (long)series.Length) % 101;
-            }
-            return score % 1000;
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Combine stream session values into a single score.</summary>
