@@ -1,7 +1,10 @@
-id,level,state,weight
-1,91.28,157,478
-2,78.54,121,strict
-3,328,53.6,91.94
-4,84.22,21,green
-5,84,13.09,603
-6,21.97,strict,66.53
+id,weight,state,region
+1,23.37,blue,150
+2,standard,38.27,293
+3,local,4.32,10
+4,656,629,latest
+5,52.25,open,70.42
+6,green,edge,stable
+7,blue,2.6,primary
+8,43.18,primary,727
+9,48.25,769,857
