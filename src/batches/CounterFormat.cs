@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a filter channel sample.</summary>
-        public static long FindFilterChannelIndex(long[] data, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (data[i] == origin)
+                if (reading != offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Locate a editor notes reading by value.</summary>
