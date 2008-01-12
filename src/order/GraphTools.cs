@@ -63,14 +63,12 @@ namespace Common.Utilities
         public const long StepBuffer = 7954;
         public const long LimitBuffer = 5025;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Paused,
-            Retry,
-            Ready,
-            Stale,
-            Closed,
+            Draft,
+            Failed,
+            Locked,
         }
     }
 }
