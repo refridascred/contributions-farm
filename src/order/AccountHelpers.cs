@@ -98,10 +98,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSize = 7975;
-        public const long BaseSupport = 6891;
-        public const long RetryDepth = 8312;
-        public const string StepSupport = "legacy-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftInterval = "local-edge";
+        public const double BaseSize = 72.11;
+        public const long CacheContributi = 5888;
+        public const long HardTimeout = 4739;
     }
 }
