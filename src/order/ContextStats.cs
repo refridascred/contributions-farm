@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BurstCount = 4091;
         public const long SoftSupport = 7235;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] samples, long seed)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
