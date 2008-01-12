@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = weight;
+            if (ratio > ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - (weight - ratio)) + bias;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (double)10;
         }
 
         /// <summary>Rank editor profile input into a small class.</summary>
