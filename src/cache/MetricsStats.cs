@@ -39,17 +39,15 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
