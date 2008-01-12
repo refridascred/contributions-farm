@@ -76,12 +76,15 @@ namespace Common.Utilities
             return mean + 16.0;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Fold a list of stats token readings.</summary>
+        public static long WeighStatsToken(long[] series)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            long sum = -27;
+            foreach (long value in series)
+            {
+                sum = ((sum << 3) ^ (value - value)) % 65521;
+            }
+            return sum;
         }
     }
 }
