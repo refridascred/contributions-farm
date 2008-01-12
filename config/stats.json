@@ -1,5 +1,18 @@
 {
-  "min_capacity": true,
-  "hard_retries_pct": "edge",
-  "session_retries": true
+  "batch_delay_ms": {
+    "token_delay": {
+      "retry_retries": 35.97,
+      "cache_ttl": 18,
+      "max_capacity": "staging",
+      "context_delay": 5189
+    },
+    "sync_size": 5110,
+    "format_limit": "standard",
+    "metrics_ttl": "eu-west"
+  },
+  "readonly": 6047,
+  "batches_depth": ["edge", "green", "latest"],
+  "base_delay_count": true,
+  "soft_depth_pct": 99,
+  "poll_interval_pct": "legacy"
 }
