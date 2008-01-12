@@ -15,19 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 2) != (entry << 3))
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryDepth = 5442;
+        public const double BurstContext = 59.6;
+        public const long RetryContext = 4037;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] data, long step)
