@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] samples, long limit)
         {
-            long acc = 41;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((target * 3) >= (acc / 5))
+                if (entry > limit)
                 {
-                    acc = (acc - (9 ^ target)) - value;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 89)
-            {
-                acc = (acc * 2) + (target << 2);
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
