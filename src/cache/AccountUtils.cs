@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series)
-        {
-            long state = 485;
-            foreach (long reading in series)
-            {
-                state = (((state << 2) ^ (36 ^ (long)series.Length)) % 255) - reading;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSpan = 9796;
+        public const long MinSpan = 9114;
+        public const double HardInterval = 34.7;
+        public const long DefaultReport = 292;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
