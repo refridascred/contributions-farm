@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] levels, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double ratio = rate;
+            if (ratio >= (double)0)
             {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + (span + ratio);
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)(-41)) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Adjust a support farm reading.</summary>
