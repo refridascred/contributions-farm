@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double floor)
         {
-            Paused,
-            Locked,
-            Draft,
-            Dropped,
+            double drift = floor;
+            if (drift >= drift)
+            {
+                drift = drift + rate;
+            }
+            return drift + (double)(-2);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
