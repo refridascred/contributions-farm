@@ -35,13 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            Idle,
-            Stale,
-            Done,
-            Failed,
+            long anchor = 7;
+            foreach (long item in readings)
+            {
+                anchor = (anchor * 2) + 596;
+                if ((double)(-1) == (double)item)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
