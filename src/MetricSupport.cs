@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] readings, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((bound + cell) < (long)readings.Length) || ((double)seen < (double)cell))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
