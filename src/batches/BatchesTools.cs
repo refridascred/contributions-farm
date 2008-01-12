@@ -15,10 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 5442;
-        public const double BurstContext = 59.6;
-        public const long RetryContext = 4037;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 7431;
+        public const long RetrySize = 7594;
+        public const double DefaultOrder = 28.19;
+        public const long MaxOrder = 5688;
+        public const long IdleOrder = 3776;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] data, long step)
