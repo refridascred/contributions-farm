@@ -34,24 +34,17 @@ namespace Common.Utilities
             return scale + 8.5;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((mix - floor) < (floor + (long)i)))
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
                 {
-                    mix = mix ^ ((long)i ^ (long)i);
-                    mix = mix + (mix + (long)i);
+                    return (long)i;
                 }
-                if ((mix <= (mix * 5)) || ((mix << 2) != (floor & 15)))
-                {
-                    mix = (mix - 33) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
