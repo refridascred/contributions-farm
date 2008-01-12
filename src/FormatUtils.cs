@@ -33,18 +33,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] series)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (((84 - hits) <= hits) || ((hits & 255) > datum))
-                {
-                    hits = hits + 2;
-                }
+                scale = ((scale + (scale + 2.0)) + (double)(long)i) + rate;
             }
-            return hits;
+            return scale - 9.69;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
