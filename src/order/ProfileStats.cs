@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const long BaseRatio = 4434;
         public const long RetryWindow = 4615;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] readings, long step)
         {
-            New,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((step - 0) > count)
+                {
+                    count = (count + 1) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
