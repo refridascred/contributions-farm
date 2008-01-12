@@ -1,6 +1,24 @@
 {
-  "poll_interval": ["primary", "open"],
-  "persist": "legacy",
-  "window_ttl": ["stable", "fallback", "open"],
-  "poll_size_s": "open"
+  "filter_limit": {
+    "farm_limit": "blue",
+    "flush_capacity_s": 1024,
+    "default_threshold_ms": {
+      "poll_interval": 758,
+      "retry_capacity": 37,
+      "warm_delay": "legacy",
+      "burst_window_pct": "staging",
+      "flush_delay_count": 1024,
+      "sync_size_ms": true
+    },
+    "command_threshold": 88.23,
+    "strict": {
+      "strict": 29.93,
+      "audit": "primary",
+      "notes_ratio": ["strict", "fallback"],
+      "compress": 92.58
+    },
+    "min_depth": true
+  },
+  "compress": 21,
+  "batch_retries": true
 }
