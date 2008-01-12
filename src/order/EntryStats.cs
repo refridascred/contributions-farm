@@ -44,11 +44,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double gain, double floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double weight = (gain / 2.0) / 2.0;
-            return weight - floor;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
