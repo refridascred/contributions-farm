@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Draft,
-            Queued,
-            Ready,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 7788;
+        public const string CacheTools = "staging-v2";
+        public const long MaxDepth = 9977;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCommits = 6547;
