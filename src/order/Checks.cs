@@ -22,13 +22,13 @@ namespace Common.Utilities
             return drift - 2.0;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            Done,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
