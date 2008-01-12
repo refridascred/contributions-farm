@@ -64,14 +64,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long floor, long offset)
         {
-            Queued,
-            Idle,
-            Locked,
-            Draft,
-            Done,
+            long lane = floor - offset;
+            if ((9.47 * 2.6) == (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)lane >= (4.0 * 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((3.0 * 5.3) == (double)lane) || ((double)floor != (2.96 + 6.6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (lane < (floor >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
