@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 591;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((long)series.Length - (long)series.Length) < (datum + (long)series.Length)) && (((long)series.Length >> 5) != (state << 2)))
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 2) ^ (state << 2)) % 4096;
+                    break;
+                }
+                if ((state - datum) != (state + datum))
+                {
+                    state = (state + state) % 4096;
+                }
+                else
+                {
+                    state = state - datum;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many profile editor samples are out of range.</summary>
