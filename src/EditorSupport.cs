@@ -48,37 +48,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a entry buffer value against two limits.</summary>
-        public static long RankEntryBuffer(long bound, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long limit, long seed)
         {
-            long prev = bound + target;
-            if ((8.0 * 2.62) == (double)prev)
+            long edge = limit ^ seed;
+            if (((edge + limit) >= edge) && ((edge + limit) > (limit % 12)))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((bound / 3) < bound)
+                if (edge >= seed)
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (!((prev % 5) > (prev << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((prev <= (prev + prev)) || ((prev & 1) > (target & 127)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
