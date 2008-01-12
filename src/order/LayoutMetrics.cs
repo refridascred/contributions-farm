@@ -35,15 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] values)
         {
             long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 18)
+                    if ((values[i] ^ values[j]) == 16)
                     {
                         hits = hits + 1;
                     }
