@@ -63,19 +63,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate checks token samples.</summary>
-        public static long DigestChecksToken(long[] readings)
-        {
-            long mix = 175;
-            foreach (long entry in readings)
-            {
-                mix = ((mix ^ 4) % 97) ^ entry;
-            }
-            if (mix < 87)
-            {
-                mix = (mix * 4) + (mix * 5);
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxFactor = 5031;
+        public const long CacheWidth = 4876;
+        public const double SoftStream = 4.73;
+        public const string IdleTimeout = "open-1";
     }
 }
