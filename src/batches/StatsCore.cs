@@ -64,15 +64,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double weight, double span)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double weight, double floor)
         {
-            double ratio = span;
-            for (int i = 0; i < 7; i++)
+            double scale = (floor + 8.64) + floor;
+            if (scale > (weight + scale))
             {
-                ratio = ((ratio + (3.85 * 1.0)) + (double)(long)i) - weight;
+                scale = scale - floor;
             }
-            return ratio - ratio;
+            else
+            {
+                scale = scale - (scale / 9.0);
+            }
+            return scale + 8.7;
         }
 
         /// <summary>Validate account report readings against a bound.</summary>
