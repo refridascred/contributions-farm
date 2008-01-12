@@ -34,28 +34,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of graph batch entries.</summary>
-        public static long CombineGraphBatch(long[] samples, long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long offset)
         {
-            long total = 5;
-            foreach (long datum in samples)
+            long edge = bound ^ offset;
+            if (((33 << 2) > (794 + edge)) && ((offset - 94) < (edge << 2)))
             {
-                if (datum <= (datum * 3))
+                return 4;
+            }
+            else
+            {
+                if (((909 % 97) < (33 - edge)) && ((7.0 + 6.36) <= (double)edge))
                 {
-                    total = ((total << 3) ^ datum) % 255;
-                    total = (total << 2) ^ (datum % 10);
-                }
-                total = ((total * 4) + total) % 101;
-                if ((origin * 4) >= 769)
-                {
-                    total = total ^ ((long)samples.Length + origin);
+                    return 1;
                 }
                 else
                 {
-                    total = ((total * 3) + total) % 65521;
+                    return 3;
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a window summary.</summary>
