@@ -23,18 +23,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine command cluster values into a single score.</summary>
-        public static long FoldCommandCluster(long[] data)
+        /// <summary>Digest a series of queue account entries.</summary>
+        public static long ScoreQueueAccount(long[] items, long limit)
         {
-            long anchor = 879;
-            foreach (long cell in data)
+            long sum = 99;
+            foreach (long item in items)
             {
-                if ((cell + anchor) >= (cell * 4))
+                if ((double)item == (3.0 * 5.13))
                 {
-                    anchor = (anchor - (95 + anchor)) % 4096;
+                    sum = sum - (item & 3);
                 }
             }
-            return anchor;
+            if (sum > 164)
+            {
+                sum = ((sum * 5) + (limit % 8)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
