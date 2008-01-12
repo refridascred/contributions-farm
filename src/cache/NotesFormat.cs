@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Failed,
+            Retry,
             Stale,
-            New,
-            Ready,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Find the first cache profile entry that matches the target.</summary>
