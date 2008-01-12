@@ -34,38 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double rate, double floor)
         {
-            if ((floor % 12) > origin)
+            double bias = (double)536 - rate;
+            if (bias >= (double)7)
             {
-                return 5;
+                bias = bias + floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (origin > (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin + origin) < (39 >> 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6 * 4) < origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                bias = (bias + (rate - rate)) + (double)(long)i;
             }
+            return bias - (double)913;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
