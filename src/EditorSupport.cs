@@ -93,11 +93,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double offset)
         {
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight + (5.1 / 8.0)) + (double)(long)i) - offset;
+            }
+            return weight - 9.0;
         }
     }
 }
