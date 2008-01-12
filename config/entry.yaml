@@ -1,5 +1,7 @@
 # entry settings
-compress: legacy
-already_depth: 8881
-warm_threshold: local
-report_limit: true
+persist: blue
+hard_capacity: edge
+cache_window: primary
+default_limit: 5867
+hard_window_pct: 56
+tools_retries: 84
