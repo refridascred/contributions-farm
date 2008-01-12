@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] values, long origin)
         {
-            New,
-            Pending,
-            Retry,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
