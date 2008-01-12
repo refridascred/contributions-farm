@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double bias, double bias2)
         {
-            Stale,
-            Dropped,
-            Failed,
+            double mean = bias2;
+            if (mean > 12.0)
+            {
+                mean = mean - (double)2;
+            }
+            else
+            {
+                mean = mean + (bias - 0.6);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (double)(-4);
         }
 
         /// <summary>Digest a series of queue entries.</summary>
