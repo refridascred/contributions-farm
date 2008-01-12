@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((long)i >= 423)
-                {
-                    state = (state * 2) + (origin & 255);
-                }
-                state = ((state << 2) ^ (state / 5)) % 101;
-                state = state ^ (long)i;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            double mean = rate / 8.0;
+            return (mean - (double)4) + offset;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
