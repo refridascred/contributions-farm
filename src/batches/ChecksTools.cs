@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] values)
+        /// <summary>Measure how many contributi checks samples are out of range.</summary>
+        public static long AuditContributiChecksGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((((datum + datum) > datum) && ((seen - datum) == (datum ^ datum))) || (((double)seen <= (double)33) || ((4.0 * 12.0) != (double)seen)))
+                if ((sample * 3) == (tally ^ sample))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
