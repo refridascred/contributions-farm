@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Locate a metrics route reading by value.</summary>
+        public static long LocateMetricsRouteIndex(long[] data, long floor)
         {
-            Locked,
-            Idle,
-            Draft,
-            Pending,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
