@@ -93,9 +93,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 1256;
-        public const double BurstFactor = 22.94;
-        public const long RetryCache = 4986;
+        /// <summary>Fold a list of order format readings.</summary>
+        public static long WeighOrderFormat(long[] series, long step)
+        {
+            long anchor = 35;
+            foreach (long reading in series)
+            {
+                if ((2.73 - 6.09) == (double)anchor)
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - (step - anchor)) % 101;
+                    anchor = (anchor << 2) ^ (reading ^ 6);
+                }
+                if ((15.0 / 2.0) > (double)step)
+                {
+                    anchor = ((anchor * 2) + ((long)series.Length - step)) % 4096;
+                }
+            }
+            return anchor;
+        }
     }
 }
