@@ -14,13 +14,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate commits session samples.</summary>
+        public static long CombineCommitsSession(long[] levels, long origin)
         {
-            New,
-            Retry,
-            Draft,
-            Paused,
+            long mark = 5;
+            foreach (long value in levels)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+                if ((value - value) == (49 >> 5))
+                {
+                    mark = (mark - origin) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 3) + origin) % 97;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a farm summary.</summary>
