@@ -1,9 +1,13 @@
 # support settings
-default_limit: false
-retry_delay: stable
-min_limit_count: open
-hard_retries_pct: stable
-poll_delay_s: 500
-payload_threshold:
-  - standard
-  - eu-west
+readonly:
+  - latest
+  - primary
+  - cached
+  - fallback
+idle_window_count:
+  - 348
+  - 49
+  - 84
+  - 413
+flush_ratio_pct: eu-west
+max_interval: 9181
