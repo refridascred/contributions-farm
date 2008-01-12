@@ -34,11 +34,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardCount = 2985;
-        public const double SoftPayload = 13.34;
-        public const long RetryInterval = 6734;
-        public const string HardPayload = "standard";
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long TallySessionPayloadHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum % 97) <= target)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
