@@ -13,13 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the report status values.</summary>
