@@ -40,24 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double bias, double bias2)
-        {
-            double mean = bias2;
-            if (mean > 12.0)
-            {
-                mean = mean - (double)2;
-            }
-            else
-            {
-                mean = mean + (bias - 0.6);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (double)(-4);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseTimeout = 2621;
+        public const double RetryBatches = 39.05;
+        public const string MaxBatches = "legacy-edge";
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TallyQueue(long[] data, long origin)
