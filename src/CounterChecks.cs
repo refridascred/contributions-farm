@@ -53,18 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally - tally) <= (item + item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Retry,
         }
     }
 }
