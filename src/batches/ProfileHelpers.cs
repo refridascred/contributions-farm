@@ -29,17 +29,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark * 3) + (0 / 3);
-                mark = ((mark * 2) + ((long)i / 3)) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((long)i < (carry / 8))
+                {
+                    carry = carry - offset;
+                }
+                carry = ((carry << 3) ^ (offset - (long)i)) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
