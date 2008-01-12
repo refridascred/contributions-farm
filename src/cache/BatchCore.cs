@@ -49,18 +49,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] series, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)seed < (3.57 * 3.46))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                acc = ((acc << 2) ^ (long)i) % 4096;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
     }
 }
