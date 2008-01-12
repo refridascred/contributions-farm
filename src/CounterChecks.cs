@@ -43,12 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetrySpan = 7642;
-        public const long StepEditor = 534;
-        public const long MinTimeout = 2612;
-        public const string BaseLevel = "strict-edge";
-        public const double LimitInterval = 0.52;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((datum * 2) < datum) || (6.78 >= (double)seed)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
