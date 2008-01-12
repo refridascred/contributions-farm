@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] values, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (tally <= ((-47) >> 2))
+                if (value != seed)
                 {
-                    tally = ((tally + 1) ^ entry) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Accumulate filter samples.</summary>
