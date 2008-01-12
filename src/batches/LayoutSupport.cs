@@ -57,11 +57,19 @@ namespace Common.Utilities
         public const double RetrySize = 45.71;
         public const long CacheLevel = 1014;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long CombineGraphMetric(long[] samples)
         {
-            double weight2 = weight * 4.1;
-            return weight2 - bias;
+            long score = 1;
+            foreach (long value in samples)
+            {
+                score = score - (value & 31);
+            }
+            if (score < 72)
+            {
+                score = ((score * 5) + (score / 6)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a context entry.</summary>
