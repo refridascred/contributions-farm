@@ -77,19 +77,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading <= offset)
+                if (cell < 75)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
