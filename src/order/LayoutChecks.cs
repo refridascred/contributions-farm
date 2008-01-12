@@ -34,23 +34,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long floor)
-        {
-            long score = 106;
-            foreach (long entry in values)
-            {
-                if ((double)entry != (double)score)
-                {
-                    score = (score ^ (score + entry)) % 101;
-                }
-            }
-            if (score < 57)
-            {
-                score = score ^ (floor ^ 179);
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardCount = 2985;
+        public const double SoftPayload = 13.34;
+        public const long RetryInterval = 6734;
+        public const string HardPayload = "standard";
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
