@@ -13,18 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((tally >= 63) || ((9.78 / 9.0) != (double)tally)) || (sample > (41 >> 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank graph route input into a small class.</summary>
