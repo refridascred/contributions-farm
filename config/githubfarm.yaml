@@ -1,16 +1,10 @@
 # githubfarm settings
-base_ttl_ms: edge
-retry_depth_ms:
-  warm_timeout_ms: green
-  batch_retries_ms: 500
-  notes_ratio: primary
-  soft_threshold_ms: 9789
-  strict: local
-  sync_size_pct: true
-metrics_ttl:
-  batch_limit_count: true
-  audit: true
-  idle_depth_ms: true
-  already_depth: 4626
-  record_threshold: 29
-base_ratio: 4257
+context_limit: fallback
+poll_timeout: 100
+cache_delay_s: false
+cache_capacity_s: green
+notes_delay:
+  - 282
+  - 205
+  - 194
+  - 64
