@@ -39,19 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] values, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double gain = floor;
+            if (gain < (scale / 7.0))
             {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (double)80;
             }
-            return ok;
+            return gain - (floor - scale);
         }
 
         /// <summary>Roll a context already counter forward.</summary>
