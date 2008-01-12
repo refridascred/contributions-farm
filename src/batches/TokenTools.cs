@@ -23,15 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order batch entries.</summary>
-        public static long TallyOrderBatch(long[] values, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 28;
-            foreach (long sample in values)
-            {
-                state = (((state ^ (198 % 16)) % 4096) - sample) + limit;
-            }
-            return state % 4096;
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
