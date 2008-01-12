@@ -1,6 +1,10 @@
-id,state,count
-1,legacy,14.56
-2,2.03,3.31
-3,local,edge
-4,28.77,453
-5,710,blue
+id,ratio,active
+1,cached,strict
+2,432,eu-west
+3,local,strict
+4,645,49.79
+5,470,309
+6,208,stable
+7,859,744
+8,136,266
+9,276,standard
