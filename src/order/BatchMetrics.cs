@@ -27,17 +27,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] series, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix << 2) ^ target) % 97;
-                mix = ((mix * 2) + 154) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((cell * 3) >= matches)
+                {
+                    matches = (matches + 2) - target;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
