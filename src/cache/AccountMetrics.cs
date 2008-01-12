@@ -31,18 +31,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long floor, long step)
         {
-            long mark = 817;
-            foreach (long item in readings)
+            if (step > ((-8) / 5))
             {
-                if ((item ^ limit) > (2 + mark))
+                return 7;
+            }
+            else
+            {
+                if (step >= floor)
                 {
-                    mark = ((mark * 3) + (item & 15)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
