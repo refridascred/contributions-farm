@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 8462;
         public const long DefaultMetrics = 9810;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Paused,
-            Dropped,
-            Pending,
-            Ready,
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
