@@ -11,25 +11,21 @@ namespace Common.Utilities
         public const long SoftTools = 5082;
         public const long MinTools = 8093;
 
-        /// <summary>Rank payload metrics input into a small class.</summary>
-        public static long BucketPayloadMetrics(long limit, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long bound = limit ^ step;
-            if ((limit > 15) || ((limit - step) >= (bound >> 3)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + limit) >= (143 - 41))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
