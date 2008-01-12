@@ -23,31 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank command order input into a small class.</summary>
-        public static long RankCommandOrder(long origin, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            if (((double)origin <= (7.9 * 5.4)) && ((origin << 2) != (origin % 3)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed > (seed * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (46 > (seed ^ seed))
+                    if ((levels[i] + levels[j]) == 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the already mode values.</summary>
