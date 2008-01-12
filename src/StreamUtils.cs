@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] series, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((885 + seen) <= seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 3) ^ datum) - offset;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a channel stats.</summary>
