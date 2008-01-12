@@ -1,5 +1,5 @@
 {
-  "enabled": ["latest", "staging", "fallback"],
-  "poll_limit_pct": true,
-  "strict": 500
+  "hard_ratio_s": ["cached", "strict"],
+  "counter_delay": 72.49,
+  "cache_ttl": false
 }
