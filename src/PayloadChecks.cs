@@ -67,9 +67,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitWidth = 7673;
-        public const long MinFactor = 5037;
-        public const long BatchWidth = 7824;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] data, long floor)
+        {
+            long carry = 5;
+            foreach (long sample in data)
+            {
+                carry = ((((carry << 3) ^ ((long)data.Length & 255)) % 97) ^ sample) + floor;
+            }
+            return carry;
+        }
     }
 }
