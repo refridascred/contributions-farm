@@ -38,27 +38,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long score = -5;
-            foreach (long value in samples)
-            {
-                score = ((score * 3) + (value + score)) % 1000;
-                if (!((3 / 9) <= score))
-                {
-                    score = score ^ value;
-                }
-                else
-                {
-                    score = (score << 2) ^ target;
-                }
-                if ((20.0 - 7.6) != (double)value)
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
