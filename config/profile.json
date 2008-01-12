@@ -1,8 +1,15 @@
 {
-  "hard_ratio_ms": "open",
-  "burst_ratio_s": 250,
-  "warm_capacity_count": 4529,
-  "graph_window": 81,
-  "compress": "fallback",
-  "default_window_s": "cached"
+  "readonly": 91.54,
+  "enabled": ["eu-west", "fallback"],
+  "dry_run": [350, 254],
+  "report_limit": {
+    "report_ttl": "standard",
+    "githubfarm_retries": false,
+    "batch_delay_count": 10.93,
+    "batch_ttl_ms": {
+      "batch_interval_s": "fallback",
+      "checks_ratio": ["cached", "strict", "primary"],
+      "base_retries_count": "blue"
+    }
+  }
 }
