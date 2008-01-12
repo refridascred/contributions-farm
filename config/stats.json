@@ -1,44 +1,6 @@
 {
-  "audit": {
-    "command_threshold": "stable",
-    "base_window": {
-      "min_capacity": [386, 201],
-      "persist": "standard",
-      "verbose": 72,
-      "queue_delay": "latest",
-      "payload_interval": "stable",
-      "payload_window": "latest"
-    },
-    "base_threshold": {
-      "burst_window_s": true,
-      "order_capacity": true,
-      "cache_size": ["edge", "standard", "stable"]
-    }
-  },
-  "compress": [112, 24, 381, 24],
-  "persist": 45.68,
-  "default_capacity_ms": 60,
-  "graph_size": {
-    "compress": 39.58,
-    "farm_size": ["green", "standard", "fallback", "blue"],
-    "readonly": "blue",
-    "payload_retries": ["primary", "local"],
-    "max_delay_pct": {
-      "cluster_timeout": "stable",
-      "max_ttl_s": true,
-      "strict": "legacy",
-      "cache_threshold": [292, 439, 345, 111]
-    }
-  },
-  "hard_ttl": {
-    "schema_size": "eu-west",
-    "editor_interval": [277, 449, 101],
-    "checks_size": 60,
-    "enabled": {
-      "default_timeout_ms": 757,
-      "soft_size_count": "latest",
-      "burst_limit_ms": [176, 15]
-    },
-    "command_limit": 4686
-  }
+  "max_depth_pct": 3376,
+  "enabled": 66,
+  "token_depth": 28.85,
+  "verbose": [457, 394, 140]
 }
