@@ -35,18 +35,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter channel samples are out of range.</summary>
-        public static long CountFilterChannelMatches(long[] values, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long state = 99;
+            foreach (long entry in readings)
             {
-                if ((seen & 15) >= offset)
+                if ((entry + state) <= entry)
                 {
-                    seen = (seen + 1) - datum;
+                    break;
+                }
+                else
+                {
+                    state = ((state * 4) + (entry << 3)) % 65521;
+                    state = ((state * 3) + state) % 97;
+                }
+                if ((entry + entry) >= (state + entry))
+                {
+                    state = (state + (state + state)) % 1000;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit route report readings against a rule.</summary>
