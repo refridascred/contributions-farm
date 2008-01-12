@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 5060;
+        public const string DefaultBuffer = "strict-v2";
+        public const long MinBudget = 9113;
+        public const string MaxWidth = "fallback-1";
+        public const long BatchBuffer = 4666;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long FindBatchIndex(long[] series, long floor)
