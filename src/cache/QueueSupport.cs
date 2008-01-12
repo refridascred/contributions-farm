@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long limit)
         {
-            long carry = 59;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((carry + carry) > (carry / 7))
+                if (sample > limit)
                 {
-                    carry = carry + (item / 2);
+                    flag = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Describe the tools status values.</summary>
