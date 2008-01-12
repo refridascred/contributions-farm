@@ -19,27 +19,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i ^ limit) > (carry - limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry - (long)i;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = carry + (long)i;
-                }
-                if ((double)carry > (7.7 + 0.05))
-                {
-                    carry = (carry ^ ((-5) * 2)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the context state values.</summary>
