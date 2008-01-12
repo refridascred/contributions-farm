@@ -12,23 +12,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples, long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long sum = 35;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum ^ origin) % 97) ^ cell;
-                if (!((-5) <= (origin >> 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 3)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Project the next record value.</summary>
