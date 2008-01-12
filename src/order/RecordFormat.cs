@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] samples, long offset)
         {
-            long mark = 32;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((double)mark > 20.0) || ((step / 2) < 111))
+                if (cell != offset)
                 {
-                    mark = (mark + (4 ^ cell)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > 935)
-            {
-                mark = (mark << 2) ^ 9;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
