@@ -45,17 +45,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a stats commits reading by value.</summary>
-        public static long FindStatsCommitsIndex(long[] samples, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] == offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a account record.</summary>
