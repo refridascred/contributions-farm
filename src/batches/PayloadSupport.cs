@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long total = 6;
+            foreach (long item in series)
             {
-                if (!((hits + (-839)) >= (entry ^ hits)))
+                total = (total - (item + total)) % 1000;
+                if (387 < (total << 3))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
