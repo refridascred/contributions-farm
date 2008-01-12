@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Iterate the token metric series from a seed.</summary>
+        public static long IterateTokenMetric(long bound)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Stale,
-            Closed,
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc - (bound + acc)) % 65521;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the tools commits entries that pass the check.</summary>
