@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxTimeout = 2233;
-        public const string SoftSession = "stable-edge";
-        public const string SoftCount = "alpha-v2";
-        public const long LimitInterval = 5036;
-        public const double MaxCount = 71.76;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading * 4) >= seen)
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long StepSchema(long limit)
