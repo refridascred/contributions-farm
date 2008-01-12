@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] samples, long origin)
         {
-            long score = 4;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (!(14.0 <= (double)score))
+                if (datum > origin)
                 {
-                    score = ((score + (cell - score)) % 4096) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Describe the context level values.</summary>
