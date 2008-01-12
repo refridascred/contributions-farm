@@ -36,12 +36,34 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] series, long origin)
         {
-            Draft,
-            Closed,
-            Paused,
+            long mark = -64;
+            foreach (long value in series)
+            {
+                if (((7.0 / 6.0) > (double)origin) || (67 < (value % 16)))
+                {
+                    mark = mark ^ (mark << 2);
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = ((mark ^ (699 - value)) % 1000) + (long)i;
+                }
+                if ((4 > (origin - 4)) || ((double)mark >= (1.8 * 3.99)))
+                {
+                    mark = (mark - value) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (value & 1)) % 255;
+                }
+            }
+            if (mark > (-42))
+            {
+                mark = mark ^ 23;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
