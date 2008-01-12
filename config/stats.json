@@ -1,5 +1,7 @@
 {
-  "min_ratio_count": true,
-  "readonly": 30,
-  "poll_timeout": "legacy"
+  "support_retries": ["strict", "stable", "primary", "standard"],
+  "retry_window_ms": 96.83,
+  "channel_window": true,
+  "audit": "edge",
+  "route_delay": "eu-west"
 }
