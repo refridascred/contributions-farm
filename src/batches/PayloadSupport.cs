@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] readings, long origin)
         {
-            long mix = 94;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((9 & 127) >= (item ^ 50))
+                if ((double)matches > (1.0 * 6.7))
                 {
-                    mix = (mix * 5) + mix;
-                    continue;
+                    matches = ((matches + 3) + cell) - origin;
                 }
-                mix = mix - (mix % 24);
-                mix = (mix ^ (mix + mix)) % 101;
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Hold a account record.</summary>
