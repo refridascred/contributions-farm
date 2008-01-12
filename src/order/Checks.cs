@@ -12,10 +12,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheDepth = 3237;
-        public const long IdleInterval = 6995;
-        public const double DefaultBuffer = 15.21;
+        /// <summary>Adjust a filter githubfarm reading.</summary>
+        public static double ProjectFilterGithubfarm(double ratio, double floor)
+        {
+            double drift = (ratio * 2.8) - (double)(-95);
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift - 2.0;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinFactor = 7052;
