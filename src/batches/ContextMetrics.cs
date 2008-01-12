@@ -64,19 +64,17 @@ namespace Common.Utilities
             return gain2 - (bias * 11.0);
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double bias, double bias2)
+        /// <summary>Look up the position of a profile buffer sample.</summary>
+        public static long FindProfileBufferIndex(long[] values, long offset)
         {
-            double mean = bias + (double)7;
-            if (mean > 6.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (mean + 20.0);
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (8.1 * 20.0);
-            }
-            return mean + bias2;
+            return -1;
         }
     }
 }
