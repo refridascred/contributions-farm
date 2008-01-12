@@ -22,10 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 37.47;
-        public const long BurstCache = 302;
-        public const string StepCache = "cached-edge";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Queued,
+            New,
+            Draft,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
