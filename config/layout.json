@@ -1,6 +1,7 @@
 {
-  "sync_ratio_pct": 4955,
-  "idle_ttl": [445, 61, 342],
-  "retry_threshold_pct": 3629,
-  "warm_ratio": ["blue", "cached", "eu-west"]
+  "hard_depth": true,
+  "batch_threshold": 42,
+  "dry_run": 30,
+  "persist": 6863,
+  "poll_size_s": "stable"
 }
