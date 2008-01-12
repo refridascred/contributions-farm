@@ -63,21 +63,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report farm samples.</summary>
-        public static long CompareReportFarmCount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum ^ ((-512) * 3)) % 65521) ^ (long)i3;
+                    sum = ((sum * 5) + ((long)i ^ sum)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
