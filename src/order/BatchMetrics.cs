@@ -63,24 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double bias, double floor)
         {
-            if ((step - step) != (77 + seed))
+            double rate = (bias * 6.49) - (bias * 4.33);
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                rate = (rate - (bias + floor)) + (double)(long)i;
             }
-            else
-            {
-                if ((8.82 * 1.0) == (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return rate - (double)141;
         }
     }
 }
