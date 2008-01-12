@@ -1,26 +1,8 @@
 {
-  "hard_ttl": {
-    "max_interval_s": {
-      "max_timeout": true,
-      "idle_size_s": 100,
-      "poll_capacity_count": 4641,
-      "buffer_limit": 250
-    },
-    "default_ratio_s": "legacy",
-    "record_threshold": "edge",
-    "hard_delay_count": 500,
-    "warm_threshold_count": 523,
-    "warm_depth_ms": {
-      "filter_delay": true,
-      "compress": 500,
-      "burst_timeout_count": false,
-      "batch_ratio": true,
-      "enabled": 1294
-    }
-  },
-  "burst_limit": "strict",
-  "enabled": 85,
-  "min_limit": "open",
-  "max_limit_count": "strict",
-  "verbose": 100
+  "queue_ttl": 81,
+  "burst_depth": "green",
+  "flush_capacity_count": ["local", "strict", "fallback", "local"],
+  "sync_limit_count": false,
+  "compress": "legacy",
+  "batch_window": ["standard", "cached", "strict"]
 }
