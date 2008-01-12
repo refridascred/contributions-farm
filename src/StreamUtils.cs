@@ -41,14 +41,11 @@ namespace Common.Utilities
         public const long StepContext = 6656;
         public const string MinContext = "primary";
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 74.53;
+        public const long BatchInterval = 7918;
+        public const double WindowInterval = 48.61;
+        public const string SoftStream = "fallback-edge";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] series, long step)
