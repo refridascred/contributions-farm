@@ -26,12 +26,18 @@ namespace Common.Utilities
             return drift - (drift * 4.0);
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count & 15) > count)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
     }
 }
