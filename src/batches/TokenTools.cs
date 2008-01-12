@@ -23,21 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric notes entries.</summary>
-        public static long FoldMetricNotes(long[] items)
+        /// <summary>Digest a series of order batch entries.</summary>
+        public static long TallyOrderBatch(long[] values, long limit)
         {
-            long anchor = 633;
-            foreach (long reading in items)
+            long state = 28;
+            foreach (long sample in values)
             {
-                if ((reading - reading) != (reading >> 4))
-                {
-                    anchor = (anchor ^ (anchor - 4)) % 101;
-                    anchor = (anchor + (anchor - (-57))) % 4096;
-                }
-                anchor = (anchor + (reading << 1)) % 101;
-                anchor = anchor + (reading - anchor);
+                state = (((state ^ (198 % 16)) % 4096) - sample) + limit;
             }
-            return anchor;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
