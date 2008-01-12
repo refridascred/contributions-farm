@@ -58,12 +58,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Look up the position of a account session sample.</summary>
+        public static long LocateAccountSessionIndex(long[] values, long floor)
         {
-            Synced,
-            New,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
