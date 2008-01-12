@@ -23,12 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Derive the next channel notes value from a seed.</summary>
+        public static long SeriesChannelNotes(long offset)
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (anchor + (offset + offset)) + (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a account checks value against two limits.</summary>
