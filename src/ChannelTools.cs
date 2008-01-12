@@ -28,15 +28,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 3766;
+        public const long MaxRecord = 4393;
+        public const double BatchDepth = 11.69;
     }
 }
