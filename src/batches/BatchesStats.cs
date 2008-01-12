@@ -44,11 +44,17 @@ namespace Common.Utilities
         public const long CacheBudget = 6864;
         public const long WindowBatches = 8732;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long origin)
         {
-            double bias = span - (span / 6.0);
-            return bias - scale;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
