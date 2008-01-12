@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long BatchInterval = 2494;
         public const long CacheSession = 1651;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] samples, long bound)
         {
-            Synced,
-            Retry,
-            Failed,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally ^ tally) >= (86 / 8))
+                {
+                    tally = ((tally + 3) ^ sample) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
