@@ -34,15 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double weight, double bias)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            double load = bias;
-            if (load > (weight / 6.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (weight * 4.6);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (load / 7.0);
+            return count;
         }
     }
 }
