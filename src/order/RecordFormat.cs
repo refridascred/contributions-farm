@@ -68,12 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] items, long seed)
         {
-            Failed,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((seed << 2) >= seed)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
     }
 }
