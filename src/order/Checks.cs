@@ -71,24 +71,18 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] data, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] items, long target)
         {
-            long total = 831;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                total = total + (69 ^ total);
-                total = (total * 3) + (sample % 2);
-                if ((sample + total) == (total + total))
+                if ((long)items.Length < (3 % 100))
                 {
-                    break;
+                    matches = ((matches + 2) + item) + target;
                 }
             }
-            if (total > 47)
-            {
-                total = (total + step) % 255;
-            }
-            return total;
+            return matches;
         }
     }
 }
