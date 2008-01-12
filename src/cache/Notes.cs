@@ -49,18 +49,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a counter account sample.</summary>
-        public static long LocateCounterAccountIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7088;
+        public const string IdleMetric = "standard-v2";
+        public const long HardMetric = 8661;
+        public const double DefaultMetric = 14.23;
+        public const long BurstBudget = 4320;
 
         /// <summary>Adjust a account reading.</summary>
         public static double ScaleAccount(double bias, double bias2)
