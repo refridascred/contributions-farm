@@ -33,15 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double rate, double bias)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale + (scale + 2.0)) + (double)(long)i) + rate;
-            }
-            return scale - 9.69;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
