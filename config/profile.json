@@ -1,12 +1,12 @@
 {
-  "default_limit_count": 100,
-  "compress": 100,
-  "min_retries": {
-    "dry_run": "legacy",
-    "batch_delay_pct": "latest",
-    "soft_capacity_ms": ["open", "eu-west", "cached"],
-    "base_limit": "legacy",
-    "report_capacity": 132
+  "sync_threshold_count": {
+    "idle_depth": 92,
+    "context_interval": "strict",
+    "poll_delay_pct": "latest",
+    "persist": 38.83,
+    "verbose": ["staging", "strict", "green", "edge"]
   },
-  "enabled": true
+  "hard_depth": "fallback",
+  "retry_capacity_pct": 73.36,
+  "batch_retries": 49.13
 }
