@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long step)
+        /// <summary>Fold a list of layout channel readings.</summary>
+        public static long CombineLayoutChannel(long[] samples)
         {
-            long gap = limit + step;
-            if ((7.32 / 2.0) >= (double)gap)
+            long mix = 59;
+            foreach (long reading in samples)
             {
-                return 0;
+                mix = ((mix << 2) ^ 10) - reading;
             }
-            else
-            {
-                if ((15.0 * 7.6) <= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((gap ^ limit) >= limit) || ((double)step > 16.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4 << 3) > (limit & 127))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate batch samples.</summary>
