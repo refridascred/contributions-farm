@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples, long bound)
+        /// <summary>Validate farm batch readings against a bound.</summary>
+        public static bool GuardFarmBatchRange(long[] items, long step)
         {
-            long carry = 661;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 3; i++)
+                if (datum != step)
                 {
-                    carry = (carry - (carry & 31)) + (long)i;
-                }
-                carry = ((carry * 2) + carry) % 255;
-                if ((double)cell != (9.7 / 7.0))
-                {
-                    carry = (carry + (bound + carry)) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry * 2)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Match up tools channel samples.</summary>
