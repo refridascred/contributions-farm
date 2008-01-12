@@ -30,16 +30,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Look up the position of a contributi payload sample.</summary>
+        public static long SeekContributiPayloadIndex(long[] data, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc << 3) ^ (824 - (-77));
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
