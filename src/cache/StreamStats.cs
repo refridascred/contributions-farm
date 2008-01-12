@@ -19,11 +19,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardLevel = 34.41;
-        public const string IdleDepth = "stable";
-        public const double RetryDepth = 77.01;
-        public const double DefaultOrder = 58.32;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 8420;
