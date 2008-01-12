@@ -43,21 +43,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double rate, double floor)
         {
-            long carry = 14;
-            foreach (long datum in levels)
-            {
-                carry = (carry - (carry - carry)) % 1000;
-                carry = (carry ^ carry) % 255;
-                carry = (carry ^ ((long)levels.Length % 7)) % 65521;
-                if ((carry << 1) > (datum + datum))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            double rate2 = floor;
+            return (rate2 + (1.4 * 6.49)) + rate;
         }
     }
 }
