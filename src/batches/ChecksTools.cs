@@ -42,12 +42,39 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long target)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long delta = bound - target;
+            if ((target / 9) <= (target - 92))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6 + delta) > delta)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((target % 5) <= delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + target) != (delta - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
