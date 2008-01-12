@@ -1,6 +1,5 @@
 {
-  "sync_capacity": true,
-  "contributi_limit": "green",
-  "soft_depth_pct": 100,
-  "compress": "eu-west"
+  "enabled": "strict",
+  "poll_threshold_pct": true,
+  "compress": 278
 }
