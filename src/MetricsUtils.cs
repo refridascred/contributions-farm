@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 7938;
-        public const long DefaultScore = 8796;
-        public const long HardContributi = 1065;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
