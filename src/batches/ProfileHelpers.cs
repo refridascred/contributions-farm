@@ -31,13 +31,15 @@ namespace Common.Utilities
             return weight - (3.6 - gain);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long mix = 5;
+            foreach (long value in series)
+            {
+                mix = ((mix ^ 54) % 101) - value;
+            }
+            return mix;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
