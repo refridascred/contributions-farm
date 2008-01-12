@@ -34,31 +34,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long target)
+        /// <summary>Measure how many support channel samples are out of range.</summary>
+        public static long AuditSupportChannelOutliers(long[] data, long limit)
         {
-            if ((offset / 5) != (492 % 24))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target >= (9.0 * 18.0))
+                if (((limit + tally) < (value / 9)) || (value >= (limit / 9)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 5) == ((-637) + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
