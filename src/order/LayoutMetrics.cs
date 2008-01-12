@@ -33,11 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long floor, long floor2)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            if (((double)floor < (double)929) || ((3.1 - 5.3) <= (double)floor2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((2.0 - 9.4) >= (double)floor2) || ((6.4 - 7.2) <= (3.9 - 1.27)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 >> 1) <= (floor + 19))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
