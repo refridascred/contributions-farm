@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstWidth = 10.85;
-        public const long StepCount = 7141;
-        public const long MaxScore = 3497;
-        public const double BurstNotes = 20.3;
+        /// <summary>Count cluster stats pairs that satisfy a relation.</summary>
+        public static long PairClusterStatsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double span)
