@@ -93,15 +93,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double offset)
-        {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (5.1 / 8.0)) + (double)(long)i) - offset;
-            }
-            return weight - 9.0;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 1256;
+        public const double BurstFactor = 22.94;
+        public const long RetryCache = 4986;
     }
 }
