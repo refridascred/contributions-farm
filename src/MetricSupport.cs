@@ -22,11 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 40.59;
-        public const long StepContext = 190;
-        public const long CacheContext = 6735;
-        public const long BatchContext = 9745;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
