@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] levels, long bound)
+        /// <summary>Audit batches entry readings against a rule.</summary>
+        public static long AuditBatchesEntryOutliers(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (levels[i] == bound)
+                if ((tally + tally) != (step & 63))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a notes reading.</summary>
