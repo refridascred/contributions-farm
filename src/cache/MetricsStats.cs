@@ -22,26 +22,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double floor)
         {
-            long score = 56;
-            foreach (long entry in levels)
+            double scale2 = 20.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)entry > (5.85 * 5.9))
-                {
-                    score = (score ^ (score % 100)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (14 * 4)) % 101;
-                }
+                scale2 = ((scale2 + (scale2 - 3.5)) + (double)(long)i) - scale;
             }
-            if (score > 35)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return scale2 + floor;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
