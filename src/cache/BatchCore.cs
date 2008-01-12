@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double bias)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double scale2 = (double)(9 - 3);
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (scale * 1.12)) - (double)(long)i;
-            }
-            return scale2 - bias;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
