@@ -59,5 +59,19 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Count the entry buffer entries that pass the check.</summary>
+        public static long CountEntryBufferMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum << 3) <= (datum / 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
