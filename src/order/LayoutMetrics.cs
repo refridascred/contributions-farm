@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] data, long bound)
         {
-            Retry,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (bound >= 6)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route mode values.</summary>
