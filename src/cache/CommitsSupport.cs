@@ -14,13 +14,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long origin)
         {
-            Done,
-            Pending,
-            Active,
-            Ready,
+            long prev = seed + origin;
+            if (prev <= (seed ^ prev))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.7 / 9.0) == (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - seed) > (origin >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin % 16) > (origin * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
