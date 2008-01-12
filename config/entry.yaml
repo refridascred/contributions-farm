@@ -1,5 +1,18 @@
 # entry settings
-idle_ratio_count: cached
-default_depth: false
-soft_interval_s: 24
-dry_run: 58
+poll_ttl_ms: 8909
+default_limit_count: 8441
+base_size_pct: 2865
+hard_retries_ms:
+  min_ttl_count:
+    persist:
+      - staging
+      - eu-west
+      - latest
+      - cached
+    hard_ttl_count: 28
+    checks_retries: 15
+    warm_retries_ms: false
+    idle_window: edge
+    max_size_s: 500
+  hard_delay_pct: 9.81
+  sync_limit: eu-west
