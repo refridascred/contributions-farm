@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Accumulate stats token samples.</summary>
+        public static long ScoreStatsToken(long[] samples, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = 525;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                sum = (((sum - 2) % 4096) - entry) - floor;
             }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Scale a cluster report figure with a bias.</summary>
