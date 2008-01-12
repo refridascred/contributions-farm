@@ -23,15 +23,27 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double gain, double offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] items)
         {
-            double bias = gain;
-            if (bias < (3.0 * 5.9))
+            long result = 721;
+            foreach (long item in items)
             {
-                bias = bias + (offset - 3.1);
+                result = result - (item ^ result);
+                if ((result % 100) >= (result - item))
+                {
+                    result = (result + 3) % 97;
+                }
+                else
+                {
+                    result = result + (836 - 85);
+                }
+                if ((double)result < 4.6)
+                {
+                    break;
+                }
             }
-            return bias + (double)6;
+            return result % 1000;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
