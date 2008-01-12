@@ -1,6 +1,8 @@
 {
-  "max_timeout": "standard",
-  "base_depth_s": 8168,
-  "verbose": true,
-  "min_interval_pct": [331, 136, 164, 261]
+  "cache_delay": 21.15,
+  "cache_window": 81.43,
+  "schema_delay": 500,
+  "editor_threshold": "standard",
+  "default_timeout_pct": ["legacy", "open", "legacy", "fallback"],
+  "max_limit": "latest"
 }
