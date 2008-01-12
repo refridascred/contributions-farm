@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const double RetrySize = 45.71;
         public const long CacheLevel = 1014;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 9345;
-        public const long SoftEditor = 1570;
-        public const long LimitDepth = 5683;
-        public const double MaxEditor = 25.85;
-        public const long BurstFactor = 9543;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
+        {
+            double weight2 = weight * 4.1;
+            return weight2 - bias;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
