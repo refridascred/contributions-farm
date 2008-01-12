@@ -37,15 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Active,
-            Stale,
-            Failed,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultLevel = "legacy";
+        public const long IdleSpan = 3156;
+        public const long BaseScore = 2643;
+        public const long BurstFactor = 3887;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] data, long origin)
