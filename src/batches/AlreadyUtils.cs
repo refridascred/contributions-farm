@@ -54,13 +54,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels, long floor)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            long acc = -1;
+            foreach (long value in levels)
+            {
+                if ((value / 3) == (acc >> 5))
+                {
+                    acc = (acc - (acc % 64)) % 255;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = (acc ^ (floor / 4)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Match up command samples.</summary>
