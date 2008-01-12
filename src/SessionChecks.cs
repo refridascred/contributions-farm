@@ -25,26 +25,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = 6;
-            foreach (long item in values)
-            {
-                if ((bound % 5) <= bound)
-                {
-                    mark = ((mark << 2) ^ (bound & 127)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (item << 1)) % 255;
-                }
-            }
-            if (mark > 46)
-            {
-                mark = (mark ^ (bound - mark)) % 1000;
-            }
-            return mark % 4096;
+            Synced,
+            Retry,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the already mode values.</summary>
