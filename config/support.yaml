@@ -1,5 +1,38 @@
 # support settings
-burst_timeout_count: fallback
-audit: false
-base_size: 250
-graph_threshold: 8
+poll_depth_count:
+  idle_capacity_pct:
+    - 201
+    - 29
+    - 106
+    - 97
+  schema_depth: 2000
+  default_threshold_ms: open
+  verbose:
+    base_retries_pct:
+      - 160
+      - 156
+      - 364
+    enabled:
+      - edge
+      - blue
+    retry_ratio: primary
+    persist: staging
+    window_capacity: 8770
+graph_ratio:
+  poll_window:
+    compress: 60
+    audit: 97.9
+    batch_ttl_s: true
+    sync_ratio_s: false
+    min_window: 4.81
+  sync_threshold_pct: 60
+  batch_threshold: latest
+  default_capacity_ms: strict
+min_limit_pct: 60
+dry_run: 44.73
+retry_ratio_count: local
+burst_threshold_ms:
+  strict: false
+  burst_interval_s: strict
+  sync_interval_pct: latest
+  dry_run: false
