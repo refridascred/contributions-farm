@@ -29,19 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate record already readings against a bound.</summary>
-        public static bool ValidateRecordAlreadyBounds(long[] levels, long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit githubfarm layout readings against a rule.</summary>
