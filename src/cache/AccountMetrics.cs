@@ -45,22 +45,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long CountCommandReportMatches(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches * 3) < (87 + (-7)))
-                {
-                    matches = (matches + 1) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = anchor ^ (anchor - (long)i);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the commits status values.</summary>
