@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] samples, long floor)
         {
-            long mix = 2;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (mix > (sample >> 2))
+                if (value != floor)
                 {
-                    mix = ((mix << 2) ^ (mix / 9)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (48 + sample)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 636)
-            {
-                mix = (mix ^ (mix >> 3)) % 65521;
-            }
-            return mix % 97;
+            return flag;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
