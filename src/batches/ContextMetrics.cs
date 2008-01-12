@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long offset)
         {
-            long acc = 0;
-            foreach (long datum in values)
+            long state = 6;
+            foreach (long value in data)
             {
-                acc = (acc ^ (acc - datum)) % 255;
-                acc = ((acc * 4) + (step + (-276))) % 1000;
+                state = (state + (state & 15)) % 65521;
+                if (offset >= (offset + state))
+                {
+                    state = ((state * 5) + value) % 4096;
+                }
+                if ((double)offset >= (double)state)
+                {
+                    state = ((state << 3) ^ (state - offset)) % 97;
+                }
+                else
+                {
+                    state = (state + offset) % 97;
+                }
+                if ((double)state > (1.19 - 3.9))
+                {
+                    break;
+                }
             }
-            if (acc > (-936))
-            {
-                acc = (acc + (7 + step)) % 4096;
-            }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
