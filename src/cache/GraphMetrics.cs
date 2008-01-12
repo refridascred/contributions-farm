@@ -43,19 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long limit)
+        /// <summary>Measure how many route editor samples are out of range.</summary>
+        public static long CountRouteEditorGaps(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (sample != limit)
+                if ((reading + offset) >= (reading % 3))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
