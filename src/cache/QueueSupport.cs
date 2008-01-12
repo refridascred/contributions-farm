@@ -39,11 +39,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheSpan = "cached-1";
-        public const long MaxToken = 9126;
-        public const long DefaultToken = 5271;
-        public const long SoftToken = 8373;
-        public const string StepInterval = "cached-v2";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long limit)
+        {
+            long edge = target + limit;
+            if (((target ^ 81) >= target) || ((limit / 6) < target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) == (70 - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)target == (double)edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((limit + limit) <= (edge - target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
