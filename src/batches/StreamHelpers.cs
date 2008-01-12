@@ -73,14 +73,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] items, long limit)
         {
-            Done,
-            Failed,
-            Paused,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((double)count == (4.81 * 20.0)) && (limit > (reading / 6)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
