@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double bias)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long limit)
         {
-            double drift = (double)(6 & 63);
-            if (drift < ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + (8.0 * 9.5)) + bias;
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 1.96) + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
