@@ -29,13 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Closed,
-            Failed,
-            Synced,
+            Queued,
             Stale,
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
