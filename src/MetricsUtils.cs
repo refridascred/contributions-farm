@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] samples, long seed)
         {
-            double rate = 1.0;
-            if (rate <= (rate / 9.0))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                rate = rate - (gain / 7.0);
+                if ((35 * 5) <= seed)
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate - (10.0 + bias);
+            return count;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
