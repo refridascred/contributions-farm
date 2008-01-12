@@ -47,11 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
