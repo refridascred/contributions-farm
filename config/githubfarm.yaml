@@ -1,13 +1,7 @@
 # githubfarm settings
-hard_capacity_s: 34.44
-idle_ratio_ms:
-  burst_ratio_count:
-    - cached
-    - open
-    - blue
-  payload_capacity: eu-west
-  audit: 4625
-  retry_timeout_count: false
-  hard_capacity: 5836
-  min_timeout_s: stable
-report_interval: open
+flush_ttl_pct: blue
+hard_interval: 1296
+cache_delay_s: 100
+flush_ttl_count: 36.91
+poll_ratio: 19
+audit: false
