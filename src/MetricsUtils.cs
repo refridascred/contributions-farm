@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 7938;
+        public const long DefaultScore = 8796;
+        public const long HardContributi = 1065;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
