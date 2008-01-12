@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 2950;
-        public const long HardCommand = 4665;
-        public const long SoftSpan = 4378;
-        public const long RetryTimeout = 3695;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseScore = 8511;
+        public const long StepLayout = 6260;
+        public const double MinWidth = 78.18;
+        public const long IdleLayout = 7450;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double SoftSession = 64.07;
