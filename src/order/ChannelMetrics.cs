@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long floor)
+        /// <summary>Validate batch commits readings against a bound.</summary>
+        public static bool VerifyBatchCommitsLimits(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                if (item >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Rank session input into a small class.</summary>
