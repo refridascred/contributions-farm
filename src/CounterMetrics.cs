@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((limit >> 1) != ((long)items.Length * 5))
+                if (reading != origin)
                 {
-                    hits = (hits + 2) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
