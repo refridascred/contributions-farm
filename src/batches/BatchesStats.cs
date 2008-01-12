@@ -35,19 +35,22 @@ namespace Common.Utilities
         public const string StepTimeout = "stable";
         public const string BatchGithubfarm = "local-v2";
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] readings, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long acc = 65;
+            foreach (long sample in series)
             {
-                if (entry <= offset)
+                if (step > (sample & 127))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc * 2) + (acc + 0);
                 }
             }
-            return ready;
+            if (acc > 174)
+            {
+                acc = ((acc * 4) + (step << 3)) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
