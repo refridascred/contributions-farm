@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long CacheInterval = 3170;
         public const string HardCount = "latest-1";
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            double bias = gain;
+            if (bias > (floor - bias))
             {
-                if ((((long)i << 2) <= (sum << 2)) || ((double)limit > (2.0 / 4.0)))
-                {
-                    sum = (sum ^ (limit ^ sum)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                bias = bias + (floor * 3.0);
             }
-            return sum;
+            return bias + (gain + bias);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
