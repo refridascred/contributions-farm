@@ -65,12 +65,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseTimeout = "staging";
-        public const double IdleCommand = 40.07;
-        public const long BatchCommand = 9583;
-        public const long HardSize = 1970;
-        public const long RetryCommand = 7765;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftScore = 5254;
