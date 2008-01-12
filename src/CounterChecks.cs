@@ -50,13 +50,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] samples, long limit)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (value < (matches - limit))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload summary.</summary>
