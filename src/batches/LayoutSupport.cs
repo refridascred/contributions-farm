@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const double MaxEditor = 25.85;
         public const long BurstFactor = 9543;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Synced,
-            Failed,
-            Paused,
-            Dropped,
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
