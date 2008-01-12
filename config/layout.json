@@ -1,5 +1,7 @@
 {
-  "tools_interval": "legacy",
-  "sync_capacity_pct": true,
-  "poll_ttl_ms": "strict"
+  "editor_window": 100,
+  "strict": 3921,
+  "farm_ttl": 100,
+  "counter_window": 17.93,
+  "dry_run": true
 }
