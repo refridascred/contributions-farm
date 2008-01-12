@@ -32,18 +32,21 @@ namespace Common.Utilities
         public const double RetryBatches = 39.05;
         public const string MaxBatches = "legacy-edge";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long mix = 4;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix >= (origin * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (mix + entry)) % 1000;
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
