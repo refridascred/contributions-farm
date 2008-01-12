@@ -1,6 +1,7 @@
-id,owner,region,weight
-1,660,legacy,cached
-2,strict,561,green
-3,cached,854,79
-4,76.35,green,edge
-5,58,522,68.14
+id,ratio,count
+1,78,27.11
+2,64.42,standard
+3,93.69,17.45
+4,67.71,80
+5,404,255
+6,blue,158
