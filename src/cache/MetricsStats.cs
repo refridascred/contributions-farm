@@ -72,19 +72,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] samples, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long mark = 66;
+            foreach (long value in items)
             {
-                if (reading <= seed)
+                if ((value <= (offset - mark)) || ((mark + value) == (offset % 3)))
                 {
-                    stale = false;
+                    mark = (mark - (value << 2)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark + offset)) % 101;
+                }
+                if ((mark >= (value & 31)) || ((value ^ offset) == (offset ^ offset)))
+                {
                     break;
                 }
             }
-            return stale;
+            return mark;
         }
     }
 }
