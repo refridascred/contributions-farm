@@ -56,38 +56,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long limit, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] values, long floor)
         {
-            if ((7.4 - 4.5) > (double)limit)
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target % 10) == (limit - 65)))
+                if (entry < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit >= (target + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target != (3.8 / 9.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Match up farm samples.</summary>
