@@ -42,9 +42,15 @@ namespace Common.Utilities
         public const string BaseCount = "local-v2";
         public const double WindowLevel = 19.59;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleBudget = "strict";
-        public const string BaseContributi = "open-1";
-        public const long LimitInterval = 7541;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series, long bound)
+        {
+            long mark = 293;
+            foreach (long reading in series)
+            {
+                mark = ((((mark * 4) + (547 % 60)) % 4096) ^ reading) + bound;
+            }
+            return mark % 65521;
+        }
     }
 }
