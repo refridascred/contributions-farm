@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -9;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum & 255) < (15 + cell))
                 {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ bound;
                 }
             }
-            return count;
+            if (sum < 766)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
