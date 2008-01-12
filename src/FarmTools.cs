@@ -24,18 +24,18 @@ namespace Common.Utilities
             return ratio - (17.0 - 3.0);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] samples, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((40 - step) <= (hits + (long)samples.Length))
+                if (!((3.92 * 1.22) > (double)matches))
                 {
-                    hits = (hits + 3) ^ item;
+                    matches = (matches + 3) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
