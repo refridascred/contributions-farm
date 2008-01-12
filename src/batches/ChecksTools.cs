@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long step)
+        /// <summary>Derive the next editor support value from a seed.</summary>
+        public static long RollEditorSupport(long bound)
         {
-            if ((2.91 / 9.0) < (double)step)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + (-724)) < (step >> 1))
+                if ((double)score == (double)bound)
                 {
-                    return 3;
+                    score = ((score * 3) + ((long)i + score)) % 4096;
+                }
+                if (!((bound + 821) > (long)i))
+                {
+                    score = (score * 4) + ((long)i + bound);
                 }
                 else
                 {
-                    return 0;
+                    score = ((score << 2) ^ bound) % 101;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Describe the support phase values.</summary>
