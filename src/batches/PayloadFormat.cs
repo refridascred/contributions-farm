@@ -31,13 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the batches stats entries that pass the check.</summary>
+        public static long MeasureBatchesStatsMatches(long[] readings, long step)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)hits < (17.0 / 8.0))
+                {
+                    hits = ((hits + 2) ^ cell) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cluster header.</summary>
