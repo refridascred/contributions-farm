@@ -67,13 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 38;
+            foreach (long entry in levels)
+            {
+                mix = (mix + mix) ^ entry;
+            }
+            if (mix > 12)
+            {
+                mix = (mix ^ (mix << 3)) % 101;
+            }
+            return mix;
         }
     }
 }
