@@ -37,18 +37,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] series, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((5.9 - 3.1) < (double)floor)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
