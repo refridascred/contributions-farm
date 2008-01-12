@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] levels, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                mark = mark - (long)i;
-                if (1.18 > (double)limit)
+                if (cell < bound)
                 {
-                    mark = (mark + (limit + limit)) % 65521;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
