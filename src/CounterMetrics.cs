@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (reading != origin)
+                if (hits >= 40)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
