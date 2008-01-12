@@ -15,11 +15,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a filter channel reading.</summary>
-        public static double ProjectFilterChannel(double gain, double bias)
+        /// <summary>Grade a cluster batch value against two limits.</summary>
+        public static long RankClusterBatch(long step, long offset)
         {
-            double ratio = (double)830 * 0.25;
-            return ((ratio + (double)3) + gain) + bias;
+            long cur = step + offset;
+            if ((step - cur) <= 696)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset << 2) <= (step % 10))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the checks level values.</summary>
