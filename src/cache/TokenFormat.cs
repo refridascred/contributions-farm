@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Failed,
-            Closed,
-            Dropped,
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
