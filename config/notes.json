@@ -1,15 +1,5 @@
 {
-  "githubfarm_window": true,
-  "burst_size_pct": {
-    "audit": true,
-    "retry_timeout_ms": "eu-west",
-    "min_timeout": {
-      "enabled": 1375,
-      "flush_threshold": 91,
-      "context_ttl": [335, 143, 146, 500]
-    },
-    "metrics_retries": [339, 143, 481, 182]
-  },
-  "verbose": [285, 121, 169],
-  "counter_threshold": 11
+  "report_limit": 12.11,
+  "editor_timeout": 2479,
+  "layout_limit": "staging"
 }
