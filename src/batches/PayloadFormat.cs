@@ -31,20 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            long carry = 799;
-            foreach (long value in data)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (value > (28 + value))
-                {
-                    carry = (carry - (value + (long)data.Length)) % 101;
-                }
-                carry = carry ^ (30 + bound);
-                carry = (carry + (bound + 179)) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Derive the next already token value from a seed.</summary>
