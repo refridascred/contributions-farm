@@ -1,14 +1,22 @@
 # support settings
-retry_size_pct:
-  - 496
-  - 194
-  - 33
-batch_ttl:
-  base_delay: 2640
-  batch_capacity:
-    - edge
-    - legacy
-    - stable
-  soft_window: 8595
-  retry_capacity_ms: latest
-order_retries: stable
+warm_depth_ms:
+  max_delay: false
+  enabled:
+    max_size: 67.95
+    already_delay: edge
+    idle_ratio_s: legacy
+    base_ttl:
+      - 352
+      - 151
+    cache_limit_count: 60
+  burst_threshold_count: 21.6
+  default_capacity_s: 7277
+  poll_size_s: 29.52
+batch_window: primary
+burst_size_count: fallback
+sync_retries:
+  - local
+  - cached
+  - cached
+  - fallback
+schema_window: staging
