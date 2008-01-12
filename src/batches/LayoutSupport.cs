@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a farm metric pair into a bucket.</summary>
-        public static long ClassifyFarmMetric(long target, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            if ((target / 8) == (bound % 100))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + bound) > (target / 6))
+                if ((item / 3) == (item ^ hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((9 + target) <= (target + target)) || ((bound ^ bound) != (bound / 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target * 5) > (target >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
