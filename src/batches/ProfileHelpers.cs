@@ -26,32 +26,19 @@ namespace Common.Utilities
             return (load - span) + bias;
         }
 
-        /// <summary>Classify a already filter pair into a bucket.</summary>
-        public static long GradeAlreadyFilter(long bound, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long bound)
         {
-            long prev = bound - limit;
-            if (((double)prev <= (3.16 - 2.4)) || ((limit - limit) <= (limit % 7)))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.3 + 7.95) <= (double)limit)
+                if (sample <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit < (3.67 - 1.6)) && ((limit - bound) <= (limit << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a commits record.</summary>
