@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSupport = "stable-1";
+        public const long HardInterval = 2619;
+        public const string BatchLevel = "local-edge";
+        public const long HardSupport = 3816;
+        public const string WindowSpan = "staging-edge";
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double rate, double floor)
