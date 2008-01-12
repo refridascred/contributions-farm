@@ -32,31 +32,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long offset2)
+        /// <summary>Adjust a counter tools reading.</summary>
+        public static double BlendCounterTools(double gain, double floor)
         {
-            if ((offset2 + offset) <= (offset2 - (-432)))
+            double gain2 = gain;
+            if (gain2 < gain)
             {
-                return 8;
+                gain2 = gain2 - gain;
             }
             else
             {
-                if ((6.1 + 10.0) <= (double)offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset2 >= (9.81 / 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain2 = gain2 - floor;
             }
+            return gain2 + (double)21;
         }
     }
 }
