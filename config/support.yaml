@@ -1,24 +1,5 @@
 # support settings
-sync_ttl_s:
-  strict: 44.19
-  graph_retries: 82.89
-  cache_depth_count: 6235
-  idle_threshold_s:
-    hard_interval_count:
-      - open
-      - strict
-      - strict
-      - stable
-    hard_retries:
-      - eu-west
-      - staging
-      - latest
-    already_threshold: 60.87
-    commits_limit: 60
-    token_capacity: standard
-    commits_threshold: false
-  profile_delay: local
-  idle_threshold_count: 500
-hard_timeout_pct: local
-metrics_retries: 53.04
-burst_window: true
+batch_timeout_pct: green
+strict: true
+verbose: 8503
+default_capacity: 43
