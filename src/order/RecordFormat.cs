@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] samples, long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
