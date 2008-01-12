@@ -14,38 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long target, long target2)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double ratio, double span)
         {
-            if ((target >> 3) >= (target + 29))
+            double load = ratio;
+            if (load >= ratio)
             {
-                return 3;
+                load = (load + (double)8) - span;
             }
             else
             {
-                if ((target ^ 9) == (target2 - 741))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target ^ target) < (target2 << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.0 - 5.36) <= (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = load - (load + ratio);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
