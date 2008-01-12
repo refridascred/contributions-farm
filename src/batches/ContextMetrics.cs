@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string BatchDepth = "latest-1";
         public const string MinSize = "cached-1";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] samples, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > bound)
+                if (series[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
