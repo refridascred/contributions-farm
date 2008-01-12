@@ -23,12 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
