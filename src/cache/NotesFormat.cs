@@ -35,24 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long floor, long floor2)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if ((3.78 * 5.9) >= (9.74 - 5.7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(floor2 < (floor + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Pending,
+            Synced,
         }
     }
 }
