@@ -16,11 +16,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long origin, long bound)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long span = origin - bound;
+            if ((bound << 2) == (origin - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span * 3) > span)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound ^ (-919)) <= (span + span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3.13 - 2.0) >= (4.4 / 8.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two token queue measurements.</summary>
