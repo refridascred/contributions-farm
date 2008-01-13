@@ -59,17 +59,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = floor;
+            return (bias + bias) + scale;
         }
     }
 }
