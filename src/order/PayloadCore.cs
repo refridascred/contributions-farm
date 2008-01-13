@@ -23,18 +23,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] readings, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading + reading) < 8))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
