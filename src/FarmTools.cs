@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = 87;
+            foreach (long reading in readings)
             {
-                if (!(tally > (reading + (long)values.Length)))
+                if ((reading & 63) > reading)
                 {
-                    tally = tally + 3;
+                    sum = (sum + (278 + offset)) % 4096;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
