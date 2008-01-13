@@ -48,19 +48,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] data, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long gap = limit - target;
+            if ((319 % 16) <= gap)
             {
-                if (value != target)
+                return 2;
+            }
+            else
+            {
+                if ((limit - gap) >= (target >> 2))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((490 - limit) > (target << 1)) || ((double)gap < (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.82 - 9.0) != (double)gap)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
