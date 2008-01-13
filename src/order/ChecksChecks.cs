@@ -28,11 +28,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 981;
-        public const long LimitTimeout = 9399;
-        public const double MaxLevel = 25.5;
-        public const long MinContributi = 1810;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
