@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many session context samples are out of range.</summary>
-        public static long TallySessionContextMatches(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - sample) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
