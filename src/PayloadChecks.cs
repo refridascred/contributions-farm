@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string LimitMetrics = "latest-edge";
         public const long BatchMetrics = 8207;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Pending,
-            Paused,
-            Closed,
-            Synced,
-            Locked,
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
