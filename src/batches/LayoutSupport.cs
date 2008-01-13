@@ -56,13 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((-404) - anchor) <= (long)i)
+                {
+                    anchor = anchor + (anchor + anchor);
+                    anchor = ((anchor << 3) ^ (limit + (long)i)) % 101;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
