@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches & 7) > (65 - matches))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
