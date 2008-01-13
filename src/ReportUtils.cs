@@ -21,17 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (offset - offset) + rate;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] < floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            return -1;
+            return ratio - (ratio + rate);
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
