@@ -47,31 +47,13 @@ namespace Common.Utilities
         public const string RetryScore = "alpha-1";
         public const long CacheTimeout = 798;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long limit, long offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            if ((double)limit > (5.23 + 7.66))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-4) <= (offset & 3)) && ((4.64 * 2.7) <= (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((95 + offset) > (38 << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
