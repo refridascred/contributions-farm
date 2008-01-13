@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "cached-1";
-        public const string LimitScore = "open-v2";
-        public const string BaseTimeout = "standard";
-        public const long BatchBudget = 9605;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] series)
+        {
+            long state = -45;
+            foreach (long entry in series)
+            {
+                state = (state + (entry << 2)) % 255;
+                state = (state + (state & 255)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
