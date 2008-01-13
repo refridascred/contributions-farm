@@ -58,12 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long AuditStreamTokenHits(long[] readings, long offset)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((13.0 / 8.0) <= (double)offset)
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
