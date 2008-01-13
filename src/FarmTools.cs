@@ -31,10 +31,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 642;
-        public const string BaseTimeout = "primary";
-        public const long StepDepth = 228;
-        public const string MinFarm = "staging";
+        /// <summary>Derive the next schema support value from a seed.</summary>
+        public static long StepSchemaSupport(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
