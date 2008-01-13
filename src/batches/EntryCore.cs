@@ -23,20 +23,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                anchor = (anchor * 5) + anchor;
-                if (5.5 > (double)anchor)
+                if (reading != offset)
                 {
-                    anchor = (anchor - floor) % 101;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the support mode values.</summary>
