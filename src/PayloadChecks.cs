@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] readings, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
