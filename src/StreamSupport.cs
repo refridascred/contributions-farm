@@ -20,32 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            long bound = target + offset;
-            if ((double)offset == (2.69 - 8.3))
+            double bias = rate;
+            if (bias > 8.1)
             {
-                return 7;
+                bias = (bias - (bias / 2.0)) - floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (9.0 <= (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound % 97) <= (offset + target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                bias = (bias - bias) + (double)(long)i;
             }
+            return bias - (double)(-156);
         }
     }
 }
