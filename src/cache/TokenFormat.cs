@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up githubfarm filter samples.</summary>
