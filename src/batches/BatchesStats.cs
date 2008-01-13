@@ -40,32 +40,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long limit, long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long edge = limit + seed;
-            if (((seed << 1) > (seed + limit)) || ((limit << 1) == ((-87) + 237)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 4) >= (edge / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(limit <= (edge << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
