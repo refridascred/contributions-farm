@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count filter commits pairs that satisfy a relation.</summary>
-        public static long MatchFilterCommitsCount(long[] items)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
