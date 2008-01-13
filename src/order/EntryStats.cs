@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((((value / 7) == (602 & 63)) && ((count + count) != (limit * 5))) || !(1 >= (value / 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 6257;
+        public const double CacheGithubfarm = 65.2;
+        public const long BurstGithubfarm = 264;
+        public const long LimitGithubfarm = 5725;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] levels)
