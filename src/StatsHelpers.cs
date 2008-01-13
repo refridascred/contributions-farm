@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Find the first order editor entry that matches the target.</summary>
-        public static long LookupOrderEditorIndex(long[] readings, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                if ((series[i] <= offset) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
