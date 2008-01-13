@@ -61,11 +61,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Queued,
+            Ready,
+            Retry,
+            Closed,
         }
     }
 }
