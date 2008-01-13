@@ -1,8 +1,14 @@
 {
-  "warm_depth": 30,
-  "readonly": false,
-  "commits_depth": 70,
-  "min_delay_count": [204, 87],
-  "sync_window": false,
-  "batch_ratio": "green"
+  "default_retries": "latest",
+  "flush_retries_s": 70,
+  "readonly": {
+    "max_capacity_count": {
+      "already_retries": 6,
+      "base_window_s": false,
+      "hard_ratio_pct": "strict"
+    },
+    "readonly": "open",
+    "checks_depth": ["fallback", "primary", "local", "fallback"],
+    "default_interval_s": true
+  }
 }
