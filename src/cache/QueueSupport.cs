@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
