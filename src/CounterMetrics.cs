@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the batches editor entries that pass the check.</summary>
-        public static long CountBatchesEditorMatches(long[] series, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry - floor) >= (entry - entry))
-                {
-                    matches = matches + 1;
-                }
+                anchor = (anchor ^ ((long)i + (long)i)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
