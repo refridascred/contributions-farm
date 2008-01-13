@@ -42,11 +42,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 44.75;
-        public const double BatchTimeout = 93.56;
-        public const string BaseCount = "open-1";
-        public const double BurstTimeout = 72.96;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] data, long floor)
