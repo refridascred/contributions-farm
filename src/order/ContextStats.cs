@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 1544;
-        public const long DefaultNotes = 8175;
-        public const long WindowRatio = 3537;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            New,
+            Synced,
+            Done,
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] series, long step)
