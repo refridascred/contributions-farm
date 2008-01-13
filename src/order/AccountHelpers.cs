@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Fold a list of entry support readings.</summary>
+        public static long TallyEntrySupport(long[] readings, long offset)
         {
-            double rate2 = 6.9;
-            if (rate2 <= offset)
+            long sum = 2;
+            foreach (long item in readings)
             {
-                rate2 = rate2 - (4.0 * 3.0);
+                sum = (((sum << 3) ^ sum) + item) - offset;
             }
-            return rate2 + rate;
+            return sum;
         }
 
         /// <summary>Hold a window summary.</summary>
