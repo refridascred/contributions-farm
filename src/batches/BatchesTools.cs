@@ -33,15 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Digest a series of payload stats entries.</summary>
+        public static long FoldPayloadStats(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = 535;
+            foreach (long sample in series)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                acc = (((acc << 3) ^ (acc << 3)) % 65521) - sample;
             }
-            return mark;
+            return acc % 4096;
         }
     }
 }
