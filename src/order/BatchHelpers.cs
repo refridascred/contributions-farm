@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
