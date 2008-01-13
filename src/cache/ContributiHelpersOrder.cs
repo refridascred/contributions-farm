@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of channel payload readings.</summary>
-        public static long WeighChannelPayload(long[] levels)
-        {
-            long mark = -502;
-            foreach (long entry in levels)
-            {
-                mark = ((mark * 3) + mark) + entry;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstWidth = 28.6;
+        public const long RetryBatch = 7392;
+        public const double SoftBatch = 30.82;
+        public const string IdleScore = "latest-v2";
+        public const long IdleBatch = 584;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] samples)
