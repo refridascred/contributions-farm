@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)hits < (15.0 + 2.0)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
