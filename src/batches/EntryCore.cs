@@ -20,12 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySpan = "fallback";
-        public const long BatchSupport = 7241;
-        public const string HardSupport = "cached-v2";
-        public const double IdleSize = 85.74;
-        public const double SoftSupport = 94.17;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long seed, long floor)
+        {
+            if (!((floor ^ seed) >= (seed << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((seed << 3) >= 0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1 >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] data)
