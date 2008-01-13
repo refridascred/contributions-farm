@@ -40,19 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer contributi counter forward.</summary>
-        public static long IterateBufferContributi(long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((150 & 7) > mark) || ((bound >> 1) <= bound))
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                state = (state - floor) % 1000;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Adjust a payload reading.</summary>
