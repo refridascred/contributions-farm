@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long diff = step - offset;
+            if (((step ^ diff) < 5) && (step < (55 + diff)))
             {
-                if (6 >= (matches % 64))
+                return 8;
+            }
+            else
+            {
+                if (((6.45 - 4.0) != (double)step) || ((offset ^ 923) <= (diff - (-686))))
                 {
-                    matches = (matches + 2) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if ((step >> 5) <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of window session readings.</summary>
