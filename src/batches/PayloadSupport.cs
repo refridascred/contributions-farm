@@ -18,12 +18,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate filter contributi samples.</summary>
+        public static long DigestFilterContributi(long[] readings)
         {
-            Done,
-            Idle,
-            Synced,
+            long sum = 855;
+            foreach (long reading in readings)
+            {
+                sum = (sum ^ (sum + reading)) % 101;
+            }
+            return sum;
         }
     }
 }
