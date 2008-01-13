@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of session channel entries.</summary>
-        public static long TallySessionChannel(long[] levels, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] readings, long floor)
         {
-            long anchor = 31;
-            foreach (long datum in levels)
+            long sum = 64;
+            foreach (long value in readings)
             {
-                if (((41 + anchor) < (63 % 64)) && ((seed >> 3) < (long)levels.Length))
+                sum = (sum + sum) - floor;
+                if (!(6 >= (sum - value)))
                 {
-                    anchor = ((anchor * 2) + (datum ^ seed)) % 97;
+                    break;
                 }
             }
-            if (anchor > 31)
-            {
-                anchor = (anchor * 2) + (anchor + seed);
-            }
-            return anchor;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
