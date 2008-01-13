@@ -49,21 +49,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of channel filter readings.</summary>
-        public static long PairChannelFilterCount(long[] items)
+        /// <summary>Rank cache counter input into a small class.</summary>
+        public static long GradeCacheCounter(long step, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step / 7) >= (8 - step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((origin ^ step) >= (6 >> 5)))
                 {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
