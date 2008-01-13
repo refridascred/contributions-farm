@@ -30,26 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long FoldCacheReport(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long seed)
         {
-            long sum = 562;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((sum << 1) > (sum * 4))
+                if (((cell % 2) > 0) || ((double)tally <= (1.8 - 6.5)))
                 {
-                    sum = sum ^ (sample << 1);
-                }
-                else
-                {
-                    sum = sum ^ sample;
+                    tally = (tally + 2) - seed;
                 }
             }
-            if (sum > (-41))
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 65521;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a order snapshot.</summary>
