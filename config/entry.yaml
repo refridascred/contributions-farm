@@ -1,7 +1,12 @@
 # entry settings
-entry_threshold: staging
-buffer_window: true
-stream_depth:
-  - 146
-  - 358
-cache_limit_pct: 4085
+schema_capacity: 30
+hard_interval_ms: 51.99
+contributi_size:
+  cluster_capacity: 30
+  base_threshold_count: staging
+  cache_depth: 74.59
+  channel_size: false
+  counter_timeout: green
+base_capacity: 250
+hard_ratio_count: 8417
+retry_size_count: 32.65
