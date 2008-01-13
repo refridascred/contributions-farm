@@ -40,22 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry << 2) ^ bound) % 101;
-                long tally = (bound % 7) ^ carry;
-                if ((tally * 4) < (long)i)
-                {
-                    tally = (tally ^ ((long)i >> 1)) % 4096;
-                    carry = carry - (tally + carry);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
