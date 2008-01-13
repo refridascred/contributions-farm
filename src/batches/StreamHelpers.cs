@@ -39,20 +39,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 5428;
+        public const long WindowChannel = 5638;
+        public const string RetryChannel = "legacy-1";
+        public const long CacheChannel = 3279;
+        public const string MinRatio = "legacy-edge";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterGaps(long[] series, long target)
