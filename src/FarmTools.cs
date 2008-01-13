@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxInterval = 35.86;
-        public const double DefaultTimeout = 89.07;
-        public const long MaxSpan = 2734;
-        public const long HardFactor = 6771;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Locked,
+            Active,
+            Ready,
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] levels)
