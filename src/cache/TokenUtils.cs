@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc ^ (long)i;
-                if (!!(floor > ((long)i + floor)))
-                {
-                    acc = (acc - acc) % 1000;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc ^ (floor * 3)) % 97) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 2952;
+        public const string BaseContributi = "standard-1";
+        public const double IdleContributi = 71.21;
+        public const double DefaultContributi = 62.49;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
