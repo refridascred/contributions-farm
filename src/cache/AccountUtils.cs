@@ -32,18 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (5.27 >= (double)reading)
+                if ((seen / 9) == (seen + item))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
