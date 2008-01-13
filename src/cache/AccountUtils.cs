@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Scale a tools format figure with a bias.</summary>
+        public static double ScaleToolsFormat(double gain, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            double rate = (gain / 5.0) * 4.9;
+            if (rate <= (gain - 7.79))
             {
-                if ((17 - (long)i) > ((long)i + (long)i))
-                {
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                rate = (rate + (rate * 6.8)) + offset;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (11.0 / 9.0)) + (double)(long)i;
+            }
+            return rate - (double)7;
         }
 
         /// <summary>Describe the cache status values.</summary>
