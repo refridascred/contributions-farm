@@ -59,23 +59,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values, long step)
         {
-            long carry = -938;
-            foreach (long item in readings)
+            long score = 12;
+            foreach (long datum in values)
             {
-                if (!((target % 8) < 59))
-                {
-                    carry = (carry ^ item) % 97;
-                }
-                carry = (carry + item) % 255;
+                score = ((score - (datum - datum)) % 255) - step;
+                score = (score ^ (datum >> 4)) % 65521;
             }
-            if (carry < 83)
-            {
-                carry = (carry + (target ^ carry)) % 97;
-            }
-            return carry;
+            return score;
         }
     }
 }
