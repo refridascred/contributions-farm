@@ -34,23 +34,11 @@ namespace Common.Utilities
             return ratio - (gain * 6.0);
         }
 
-        /// <summary>Fold a list of counter token readings.</summary>
-        public static long CombineCounterToken(long[] readings)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mark = 9;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = ((mark ^ reading) % 1000) + (long)i;
-                }
-                mark = ((mark * 4) + reading) % 4096;
-            }
-            if (mark < 898)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
