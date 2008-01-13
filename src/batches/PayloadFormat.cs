@@ -39,11 +39,31 @@ namespace Common.Utilities
             return rate - (rate / 6.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowSpan = 4283;
-        public const long MaxRoute = 1263;
-        public const long SoftRoute = 7010;
-        public const double MaxDepth = 82.95;
-        public const double SoftRatio = 33.97;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                long offset2 = offset;
+                if (!((6.5 + 9.0) > (double)mix))
+                {
+                    long next = offset2;
+                    mix = mix - (next - (long)i);
+                    continue;
+                }
+                else
+                {
+                    offset2 = ((offset2 * 4) + offset2) % 4096;
+                    mix = mix ^ offset2;
+                }
+                if ((8.41 - 1.13) < (double)offset)
+                {
+                    mix = mix ^ (offset2 + offset2);
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
