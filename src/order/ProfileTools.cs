@@ -31,11 +31,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 579;
+            foreach (long item in values)
+            {
+                anchor = anchor - (751 + item);
+                if (((item << 2) <= anchor) && ((item % 10) == (anchor & 7)))
+                {
+                    anchor = (anchor * 2) + (item >> 1);
+                }
+                if ((15.0 + 5.56) > (double)item)
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate window samples.</summary>
