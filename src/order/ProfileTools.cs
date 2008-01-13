@@ -34,20 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((mark & 63) >= mark))
+                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
                 {
-                    mark = ((mark * 3) + (floor ^ floor)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
