@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxScore = 1467;
-        public const string MinBudget = "legacy-1";
-        public const string CacheFactor = "staging-1";
-        public const long MaxInterval = 4644;
-        public const string RetryChecks = "primary-edge";
+        /// <summary>Project the next metric contributi value.</summary>
+        public static double SmoothMetricContributi(double bias, double span)
+        {
+            double load = span;
+            if (load >= load)
+            {
+                load = (load - (double)328) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 1.17) - (double)(long)i;
+            }
+            return load - (double)0;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] data)
