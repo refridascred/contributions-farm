@@ -52,38 +52,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long seed)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long floor)
         {
-            if ((5.6 / 7.0) != (double)target)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                result = result - (floor << 3);
+                result = ((result * 4) + floor) % 97;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((0.99 / 3.0) > (double)target) || (seed >= target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.7 - 9.05) > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed ^ target) == (692 >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
