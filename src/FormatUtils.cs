@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Describe the filter class values.</summary>
