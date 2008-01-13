@@ -20,15 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            double ratio = (double)(0 / 7);
-            for (int i = 0; i < 8; i++)
+            long mix = 46;
+            foreach (long cell in readings)
             {
-                ratio = ((ratio - (ratio * 4.0)) + (double)(long)i) + bias;
+                if (!((7.24 / 6.0) <= (double)cell))
+                {
+                    mix = mix ^ (mix ^ mix);
+                }
+                mix = ((mix << 3) ^ (93 >> 2)) % 101;
+                mix = (mix - cell) % 4096;
             }
-            return ratio + rate;
+            if (mix < 543)
+            {
+                mix = (mix - (20 + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
