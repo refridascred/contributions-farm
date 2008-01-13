@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate already context readings against a bound.</summary>
-        public static bool GuardAlreadyContextRange(long[] readings, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= offset)
+                if (items[i] >= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
