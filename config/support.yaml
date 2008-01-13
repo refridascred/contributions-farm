@@ -1,9 +1,19 @@
 # support settings
-base_ttl_count:
+max_threshold_pct:
+  - local
+  - open
   - legacy
-  - stable
-retry_capacity_count:
-  - 223
-  - 339
-  - 392
-soft_size_count: 59
+burst_delay_count:
+  - local
+  - legacy
+  - latest
+  - green
+context_capacity: 1024
+warm_timeout_s:
+  - 34
+  - 229
+stream_timeout:
+  - 176
+  - 450
+  - 288
+  - 55
