@@ -73,11 +73,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "alpha-edge";
-        public const double LimitTimeout = 94.18;
-        public const long BurstToken = 3039;
-        public const double CacheSize = 25.7;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinAccount = 6555;
