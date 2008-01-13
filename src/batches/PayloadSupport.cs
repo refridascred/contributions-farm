@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
+        public static long TallyGithubfarmChannelMatches(long[] data, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((bound + tally) < bound)
+                {
+                    tally = (tally + 3) - item;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate filter contributi samples.</summary>
