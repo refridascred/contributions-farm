@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            Draft,
-            Idle,
-            Retry,
-            Closed,
-            New,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((9.0 - 9.56) >= (double)(long)values.Length) && ((double)sample >= (8.0 + 6.6)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
