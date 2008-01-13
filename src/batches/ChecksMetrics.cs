@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long floor2)
+        /// <summary>Project the next stream route value.</summary>
+        public static double AdjustStreamRoute(double scale, double floor)
         {
-            if ((floor2 ^ floor) <= (floor / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 93) >= (75 - floor2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 4) >= floor2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double gain = scale;
+            return (gain + scale) + floor;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
