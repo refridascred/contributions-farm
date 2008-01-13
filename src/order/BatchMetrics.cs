@@ -43,13 +43,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftTimeout = 3149;
+        public const long StepNotes = 4802;
+        public const long WindowNotes = 2693;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] data)
