@@ -71,18 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long MeasureBatchCommitsMatches(long[] data)
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long TallyGraphContextMatches(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((double)seen >= (18.0 * 4.76))
+                if ((double)count > (double)item)
                 {
-                    seen = (seen + 1) ^ datum;
+                    count = (count + 3) - limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
