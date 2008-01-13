@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first payload cache entry that matches the target.</summary>
-        public static long SeekPayloadCacheIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinFactor = 8308;
+        public const long BurstLevel = 3913;
+        public const string BaseDepth = "stable-edge";
+        public const long BurstCache = 6739;
 
         /// <summary>Fold a list of stats farm readings.</summary>
         public static long WeighStatsFarm(long[] samples, long target)
