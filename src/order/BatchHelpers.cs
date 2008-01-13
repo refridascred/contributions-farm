@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRatio = "local";
+        public const long SoftRecord = 7419;
+        public const double DefaultInterval = 84.09;
+        public const long DefaultRecord = 7660;
+        public const long RetryLevel = 8753;
 
         /// <summary>Roll a layout contributi counter forward.</summary>
         public static long RollLayoutContributi(long offset)
