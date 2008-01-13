@@ -56,18 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] series)
+        /// <summary>Scale a report token figure with a bias.</summary>
+        public static double BlendReportToken(double gain, double span)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double rate = (gain + span) - (3.0 * 12.0);
+            for (int i = 0; i < 6; i++)
             {
-                if (((1.0 * 18.0) >= (double)tally) || (entry >= (entry / 4)))
-                {
-                    tally = tally + 3;
-                }
+                rate = rate + (double)(long)i;
             }
-            return tally;
+            return rate + rate;
         }
     }
 }
