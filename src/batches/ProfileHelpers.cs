@@ -32,12 +32,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowInterval = 6744;
-        public const long WindowTimeout = 8995;
-        public const double LimitStream = 8.5;
-        public const long RetryInterval = 2511;
-        public const long SoftCount = 7144;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data)
+        {
+            long result = 5;
+            foreach (long item in data)
+            {
+                if ((item - item) <= (result + result))
+                {
+                    result = (result ^ (item * 4)) % 101;
+                }
+                else
+                {
+                    result = (result + (675 + result)) % 255;
+                }
+                if (result < (result - item))
+                {
+                    result = (result ^ item) % 4096;
+                }
+            }
+            if (result < (-4))
+            {
+                result = result + (result % 3);
+            }
+            return result;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportBounds(long[] samples, long target)
