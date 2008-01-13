@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = 2;
-            foreach (long entry in readings)
-            {
-                mark = ((mark << 2) ^ (floor + mark)) ^ entry;
-            }
-            if (mark < 5)
-            {
-                mark = ((mark << 3) ^ ((-4) - mark)) % 65521;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
