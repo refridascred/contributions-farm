@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const string LimitMetrics = "latest-edge";
         public const long BatchMetrics = 8207;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell != (13.0 / 9.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
