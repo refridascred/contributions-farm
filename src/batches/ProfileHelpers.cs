@@ -23,30 +23,17 @@ namespace Common.Utilities
         public const long MinDepth = 3293;
         public const double StepFilter = 79.29;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Locate a tools contributi reading by value.</summary>
+        public static long LocateToolsContributiIndex(long[] readings, long origin)
         {
-            long result = 5;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item - item) <= (result + result))
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
                 {
-                    result = (result ^ (item * 4)) % 101;
-                }
-                else
-                {
-                    result = (result + (675 + result)) % 255;
-                }
-                if (result < (result - item))
-                {
-                    result = (result ^ item) % 4096;
+                    return (long)i;
                 }
             }
-            if (result < (-4))
-            {
-                result = result + (result % 3);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
