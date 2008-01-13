@@ -97,19 +97,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double gain, double span)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double bias = span;
+            if (bias <= bias)
             {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias + bias) + gain;
             }
-            return flag;
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (bias / 6.0)) + (double)(long)i;
+            }
+            return bias - (double)948;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
