@@ -1,5 +1,7 @@
 {
-  "retry_capacity": "green",
-  "farm_timeout": 100,
-  "metric_ttl": 2872
+  "hard_ttl_pct": "edge",
+  "retry_interval": 94.35,
+  "warm_depth": "cached",
+  "context_depth": 500,
+  "soft_ttl_pct": true
 }
