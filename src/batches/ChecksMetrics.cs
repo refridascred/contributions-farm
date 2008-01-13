@@ -13,19 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] data, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (reading > limit)
+                if ((double)limit != (double)tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + item;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
