@@ -28,17 +28,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] < seed)
+                if (((anchor * 4) >= limit) && ((anchor / 2) == (limit >> 1)))
                 {
-                    return (long)i;
+                    anchor = anchor - (limit + 5);
+                    anchor = (anchor ^ anchor) % 1000;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the context mode values.</summary>
