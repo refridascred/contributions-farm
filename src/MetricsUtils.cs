@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up batch order samples.</summary>
-        public static long PairBatchOrderCount(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 447;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result ^ (235 << 3)) - target;
+                if (!((9.4 + 12.0) < (double)reading))
                 {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
