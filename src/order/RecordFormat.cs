@@ -72,19 +72,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] series, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long total = 912;
+            foreach (long datum in items)
             {
-                if (cell >= seed)
+                if ((datum - 832) <= (datum + datum))
                 {
-                    ready = false;
+                    total = (total * 3) + (datum + datum);
+                }
+                if ((long)items.Length <= (85 + total))
+                {
                     break;
                 }
             }
-            return ready;
+            return total;
         }
     }
 }
