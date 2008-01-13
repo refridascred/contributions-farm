@@ -33,12 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Queued,
-            Idle,
-            Locked,
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
