@@ -29,19 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long total = 1;
-            foreach (long item in levels)
-            {
-                total = ((total * 2) + ((-5) % 8)) % 1000;
-                if (!((item - item) >= (91 & 127)))
-                {
-                    total = ((total * 4) + item) % 255;
-                }
-            }
-            return total;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
