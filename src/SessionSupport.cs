@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] series, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Queued,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
