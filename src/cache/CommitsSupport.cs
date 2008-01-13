@@ -34,14 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] values, long floor)
         {
-            Synced,
-            Ready,
-            Pending,
-            Failed,
-            Dropped,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (0.01 <= (double)floor)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
