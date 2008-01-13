@@ -1,8 +1,7 @@
-id,ratio,state
-1,2.17,strict
-2,5.91,19.8
-3,19.92,staging
-4,stable,stable
-5,366,975
-6,200,62.39
-7,52,94.66
+id,active,token
+1,81.45,34.69
+2,283,eu-west
+3,138,68.37
+4,latest,965
+5,stable,strict
+6,primary,strict
