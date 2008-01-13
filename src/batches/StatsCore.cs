@@ -84,15 +84,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double bias2)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double rate = 6.65;
-            if (rate <= bias2)
-            {
-                rate = rate + bias;
-            }
-            return rate - (double)239;
+            Retry,
+            Done,
+            Closed,
+            Active,
         }
     }
 }
