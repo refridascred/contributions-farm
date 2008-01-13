@@ -29,13 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Look up the position of a already cache sample.</summary>
+        public static long SeekAlreadyCacheIndex(long[] samples, long origin)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema state values.</summary>
