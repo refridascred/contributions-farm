@@ -64,18 +64,19 @@ namespace Common.Utilities
             return (ratio + (ratio * 0.13)) + floor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((double)entry != (2.2 * 4.53))
+                if (datum <= seed)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
