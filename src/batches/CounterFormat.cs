@@ -29,11 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitDepth = 9945;
+        public const long HardFarm = 9986;
+        public const long IdleTimeout = 5214;
+        public const long BatchDepth = 4519;
     }
 }
