@@ -68,11 +68,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 4416;
-        public const long WindowSize = 1101;
-        public const double DefaultAlready = 41.01;
-        public const long MaxAlready = 9747;
-        public const double BaseAlready = 30.28;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings)
+        {
+            long state = 202;
+            foreach (long entry in readings)
+            {
+                if ((state + entry) <= entry)
+                {
+                    state = state + ((long)readings.Length + state);
+                }
+            }
+            return state % 97;
+        }
     }
 }
