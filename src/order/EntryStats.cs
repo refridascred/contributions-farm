@@ -60,18 +60,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items, long origin)
+        /// <summary>Scale a queue account figure with a bias.</summary>
+        public static double AdjustQueueAccount(double bias, double offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double rate = bias;
+            if (rate <= 7.5)
             {
-                if ((origin >= 813) && ((entry % 97) >= entry))
-                {
-                    count = count + 1;
-                }
+                rate = rate + (rate - rate);
             }
-            return count;
+            return rate + (6.75 + offset);
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
