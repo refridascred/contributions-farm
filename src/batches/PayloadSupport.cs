@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] samples, long limit)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long anchor = 578;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ (limit - item);
-                if ((limit ^ limit) != (item >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ (limit + 0)) % 65521;
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
