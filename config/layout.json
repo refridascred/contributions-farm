@@ -1,8 +1,7 @@
 {
-  "verbose": "green",
-  "persist": 13,
-  "idle_capacity_ms": 1024,
-  "hard_size_pct": 60,
-  "soft_retries_ms": "latest",
-  "buffer_timeout": 7332
+  "dry_run": [461, 239, 419, 9],
+  "order_limit": 4231,
+  "batch_timeout": 38.22,
+  "warm_threshold": 26.64,
+  "verbose": 73.23
 }
