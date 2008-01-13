@@ -48,11 +48,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleCount = 68.6;
-        public const double SoftSpan = 16.57;
-        public const long DefaultNotes = 5323;
-        public const long BatchNotes = 4519;
-        public const double MaxTimeout = 71.54;
+        /// <summary>Audit order account readings against a rule.</summary>
+        public static long AuditOrderAccountMatches(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((tally << 2) < 4) || ((origin + origin) <= origin)))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
