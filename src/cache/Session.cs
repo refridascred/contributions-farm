@@ -24,19 +24,22 @@ namespace Common.Utilities
             return bias + (bias + bias);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] levels, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long sum = 50;
+            foreach (long sample in series)
             {
-                if (cell >= floor)
+                if (sample <= (768 * 3))
                 {
-                    ok = false;
+                    sum = sum - sum;
+                }
+                if ((0.3 * 2.85) <= (11.0 * 3.0))
+                {
                     break;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
