@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 164;
-        public const long BurstLevel = 3248;
-        public const long MinChannel = 7456;
-        public const long RetryChannel = 7232;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long bound, long target)
+        {
+            long delta = bound + target;
+            if ((target + delta) > (bound % 60))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)delta < 18.0) || (bound < delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileHits(long[] series, long bound)
