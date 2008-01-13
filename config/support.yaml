@@ -1,9 +1,12 @@
 # support settings
-cache_size_pct: strict
-batch_retries_count: blue
-base_ttl: 14.49
-batch_capacity_count: 79
-min_ratio: standard
-compress:
-  - standard
-  - blue
+min_threshold_ms:
+  warm_ttl: false
+  burst_depth_count: true
+  checks_ratio: latest
+  max_window_count: 5639
+  window_capacity: 6358
+  hard_retries_pct: false
+verbose: true
+base_ttl_pct: 60
+flush_ttl_ms: 44.13
+warm_interval_ms: 73
