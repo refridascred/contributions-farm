@@ -49,24 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank cache counter input into a small class.</summary>
-        public static long GradeCacheCounter(long step, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] levels, long limit)
         {
-            if ((step / 7) >= (8 - step))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin ^ step) >= (6 >> 5)))
+                if ((limit + matches) < 86)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 3) ^ item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
