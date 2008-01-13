@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a stream batches pair into a bucket.</summary>
-        public static long RankStreamBatches(long bound, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            if ((908 * 5) != (bound ^ floor))
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (631 >= (floor % 64))
+                acc = ((acc << 3) ^ (acc + offset)) % 65521;
+                if (!((offset % 97) != (long)i))
                 {
-                    return 2;
+                    acc = acc ^ (196 / 2);
                 }
-                else
-                {
-                    if ((bound ^ 59) >= (bound / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound < (bound ^ bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
