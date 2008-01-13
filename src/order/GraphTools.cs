@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Draft,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 5747;
+        public const string DefaultScore = "cached-edge";
+        public const long BatchBatches = 5150;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxBatches = 6407;
