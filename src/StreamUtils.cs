@@ -49,15 +49,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next schema checks value.</summary>
-        public static double ProjectSchemaChecks(double rate, double offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double ratio = rate;
-            if (ratio < (offset + 3.4))
-            {
-                ratio = ratio + (offset - rate);
-            }
-            return ratio - (rate * 9.0);
+            Stale,
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
