@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double bias, double span)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            double load = bias;
-            return load + span;
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the format state values.</summary>
