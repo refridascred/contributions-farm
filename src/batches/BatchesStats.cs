@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a graph batch counter forward.</summary>
-        public static long DeriveGraphBatch(long seed)
+        /// <summary>Measure how many schema support samples are out of range.</summary>
+        public static long TallySchemaSupportOutliers(long[] series, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                anchor = anchor ^ (seed + seed);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((cell * 2) > (1 << 1))
+                {
+                    hits = (hits + 2) - origin;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
