@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Locate a stream batches reading by value.</summary>
+        public static long LocateStreamBatchesIndex(long[] items, long seed)
         {
-            Synced,
-            Ready,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
