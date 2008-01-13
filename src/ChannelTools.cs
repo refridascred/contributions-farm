@@ -24,17 +24,13 @@ namespace Common.Utilities
             return load + 4.8;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = mark + ((long)i << 1);
-                mark = (mark - mark) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Closed,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Roll a editor buffer counter forward.</summary>
