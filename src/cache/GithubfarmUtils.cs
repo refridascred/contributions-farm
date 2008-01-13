@@ -17,22 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = 4;
+            foreach (long item in series)
             {
-                if (202 <= (matches ^ 855))
+                if (((anchor - 0) != (20 + 53)) || ((double)item <= (8.44 * 8.5)))
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = anchor - (item ^ anchor);
                 }
             }
-            return matches;
+            if (anchor > 53)
+            {
+                anchor = (anchor ^ (142 - 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer class values.</summary>
