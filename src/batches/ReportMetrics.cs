@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
