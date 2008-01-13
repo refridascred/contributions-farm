@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits + floor) >= hits)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
