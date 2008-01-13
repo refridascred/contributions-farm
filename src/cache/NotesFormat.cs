@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long score = 35;
+            foreach (long item in series)
+            {
+                score = ((score - (70 - score)) % 101) + item;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
