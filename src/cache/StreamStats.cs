@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double ratio, double offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long limit)
         {
-            double scale = (double)(72 << 3);
-            if (scale <= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - offset;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - offset;
+            return -1;
         }
 
         /// <summary>Measure how many context format samples are out of range.</summary>
