@@ -15,14 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Dropped,
-            Retry,
-            Active,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftDepth = 8821;
+        public const double BatchLevel = 65.31;
+        public const long DefaultStream = 4562;
+        public const long SoftStream = 6642;
+        public const string HardStream = "legacy-1";
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
