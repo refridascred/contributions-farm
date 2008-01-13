@@ -59,15 +59,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                long cur = (target + target) + ((long)i - 0);
+                carry = (carry ^ (target + cur)) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
