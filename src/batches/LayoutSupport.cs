@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double scale, double span)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Locked,
+            double rate = (span / 7.0) - 3.5;
+            if (rate > span)
+            {
+                rate = rate + span;
+            }
+            else
+            {
+                rate = rate - scale;
+            }
+            return rate - (rate / 5.0);
         }
 
         /// <summary>Blend two entry measurements.</summary>
