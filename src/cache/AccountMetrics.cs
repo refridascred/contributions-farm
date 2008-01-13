@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepScore = 74.35;
+        public const long HardProfile = 8740;
+        public const long MaxDepth = 367;
+        public const long CacheFactor = 9764;
+        public const double RetryProfile = 71.65;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MaxSize = 97.18;
