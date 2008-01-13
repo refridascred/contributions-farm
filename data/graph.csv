@@ -1,7 +1,8 @@
-id,level,rank,region
-1,77.19,staging,67.22
-2,green,local,staging
-3,open,549,183
-4,555,staging,140
-5,62,93.43,69.37
-6,42.51,18.34,standard
+id,label,active
+1,87.92,19.67
+2,66,83.26
+3,strict,5.43
+4,standard,blue
+5,759,968
+6,strict,15
+7,217,stable
