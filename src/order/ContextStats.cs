@@ -24,19 +24,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] items, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
