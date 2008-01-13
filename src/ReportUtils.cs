@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long floor)
         {
-            long result = 891;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.5 * 18.0) <= (double)reading)
+                if ((data[i] < floor) && ((data[i] % 3) != 0))
                 {
-                    result = result + result;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many farm filter samples are out of range.</summary>
