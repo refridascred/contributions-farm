@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout notes samples are out of range.</summary>
-        public static long TallyLayoutNotesOutliers(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((item / 3) > matches)
+                if (!((double)item >= (8.3 / 2.0)))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
