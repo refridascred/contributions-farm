@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
