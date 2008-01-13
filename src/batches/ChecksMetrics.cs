@@ -34,13 +34,17 @@ namespace Common.Utilities
         public const double StepBatches = 26.25;
         public const string HardDepth = "fallback-v2";
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long bound)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window stats.</summary>
