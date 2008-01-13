@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Look up the position of a support context sample.</summary>
+        public static long LocateSupportContextIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-9) >= (hits % 7))
+                if (data[i] == target)
                 {
-                    hits = (hits + 1) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
