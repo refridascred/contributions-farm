@@ -14,38 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long floor, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long floor)
         {
-            if (origin > (origin & 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor < origin) || ((1.76 / 9.0) <= (double)floor))
+                if (values[i] == floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + floor) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (701 >= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a record commits figure with a bias.</summary>
