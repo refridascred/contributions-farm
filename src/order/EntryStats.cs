@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((9.0 - 9.56) >= (double)(long)values.Length) && ((double)sample >= (8.0 + 6.6)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "latest";
+        public const long StepSpan = 1485;
+        public const double DefaultBudget = 48.64;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] readings, long bound)
