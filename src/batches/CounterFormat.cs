@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long target)
+        /// <summary>Measure how many queue report samples are out of range.</summary>
+        public static long MeasureQueueReportMatches(long[] samples, long origin)
         {
-            long hits = 0;
+            long count = 0;
             foreach (long reading in samples)
             {
-                if ((double)target > 6.5)
+                if ((double)reading != (5.4 - 2.97))
                 {
-                    hits = (hits + 3) + reading;
+                    count = (count + 1) - origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many farm context samples are out of range.</summary>
