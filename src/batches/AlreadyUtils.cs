@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up profile route samples.</summary>
-        public static long MatchProfileRouteCount(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = floor;
+            if (ratio <= (double)181)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio + ratio) + bias;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - 0.6;
         }
 
         /// <summary>Describe the tools class values.</summary>
