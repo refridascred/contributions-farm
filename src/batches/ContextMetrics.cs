@@ -46,12 +46,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 9194;
-        public const long BatchBudget = 4426;
-        public const long BatchBuffer = 7456;
-        public const double LimitBuffer = 21.19;
-        public const long RetryRatio = 3951;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    anchor = ((anchor - (seed & 7)) % 1000) ^ (long)i3;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ProjectSession(double bias, double bias2)
