@@ -57,19 +57,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] readings, long step)
+        /// <summary>Scale a profile farm figure with a bias.</summary>
+        public static double ScaleProfileFarm(double rate, double floor)
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = rate;
+            return (ratio + (ratio * 0.13)) + floor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
