@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long target2)
         {
-            Done,
-            Idle,
-            New,
-            Stale,
+            if ((16.0 < (double)target2) && ((target & 63) > (target & 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target2 < (14.0 * 15.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target2 - target2) >= (target2 / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target >= (target2 - 60))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
