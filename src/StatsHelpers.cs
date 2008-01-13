@@ -41,13 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
