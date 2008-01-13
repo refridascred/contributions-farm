@@ -30,15 +30,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the notes class values.</summary>
