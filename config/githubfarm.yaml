@@ -1,14 +1,20 @@
 # githubfarm settings
-idle_retries: cached
-persist:
-  base_timeout_count:
-    - staging
-    - open
-  retry_retries_count: 19
-  retry_limit_count:
-    sync_retries_ms: staging
-    hard_retries: 30
-    batch_interval_count: true
-  compress: true
-  soft_timeout_pct: false
-soft_timeout_pct: 11
+warm_ratio_ms: false
+format_timeout: 250
+metrics_depth:
+  burst_depth_s: 100
+  burst_capacity_ms: 4500
+  max_delay: fallback
+  command_ratio: 500
+  hard_threshold:
+    default_size_pct: 4360
+    cache_size_count: 45.26
+    base_ratio_pct: edge
+    batches_ratio:
+      - cached
+      - green
+      - local
+      - green
+    compress: 2.37
+    persist: 21
+  verbose: open
