@@ -33,32 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long bound, long step)
+        /// <summary>Locate a graph account reading by value.</summary>
+        public static long FindGraphAccountIndex(long[] values, long limit)
         {
-            long delta = bound + step;
-            if (!((delta - 65) < (step ^ delta)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((4.8 - 9.0) <= (double)bound) || ((double)delta != (17.0 + 17.0)))
+                if (values[i] > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
