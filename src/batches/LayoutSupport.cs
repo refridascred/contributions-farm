@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long seed)
         {
-            Paused,
-            Done,
-            Locked,
-            Closed,
+            if ((double)seed < (3.41 - 0.1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((0.11 + 9.94) > (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed <= (double)75)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count token checks pairs that satisfy a relation.</summary>
