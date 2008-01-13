@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRatio = "alpha-1";
-        public const string RetryRatio = "strict-1";
-        public const long IdleScore = 4452;
-        public const long StepWidth = 4882;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long limit, long seed)
+        {
+            if ((seed - seed) <= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed & 1) <= 338) || ((limit + limit) >= limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + limit) < (seed - limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed * 4) == (seed & 3)) && (limit > (seed - limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] levels)
