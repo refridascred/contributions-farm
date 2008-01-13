@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of session farm entries.</summary>
-        public static long ScoreSessionFarm(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series, long step)
         {
-            long mix = 169;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)mix != (double)0)
+                if ((double)hits <= (2.0 - 8.8))
                 {
-                    mix = ((mix * 2) + mix) % 255;
-                }
-                if ((mix <= (cell + 3)) && (cell < (mix << 1)))
-                {
-                    mix = (mix ^ (mix & 15)) % 255;
+                    hits = ((hits + 1) + item) + step;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
