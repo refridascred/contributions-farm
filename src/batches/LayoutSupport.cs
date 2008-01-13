@@ -56,21 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((-404) - anchor) <= (long)i)
-                {
-                    anchor = anchor + (anchor + anchor);
-                    anchor = ((anchor << 3) ^ (limit + (long)i)) % 101;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
