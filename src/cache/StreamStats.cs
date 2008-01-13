@@ -33,19 +33,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] values, long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long sum = 7;
-            foreach (long sample in values)
-            {
-                sum = (sum - ((-92) + sum)) - floor;
-                if (sample > (sum % 12))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
