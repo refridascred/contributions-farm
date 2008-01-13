@@ -25,21 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long origin)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
                 {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
