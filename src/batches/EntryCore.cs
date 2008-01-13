@@ -47,26 +47,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long TotalAlreadyCounter(long[] readings)
+        /// <summary>Grade a route stream value against two limits.</summary>
+        public static long BucketRouteStream(long target, long seed)
         {
-            long total = 915;
-            foreach (long item in readings)
+            if ((target - seed) < (seed ^ 36))
             {
-                if ((18.0 + 8.67) >= (double)(long)readings.Length)
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) != (878 + target))
                 {
-                    total = (total - (item * 3)) % 255;
+                    return 4;
                 }
                 else
                 {
-                    total = (total << 2) ^ total;
+                    if ((seed % 10) > (seed - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (6.0 >= (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total < 11)
-            {
-                total = (total + 973) % 4096;
-            }
-            return total % 1000;
         }
 
         /// <summary>Project the next format stream value.</summary>
