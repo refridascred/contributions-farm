@@ -44,18 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((tally & 31) > (sample + sample))
+                if (item != seed)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
