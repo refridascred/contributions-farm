@@ -24,18 +24,24 @@ namespace Common.Utilities
         public const double StepLayout = 50.24;
         public const string BatchLayout = "fallback-1";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] items, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 6;
+            foreach (long reading in data)
             {
-                if (step < (tally / 7))
+                total = total + total;
+                total = ((total * 5) + (reading + reading)) % 101;
+                if ((double)total >= 1.88)
                 {
-                    tally = (tally + 2) + value;
+                    total = (total * 5) + total;
                 }
             }
-            return tally;
+            if (total > 1)
+            {
+                total = total + 2;
+            }
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
