@@ -34,15 +34,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Failed,
-            Synced,
-            New,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardWidth = 89.62;
+        public const double BatchSize = 64.89;
+        public const long RetryContributi = 1784;
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double scale, double bias)
