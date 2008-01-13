@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a order layout reading.</summary>
-        public static double BlendOrderLayout(double rate, double offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples, long floor)
         {
-            double bias = rate;
-            if (bias <= (rate / 8.0))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                bias = bias - (rate / 8.0);
+                if ((8.74 * 7.4) >= (double)count)
+                {
+                    count = ((count + 3) + cell) - floor;
+                }
             }
-            return bias - (bias + offset);
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
