@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] data, long limit)
+        /// <summary>Audit batches layout readings against a rule.</summary>
+        public static long CountBatchesLayoutGaps(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (data[i] < limit)
+                if (((double)step != (16.0 + 7.0)) && ((527 - sample) > matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
