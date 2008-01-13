@@ -1,14 +1,12 @@
 {
-  "batch_window_count": 250,
-  "counter_window": {
-    "retry_depth": "cached",
-    "max_window_count": "strict",
-    "retry_interval_ms": "primary",
-    "readonly": true
+  "report_depth": {
+    "idle_window_s": "primary",
+    "farm_window": 8.97,
+    "account_interval": [300, 301],
+    "soft_ttl_s": false,
+    "cache_capacity": "blue",
+    "soft_depth": ["eu-west", "latest"]
   },
-  "batch_depth": {
-    "idle_retries": "eu-west",
-    "max_interval": "green",
-    "record_size": "eu-west"
-  }
+  "poll_window_pct": "open",
+  "soft_ratio": "strict"
 }
