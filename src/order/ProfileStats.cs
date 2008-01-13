@@ -35,11 +35,9 @@ namespace Common.Utilities
         public const long BaseRatio = 4434;
         public const long RetryWindow = 4615;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2579;
-        public const long LimitRatio = 8760;
-        public const string BaseScore = "cached";
-        public const string RetryRatio = "standard-v2";
-        public const string SoftScore = "stable-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinScore = 85.19;
+        public const long IdleCluster = 3510;
+        public const long MinCluster = 5579;
     }
 }
