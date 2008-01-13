@@ -20,19 +20,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate account batch readings against a bound.</summary>
-        public static bool ValidateAccountBatchRange(long[] levels, long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ (carry * 5)) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
