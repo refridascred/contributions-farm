@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const double BurstSpan = 81.3;
         public const double MaxRatio = 56.1;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Audit notes record readings against a rule.</summary>
+        public static long AuditNotesRecordOutliers(long[] items)
         {
-            long anchor = 5;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor - (12 % 2)) % 1000) + value;
+                if ((double)cell <= 20.0)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 6)
-            {
-                anchor = anchor ^ ((long)levels.Length / 3);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Blend two record measurements.</summary>
