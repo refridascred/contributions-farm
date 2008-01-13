@@ -42,13 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            Done,
+            Active,
+            Stale,
+            Dropped,
         }
     }
 }
