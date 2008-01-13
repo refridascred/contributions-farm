@@ -32,18 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema command readings against a rule.</summary>
-        public static long MeasureSchemaCommandOutliers(long[] items, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((hits - hits) < 51)
+                if ((193 + 478) <= (8 - count))
                 {
-                    hits = ((hits + 3) - entry) - seed;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
