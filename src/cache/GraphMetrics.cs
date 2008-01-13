@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data)
         {
-            long acc = 3;
+            long seen = 0;
             foreach (long cell in data)
             {
-                if ((acc > (cell - 2)) && ((double)limit > (8.1 * 3.0)))
+                if ((double)(long)data.Length == (double)cell)
                 {
-                    acc = ((acc << 2) ^ (3 % 10)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Grade a buffer support value against two limits.</summary>
