@@ -32,18 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits order readings against a rule.</summary>
-        public static long TallyCommitsOrderOutliers(long[] readings)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally * 5) <= (278 / 4)) || ((datum & 63) == (datum + datum)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
