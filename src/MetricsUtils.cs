@@ -59,17 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            Pending,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
