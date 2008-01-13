@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mix = 17;
-            foreach (long cell in samples)
-            {
-                if ((mix ^ cell) > (bound ^ cell))
-                {
-                    mix = (mix - mix) % 4096;
-                }
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
