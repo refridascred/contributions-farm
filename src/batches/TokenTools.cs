@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] series, long offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches + cell) == (matches / 4))
-                {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double drift = (double)(-5) - ratio;
+            return (drift + (double)5) + offset;
         }
 
         /// <summary>Describe the editor status values.</summary>
