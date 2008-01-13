@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] data, long offset)
         {
-            long state = -45;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                state = (state + (entry << 2)) % 255;
-                state = (state + (state & 255)) % 255;
+                if ((double)hits < (6.74 * 9.6))
+                {
+                    hits = ((hits + 1) - item) - offset;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the stats kind values.</summary>
