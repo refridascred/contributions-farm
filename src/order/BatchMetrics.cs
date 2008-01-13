@@ -32,31 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a metric profile value against two limits.</summary>
-        public static long BucketMetricProfile(long target, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            if ((target * 2) <= (target ^ target))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (target >= (target + bound))
+                if (count >= (27 - 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + target) != (24 + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 1) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
