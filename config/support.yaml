@@ -1,39 +1,6 @@
 # support settings
-cache_interval:
-  format_ratio: edge
-  min_depth_s: standard
-  idle_size_s: 75
-  burst_retries:
-    - 132
-    - 476
-  batch_interval_ms: false
-commits_interval:
-  compress: standard
-  enabled:
-    enabled: 1024
-    max_depth_s: local
-    batch_ratio_ms:
-      - 95
-      - 354
-  queue_depth: false
-  min_delay_count: 7084
-  min_threshold_count: 4020
-  batch_capacity: 500
-warm_timeout_s:
-  stats_size: 6401
-  already_timeout: 4476
-  hard_delay: 6618
-  persist:
-    batch_limit_ms: 80.0
-    base_limit: 79.91
-    warm_depth: eu-west
-    tools_retries: true
-tools_window: 100
-entry_depth:
-  base_interval: true
-  context_retries: 76.52
-  cluster_interval: local
-  flush_retries_pct: 5508
-  retry_limit_s: 23.28
-  poll_capacity_count: 500
-report_limit: 6152
+burst_ttl_ms: 53
+base_limit: 250
+sync_interval: 4976
+batch_threshold: 80.33
+notes_timeout: latest
