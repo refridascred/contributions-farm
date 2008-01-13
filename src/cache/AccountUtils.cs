@@ -20,27 +20,13 @@ namespace Common.Utilities
             return rate - (double)7;
         }
 
-        /// <summary>Derive the next record stats value from a seed.</summary>
-        public static long SeriesRecordStats(long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = (((state * 3) + limit) % 101) ^ (long)i2;
-                }
-                if (limit < (limit / 6))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state * 3) + limit;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a window options.</summary>
