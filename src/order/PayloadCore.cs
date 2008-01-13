@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                if (reading >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the cache kind values.</summary>
