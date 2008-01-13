@@ -73,10 +73,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheDepth = "open-1";
-        public const long HardCommits = 3602;
-        public const long MinRatio = 9007;
-        public const long LimitCommits = 2649;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long offset, long offset2)
+        {
+            long edge = offset ^ offset2;
+            if ((3.15 * 6.17) > (double)edge)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge + edge) > (offset2 * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset2 >> 2) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
