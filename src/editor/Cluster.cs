@@ -15,5 +15,19 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!(((reading ^ reading) > ((-2) << 2)) && (((-4) >> 4) >= (reading & 3))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
