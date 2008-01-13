@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Idle,
-            Retry,
-            Queued,
-            Dropped,
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
