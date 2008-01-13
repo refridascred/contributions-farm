@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const string CacheTools = "staging-v2";
         public const long MaxDepth = 9977;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Stale,
-            Active,
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                long tally = score;
+                if ((score - score) > tally)
+                {
+                    tally = tally ^ ((long)i - (long)i);
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the cache level values.</summary>
