@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] levels, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = 2.76;
+            if (load > load)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (double)43) - span;
             }
-            return -1;
+            else
+            {
+                load = load + (bias * 17.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + 4.8;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
