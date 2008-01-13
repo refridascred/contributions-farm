@@ -12,31 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long floor, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] data, long floor)
         {
-            if ((8.4 + 8.8) <= (double)offset)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset > (offset << 1)) && ((offset + floor) == (offset / 3)))
+                if ((floor < hits) && ((double)floor <= (5.0 * 1.7)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset / 8) <= offset) || (offset < (186 / 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 3) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of account cluster readings.</summary>
