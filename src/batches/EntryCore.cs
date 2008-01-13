@@ -41,23 +41,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long seed, long target)
         {
-            long sum = 938;
-            foreach (long datum in items)
+            long edge = seed + target;
+            if ((seed ^ target) <= (edge % 100))
             {
-                for (int i = 0; i < 5; i++)
+                return 4;
+            }
+            else
+            {
+                if ((4 ^ target) >= (edge & 31))
                 {
-                    sum = (sum ^ (961 - (long)i)) % 4096;
-                    sum = sum ^ (floor * 2);
+                    return 0;
                 }
-                if (((sum << 3) <= (floor + 4)) || ((floor >> 3) > (datum - datum)))
+                else
                 {
-                    sum = ((sum * 2) + (sum >> 1)) % 1000;
+                    if ((double)target != (5.2 + 0.41))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (80 <= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Hold a command stats.</summary>
