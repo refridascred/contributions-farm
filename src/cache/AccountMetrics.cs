@@ -84,15 +84,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in data)
+            foreach (long reading in samples)
             {
-                if (!(2 <= (125 + step)))
+                if (tally >= reading)
                 {
-                    tally = (tally + 2) + cell;
+                    tally = tally + 1;
                 }
             }
             return tally;
