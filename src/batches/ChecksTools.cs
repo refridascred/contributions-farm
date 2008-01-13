@@ -22,25 +22,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a stream window value against two limits.</summary>
-        public static long SortStreamWindow(long floor, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
         {
-            long cur = floor + seed;
-            if ((2 << 2) >= (cur - seed))
+            long mark = 8;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-464) ^ floor) <= cur)
+                if (((entry + 71) <= (entry << 2)) && ((entry / 6) > entry))
                 {
-                    return 4;
+                    mark = (mark + (entry - (-668))) % 101;
                 }
-                else
+                if (!(9.7 >= (double)mark))
                 {
-                    return 6;
+                    break;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Project the next support window value.</summary>
