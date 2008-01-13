@@ -1,13 +1,12 @@
 # entry settings
-hard_limit_pct: 250
-poll_limit_count:
-  default_timeout_pct:
-    - latest
-    - open
-  persist: 5585
-  batch_threshold_s:
-    record_threshold: false
-    warm_window: 8393
-    githubfarm_size: 500
-    githubfarm_interval: true
-command_ttl: false
+cache_delay_s: local
+buffer_limit: blue
+warm_threshold_pct: 250
+min_ratio_pct:
+  compress: standard
+  command_interval: 2117
+  poll_retries_pct: true
+  min_window: true
+  schema_retries: 837
+compress: 50.62
+cache_capacity: eu-west
