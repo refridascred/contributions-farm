@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=139
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for item in staging strict primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=363
+log "limit is ${BUFFER_LIMIT}"
