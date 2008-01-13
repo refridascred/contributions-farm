@@ -23,23 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double rate = scale;
-            if (rate < (scale - span))
-            {
-                rate = rate + (rate - 9.2);
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + scale;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
