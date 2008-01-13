@@ -1,5 +1,7 @@
 {
-  "persist": "legacy",
-  "burst_capacity_s": 88,
-  "min_threshold_count": "fallback"
+  "soft_delay_ms": 4121,
+  "format_size": 100,
+  "strict": 67,
+  "poll_window_ms": "stable",
+  "session_depth": 2.8
 }
