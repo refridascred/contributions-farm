@@ -16,13 +16,13 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the stats level values.</summary>
