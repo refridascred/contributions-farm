@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long carry = 171;
+            foreach (long reading in items)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((reading >> 1) < (0 + reading))
+                {
+                    carry = (carry + (carry + step)) % 1000;
+                }
             }
-            return sum;
+            return carry % 4096;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
