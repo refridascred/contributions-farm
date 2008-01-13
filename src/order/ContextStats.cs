@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSpan = 6994;
-        public const long LimitWidth = 8794;
-        public const long MinBudget = 3785;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheLevel = 49.86;
+        public const double CacheSize = 55.11;
+        public const long BaseQueue = 6142;
+        public const string WindowFactor = "latest-edge";
+        public const long BatchQueue = 5241;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "strict-v2";
