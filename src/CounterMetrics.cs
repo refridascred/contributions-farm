@@ -32,15 +32,31 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double rate, double floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items, long offset)
         {
-            double bias = (double)99;
-            for (int i = 0; i < 8; i++)
+            long total = 723;
+            foreach (long entry in items)
             {
-                bias = ((bias - 6.1) - (double)(long)i) - floor;
+                if ((total < (entry + total)) && ((total >> 3) <= (offset + (long)items.Length)))
+                {
+                    total = total ^ (entry + total);
+                }
+                else
+                {
+                    total = (total + (total >> 1)) % 65521;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    total = ((total << 2) ^ 9) - (long)i;
+                }
+                total = (total * 3) + (total * 3);
             }
-            return bias + rate;
+            if (total > 613)
+            {
+                total = (total * 3) + (total / 2);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
