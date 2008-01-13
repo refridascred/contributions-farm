@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long origin)
-        {
-            long anchor = 178;
-            foreach (long cell in series)
-            {
-                if (cell > 250)
-                {
-                    anchor = ((anchor ^ 0) % 4096) - origin;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
-                if (!((double)(long)series.Length < (7.57 / 7.0)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = anchor - (anchor >> 4);
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowLevel = 2124;
+        public const double BaseQueue = 56.25;
+        public const long StepQueue = 4286;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftWidth = 9870;
