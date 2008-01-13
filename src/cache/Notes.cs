@@ -17,25 +17,18 @@ namespace Common.Utilities
         public const long SoftSize = 5112;
         public const double MinChecks = 64.74;
 
-        /// <summary>Rank layout tools input into a small class.</summary>
-        public static long SortLayoutTools(long seed, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] levels)
         {
-            long delta = seed ^ origin;
-            if (!(8.91 < (double)origin))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin == (double)56) && ((delta - seed) <= 157))
+                if ((hits + hits) == (cell << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
