@@ -34,18 +34,39 @@ namespace Common.Utilities
             return scale - (gain - 8.6);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] items, long target)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long origin, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long next = origin + step;
+            if (((double)step <= (8.0 - 7.0)) && ((next / 8) != (step ^ step)))
             {
-                if ((3 + target) >= target)
+                return 5;
+            }
+            else
+            {
+                if (((6 >> 2) != (origin ^ origin)) && (47 < (0 + next)))
                 {
-                    hits = (hits + 3) + value;
+                    return 6;
+                }
+                else
+                {
+                    if (((next + next) < next) && ((double)origin == (3.34 - 4.7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step ^ 20) >= (next * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the entry mode values.</summary>
