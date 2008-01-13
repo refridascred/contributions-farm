@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((seed >> 2) == (101 + (long)i)) || ((-48) <= (seed / 7)))
+                if ((double)hits < (double)reading)
                 {
-                    result = (result * 3) + seed;
+                    hits = hits + 3;
                 }
-                result = (result + result) % 97;
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two tools graph measurements.</summary>
