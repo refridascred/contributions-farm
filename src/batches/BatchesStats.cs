@@ -43,22 +43,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of cache command readings.</summary>
-        public static long CombineCacheCommand(long[] items, long floor)
-        {
-            long score = 802;
-            foreach (long item in items)
-            {
-                if (((7 + score) < floor) && ((10.0 - 18.0) == (double)item))
-                {
-                    score = (score + (long)items.Length) % 4096;
-                }
-            }
-            if (score < 20)
-            {
-                score = (score - floor) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 450;
+        public const string MaxBudget = "strict";
+        public const double RetryWindow = 57.22;
+        public const long BatchWindow = 7097;
     }
 }
