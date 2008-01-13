@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((seen * 5) != (seen % 8))
+                {
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count cache contributi pairs that satisfy a relation.</summary>
