@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Dropped,
+            Failed,
+            Stale,
             Paused,
-            Idle,
-            Retry,
+            Queued,
         }
 
         /// <summary>Project the next window counter value.</summary>
