@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the batch stream series from a seed.</summary>
-        public static long SeriesBatchStream(long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long result = 54;
+            foreach (long item in series)
             {
-                acc = (acc + (bound - acc)) % 255;
-                if (((long)i - bound) > acc)
+                if ((double)item > (4.43 + 6.8))
                 {
-                    acc = (acc * 2) + ((long)i / 2);
+                    result = ((result << 3) ^ item) % 65521;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Grade a order cache value against two limits.</summary>
