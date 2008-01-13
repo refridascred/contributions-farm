@@ -16,14 +16,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            Retry,
-            Failed,
-            Closed,
-            Stale,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
