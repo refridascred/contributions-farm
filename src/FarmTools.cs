@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxTimeout = 5476;
-        public const long RetryRoute = 8060;
-        public const long LimitScore = 5165;
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double offset)
+        {
+            double mean = offset;
+            if (mean < (offset + mean))
+            {
+                mean = mean - (double)7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean * 15.0)) + (double)(long)i;
+            }
+            return mean - (offset + bias);
+        }
 
         /// <summary>Count channel githubfarm pairs that satisfy a relation.</summary>
         public static long PairChannelGithubfarmCount(long[] series)
