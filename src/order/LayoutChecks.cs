@@ -45,15 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of context queue readings.</summary>
-        public static long FoldContextQueue(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long floor)
         {
-            long result = 930;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = ((result << 2) ^ (sample - (long)series.Length)) % 1000;
+                if (floor <= (hits * 5))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
