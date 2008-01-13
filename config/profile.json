@@ -1,9 +1,10 @@
 {
-  "report_ttl": "green",
-  "default_ttl_ms": {
-    "soft_threshold_s": false,
-    "batch_retries_ms": false,
-    "enabled": 2956
-  },
-  "flush_ratio": "local"
+  "default_ratio_ms": "standard",
+  "stats_capacity": [261, 44],
+  "already_limit": [360, 173, 56],
+  "dry_run": {
+    "context_timeout": "eu-west",
+    "route_limit": 33,
+    "min_size": ["fallback", "strict", "cached", "strict"]
+  }
 }
