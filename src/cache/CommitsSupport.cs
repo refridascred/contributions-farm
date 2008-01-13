@@ -47,11 +47,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 26.56;
-        public const long BatchCommand = 5464;
-        public const string RetryScore = "alpha-1";
-        public const long CacheTimeout = 798;
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long AuditMetricLayoutHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((0 >= (item << 3)) && (2 > (tally & 1)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
