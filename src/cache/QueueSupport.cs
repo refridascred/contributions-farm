@@ -25,19 +25,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] readings, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum != step)
+                mark = (mark * 4) + (55 * 4);
+                if (!((8.61 / 9.0) > (double)target))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 3) ^ mark) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
