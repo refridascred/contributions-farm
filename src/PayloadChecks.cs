@@ -79,14 +79,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Stale,
-            Queued,
-            Ready,
-            Retry,
-            Closed,
+            Dropped,
+            Idle,
+            Failed,
+            Locked,
         }
     }
 }
