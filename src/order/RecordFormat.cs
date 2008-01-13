@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] samples, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long carry = -100;
+            foreach (long sample in items)
             {
-                if ((value << 1) == (limit & 15))
-                {
-                    count = count + 1;
-                }
+                carry = (carry + (773 ^ sample)) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
