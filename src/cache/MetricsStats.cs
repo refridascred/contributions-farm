@@ -49,12 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 72.56;
-        public const long BurstBatch = 7181;
-        public const long WindowRatio = 1969;
-        public const long CacheScore = 387;
-        public const string DefaultBatch = "alpha-edge";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + tally) > (tally + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphOutliers(long[] items, long floor)
