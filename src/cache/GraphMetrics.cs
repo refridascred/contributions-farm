@@ -24,10 +24,19 @@ namespace Common.Utilities
         public const double StepLayout = 50.24;
         public const string BatchLayout = "fallback-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 8970;
-        public const long StepFormat = 3913;
-        public const string HardFormat = "fallback-v2";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry >> 3) >= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double LimitDepth = 52.65;
