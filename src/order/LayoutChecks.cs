@@ -42,12 +42,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series, long offset)
         {
-            Locked,
-            Draft,
-            Closed,
+            long acc = 6;
+            foreach (long datum in series)
+            {
+                if (((datum & 7) != (datum & 3)) && ((acc << 3) != (offset * 5)))
+                {
+                    acc = (acc << 3) ^ (acc << 3);
+                }
+                if (!((2.7 - 8.0) == (double)acc))
+                {
+                    acc = (acc + (301 - datum)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
