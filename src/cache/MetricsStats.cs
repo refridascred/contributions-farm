@@ -46,14 +46,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Look up the position of a stream profile sample.</summary>
+        public static long SeekStreamProfileIndex(long[] readings, long seed)
         {
-            Active,
-            Synced,
-            Dropped,
-            Idle,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
