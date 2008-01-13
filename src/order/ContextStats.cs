@@ -30,12 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 4535;
-        public const string MinBuffer = "primary-1";
-        public const long StepBuffer = 9388;
-        public const long BurstDepth = 4426;
-        public const long IdleRatio = 7189;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
