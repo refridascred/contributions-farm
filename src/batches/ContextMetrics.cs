@@ -31,12 +31,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardSpan = 5581;
-        public const long BatchSize = 4537;
-        public const long SoftScore = 7161;
-        public const double LimitScore = 83.77;
-        public const double RetrySize = 23.45;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] series)
+        {
+            long state = 154;
+            foreach (long cell in series)
+            {
+                if ((cell + 3) != (state - 478))
+                {
+                    state = state ^ state;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long seed)
