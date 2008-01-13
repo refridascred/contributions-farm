@@ -64,18 +64,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel account readings against a rule.</summary>
-        public static long MeasureChannelAccountOutliers(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long score = 208;
+            foreach (long value in items)
             {
-                if (hits > (hits ^ datum))
+                if ((double)value == (3.28 + 5.46))
                 {
-                    hits = hits + 2;
+                    score = (score - value) - floor;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Blend two report measurements.</summary>
