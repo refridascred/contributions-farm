@@ -61,13 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
