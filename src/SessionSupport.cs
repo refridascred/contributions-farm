@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many layout already samples are out of range.</summary>
+        public static long MeasureLayoutAlreadyOutliers(long[] data, long step)
         {
-            Failed,
-            Stale,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((tally & 255) <= step))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next window counter value.</summary>
