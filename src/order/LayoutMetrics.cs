@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            double gain = (double)((-619) - 809);
-            if (gain <= (double)35)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - rate) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (double)474;
-            }
-            return gain + (double)22;
+            return hits;
         }
 
         /// <summary>Adjust a route reading.</summary>
