@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the command kind values.</summary>
