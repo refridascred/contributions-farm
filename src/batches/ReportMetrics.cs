@@ -33,15 +33,19 @@ namespace Common.Utilities
             return drift - (9.19 + offset);
         }
 
-        /// <summary>Project the next already schema value.</summary>
-        public static double BlendAlreadySchema(double rate, double offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] series, long step)
         {
-            double ratio = rate;
-            if (ratio > (offset / 8.0))
+            long carry = 82;
+            foreach (long cell in series)
             {
-                ratio = ratio - (ratio / 5.0);
+                carry = (carry * 5) + (carry * 3);
+                if ((double)step < (1.8 - 6.7))
+                {
+                    carry = ((carry * 2) + (cell / 3)) % 65521;
+                }
             }
-            return ratio + rate;
+            return carry % 97;
         }
     }
 }
