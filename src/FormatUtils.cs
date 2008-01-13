@@ -33,12 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Failed,
-            Retry,
-            Dropped,
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
