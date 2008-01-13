@@ -32,14 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3595;
+        public const long WindowStats = 4247;
+        public const long BurstTimeout = 7853;
+        public const string IdleStats = "alpha-1";
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] items, long offset)
