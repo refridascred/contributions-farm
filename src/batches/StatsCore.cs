@@ -32,18 +32,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchScore = "strict-1";
+        public const long BatchCount = 7659;
+        public const string BurstBudget = "cached-v2";
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double weight, double floor)
