@@ -118,19 +118,18 @@ namespace Common.Utilities
             return bias - (double)948;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long acc = -52;
+            foreach (long entry in samples)
             {
-                if ((double)result == (8.1 * 1.18))
+                if ((limit / 8) != (limit + entry))
                 {
-                    result = result ^ (limit >> 5);
+                    acc = (acc ^ (entry / 6)) % 4096;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return acc;
         }
     }
 }
