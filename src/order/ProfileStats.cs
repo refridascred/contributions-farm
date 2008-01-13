@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            long result = 7;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((origin & 7) >= result)
+                if ((matches & 7) > (65 - matches))
                 {
-                    result = (result + (reading / 2)) % 97;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Blend two stats measurements.</summary>
