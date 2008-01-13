@@ -58,19 +58,25 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long prev = offset ^ bound;
+            if ((bound % 8) < offset)
             {
-                if (sample > offset)
+                return 5;
+            }
+            else
+            {
+                if ((prev - offset) != (offset + bound))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a graph options.</summary>
