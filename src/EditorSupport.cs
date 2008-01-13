@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] readings)
+        /// <summary>Compare every pair of githubfarm notes readings.</summary>
+        public static long OverlapGithubfarmNotesCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.7 / 9.0) <= (double)count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the record mode values.</summary>
