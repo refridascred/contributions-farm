@@ -39,13 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] values, long limit)
         {
-            Idle,
-            Done,
-            Active,
-            New,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (0.2 > (double)limit)
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
