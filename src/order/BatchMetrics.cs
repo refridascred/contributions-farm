@@ -52,32 +52,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long limit, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data)
         {
-            long gap = limit + offset;
-            if ((double)limit <= (double)gap)
+            long total = 66;
+            foreach (long reading in data)
             {
-                return 5;
+                total = (total ^ (total + total)) ^ reading;
             }
-            else
-            {
-                if (!((1.0 * 2.5) > (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit + 18) < (24 & 127)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
