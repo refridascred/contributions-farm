@@ -28,15 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            double bias2 = span;
+            if (bias2 > 20.0)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                bias2 = (bias2 - 5.4) - bias;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - 7.55) + (double)(long)i;
+            }
+            return bias2 - 8.7;
         }
     }
 }
