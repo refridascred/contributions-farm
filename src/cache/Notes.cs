@@ -58,19 +58,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
