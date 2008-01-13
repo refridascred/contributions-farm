@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two format entry measurements.</summary>
-        public static double ScaleFormatEntry(double bias, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] data, long limit)
         {
-            double scale = bias * 4.02;
-            if (scale >= (scale * 0.09))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                scale = scale - (scale * 8.84);
+                if (matches <= (sample % 60))
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            else
-            {
-                scale = scale + (scale * 9.0);
-            }
-            return scale + span;
+            return matches;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
