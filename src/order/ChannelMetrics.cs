@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up support metric samples.</summary>
-        public static long OverlapSupportMetricCount(long[] items)
+        /// <summary>Combine route already values into a single score.</summary>
+        public static long CombineRouteAlready(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 2;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = score - (bound & 3);
+                if (!((double)entry >= (double)score))
                 {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score << 2) ^ (bound - 89);
                 }
             }
-            return hits;
+            if (score > 877)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the stats kind values.</summary>
