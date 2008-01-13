@@ -42,9 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 79.79;
-        public const long IdleTimeout = 9328;
-        public const long WindowMetric = 8115;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading > (3.08 - 1.6))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
