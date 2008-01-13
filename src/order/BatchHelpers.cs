@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] readings)
         {
-            double bias = 2.0;
-            return (bias - weight) + offset;
+            long score = 0;
+            foreach (long reading in readings)
+            {
+                score = score + (reading << 1);
+                if (((2.0 + 14.0) == (double)score) && (((-347) - score) <= score))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
