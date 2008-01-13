@@ -1,9 +1,16 @@
 # support settings
-poll_ratio: 20.27
-max_ttl_s:
-  - edge
-  - standard
-  - staging
-support_interval: 2.59
-max_threshold_ms: green
-default_interval: 88.34
+soft_ttl_s: 7866
+enabled:
+  batch_interval: cached
+  persist:
+    min_depth: 5674
+    compress: fallback
+    retry_threshold_ms: 250
+    format_ttl: false
+    queue_ttl: 1024
+  sync_retries_pct: 42
+  soft_window: 250
+cache_ttl: latest
+hard_retries_count: standard
+poll_threshold_ms: false
+readonly: true
