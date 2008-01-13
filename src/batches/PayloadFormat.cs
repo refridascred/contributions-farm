@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheFactor = "alpha-1";
-        public const string MaxSize = "standard-edge";
-        public const double IdleRatio = 23.94;
-        public const double LimitCounter = 4.04;
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] levels, long step)
