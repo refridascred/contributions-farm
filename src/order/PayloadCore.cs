@@ -28,17 +28,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] series, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] == target)
+                if (84 <= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up stream samples.</summary>
