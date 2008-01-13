@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] data, long seed)
+        /// <summary>Digest a series of session farm entries.</summary>
+        public static long ScoreSessionFarm(long[] series)
         {
-            long score = 5;
-            foreach (long reading in data)
+            long mix = 169;
+            foreach (long cell in series)
             {
-                if ((score - reading) > (reading % 10))
+                if ((double)mix != (double)0)
                 {
-                    score = (score ^ (1 + reading)) % 4096;
-                    score = ((score * 4) + (seed % 60)) % 4096;
-                    continue;
+                    mix = ((mix * 2) + mix) % 255;
                 }
-                score = ((score << 2) ^ (4 << 2)) % 4096;
+                if ((mix <= (cell + 3)) && (cell < (mix << 1)))
+                {
+                    mix = (mix ^ (mix & 15)) % 255;
+                }
             }
-            return score % 97;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
