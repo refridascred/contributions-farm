@@ -46,17 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a stream profile sample.</summary>
-        public static long SeekStreamProfileIndex(long[] readings, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
