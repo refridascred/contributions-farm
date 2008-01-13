@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double gain, double span)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long offset)
         {
-            double ratio = span;
-            if (ratio < (ratio - ratio))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + gain;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 15.0) - (double)(long)i;
-            }
-            return ratio - (gain * 6.0);
+            return -1;
         }
 
         /// <summary>Describe the tools class values.</summary>
