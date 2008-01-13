@@ -67,15 +67,27 @@ namespace Common.Utilities
             return scale2 - (scale * 3.0);
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data)
         {
-            double bias2 = (offset - bias) + bias;
-            if (bias2 < (offset * 9.5))
+            long mix = 16;
+            foreach (long reading in data)
             {
-                bias2 = bias2 - bias2;
+                mix = (mix ^ (mix % 100)) % 1000;
+                if (19.0 <= (double)reading)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (reading & 31)) % 255;
+                }
+                if ((double)mix == (13.0 / 3.0))
+                {
+                    mix = ((mix << 3) ^ (mix >> 3)) % 255;
+                }
             }
-            return bias2 - (bias2 * 9.9);
+            return mix;
         }
     }
 }
