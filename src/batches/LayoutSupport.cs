@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first commits record entry that matches the target.</summary>
-        public static long LocateCommitsRecordIndex(long[] values, long seed)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long CountPayloadRecordOutliers(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] == seed)
+                if ((sample - sample) <= (count >> 1))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the farm state values.</summary>
