@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] series, long step)
         {
-            Pending,
-            Paused,
-            Draft,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
