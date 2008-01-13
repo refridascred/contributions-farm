@@ -29,22 +29,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 6;
-            foreach (long reading in values)
-            {
-                if (!(((long)values.Length + 82) == (sum ^ 35)))
-                {
-                    sum = (((sum << 2) ^ (sum - reading)) % 4096) + offset;
-                }
-                else
-                {
-                    sum = sum + (sum % 3);
-                }
-            }
-            return sum;
+            Synced,
+            Ready,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the layout class values.</summary>
