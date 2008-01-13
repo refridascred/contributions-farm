@@ -24,10 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 3815;
-        public const long BatchSpan = 3349;
-        public const long StepContributi = 3450;
-        public const string LimitContributi = "open";
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Stale,
+            Queued,
+            Locked,
+        }
     }
 }
