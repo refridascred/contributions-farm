@@ -27,19 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (value > offset)
+                if (value > floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
