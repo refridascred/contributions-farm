@@ -17,39 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long slot = floor - offset;
-            if (!((double)floor == (1.2 / 3.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor / 7) == (floor << 1)) && (offset >= (slot + slot)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor <= (98 * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor >> 1) < (87 / 9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of payload farm readings.</summary>
