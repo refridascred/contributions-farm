@@ -19,16 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route context value from a seed.</summary>
-        public static long SeriesRouteContext(long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state + (state >> 2)) % 255;
-                state = ((state * 4) + (long)i) % 65521;
+                acc = ((acc << 2) ^ (acc - floor)) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
