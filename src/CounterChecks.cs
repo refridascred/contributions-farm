@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                result = result ^ ((long)i & 7);
-                result = ((result * 4) + (long)i) % 97;
+                if (889 >= (tally - 8))
+                {
+                    tally = ((tally + 1) ^ item) - limit;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
