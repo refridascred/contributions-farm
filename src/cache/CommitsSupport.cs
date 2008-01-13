@@ -36,18 +36,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] values, long limit)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (0.2 > (double)limit)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
