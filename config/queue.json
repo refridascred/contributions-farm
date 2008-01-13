@@ -1,7 +1,9 @@
 {
-  "retry_depth_pct": ["eu-west", "open"],
-  "warm_limit_s": ["edge", "standard", "green", "local"],
-  "sync_threshold_ms": 81.8,
-  "idle_retries_count": 60,
-  "max_timeout_pct": true
+  "idle_ratio_ms": false,
+  "soft_size_s": {
+    "verbose": 1024,
+    "idle_limit": true,
+    "readonly": 83.0
+  },
+  "base_threshold_count": "standard"
 }
