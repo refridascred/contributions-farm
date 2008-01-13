@@ -1,7 +1,6 @@
 {
-  "readonly": 30,
-  "batch_delay_s": 36,
-  "context_timeout": [433, 81, 184],
-  "base_depth": ["cached", "latest", "stable"],
-  "compress": "eu-west"
+  "persist": false,
+  "max_limit_ms": "strict",
+  "min_ratio": "standard",
+  "idle_limit": "latest"
 }
