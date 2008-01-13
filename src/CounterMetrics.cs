@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 6;
+            foreach (long value in items)
             {
-                if (samples[i] > seed)
+                mark = mark - ((long)items.Length ^ value);
+                mark = (mark + (bound - value)) % 65521;
+                if ((value + bound) > (bound ^ mark))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mark > 6)
+            {
+                mark = mark - (bound + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a order cache value against two limits.</summary>
