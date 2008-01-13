@@ -39,22 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] samples, long seed)
+        /// <summary>Grade a contributi batches value against two limits.</summary>
+        public static long SortContributiBatches(long step, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (!((floor ^ 91) == (floor - floor)))
             {
-                if ((35 * 5) <= seed)
+                return 2;
+            }
+            else
+            {
+                if (step > (856 ^ step))
                 {
-                    count = (count + 2) ^ datum;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
