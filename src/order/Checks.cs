@@ -12,12 +12,12 @@ namespace Common.Utilities
             return ((gain + 4.25) + weight) + span;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] values, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < seed)
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
