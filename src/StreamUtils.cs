@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] levels, long bound)
+        /// <summary>Rank stats batches input into a small class.</summary>
+        public static long SortStatsBatches(long target, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if ((limit - 39) > ((-926) / 5))
             {
-                if ((cell / 5) >= (bound & 7))
+                return 1;
+            }
+            else
+            {
+                if (!((15 >> 3) <= (target % 16)))
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((limit ^ (-27)) < (506 + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate farm graph samples.</summary>
