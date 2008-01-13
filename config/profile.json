@@ -1,6 +1,23 @@
 {
-  "stats_window": "latest",
-  "persist": 20,
-  "flush_delay": 7082,
-  "context_ttl": "edge"
+  "soft_timeout": 3,
+  "soft_window_s": {
+    "sync_capacity_ms": "edge",
+    "readonly": true,
+    "retry_depth_count": 1561
+  },
+  "readonly": 100,
+  "record_delay": 24.88,
+  "filter_retries": {
+    "strict": 30,
+    "soft_retries_s": "green",
+    "cluster_size": [188, 355, 450],
+    "sync_window_count": "staging",
+    "readonly": {
+      "enabled": 81.55,
+      "flush_limit_ms": false,
+      "base_delay": 500,
+      "flush_limit_s": [228, 342]
+    }
+  },
+  "retry_size_pct": "stable"
 }
