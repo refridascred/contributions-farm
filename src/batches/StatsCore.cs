@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long offset)
+        /// <summary>Measure how many window commits samples are out of range.</summary>
+        public static long CountWindowCommitsOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                if (((4.7 - 1.53) == (double)(long)readings.Length) && (((count & 1) < (9 + count)) || ((0.4 + 11.0) <= (double)count)))
                 {
-                    return (long)i;
+                    count = (count + 3) - datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
