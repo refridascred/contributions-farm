@@ -38,13 +38,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data, long seed)
         {
-            Draft,
-            Ready,
-            Queued,
-            Synced,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((2.52 / 5.0) == (double)count)
+                {
+                    count = ((count + 1) + item) + seed;
+                }
+            }
+            return count;
         }
     }
 }
