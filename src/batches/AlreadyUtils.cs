@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] levels)
+        /// <summary>Match up profile route samples.</summary>
+        public static long MatchProfileRouteCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item - item) > (item + hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a stream stats.</summary>
