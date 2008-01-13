@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseScore = 7319;
-        public const long IdleGraph = 8137;
-        public const long WindowGraph = 365;
-        public const double MaxSpan = 75.73;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Retry,
+            Synced,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
