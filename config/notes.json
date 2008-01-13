@@ -1,5 +1,8 @@
 {
-  "batch_capacity_s": "primary",
-  "layout_depth": true,
-  "cache_depth_ms": "cached"
+  "verbose": 23.89,
+  "burst_capacity_count": "primary",
+  "soft_threshold_pct": "open",
+  "base_threshold": [29, 306, 29, 59],
+  "min_timeout_count": "strict",
+  "sync_timeout": 8021
 }
