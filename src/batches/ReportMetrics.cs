@@ -26,25 +26,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account cluster readings.</summary>
-        public static long FoldAccountCluster(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long seed, long step)
         {
-            long acc = 88;
-            foreach (long reading in series)
+            long gap = seed ^ step;
+            if ((seed >> 2) > (83 - gap))
             {
-                acc = acc - (reading << 3);
-                if ((double)reading < (1.2 + 20.0))
+                return 2;
+            }
+            else
+            {
+                if (!((7 & 7) >= (7 ^ gap)))
                 {
-                    acc = acc + acc;
-                    continue;
+                    return 3;
                 }
-                acc = (acc ^ (acc % 60)) % 4096;
+                else
+                {
+                    if (!((double)seed != (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            if (acc < 7)
-            {
-                acc = ((acc << 2) ^ (69 - 9)) % 4096;
-            }
-            return acc;
         }
     }
 }
