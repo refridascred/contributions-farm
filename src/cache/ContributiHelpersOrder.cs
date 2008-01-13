@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer window values into a single score.</summary>
-        public static long TotalBufferWindow(long[] data)
+        /// <summary>Validate already support readings against a bound.</summary>
+        public static bool VerifyAlreadySupportLimits(long[] items, long floor)
         {
-            long score = -7;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((score % 8) != (item % 16))
+                if (entry < floor)
                 {
-                    score = score + item;
-                }
-                else
-                {
-                    score = (score ^ (item >> 3)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return flag;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
