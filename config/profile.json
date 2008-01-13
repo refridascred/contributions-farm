@@ -1,8 +1,9 @@
 {
-  "min_capacity": "blue",
-  "warm_ttl": "open",
-  "max_ttl_ms": "stable",
-  "batches_capacity": false,
-  "cluster_limit": 69.96,
-  "poll_timeout_ms": false
+  "burst_delay": {
+    "batch_delay": 500,
+    "poll_limit": 250,
+    "cache_interval": 49.55
+  },
+  "base_interval": true,
+  "audit": 2229
 }
