@@ -53,18 +53,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] samples, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double bias2 = (double)(45 << 1);
+            for (int i = 0; i < 3; i++)
             {
-                if (!((cell / 6) > (step ^ 70)))
-                {
-                    tally = tally + 1;
-                }
+                bias2 = (bias2 - (8.1 * 5.64)) + (double)(long)i;
             }
-            return tally;
+            return bias2 + (bias - ratio);
         }
 
         /// <summary>Hold a batch stats.</summary>
