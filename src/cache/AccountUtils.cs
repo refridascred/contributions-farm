@@ -27,11 +27,11 @@ namespace Common.Utilities
             return ((load - 1.8) + gain) + floor;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double bias2)
         {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            double load = (double)(77 ^ 941);
+            return ((load + load) + bias) + bias2;
         }
     }
 }
