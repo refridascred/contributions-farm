@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (bias - weight) + offset;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] samples, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (cell < offset)
+                if (((16 <= (tally % 16)) && ((76 + tally) < 264)) || !((tally + cell) <= (tally % 100)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
