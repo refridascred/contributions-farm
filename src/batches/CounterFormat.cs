@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "alpha";
+        public const double CacheTimeout = 42.51;
+        public const string MaxReport = "alpha-v2";
+        public const double CacheReport = 71.67;
+        public const string IdleLevel = "fallback-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const string MinToken = "fallback";
