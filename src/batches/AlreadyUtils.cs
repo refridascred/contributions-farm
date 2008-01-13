@@ -47,19 +47,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
