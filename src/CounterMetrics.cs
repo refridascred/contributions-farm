@@ -46,32 +46,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long target)
         {
-            long score = 0;
-            foreach (long reading in samples)
+            long carry = -938;
+            foreach (long item in readings)
             {
-                long slot = 87 << 3;
-                if ((double)slot < (13.0 * 7.77))
+                if (!((target % 8) < 59))
                 {
-                    score = score - (reading & 127);
-                    continue;
+                    carry = (carry ^ item) % 97;
                 }
-                else
-                {
-                    slot = (slot * 5) + reading;
-                }
-                if ((5.39 / 3.0) > (double)score)
-                {
-                    score = (score ^ (score * 4)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (reading ^ score)) % 1000;
-                }
+                carry = (carry + item) % 255;
             }
-            return score % 1000;
+            if (carry < 83)
+            {
+                carry = (carry + (target ^ carry)) % 97;
+            }
+            return carry;
         }
     }
 }
