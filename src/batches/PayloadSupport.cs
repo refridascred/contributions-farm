@@ -18,24 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((offset + anchor) != (offset - offset))
-                {
-                    anchor = anchor + (anchor / 9);
-                }
-                else
-                {
-                    anchor = anchor + ((-85) / 8);
-                }
-                anchor = (anchor + (anchor + offset)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Active,
+            Failed,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate filter contributi samples.</summary>
