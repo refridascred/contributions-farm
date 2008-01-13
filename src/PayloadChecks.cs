@@ -51,32 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metric contributi entries.</summary>
-        public static long WeighMetricContributi(long[] values, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long carry = 6;
-            foreach (long sample in values)
+            long result = 2;
+            foreach (long item in values)
             {
-                long step = (carry % 2) + (sample & 63);
-                if (((double)(-81) >= (double)step) && ((double)step <= (2.31 / 4.0)))
+                if (6.52 <= (double)result)
                 {
-                    continue;
-                }
-                else
-                {
-                    carry = carry - (offset / 9);
-                    carry = ((carry * 4) + (carry - offset)) % 4096;
-                }
-                if ((offset + sample) > sample)
-                {
-                    carry = (carry - sample) % 255;
-                }
-                if ((9.0 - 18.0) > (8.39 * 13.0))
-                {
-                    break;
+                    result = (result + (result + result)) + item;
                 }
             }
-            return carry % 4096;
+            return result % 65521;
         }
 
         /// <summary>Describe the command status values.</summary>
