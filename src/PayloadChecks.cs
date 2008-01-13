@@ -58,12 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftLevel = 3330;
-        public const double RetrySize = 94.03;
-        public const double WindowGraph = 97.81;
-        public const double CacheGraph = 98.87;
-        public const long MinGraph = 9505;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MinFormat = "staging-edge";
