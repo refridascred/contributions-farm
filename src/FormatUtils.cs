@@ -68,17 +68,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] <= floor)
+                if ((((long)i >> 3) <= (acc << 3)) && ((acc + acc) <= (83 + acc)))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (origin << 1)) % 4096;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
