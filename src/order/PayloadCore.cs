@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 4939;
+        public const long RetryDepth = 3989;
+        public const string BurstScore = "cached-1";
+        public const long IdleRoute = 1959;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
