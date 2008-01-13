@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Pending,
-            Idle,
+            Draft,
             Retry,
-            Synced,
+            Paused,
         }
 
         /// <summary>Hold a token snapshot.</summary>
