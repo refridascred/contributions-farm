@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 64.2;
-        public const string BatchSpan = "legacy";
-        public const double MaxPayload = 35.07;
-        public const long MaxDepth = 153;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double offset)
+        {
+            double scale = offset;
+            if (scale >= scale)
+            {
+                scale = (scale + (scale - 7.82)) - ratio;
+            }
+            else
+            {
+                scale = scale - (offset * 6.1);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
