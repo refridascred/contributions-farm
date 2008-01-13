@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a cluster checks sample.</summary>
-        public static long FindClusterChecksIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 1544;
+        public const long DefaultNotes = 8175;
+        public const long WindowRatio = 3537;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaGaps(long[] readings, long floor)
