@@ -21,20 +21,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two checks support measurements.</summary>
-        public static double AdjustChecksSupport(double weight, double bias)
-        {
-            double ratio = (weight * 0.05) - (bias * 6.91);
-            if (ratio <= 4.0)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio + (ratio + ratio);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 2479;
+        public const long DefaultWidth = 8305;
+        public const long WindowChecks = 3544;
+        public const long BurstSpan = 2425;
 
         /// <summary>Audit schema command readings against a rule.</summary>
         public static long MeasureSchemaCommandOutliers(long[] items, long seed)
