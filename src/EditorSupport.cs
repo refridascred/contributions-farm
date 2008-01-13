@@ -89,24 +89,18 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long seed, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] series)
         {
-            if (seed >= (seed * 2))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed < (floor & 31))
+                if ((((53 % 24) <= (matches << 2)) && ((double)matches != (4.57 / 3.0))) && !((double)reading != (9.8 + 5.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
