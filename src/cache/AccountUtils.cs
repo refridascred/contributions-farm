@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (scale2 + 8.0) + scale;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool GuardReportNotesRange(long[] levels, long origin)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Retry,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window options.</summary>
