@@ -25,11 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
