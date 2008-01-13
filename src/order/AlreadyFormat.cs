@@ -34,11 +34,12 @@ namespace Common.Utilities
             return ratio - (gain * 6.0);
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
