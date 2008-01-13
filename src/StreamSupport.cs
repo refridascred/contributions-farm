@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double span)
         {
-            long cur = step - seed;
-            if ((cur < (75 ^ seed)) && ((cur - seed) <= (step + step)))
+            double load = span;
+            if (load <= (9.86 + 5.8))
             {
-                return 8;
+                load = load - span;
             }
             else
             {
-                if ((step % 3) > step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                load = load - (weight + weight);
             }
+            return load - weight;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
