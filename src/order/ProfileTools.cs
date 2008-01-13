@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((38 + seen) != (datum ^ 87))
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state - state) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Blend two window measurements.</summary>
