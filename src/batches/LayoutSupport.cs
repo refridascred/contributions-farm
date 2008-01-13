@@ -51,21 +51,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepSize = 65.73;
+        public const double IdleAccount = 92.63;
+        public const double StepAccount = 33.46;
+        public const string HardAccount = "cached";
+        public const long BaseCount = 8868;
     }
 }
