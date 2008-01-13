@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)offset > (11.0 + 6.6))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
