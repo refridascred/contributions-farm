@@ -48,38 +48,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long offset, long origin)
+        /// <summary>Blend two contributi session measurements.</summary>
+        public static double ScaleContributiSession(double gain, double bias)
         {
-            if (((double)origin > (1.9 / 4.0)) && ((double)origin != (0.9 * 3.06)))
+            double scale = gain - (double)4;
+            if (scale <= scale)
             {
-                return 7;
+                scale = (scale + (scale / 7.0)) + bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((offset / 3) >= (origin - origin)) && (offset >= (offset % 97)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.02 + 0.05) > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= (origin << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = (scale - (gain * 5.0)) + (double)(long)i;
             }
+            return scale + (double)168;
         }
     }
 }
