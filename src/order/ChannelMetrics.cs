@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 9452;
-        public const double MinOrder = 94.64;
-        public const double HardOrder = 11.69;
-        public const string BaseSpan = "fallback-edge";
-        public const long LimitCount = 6177;
+        /// <summary>Accumulate contributi githubfarm samples.</summary>
+        public static long WeighContributiGithubfarm(long[] levels)
+        {
+            long total = -79;
+            foreach (long reading in levels)
+            {
+                total = (total - (reading - total)) % 255;
+                if (((double)reading > (17.0 * 8.7)) || ((0.05 + 20.0) != (double)total))
+                {
+                    break;
+                }
+            }
+            if (total > 707)
+            {
+                total = (total ^ (total + 40)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
