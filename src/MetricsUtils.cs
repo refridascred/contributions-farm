@@ -20,16 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry format samples.</summary>
-        public static long TotalEntryFormat(long[] readings, long target)
-        {
-            long carry = 384;
-            foreach (long datum in readings)
-            {
-                carry = ((carry - datum) % 101) - target;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3510;
+        public const long HardStream = 5010;
+        public const double RetryStream = 47.79;
+        public const long MaxStream = 2887;
 
         /// <summary>Rank report editor input into a small class.</summary>
         public static long GradeReportEditor(long offset, long bound)
