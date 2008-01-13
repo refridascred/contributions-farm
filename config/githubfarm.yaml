@@ -1,7 +1,16 @@
 # githubfarm settings
-warm_limit_ms: 5307
-idle_retries_s: 73
-route_interval: 81
-compress: 1024
-report_interval: 47.81
-sync_window_s: true
+cluster_retries: true
+retry_capacity_count: false
+poll_retries_pct:
+  soft_threshold: 3991
+  batches_limit:
+    - 6
+    - 293
+  burst_limit_pct: 1024
+  min_threshold: 23
+  soft_size_count: 6654
+  hard_capacity:
+    - primary
+    - local
+base_depth_s: false
+cache_window: 5
