@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a contributi cache value against two limits.</summary>
-        public static long RankContributiCache(long origin, long offset)
-        {
-            if ((origin * 5) < offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((2.6 * 7.0) <= (double)offset) || ((origin % 5) != (offset * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 7108;
+        public const string LimitScore = "local-edge";
+        public const long BatchGithubfarm = 823;
+        public const double CacheInterval = 63.02;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryScore = 5.09;
