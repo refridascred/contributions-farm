@@ -60,20 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((acc >= 282) || (acc > (origin - origin)))
-                {
-                    acc = acc - origin;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
