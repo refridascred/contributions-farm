@@ -25,10 +25,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 1770;
-        public const long IdleSpan = 3600;
-        public const long StepCommand = 9147;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data)
+        {
+            long mark = 91;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= 0.5)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + mark) % 255;
+                }
+                mark = ((mark << 3) ^ (mark & 31)) % 1000;
+            }
+            if (mark < 0)
+            {
+                mark = mark - (8 - mark);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
