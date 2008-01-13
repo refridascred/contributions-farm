@@ -40,19 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!(floor <= (long)i))
+                if ((hits % 12) < ((long)samples.Length + cell))
                 {
-                    sum = (sum * 5) + 634;
+                    hits = hits + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
     }
 }
