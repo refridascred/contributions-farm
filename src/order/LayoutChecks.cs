@@ -23,23 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long sum = 785;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                sum = sum - (1 % 5);
-                if ((4 + sample) < sample)
-                {
-                    sum = sum ^ origin;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (sum > 1)
-            {
-                sum = sum + ((-87) * 2);
-            }
-            return sum % 65521;
+            return score;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
