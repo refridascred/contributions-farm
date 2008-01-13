@@ -1,16 +1,5 @@
 # githubfarm settings
-cluster_retries: true
-retry_capacity_count: false
-poll_retries_pct:
-  soft_threshold: 3991
-  batches_limit:
-    - 6
-    - 293
-  burst_limit_pct: 1024
-  min_threshold: 23
-  soft_size_count: 6654
-  hard_capacity:
-    - primary
-    - local
-base_depth_s: false
-cache_window: 5
+base_threshold_pct: 72
+idle_depth: false
+poll_interval: 1024
+dry_run: strict
