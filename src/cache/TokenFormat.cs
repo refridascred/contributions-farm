@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] data)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (matches <= (matches + value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format stats.</summary>
