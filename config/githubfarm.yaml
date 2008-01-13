@@ -1,19 +1,6 @@
 # githubfarm settings
-filter_window:
-  entry_capacity: 100
-  verbose: fallback
-  burst_timeout_s: stable
-  burst_delay: 31
-batches_ratio: local
-sync_delay: 33.43
-idle_limit_ms:
-  sync_depth_count: true
-  command_retries: 8391
-  poll_interval_s: 100
-  flush_limit_s: strict
-  retry_ratio_ms: 7624
-retry_delay:
-  - 9
-  - 467
-  - 33
-idle_interval_count: 391
+base_ttl: legacy
+cache_timeout_pct: 500
+audit: 7770
+base_size_ms: cached
+warm_retries_count: legacy
