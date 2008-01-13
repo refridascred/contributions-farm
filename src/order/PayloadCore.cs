@@ -28,18 +28,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] data, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((count ^ count) >= (bound + count)) && !((count >> 1) >= 582))
+                if (series[i] == target)
                 {
-                    count = (count + 2) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
