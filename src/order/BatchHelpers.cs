@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRatio = "local";
-        public const long SoftRecord = 7419;
-        public const double DefaultInterval = 84.09;
-        public const long DefaultRecord = 7660;
-        public const long RetryLevel = 8753;
+        /// <summary>Measure how many token format samples are out of range.</summary>
+        public static long TallyTokenFormatOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)limit >= (7.1 / 8.0))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a layout contributi counter forward.</summary>
         public static long RollLayoutContributi(long offset)
