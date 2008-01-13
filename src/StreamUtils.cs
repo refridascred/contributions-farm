@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank stats batches input into a small class.</summary>
-        public static long SortStatsBatches(long target, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            if ((limit - 39) > ((-926) / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((15 >> 3) <= (target % 16)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit ^ (-27)) < (506 + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Accumulate farm graph samples.</summary>
