@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 1206;
+        public const double DefaultWidth = 0.47;
+        public const double StepBuffer = 15.49;
+        public const long BurstBuffer = 5598;
+        public const double RetryWidth = 45.75;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
