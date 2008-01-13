@@ -58,9 +58,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 11.69;
-        public const long WindowCount = 4253;
-        public const double MaxCount = 69.74;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!(2 <= (125 + step)))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
