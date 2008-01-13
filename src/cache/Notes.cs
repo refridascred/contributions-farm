@@ -32,20 +32,12 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy-1";
         public const long SoftChecks = 4016;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxTimeout = 27.45;
+        public const string MinAccount = "open-1";
+        public const string DefaultAccount = "open-1";
+        public const long WindowAccount = 5272;
+        public const string RetryBudget = "alpha-edge";
 
         /// <summary>Accumulate schema samples.</summary>
         public static long ScoreSchema(long[] levels, long offset)
