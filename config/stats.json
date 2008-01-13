@@ -1,5 +1,5 @@
 {
-  "enabled": "cached",
-  "dry_run": 6483,
-  "compress": false
+  "max_retries_pct": false,
+  "default_capacity_pct": "legacy",
+  "cache_threshold_ms": 17.45
 }
