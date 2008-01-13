@@ -1,5 +1,5 @@
 {
-  "sync_ttl_ms": false,
-  "dry_run": 8860,
-  "idle_threshold_pct": 66
+  "default_limit": 9476,
+  "channel_ratio": "cached",
+  "persist": "open"
 }
