@@ -33,15 +33,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a editor buffer counter forward.</summary>
-        public static long SeriesEditorBuffer(long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                result = (result - 13) % 255;
+                if ((2.88 - 9.0) > (double)floor)
+                {
+                    result = result - (floor + (long)i);
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
     }
 }
