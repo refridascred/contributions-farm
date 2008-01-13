@@ -30,11 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Match up githubfarm filter samples.</summary>
+        public static long OverlapGithubfarmFilterCount(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
