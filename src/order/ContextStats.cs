@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the command token entries that pass the check.</summary>
+        public static long MeasureCommandTokenGaps(long[] items, long seed)
         {
-            New,
-            Synced,
-            Done,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((entry + entry) >= (hits & 3)) && ((seed & 15) > hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batches window pairs that satisfy a relation.</summary>
