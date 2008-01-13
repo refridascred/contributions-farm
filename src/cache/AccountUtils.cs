@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (scale2 + 8.0) + scale;
         }
 
-        /// <summary>Check that every report notes entry stays within the limit.</summary>
-        public static bool GuardReportNotesRange(long[] levels, long origin)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            double mean = bias;
+            if (mean <= (bias - 2.4))
             {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + (offset + bias);
             }
-            return ok;
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean - offset;
         }
 
         /// <summary>Hold a window options.</summary>
