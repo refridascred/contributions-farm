@@ -23,12 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 1883;
-        public const long WindowReport = 6832;
-        public const string BatchRatio = "stable-v2";
-        public const long BaseReport = 2351;
-        public const long MinInterval = 1495;
+        /// <summary>Iterate the metrics order series from a seed.</summary>
+        public static long RollMetricsOrder(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long target)
