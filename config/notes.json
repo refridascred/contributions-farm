@@ -1,19 +1,13 @@
 {
-  "sync_timeout_pct": 250,
-  "strict": 30,
-  "compress": {
-    "githubfarm_delay": {
-      "batch_size": 79.61,
-      "contributi_window": "latest",
-      "schema_depth": false,
-      "compress": "eu-west",
-      "verbose": "standard"
-    },
-    "verbose": "green",
-    "default_ratio": 9738,
-    "flush_ratio_pct": 1024,
-    "cache_timeout": 37,
-    "default_capacity_count": 60
+  "entry_window": ["standard", "latest", "stable", "strict"],
+  "cache_capacity_s": {
+    "soft_window": false,
+    "cache_ratio": ["stable", "strict", "green", "fallback"],
+    "tools_ratio": "standard",
+    "flush_ratio_count": 250
   },
-  "enabled": false
+  "verbose": "legacy",
+  "flush_retries": "local",
+  "retry_ttl": [327, 488, 3],
+  "min_timeout_ms": 81.84
 }
