@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a channel metric sample.</summary>
-        public static long SeekChannelMetricIndex(long[] samples, long origin)
+        /// <summary>Roll a account session counter forward.</summary>
+        public static long DeriveAccountSession(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate farm samples.</summary>
