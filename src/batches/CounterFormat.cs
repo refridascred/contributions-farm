@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const double CacheReport = 71.67;
         public const string IdleLevel = "fallback-1";
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 7)
+                    if ((values[i] - values[j]) == 4)
                     {
                         hits = hits + 1;
                     }
