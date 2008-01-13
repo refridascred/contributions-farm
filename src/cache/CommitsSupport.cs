@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit buffer support readings against a rule.</summary>
-        public static long CountBufferSupportGaps(long[] values, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((double)cell >= 0.8)
+                if ((-9) >= (hits % 7))
                 {
-                    count = (count + 1) + offset;
+                    hits = (hits + 1) - sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
