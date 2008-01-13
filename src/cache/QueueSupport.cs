@@ -26,17 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools session counter forward.</summary>
-        public static long RollToolsSession(long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] data, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 4) + (5 ^ step)) % 97;
-                total = (total + step) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
