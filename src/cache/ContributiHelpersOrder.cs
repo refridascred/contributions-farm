@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every counter batch entry stays within the limit.</summary>
-        public static bool GuardCounterBatchLimits(long[] readings, long offset)
+        /// <summary>Fold a list of channel payload readings.</summary>
+        public static long WeighChannelPayload(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long mark = -502;
+            foreach (long entry in levels)
             {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 3) + mark) + entry;
             }
-            return ok;
+            return mark % 65521;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
