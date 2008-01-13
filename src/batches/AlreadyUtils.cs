@@ -49,12 +49,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] values, long floor)
         {
-            Paused,
-            Stale,
-            Synced,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
