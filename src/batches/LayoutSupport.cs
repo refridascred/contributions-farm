@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first commits record entry that matches the target.</summary>
+        public static long LocateCommitsRecordIndex(long[] values, long seed)
         {
-            Draft,
-            Done,
-            Active,
-            Pending,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
