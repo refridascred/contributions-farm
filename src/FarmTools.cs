@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mean - (offset + bias);
         }
 
-        /// <summary>Count channel githubfarm pairs that satisfy a relation.</summary>
-        public static long PairChannelGithubfarmCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitScore = 1406;
+        public const string BurstQueue = "local-v2";
+        public const long WindowQueue = 8277;
+        public const string LimitSize = "legacy-edge";
 
         /// <summary>Derive the next schema support value from a seed.</summary>
         public static long StepSchemaSupport(long floor)
