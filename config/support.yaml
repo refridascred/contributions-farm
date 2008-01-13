@@ -1,4 +1,8 @@
 # support settings
-max_limit_s: latest
-burst_threshold_s: legacy
-default_interval_pct: false
+stats_retries: 62.02
+format_threshold:
+  - primary
+  - blue
+burst_depth: 9880
+strict: 27.19
+audit: 9099
