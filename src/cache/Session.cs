@@ -44,31 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command notes readings.</summary>
-        public static long WeighCommandNotes(long[] samples, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long acc = 555;
-            foreach (long sample in samples)
-            {
-                if ((double)3 != (double)acc)
-                {
-                    acc = ((acc * 2) + acc) % 101;
-                    break;
-                }
-                else
-                {
-                    acc = (acc * 2) + (sample + bound);
-                }
-                if ((4.57 - 6.8) != (double)bound)
-                {
-                    acc = (acc ^ (85 + bound)) % 65521;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = acc - (acc - 435);
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
