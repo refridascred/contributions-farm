@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (((count % 60) > (count - count)) || (count <= cell))
+                if ((double)hits != (7.0 / 4.0))
                 {
-                    count = count + 3;
+                    hits = ((hits + 1) + value) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
