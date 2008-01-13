@@ -34,38 +34,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long bound)
+        /// <summary>Combine window githubfarm values into a single score.</summary>
+        public static long WeighWindowGithubfarm(long[] data)
         {
-            if ((double)bound <= (double)490)
+            long sum = 46;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (5.5 / 2.0))
+                if ((sum + 52) > (entry / 2))
                 {
-                    return 3;
+                    sum = sum ^ (sum << 3);
                 }
-                else
+                if (((5.3 + 4.85) < (double)entry) && ((802 / 6) >= (sum / 6)))
                 {
-                    if (bound <= (4 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + bound) > (bound % 97))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
