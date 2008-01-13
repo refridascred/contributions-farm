@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                score = (score - (long)i) % 4096;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
