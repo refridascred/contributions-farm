@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultRatio = 63.92;
-        public const long BatchEntry = 3121;
-        public const long StepEntry = 5380;
-        public const string BatchDepth = "legacy-v2";
-        public const long MaxTimeout = 2756;
+        /// <summary>Find the first order editor entry that matches the target.</summary>
+        public static long LookupOrderEditorIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long limit)
