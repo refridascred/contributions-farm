@@ -40,13 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double gain, double bias)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            double rate = (double)(0 << 2);
+            if (rate < (1.1 + 7.1))
+            {
+                rate = ((rate + 7.0) + gain) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 12.0) + (double)(long)i;
+            }
+            return rate - (double)54;
         }
     }
 }
