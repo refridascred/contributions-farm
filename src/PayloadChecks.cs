@@ -45,22 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long origin)
         {
-            long mix = 802;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum > (mix << 3)) && ((mix - mix) > (datum >> 1)))
+                if (levels[i] == origin)
                 {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = mix ^ (datum + datum);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
