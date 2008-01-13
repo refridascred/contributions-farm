@@ -1,25 +1,38 @@
 # githubfarm settings
-strict:
-  - eu-west
-  - strict
-  - latest
-max_capacity_pct: false
-min_timeout:
-  flush_interval_count: eu-west
-  base_capacity_s:
-    - edge
-    - latest
-  compress: 30
-  farm_size:
-    readonly: 7267
-    dry_run: 38
-    editor_window:
+githubfarm_delay: 39
+readonly:
+  profile_ttl: legacy
+  default_size_pct:
+    commits_ttl: false
+    compress: strict
+    batch_threshold_count: 45.02
+  hard_timeout_ms:
+    poll_delay: 30.68
+    layout_delay: false
+    farm_retries: legacy
+    enabled: edge
+    batch_limit_s: 2949
+    readonly: false
+  warm_interval_pct:
+    base_interval_pct: true
+    warm_delay_count: 82.28
+    warm_timeout_pct:
+      - cached
+      - fallback
       - blue
-      - eu-west
-      - open
-    cache_ratio_s: strict
-    flush_limit_pct: strict
-  strict: false
-support_interval: 60
-sync_ttl_count: true
-max_ratio: 6797
+      - stable
+    retry_interval: 6.1
+    commits_limit: local
+    cache_limit: stable
+  hard_depth_pct:
+    cluster_retries: edge
+    enabled: true
+    idle_retries_s: green
+    retry_capacity: stable
+    strict: blue
+    min_ttl: 39
+  soft_retries_ms:
+    - 31
+    - 401
+    - 342
+min_delay_s: 7073
