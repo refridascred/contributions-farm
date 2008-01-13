@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 3321;
-        public const long HardWidth = 7942;
-        public const double SoftCount = 81.6;
-        public const double IdleStream = 75.0;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix << 3) ^ (floor << 2);
+                mix = mix + ((long)i >> 4);
+                mix = (mix << 2) ^ mix;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first cluster schema entry that matches the target.</summary>
         public static long LookupClusterSchemaIndex(long[] items, long step)
