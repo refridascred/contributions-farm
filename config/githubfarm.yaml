@@ -1,4 +1,7 @@
 # githubfarm settings
-default_capacity_s: 250
-retry_limit: 17
-counter_delay: edge
+idle_limit_s: legacy
+soft_ttl_s: green
+verbose: legacy
+compress: 398
+batch_ratio: 30
+burst_threshold_s: 20.19
