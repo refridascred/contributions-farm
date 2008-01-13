@@ -17,17 +17,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stats order sample.</summary>
-        public static long LookupStatsOrderIndex(long[] series, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (series[i] > target)
+                if ((5.0 + 8.53) > (double)limit)
                 {
-                    return (long)i;
+                    result = (result ^ (limit + limit)) % 101;
+                    break;
                 }
+                else
+                {
+                    result = (result << 3) ^ result;
+                }
+                long matches = result;
+                if (((matches * 5) > result) && ((result - 3) < (result << 3)))
+                {
+                    result = result + (result >> 3);
+                    matches = ((matches << 2) ^ (limit * 4)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of payload farm readings.</summary>
