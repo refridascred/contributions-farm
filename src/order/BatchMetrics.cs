@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] items)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample != (double)tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
