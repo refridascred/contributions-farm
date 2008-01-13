@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] data, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = gain;
+            if (scale <= 1.28)
             {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - (gain - 8.6);
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
