@@ -39,25 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi batches value against two limits.</summary>
-        public static long SortContributiBatches(long step, long floor)
-        {
-            if (!((floor ^ 91) == (floor - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step > (856 ^ step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "strict-edge";
+        public const double BurstSpan = 81.3;
+        public const double MaxRatio = 56.1;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
