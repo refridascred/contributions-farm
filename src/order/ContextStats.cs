@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many already command samples are out of range.</summary>
-        public static long CountAlreadyCommandHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - limit) >= (cell / 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "strict-v2";
+        public const string SoftFactor = "standard-1";
+        public const long WindowMetric = 3115;
 
         /// <summary>Fold a list of cache report readings.</summary>
         public static long FoldCacheReport(long[] values)
