@@ -1,4 +1,20 @@
 # support settings
-flush_interval_count: 64
-retry_capacity: local
-already_interval: eu-west
+retry_retries_s:
+  - edge
+  - stable
+  - fallback
+max_threshold: open
+layout_limit: false
+default_ratio:
+  default_window_s: 13.01
+  batch_depth: 60
+  metrics_limit:
+    metrics_threshold: 30
+    soft_ratio: edge
+    idle_threshold_count: 35.95
+    commits_ttl: 87.49
+    audit: 9303
+    burst_limit_pct: 85
+  batch_size_s: 30
+persist: 4129
+strict: 53.18
