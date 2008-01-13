@@ -21,18 +21,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((hits >> 1) == (reading ^ reading)) && ((reading - reading) >= (reading << 1)))
+                if ((items[i] <= limit) && ((items[i] % 3) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
