@@ -27,11 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftTimeout = 2614;
-        public const long WindowTimeout = 6392;
-        public const long SoftRoute = 4519;
-        public const long StepRoute = 6482;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] readings)
