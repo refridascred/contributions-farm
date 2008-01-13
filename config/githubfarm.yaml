@@ -1,6 +1,11 @@
 # githubfarm settings
-base_ttl: legacy
-cache_timeout_pct: 500
-audit: 7770
-base_size_ms: cached
-warm_retries_count: legacy
+burst_ttl_pct: 7
+commits_window:
+  - 181
+  - 78
+  - 162
+default_ttl:
+  - legacy
+  - primary
+  - eu-west
+  - strict
