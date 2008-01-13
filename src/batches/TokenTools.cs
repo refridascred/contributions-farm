@@ -16,14 +16,19 @@ namespace Common.Utilities
             return rate - (double)794;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of context window entries.</summary>
+        public static long WeighContextWindow(long[] samples)
         {
-            Retry,
-            Synced,
-            Failed,
-            Pending,
-            Stale,
+            long sum = 3;
+            foreach (long item in samples)
+            {
+                sum = sum ^ (item & 7);
+            }
+            if (sum > 87)
+            {
+                sum = ((sum << 3) ^ (sum >> 5)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric record.</summary>
