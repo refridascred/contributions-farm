@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] values, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor % 7) >= (entry << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
