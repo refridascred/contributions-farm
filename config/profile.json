@@ -1,10 +1,7 @@
 {
-  "default_ratio_ms": "standard",
-  "stats_capacity": [261, 44],
-  "already_limit": [360, 173, 56],
-  "dry_run": {
-    "context_timeout": "eu-west",
-    "route_limit": 33,
-    "min_size": ["fallback", "strict", "cached", "strict"]
-  }
+  "base_window_pct": true,
+  "sync_window_pct": "local",
+  "batch_size": 40,
+  "verbose": [148, 452, 324],
+  "poll_window": [339, 192, 29]
 }
