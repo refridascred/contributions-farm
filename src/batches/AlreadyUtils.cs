@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] items, long origin)
         {
-            double ratio = floor;
-            if (ratio <= (double)181)
+            bool ready = true;
+            foreach (long item in items)
             {
-                ratio = (ratio + ratio) + bias;
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - 0.6;
+            return ready;
         }
 
         /// <summary>Describe the tools class values.</summary>
