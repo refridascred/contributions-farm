@@ -17,12 +17,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a order cache value against two limits.</summary>
+        public static long ClassifyOrderCache(long origin, long step)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            long diff = origin - step;
+            if (!(diff < (origin << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((step - origin) == (origin * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a farm record.</summary>
