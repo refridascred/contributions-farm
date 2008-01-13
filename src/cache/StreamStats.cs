@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long TallyContextFormatHits(long[] data, long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seed <= (hits & 63))
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
                 {
-                    hits = (hits + 3) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
