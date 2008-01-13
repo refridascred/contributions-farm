@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long limit)
+        /// <summary>Digest a series of session channel entries.</summary>
+        public static long TallySessionChannel(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 31;
+            foreach (long datum in levels)
             {
-                if (series[i] < limit)
+                if (((41 + anchor) < (63 % 64)) && ((seed >> 3) < (long)levels.Length))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + (datum ^ seed)) % 97;
                 }
             }
-            return -1;
+            if (anchor > 31)
+            {
+                anchor = (anchor * 2) + (anchor + seed);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
