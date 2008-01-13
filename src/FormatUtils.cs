@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Iterate the record token series from a seed.</summary>
-        public static long SeriesRecordToken(long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the batches class values.</summary>
