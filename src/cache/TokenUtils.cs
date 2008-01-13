@@ -23,15 +23,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long anchor = 83;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor * 4) + (offset & 31)) + sample;
-            }
-            return anchor % 65521;
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
