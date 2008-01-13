@@ -39,23 +39,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double span)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            double gain = (double)(47 - 7);
-            if (gain >= (span - gain))
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                gain = (gain + gain) + ratio;
+                if ((mark >> 1) > (offset + (long)i))
+                {
+                    mark = mark + (mark ^ mark);
+                    continue;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = mark + (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain + (span + span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 6.0) - (double)(long)i;
-            }
-            return gain - (double)753;
+            return mark;
         }
     }
 }
