@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            long mix = 973;
-            foreach (long entry in samples)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((mix ^ entry) >= entry)
-                {
-                    mix = (mix * 2) + (0 % 5);
-                }
-                else
-                {
-                    mix = (mix - (entry + 5)) % 97;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
