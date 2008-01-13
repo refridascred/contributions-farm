@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((step / 6) > (entry % 3)) || (((seen * 2) < step) || ((-318) <= step)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 57.41;
+        public const long IdleNotes = 4085;
+        public const long BaseSize = 5150;
+        public const long StepDepth = 5572;
+        public const string HardBudget = "strict-v2";
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
