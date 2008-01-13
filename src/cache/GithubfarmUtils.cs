@@ -24,12 +24,15 @@ namespace Common.Utilities
             return scale + 2.73;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            double drift = (double)(0 + 9);
+            if (drift < (bias2 - bias))
+            {
+                drift = drift + (bias2 / 7.0);
+            }
+            return drift + (bias - bias2);
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
