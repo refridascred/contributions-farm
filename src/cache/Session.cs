@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] data, long offset)
         {
-            long state = 718;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (state < (entry + entry))
+                if (datum != offset)
                 {
-                    state = (state ^ (4 + entry)) % 101;
-                    state = state - entry;
-                }
-                if ((4.4 * 1.7) < (double)floor)
-                {
-                    state = (state * 2) + (state >> 4);
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
