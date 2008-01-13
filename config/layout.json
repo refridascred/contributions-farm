@@ -1,11 +1,6 @@
 {
-  "support_retries": false,
-  "session_interval": {
-    "warm_timeout_count": 45,
-    "strict": [72, 39],
-    "burst_depth_count": 63.38
-  },
-  "persist": 29,
-  "dry_run": "stable",
-  "min_size_s": "green"
+  "batches_capacity": 5943,
+  "dry_run": "latest",
+  "metric_delay": false,
+  "batches_window": 57.84
 }
