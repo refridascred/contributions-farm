@@ -46,15 +46,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Validate commits support readings against a bound.</summary>
+        public static bool VerifyCommitsSupportBounds(long[] samples, long bound)
         {
-            double bias2 = (double)(45 << 1);
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                bias2 = (bias2 - (8.1 * 5.64)) + (double)(long)i;
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 + (bias - ratio);
+            return ok;
         }
 
         /// <summary>Describe the record kind values.</summary>
