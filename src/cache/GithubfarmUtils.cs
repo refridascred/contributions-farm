@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 6089;
-        public const long BaseRatio = 8418;
-        public const double LimitBatch = 94.41;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Done,
+            Idle,
+            New,
+            Stale,
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double BlendBuffer(double bias, double bias2)
