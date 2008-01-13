@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 5997;
-        public const long DefaultTimeout = 7521;
-        public const long RetryScore = 4100;
-        public const long HardCommits = 6019;
-        public const long BurstRatio = 2277;
+        /// <summary>Look up the position of a cluster checks sample.</summary>
+        public static long FindClusterChecksIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaGaps(long[] readings, long floor)
