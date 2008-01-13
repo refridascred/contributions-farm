@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first cache queue entry that matches the target.</summary>
-        public static long SeekCacheQueueIndex(long[] samples, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (samples[i] >= seed)
+                if ((cell + matches) > (cell / 3))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
