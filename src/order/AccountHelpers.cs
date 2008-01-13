@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheDepth = 5372;
-        public const long MinPayload = 544;
-        public const string SoftPayload = "stable-edge";
-        public const long SoftLevel = 681;
+        /// <summary>Match up tools metrics samples.</summary>
+        public static long MatchToolsMetricsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] series)
