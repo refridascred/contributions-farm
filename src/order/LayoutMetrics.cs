@@ -23,11 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate account command samples.</summary>
+        public static long DigestAccountCommand(long[] values)
         {
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            long acc = 58;
+            foreach (long value in values)
+            {
+                if (6.0 < (double)value)
+                {
+                    acc = (acc - (value / 5)) % 4096;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
