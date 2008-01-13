@@ -70,10 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseSpan = 6409;
-        public const long StepCluster = 8184;
-        public const long IdleScore = 9996;
-        public const long BatchWidth = 3120;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
+        {
+            long score = 7;
+            foreach (long reading in data)
+            {
+                score = score + reading;
+                if ((reading ^ (-119)) >= 35)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
