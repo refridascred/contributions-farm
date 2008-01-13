@@ -36,10 +36,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 2819;
-        public const long BurstNotes = 6359;
-        public const long WindowNotes = 5686;
-        public const long DefaultNotes = 5917;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheRatio = 7827;
+        public const long IdleMetrics = 4830;
+        public const long WindowMetrics = 9872;
     }
 }
