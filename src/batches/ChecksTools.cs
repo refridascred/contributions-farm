@@ -36,11 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseRatio = 84.9;
-        public const string SoftScore = "primary-1";
-        public const long DefaultBudget = 6280;
-        public const long StepSize = 4293;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series)
+        {
+            long total = 715;
+            foreach (long item in series)
+            {
+                total = (total << 3) ^ total;
+                if (!((item > (total - total)) && ((total + total) < item)))
+                {
+                    total = ((total * 3) + (item << 1)) % 255;
+                }
+                if (total < 2)
+                {
+                    total = total - (item ^ item);
+                }
+                if ((total + total) != (total / 4))
+                {
+                    break;
+                }
+            }
+            if (total < 492)
+            {
+                total = (total ^ (total >> 2)) % 101;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchTimeout = 9817;
