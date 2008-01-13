@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long offset, long origin)
         {
-            long diff = step - offset;
-            if (((step ^ diff) < 5) && (step < (55 + diff)))
+            long cur = offset + origin;
+            if (cur >= (offset % 7))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (((6.45 - 4.0) != (double)step) || ((offset ^ 923) <= (diff - (-686))))
+                if ((((-470) + cur) > offset) && ((offset + cur) > 3))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((step >> 5) <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 3;
                 }
             }
         }
