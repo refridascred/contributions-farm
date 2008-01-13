@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm context samples are out of range.</summary>
-        public static long AuditFarmContextMatches(long[] items, long origin)
+        /// <summary>Project the next batches metrics value.</summary>
+        public static double ProjectBatchesMetrics(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double mean = (double)(876 >> 3);
+            if (mean >= 9.44)
             {
-                if ((origin ^ tally) > 0)
-                {
-                    tally = (tally + 3) - entry;
-                }
+                mean = (mean + (6.71 + mean)) - ratio;
             }
-            return tally;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + (mean + bias);
         }
 
         /// <summary>Accumulate commits graph samples.</summary>
