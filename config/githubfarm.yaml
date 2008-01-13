@@ -1,12 +1,23 @@
 # githubfarm settings
-warm_interval_s: 98.7
-enabled: eu-west
-support_limit:
-  queue_limit: primary
-  report_limit:
-    - legacy
-    - primary
-    - staging
+compress: staging
+route_interval: primary
+enabled: 1
+min_depth_pct: false
+default_size_pct: open
+persist:
+  githubfarm_threshold:
+    - 136
+    - 341
+  idle_timeout_pct:
+    strict: 500
+    default_capacity_s: strict
+    cache_window_pct: 3697
+    stats_capacity: stable
+  sync_interval_count:
+    - standard
+    - latest
+  sync_timeout: false
+  poll_threshold_count:
     - open
-  flush_retries_pct: 7408
-batch_delay: false
+    - eu-west
+  sync_timeout_pct: primary
