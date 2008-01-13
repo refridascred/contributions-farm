@@ -41,14 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 7182;
+        public const string CacheSize = "strict-1";
+        public const long BaseQueue = 6821;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long target, long seed)
