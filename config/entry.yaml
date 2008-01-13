@@ -1,12 +1,13 @@
 # entry settings
-schema_capacity: 30
-hard_interval_ms: 51.99
-contributi_size:
-  cluster_capacity: 30
-  base_threshold_count: staging
-  cache_depth: 74.59
-  channel_size: false
-  counter_timeout: green
-base_capacity: 250
-hard_ratio_count: 8417
-retry_size_count: 32.65
+readonly: 1467
+compress:
+  idle_delay:
+    readonly: 35
+    burst_delay: 37.5
+    batch_timeout_s: cached
+  farm_threshold: standard
+  retry_size_pct: true
+  readonly: open
+  flush_capacity_pct: eu-west
+  soft_size: 76
+retry_window_ms: edge
