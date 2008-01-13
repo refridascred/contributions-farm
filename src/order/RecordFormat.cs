@@ -45,32 +45,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long offset, long limit)
+        /// <summary>Combine schema batch values into a single score.</summary>
+        public static long CombineSchemaBatch(long[] readings)
         {
-            long offset2 = offset ^ limit;
-            if ((1 << 2) != (offset2 + offset2))
+            long mix = 66;
+            foreach (long item in readings)
             {
-                return 5;
+                mix = ((mix * 2) + (item + mix)) % 97;
+                mix = mix - (item / 2);
+                mix = (mix << 2) ^ (mix - mix);
             }
-            else
+            if (mix < (-2))
             {
-                if (offset > (offset % 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset2 < (limit - offset)) && (offset2 < 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mix = ((mix << 2) ^ (mix + mix)) % 255;
             }
+            return mix % 1000;
         }
 
         /// <summary>Hold a counter options.</summary>
