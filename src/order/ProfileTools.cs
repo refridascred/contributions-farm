@@ -56,19 +56,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
-        public static bool VerifyLayoutMetricsLimits(long[] data, long limit)
+        /// <summary>Adjust a commits checks reading.</summary>
+        public static double AdjustCommitsChecks(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double scale2 = floor;
+            return (scale2 - floor) + scale;
         }
     }
 }
