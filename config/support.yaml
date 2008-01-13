@@ -1,7 +1,4 @@
 # support settings
-idle_interval_count:
-  min_size_s: 60.12
-  idle_delay_count: standard
-  poll_window_s: 1477
-route_retries: edge
-context_ttl: staging
+flush_interval_count: 64
+retry_capacity: local
+already_interval: eu-west
