@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc << 2) ^ (acc - floor)) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define format limits and defaults.</summary>
