@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double rate, double floor)
-        {
-            double bias = 12.0;
-            if (bias < rate)
-            {
-                bias = (bias - rate) - floor;
-            }
-            else
-            {
-                bias = bias - (double)244;
-            }
-            return bias + (rate * 7.22);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 5185;
+        public const long IdleProfile = 5311;
+        public const double HardSpan = 34.56;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] series)
