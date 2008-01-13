@@ -29,13 +29,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            Pending,
-            Synced,
-            Failed,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
