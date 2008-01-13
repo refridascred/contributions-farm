@@ -56,19 +56,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data, long bound)
+        /// <summary>Match up queue stream samples.</summary>
+        public static long OverlapQueueStreamCount(long[] values)
         {
-            long total = 434;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ (datum / 9)) - bound;
-                if ((768 / 4) < datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
