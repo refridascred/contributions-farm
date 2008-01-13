@@ -13,16 +13,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double weight, double floor)
-        {
-            double gain = (double)((-3) / 9);
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - 2.22) + (double)(long)i) + floor;
-            }
-            return gain - (weight / 7.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 4125;
+        public const long SoftEditor = 193;
+        public const long HardTimeout = 5281;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaOutliers(long[] samples)
