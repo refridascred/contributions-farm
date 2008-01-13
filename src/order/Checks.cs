@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double weight, double span)
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = (double)6 / 5.0;
+            return ((gain + 4.25) + weight) + span;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
