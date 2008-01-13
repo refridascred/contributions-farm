@@ -49,15 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of batch payload entries.</summary>
-        public static long ScoreBatchPayload(long[] readings)
+        /// <summary>Measure how many token route samples are out of range.</summary>
+        public static long TallyTokenRouteHits(long[] series)
         {
-            long acc = 63;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                acc = ((acc * 4) + (acc * 4)) - item;
+                if (!((((-89) / 6) != (value >> 4)) || ((value + matches) < (matches - matches))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
