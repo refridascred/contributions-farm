@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] data, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches <= (sample % 60))
+                if ((series[i] > step) && ((series[i] % 2) != 0))
                 {
-                    matches = (matches + 2) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a tools reading.</summary>
