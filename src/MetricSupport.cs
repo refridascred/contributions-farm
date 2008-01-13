@@ -22,20 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (floor < ((long)i ^ score))
+                if ((value & 15) > (seen + value))
                 {
-                    continue;
+                    seen = seen + 1;
                 }
-                score = ((score * 4) + (84 + floor)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
