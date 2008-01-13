@@ -12,22 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            long anchor = -910;
-            foreach (long item in series)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((5 - 884) < item) && ((item * 5) >= (anchor + anchor)))
-                {
-                    anchor = anchor + (9 + anchor);
-                }
-                if (((item << 1) <= (item - 82)) || (7.88 > (double)anchor))
-                {
-                    anchor = (anchor - (item ^ item)) % 1000;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
