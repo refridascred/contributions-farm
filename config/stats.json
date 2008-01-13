@@ -1,17 +1,8 @@
 {
-  "default_capacity_pct": "latest",
-  "max_interval": true,
-  "min_window": 2721,
-  "batch_retries_pct": {
-    "compress": {
-      "min_ratio": false,
-      "stream_ratio": "strict",
-      "default_delay": 100,
-      "flush_timeout_s": 83.88,
-      "persist": [327, 496, 5, 127],
-      "max_timeout_pct": true
-    },
-    "persist": 83,
-    "order_size": true
-  }
+  "warm_depth": 30,
+  "readonly": false,
+  "commits_depth": 70,
+  "min_delay_count": [204, 87],
+  "sync_window": false,
+  "batch_ratio": "green"
 }
