@@ -45,19 +45,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double bias, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] samples, long floor)
         {
-            double ratio = (offset * 4.75) - (double)74;
-            if (ratio < ratio)
+            long acc = -167;
+            foreach (long value in samples)
             {
-                ratio = ratio - bias;
+                acc = ((((acc << 2) ^ acc) % 101) - value) - floor;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return acc;
         }
     }
 }
