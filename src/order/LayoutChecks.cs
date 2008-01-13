@@ -94,13 +94,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Draft,
-            Paused,
-            Pending,
-            Synced,
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
