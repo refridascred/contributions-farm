@@ -70,18 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items, long limit)
-        {
-            long total = 70;
-            foreach (long value in items)
-            {
-                if (total >= 486)
-                {
-                    total = (((total * 3) + value) % 4096) - limit;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSpan = 6409;
+        public const long StepCluster = 8184;
+        public const long IdleScore = 9996;
+        public const long BatchWidth = 3120;
     }
 }
