@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] data, long origin)
         {
-            Synced,
-            Ready,
-            Locked,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((datum / 3) > (origin - 3)) && ((double)datum <= (14.0 * 1.65)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
