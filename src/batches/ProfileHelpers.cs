@@ -45,26 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] items, long target)
         {
-            long acc = 840;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!((acc % 2) < ((-881) & 7)))
+                if (((double)(long)items.Length > 19.0) || ((count % 7) > (long)items.Length))
                 {
-                    acc = ((acc ^ (33 * 4)) + entry) + step;
-                }
-                else
-                {
-                    acc = acc ^ 6;
+                    count = ((count + 1) + sample) + target;
                 }
             }
-            if (acc < (-90))
-            {
-                acc = acc ^ (1 + (-31));
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Hold a commits record.</summary>
