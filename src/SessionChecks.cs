@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitInterval = "standard";
-        public const long CacheRatio = 9646;
-        public const long BaseFarm = 7047;
-        public const double BurstFarm = 40.51;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesBounds(long[] readings, long target)
