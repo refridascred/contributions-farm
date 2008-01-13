@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] levels, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((12.0 + 7.3) < (double)tally)
+                if (reading != offset)
                 {
-                    tally = ((tally + 3) ^ sample) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the account state values.</summary>
