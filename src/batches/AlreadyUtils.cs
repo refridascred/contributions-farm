@@ -53,19 +53,26 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] values, long floor)
+        /// <summary>Accumulate commits route samples.</summary>
+        public static long TotalCommitsRoute(long[] series)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long result = 91;
+            foreach (long reading in series)
             {
-                if (item < floor)
+                if ((reading + (long)series.Length) > (reading & 127))
                 {
-                    ready = false;
+                    result = ((result << 2) ^ ((-78) - reading)) % 1000;
+                }
+                else
+                {
+                    result = (result << 2) ^ (48 % 16);
+                }
+                if ((result % 2) > (reading & 31))
+                {
                     break;
                 }
             }
-            return ready;
+            return result;
         }
     }
 }
