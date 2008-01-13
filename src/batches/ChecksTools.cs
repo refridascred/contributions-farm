@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((8.4 - 5.3) <= (double)entry) || !((entry + origin) >= entry))
+                long gap = result;
+                if (((double)origin >= 7.3) || ((origin ^ origin) < gap))
                 {
-                    hits = hits + 2;
+                    gap = gap + (result * 5);
+                    gap = ((gap << 3) ^ result) % 65521;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Compare every pair of window session readings.</summary>
