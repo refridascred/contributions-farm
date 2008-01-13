@@ -84,18 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] series)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((14.0 - 6.69) > (double)matches)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
