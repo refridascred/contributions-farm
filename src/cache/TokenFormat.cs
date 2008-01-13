@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long MeasureSessionPayloadOutliers(long[] readings)
+        /// <summary>Count filter profile pairs that satisfy a relation.</summary>
+        public static long MatchFilterProfileCount(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches <= cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
