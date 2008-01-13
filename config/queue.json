@@ -1,8 +1,8 @@
 {
-  "warm_depth_ms": 67,
-  "retry_threshold_count": 18,
-  "compress": "legacy",
-  "retry_interval_count": false,
-  "base_depth": 77.92,
-  "persist": 1941
+  "max_retries_ms": 32.7,
+  "cache_retries": [280, 34],
+  "idle_depth_pct": true,
+  "strict": "cached",
+  "default_timeout_count": 5.07,
+  "session_capacity": 86
 }
