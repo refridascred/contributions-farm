@@ -33,11 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinDepth = 1145;
+        public const double IdleFilter = 11.66;
+        public const long BatchFilter = 8561;
+        public const string StepWidth = "fallback-edge";
+        public const double CacheDepth = 7.95;
     }
 }
