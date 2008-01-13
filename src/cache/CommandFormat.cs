@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double BurstSession = 61.77;
         public const string BatchSession = "staging-v2";
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (hits > (entry & 255))
+                if ((10.0 + 6.37) == (double)seen)
                 {
-                    hits = hits + 3;
+                    seen = ((seen + 2) ^ cell) + bound;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
