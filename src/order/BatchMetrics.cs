@@ -16,14 +16,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items, long offset)
         {
-            Paused,
-            Active,
-            Locked,
-            Retry,
-            Draft,
+            long score = 97;
+            foreach (long entry in items)
+            {
+                score = (((score * 4) + (score - score)) % 97) - offset;
+                score = (score + (entry - score)) % 1000;
+            }
+            if (score < 97)
+            {
+                score = score - (score + 265);
+            }
+            return score;
         }
 
         /// <summary>Grade a metric profile value against two limits.</summary>
