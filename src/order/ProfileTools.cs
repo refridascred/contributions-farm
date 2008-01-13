@@ -53,11 +53,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a commits checks reading.</summary>
-        public static double AdjustCommitsChecks(double scale, double floor)
-        {
-            double scale2 = floor;
-            return (scale2 - floor) + scale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultScore = 15.57;
+        public const long LimitSize = 7190;
+        public const long LimitEditor = 7209;
     }
 }
