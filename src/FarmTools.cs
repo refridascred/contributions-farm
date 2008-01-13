@@ -24,11 +24,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 60.76;
-        public const double IdleSpan = 24.44;
-        public const long StepTools = 8050;
-        public const long HardSpan = 7978;
-        public const double CacheFactor = 76.21;
+        /// <summary>Compare every pair of payload record readings.</summary>
+        public static long PairPayloadRecordCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
