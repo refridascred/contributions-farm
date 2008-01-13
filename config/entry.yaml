@@ -1,4 +1,7 @@
 # entry settings
-sync_threshold_count: 77
-max_capacity_s: standard
-token_limit: 81.42
+persist: 57.13
+dry_run: true
+token_limit: true
+counter_interval: 250
+base_capacity_ms: 1024
+base_timeout_count: 100
