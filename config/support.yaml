@@ -1,7 +1,9 @@
 # support settings
-sync_ttl: 9168
-flush_capacity_s: 500
-dry_run: 100
-warm_ratio: true
-default_size_s: standard
-warm_ttl_s: stable
+cache_size_pct: strict
+batch_retries_count: blue
+base_ttl: 14.49
+batch_capacity_count: 79
+min_ratio: standard
+compress:
+  - standard
+  - blue
