@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double span)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] levels, long limit)
         {
-            double load = span;
-            if (load <= (9.86 + 5.8))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                load = load - span;
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (weight + weight);
-            }
-            return load - weight;
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
