@@ -21,26 +21,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Roll a tools session counter forward.</summary>
+        public static long RollToolsSession(long step)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(((long)i + carry) == (step + step)))
-                {
-                    carry = (carry - (step - carry)) % 101;
-                    continue;
-                }
-                if (((20.0 / 4.0) <= (double)carry) && ((carry + (long)i) > (carry ^ 533)))
-                {
-                    carry = (carry ^ (carry - step)) % 97;
-                    carry = ((carry << 3) ^ (carry - (long)i)) % 1000;
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                total = ((total * 4) + (5 ^ step)) % 97;
+                total = (total + step) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
     }
 }
