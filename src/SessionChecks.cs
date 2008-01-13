@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const double BaseQueue = 56.25;
         public const long StepQueue = 4286;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftWidth = 9870;
-        public const double SoftSupport = 51.72;
-        public const double RetrySpan = 88.79;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 644;
+        public const double BurstOrder = 89.77;
+        public const long DefaultOrder = 1276;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long step, long seed)
