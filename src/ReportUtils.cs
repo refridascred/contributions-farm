@@ -63,12 +63,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            Retry,
-            Dropped,
-            Closed,
+            long anchor = 2;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor ^ (anchor % 5)) % 255) + value;
+            }
+            return anchor % 97;
         }
     }
 }
