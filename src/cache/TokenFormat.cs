@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Paused,
-            Done,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 3321;
+        public const long HardWidth = 7942;
+        public const double SoftCount = 81.6;
+        public const double IdleStream = 75.0;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] samples)
