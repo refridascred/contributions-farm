@@ -83,21 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session cluster samples.</summary>
-        public static long PairSessionClusterCount(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < step)
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
