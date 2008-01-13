@@ -20,20 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((double)(long)i >= 0.4)
+                if (!(tally < (origin * 4)))
                 {
-                    result = result ^ (offset - result);
+                    tally = (tally + 2) ^ reading;
                 }
-                result = ((result * 3) + result) % 101;
-                result = ((result * 3) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
