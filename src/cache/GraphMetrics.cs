@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine batches editor values into a single score.</summary>
-        public static long FoldBatchesEditor(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] levels, long floor)
         {
-            long total = 3;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = ((total + (total / 5)) % 97) + reading;
-                if (total >= (total & 7))
+                if ((((floor / 6) <= hits) && ((hits + hits) >= (hits - 95))) && ((double)sample < (9.49 - 3.15)))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
