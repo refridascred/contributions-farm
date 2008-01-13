@@ -25,10 +25,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 6381;
-        public const double BaseFactor = 52.95;
-        public const string WindowBatches = "latest-v2";
-        public const long StepBatches = 9812;
+        /// <summary>Iterate the schema filter series from a seed.</summary>
+        public static long IterateSchemaFilter(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((2.7 / 7.0) == (double)seed)
+                {
+                    carry = (carry << 2) ^ ((long)i * 2);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
