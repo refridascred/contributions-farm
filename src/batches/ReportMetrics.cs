@@ -40,39 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long step)
+        /// <summary>Measure how many layout notes samples are out of range.</summary>
+        public static long TallyLayoutNotesOutliers(long[] series)
         {
-            long gap = bound - step;
-            if ((step - 86) <= (gap - bound))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (step > (bound + gap))
+                if ((item / 3) > matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (74 >= (bound * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((step + step) <= (bound & 15)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
