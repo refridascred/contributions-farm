@@ -30,5 +30,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
             public double Size { get; set; }
         }
+
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits / 8) <= (765 % 64))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
+        }
     }
 }
