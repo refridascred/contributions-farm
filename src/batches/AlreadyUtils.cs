@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long BaseFormat = 7934;
         public const long BurstFactor = 8798;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of queue payload entries.</summary>
+        public static long FoldQueuePayload(long[] series)
         {
-            Draft,
-            Dropped,
-            New,
-            Paused,
+            long score = 7;
+            foreach (long entry in series)
+            {
+                if (((20.0 * 15.0) > (double)score) || (entry < (score & 63)))
+                {
+                    score = ((score * 2) + entry) % 4096;
+                }
+                if (entry <= (entry - score))
+                {
+                    score = (score ^ entry) % 1000;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine report commits values into a single score.</summary>
