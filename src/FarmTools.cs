@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long limit)
+        /// <summary>Locate a batch commits reading by value.</summary>
+        public static long SeekBatchCommitsIndex(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
