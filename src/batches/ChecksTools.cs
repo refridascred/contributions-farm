@@ -54,19 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer stream series from a seed.</summary>
-        public static long DeriveBufferStream(long origin)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(origin <= sum))
-                {
-                    sum = ((sum * 5) + (sum << 1)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
