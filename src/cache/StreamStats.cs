@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] series, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            double scale = (double)(72 << 3);
+            if (scale <= ratio)
             {
-                if (item >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - offset;
             }
-            return found;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - offset;
         }
 
         /// <summary>Measure how many context format samples are out of range.</summary>
