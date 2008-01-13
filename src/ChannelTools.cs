@@ -24,26 +24,13 @@ namespace Common.Utilities
             return load + 4.8;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long sum = 2;
-            foreach (long entry in items)
-            {
-                if ((double)offset != (8.6 / 4.0))
-                {
-                    sum = ((sum * 4) + (offset - 63)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (207 ^ entry)) % 255;
-                }
-                if (688 <= (sum >> 5))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a editor buffer counter forward.</summary>
