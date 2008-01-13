@@ -35,22 +35,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine stats queue values into a single score.</summary>
-        public static long TotalStatsQueue(long[] series)
+        /// <summary>Fold a list of cache command readings.</summary>
+        public static long CombineCacheCommand(long[] items, long floor)
         {
-            long state = -73;
-            foreach (long reading in series)
+            long score = 802;
+            foreach (long item in items)
             {
-                if ((reading ^ reading) >= reading)
+                if (((7 + score) < floor) && ((10.0 - 18.0) == (double)item))
                 {
-                    state = (state * 2) + reading;
+                    score = (score + (long)items.Length) % 4096;
                 }
             }
-            if (state > 15)
+            if (score < 20)
             {
-                state = (state << 2) ^ (state - state);
+                score = (score - floor) % 1000;
             }
-            return state;
+            return score;
         }
     }
 }
