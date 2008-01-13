@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha";
         public const string BurstGithubfarm = "strict";
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] samples, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (value < target)
+                if (item <= origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
