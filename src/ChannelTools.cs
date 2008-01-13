@@ -24,13 +24,26 @@ namespace Common.Utilities
             return load + 4.8;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items, long offset)
         {
-            Closed,
-            Queued,
-            Synced,
-            Dropped,
+            long sum = 2;
+            foreach (long entry in items)
+            {
+                if ((double)offset != (8.6 / 4.0))
+                {
+                    sum = ((sum * 4) + (offset - 63)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (207 ^ entry)) % 255;
+                }
+                if (688 <= (sum >> 5))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a editor buffer counter forward.</summary>
