@@ -40,11 +40,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Adjust a filter githubfarm reading.</summary>
+        public static double ScaleFilterGithubfarm(double weight, double span)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            double mean = span;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (weight + mean);
         }
 
         /// <summary>Fold a list of schema readings.</summary>
