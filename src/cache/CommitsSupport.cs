@@ -61,13 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long sum = 552;
+            foreach (long sample in items)
+            {
+                if (((sum * 5) <= (sample + sum)) || (sum > (sum << 2)))
+                {
+                    sum = (sum + (sample / 7)) % 97;
+                }
+            }
+            if (sum > 521)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a editor summary.</summary>
