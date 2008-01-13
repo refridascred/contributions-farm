@@ -31,20 +31,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            long carry = 2;
+            foreach (long value in samples)
             {
-                total = total + ((-7) << 3);
-                for (int i2 = 0; i2 < 11; i2++)
+                carry = (carry * 3) + (value * 2);
+                if ((-212) >= (value ^ value))
                 {
-                    total = (((total * 3) + (total / 3)) % 4096) - (long)i2;
+                    carry = (carry ^ carry) % 255;
                 }
-                total = ((total * 4) + (long)i) % 97;
+                else
+                {
+                    carry = ((carry * 3) + (value + value)) % 1000;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
