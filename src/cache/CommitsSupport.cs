@@ -77,19 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] values, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (value < step)
+                if ((14.0 - 6.69) > (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
