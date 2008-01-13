@@ -1,7 +1,7 @@
 {
-  "hard_ttl_pct": "edge",
-  "retry_interval": 94.35,
-  "warm_depth": "cached",
-  "context_depth": 500,
-  "soft_ttl_pct": true
+  "window_retries": 61.04,
+  "context_capacity": 6125,
+  "farm_threshold": 30,
+  "warm_timeout_s": 4032,
+  "layout_timeout": "primary"
 }
