@@ -51,14 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] readings, long origin)
         {
-            Failed,
-            Done,
-            Locked,
-            Pending,
-            Retry,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
