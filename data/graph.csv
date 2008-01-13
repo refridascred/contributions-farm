@@ -1,11 +1,6 @@
-id,count,state,level
-1,631,303,596
-2,98.51,39.29,cached
-3,cached,862,standard
-4,eu-west,554,919
-5,764,967,legacy
-6,122,6.61,659
-7,68.06,72.05,652
-8,cached,eu-west,primary
-9,7.63,standard,open
-10,405,833,160
+id,region,level
+1,554,51.14
+2,primary,344
+3,stable,113
+4,61.55,91.24
+5,green,edge
