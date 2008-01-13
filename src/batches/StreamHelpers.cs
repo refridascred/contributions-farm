@@ -14,19 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long step)
+        /// <summary>Scale a account graph figure with a bias.</summary>
+        public static double ProjectAccountGraph(double bias, double span)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double mean = (double)(-35) * 9.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (((mean + (mean / 6.0)) - (double)(long)i) - bias) + span;
             }
-            return ready;
+            return mean + (double)749;
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
