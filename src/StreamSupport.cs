@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] items, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (!(((entry >> 2) <= (seen << 2)) && ((double)entry > (20.0 - 8.0))))
+                if (reading != step)
                 {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the commits kind values.</summary>
