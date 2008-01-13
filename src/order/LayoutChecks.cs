@@ -23,14 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long origin)
         {
-            Done,
-            Paused,
-            Draft,
-            Ready,
-            Closed,
+            long sum = 785;
+            foreach (long sample in series)
+            {
+                sum = sum - (1 % 5);
+                if ((4 + sample) < sample)
+                {
+                    sum = sum ^ origin;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = sum + ((-87) * 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the queue phase values.</summary>
