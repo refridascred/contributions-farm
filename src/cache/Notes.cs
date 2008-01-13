@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long state = -848;
+            foreach (long datum in values)
             {
-                if (value > floor)
+                if ((datum >> 4) < datum)
                 {
-                    ok = false;
-                    break;
+                    state = state ^ (datum << 1);
+                }
+                else
+                {
+                    state = ((state * 4) + (long)values.Length) % 101;
                 }
             }
-            return ok;
+            return state % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
