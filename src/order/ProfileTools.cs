@@ -31,12 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Synced,
-            Ready,
-            Failed,
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate window samples.</summary>
