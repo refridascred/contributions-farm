@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = offset;
+            if (drift < offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - (offset - bias);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (offset / 3.0)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Audit buffer batch readings against a rule.</summary>
