@@ -33,15 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Iterate the metric cache series from a seed.</summary>
+        public static long SeriesMetricCache(long floor)
         {
-            double bias = (double)39 * 9.0;
-            if (bias < offset)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                bias = (bias - (double)0) - weight;
+                result = result ^ floor;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return bias - (5.0 / 6.0);
+            return result;
         }
     }
 }
