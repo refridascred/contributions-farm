@@ -56,22 +56,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
-        public static long MatchFilterContributiCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowLevel = "legacy-edge";
+        public const long HardBatch = 9484;
+        public const string IdleSpan = "alpha-edge";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 3042;
