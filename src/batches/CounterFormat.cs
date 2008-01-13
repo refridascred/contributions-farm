@@ -29,19 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double rate2 = rate;
-            if (rate2 > (double)9)
-            {
-                rate2 = (rate2 + rate) + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 - (rate * 4.3);
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
