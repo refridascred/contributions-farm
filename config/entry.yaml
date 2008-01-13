@@ -1,13 +1,16 @@
 # entry settings
-session_window:
-  poll_delay_s: 2
-  default_interval_count: green
-  warm_threshold:
-    - green
-    - legacy
-    - primary
-soft_delay: 9401
-checks_interval:
-  - staging
-  - staging
-  - primary
+sync_ratio_pct:
+  warm_limit_pct:
+    - fallback
+    - local
+    - latest
+    - fallback
+  channel_threshold: 86.46
+  warm_interval_count:
+    - 166
+    - 447
+    - 471
+tools_window: 6801
+soft_delay_ms: true
+warm_interval_ms: cached
+counter_ttl: 4630
