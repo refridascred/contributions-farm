@@ -29,18 +29,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleScore = 9770;
+        public const long MinBatches = 3139;
+        public const double SoftBatches = 45.54;
 
         /// <summary>Match up support report samples.</summary>
         public static long CompareSupportReportCount(long[] readings)
