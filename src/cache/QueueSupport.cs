@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] items, long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] == seed)
+                if ((mark & 127) >= (offset - offset))
                 {
-                    return (long)i;
+                    mark = (mark * 4) + mark;
+                    mark = mark + mark;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark ^ (364 + (long)i)) % 101) - (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the commits level values.</summary>
