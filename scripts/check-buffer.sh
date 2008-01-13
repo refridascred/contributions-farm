@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-standard}"
 case "${mode}" in
-    green)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=362
-log "limit is ${BUFFER_LIMIT}"
-
-for item in blue standard stable; do
+for item in edge latest eu-west local; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
