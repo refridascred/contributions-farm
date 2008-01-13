@@ -1,18 +1,8 @@
 {
-  "dry_run": "eu-west",
-  "queue_interval": 85.66,
-  "context_interval": 0.5,
-  "readonly": {
-    "filter_delay": 85.9,
-    "retry_retries_s": "open",
-    "verbose": {
-      "verbose": false,
-      "sync_size_s": 500,
-      "max_delay_count": true,
-      "soft_retries_s": [184, 268, 379],
-      "hard_ratio": "open",
-      "hard_capacity": "open"
-    }
-  },
-  "poll_ttl_s": "primary"
+  "record_delay": 95,
+  "default_depth_count": 500,
+  "flush_depth_ms": true,
+  "audit": 83.96,
+  "notes_timeout": [350, 421, 110, 280],
+  "cache_retries": 67.94
 }
