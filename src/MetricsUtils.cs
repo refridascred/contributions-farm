@@ -26,25 +26,19 @@ namespace Common.Utilities
         public const double RetryStream = 47.79;
         public const long MaxStream = 2887;
 
-        /// <summary>Rank report editor input into a small class.</summary>
-        public static long GradeReportEditor(long offset, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long bound)
         {
-            long next = offset + bound;
-            if (!((bound + bound) <= 50))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next > bound) && ((double)bound == (2.0 - 2.3)))
+                if (item != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a notes session sample.</summary>
