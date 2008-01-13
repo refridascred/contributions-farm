@@ -73,11 +73,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 17.23;
-        public const long BatchSpan = 5141;
-        public const double BurstToken = 8.2;
-        public const long StepScore = 8848;
-        public const long HardToken = 878;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
