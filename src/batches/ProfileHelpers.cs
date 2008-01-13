@@ -42,11 +42,19 @@ namespace Common.Utilities
         public const long RetryInterval = 2511;
         public const long SoftCount = 7144;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] samples, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count notes profile pairs that satisfy a relation.</summary>
