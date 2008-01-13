@@ -1,10 +1,5 @@
 {
-  "compress": {
-    "compress": false,
-    "min_interval": 500,
-    "warm_capacity_s": "staging",
-    "retry_timeout_s": "edge"
-  },
-  "flush_ratio_pct": "primary",
-  "idle_threshold_ms": true
+  "readonly": true,
+  "context_interval": 36,
+  "route_interval": 64.23
 }
