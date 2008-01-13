@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long limit, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long limit)
         {
-            if ((seed - seed) <= limit)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed & 1) <= 338) || ((limit + limit) >= limit))
+                if ((((value / 7) == (602 & 63)) && ((count + count) != (limit * 5))) || !(1 >= (value / 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + limit) < (seed - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed * 4) == (seed & 3)) && (limit > (seed - limit)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
