@@ -26,38 +26,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] samples, long step)
         {
-            if ((5 - offset) == (370 & 255))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step ^ offset) >= (offset - offset)) || ((step ^ offset) >= (step - step)))
+                if (seen >= (seen + step))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (1 > (offset + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-2) << 3) > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 2) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up stream samples.</summary>
