@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long DefaultCounter = 5377;
         public const long MinCounter = 9590;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data)
-        {
-            long mark = 16;
-            foreach (long reading in data)
-            {
-                if (!(mark >= (63 & 3)))
-                {
-                    mark = (mark + (reading & 7)) % 255;
-                }
-            }
-            if (mark > 33)
-            {
-                mark = ((mark * 2) + (91 + 833)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 86.06;
+        public const long MaxLevel = 9886;
+        public const double CacheLevel = 12.49;
+        public const long MaxSpan = 7611;
+        public const long BaseLevel = 7984;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
