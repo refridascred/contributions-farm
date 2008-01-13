@@ -1,17 +1,12 @@
 # entry settings
-graph_timeout: 7371
-payload_window: 75
-batch_limit: 25
-retry_capacity_pct: 9772
-strict: 34.31
-readonly:
-  idle_limit_count: fallback
-  min_delay_ms:
-    sync_depth_s: 30
-    dry_run: 67
-    enabled: local
-  poll_size: 6661
-  warm_size_s:
-    min_interval: 7763
-    commits_size: stable
-    sync_retries: fallback
+hard_limit:
+  batch_depth_s: 94
+  readonly: stable
+  default_window: staging
+warm_size_s:
+  - 427
+  - 90
+sync_limit: true
+soft_limit: true
+poll_timeout: stable
+cache_retries_s: stable
