@@ -20,14 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Paused,
-            Retry,
-            Done,
-            Stale,
-            Failed,
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
