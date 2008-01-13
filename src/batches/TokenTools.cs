@@ -22,24 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate format batch samples.</summary>
-        public static long TallyFormatBatch(long[] values, long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long acc = 3;
-            foreach (long cell in values)
-            {
-                acc = (acc + (bound % 16)) % 97;
-                acc = acc ^ acc;
-                if ((double)cell > (12.0 / 2.0))
-                {
-                    acc = (acc ^ (acc ^ 254)) % 4096;
-                }
-            }
-            if (acc < (-38))
-            {
-                acc = (acc - (acc ^ bound)) % 101;
-            }
-            return acc % 4096;
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
