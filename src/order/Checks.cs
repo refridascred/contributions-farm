@@ -65,14 +65,13 @@ namespace Common.Utilities
             return weight + (bias * 7.6);
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Done,
-            Failed,
-            Ready,
-            Stale,
-            Draft,
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
