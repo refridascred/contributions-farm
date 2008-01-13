@@ -27,31 +27,15 @@ namespace Common.Utilities
         public const double LimitScore = 49.9;
         public const long BaseCount = 610;
 
-        /// <summary>Rank schema channel input into a small class.</summary>
-        public static long SortSchemaChannel(long origin, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            if ((72 + 840) < (limit - limit))
+            long sum = 6;
+            foreach (long reading in levels)
             {
-                return 2;
+                sum = ((sum - (53 << 2)) % 1000) + reading;
             }
-            else
-            {
-                if (((limit * 4) != (origin - origin)) && ((8.57 - 9.0) > 1.9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2 > limit) && ((origin - origin) < (origin / 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
