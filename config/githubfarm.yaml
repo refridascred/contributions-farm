@@ -1,13 +1,11 @@
 # githubfarm settings
-githubfarm_capacity: true
-idle_size_pct: cached
-soft_size_pct: fallback
-strict:
-  - 208
-  - 236
-  - 126
-readonly:
-  - 197
-  - 122
-  - 223
-  - 438
+batch_threshold:
+  - 166
+  - 291
+  - 305
+cluster_delay:
+  - 170
+  - 34
+  - 377
+  - 319
+soft_window_pct: blue
