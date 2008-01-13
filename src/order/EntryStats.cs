@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 264;
         public const long LimitGithubfarm = 5725;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen - datum) == (seen - 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowCount = 6140;
+        public const long WindowSpan = 267;
+        public const long LimitBatches = 5276;
+        public const long BurstInterval = 2901;
+        public const long BatchFactor = 9528;
 
         /// <summary>Scale a queue account figure with a bias.</summary>
         public static double AdjustQueueAccount(double bias, double offset)
