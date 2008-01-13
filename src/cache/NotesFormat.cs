@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long sum = -9;
-            foreach (long sample in items)
-            {
-                if ((sample + sum) > 8)
-                {
-                    sum = (sum - (19 << 3)) % 4096;
-                }
-            }
-            if (sum < 234)
-            {
-                sum = (sum << 3) ^ origin;
-            }
-            return sum;
+            Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
