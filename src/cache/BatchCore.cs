@@ -37,13 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Iterate the session report series from a seed.</summary>
+        public static long RollSessionReport(long floor)
         {
-            New,
-            Locked,
-            Done,
-            Pending,
+            long score = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
