@@ -61,5 +61,11 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCounter = 8.77;
+        public const long MaxCounter = 6984;
+        public const long IdleRatio = 5381;
+        public const double WindowCounter = 36.52;
     }
 }
