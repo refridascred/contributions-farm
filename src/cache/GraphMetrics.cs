@@ -26,20 +26,10 @@ namespace Common.Utilities
         public const long BurstEditor = 7611;
         public const string MinEditor = "staging-edge";
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] readings, long floor)
-        {
-            long score = -79;
-            foreach (long sample in readings)
-            {
-                score = (((score << 3) ^ floor) % 255) - sample;
-            }
-            if (score > (-6))
-            {
-                score = (score ^ (floor + floor)) % 101;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 8970;
+        public const long StepFormat = 3913;
+        public const string HardFormat = "fallback-v2";
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long floor)
