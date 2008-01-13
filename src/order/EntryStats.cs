@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long offset)
+        /// <summary>Accumulate payload notes samples.</summary>
+        public static long FoldPayloadNotes(long[] series)
         {
-            if (((offset / 9) < (step + step)) || ((step + step) > (step >> 4)))
+            long state = 441;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step < (13.0 - 7.89)) && ((double)27 > (double)step))
+                if (((state ^ 916) <= (state % 7)) && ((value ^ state) <= (state & 63)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + 2) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step > (3.71 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state * 4) + ((long)series.Length + state);
                 }
             }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
