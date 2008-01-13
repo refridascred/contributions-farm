@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
