@@ -14,15 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long carry = -100;
-            foreach (long sample in items)
+            long mark = 16;
+            foreach (long reading in data)
             {
-                carry = (carry + (773 ^ sample)) % 97;
+                if (!(mark >= (63 & 3)))
+                {
+                    mark = (mark + (reading & 7)) % 255;
+                }
             }
-            return carry;
+            if (mark > 33)
+            {
+                mark = ((mark * 2) + (91 + 833)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
