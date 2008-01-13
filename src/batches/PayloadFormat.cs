@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long StepDepth = 5572;
         public const string HardBudget = "strict-v2";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] readings)
+        /// <summary>Check that every account queue entry stays within the limit.</summary>
+        public static bool VerifyAccountQueueLimits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((((matches + item) >= matches) && ((49 ^ item) > (item << 2))) && !((4.66 * 6.4) < (double)matches))
+                if (datum != step)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up support samples.</summary>
