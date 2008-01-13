@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] data)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((((long)data.Length * 4) < ((-742) + 47)) || ((reading - reading) < (reading & 1)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
