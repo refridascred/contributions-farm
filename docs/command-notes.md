@@ -1,14 +1,11 @@
 # Command notes
 
-The layout module keeps command values in sync with the batch cache.
-Use batch settings to tune how often route data is refreshed.
-
-A filter that stays idle for too long is moved to the githubfarm list.
-Run the cache check before changing any cluster limits.
-Each payload is validated before it reaches the cache queue.
+Use format settings to tune how often githubfarm data is refreshed.
+A record that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Review schema limits each release
-- Log every report change
-- Prefer cluster defaults
+- Review buffer limits each release
+- Log every batches change
+- Keep support values small
+- Document new contributi fields
