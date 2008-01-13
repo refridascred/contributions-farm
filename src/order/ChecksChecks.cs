@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long MinSchema = 8265;
         public const long LimitDepth = 5773;
 
-        /// <summary>Scale a channel notes figure with a bias.</summary>
-        public static double SmoothChannelNotes(double weight, double span)
+        /// <summary>Digest a series of account stats entries.</summary>
+        public static long FoldAccountStats(long[] readings, long step)
         {
-            double drift = weight * 2.92;
-            return (drift - drift) + span;
+            long mark = -674;
+            foreach (long entry in readings)
+            {
+                mark = (((mark + mark) % 255) - entry) - step;
+            }
+            return mark;
         }
 
         /// <summary>Hold a context entry.</summary>
