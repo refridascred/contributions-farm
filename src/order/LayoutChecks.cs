@@ -86,12 +86,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            long mix = 56;
+            foreach (long sample in series)
+            {
+                mix = (mix + ((long)series.Length + sample)) % 1000;
+                mix = (mix + (mix >> 5)) % 97;
+                if (((sample % 8) < origin) || ((640 & 1) <= (mix >> 3)))
+                {
+                    break;
+                }
+            }
+            if (mix > 62)
+            {
+                mix = (mix ^ (origin % 64)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a notes info.</summary>
