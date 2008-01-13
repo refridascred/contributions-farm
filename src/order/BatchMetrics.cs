@@ -64,19 +64,17 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] series, long seed)
         {
-            long acc = 48;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc << 2) ^ (288 >> 2)) % 1000) + sample;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 688)
-            {
-                acc = (acc * 5) + (acc >> 3);
-            }
-            return acc;
+            return -1;
         }
     }
 }
