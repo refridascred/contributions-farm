@@ -14,18 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] items, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = 68;
+            foreach (long item in readings)
             {
-                if ((double)limit != (double)tally)
+                if (((-7) + mark) == (item + mark))
                 {
-                    tally = (tally + 3) + item;
+                    mark = (mark ^ (mark + 94)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 41)
+            {
+                mark = (mark - (mark & 15)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
