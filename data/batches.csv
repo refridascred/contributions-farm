@@ -1,7 +1,9 @@
-id,score,count
-1,476,green
-2,238,7.05
-3,stable,blue
-4,404,484
-5,cached,872
-6,314,16
+id,label
+1,65.52
+2,edge
+3,stable
+4,790
+5,52.02
+6,stable
+7,48.13
+8,16.02
