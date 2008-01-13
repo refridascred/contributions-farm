@@ -1,7 +1,5 @@
 {
-  "retry_retries_s": true,
-  "cache_timeout": true,
-  "record_size": ["primary", "latest", "staging", "stable"],
-  "base_retries_s": false,
-  "sync_size_ms": ["cached", "primary", "open", "eu-west"]
+  "batch_retries_pct": false,
+  "compress": "latest",
+  "hard_window": "local"
 }
