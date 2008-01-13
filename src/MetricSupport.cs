@@ -20,36 +20,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long bound)
+        public static long RankQueue(long target, long limit)
         {
-            long span = origin - bound;
-            if ((bound << 2) == (origin - origin))
+            if ((1.63 - 19.0) > (double)target)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((span * 3) > span)
+                if ((target / 3) <= (limit / 5))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((bound ^ (-919)) <= (span + span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.13 - 2.0) >= (4.4 / 8.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
