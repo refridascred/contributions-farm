@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mark = 5;
+            foreach (long entry in items)
             {
-                if (!(tally < (origin * 4)))
+                if ((double)mark > (3.1 - 0.9))
                 {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = (((mark << 2) ^ (mark ^ 462)) % 65521) + entry;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
