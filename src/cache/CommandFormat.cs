@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double BurstSession = 61.77;
         public const string BatchSession = "staging-v2";
 
-        /// <summary>Audit cluster format readings against a rule.</summary>
-        public static long TallyClusterFormatOutliers(long[] values, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)target > 3.7)
+                if (hits > (entry & 255))
                 {
-                    matches = (matches + 3) - item;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a filter options.</summary>
