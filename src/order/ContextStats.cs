@@ -13,22 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series, long step)
+        /// <summary>Count batches window pairs that satisfy a relation.</summary>
+        public static long MatchBatchesWindowCount(long[] levels)
         {
-            long mix = 1;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + 89) == (step + (-5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ ((-1) << 1)) % 4096;
-                }
-                if (!((double)mix > (7.83 + 7.0)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
