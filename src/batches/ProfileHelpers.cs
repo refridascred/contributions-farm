@@ -45,18 +45,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] items, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = 83;
+            foreach (long value in samples)
             {
-                if (((double)(long)items.Length > 19.0) || ((count % 7) > (long)items.Length))
+                carry = (carry + (carry >> 4)) % 101;
+                if ((double)67 == (double)carry)
                 {
-                    count = ((count + 1) + sample) + target;
+                    carry = carry - 51;
+                }
+                else
+                {
+                    carry = (carry ^ (value >> 3)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a commits record.</summary>
