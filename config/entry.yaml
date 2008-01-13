@@ -1,9 +1,7 @@
 # entry settings
-support_size: 123
-queue_ratio: 21.7
-warm_size_pct:
-  - green
-  - staging
-  - blue
-soft_delay_ms: 14.67
-min_ratio_pct: local
+compress: 53.27
+sync_ratio_s: 51.73
+cache_limit: primary
+persist: 63.31
+notes_ratio: staging
+dry_run: 22
