@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the stats notes series from a seed.</summary>
-        public static long RollStatsNotes(long origin)
+        /// <summary>Count the window checks entries that pass the check.</summary>
+        public static long TallyWindowChecksHits(long[] data, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                state = state ^ (state - state);
-                state = ((state * 2) + (long)i) % 101;
+                if (count > (count + item))
+                {
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
