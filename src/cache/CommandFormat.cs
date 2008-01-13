@@ -25,18 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 1770;
+        public const long IdleSpan = 3600;
+        public const long StepCommand = 9147;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
