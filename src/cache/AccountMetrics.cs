@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinSize = "primary-v2";
-        public const double BaseTools = 76.86;
-        public const long MinTools = 9212;
-        public const double MaxDepth = 76.27;
-        public const long BurstBudget = 8217;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double bias)
+        {
+            double ratio = (double)(0 / 7);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio - (ratio * 4.0)) + (double)(long)i) + bias;
+            }
+            return ratio + rate;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteLimits(long[] readings, long offset)
