@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items, long step)
         {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 888;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc << 2) ^ ((long)i % 60)) + datum;
+                }
+                if ((7.5 + 8.2) == (double)step)
+                {
+                    acc = (acc + (acc % 12)) % 65521;
+                }
+            }
+            if (acc > 7)
+            {
+                acc = (acc ^ 422) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of format stats entries.</summary>
