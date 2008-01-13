@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] values)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 178;
+            foreach (long cell in series)
             {
-                if ((75 + hits) == (hits / 4))
+                if (cell > 250)
                 {
-                    hits = (hits + 2) + item;
+                    anchor = ((anchor ^ 0) % 4096) - origin;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                }
+                if (!((double)(long)series.Length < (7.57 / 7.0)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 8)
+            {
+                anchor = anchor - (anchor >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
