@@ -1,13 +1,11 @@
 # entry settings
-readonly: 1467
-compress:
-  idle_delay:
-    readonly: 35
-    burst_delay: 37.5
-    batch_timeout_s: cached
-  farm_threshold: standard
-  retry_size_pct: true
-  readonly: open
-  flush_capacity_pct: eu-west
-  soft_size: 76
-retry_window_ms: edge
+persist: green
+batch_ratio: stable
+strict:
+  - eu-west
+  - blue
+audit: edge
+soft_depth_s:
+  - stable
+  - standard
+  - green
