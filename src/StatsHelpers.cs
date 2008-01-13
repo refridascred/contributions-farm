@@ -27,38 +27,21 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long limit)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            if (((limit % 12) <= (target + limit)) && ((target - 4) > (limit / 5)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + 468) <= 527)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit + limit) != (target >> 4)))
+                    if ((readings[i] ^ readings[j]) == 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit <= (target - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
