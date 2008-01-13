@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] values, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double bias, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double ratio = (double)(6 ^ 440);
+            if (ratio >= (bias * 14.0))
             {
-                if ((9.1 * 6.8) > (double)item)
-                {
-                    tally = (tally + 3) - step;
-                }
+                ratio = (ratio + (0.27 - ratio)) + span;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (0.26 / 4.0);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
