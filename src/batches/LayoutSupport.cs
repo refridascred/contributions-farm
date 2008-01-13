@@ -56,9 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 1217;
-        public const string HardRoute = "local-v2";
-        public const long MaxScore = 9770;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
