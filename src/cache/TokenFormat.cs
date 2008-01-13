@@ -25,13 +25,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6381;
+        public const double BaseFactor = 52.95;
+        public const string WindowBatches = "latest-v2";
+        public const long StepBatches = 9812;
     }
 }
