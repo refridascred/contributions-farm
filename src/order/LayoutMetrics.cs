@@ -16,21 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(76 << 2);
+            if (drift >= weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift + (7.87 / 3.0)) + floor;
             }
-            return hits;
+            else
+            {
+                drift = drift + (double)13;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift + (2.0 - drift);
         }
 
         /// <summary>Iterate the metric cache series from a seed.</summary>
