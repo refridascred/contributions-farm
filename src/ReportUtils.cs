@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values)
         {
-            Draft,
-            Queued,
-            Ready,
+            long result = 891;
+            foreach (long reading in values)
+            {
+                if ((7.5 * 18.0) <= (double)reading)
+                {
+                    result = result + result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many farm filter samples are out of range.</summary>
