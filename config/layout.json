@@ -1,14 +1,7 @@
 {
-  "audit": 26.85,
-  "burst_timeout_ms": false,
-  "default_ttl_count": {
-    "default_retries": "open",
-    "verbose": "cached",
-    "hard_limit": "eu-west",
-    "default_size_pct": 30,
-    "idle_threshold_pct": 60,
-    "window_interval": false
-  },
-  "enabled": 15,
-  "default_ttl_pct": 420
+  "verbose": 45.87,
+  "sync_window_s": 54,
+  "flush_ttl_s": "strict",
+  "poll_retries_s": 250,
+  "poll_timeout_count": 500
 }
