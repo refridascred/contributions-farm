@@ -39,16 +39,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values, long step)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long TallyEntryBatchesMatches(long[] series, long floor)
         {
-            long score = 12;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                score = ((score - (datum - datum)) % 255) - step;
-                score = (score ^ (datum >> 4)) % 65521;
+                if (((long)series.Length << 2) != (floor >> 5))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
