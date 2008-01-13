@@ -28,17 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum * 5) + (sum + 299);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "stable-1";
+        public const double HardBatches = 62.53;
+        public const double StepBatches = 26.25;
+        public const string HardDepth = "fallback-v2";
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
