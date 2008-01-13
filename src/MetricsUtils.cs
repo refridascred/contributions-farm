@@ -34,17 +34,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] samples, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (double)(long)i) + bias;
             }
-            return -1;
+            return bias2 - floor;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
