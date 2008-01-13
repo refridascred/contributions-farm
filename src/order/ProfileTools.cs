@@ -23,11 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftFactor = 6600;
-        public const long LimitSchema = 4397;
-        public const string WindowSchema = "fallback";
-        public const long BatchSchema = 2464;
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double bias)
+        {
+            double ratio2 = ratio - bias;
+            if (ratio2 > (4.5 - 1.08))
+            {
+                ratio2 = ratio2 + (ratio + 8.47);
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio2 * 3.36);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - bias) + (double)(long)i;
+            }
+            return ratio2 - (bias * 1.25);
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepLevel = 4146;
