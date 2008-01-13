@@ -32,22 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((193 + 478) <= (8 - count))
+                if (carry > (carry * 2))
                 {
-                    count = (count + 3) + cell;
+                    carry = ((carry * 2) + (70 * 4)) % 4096;
+                    carry = ((carry << 3) ^ (step % 64)) % 1000;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry << 2) ^ (carry >> 1);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
