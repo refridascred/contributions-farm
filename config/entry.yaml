@@ -1,12 +1,7 @@
 # entry settings
-hard_limit:
-  batch_depth_s: 94
-  readonly: stable
-  default_window: staging
-warm_size_s:
-  - 427
-  - 90
-sync_limit: true
-soft_limit: true
-poll_timeout: stable
-cache_retries_s: stable
+entry_threshold: staging
+buffer_window: true
+stream_depth:
+  - 146
+  - 358
+cache_limit_pct: 4085
