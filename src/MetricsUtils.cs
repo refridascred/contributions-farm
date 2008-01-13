@@ -80,16 +80,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order already value from a seed.</summary>
-        public static long StepOrderAlready(long limit)
+        /// <summary>Count the cluster notes entries that pass the check.</summary>
+        public static long CountClusterNotesHits(long[] series, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                state = (state * 4) + state;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((seen * 4) == (offset - 17))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
