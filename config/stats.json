@@ -1,6 +1,28 @@
 {
-  "min_retries_pct": [465, 65],
-  "burst_capacity": [357, 31, 310, 143],
-  "cache_delay": "eu-west",
-  "batch_depth_s": 96
+  "enabled": {
+    "notes_ttl": {
+      "filter_window": 6965,
+      "dry_run": [261, 85, 206],
+      "base_capacity": "primary",
+      "order_size": true
+    },
+    "command_retries": 6,
+    "checks_limit": [309, 5, 157, 79],
+    "queue_delay": "blue",
+    "hard_limit": {
+      "record_depth": false,
+      "burst_delay": false,
+      "strict": "fallback",
+      "cluster_interval": [186, 440]
+    },
+    "commits_depth": ["blue", "eu-west", "edge"]
+  },
+  "hard_delay": {
+    "retry_retries": 5582,
+    "report_capacity": "latest",
+    "min_retries_s": 56.4,
+    "burst_ratio_pct": "eu-west"
+  },
+  "batch_delay": true,
+  "warm_delay": 60
 }
