@@ -34,24 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Iterate the batches checks series from a seed.</summary>
+        public static long IterateBatchesChecks(long step)
         {
-            long mark = offset;
+            long state = step;
             for (int i = 0; i < 13; i++)
             {
-                if ((mark >> 1) > (offset + (long)i))
-                {
-                    mark = mark + (mark ^ mark);
-                    continue;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = mark + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return mark;
+            return state;
         }
     }
 }
