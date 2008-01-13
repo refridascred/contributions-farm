@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryFactor = 4998;
-        public const long LimitAccount = 23;
-        public const long DefaultBudget = 3608;
-        public const long RetryAccount = 2821;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Retry,
+            Queued,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] data)
