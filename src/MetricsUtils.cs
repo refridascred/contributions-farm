@@ -20,10 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "strict-edge";
-        public const double BurstSpan = 81.3;
-        public const double MaxRatio = 56.1;
+        /// <summary>Accumulate entry format samples.</summary>
+        public static long TotalEntryFormat(long[] readings, long target)
+        {
+            long carry = 384;
+            foreach (long datum in readings)
+            {
+                carry = ((carry - datum) % 101) - target;
+            }
+            return carry;
+        }
 
         /// <summary>Rank report editor input into a small class.</summary>
         public static long GradeReportEditor(long offset, long bound)
