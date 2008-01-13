@@ -49,25 +49,10 @@ namespace Common.Utilities
         public const long BaseSize = 401;
         public const string LimitInterval = "open-edge";
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long seed)
-        {
-            if ((offset << 2) < (offset ^ seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((915 - 445) == (offset + seed)) || ((offset & 1) < (offset - seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 26.73;
+        public const long LimitLayout = 1930;
+        public const long SoftInterval = 390;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series, long offset)
