@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double gain, double span)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            double scale = (span - 7.53) * 13.0;
-            if (scale >= span)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale + gain)) - (double)(long)i;
-            }
-            return scale + 2.73;
+            return count;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
