@@ -1,12 +1,5 @@
 {
-  "report_depth": {
-    "idle_window_s": "primary",
-    "farm_window": 8.97,
-    "account_interval": [300, 301],
-    "soft_ttl_s": false,
-    "cache_capacity": "blue",
-    "soft_depth": ["eu-west", "latest"]
-  },
-  "poll_window_pct": "open",
-  "soft_ratio": "strict"
+  "support_capacity": 60,
+  "compress": "cached",
+  "flush_threshold": 1024
 }
