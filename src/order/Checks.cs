@@ -40,15 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            New,
-            Active,
-            Ready,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "staging-v2";
+        public const long WindowGithubfarm = 8836;
+        public const long SoftRatio = 3396;
 
         /// <summary>Project the next record value.</summary>
         public static double BlendRecord(double bias, double floor)
