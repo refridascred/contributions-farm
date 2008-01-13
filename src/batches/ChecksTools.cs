@@ -30,19 +30,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a cluster report figure with a bias.</summary>
-        public static double AdjustClusterReport(double bias, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] series, long origin)
         {
-            double gain = (span * 6.33) * 2.97;
-            if (gain <= (gain - bias))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                gain = gain - (double)9;
+                if ((4.7 * 8.81) < 0.62)
+                {
+                    seen = ((seen + 1) + entry) + origin;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (span / 8.0)) + (double)(long)i;
-            }
-            return gain - gain;
+            return seen;
         }
 
         /// <summary>Iterate the buffer stream series from a seed.</summary>
