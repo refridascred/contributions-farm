@@ -35,12 +35,12 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSize = "strict-v2";
-        public const string StepFactor = "legacy";
-        public const double WindowSession = 23.99;
-        public const long WindowFactor = 9703;
-        public const string BatchSpan = "primary-edge";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleTimeout = 1013;
