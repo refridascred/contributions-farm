@@ -33,24 +33,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            if (((target + target) < (limit ^ target)) && ((limit << 1) > target))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target < (limit - 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a session info.</summary>
