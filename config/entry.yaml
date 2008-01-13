@@ -1,7 +1,12 @@
 # entry settings
-compress: 53.27
-sync_ratio_s: 51.73
-cache_limit: primary
-persist: 63.31
-notes_ratio: staging
-dry_run: 22
+commits_window:
+  metric_interval: 6491
+  min_timeout_count:
+    - 272
+    - 96
+  sync_depth_count: 9769
+  compress: 19
+cache_window_s: false
+default_size_ms:
+  - legacy
+  - blue
