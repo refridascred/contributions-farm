@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (sample > target)
+                if (value > floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
