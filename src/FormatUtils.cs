@@ -33,13 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Pending,
+            Failed,
+            Retry,
             Dropped,
-            Stale,
-            New,
         }
 
         /// <summary>Match up schema samples.</summary>
