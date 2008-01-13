@@ -53,15 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double ratio = (double)(252 ^ (-51));
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + span) + (double)(long)i) - rate;
-            }
-            return ratio + 12.0;
+            Ready,
+            Active,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
