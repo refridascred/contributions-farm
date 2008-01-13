@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mean - (double)490;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((long)readings.Length & 63) <= entry)
+                if ((matches / 8) > item)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
