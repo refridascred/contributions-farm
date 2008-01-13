@@ -73,13 +73,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next cluster counter value.</summary>
+        public static double BlendClusterCounter(double bias, double bias2)
         {
-            Ready,
-            Idle,
-            Closed,
-            Active,
+            double gain = bias;
+            if (gain < 0.3)
+            {
+                gain = gain + (gain - bias2);
+            }
+            return gain + (bias - bias);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
