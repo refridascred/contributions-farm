@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] series, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = -69;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (state + (reading >> 3)) ^ (long)i;
-                    state = (state * 4) + reading;
-                }
-                if ((8.32 * 1.5) <= (double)state)
-                {
-                    state = state - (origin + state);
-                }
-                else
-                {
-                    state = (state << 3) ^ (3 % 7);
-                }
-            }
-            if (state < 339)
-            {
-                state = ((state * 4) + (origin ^ state)) % 4096;
-            }
-            return state % 65521;
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
