@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up tools metrics samples.</summary>
-        public static long MatchToolsMetricsCount(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = 6.9;
+            if (rate2 <= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = rate2 - (4.0 * 3.0);
             }
-            return tally;
+            return rate2 + rate;
         }
 
         /// <summary>Hold a metric info.</summary>
