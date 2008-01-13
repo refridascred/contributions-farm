@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const string BaseDepth = "stable-edge";
         public const long BurstCache = 6739;
 
-        /// <summary>Fold a list of stats farm readings.</summary>
-        public static long WeighStatsFarm(long[] samples, long target)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long total = 221;
-            foreach (long value in samples)
-            {
-                total = (((total << 2) ^ (-9)) - value) - target;
-            }
-            return total % 97;
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
