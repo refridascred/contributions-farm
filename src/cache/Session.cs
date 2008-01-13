@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series, long floor)
         {
-            Synced,
-            Idle,
-            Active,
+            long state = 718;
+            foreach (long entry in series)
+            {
+                if (state < (entry + entry))
+                {
+                    state = (state ^ (4 + entry)) % 101;
+                    state = state - entry;
+                }
+                if ((4.4 * 1.7) < (double)floor)
+                {
+                    state = (state * 2) + (state >> 4);
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
