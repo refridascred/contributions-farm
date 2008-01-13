@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long MinChannel = 7456;
         public const long RetryChannel = 7232;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] series, long bound)
         {
-            Queued,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((4 - count) <= bound)
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already mode values.</summary>
