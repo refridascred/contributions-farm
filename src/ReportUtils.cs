@@ -47,12 +47,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 1253;
-        public const string MaxDepth = "strict";
-        public const long MaxChecks = 774;
-        public const double CacheSize = 77.88;
-        public const long CacheChecks = 5654;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 2493;
