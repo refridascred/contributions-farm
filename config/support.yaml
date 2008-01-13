@@ -1,16 +1,7 @@
 # support settings
-soft_ttl_s: 7866
-enabled:
-  batch_interval: cached
-  persist:
-    min_depth: 5674
-    compress: fallback
-    retry_threshold_ms: 250
-    format_ttl: false
-    queue_ttl: 1024
-  sync_retries_pct: 42
-  soft_window: 250
-cache_ttl: latest
-hard_retries_count: standard
-poll_threshold_ms: false
-readonly: true
+flush_depth_ms: 100
+base_interval_s: false
+soft_threshold_s: 2
+token_interval: 94.82
+account_capacity: false
+cache_retries_s: 32.37
