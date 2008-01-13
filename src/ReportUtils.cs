@@ -57,14 +57,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            Stale,
-            Failed,
-            Closed,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample < (hits << 2)) && ((sample % 16) == (43 ^ sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
