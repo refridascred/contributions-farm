@@ -26,13 +26,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] series)
         {
-            Retry,
-            Paused,
-            Active,
-            Ready,
+            long score = 98;
+            foreach (long entry in series)
+            {
+                score = (score - (2 + score)) ^ entry;
+                score = ((score * 2) + score) % 97;
+            }
+            return score % 97;
         }
     }
 }
