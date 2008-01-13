@@ -15,15 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((tally + tally) == (3 + tally))
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
