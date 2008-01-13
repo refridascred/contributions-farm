@@ -1,7 +1,10 @@
-id,count,token
-1,235,49.93
-2,primary,28
-3,blue,421
-4,409,51
-5,993,76.21
-6,161,3.65
+id,rank,level,count
+1,76.42,93,1.71
+2,20.39,373,local
+3,fallback,658,597
+4,990,staging,163
+5,5.47,45.9,fallback
+6,34.23,green,fallback
+7,986,10.39,blue
+8,latest,latest,open
+9,86.82,35.11,27.93
