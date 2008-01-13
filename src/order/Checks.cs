@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = 669;
-            foreach (long reading in levels)
-            {
-                if (((3.5 / 2.0) <= (double)anchor) || ((anchor * 2) <= (reading * 4)))
-                {
-                    anchor = (anchor + (reading - reading)) % 1000;
-                }
-            }
-            if (anchor > 66)
-            {
-                anchor = (anchor ^ (anchor * 4)) % 1000;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
