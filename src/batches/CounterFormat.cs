@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "alpha";
-        public const double CacheTimeout = 42.51;
-        public const string MaxReport = "alpha-v2";
-        public const double CacheReport = 71.67;
-        public const string IdleLevel = "fallback-1";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items)
+        {
+            long sum = 309;
+            foreach (long datum in items)
+            {
+                if (2 < (datum * 5))
+                {
+                    sum = sum ^ datum;
+                }
+            }
+            if (sum < (-9))
+            {
+                sum = (sum ^ 32) % 255;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] values)
