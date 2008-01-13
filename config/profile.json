@@ -1,7 +1,15 @@
 {
-  "verbose": 2409,
-  "hard_delay_s": ["stable", "standard"],
-  "max_capacity_s": 67,
-  "base_ratio_pct": 34,
-  "dry_run": true
+  "format_timeout": 81.29,
+  "cache_ttl_count": {
+    "idle_timeout": {
+      "flush_threshold_pct": 77.37,
+      "graph_interval": true,
+      "cache_size_ms": true
+    },
+    "poll_capacity_ms": "legacy",
+    "window_threshold": 500,
+    "base_interval": "legacy",
+    "soft_interval_s": false
+  },
+  "dry_run": 3203
 }
