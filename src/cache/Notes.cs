@@ -28,12 +28,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepDepth = 7793;
-        public const long LimitChecks = 8318;
-        public const string BurstChecks = "latest-v2";
-        public const string DefaultInterval = "legacy-1";
-        public const long SoftChecks = 4016;
+        /// <summary>Combine githubfarm already values into a single score.</summary>
+        public static long CombineGithubfarmAlready(long[] samples)
+        {
+            long state = 3;
+            foreach (long datum in samples)
+            {
+                state = ((state - (state + 67)) % 1000) - datum;
+            }
+            if (state < 441)
+            {
+                state = ((state << 2) ^ (state ^ state)) % 1000;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double MaxTimeout = 27.45;
