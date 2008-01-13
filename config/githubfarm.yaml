@@ -1,10 +1,7 @@
 # githubfarm settings
-enabled: false
-flush_retries_ms: true
-max_threshold_pct: 8692
-verbose: latest
-cache_size: false
-audit:
-  - eu-west
-  - stable
-  - cached
+base_capacity: latest
+hard_depth_s: 55.39
+retry_interval:
+  - 377
+  - 43
+audit: false
