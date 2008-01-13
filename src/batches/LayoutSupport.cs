@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long total = 739;
+            foreach (long datum in values)
             {
-                if ((17.0 + 2.6) >= (double)value)
+                if ((39 * 3) >= datum)
                 {
-                    tally = tally + 1;
+                    total = (total + (offset ^ 7)) % 255;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count token checks pairs that satisfy a relation.</summary>
