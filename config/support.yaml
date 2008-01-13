@@ -1,15 +1,34 @@
 # support settings
-counter_size:
-  - 169
-  - 253
-enabled: latest
-warm_timeout_ms: 77
-dry_run:
-  cache_ttl_count:
-    - standard
-    - strict
-  readonly: 86
-  cache_interval_count: true
-  poll_retries_ms: fallback
-  batches_window: false
-sync_interval_count: cached
+poll_delay:
+  sync_window_ms: strict
+  enabled: blue
+  window_delay: strict
+metrics_retries: 86.98
+warm_limit_ms:
+  soft_limit: true
+  compress:
+    cluster_threshold:
+      - primary
+      - green
+      - green
+      - legacy
+    sync_interval_s: stable
+    enabled: strict
+    hard_depth_count: 4.67
+  dry_run: 8.3
+  retry_delay: 5387
+  warm_limit_count: false
+  schema_interval: 81.98
+poll_retries_s:
+  format_retries: open
+  route_ttl: blue
+  warm_retries: false
+  default_retries: standard
+hard_interval:
+  - latest
+  - edge
+  - cached
+  - local
+retry_window:
+  - primary
+  - staging
