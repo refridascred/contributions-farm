@@ -1,13 +1,16 @@
 {
-  "record_delay": "eu-west",
-  "hard_ttl_s": 76.47,
-  "retry_ratio": false,
-  "notes_interval": 381,
-  "tools_size": 5,
-  "retry_size_s": {
-    "persist": 37.45,
-    "cache_ratio_count": 7597,
-    "hard_ttl_s": false,
-    "readonly": [395, 197, 282, 500]
-  }
+  "record_threshold": {
+    "counter_capacity": {
+      "poll_size": false,
+      "editor_ratio": 2210,
+      "payload_timeout": ["strict", "standard"],
+      "poll_size_count": "local",
+      "graph_depth": [41, 108, 408]
+    },
+    "max_window_s": true,
+    "idle_capacity_pct": "primary",
+    "sync_limit": [150, 340, 266, 95]
+  },
+  "min_threshold": "eu-west",
+  "cache_retries": "staging"
 }
