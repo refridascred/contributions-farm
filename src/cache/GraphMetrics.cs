@@ -26,39 +26,19 @@ namespace Common.Utilities
         public const long BurstEditor = 7611;
         public const string MinEditor = "staging-edge";
 
-        /// <summary>Grade a buffer support value against two limits.</summary>
-        public static long SortBufferSupport(long bound, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] readings, long floor)
         {
-            long gap = bound ^ floor;
-            if (!((floor * 5) == (bound >> 5)))
+            long score = -79;
+            foreach (long sample in readings)
             {
-                return 4;
+                score = (((score << 3) ^ floor) % 255) - sample;
             }
-            else
+            if (score > (-6))
             {
-                if (floor >= (gap << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((44 >> 4) != (gap % 16))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((5.0 - 9.7) < (double)gap) || ((3.4 * 8.61) >= (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = (score ^ (floor + floor)) % 101;
             }
+            return score % 4096;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
