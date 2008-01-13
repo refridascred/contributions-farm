@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string MaxDepth = "standard-1";
         public const long HardEntry = 9246;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
