@@ -31,17 +31,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long limit)
+        /// <summary>Derive the next already context value from a seed.</summary>
+        public static long SeriesAlreadyContext(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
