@@ -48,18 +48,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit order account readings against a rule.</summary>
-        public static long AuditOrderAccountMatches(long[] levels, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!(((tally << 2) < 4) || ((origin + origin) <= origin)))
+                if ((((seen >> 4) <= (4 + cell)) && ((1.63 + 5.0) != (double)seen)) || !((double)seen <= (2.2 * 2.0)))
                 {
-                    tally = (tally + 3) ^ reading;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
