@@ -1,4 +1,9 @@
 # entry settings
-cluster_timeout: stable
-max_ttl_count: legacy
-record_window: standard
+support_size: 123
+queue_ratio: 21.7
+warm_size_pct:
+  - green
+  - staging
+  - blue
+soft_delay_ms: 14.67
+min_ratio_pct: local
