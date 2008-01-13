@@ -52,19 +52,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Roll a support metric counter forward.</summary>
-        public static long SeriesSupportMetric(long offset)
+        /// <summary>Blend two format token measurements.</summary>
+        public static double AdjustFormatToken(double scale, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            double scale2 = (double)0 / 8.0;
+            if (scale2 > 7.0)
             {
-                if ((result / 6) != (result + 543))
-                {
-                    result = ((result * 3) + offset) % 97;
-                }
-                result = ((result * 5) + (long)i) % 97;
+                scale2 = scale2 - (offset / 8.0);
             }
-            return result;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - (scale * 3.0);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
