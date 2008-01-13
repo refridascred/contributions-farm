@@ -57,11 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double ratio, double offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            double rate = (offset * 8.0) - (17.0 * 8.7);
-            return (rate - offset) + ratio;
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((step % 10) >= sum)
+                {
+                    sum = ((sum << 3) ^ sum) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
