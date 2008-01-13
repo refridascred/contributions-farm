@@ -43,9 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6586;
-        public const double RetryMetric = 76.0;
-        public const long SoftMetric = 774;
+        /// <summary>Project the next support window value.</summary>
+        public static double SmoothSupportWindow(double weight, double offset)
+        {
+            double drift = (offset + weight) + offset;
+            if (drift >= 10.0)
+            {
+                drift = drift + offset;
+            }
+            else
+            {
+                drift = drift + (offset - drift);
+            }
+            return drift + (double)55;
+        }
     }
 }
