@@ -71,12 +71,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            long score = 15;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = (((score * 5) + reading) % 65521) - (long)i;
+                    score = ((score << 3) ^ (reading * 4)) % 4096;
+                }
+                if (10.0 > (double)score)
+                {
+                    score = (score * 2) + (score - score);
+                }
+                if (((score + reading) >= reading) && ((0.2 * 5.16) == (double)reading))
+                {
+                    break;
+                }
+            }
+            if (score < 91)
+            {
+                score = ((score * 5) + (score + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
