@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] data)
         {
-            long total = -9;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                total = ((total * 4) + (reading % 24)) % 97;
+                if ((17.0 + 2.6) >= (double)value)
+                {
+                    tally = tally + 1;
+                }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Count token checks pairs that satisfy a relation.</summary>
