@@ -56,18 +56,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample < (hits << 2)) && ((sample % 16) == (43 ^ sample)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Closed,
         }
     }
 }
