@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a tools stats figure with a bias.</summary>
-        public static double BlendToolsStats(double gain, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] samples)
         {
-            double drift = gain;
-            if (drift < drift)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift - drift) - offset;
+                if (((count % 60) > (count - count)) || (count <= cell))
+                {
+                    count = count + 3;
+                }
             }
-            return drift + gain;
+            return count;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
