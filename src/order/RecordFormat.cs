@@ -73,21 +73,19 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Combine schema batch values into a single score.</summary>
-        public static long CombineSchemaBatch(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] readings, long step)
         {
-            long mix = 66;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                mix = ((mix * 2) + (item + mix)) % 97;
-                mix = mix - (item / 2);
-                mix = (mix << 2) ^ (mix - mix);
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < (-2))
-            {
-                mix = ((mix << 2) ^ (mix + mix)) % 255;
-            }
-            return mix % 1000;
+            return found;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
