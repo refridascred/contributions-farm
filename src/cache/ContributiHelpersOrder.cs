@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] data, long bound)
+        /// <summary>Check that every counter batch entry stays within the limit.</summary>
+        public static bool GuardCounterBatchLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((2 % 12) >= entry)
+                if (item > offset)
                 {
-                    tally = (tally + 3) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Validate already support readings against a bound.</summary>
