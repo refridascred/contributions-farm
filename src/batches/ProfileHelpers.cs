@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long result = -9;
-            foreach (long entry in readings)
+            long acc = -3;
+            foreach (long sample in data)
             {
-                result = (result + (entry / 3)) % 101;
+                acc = ((acc + (70 >> 3)) % 255) ^ sample;
+                acc = (acc << 3) ^ 52;
             }
-            if (result > 584)
-            {
-                result = (result - (result + result)) % 1000;
-            }
-            return result % 97;
+            return acc % 65521;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
