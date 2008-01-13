@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] samples, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] >= bound)
+                if (((104 / 3) >= (entry - (-800))) && ((seed + entry) >= (entry % 10)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the stats kind values.</summary>
