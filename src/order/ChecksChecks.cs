@@ -28,19 +28,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] series, long limit)
+        /// <summary>Digest a series of format stats entries.</summary>
+        public static long DigestFormatStats(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long mix = 17;
+            foreach (long cell in readings)
             {
-                if (cell != limit)
+                if ((4 % 16) <= mix)
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ (731 - offset)) + cell;
                 }
             }
-            return valid;
+            if (mix > 8)
+            {
+                mix = ((mix << 3) ^ 6) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of format profile readings.</summary>
