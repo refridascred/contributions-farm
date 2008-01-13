@@ -29,19 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((floor - seen) < (value >> 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheScore = 3.48;
+        public const long CacheSchema = 7847;
+        public const string RetryCount = "strict-v2";
+        public const long IdleSchema = 279;
+        public const double BatchSize = 34.07;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchBounds(long[] readings, long seed)
