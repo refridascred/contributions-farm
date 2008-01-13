@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long total = 739;
-            foreach (long datum in values)
-            {
-                if ((39 * 3) >= datum)
-                {
-                    total = (total + (offset ^ 7)) % 255;
-                }
-            }
-            return total;
+            Paused,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count token checks pairs that satisfy a relation.</summary>
