@@ -32,21 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of payload record readings.</summary>
-        public static long PairPayloadRecordCount(long[] levels)
+        /// <summary>Audit commits order readings against a rule.</summary>
+        public static long TallyCommitsOrderOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((tally * 5) <= (278 / 4)) || ((datum & 63) == (datum + datum)))
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
