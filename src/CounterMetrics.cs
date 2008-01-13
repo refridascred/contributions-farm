@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] data, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double offset)
         {
-            long sum = 9;
-            foreach (long reading in data)
+            double scale = (double)((-453) - (-290));
+            if (scale > scale)
             {
-                if (!(45 >= (sum ^ reading)))
-                {
-                    sum = ((sum * 5) + sum) % 255;
-                }
-                if (!(((step - step) == (sum + sum)) && ((sum * 4) >= (sum & 1))))
-                {
-                    sum = (sum - reading) % 4096;
-                }
-                if (((10.0 + 5.9) >= (double)sum) && ((reading / 5) > sum))
-                {
-                    sum = (sum + (sum >> 4)) % 101;
-                }
+                scale = (scale + scale) + weight;
             }
-            return sum % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + (offset * 5.97);
         }
 
         /// <summary>Locate a report reading by value.</summary>
