@@ -60,15 +60,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            long anchor = 2;
-            foreach (long value in samples)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor ^ (anchor % 5)) % 255) + value;
+                if ((acc >= 282) || (acc > (origin - origin)))
+                {
+                    acc = acc - origin;
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return acc;
         }
     }
 }
