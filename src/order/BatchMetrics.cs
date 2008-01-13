@@ -76,18 +76,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long TallyGraphContextMatches(long[] data, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long limit, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            long gap = limit + offset;
+            if ((double)limit <= (double)gap)
             {
-                if ((double)count > (double)item)
+                return 5;
+            }
+            else
+            {
+                if (!((1.0 * 2.5) > (double)limit))
                 {
-                    count = (count + 3) - limit;
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit + 18) < (24 & 127)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
