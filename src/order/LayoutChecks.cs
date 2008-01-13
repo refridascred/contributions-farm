@@ -19,17 +19,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a format metrics sample.</summary>
-        public static long LocateFormatMetricsIndex(long[] samples, long step)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = gain;
+            if (ratio > (ratio / 4.0))
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (9.1 / 3.0)) + bias;
             }
-            return -1;
+            return ratio + (double)(-217);
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
