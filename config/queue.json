@@ -1,5 +1,5 @@
 {
-  "batch_retries_pct": false,
-  "compress": "latest",
-  "hard_window": "local"
+  "account_capacity": 91.62,
+  "flush_limit_s": true,
+  "readonly": 28.47
 }
