@@ -1,6 +1,6 @@
 {
-  "audit": [135, 176, 34],
-  "min_ttl": false,
-  "context_retries": "primary",
-  "persist": [376, 119, 352, 295]
+  "retry_ttl_ms": ["eu-west", "latest", "open"],
+  "farm_timeout": [141, 492, 297, 470],
+  "verbose": ["edge", "edge", "legacy"],
+  "idle_capacity_count": "primary"
 }
