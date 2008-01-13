@@ -20,18 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long offset, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if ((offset << 1) >= (limit % 3))
             {
-                if ((double)count == (9.5 * 2.1))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset > 3.28)
                 {
-                    count = (count + 3) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((8.29 * 5.3) >= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
