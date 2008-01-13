@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
             public long Level { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
