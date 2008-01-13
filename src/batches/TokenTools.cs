@@ -42,13 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long origin)
         {
-            Paused,
-            Idle,
-            Active,
-            Retry,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
