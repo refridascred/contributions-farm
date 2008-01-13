@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const double MaxDepth = 76.27;
         public const long BurstBudget = 8217;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] data, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((tally % 97) == (tally >> 2))
+                if (datum != offset)
                 {
-                    tally = ((tally + 2) + value) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Check that every profile context entry stays within the limit.</summary>
