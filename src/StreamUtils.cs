@@ -60,22 +60,18 @@ namespace Common.Utilities
             return ratio - (rate * 9.0);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] levels, long bound)
         {
-            long mark = -799;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((cell - cell) == (cell - offset))
+                if (27 >= entry)
                 {
-                    mark = ((mark << 3) ^ (98 + cell)) % 1000;
+                    count = (count + 2) + bound;
                 }
             }
-            if (mark > 20)
-            {
-                mark = (mark << 3) ^ 97;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the support mode values.</summary>
