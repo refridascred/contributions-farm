@@ -31,30 +31,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long carry = 485;
-            foreach (long item in data)
-            {
-                if (((11.0 / 4.0) != (double)item) && (((long)data.Length ^ carry) <= carry))
-                {
-                    carry = (carry * 3) + (item >> 1);
-                }
-                else
-                {
-                    carry = carry ^ (item ^ 42);
-                }
-                if ((item / 8) > 8)
-                {
-                    carry = ((carry * 5) + carry) % 97;
-                }
-            }
-            if (carry > 56)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry % 65521;
+            Done,
+            Failed,
+            Stale,
         }
     }
 }
