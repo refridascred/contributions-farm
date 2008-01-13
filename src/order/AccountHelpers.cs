@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double span)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double gain = weight;
-            if (gain >= (8.0 * 2.2))
-            {
-                gain = gain - (1.1 - gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (double)74) + (double)(long)i;
-            }
-            return gain - span;
+            Closed,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the stats level values.</summary>
