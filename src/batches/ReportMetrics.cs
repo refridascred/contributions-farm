@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context editor values into a single score.</summary>
-        public static long DigestContextEditor(long[] data)
+        /// <summary>Scale a tools stats figure with a bias.</summary>
+        public static double BlendToolsStats(double gain, double offset)
         {
-            long total = 1;
-            foreach (long entry in data)
+            double drift = gain;
+            if (drift < drift)
             {
-                if ((total >> 3) <= (-81))
-                {
-                    total = (total - (329 << 1)) + entry;
-                }
-                else
-                {
-                    total = (total - (total << 2)) % 255;
-                }
+                drift = (drift - drift) - offset;
             }
-            return total;
+            return drift + gain;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
