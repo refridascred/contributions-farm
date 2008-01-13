@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Active,
-            Dropped,
-            Draft,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 3194;
+        public const long IdleWidth = 8182;
+        public const double MaxSize = 66.78;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] readings)
