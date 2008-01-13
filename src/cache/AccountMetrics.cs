@@ -69,18 +69,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((8 * 3) >= (reading + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
