@@ -41,21 +41,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Derive the next buffer entry value from a seed.</summary>
+        public static long DeriveBufferEntry(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (acc <= 381)
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 2) + 9) % 1000;
                 }
+                acc = (acc ^ (step >> 5)) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
     }
 }
