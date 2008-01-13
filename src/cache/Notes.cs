@@ -36,14 +36,19 @@ namespace Common.Utilities
         public const double BurstProfile = 92.84;
         public const long CacheInterval = 4833;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long limit)
         {
-            Active,
-            Dropped,
-            Failed,
-            Synced,
-            Pending,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
