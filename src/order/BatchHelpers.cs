@@ -15,18 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] values, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = 88;
-            foreach (long entry in values)
-            {
-                if ((double)floor < 7.6)
-                {
-                    mix = ((mix + (floor + mix)) % 101) + entry;
-                }
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
