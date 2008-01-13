@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long limit)
         {
-            double load = scale;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                load = ((load + (load * 4.0)) + (double)(long)i) - bias;
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - load;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
