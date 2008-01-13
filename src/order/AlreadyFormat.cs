@@ -35,26 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series, long origin)
         {
-            long result = 804;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((item - item) < 497) && (26 < result))
+                if (!((value ^ tally) <= (origin * 4)))
                 {
-                    result = (result - (464 << 1)) % 101;
-                }
-                if (item >= 533)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (result < (-472))
-            {
-                result = (result ^ (result / 7)) % 101;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate support samples.</summary>
