@@ -42,9 +42,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 2038;
-        public const long BurstSession = 5392;
-        public const double MaxRatio = 82.57;
+        /// <summary>Measure how many checks batches samples are out of range.</summary>
+        public static long AuditChecksBatchesMatches(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (cell >= (seed % 10))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
