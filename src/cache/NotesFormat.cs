@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 1594;
+        public const double SoftRatio = 51.87;
+        public const long IdleSpan = 7510;
+        public const long BurstCommits = 4621;
+        public const long LimitCommits = 9368;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 4125;
