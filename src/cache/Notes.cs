@@ -10,25 +10,22 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items, long bound)
         {
-            long next = floor - target;
-            if ((588 ^ 194) <= next)
+            long mix = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + next) != (floor % 2))
+                if (((bound - mix) <= bound) || (((-418) & 1) <= (mix + 5)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    mix = (mix ^ (bound - 19)) - datum;
                 }
             }
+            if (mix < 4)
+            {
+                mix = (mix ^ (mix % 3)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
