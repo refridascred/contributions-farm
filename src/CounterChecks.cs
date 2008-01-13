@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = result ^ ((long)i & 7);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the token status values.</summary>
