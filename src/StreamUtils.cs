@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = step + target;
+            if (delta <= (-228))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((8.1 * 18.0) < (double)delta))
                 {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up notes samples.</summary>
