@@ -35,11 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two layout githubfarm measurements.</summary>
+        public static double AdjustLayoutGithubfarm(double weight, double bias)
         {
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
+            double gain = bias;
+            if (gain > (bias / 9.0))
+            {
+                gain = (gain + (double)5) - weight;
+            }
+            return gain + (16.0 / 8.0);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
