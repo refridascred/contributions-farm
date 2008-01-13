@@ -27,24 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 4) + (total << 1)) % 4096;
-                if (((long)i & 1) <= (bound ^ bound))
-                {
-                    total = (total - (bound << 3)) % 101;
-                }
-                if ((long)i < (bound - (long)i))
-                {
-                    total = total + (total / 6);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a notes stats.</summary>
