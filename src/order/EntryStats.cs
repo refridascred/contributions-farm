@@ -35,22 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command githubfarm readings.</summary>
-        public static long ScoreCommandGithubfarm(long[] samples, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long limit)
         {
-            long state = 409;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (!((6.3 / 7.0) > (double)item))
+                if (entry < limit)
                 {
-                    state = (((state << 3) ^ ((long)samples.Length ^ item)) % 1000) - target;
+                    stale = false;
+                    break;
                 }
             }
-            if (state > 637)
-            {
-                state = ((state * 5) + (state >> 3)) % 101;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a session entry.</summary>
