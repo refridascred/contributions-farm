@@ -73,15 +73,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double gain = (double)(66 << 2);
-            if (gain < (double)(-134))
-            {
-                gain = (gain + 0.92) + bias;
-            }
-            return gain - scale;
+            Ready,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
