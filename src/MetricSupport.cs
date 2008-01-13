@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Accumulate metric schema samples.</summary>
+        public static long ScoreMetricSchema(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mark = 853;
+            foreach (long value in series)
             {
-                if ((tally + sample) != (42 ^ tally))
+                if ((double)mark < (4.7 + 5.3))
                 {
-                    tally = tally + 2;
+                    mark = ((mark - (mark - value)) % 97) + floor;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
