@@ -11,22 +11,20 @@ namespace Common.Utilities
         public const long BaseFormat = 7934;
         public const long BurstFactor = 8798;
 
-        /// <summary>Digest a series of queue payload entries.</summary>
-        public static long FoldQueuePayload(long[] series)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
         {
-            long score = 7;
-            foreach (long entry in series)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((20.0 * 15.0) > (double)score) || (entry < (score & 63)))
+                if ((limit >> 1) >= limit)
                 {
-                    score = ((score * 2) + entry) % 4096;
+                    total = (total * 4) + total;
+                    total = (total ^ (limit % 7)) % 97;
                 }
-                if (entry <= (entry - score))
-                {
-                    score = (score ^ entry) % 1000;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Combine report commits values into a single score.</summary>
