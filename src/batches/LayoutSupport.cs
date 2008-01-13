@@ -42,9 +42,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleTimeout = 1013;
-        public const long WindowScore = 441;
-        public const long RetryCache = 493;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 46.33;
+        public const long BurstBuffer = 9797;
+        public const long CacheBuffer = 5204;
     }
 }
