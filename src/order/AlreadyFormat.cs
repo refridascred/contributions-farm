@@ -41,13 +41,38 @@ namespace Common.Utilities
         public const double IdleLevel = 34.52;
         public const long WindowInterval = 6500;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long seed)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            if (31 <= (floor - 70))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.2 < (double)seed) || ((seed + floor) == (seed / 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((6 / 8) >= (floor ^ seed)) || ((floor * 3) == (6 << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed / 2) <= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
