@@ -31,16 +31,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "alpha";
+        public const long SoftDepth = 6025;
+        public const long CacheQueue = 4724;
+        public const string BurstSpan = "legacy-1";
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
