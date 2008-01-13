@@ -87,26 +87,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long seed)
         {
-            long mark = 422;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((164 << 3) < (item % 5))
+                if (reading > seed)
                 {
-                    mark = (((mark << 3) ^ (mark + mark)) % 4096) - target;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (long)values.Length;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < (-109))
-            {
-                mark = mark ^ (mark << 2);
-            }
-            return mark % 1000;
+            return found;
         }
     }
 }
