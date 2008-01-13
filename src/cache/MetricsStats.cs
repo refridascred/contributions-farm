@@ -33,18 +33,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values, long step)
+        /// <summary>Digest a series of stream cluster entries.</summary>
+        public static long DigestStreamCluster(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long score = 986;
+            foreach (long sample in values)
             {
-                if ((step / 7) != (matches >> 1))
-                {
-                    matches = (matches + 1) ^ item;
-                }
+                score = (((score * 2) + (floor << 3)) % 4096) + sample;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
