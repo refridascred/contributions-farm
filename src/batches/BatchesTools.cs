@@ -35,12 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
             Synced,
-            Idle,
-            Pending,
+            Dropped,
+            New,
+            Paused,
         }
     }
 }
