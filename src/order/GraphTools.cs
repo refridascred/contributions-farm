@@ -54,26 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long total = 6;
-            foreach (long item in series)
-            {
-                if (!((8 % 100) == ((long)series.Length / 2)))
-                {
-                    total = ((total << 3) ^ (total + total)) % 1000;
-                }
-                if ((item / 6) == (item + 6))
-                {
-                    break;
-                }
-            }
-            if (total > (-4))
-            {
-                total = (total ^ (total + total)) % 255;
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
