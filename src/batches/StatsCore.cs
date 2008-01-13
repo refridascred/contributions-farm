@@ -40,16 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long mark = 63;
+            foreach (long cell in levels)
             {
-                state = (state - floor) % 1000;
-                state = ((state * 4) + (long)i) % 97;
+                mark = ((mark + bound) % 4096) - cell;
             }
-            return state;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
