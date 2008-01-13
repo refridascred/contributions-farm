@@ -50,16 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next payload counter value from a seed.</summary>
-        public static long RollPayloadCounter(long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double ratio, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry << 3) ^ (305 >> 5)) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            double rate = (offset * 8.0) - (17.0 * 8.7);
+            return (rate - offset) + ratio;
         }
     }
 }
