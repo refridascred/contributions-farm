@@ -54,24 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long seed, long bound)
-        {
-            if ((seed << 3) >= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (313 * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 20.48;
+        public const double MinMetric = 67.93;
+        public const long LimitMetric = 5630;
+        public const long RetryRatio = 2610;
     }
 }
