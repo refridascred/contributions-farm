@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long total = -67;
-            foreach (long datum in readings)
-            {
-                total = (total * 2) + (datum + datum);
-            }
-            if (total > 941)
-            {
-                total = (total + (total / 8)) % 255;
-            }
-            return total;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
