@@ -28,11 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "stable-1";
-        public const double HardBatches = 62.53;
-        public const double StepBatches = 26.25;
-        public const string HardDepth = "fallback-v2";
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] data, long bound)
