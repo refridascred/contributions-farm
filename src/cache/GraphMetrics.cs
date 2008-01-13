@@ -61,31 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long score = 15;
-            foreach (long reading in series)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = (((score * 5) + reading) % 65521) - (long)i;
-                    score = ((score << 3) ^ (reading * 4)) % 4096;
-                }
-                if (10.0 > (double)score)
-                {
-                    score = (score * 2) + (score - score);
-                }
-                if (((score + reading) >= reading) && ((0.2 * 5.16) == (double)reading))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (score < 91)
-            {
-                score = ((score * 5) + (score + score)) % 1000;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
