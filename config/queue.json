@@ -1,10 +1,7 @@
 {
-  "hard_capacity_pct": {
-    "idle_ratio_count": 99,
-    "verbose": 500,
-    "poll_retries": false
-  },
-  "idle_limit_pct": ["primary", "stable"],
-  "base_window_pct": 7253,
-  "counter_timeout": 7
+  "retry_retries_s": true,
+  "cache_timeout": true,
+  "record_size": ["primary", "latest", "staging", "stable"],
+  "base_retries_s": false,
+  "sync_size_ms": ["cached", "primary", "open", "eu-west"]
 }
