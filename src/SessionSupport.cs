@@ -27,13 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] readings, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (matches >= (datum - matches))
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
