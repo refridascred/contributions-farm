@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] series, long origin)
+        /// <summary>Validate account token readings against a bound.</summary>
+        public static bool GuardAccountTokenBounds(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (46 > origin)
+                if (datum > step)
                 {
-                    matches = (matches + 2) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Project the next buffer value.</summary>
