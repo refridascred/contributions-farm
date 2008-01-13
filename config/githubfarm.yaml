@@ -1,5 +1,15 @@
 # githubfarm settings
-base_threshold_pct: 72
-idle_depth: false
-poll_interval: 1024
-dry_run: strict
+tools_ratio: 6356
+default_delay_ms: blue
+poll_interval_count: false
+verbose:
+  hard_delay_pct: false
+  max_size: 45
+  order_threshold: false
+  flush_delay: 1172
+  cache_depth_pct: strict
+  max_window: 9385
+poll_ratio_pct: 6813
+batch_limit_ms:
+  - fallback
+  - primary
