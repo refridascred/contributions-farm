@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultLevel = 4276;
-        public const long BaseAlready = 728;
-        public const long BatchSpan = 4839;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Pending,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesGaps(long[] levels)
