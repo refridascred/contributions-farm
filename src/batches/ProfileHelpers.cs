@@ -58,19 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] samples, long target)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a buffer stats.</summary>
