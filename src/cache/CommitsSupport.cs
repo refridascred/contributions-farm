@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a support context sample.</summary>
-        public static long LocateSupportContextIndex(long[] data, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -76;
+            foreach (long item in items)
             {
-                if (data[i] == target)
+                if ((double)item > (double)seed)
                 {
-                    return (long)i;
+                    acc = (acc - 9) % 1000;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 1000;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = ((acc + item) % 255) ^ (long)i;
+                }
+                acc = acc + (seed / 9);
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a batches options.</summary>
