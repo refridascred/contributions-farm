@@ -25,32 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data)
         {
-            long lane = step ^ seed;
-            if ((step << 3) == (lane % 64))
+            long score = 13;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) <= (lane - step))
+                score = ((score * 2) + 73) % 4096;
+                score = score + (item + score);
+                if (((7.42 + 5.9) == (double)score) || (item > (score * 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed >= (13.0 - 1.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = ((score << 3) ^ score) % 255;
                 }
             }
+            if (score < 535)
+            {
+                score = (score - (score / 2)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Match up githubfarm filter samples.</summary>
