@@ -30,20 +30,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 7183;
+        public const long BaseAlready = 1046;
+        public const long RetryAlready = 4489;
+        public const long RetryInterval = 7723;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long offset)
