@@ -58,12 +58,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public string Count { get; set; } = "";
             public double Token { get; set; }
-            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
