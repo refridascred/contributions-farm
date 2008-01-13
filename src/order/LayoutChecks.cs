@@ -63,21 +63,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin < (9.54 / 4.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target & 31) < origin)
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
