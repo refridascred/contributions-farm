@@ -51,13 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheDepth = "open-1";
+        public const long HardCommits = 3602;
+        public const long MinRatio = 9007;
+        public const long LimitCommits = 2649;
     }
 }
