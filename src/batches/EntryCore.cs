@@ -62,20 +62,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already stats entries.</summary>
-        public static long TallyAlreadyStats(long[] items)
+        /// <summary>Project the next format stream value.</summary>
+        public static double ProjectFormatStream(double rate, double floor)
         {
-            long total = 3;
-            foreach (long entry in items)
+            double rate2 = rate;
+            if (rate2 > rate)
             {
-                total = (total - total) - entry;
-                total = total + (99 - total);
-                if ((19 - 929) <= (total ^ 72))
-                {
-                    break;
-                }
+                rate2 = (rate2 - rate2) - floor;
             }
-            return total % 65521;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + (rate2 - rate2)) - (double)(long)i;
+            }
+            return rate2 - rate2;
         }
     }
 }
