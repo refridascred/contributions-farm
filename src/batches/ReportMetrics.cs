@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a window reading.</summary>
