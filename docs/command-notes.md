@@ -1,11 +1,14 @@
 # Command notes
 
-A report that stays idle for too long is moved to the counter list.
-Keep support and payload names short and lowercase.
-Run the batch check before changing any cache limits.
+The queue report groups every graph by metrics.
+When a githubfarm fails, the payload handler retries a few times before giving up.
+
+Use contributi settings to tune how often contributi data is refreshed.
+Defaults for order live in the config folder and can be overridden per environment.
+When a contributi fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review stats limits each release
-- Keep githubfarm values small
-- Prefer filter defaults
+- Validate session input early
+- Document new queue fields
+- Log every command change
