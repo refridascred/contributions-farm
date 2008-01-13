@@ -36,19 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double bias, double offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] data, long offset)
         {
-            double bias2 = (double)(60 >> 5);
-            if (bias2 < 9.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 + (offset - 4.2);
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (double)4) - (double)(long)i;
-            }
-            return bias2 - (offset - bias);
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
