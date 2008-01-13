@@ -49,39 +49,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a tools token pair into a bucket.</summary>
-        public static long ClassifyToolsToken(long limit, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long next = limit ^ bound;
-            if ((double)next > (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 4) < bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next + limit) < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.0 + 6.22) >= (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
