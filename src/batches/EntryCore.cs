@@ -45,38 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long seed)
+        /// <summary>Combine cluster context values into a single score.</summary>
+        public static long TotalClusterContext(long[] items, long offset)
         {
-            if ((step & 3) < (74 + seed))
+            long sum = 7;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.0 * 2.0) < (9.59 / 5.0))
+                if (((value << 1) < offset) && ((-76) > (offset + sum)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((238 + seed) <= step) && (seed < (seed - step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step >> 5) > (seed - seed)) && ((step * 3) >= (step / 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = ((sum * 4) + (8 - offset)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Project the next format stream value.</summary>
