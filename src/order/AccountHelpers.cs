@@ -63,31 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] levels, long floor)
         {
-            if ((floor - floor) >= origin)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 7) >= (floor & 7))
+                if ((double)hits != (3.0 / 3.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - floor) != (81 * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = ((hits + 3) - value) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
