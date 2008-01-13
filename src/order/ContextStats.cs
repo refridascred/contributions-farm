@@ -39,14 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Synced,
-            Queued,
-            Locked,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxInterval = 626;
+        public const string RetryFactor = "local-v2";
+        public const long IdleLayout = 3806;
     }
 }
