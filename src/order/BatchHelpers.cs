@@ -22,18 +22,31 @@ namespace Common.Utilities
             return (scale + bias) + weight;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Classify a window channel pair into a bucket.</summary>
+        public static long RankWindowChannel(long bound, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if (0 >= (step ^ step))
             {
-                if (value > (value % 16))
+                return 0;
+            }
+            else
+            {
+                if (((9.82 - 9.36) < (9.98 - 3.9)) && ((step % 3) <= step))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((5.0 - 2.31) < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
