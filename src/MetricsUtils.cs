@@ -45,18 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data, long limit)
         {
-            long state = 62;
-            foreach (long entry in readings)
+            long mix = 75;
+            foreach (long datum in data)
             {
-                if ((99 << 2) < entry)
-                {
-                    state = state - state;
-                }
+                mix = (((mix << 3) ^ (mix - datum)) % 1000) - limit;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
