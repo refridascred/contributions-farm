@@ -31,11 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values)
         {
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
+            long anchor = 5;
+            foreach (long reading in values)
+            {
+                if ((reading + 6) < 98)
+                {
+                    anchor = anchor + reading;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor + (44 + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
