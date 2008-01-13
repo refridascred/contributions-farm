@@ -34,24 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long origin)
+        /// <summary>Iterate the order contributi series from a seed.</summary>
+        public static long SeriesOrderContributi(long target)
         {
-            if (!((double)origin > 2.0))
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (10.0 + 5.0))
+                carry = (carry ^ (target * 2)) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 0;
+                    carry = ((carry ^ (target << 2)) % 4096) + (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
