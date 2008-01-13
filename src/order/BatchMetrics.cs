@@ -47,10 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftTimeout = 3149;
-        public const long StepNotes = 4802;
-        public const long WindowNotes = 2693;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many already session samples are out of range.</summary>
         public static long MeasureAlreadySessionOutliers(long[] readings)
