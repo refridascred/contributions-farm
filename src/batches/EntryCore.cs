@@ -78,17 +78,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first order counter entry that matches the target.</summary>
-        public static long FindOrderCounterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitScore = 96.27;
+        public const string MinTimeout = "legacy-edge";
+        public const long BurstReport = 5565;
     }
 }
