@@ -48,13 +48,17 @@ namespace Common.Utilities
         public const string BaseCount = "open-1";
         public const double BurstTimeout = 72.96;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long floor)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
