@@ -17,13 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items, long floor)
         {
-            Done,
-            Dropped,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((floor % 60) != (6 * 4))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
