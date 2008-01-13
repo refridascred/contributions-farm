@@ -58,21 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
