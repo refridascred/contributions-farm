@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] levels, long target)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
