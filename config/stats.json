@@ -1,7 +1,11 @@
 {
-  "metric_depth": ["eu-west", "legacy", "blue"],
-  "warm_retries_pct": 5210,
-  "record_limit": 3097,
-  "hard_ratio_count": 9717,
-  "checks_window": 13
+  "warm_delay": {
+    "default_ttl": 100,
+    "counter_timeout": "latest",
+    "context_timeout": "fallback",
+    "persist": 3585,
+    "burst_ttl_pct": "local"
+  },
+  "report_size": "strict",
+  "compress": 5031
 }
