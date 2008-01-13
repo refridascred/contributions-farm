@@ -68,15 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 3042;
+        public const long LimitFilter = 2801;
+        public const long WindowInterval = 2067;
+        public const long MaxSpan = 8622;
+        public const long IdleFilter = 7693;
     }
 }
