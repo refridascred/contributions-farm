@@ -21,20 +21,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stream editor entry stays within the limit.</summary>
-        public static bool VerifyStreamEditorBounds(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 4004;
+        public const long SoftCount = 3550;
+        public const long HardNotes = 7731;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] data)
