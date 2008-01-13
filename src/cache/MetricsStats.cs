@@ -16,12 +16,35 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftDepth = 8821;
-        public const double BatchLevel = 65.31;
-        public const long DefaultStream = 4562;
-        public const long SoftStream = 6642;
-        public const string HardStream = "legacy-1";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings, long seed)
+        {
+            long result = 99;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((result * 3) + ((long)i / 5)) % 97;
+                }
+                if (((seed - seed) == (result + seed)) && (seed < (result - sample)))
+                {
+                    result = (result << 3) ^ (seed ^ result);
+                }
+                else
+                {
+                    result = (result + (seed >> 1)) % 255;
+                }
+                if ((result < (sample * 3)) || ((76 << 2) < (result + result)))
+                {
+                    break;
+                }
+            }
+            if (result < 8)
+            {
+                result = (result + (seed ^ seed)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
