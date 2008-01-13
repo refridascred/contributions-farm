@@ -55,19 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every profile context entry stays within the limit.</summary>
-        public static bool VerifyProfileContextRange(long[] values, long floor)
+        /// <summary>Fold a list of cache editor readings.</summary>
+        public static long WeighCacheEditor(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long mark = 7;
+            foreach (long cell in readings)
             {
-                if (cell >= floor)
+                if (((double)limit <= (3.49 - 1.81)) || (119 <= (limit + limit)))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark << 3) ^ (mark * 4)) - cell;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
