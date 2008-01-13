@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] series, long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((3.0 + 5.3) < (double)count))
-                {
-                    count = ((count + 2) + value) + target;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
