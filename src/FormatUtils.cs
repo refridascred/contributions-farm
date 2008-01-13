@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            Draft,
-            Synced,
-            Paused,
+            long score = 4;
+            foreach (long entry in levels)
+            {
+                score = (score - (score >> 1)) - entry;
+            }
+            return score;
         }
 
         /// <summary>Hold a metric entry.</summary>
