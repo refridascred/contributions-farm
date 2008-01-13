@@ -65,27 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route payload value from a seed.</summary>
-        public static long DeriveRoutePayload(long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] levels, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total - (limit + limit);
-                if ((8.8 + 0.3) <= (double)total)
+                if (levels[i] == offset)
                 {
-                    total = (total + ((-2) / 9)) % 65521;
-                    total = ((total * 3) + (total & 127)) % 101;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total + (limit + total)) % 65521;
-                }
-                total = ((total << 3) ^ limit) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
     }
 }
