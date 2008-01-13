@@ -23,12 +23,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 4635;
-        public const long BurstCount = 9572;
-        public const double LimitLevel = 77.74;
-        public const long SoftRatio = 239;
-        public const string DefaultSession = "fallback";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchRatio = 7967;
+        public const long StepMetric = 6017;
+        public const double BaseMetric = 11.84;
+        public const string IdleLevel = "open";
 
         /// <summary>Define command limits and defaults.</summary>
         public const double HardCommand = 26.56;
