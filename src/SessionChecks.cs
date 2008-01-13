@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitLevel = 9466;
-        public const double SoftSize = 72.73;
-        public const double BatchRecord = 15.35;
-        public const long BaseFactor = 3287;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Synced,
+            Ready,
+            Locked,
+            Done,
+            Draft,
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] levels, long step)
