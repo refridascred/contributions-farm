@@ -45,21 +45,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 5)
+                    if ((series[i] ^ series[j]) != 4)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
