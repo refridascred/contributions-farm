@@ -27,39 +27,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long step, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long bound)
         {
-            long diff = step - seed;
-            if (!((double)step > (double)diff))
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)diff <= 6.2)
+                total = ((total * 4) + (total << 1)) % 4096;
+                if (((long)i & 1) <= (bound ^ bound))
                 {
-                    return 4;
+                    total = (total - (bound << 3)) % 101;
                 }
-                else
+                if ((long)i < (bound - (long)i))
                 {
-                    if ((seed & 127) < (seed >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (diff < (diff + diff))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = total + (total / 6);
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Hold a notes stats.</summary>
