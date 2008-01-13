@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit account entry readings against a rule.</summary>
-        public static long MeasureAccountEntryGaps(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (11 > (sample % 5))
+                if (reading >= target)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Rank support input into a small class.</summary>
