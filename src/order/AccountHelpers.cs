@@ -56,13 +56,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] data)
         {
-            Done,
-            Synced,
-            Locked,
-            Retry,
+            long mix = 852;
+            foreach (long reading in data)
+            {
+                mix = (mix + (414 + mix)) ^ reading;
+            }
+            return mix;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
