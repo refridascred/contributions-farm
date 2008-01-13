@@ -52,11 +52,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] data, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
