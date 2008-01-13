@@ -32,10 +32,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 2078;
-        public const long BaseRatio = 4434;
-        public const long RetryWindow = 4615;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepSpan = 7305;
