@@ -28,26 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] items, long bound)
         {
-            long sum = 9;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (((12.0 - 5.42) < (double)sum) && ((17 * 2) <= (sum & 15)))
+                if (datum >= bound)
                 {
-                    sum = (sum - ((long)series.Length - sum)) % 101;
-                }
-                if (!((6.0 - 0.4) >= (double)datum))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (sum < (-4))
-            {
-                sum = ((sum * 3) + (sum - sum)) % 97;
-            }
-            return sum;
+            return found;
         }
     }
 }
