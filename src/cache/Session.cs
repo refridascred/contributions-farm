@@ -24,13 +24,19 @@ namespace Common.Utilities
             return bias + (bias + bias);
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] levels, long floor)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
