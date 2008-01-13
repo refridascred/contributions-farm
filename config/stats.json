@@ -1,12 +1,5 @@
 {
-  "counter_size": 18.7,
-  "batch_depth_s": 100,
-  "enabled": {
-    "base_threshold_pct": true,
-    "poll_ratio_ms": 100,
-    "readonly": 35.08,
-    "report_retries": true,
-    "warm_delay": "cached"
-  },
-  "session_interval": false
+  "enabled": "cached",
+  "dry_run": 6483,
+  "compress": false
 }
