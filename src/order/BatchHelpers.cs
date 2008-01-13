@@ -15,11 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] readings)
         {
-            double scale = bias;
-            return (scale + bias) + weight;
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading ^ reading) != (hits << 2)) && ((reading / 3) > (hits * 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a window channel pair into a bucket.</summary>
