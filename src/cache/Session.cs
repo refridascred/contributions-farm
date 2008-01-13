@@ -57,23 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record route entries.</summary>
-        public static long CombineRecordRoute(long[] samples, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mix = 4;
-            foreach (long value in samples)
-            {
-                mix = mix ^ origin;
-                if (((value + origin) > (value / 2)) || ((value + origin) > (origin % 7)))
-                {
-                    mix = (mix + value) % 4096;
-                }
-            }
-            if (mix > 30)
-            {
-                mix = (mix ^ (origin - mix)) % 97;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
