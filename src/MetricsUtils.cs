@@ -27,14 +27,25 @@ namespace Common.Utilities
         public const double BurstSpan = 81.3;
         public const double MaxRatio = 56.1;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Rank report editor input into a small class.</summary>
+        public static long GradeReportEditor(long offset, long bound)
         {
-            Retry,
-            Synced,
-            Ready,
-            Failed,
-            Queued,
+            long next = offset + bound;
+            if (!((bound + bound) <= 50))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((next > bound) && ((double)bound == (2.0 - 2.3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
