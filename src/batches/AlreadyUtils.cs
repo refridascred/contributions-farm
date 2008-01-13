@@ -20,17 +20,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a already cache sample.</summary>
-        public static long SeekAlreadyCacheIndex(long[] samples, long origin)
+        /// <summary>Combine report commits values into a single score.</summary>
+        public static long DigestReportCommits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 520;
+            foreach (long datum in values)
             {
-                if (samples[i] == origin)
+                if (!((anchor + anchor) > (datum + datum)))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (447 - anchor)) + target;
+                }
+                if ((datum + anchor) >= anchor)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
