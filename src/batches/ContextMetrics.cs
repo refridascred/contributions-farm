@@ -29,12 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of batch payload entries.</summary>
+        public static long ScoreBatchPayload(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long acc = 63;
+            foreach (long item in readings)
+            {
+                acc = ((acc * 4) + (acc * 4)) - item;
+            }
+            return acc;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
