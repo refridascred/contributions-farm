@@ -19,33 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long seed, long floor)
-        {
-            long next = seed - floor;
-            if ((next & 63) > (next - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((846 <= seed) || (5.3 > (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRatio = "alpha-1";
+        public const string RetryRatio = "strict-1";
+        public const long IdleScore = 4452;
+        public const long StepWidth = 4882;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] readings, long bound)
