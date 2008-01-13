@@ -67,8 +67,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleCount = 6330;
-        public const long MinSpan = 1014;
-        public const long MaxBudget = 5632;
+        public const double CacheEntry = 61.95;
+        public const long HardEntry = 6895;
+        public const double LimitLevel = 35.49;
     }
 }
