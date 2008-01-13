@@ -104,21 +104,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)result == (8.1 * 1.18))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result ^ (limit >> 5);
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
     }
 }
