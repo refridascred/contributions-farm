@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-edge";
         public const long BatchQueue = 5241;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] data, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((12.0 > (double)seed) || ((double)sample > (5.0 - 1.2)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of cache report readings.</summary>
