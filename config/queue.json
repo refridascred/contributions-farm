@@ -1,12 +1,6 @@
 {
-  "poll_depth": "latest",
-  "base_limit": false,
-  "hard_ratio_pct": "green",
-  "default_window": "latest",
-  "profile_delay": 41,
-  "hard_threshold_count": {
-    "cache_depth": ["eu-west", "strict", "local", "cached"],
-    "poll_ratio": 250,
-    "metrics_retries": [438, 27, 350, 470]
-  }
+  "context_retries": "legacy",
+  "warm_delay": [39, 8, 432, 188],
+  "compress": 68,
+  "context_timeout": 80
 }
