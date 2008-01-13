@@ -45,21 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of format profile readings.</summary>
-        public static long PairFormatProfileCount(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item + 272) < (bound - 36))
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
