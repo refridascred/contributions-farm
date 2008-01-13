@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the batch cache entries that pass the check.</summary>
-        public static long MeasureBatchCacheHits(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((double)entry > (7.4 - 7.0)) && ((entry << 3) <= (hits * 5)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine order values into a single score.</summary>
