@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long StepDepth = 5572;
         public const string HardBudget = "strict-v2";
 
-        /// <summary>Check that every account queue entry stays within the limit.</summary>
-        public static bool VerifyAccountQueueLimits(long[] data, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != step)
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
