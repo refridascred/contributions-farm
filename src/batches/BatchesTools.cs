@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            double mean = (ratio * 2.9) + (floor - 5.28);
+            if (mean < floor)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                mean = mean - (ratio * 9.98);
             }
-            return mark;
+            return mean - floor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
