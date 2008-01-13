@@ -58,10 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 12.82;
-        public const long WindowPayload = 483;
-        public const long BurstPayload = 2693;
-        public const string RetryPayload = "local-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 9284;
+        public const long RetryTimeout = 355;
+        public const double DefaultToken = 55.58;
+        public const long MinToken = 9240;
+        public const string BaseTimeout = "standard-1";
     }
 }
