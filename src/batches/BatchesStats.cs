@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            Retry,
+            Paused,
+            Active,
+            Ready,
         }
     }
 }
