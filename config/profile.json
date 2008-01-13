@@ -1,11 +1,6 @@
 {
-  "burst_window": [2, 305, 240],
-  "retry_ttl_s": ["standard", "legacy"],
-  "sync_ttl": 5071,
-  "hard_size_pct": {
-    "sync_ttl_s": 44.7,
-    "commits_size": "green",
-    "graph_timeout": "edge"
-  },
-  "hard_retries_s": 76
+  "strict": true,
+  "idle_timeout_count": "fallback",
+  "dry_run": "edge",
+  "retry_timeout_count": 71.72
 }
