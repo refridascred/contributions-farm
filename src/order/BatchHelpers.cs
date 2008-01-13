@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long offset, long bound)
         {
-            long score = 0;
-            foreach (long reading in readings)
+            if (((double)bound != (double)offset) && ((offset * 2) != (offset + offset)))
             {
-                score = score + (reading << 1);
-                if (((2.0 + 14.0) == (double)score) && (((-347) - score) <= score))
+                return 4;
+            }
+            else
+            {
+                if ((offset - bound) > 240)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
