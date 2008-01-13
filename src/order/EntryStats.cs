@@ -37,10 +37,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "open-edge";
-        public const double DefaultFarm = 57.22;
-        public const string BatchFarm = "local-1";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] readings)
+        {
+            long carry = 78;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 4) + entry) % 1000;
+                if (((carry & 15) >= (carry + entry)) || ((-10) > (entry / 7)))
+                {
+                    carry = (carry * 5) + entry;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + 5)) % 4096;
+                }
+                carry = (carry ^ (5 >> 3)) % 65521;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
