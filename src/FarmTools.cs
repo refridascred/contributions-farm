@@ -20,19 +20,23 @@ namespace Common.Utilities
         public const long WindowQueue = 8277;
         public const string LimitSize = "legacy-edge";
 
-        /// <summary>Validate format queue readings against a bound.</summary>
-        public static bool CheckFormatQueueLimits(long[] samples, long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double scale = (double)((-141) % 12);
+            if (scale >= (scale * 0.8))
             {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale - floor) + gain;
             }
-            return ok;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (scale * 2.24);
         }
     }
 }
