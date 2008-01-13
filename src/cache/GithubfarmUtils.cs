@@ -22,39 +22,13 @@ namespace Common.Utilities
         public const double StepSupport = 15.11;
         public const long MaxSupport = 8640;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long step, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long diff = step + limit;
-            if (!((double)diff != (0.33 * 4.2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 3) <= 1)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 + 2.33) != (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((53 ^ diff) >= (limit >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Active,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
