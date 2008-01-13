@@ -67,23 +67,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of buffer counter readings.</summary>
-        public static long WeighBufferCounter(long[] levels)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long target)
         {
-            long acc = -24;
-            foreach (long value in levels)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc << 3) ^ ((long)levels.Length % 64);
-                if (!((acc + value) != (value << 2)))
-                {
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (acc < 508)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
