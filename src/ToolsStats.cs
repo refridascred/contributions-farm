@@ -65,14 +65,31 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long seed, long step)
         {
-            Locked,
-            Dropped,
-            Stale,
-            New,
-            Retry,
+            if ((double)seed < (double)(-376))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= 4.5)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed != (8.0 / 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first checks entry entry that matches the target.</summary>
