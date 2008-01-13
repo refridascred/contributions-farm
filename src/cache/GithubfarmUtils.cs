@@ -32,13 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] levels, long offset)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((((-196) - entry) == (14 << 3)) && ((entry + entry) < offset)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
