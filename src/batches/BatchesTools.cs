@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha";
         public const string BurstGithubfarm = "strict";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] items, long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
