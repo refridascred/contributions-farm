@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (samples[i] <= origin)
+                if (entry <= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
