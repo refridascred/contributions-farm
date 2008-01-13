@@ -30,20 +30,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the order contributi series from a seed.</summary>
-        public static long SeriesOrderContributi(long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry ^ (target * 2)) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry ^ (target << 2)) % 4096) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Idle,
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
