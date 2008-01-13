@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double ratio, double offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            double drift = (double)(-5) - ratio;
-            return (drift + (double)5) + offset;
+            double rate = (6.0 * 15.0) / 8.0;
+            if (rate >= (rate + gain))
+            {
+                rate = (rate - (0.95 - gain)) + span;
+            }
+            return rate - (double)794;
         }
 
         /// <summary>Describe the editor status values.</summary>
