@@ -1,7 +1,13 @@
 # githubfarm settings
-base_capacity: latest
-hard_depth_s: 55.39
-retry_interval:
-  - 377
-  - 43
-audit: false
+githubfarm_capacity: true
+idle_size_pct: cached
+soft_size_pct: fallback
+strict:
+  - 208
+  - 236
+  - 126
+readonly:
+  - 197
+  - 122
+  - 223
+  - 438
