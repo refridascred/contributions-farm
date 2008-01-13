@@ -66,19 +66,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((step % 10) >= sum)
-                {
-                    sum = ((sum << 3) ^ sum) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardLevel = 390;
+        public const long SoftBudget = 8404;
+        public const string WindowAlready = "staging-v2";
+        public const long RetryAlready = 9666;
     }
 }
