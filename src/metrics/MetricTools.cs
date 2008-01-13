@@ -36,5 +36,19 @@ namespace Common.Utilities
             }
             return mark;
         }
+
+        /// <summary>Audit context payload readings against a rule.</summary>
+        public static long TallyContextPayloadOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum >> 3) != (datum << 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
