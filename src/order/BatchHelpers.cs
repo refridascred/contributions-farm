@@ -34,15 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Audit entry profile readings against a rule.</summary>
+        public static long MeasureEntryProfileOutliers(long[] samples, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((double)matches == (1.0 - 4.61))
+                {
+                    matches = ((matches + 2) ^ item) - offset;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
