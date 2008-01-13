@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Done,
-            Ready,
-            Synced,
-            Closed,
-            Paused,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
