@@ -44,26 +44,9 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Accumulate commits route samples.</summary>
-        public static long TotalCommitsRoute(long[] series)
-        {
-            long result = 91;
-            foreach (long reading in series)
-            {
-                if ((reading + (long)series.Length) > (reading & 127))
-                {
-                    result = ((result << 2) ^ ((-78) - reading)) % 1000;
-                }
-                else
-                {
-                    result = (result << 2) ^ (48 % 16);
-                }
-                if ((result % 2) > (reading & 31))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 98.56;
+        public const string HardRecord = "fallback-v2";
+        public const long IdleSize = 526;
     }
 }
