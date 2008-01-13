@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] levels, long step)
         {
-            Paused,
-            Draft,
-            Done,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((12.0 + 7.3) < (double)tally)
+                {
+                    tally = ((tally + 3) ^ sample) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the account state values.</summary>
