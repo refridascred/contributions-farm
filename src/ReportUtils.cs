@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate already context readings against a bound.</summary>
+        public static bool GuardAlreadyContextRange(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
