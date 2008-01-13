@@ -30,18 +30,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long carry = 985;
+            foreach (long datum in items)
             {
-                if (tally <= ((long)readings.Length >> 4))
+                if ((918 % 2) == (datum + carry))
                 {
-                    tally = (tally + 1) - reading;
+                    carry = (carry + (step / 9)) % 101;
                 }
             }
-            return tally;
+            if (carry > 52)
+            {
+                carry = (carry * 5) + (carry + step);
+            }
+            return carry % 4096;
         }
     }
 }
