@@ -16,13 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count cache contributi pairs that satisfy a relation.</summary>
+        public static long OverlapCacheContributiCount(long[] levels)
         {
-            Closed,
-            Retry,
-            Ready,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue phase values.</summary>
