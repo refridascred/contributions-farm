@@ -44,11 +44,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitDepth = 52.65;
-        public const long CacheBudget = 1472;
-        public const string BaseEditor = "stable-edge";
-        public const long DefaultSize = 8247;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksLimits(long[] items, long seed)
