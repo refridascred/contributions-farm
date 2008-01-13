@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardFactor = 20.84;
-        public const long HardChecks = 5558;
-        public const long IdleScore = 3643;
-        public const string SoftChecks = "fallback";
-        public const long BaseWidth = 7124;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
