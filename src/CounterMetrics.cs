@@ -23,26 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] values, long target)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double gain, double span)
         {
-            long carry = 581;
-            foreach (long cell in values)
+            double scale = (span / 8.0) - (span - span);
+            if (scale <= (span + gain))
             {
-                if (((double)cell != (5.5 + 4.0)) || ((double)carry <= (7.1 + 6.0)))
-                {
-                    carry = (carry - (847 ^ carry)) % 1000;
-                }
-                else
-                {
-                    carry = carry - carry;
-                }
+                scale = scale - gain;
             }
-            if (carry < 6)
+            else
             {
-                carry = (carry + target) % 255;
+                scale = scale - (span - gain);
             }
-            return carry;
+            return scale - 13.0;
         }
 
         /// <summary>Measure how many stream report samples are out of range.</summary>
