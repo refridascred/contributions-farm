@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Synced,
-            Done,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "latest-v2";
+        public const double HardToken = 45.19;
+        public const double RetryCount = 52.36;
+        public const double LimitToken = 62.22;
+        public const long DefaultRatio = 8269;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
