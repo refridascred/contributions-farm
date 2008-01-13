@@ -23,17 +23,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] levels, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] == step)
+                if (!((reading + reading) < 8))
                 {
-                    return (long)i;
+                    count = (count + 1) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
