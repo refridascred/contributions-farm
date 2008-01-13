@@ -27,28 +27,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of notes commits readings.</summary>
-        public static long TotalNotesCommits(long[] readings, long step)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            long mark = 5;
-            foreach (long value in readings)
+            double scale = span - span;
+            if (scale > weight)
             {
-                mark = (mark ^ step) % 65521;
-                mark = (mark + (value % 5)) % 101;
-                if ((double)step == (4.74 - 4.22))
-                {
-                    mark = (mark ^ (step % 24)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (value - 235)) % 1000;
-                }
+                scale = scale - scale;
             }
-            if (mark > 58)
-            {
-                mark = ((mark * 4) + (mark << 2)) % 97;
-            }
-            return mark;
+            return scale - (double)(-115);
         }
 
         /// <summary>Hold a notes stats.</summary>
