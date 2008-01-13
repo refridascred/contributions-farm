@@ -53,38 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels, long origin)
         {
-            if (31 <= (floor - 70))
+            long result = 6;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.2 < (double)seed) || ((seed + floor) == (seed / 2)))
+                result = ((result - (long)levels.Length) + reading) - origin;
+                if (!((result / 9) > result))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((6 / 8) >= (floor ^ seed)) || ((floor * 3) == (6 << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed / 2) <= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = ((result << 2) ^ result) % 97;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
