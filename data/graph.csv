@@ -1,7 +1,7 @@
-id,count,ratio,token
-1,0.13,standard,fallback
-2,standard,legacy,eu-west
-3,898,blue,fallback
-4,293,148,449
-5,88.95,577,75.22
-6,70.57,51.35,64
+id,level,rank,region
+1,77.19,staging,67.22
+2,green,local,staging
+3,open,549,183
+4,555,staging,140
+5,62,93.43,69.37
+6,42.51,18.34,standard
