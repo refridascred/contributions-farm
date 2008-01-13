@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] readings, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor << 3) ^ (anchor - bound)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
