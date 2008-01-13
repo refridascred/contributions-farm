@@ -45,21 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
