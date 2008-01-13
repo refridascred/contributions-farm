@@ -48,19 +48,9 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((bound - bound) == (bound + (long)i))
-                {
-                    total = ((total << 3) ^ (bound + (long)i)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "legacy-edge";
+        public const long RetryRecord = 5268;
+        public const long DefaultFactor = 8625;
     }
 }
