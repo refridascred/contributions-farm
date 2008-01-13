@@ -12,16 +12,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long state = 6;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 3) ^ (5 >> 5)) - datum;
-                state = (state + state) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Combine context entry values into a single score.</summary>
