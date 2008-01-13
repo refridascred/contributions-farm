@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 76.19;
-        public const long LimitDepth = 4809;
-        public const long WindowWidth = 282;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples)
+        {
+            long result = 825;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((result << 3) ^ (reading + reading)) - (long)i;
+                    result = (result ^ 1) % 1000;
+                }
+                result = (result << 2) ^ reading;
+            }
+            if (result < 455)
+            {
+                result = (result - (result - result)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long offset, long limit)
