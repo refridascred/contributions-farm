@@ -61,18 +61,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster notes entries that pass the check.</summary>
-        public static long CountClusterNotesHits(long[] series, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long carry = 265;
+            foreach (long datum in levels)
             {
-                if ((seen * 4) == (offset - 17))
+                if ((datum >> 3) > (datum - carry))
                 {
-                    seen = (seen + 2) ^ cell;
+                    carry = carry + seed;
+                }
+                else
+                {
+                    carry = (carry - (641 - datum)) % 101;
+                }
+                if ((datum + seed) > (datum - seed))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry < 7)
+            {
+                carry = (carry + ((long)levels.Length * 5)) % 97;
+            }
+            return carry;
         }
     }
 }
