@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryDepth = 4540;
-        public const long LimitPayload = 5471;
-        public const string StepPayload = "primary-1";
-        public const long IdleTimeout = 1394;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] readings)
