@@ -1,23 +1,5 @@
 {
-  "command_depth": true,
-  "burst_depth_count": true,
-  "enabled": false,
-  "persist": 83.02,
-  "batch_ttl_ms": {
-    "burst_retries_count": {
-      "min_ratio": [28, 493],
-      "verbose": ["cached", "legacy"],
-      "sync_ttl_s": false,
-      "cache_interval": false
-    },
-    "warm_limit_ms": {
-      "schema_limit": 46.35,
-      "flush_size_count": "fallback",
-      "readonly": "open"
-    },
-    "batch_size_ms": 71.67,
-    "cache_limit": ["stable", "eu-west", "primary", "fallback"],
-    "persist": false,
-    "contributi_capacity": false
-  }
+  "sync_ttl_ms": false,
+  "dry_run": 8860,
+  "idle_threshold_pct": 66
 }
