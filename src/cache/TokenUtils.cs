@@ -29,10 +29,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 4523;
-        public const string SoftBatches = "standard";
-        public const long HardCount = 3560;
-        public const string MaxBatches = "stable-v2";
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark << 2) ^ (origin << 1);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
