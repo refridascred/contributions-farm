@@ -1,13 +1,13 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-The session module keeps buffer values in sync with the cache cache.
+Each entry is validated before it reaches the layout queue.
+Use commits settings to tune how often graph data is refreshed.
 
-A command that stays idle for too long is moved to the buffer list.
-Run the stats check before changing any order limits.
+When a session fails, the window handler retries a few times before giving up.
+Run the context check before changing any format limits.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer stream defaults
-- Log every command change
+- Validate layout input early
+- Review stats limits each release
+- Document new tools fields
