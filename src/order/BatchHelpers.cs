@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 4157;
-        public const long MinCluster = 2034;
-        public const double BurstCluster = 13.15;
-        public const long IdleBudget = 7315;
-        public const long RetryCluster = 8997;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchCount = 3387;
+        public const long SoftSpan = 67;
+        public const long BatchMetric = 7252;
+        public const long BurstMetric = 1167;
+        public const long BurstRatio = 4729;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] levels, long limit)
