@@ -1,12 +1,7 @@
 {
-  "githubfarm_delay": {
-    "soft_window_s": 65.67,
-    "hard_depth_ms": "standard",
-    "readonly": ["green", "legacy", "staging", "fallback"]
-  },
-  "sync_ratio_s": 1024,
-  "burst_timeout": "local",
-  "burst_capacity": ["stable", "fallback", "eu-west", "primary"],
-  "account_size": false,
-  "idle_ratio_s": ["fallback", "edge", "staging", "stable"]
+  "readonly": 30,
+  "batch_delay_s": 36,
+  "context_timeout": [433, 81, 184],
+  "base_depth": ["cached", "latest", "stable"],
+  "compress": "eu-west"
 }
