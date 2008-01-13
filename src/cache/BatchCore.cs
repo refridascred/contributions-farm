@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardDepth = "staging-edge";
-        public const double CacheNotes = 47.19;
-        public const long MinInterval = 739;
-        public const long LimitInterval = 3540;
-        public const long BaseNotes = 3378;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Paused,
+            Done,
+            Retry,
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long limit)
