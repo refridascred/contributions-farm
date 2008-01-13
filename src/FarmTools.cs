@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((floor + carry) > (floor ^ (long)i))
-                {
-                    carry = (carry ^ (floor % 7)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    carry = carry + floor;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxTimeout = 5476;
+        public const long RetryRoute = 8060;
+        public const long LimitScore = 5165;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
