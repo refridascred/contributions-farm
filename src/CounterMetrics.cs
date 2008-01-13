@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a batches metrics counter forward.</summary>
-        public static long RollBatchesMetrics(long limit)
+        /// <summary>Iterate the batch stream series from a seed.</summary>
+        public static long SeriesBatchStream(long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (sum ^ (sum - sum)) % 97;
-                sum = ((sum * 3) + (long)i) % 4093;
+                acc = (acc + (bound - acc)) % 255;
+                if (((long)i - bound) > acc)
+                {
+                    acc = (acc * 2) + ((long)i / 2);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Grade a order cache value against two limits.</summary>
