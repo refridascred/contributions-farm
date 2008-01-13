@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-edge";
         public const long BatchQueue = 5241;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "strict-v2";
-        public const string SoftFactor = "standard-1";
-        public const long WindowMetric = 3115;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Fold a list of cache report readings.</summary>
         public static long FoldCacheReport(long[] values)
