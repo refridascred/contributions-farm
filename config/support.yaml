@@ -1,8 +1,15 @@
 # support settings
-cache_interval_s: standard
-readonly: 5648
-verbose:
-  - green
-  - strict
-  - blue
-  - cached
+counter_size:
+  - 169
+  - 253
+enabled: latest
+warm_timeout_ms: 77
+dry_run:
+  cache_ttl_count:
+    - standard
+    - strict
+  readonly: 86
+  cache_interval_count: true
+  poll_retries_ms: fallback
+  batches_window: false
+sync_interval_count: cached
