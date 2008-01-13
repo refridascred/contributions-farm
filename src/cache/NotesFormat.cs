@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] values, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a payload info.</summary>
