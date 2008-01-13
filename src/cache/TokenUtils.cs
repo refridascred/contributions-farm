@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const double IdleContributi = 71.21;
         public const double DefaultContributi = 62.49;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] samples, long target)
+        /// <summary>Project the next token stats value.</summary>
+        public static double ScaleTokenStats(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = scale;
+            if (drift < 8.63)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)1;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)579;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift * 4.5)) - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Rank editor queue input into a small class.</summary>
