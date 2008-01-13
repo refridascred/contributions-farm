@@ -1,6 +1,5 @@
 {
-  "cache_delay_s": "edge",
-  "min_timeout": 69.53,
-  "burst_retries_ms": 51,
-  "counter_ttl": "latest"
+  "min_retries_count": 93,
+  "cache_capacity": "eu-west",
+  "filter_depth": [172, 34]
 }
