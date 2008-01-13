@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Idle,
-            Draft,
+            Queued,
+            Failed,
+            Locked,
             Active,
+            New,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
