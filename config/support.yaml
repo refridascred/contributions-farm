@@ -1,9 +1,7 @@
 # support settings
-default_delay_s: latest
-warm_ratio:
-  - eu-west
-  - open
-  - standard
-  - strict
-idle_depth_count: standard
-cache_depth: 29.21
+idle_interval_count:
+  min_size_s: 60.12
+  idle_delay_count: standard
+  poll_window_s: 1477
+route_retries: edge
+context_ttl: staging
