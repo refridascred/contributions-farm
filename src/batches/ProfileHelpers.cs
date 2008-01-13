@@ -66,11 +66,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
