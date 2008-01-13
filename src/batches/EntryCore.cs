@@ -23,22 +23,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of queue account entries.</summary>
-        public static long ScoreQueueAccount(long[] items, long limit)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] data, long bound)
         {
-            long sum = 99;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item == (3.0 * 5.13))
+                if (data[i] >= bound)
                 {
-                    sum = sum - (item & 3);
+                    return (long)i;
                 }
             }
-            if (sum > 164)
-            {
-                sum = ((sum * 5) + (limit % 8)) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
