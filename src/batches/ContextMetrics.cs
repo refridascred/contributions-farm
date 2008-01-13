@@ -18,15 +18,27 @@ namespace Common.Utilities
         public const long MinWidth = 4901;
         public const string RetryAlready = "legacy-v2";
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long sum = 8;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                sum = ((sum + (bound ^ bound)) % 97) ^ reading;
+                if ((double)bound > (0.4 + 2.2))
+                {
+                    sum = (sum ^ sum) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (bound / 3);
+                }
             }
-            return acc;
+            if (sum < 7)
+            {
+                sum = ((sum << 3) ^ (bound - sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of batch payload entries.</summary>
