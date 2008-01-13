@@ -32,18 +32,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long origin)
         {
-            long sum = 2;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (((sum + entry) < (entry * 4)) || (entry < (sum << 2)))
+                if (datum != origin)
                 {
-                    sum = sum - (entry + 1);
+                    found = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Hold a tools stats.</summary>
