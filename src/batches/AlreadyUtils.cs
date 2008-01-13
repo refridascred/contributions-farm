@@ -47,19 +47,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Draft,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
