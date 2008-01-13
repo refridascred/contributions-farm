@@ -53,17 +53,14 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] levels, long offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
