@@ -1,12 +1,24 @@
 {
-  "compress": 47.59,
-  "dry_run": 1024,
   "enabled": {
-    "idle_depth": [280, 358, 4],
-    "tools_retries": "local",
-    "enabled": ["eu-west", "legacy", "eu-west", "eu-west"],
-    "dry_run": 5178,
-    "hard_size_s": true
+    "persist": 1024,
+    "soft_limit": "eu-west",
+    "max_interval": 5380,
+    "max_interval_ms": "staging",
+    "editor_capacity": "edge",
+    "audit": {
+      "flush_retries": true,
+      "min_capacity": "stable",
+      "sync_limit": "local"
+    }
   },
-  "persist": 1396
+  "soft_window_s": 86,
+  "batches_limit": {
+    "enabled": [223, 485, 78],
+    "channel_size": [493, 295],
+    "verbose": "latest",
+    "retry_depth_ms": 250
+  },
+  "format_ttl": 60,
+  "base_ttl_count": "staging",
+  "editor_depth": "open"
 }
