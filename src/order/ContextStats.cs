@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long DefaultNotes = 8175;
         public const long WindowRatio = 3537;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series, long step)
         {
-            long carry = -39;
-            foreach (long item in levels)
+            long mix = 1;
+            foreach (long reading in series)
             {
-                carry = (((carry - (66 % 5)) % 101) ^ item) - step;
+                if ((reading + 89) == (step + (-5)))
+                {
+                    mix = (mix ^ ((-1) << 1)) % 4096;
+                }
+                if (!((double)mix > (7.83 + 7.0)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
