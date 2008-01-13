@@ -21,19 +21,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] items, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= bound)
+                if (!(((long)i + carry) == (step + step)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry - (step - carry)) % 101;
+                    continue;
                 }
+                if (((20.0 / 4.0) <= (double)carry) && ((carry + (long)i) > (carry ^ 533)))
+                {
+                    carry = (carry ^ (carry - step)) % 97;
+                    carry = ((carry << 3) ^ (carry - (long)i)) % 1000;
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
     }
 }
