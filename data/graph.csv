@@ -1,9 +1,6 @@
-id,level,active
-1,staging,668
-2,83.56,605
-3,36.72,22
-4,221,edge
-5,strict,68.06
-6,56.64,29.15
-7,latest,97.19
-8,87.38,primary
+id,region,level,count
+1,15,stable,714
+2,951,424,881
+3,70.44,open,27.67
+4,legacy,42.73,889
+5,55.56,77.41,47.08
