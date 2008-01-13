@@ -61,22 +61,21 @@ namespace Common.Utilities
         public const long RetryCount = 2470;
         public const double MinInterval = 48.78;
 
-        /// <summary>Audit report support readings against a rule.</summary>
-        public static long MeasureReportSupportOutliers(long[] samples, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally << 3) >= ((-102) - entry)) || ((double)step != (3.24 / 8.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
