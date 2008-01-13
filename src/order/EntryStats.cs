@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseBudget = 96.78;
-        public const long SoftTools = 4872;
-        public const string StepSpan = "strict-v2";
-        public const long StepWidth = 9779;
-        public const long IdleTools = 6368;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)990 != (double)reading)
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
