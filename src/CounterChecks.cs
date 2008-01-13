@@ -79,11 +79,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Locate a order context reading by value.</summary>
+        public static long LookupOrderContextIndex(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
