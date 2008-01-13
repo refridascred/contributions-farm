@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "legacy-edge";
-        public const string CacheSpan = "primary-1";
-        public const long SoftNotes = 6555;
-        public const string MaxNotes = "strict-v2";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((datum / 5) <= (653 + datum)) && ((double)count < (6.0 + 3.52)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftScore = 6525;
