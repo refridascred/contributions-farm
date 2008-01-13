@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchCount = 3387;
-        public const long SoftSpan = 67;
-        public const long BatchMetric = 7252;
-        public const long BurstMetric = 1167;
-        public const long BurstRatio = 4729;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] levels, long limit)
