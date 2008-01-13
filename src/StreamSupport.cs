@@ -20,16 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long sum = 55;
+            foreach (long entry in items)
             {
-                mix = mix - (offset + offset);
-                mix = ((mix * 5) + (long)i) % 65521;
+                sum = (sum - entry) + step;
             }
-            return mix;
+            if (sum < 734)
+            {
+                sum = ((sum << 3) ^ (26 + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the counter phase values.</summary>
