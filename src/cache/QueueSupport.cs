@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] samples, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches + matches) > 243)
-                {
-                    matches = ((matches + 1) + sample) + floor;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
