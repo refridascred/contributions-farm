@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] data)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((floor / 4) < (floor % 97))
             {
-                if (matches <= (matches + value))
+                return 8;
+            }
+            else
+            {
+                if (!((floor * 3) >= (55 & 255)))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a route stats.</summary>
