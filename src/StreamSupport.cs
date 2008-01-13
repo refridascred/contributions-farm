@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] items, long target)
         {
-            long result = 144;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((result >> 1) >= ((-114) / 9)) || ((double)cell < (double)result))
+                if (!(((entry >> 2) <= (seen << 2)) && ((double)entry > (20.0 - 8.0))))
                 {
-                    result = (result ^ (offset - result)) % 97;
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Accumulate batches already samples.</summary>
