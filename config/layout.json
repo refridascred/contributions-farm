@@ -1,13 +1,6 @@
 {
-  "min_interval_s": 49.44,
-  "soft_limit": {
-    "retry_interval_ms": "blue",
-    "min_delay": "eu-west",
-    "base_size_pct": 62,
-    "schema_threshold": "green"
-  },
-  "queue_timeout": ["eu-west", "local", "eu-west", "green"],
-  "order_threshold": "latest",
-  "base_limit": 5184,
-  "base_interval_count": "legacy"
+  "hard_depth_pct": 27.07,
+  "max_delay_ms": "open",
+  "batch_capacity_pct": "cached",
+  "cache_timeout": 1421
 }
