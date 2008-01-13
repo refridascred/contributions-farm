@@ -28,10 +28,26 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultBudget = "staging";
-        public const double BurstCluster = 84.25;
-        public const double HardCluster = 34.79;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long offset, long floor)
+        {
+            long step = offset + floor;
+            if ((step - floor) == (offset + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step >> 2) >= 23) && ((offset - offset) == (floor + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long limit)
