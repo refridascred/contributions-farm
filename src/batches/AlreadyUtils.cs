@@ -47,15 +47,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Done,
-            Draft,
-            Active,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 3198;
+        public const long StepGraph = 2007;
+        public const long WindowScore = 2402;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] levels)
