@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Synced,
-            Locked,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 6623;
+        public const double IdleSpan = 76.3;
+        public const long StepTimeout = 3637;
+        public const long WindowRecord = 4736;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long StepAccount(long seed)
