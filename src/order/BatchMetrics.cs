@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile tools value from a seed.</summary>
-        public static long RollProfileTools(long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] data, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
