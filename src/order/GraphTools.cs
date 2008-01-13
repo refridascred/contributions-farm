@@ -14,17 +14,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = step + seed;
+            if ((2.0 - 1.0) <= (double)seed)
             {
-                if (series[i] < limit)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed >= (double)lane)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((7 + step) >= (seed ^ 547))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
