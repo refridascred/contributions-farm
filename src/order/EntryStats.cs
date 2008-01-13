@@ -35,13 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the route notes entries that pass the check.</summary>
+        public static long AuditRouteNotesMatches(long[] items)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count + count) <= count)
+                {
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
