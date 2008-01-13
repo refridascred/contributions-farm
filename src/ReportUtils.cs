@@ -34,17 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter checks entry that matches the target.</summary>
-        public static long FindCounterChecksIndex(long[] samples, long origin)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias;
+            return (drift + (double)(-551)) + ratio;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
