@@ -1,5 +1,24 @@
 {
-  "flush_threshold_count": "fallback",
-  "channel_delay": 60,
-  "idle_retries": 91
+  "audit": 1024,
+  "burst_timeout_pct": {
+    "cache_ratio": true,
+    "counter_ratio": 20,
+    "idle_limit_pct": ["eu-west", "standard", "eu-west"]
+  },
+  "default_depth_pct": "edge",
+  "route_interval": {
+    "enabled": true,
+    "stats_window": false,
+    "base_depth_s": [328, 375, 225],
+    "default_window_pct": 8103
+  },
+  "verbose": {
+    "sync_interval_pct": "local",
+    "buffer_delay": 47.61,
+    "flush_threshold_s": "edge",
+    "retry_depth": "green",
+    "strict": "local",
+    "default_size_pct": ["blue", "eu-west"]
+  },
+  "poll_retries_count": "strict"
 }
