@@ -53,11 +53,9 @@ namespace Common.Utilities
         public const double MinNotes = 26.13;
         public const double CacheScore = 65.01;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepSize = 65.73;
-        public const double IdleAccount = 92.63;
-        public const double StepAccount = 33.46;
-        public const string HardAccount = "cached";
-        public const long BaseCount = 8868;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 1217;
+        public const string HardRoute = "local-v2";
+        public const long MaxScore = 9770;
     }
 }
