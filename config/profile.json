@@ -1,5 +1,23 @@
 {
-  "order_limit": "cached",
-  "hard_ratio_pct": "green",
-  "entry_size": 500
+  "flush_delay_count": {
+    "cache_retries": {
+      "base_depth": 30,
+      "cache_ratio_pct": 3626,
+      "account_depth": 9537,
+      "soft_capacity_ms": "blue"
+    },
+    "batch_size": [88, 214],
+    "burst_size_count": false,
+    "flush_capacity": [18, 255, 199],
+    "audit": {
+      "readonly": 2316,
+      "poll_delay": [214, 465, 209, 345],
+      "default_window_s": 30,
+      "warm_ratio_count": 72.02
+    }
+  },
+  "verbose": [381, 369, 208, 333],
+  "account_threshold": 58.92,
+  "editor_capacity": "open",
+  "readonly": 7342
 }
