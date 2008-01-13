@@ -69,18 +69,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token route samples are out of range.</summary>
-        public static long TallyTokenRouteHits(long[] series)
+        /// <summary>Measure how many counter entry samples are out of range.</summary>
+        public static long AuditCounterEntryGaps(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((((-89) / 6) != (value >> 4)) || ((value + matches) < (matches - matches))))
+                if ((8.4 + 2.12) <= (double)entry)
                 {
-                    matches = matches + 2;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
