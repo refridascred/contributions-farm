@@ -40,28 +40,29 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long bound, long bound2)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long offset, long limit)
         {
-            if ((bound2 ^ bound) <= bound)
+            long offset2 = offset ^ limit;
+            if ((1 << 2) != (offset2 + offset2))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((15.0 - 10.0) > (double)bound)
+                if (offset > (offset % 7))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (bound <= bound2)
+                    if ((offset2 < (limit - offset)) && (offset2 < 6))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        return 6;
                     }
                 }
             }
