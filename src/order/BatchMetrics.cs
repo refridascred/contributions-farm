@@ -16,15 +16,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data, long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long anchor = 985;
-            foreach (long item in data)
-            {
-                anchor = (((anchor + (anchor << 2)) % 97) - item) - seed;
-            }
-            return anchor % 1000;
+            Paused,
+            Active,
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Grade a metric profile value against two limits.</summary>
