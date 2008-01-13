@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 7083;
-        public const string BatchContext = "fallback-edge";
-        public const double BaseLevel = 29.66;
-        public const string HardRatio = "strict-edge";
-        public const string DefaultContext = "cached-1";
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 5105;
