@@ -1,13 +1,13 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Use metrics settings to tune how often filter data is refreshed.
+The filter module keeps tools values in sync with the format cache.
+The queue report groups every schema by notes.
 
-The support report groups every channel by notes.
-When a window fails, the schema handler retries a few times before giving up.
+When a metrics fails, the queue handler retries a few times before giving up.
+When a channel fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new checks fields
-- Review command limits each release
-- Validate channel input early
+- Document new order fields
+- Keep report values small
+- Validate batch input early
