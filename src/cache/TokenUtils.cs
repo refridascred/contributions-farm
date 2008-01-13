@@ -22,16 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                total = total + (seed / 8);
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank editor queue input into a small class.</summary>
