@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a stream batches reading by value.</summary>
