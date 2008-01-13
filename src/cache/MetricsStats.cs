@@ -49,18 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] values)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + tally) > (tally + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
