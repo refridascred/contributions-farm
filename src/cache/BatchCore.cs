@@ -63,18 +63,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] levels)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double bias2 = (double)(4 ^ 9);
+            if (bias2 < bias)
             {
-                if ((((seen >> 4) <= (4 + cell)) && ((1.63 + 5.0) != (double)seen)) || !((double)seen <= (2.2 * 2.0)))
-                {
-                    seen = seen + 3;
-                }
+                bias2 = bias2 + 9.0;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + span) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
