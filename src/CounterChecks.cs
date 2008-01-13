@@ -36,17 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] data, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
