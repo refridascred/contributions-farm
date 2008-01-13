@@ -40,15 +40,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            double drift = 8.5 / 3.0;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift - span) + (double)(long)i) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - span;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
