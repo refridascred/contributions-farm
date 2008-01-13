@@ -33,20 +33,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                result = (result - 13) % 255;
-                if ((2.88 - 9.0) > (double)floor)
+                if ((double)item != (3.8 - 5.64))
                 {
-                    result = result - (floor + (long)i);
+                    matches = (matches + 3) - limit;
                 }
-                result = ((result * 2) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
