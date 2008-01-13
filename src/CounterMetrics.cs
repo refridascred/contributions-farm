@@ -42,12 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] samples, long offset)
         {
-            Retry,
-            Idle,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample << 2) >= seen)
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
