@@ -1,21 +1,7 @@
 # entry settings
-flush_ratio: 85
-layout_interval:
-  max_depth:
-    - standard
-    - legacy
-  batch_interval_pct:
-    - edge
-    - green
-    - stable
-  graph_delay: eu-west
-cache_retries:
-  batch_capacity: 1024
-  flush_window:
-    - edge
-    - cached
-    - cached
-    - staging
-  cache_limit_count: 60.74
-  batch_threshold_ms: staging
-  commits_interval: primary
+batch_interval_s:
+  - 15
+  - 213
+persist: strict
+compress: cached
+warm_ttl_pct: 500
