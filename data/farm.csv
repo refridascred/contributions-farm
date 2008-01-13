@@ -1,11 +1,6 @@
-id,score,count
-1,eu-west,137
-2,fallback,244
-3,stable,green
-4,539,930
-5,340,78.05
-6,448,738
-7,4.65,456
-8,45.55,459
-9,506,cached
-10,6.52,629
+id,region,level
+1,904,primary
+2,254,85.3
+3,staging,primary
+4,409,142
+5,74.92,217
