@@ -27,18 +27,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long target)
         {
-            long total = 18;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= step)
+                if ((data[i] > target) && ((data[i] % 5) != 0))
                 {
-                    total = (total * 3) + (total / 7);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a schema summary.</summary>
