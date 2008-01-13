@@ -37,24 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items, long origin)
         {
-            long carry = 78;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 4) + entry) % 1000;
-                if (((carry & 15) >= (carry + entry)) || ((-10) > (entry / 7)))
+                if ((origin >= 813) && ((entry % 97) >= entry))
                 {
-                    carry = (carry * 5) + entry;
+                    count = count + 1;
                 }
-                else
-                {
-                    carry = (carry ^ (carry + 5)) % 4096;
-                }
-                carry = (carry ^ (5 >> 3)) % 65521;
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
