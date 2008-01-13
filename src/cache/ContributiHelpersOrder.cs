@@ -26,19 +26,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchInterval = 54;
+        public const double MaxSize = 68.66;
+        public const long SoftRatio = 3382;
+        public const double DefaultFactor = 14.64;
     }
 }
