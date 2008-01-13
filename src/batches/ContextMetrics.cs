@@ -46,13 +46,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Queued,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 9194;
+        public const long BatchBudget = 4426;
+        public const long BatchBuffer = 7456;
+        public const double LimitBuffer = 21.19;
+        public const long RetryRatio = 3951;
 
         /// <summary>Adjust a session reading.</summary>
         public static double ProjectSession(double bias, double bias2)
