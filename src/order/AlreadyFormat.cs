@@ -49,18 +49,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((-841) >= hits)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            double bias = 2.0 * 5.15;
+            return (bias + scale) + offset;
         }
 
         /// <summary>Project the next buffer value.</summary>
