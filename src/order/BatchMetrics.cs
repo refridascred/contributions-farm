@@ -20,16 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a channel filter counter forward.</summary>
-        public static long StepChannelFilter(long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            double weight = rate;
+            if (weight >= weight)
             {
-                anchor = (anchor + (long)i) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                weight = weight + 19.0;
             }
-            return anchor;
+            else
+            {
+                weight = weight - 0.92;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - offset) - (double)(long)i;
+            }
+            return weight + (double)1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
