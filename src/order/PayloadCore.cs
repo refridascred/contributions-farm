@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            double scale = ratio;
-            if (scale >= (floor + scale))
+            double scale2 = 4.5 + (scale / 3.0);
+            if (scale2 < scale)
             {
-                scale = scale + (8.0 / 2.0);
+                scale2 = scale2 + floor;
             }
-            return scale + (double)39;
+            return scale2 - (floor + scale);
         }
 
         /// <summary>Rank layout input into a small class.</summary>
