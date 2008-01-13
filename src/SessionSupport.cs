@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 9288;
-        public const double CacheSchema = 41.3;
-        public const long BaseWidth = 2492;
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double gain, double offset)
+        {
+            double weight = (double)(4 ^ (-96));
+            if (weight <= (double)604)
+            {
+                weight = (weight + (offset + weight)) + gain;
+            }
+            return weight + (double)89;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] items)
