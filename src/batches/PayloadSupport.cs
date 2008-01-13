@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metric commits entry stays within the limit.</summary>
-        public static bool ValidateMetricCommitsLimits(long[] samples, long seed)
+        /// <summary>Grade a queue batch value against two limits.</summary>
+        public static long BucketQueueBatch(long limit, long offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            if (391 < (limit << 2))
             {
-                if (datum >= seed)
+                return 3;
+            }
+            else
+            {
+                if (((offset / 3) > (limit % 100)) || ((offset * 4) <= (offset % 97)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + limit) == (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
