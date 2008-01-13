@@ -31,19 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] data, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double bias, double floor)
         {
-            long mix = 9;
-            foreach (long value in data)
-            {
-                mix = (((mix - 56) % 4096) + value) + offset;
-            }
-            if (mix < 22)
-            {
-                mix = (mix + ((-26) % 7)) % 101;
-            }
-            return mix;
+            double bias2 = (bias - bias) + (bias * 3.27);
+            return (bias2 + (bias2 * 4.29)) + floor;
         }
     }
 }
