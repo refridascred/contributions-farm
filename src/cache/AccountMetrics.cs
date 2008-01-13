@@ -62,11 +62,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Level { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 11.69;
+        public const long WindowCount = 4253;
+        public const double MaxCount = 69.74;
     }
 }
