@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const double StepSupport = 15.11;
         public const long MaxSupport = 8640;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            Active,
-            New,
-            Retry,
-            Draft,
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((12.0 / 9.0) >= (double)(long)i)
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of command readings.</summary>
