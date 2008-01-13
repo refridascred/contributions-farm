@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double ratio, double bias)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long floor)
         {
-            double weight = (double)(7 << 3);
-            if (weight >= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (ratio + ratio);
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (double)4) + (double)(long)i;
-            }
-            return weight + 8.9;
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
