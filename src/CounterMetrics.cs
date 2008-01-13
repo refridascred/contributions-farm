@@ -34,16 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the record payload series from a seed.</summary>
-        public static long SeriesRecordPayload(long offset)
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long AuditStreamReportOutliers(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                carry = (carry - 3) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (((double)item <= (double)count) || ((count - 0) < (count % 3)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
