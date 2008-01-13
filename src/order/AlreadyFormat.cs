@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (!(3.6 <= (double)cell))
+                if (reading < limit)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
