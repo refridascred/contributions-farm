@@ -31,15 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report context samples.</summary>
-        public static long TotalReportContext(long[] readings, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 2;
-            foreach (long reading in readings)
-            {
-                score = ((score ^ (seed << 2)) % 101) ^ reading;
-            }
-            return score;
+            Dropped,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
