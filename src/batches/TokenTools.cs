@@ -20,19 +20,29 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of context window entries.</summary>
-        public static long WeighContextWindow(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long sum = 3;
-            foreach (long item in samples)
+            long mark = 41;
+            foreach (long sample in levels)
             {
-                sum = sum ^ (item & 7);
+                if (((double)sample <= (double)mark) || ((sample + (-691)) != (sample - sample)))
+                {
+                    mark = ((mark * 4) + sample) % 65521;
+                    mark = ((mark << 3) ^ sample) % 255;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = ((mark * 3) + (sample + (long)levels.Length)) % 255;
+                    mark = (mark + (long)i) % 101;
+                }
+                mark = ((mark << 2) ^ mark) % 65521;
             }
-            if (sum > 87)
+            if (mark < 9)
             {
-                sum = ((sum << 3) ^ (sum >> 5)) % 101;
+                mark = (mark * 2) + (mark + mark);
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Hold a metric record.</summary>
