@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long state = 777;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((state ^ state) != (4 / 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 3) + (40 + state)) % 97;
-                    state = state ^ 146;
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state << 3) ^ (state + entry)) % 4096;
             }
-            if (state < 673)
-            {
-                state = ((state << 2) ^ state) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
