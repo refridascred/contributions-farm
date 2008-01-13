@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 1206;
-        public const double DefaultWidth = 0.47;
-        public const double StepBuffer = 15.49;
-        public const long BurstBuffer = 5598;
-        public const double RetryWidth = 45.75;
+        /// <summary>Compare every pair of report batch readings.</summary>
+        public static long PairReportBatchCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
