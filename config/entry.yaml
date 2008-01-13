@@ -1,5 +1,7 @@
 # entry settings
-flush_interval_count: stable
-audit: 16.54
-retry_capacity_s: true
-batch_delay_pct: stable
+flush_limit: primary
+sync_size_pct: cached
+hard_ttl_pct: 74.84
+stream_ratio: 16.04
+stream_retries: 8364
+retry_capacity_s: 104
