@@ -23,22 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account command samples.</summary>
-        public static long DigestAccountCommand(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double offset)
         {
-            long acc = 58;
-            foreach (long value in values)
+            double gain = (double)((-619) - 809);
+            if (gain <= (double)35)
             {
-                if (6.0 < (double)value)
-                {
-                    acc = (acc - (value / 5)) % 4096;
-                }
+                gain = (gain - rate) - offset;
             }
-            if (acc > 4)
+            else
             {
-                acc = acc - acc;
+                gain = gain - (double)474;
             }
-            return acc;
+            return gain + (double)22;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
