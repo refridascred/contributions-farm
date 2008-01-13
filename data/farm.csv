@@ -1,6 +1,7 @@
-id,score,count,owner
-1,latest,628,23.8
-2,21.34,590,fallback
-3,open,344,primary
-4,875,94,edge
-5,558,21,70.05
+id,label,rank,state,count
+1,eu-west,latest,65.3,359
+2,527,standard,primary,stable
+3,513,390,877,92.09
+4,32.97,edge,edge,fallback
+5,180,648,976,local
+6,61.61,30.11,primary,98.22
