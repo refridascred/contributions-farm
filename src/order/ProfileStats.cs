@@ -14,23 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long acc = 195;
-            foreach (long datum in series)
+            long state = 29;
+            foreach (long item in data)
             {
-                acc = acc + (218 + (-5));
-                if ((683 / 6) <= (datum * 3))
-                {
-                    acc = (acc ^ (datum << 1)) % 255;
-                }
+                state = ((state ^ state) % 255) ^ item;
+                state = ((state * 4) + state) % 4096;
+                state = state - (state * 5);
             }
-            if (acc < (-5))
+            if (state < 67)
             {
-                acc = (acc - ((long)series.Length / 6)) % 4096;
+                state = (state + 3) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm batch entries.</summary>
