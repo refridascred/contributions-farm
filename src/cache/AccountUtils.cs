@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate - (double)7;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the farm token entries that pass the check.</summary>
+        public static long CountFarmTokenHits(long[] items, long bound)
         {
-            Paused,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (datum > (datum >> 1))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
