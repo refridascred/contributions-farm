@@ -35,12 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Retry,
-            Stale,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 9089;
+        public const string IdleTools = "alpha-v2";
+        public const string WindowBudget = "cached-edge";
+        public const double WindowTools = 28.82;
+        public const long MaxScore = 3252;
     }
 }
