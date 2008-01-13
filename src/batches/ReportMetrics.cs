@@ -22,21 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Combine context editor values into a single score.</summary>
+        public static long DigestContextEditor(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 1;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total >> 3) <= (-81))
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (329 << 1)) + entry;
+                }
+                else
+                {
+                    total = (total - (total << 2)) % 255;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
