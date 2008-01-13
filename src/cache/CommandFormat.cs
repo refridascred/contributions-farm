@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 65;
-        public const double IdleSession = 46.39;
-        public const double BurstSession = 61.77;
-        public const string BatchSession = "staging-v2";
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchMatches(long[] samples, long bound)
