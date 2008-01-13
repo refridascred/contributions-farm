@@ -76,12 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] samples, long step)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell / 6) > (step ^ 70)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
