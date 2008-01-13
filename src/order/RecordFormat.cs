@@ -58,19 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double gain, double offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double rate, double bias)
         {
-            double ratio = (double)78 - (double)92;
-            if (ratio <= gain)
+            double scale = 7.0;
+            if (scale >= 14.0)
             {
-                ratio = ratio - (4.5 + offset);
+                scale = (scale - (double)537) + rate;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                scale = (scale - (bias / 3.0)) - (double)(long)i;
             }
-            return ratio - offset;
+            return scale - scale;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
