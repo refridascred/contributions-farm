@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Match up batch order samples.</summary>
+        public static long PairBatchOrderCount(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc + offset)) % 65521;
-                if (!((offset % 97) != (long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ (196 / 2);
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
