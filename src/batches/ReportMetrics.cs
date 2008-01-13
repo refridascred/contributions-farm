@@ -27,26 +27,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples, long seed)
-        {
-            long total = 655;
-            foreach (long datum in samples)
-            {
-                if (((-840) - 225) == (seed >> 1))
-                {
-                    total = ((total ^ ((long)samples.Length ^ 143)) % 4096) + datum;
-                }
-                else
-                {
-                    total = (total - seed) % 1000;
-                }
-            }
-            if (total < (-67))
-            {
-                total = (total ^ (total / 5)) % 255;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultRatio = 3045;
+        public const long DefaultCommits = 7125;
+        public const long BatchCommits = 2975;
     }
 }
