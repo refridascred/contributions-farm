@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer batch readings against a rule.</summary>
-        public static long MeasureBufferBatchOutliers(long[] samples)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double bias, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double bias2 = (double)(60 >> 5);
+            if (bias2 < 9.0)
             {
-                if ((((44 & 1) == (count ^ count)) && ((count ^ count) < (count + entry))) && ((entry - count) >= count))
-                {
-                    count = count + 1;
-                }
+                bias2 = bias2 + (offset - 4.2);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (double)4) - (double)(long)i;
+            }
+            return bias2 - (offset - bias);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
