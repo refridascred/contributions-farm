@@ -64,13 +64,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
