@@ -26,9 +26,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultRatio = 3045;
-        public const long DefaultCommits = 7125;
-        public const long BatchCommits = 2975;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchBudget = "open-1";
+        public const long IdleLevel = 77;
+        public const double RetryQueue = 86.64;
+        public const long SoftTimeout = 7147;
     }
 }
