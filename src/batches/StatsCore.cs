@@ -71,12 +71,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long step)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
