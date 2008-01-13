@@ -28,26 +28,12 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long offset, long floor)
-        {
-            long step = offset + floor;
-            if ((step - floor) == (offset + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step >> 2) >= 23) && ((offset - offset) == (floor + offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultRatio = 63.92;
+        public const long BatchEntry = 3121;
+        public const long StepEntry = 5380;
+        public const string BatchDepth = "legacy-v2";
+        public const long MaxTimeout = 2756;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long limit)
