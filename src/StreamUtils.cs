@@ -34,18 +34,24 @@ namespace Common.Utilities
         public const long BaseSize = 401;
         public const string LimitInterval = "open-edge";
 
-        /// <summary>Measure how many metric support samples are out of range.</summary>
-        public static long AuditMetricSupportOutliers(long[] levels)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if ((offset << 2) < (offset ^ seed))
             {
-                if ((2.1 + 2.0) < (double)seen)
+                return 5;
+            }
+            else
+            {
+                if (((915 - 445) == (offset + seed)) || ((offset & 1) < (offset - seed)))
                 {
-                    seen = (seen + 3) - entry;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
