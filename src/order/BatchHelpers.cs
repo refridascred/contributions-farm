@@ -30,19 +30,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double weight = (double)(95 / 3);
-            if (weight >= weight)
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (bias * 0.27)) - (double)(long)i;
-            }
-            return weight + (offset - 8.3);
+            Locked,
+            Draft,
+            Retry,
+            Done,
         }
     }
 }
