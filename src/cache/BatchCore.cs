@@ -31,11 +31,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "alpha";
-        public const long SoftDepth = 6025;
-        public const long CacheQueue = 4724;
-        public const string BurstSpan = "legacy-1";
+        /// <summary>Grade a contributi command value against two limits.</summary>
+        public static long ClassifyContributiCommand(long offset, long target)
+        {
+            if ((0.3 + 7.29) <= (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target + offset) <= (target ^ target)) && ((offset / 2) > (offset >> 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
