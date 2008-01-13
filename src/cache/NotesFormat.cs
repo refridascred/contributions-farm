@@ -30,15 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine record commits values into a single score.</summary>
-        public static long CombineRecordCommits(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
-            long score = 99;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = ((score ^ (score & 255)) % 1000) + item;
+                if (((long)samples.Length + count) > (count ^ count))
+                {
+                    count = (count + 1) - cell;
+                }
             }
-            return score % 1000;
+            return count;
         }
     }
 }
