@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitCount = 3346;
-        public const long IdleCount = 4786;
-        public const double BurstBudget = 30.21;
-        public const string DefaultFormat = "stable";
-        public const long BaseFormat = 9777;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double weight, double bias)
+        {
+            double drift = (double)(9 ^ 3);
+            return ((drift + drift) + weight) + bias;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] items)
