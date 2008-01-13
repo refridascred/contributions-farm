@@ -44,24 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples)
-        {
-            long carry = 83;
-            foreach (long value in samples)
-            {
-                carry = (carry + (carry >> 4)) % 101;
-                if ((double)67 == (double)carry)
-                {
-                    carry = carry - 51;
-                }
-                else
-                {
-                    carry = (carry ^ (value >> 3)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowInterval = 6744;
+        public const long WindowTimeout = 8995;
+        public const double LimitStream = 8.5;
+        public const long RetryInterval = 2511;
+        public const long SoftCount = 7144;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
