@@ -27,18 +27,38 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if (((limit % 12) <= (target + limit)) && ((target - 4) > (limit / 5)))
             {
-                if ((13 % 3) != (entry >> 3))
+                return 3;
+            }
+            else
+            {
+                if ((target + 468) <= 527)
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit + limit) != (target >> 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit <= (target - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a token record.</summary>
