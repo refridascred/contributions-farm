@@ -38,12 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            Stale,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((5.0 / 7.0) == (double)matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
