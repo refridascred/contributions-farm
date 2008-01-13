@@ -47,11 +47,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long seed)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
+            long edge = limit + seed;
+            if (((seed << 1) > (seed + limit)) || ((limit << 1) == ((-87) + 237)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed * 4) >= (edge / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(limit <= (edge << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
