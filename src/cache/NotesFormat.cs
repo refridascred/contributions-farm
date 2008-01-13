@@ -12,13 +12,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items, long origin)
         {
-            Draft,
-            Ready,
-            Retry,
-            Queued,
+            long sum = -9;
+            foreach (long sample in items)
+            {
+                if ((sample + sum) > 8)
+                {
+                    sum = (sum - (19 << 3)) % 4096;
+                }
+            }
+            if (sum < 234)
+            {
+                sum = (sum << 3) ^ origin;
+            }
+            return sum;
         }
 
         /// <summary>Hold a payload info.</summary>
