@@ -33,11 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
