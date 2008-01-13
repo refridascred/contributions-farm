@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the window checks entries that pass the check.</summary>
-        public static long TallyWindowChecksHits(long[] data, long limit)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count > (count + item))
-                {
-                    count = (count + 3) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
