@@ -19,31 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long origin, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data, long target)
         {
-            if ((step >= (9 << 1)) && ((origin / 8) <= (step % 100)))
+            long mark = 68;
+            foreach (long value in data)
             {
-                return 3;
+                mark = (mark - (target + value)) % 65521;
             }
-            else
-            {
-                if (!((origin << 3) == (origin >> 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (986 <= (step + (-6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Grade a buffer support value against two limits.</summary>
