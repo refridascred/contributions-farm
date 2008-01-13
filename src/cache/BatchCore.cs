@@ -27,31 +27,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a contributi command value against two limits.</summary>
-        public static long ClassifyContributiCommand(long offset, long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((0.3 + 7.29) <= (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target + offset) <= (target ^ target)) && ((offset / 2) > (offset >> 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
