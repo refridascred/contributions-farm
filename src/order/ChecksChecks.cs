@@ -28,24 +28,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            if (((652 - floor) != (75 + bound)) || ((floor >> 4) < (bound + bound)))
+            double gain = bias2 / 9.0;
+            if (gain < (13.0 / 7.0))
             {
-                return 1;
+                gain = (gain - gain) - bias;
             }
-            else
-            {
-                if ((double)bound >= (8.0 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return gain + 5.55;
         }
     }
 }
