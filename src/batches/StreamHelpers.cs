@@ -40,17 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long offset)
+        /// <summary>Scale a record commits figure with a bias.</summary>
+        public static double BlendRecordCommits(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (weight - weight) - (span * 3.02);
+            return scale - (double)61;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
