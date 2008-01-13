@@ -17,12 +17,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitRatio = "cached-1";
-        public const long BurstSize = 716;
-        public const long DefaultTools = 8315;
-        public const long BatchTools = 7528;
-        public const long WindowCount = 201;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double span)
+        {
+            double ratio2 = (double)(117 % 3);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = ((ratio2 - (ratio - 9.9)) + (double)(long)i) - span;
+            }
+            return ratio2 - 7.9;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double weight, double offset)
