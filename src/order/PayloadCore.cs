@@ -26,21 +26,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] data, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix << 3) ^ (bound * 2)) % 4096;
-                mix = mix + (3 & 15);
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((count ^ count) >= (bound + count)) && !((count >> 1) >= 582))
                 {
-                    mix = ((mix - (bound / 7)) % 97) ^ (long)i2;
+                    count = (count + 2) + datum;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
