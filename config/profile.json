@@ -1,8 +1,5 @@
 {
-  "flush_capacity_ms": 250,
-  "warm_threshold_pct": 92.64,
-  "farm_capacity": 35.1,
-  "tools_timeout": 1024,
-  "sync_limit_ms": 1.81,
-  "hard_delay_count": ["blue", "primary", "fallback"]
+  "strict": true,
+  "batch_delay": "latest",
+  "githubfarm_ratio": 500
 }
