@@ -21,11 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftSpan = 90.59;
-        public const long IdleCache = 6095;
-        public const long RetryCache = 8957;
-        public const long StepLevel = 4222;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Locked,
+            Draft,
+            New,
+            Ready,
+            Done,
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] items)
