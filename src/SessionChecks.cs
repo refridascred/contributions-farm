@@ -56,9 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepScore = "alpha";
-        public const double BurstAccount = 4.93;
-        public const string MaxTimeout = "open-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinLevel = 7901;
+        public const double LimitTools = 49.47;
+        public const string LimitInterval = "strict-1";
     }
 }
