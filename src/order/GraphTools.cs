@@ -42,11 +42,21 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardSpan = 3796;
-        public const long SoftProfile = 2747;
-        public const string BaseSize = "local-1";
-        public const long BurstTimeout = 8553;
+        /// <summary>Digest a series of report contributi entries.</summary>
+        public static long TotalReportContributi(long[] values)
+        {
+            long mix = 783;
+            foreach (long datum in values)
+            {
+                mix = (mix ^ datum) % 255;
+                mix = (mix - datum) % 255;
+            }
+            if (mix < 93)
+            {
+                mix = (mix - (mix * 5)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long SortAlready(long floor, long offset)
