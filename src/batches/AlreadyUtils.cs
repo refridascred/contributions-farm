@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long WindowGraph = 365;
         public const double MaxSpan = 75.73;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Idle,
-            Done,
-            Locked,
-            Closed,
-            Stale,
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine report commits values into a single score.</summary>
