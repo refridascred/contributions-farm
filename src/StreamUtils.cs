@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] data, long floor)
+        /// <summary>Accumulate farm graph samples.</summary>
+        public static long ScoreFarmGraph(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long anchor = -14;
+            foreach (long cell in data)
             {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (anchor + target)) ^ cell;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
