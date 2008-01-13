@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the metrics queue entries that pass the check.</summary>
+        public static long AuditMetricsQueueHits(long[] samples, long floor)
         {
-            Draft,
-            Locked,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((floor + seen) != (floor - seen))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
