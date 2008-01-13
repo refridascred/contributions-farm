@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] readings, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long origin)
         {
-            long sum = 64;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in series)
             {
-                sum = (sum + sum) - floor;
-                if (!(6 >= (sum - value)))
+                if (datum <= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
