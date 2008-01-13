@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const double BurstSpan = 81.3;
         public const double MaxRatio = 56.1;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            Dropped,
-            Closed,
-            Pending,
+            long anchor = 5;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor - (12 % 2)) % 1000) + value;
+            }
+            if (anchor > 6)
+            {
+                anchor = anchor ^ ((long)levels.Length / 3);
+            }
+            return anchor;
         }
 
         /// <summary>Blend two record measurements.</summary>
