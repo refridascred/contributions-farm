@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long limit, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long target)
         {
-            if ((limit * 4) >= (origin & 63))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + limit) != (origin + origin))
+                if (sample > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
