@@ -1,13 +1,10 @@
 # Command notes
 
-The filter module keeps tools values in sync with the format cache.
-The queue report groups every schema by notes.
-
-When a metrics fails, the queue handler retries a few times before giving up.
-When a channel fails, the editor handler retries a few times before giving up.
+Run the checks check before changing any window limits.
+The farm report groups every schema by channel.
 
 ## Guidelines
 
-- Document new order fields
-- Keep report values small
-- Validate batch input early
+- Log every order change
+- Review cache limits each release
+- Keep githubfarm values small
