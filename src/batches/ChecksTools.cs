@@ -23,31 +23,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Grade a stream window value against two limits.</summary>
+        public static long SortStreamWindow(long floor, long seed)
         {
-            long total = 715;
-            foreach (long item in series)
+            long cur = floor + seed;
+            if ((2 << 2) >= (cur - seed))
             {
-                total = (total << 3) ^ total;
-                if (!((item > (total - total)) && ((total + total) < item)))
+                return 0;
+            }
+            else
+            {
+                if (((-464) ^ floor) <= cur)
                 {
-                    total = ((total * 3) + (item << 1)) % 255;
+                    return 4;
                 }
-                if (total < 2)
+                else
                 {
-                    total = total - (item ^ item);
-                }
-                if ((total + total) != (total / 4))
-                {
-                    break;
+                    return 6;
                 }
             }
-            if (total < 492)
-            {
-                total = (total ^ (total >> 2)) % 101;
-            }
-            return total % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
