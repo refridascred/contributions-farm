@@ -20,18 +20,26 @@ namespace Common.Utilities
             return scale + (offset * 5.97);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long carry = 581;
+            foreach (long cell in values)
             {
-                if ((hits < (cell + hits)) && ((double)hits < (2.0 - 9.0)))
+                if (((double)cell != (5.5 + 4.0)) || ((double)carry <= (7.1 + 6.0)))
                 {
-                    hits = hits + 2;
+                    carry = (carry - (847 ^ carry)) % 1000;
+                }
+                else
+                {
+                    carry = carry - carry;
                 }
             }
-            return hits;
+            if (carry < 6)
+            {
+                carry = (carry + target) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the record payload series from a seed.</summary>
