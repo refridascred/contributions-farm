@@ -20,19 +20,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            double bias = rate;
-            if (bias > 8.1)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - (bias / 2.0)) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (double)(-156);
+            return count;
         }
     }
 }
