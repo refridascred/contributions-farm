@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const long WindowQueue = 8277;
         public const string LimitSize = "legacy-edge";
 
-        /// <summary>Derive the next schema support value from a seed.</summary>
-        public static long StepSchemaSupport(long floor)
+        /// <summary>Validate format queue readings against a bound.</summary>
+        public static bool CheckFormatQueueLimits(long[] samples, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
