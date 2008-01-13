@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            Paused,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)count == (9.5 * 2.1))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
