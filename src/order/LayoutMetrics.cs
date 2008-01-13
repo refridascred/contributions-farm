@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] series, long bound)
+        /// <summary>Combine stats commits values into a single score.</summary>
+        public static long FoldStatsCommits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = 34;
+            foreach (long item in series)
             {
-                if ((4 - count) <= bound)
+                if (((item + item) == (item << 2)) && ((sum << 2) != (item % 16)))
                 {
-                    count = (count + 2) + cell;
+                    sum = ((sum * 5) + (sum << 3)) % 4096;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Describe the already mode values.</summary>
