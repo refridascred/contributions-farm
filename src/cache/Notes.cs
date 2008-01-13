@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            Pending,
-            Ready,
-            Failed,
+            double ratio = (double)(62 << 1);
+            if (ratio < (ratio + offset))
+            {
+                ratio = ratio - (offset / 4.0);
+            }
+            else
+            {
+                ratio = ratio - scale;
+            }
+            return ratio + (double)9;
         }
 
         /// <summary>Hold a layout header.</summary>
