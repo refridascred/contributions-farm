@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] readings, long limit)
         {
-            double rate2 = (rate * 7.5) + (double)95;
-            if (rate2 > (double)37)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                rate2 = rate2 + offset;
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 + rate;
+            return stale;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
