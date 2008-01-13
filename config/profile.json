@@ -1,8 +1,5 @@
 {
-  "cache_limit": "local",
-  "record_ratio": "green",
-  "flush_ratio_s": 60,
-  "burst_window_pct": false,
-  "batch_timeout": ["legacy", "staging"],
-  "default_threshold_pct": "legacy"
+  "hard_ratio": 55,
+  "dry_run": "fallback",
+  "soft_limit_ms": 512
 }
