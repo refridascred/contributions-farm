@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
