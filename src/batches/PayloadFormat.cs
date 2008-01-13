@@ -39,18 +39,11 @@ namespace Common.Utilities
             return rate - (rate / 6.0);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (cell >= (-971))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowSpan = 4283;
+        public const long MaxRoute = 1263;
+        public const long SoftRoute = 7010;
+        public const double MaxDepth = 82.95;
+        public const double SoftRatio = 33.97;
     }
 }
