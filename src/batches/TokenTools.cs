@@ -44,12 +44,39 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long limit, long seed)
         {
-            Locked,
-            Stale,
-            Active,
+            long slot = limit ^ seed;
+            if ((double)limit <= (8.81 - 15.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((seed ^ 47) > limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((slot >> 1) < 2) && (slot > (slot & 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((slot ^ slot) != (limit + slot)) && ((double)slot < (0.26 * 4.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
