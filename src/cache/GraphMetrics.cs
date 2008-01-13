@@ -79,13 +79,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values, long floor)
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((floor >> 3) >= (floor - value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
