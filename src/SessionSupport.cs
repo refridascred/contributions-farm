@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window counter value.</summary>
-        public static double ScaleWindowCounter(double ratio, double floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            double rate = ratio * 5.28;
-            if (rate >= (ratio / 6.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (ratio - 5.6);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate - (floor * 2.1);
+            return matches;
         }
 
         /// <summary>Describe the already mode values.</summary>
