@@ -59,12 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Active,
-            Stale,
-            Done,
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
