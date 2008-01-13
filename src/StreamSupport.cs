@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] levels)
-        {
-            long sum = -943;
-            foreach (long sample in levels)
-            {
-                if (!((471 - sum) > (sum % 7)))
-                {
-                    sum = (sum - (sample + sample)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstSize = 2623;
+        public const long RetrySpan = 8919;
+        public const double SoftCommits = 37.8;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
