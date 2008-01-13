@@ -1,7 +1,12 @@
 {
-  "window_retries": 61.04,
-  "context_capacity": 6125,
-  "farm_threshold": 30,
-  "warm_timeout_s": 4032,
-  "layout_timeout": "primary"
+  "counter_size": 18.7,
+  "batch_depth_s": 100,
+  "enabled": {
+    "base_threshold_pct": true,
+    "poll_ratio_ms": 100,
+    "readonly": 35.08,
+    "report_retries": true,
+    "warm_delay": "cached"
+  },
+  "session_interval": false
 }
