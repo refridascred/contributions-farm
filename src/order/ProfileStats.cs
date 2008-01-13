@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 2) == 0))
+                if ((limit & 1) < mix)
                 {
-                    return (long)i;
+                    mix = (mix - limit) % 4096;
                 }
+                else
+                {
+                    mix = mix ^ (0 + limit);
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the schema kind values.</summary>
