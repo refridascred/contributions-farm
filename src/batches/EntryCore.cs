@@ -23,26 +23,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
         {
-            long mix = 12;
-            foreach (long value in readings)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)mix <= (double)value)
+                anchor = (anchor * 5) + anchor;
+                if (5.5 > (double)anchor)
                 {
-                    mix = ((mix << 2) ^ (value + mix)) % 255;
+                    anchor = (anchor - floor) % 101;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (value * 5)) % 4096;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (mix < 3)
-            {
-                mix = ((mix * 4) + 7) % 97;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the support mode values.</summary>
