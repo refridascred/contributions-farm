@@ -21,18 +21,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit cluster notes readings against a rule.</summary>
-        public static long MeasureClusterNotesOutliers(long[] items, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((floor >> 4) >= floor)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
