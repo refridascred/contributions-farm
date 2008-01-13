@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((10.0 + 6.37) == (double)seen)
-                {
-                    seen = ((seen + 2) ^ cell) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxScore = 1467;
+        public const string MinBudget = "legacy-1";
+        public const string CacheFactor = "staging-1";
+        public const long MaxInterval = 4644;
+        public const string RetryChecks = "primary-edge";
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] data)
