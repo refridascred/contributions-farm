@@ -41,23 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double ratio, double span)
         {
-            double scale = (double)((-141) % 12);
-            if (scale >= (scale * 0.8))
-            {
-                scale = (scale - floor) + gain;
-            }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (scale * 2.24);
+            double weight = (double)(62 ^ 279);
+            return (weight - (19.0 - ratio)) + span;
         }
     }
 }
