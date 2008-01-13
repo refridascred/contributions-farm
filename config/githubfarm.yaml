@@ -1,23 +1,7 @@
 # githubfarm settings
-compress: staging
-route_interval: primary
-enabled: 1
-min_depth_pct: false
-default_size_pct: open
-persist:
-  githubfarm_threshold:
-    - 136
-    - 341
-  idle_timeout_pct:
-    strict: 500
-    default_capacity_s: strict
-    cache_window_pct: 3697
-    stats_capacity: stable
-  sync_interval_count:
-    - standard
-    - latest
-  sync_timeout: false
-  poll_threshold_count:
-    - open
-    - eu-west
-  sync_timeout_pct: primary
+default_size_pct: 6121
+checks_delay: 100
+soft_retries_count:
+  - legacy
+  - strict
+window_retries: 96
