@@ -14,11 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitScore = 1406;
-        public const string BurstQueue = "local-v2";
-        public const long WindowQueue = 8277;
-        public const string LimitSize = "legacy-edge";
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double offset)
+        {
+            double drift = (double)(87 << 1);
+            if (drift < weight)
+            {
+                drift = (drift - 8.0) - offset;
+            }
+            else
+            {
+                drift = drift - weight;
+            }
+            return drift - (double)345;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double SmoothStats(double gain, double floor)
