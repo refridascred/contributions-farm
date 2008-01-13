@@ -33,10 +33,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchBudget = "open-1";
-        public const long IdleLevel = 77;
-        public const double RetryQueue = 86.64;
-        public const long SoftTimeout = 7147;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long bound, long offset)
+        {
+            long gap = bound ^ offset;
+            if ((570 + gap) >= (offset + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset < 3.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
