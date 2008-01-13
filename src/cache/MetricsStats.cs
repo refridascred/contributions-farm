@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Project the next notes command value.</summary>
+        public static double ProjectNotesCommand(double weight, double span)
         {
-            Paused,
-            Locked,
-            Done,
-            Idle,
-            Active,
+            double load = span;
+            if (load > (double)5)
+            {
+                load = (load + load) - weight;
+            }
+            return load - span;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
