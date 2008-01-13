@@ -22,11 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            long total = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                total = total + (seed / 8);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
