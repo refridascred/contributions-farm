@@ -31,11 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile stats figure with a bias.</summary>
-        public static double AdjustProfileStats(double rate, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long step)
         {
-            double weight = rate;
-            return weight - offset;
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
