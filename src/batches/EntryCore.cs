@@ -58,11 +58,13 @@ namespace Common.Utilities
             return bias2 + (bias - ratio);
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Draft,
+            Queued,
+            Closed,
         }
     }
 }
