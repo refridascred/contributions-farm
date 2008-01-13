@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            if ((double)seed != (2.0 + 3.1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
