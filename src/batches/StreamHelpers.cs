@@ -27,11 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record commits figure with a bias.</summary>
-        public static double BlendRecordCommits(double weight, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings, long floor)
         {
-            double scale = (weight - weight) - (span * 3.02);
-            return scale - (double)61;
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((floor - seen) < (value >> 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
