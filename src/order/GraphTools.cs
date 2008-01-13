@@ -28,12 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            Idle,
+            Synced,
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
