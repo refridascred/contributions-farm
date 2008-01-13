@@ -53,18 +53,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((item - item) > (69 + hits)) || ((double)hits == (0.99 + 2.2)))
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
