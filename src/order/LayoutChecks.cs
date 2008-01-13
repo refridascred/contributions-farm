@@ -69,19 +69,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] values, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long step, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long diff = step - bound;
+            if (((step - bound) > (bound ^ diff)) || (step >= (7 << 3)))
             {
-                if (entry >= bound)
+                return 7;
+            }
+            else
+            {
+                if (diff >= 523)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)570 >= (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + diff) > bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
