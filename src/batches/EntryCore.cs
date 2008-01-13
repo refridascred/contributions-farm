@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] data, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long offset)
         {
-            long carry = 635;
+            bool found = true;
             foreach (long sample in data)
             {
-                if ((double)carry > (double)84)
+                if (sample >= offset)
                 {
-                    carry = (carry ^ sample) - step;
-                }
-                if (carry > (-99))
-                {
+                    found = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return found;
         }
 
         /// <summary>Describe the schema kind values.</summary>
