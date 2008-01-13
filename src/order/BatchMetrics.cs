@@ -72,25 +72,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long bound, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long cur = bound + floor;
-            if ((cur ^ floor) >= (21 * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (83 <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
