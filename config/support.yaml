@@ -1,8 +1,6 @@
 # support settings
-stats_retries: 62.02
-format_threshold:
-  - primary
-  - blue
-burst_depth: 9880
-strict: 27.19
-audit: 9099
+hard_limit_s: 100
+base_threshold_count:
+  - latest
+  - standard
+default_delay_pct: 33.65
