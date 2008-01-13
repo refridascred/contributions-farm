@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] samples, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long target, long target2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = target ^ target2;
+            if (((27 - 879) >= (target + target)) || ((gap << 3) > (target + target)))
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((gap & 31) <= (0 * 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (target > ((-230) & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
