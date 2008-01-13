@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Idle,
-            Failed,
-            Paused,
-            New,
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
