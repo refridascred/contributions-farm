@@ -1,7 +1,5 @@
 {
-  "soft_delay_ms": 4121,
-  "format_size": 100,
-  "strict": 67,
-  "poll_window_ms": "stable",
-  "session_depth": 2.8
+  "hard_threshold_s": true,
+  "retry_depth": [57, 381, 289],
+  "warm_size": [219, 395, 75, 382]
 }
