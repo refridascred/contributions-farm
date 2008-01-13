@@ -32,11 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            Failed,
+            Stale,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a metric entry.</summary>
