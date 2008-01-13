@@ -43,19 +43,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] items, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = 6;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor << 3) ^ bound) % 1000;
-                if (81 < sample)
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
