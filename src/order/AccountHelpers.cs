@@ -56,10 +56,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowLevel = "legacy-edge";
-        public const long HardBatch = 9484;
-        public const string IdleSpan = "alpha-edge";
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Done,
+            Synced,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 3042;
