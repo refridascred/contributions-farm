@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepInterval = 9206;
-        public const long CacheCommits = 7354;
-        public const long WindowSpan = 4858;
-        public const long BatchCommits = 2525;
-        public const long MaxBudget = 3866;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] series)
+        {
+            long anchor = -204;
+            foreach (long cell in series)
+            {
+                if ((cell << 3) >= anchor)
+                {
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ 38) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] values, long target)
