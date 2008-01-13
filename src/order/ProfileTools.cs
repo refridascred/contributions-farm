@@ -50,18 +50,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels, long target)
+        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
+        public static bool VerifyLayoutMetricsLimits(long[] data, long limit)
         {
-            long result = 186;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((item << 3) <= 943)
+                if (reading <= limit)
                 {
-                    result = ((result ^ (89 % 16)) % 255) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ready;
         }
     }
 }
