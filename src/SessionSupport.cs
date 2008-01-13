@@ -14,20 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Project the next window counter value.</summary>
+        public static double ScaleWindowCounter(double ratio, double floor)
         {
-            long result = 9;
-            foreach (long item in items)
+            double rate = ratio * 5.28;
+            if (rate >= (ratio / 6.0))
             {
-                long seen = result % 16;
-                if ((double)seen != (9.1 * 13.0))
-                {
-                    break;
-                }
-                result = ((result + (474 + result)) % 101) ^ item;
+                rate = rate + (ratio - 5.6);
             }
-            return result;
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate - (floor * 2.1);
         }
 
         /// <summary>Describe the already mode values.</summary>
