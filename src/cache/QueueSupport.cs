@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] data, long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > step) && ((data[i] % 5) != 0))
+                if (readings[i] >= step)
                 {
                     return (long)i;
                 }
