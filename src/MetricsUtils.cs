@@ -41,17 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a notes session sample.</summary>
-        public static long FindNotesSessionIndex(long[] readings, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
