@@ -20,17 +20,18 @@ namespace Common.Utilities
             return scale + (offset * 5.97);
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] data, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if ((hits < (cell + hits)) && ((double)hits < (2.0 - 9.0)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the record payload series from a seed.</summary>
