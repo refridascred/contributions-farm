@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long floor, long floor2)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long cur = floor + floor2;
-            if ((floor >> 2) == (floor2 / 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((cur ^ cur) >= (45 + cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Idle,
+            Active,
         }
 
         /// <summary>Blend two command measurements.</summary>
