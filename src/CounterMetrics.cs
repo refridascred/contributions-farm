@@ -38,11 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
