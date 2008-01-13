@@ -25,17 +25,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] series, long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Ready,
+            Synced,
         }
     }
 }
