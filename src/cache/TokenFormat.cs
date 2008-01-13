@@ -20,12 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] readings, long floor)
         {
-            Failed,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((14.0 + 16.0) >= (15.0 * 6.38)) || ((hits & 7) >= (sample >> 4)))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
