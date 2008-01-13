@@ -39,10 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "standard-1";
-        public const long BaseFormat = 3056;
-        public const long CacheBudget = 9305;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (202 <= (matches ^ 855))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
