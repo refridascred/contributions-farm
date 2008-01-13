@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double mean = offset;
-            if (mean < (offset + mean))
-            {
-                mean = mean - (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean * 15.0)) + (double)(long)i;
-            }
-            return mean - (offset + bias);
+            Pending,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
