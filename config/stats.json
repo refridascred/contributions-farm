@@ -1,6 +1,15 @@
 {
-  "max_ratio_count": "latest",
-  "route_retries": "local",
-  "poll_timeout": [286, 417, 303],
-  "verbose": "edge"
+  "dry_run": 60,
+  "batch_capacity_s": {
+    "context_size": {
+      "commits_retries": 4812,
+      "cache_ratio_pct": 500,
+      "base_size_ms": 7,
+      "sync_ttl": true
+    },
+    "cache_capacity_s": 1121,
+    "poll_ttl": 1657,
+    "poll_timeout_s": 56.79
+  },
+  "burst_interval": "staging"
 }
