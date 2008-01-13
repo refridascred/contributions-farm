@@ -1,15 +1,8 @@
 {
-  "format_timeout": 81.29,
-  "cache_ttl_count": {
-    "idle_timeout": {
-      "flush_threshold_pct": 77.37,
-      "graph_interval": true,
-      "cache_size_ms": true
-    },
-    "poll_capacity_ms": "legacy",
-    "window_threshold": 500,
-    "base_interval": "legacy",
-    "soft_interval_s": false
-  },
-  "dry_run": 3203
+  "min_capacity": "blue",
+  "warm_ttl": "open",
+  "max_ttl_ms": "stable",
+  "batches_capacity": false,
+  "cluster_limit": 69.96,
+  "poll_timeout_ms": false
 }
