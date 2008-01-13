@@ -41,17 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
