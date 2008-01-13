@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate batch order samples.</summary>
-        public static long TotalBatchOrder(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] data, long target)
         {
-            long mix = 630;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((cell ^ cell) > (4 >> 3))
+                if ((target << 3) <= (long)data.Length)
                 {
-                    mix = ((mix * 3) + (mix * 5)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix / 7)) % 101;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            if (mix < (-1))
-            {
-                mix = (mix * 2) + (mix - mix);
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Describe the notes level values.</summary>
