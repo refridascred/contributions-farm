@@ -23,21 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cache contributi pairs that satisfy a relation.</summary>
-        public static long OverlapCacheContributiCount(long[] levels)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the queue phase values.</summary>
