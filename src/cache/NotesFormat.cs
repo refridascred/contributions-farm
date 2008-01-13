@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (span * 4.1) + (weight - weight);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - load) + (double)(long)i;
             }
-            return seen;
+            return load + weight;
         }
 
         /// <summary>Describe the command status values.</summary>
