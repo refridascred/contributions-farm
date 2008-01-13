@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many schema support samples are out of range.</summary>
-        public static long TallySchemaSupportOutliers(long[] series, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] series)
         {
-            long hits = 0;
+            long count = 0;
             foreach (long cell in series)
             {
-                if ((cell * 2) > (1 << 1))
+                if ((cell ^ 111) != (count * 5))
                 {
-                    hits = (hits + 2) - origin;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
