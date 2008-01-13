@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits graph samples.</summary>
-        public static long ScoreCommitsGraph(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double floor)
         {
-            long sum = -3;
-            foreach (long reading in series)
+            double rate2 = rate;
+            if (rate2 > (double)9)
             {
-                if (sum > 259)
-                {
-                    sum = (sum ^ (reading % 8)) % 101;
-                }
+                rate2 = (rate2 + rate) + floor;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - (rate * 4.3);
         }
     }
 }
