@@ -23,12 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Locked,
+            Active,
+            Synced,
+            Paused,
+            Draft,
             New,
-            Queued,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
