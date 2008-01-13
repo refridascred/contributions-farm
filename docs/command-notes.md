@@ -1,14 +1,11 @@
 # Command notes
 
-The already report groups every contributi by githubfarm.
-The account report groups every batches by token.
-
-Use route settings to tune how often cache data is refreshed.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often report data is refreshed.
+Run the editor check before changing any metrics limits.
+Each format is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate profile input early
-- Prefer command defaults
+- Document new record fields
+- Log every account change
+- Review cache limits each release
+- Keep buffer values small
