@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 1078;
-        public const long SoftGithubfarm = 9141;
-        public const long MinCount = 6900;
-        public const string LimitInterval = "alpha";
-        public const string BurstGithubfarm = "strict";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] samples)
