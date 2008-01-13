@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double ratio, double bias)
-        {
-            double gain = (ratio * 15.0) - ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + gain) + (double)(long)i) - bias;
-            }
-            return gain + (gain * 17.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 9715;
+        public const string WindowCommand = "staging-1";
+        public const double DefaultCommand = 83.29;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long bound, long offset)
