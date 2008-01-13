@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batches metrics value.</summary>
-        public static double ProjectBatchesMetrics(double ratio, double bias)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] data)
         {
-            double mean = (double)(876 >> 3);
-            if (mean >= 9.44)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                mean = (mean + (6.71 + mean)) - ratio;
+                if ((6.75 - 8.55) < (double)datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + (mean + bias);
+            return hits;
         }
 
         /// <summary>Accumulate commits graph samples.</summary>
