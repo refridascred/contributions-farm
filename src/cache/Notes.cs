@@ -58,13 +58,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Dropped,
+            Failed,
+            Synced,
+            Pending,
         }
     }
 }
