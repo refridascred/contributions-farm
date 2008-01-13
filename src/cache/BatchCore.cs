@@ -32,18 +32,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] items, long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum - datum) >= (target - matches)) && ((datum << 3) >= datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
