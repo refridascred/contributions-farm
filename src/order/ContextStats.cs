@@ -52,9 +52,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxInterval = 626;
-        public const string RetryFactor = "local-v2";
-        public const long IdleLayout = 3806;
+        /// <summary>Compare every pair of profile metric readings.</summary>
+        public static long OverlapProfileMetricCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
