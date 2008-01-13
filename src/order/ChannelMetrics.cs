@@ -20,19 +20,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] levels, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mark = 927;
+            foreach (long reading in series)
             {
-                if (reading < seed)
+                if ((double)reading == (5.0 + 12.0))
                 {
-                    ready = false;
+                    mark = mark - (reading & 255);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (reading + reading)) % 255;
+                }
+                if ((reading / 4) > mark)
+                {
                     break;
                 }
             }
-            return ready;
+            return mark;
         }
     }
 }
