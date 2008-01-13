@@ -32,18 +32,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long TallyEntryBatchesMatches(long[] series, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)series.Length << 2) != (floor >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) ^ entry;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
