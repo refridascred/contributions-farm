@@ -17,14 +17,22 @@ namespace Common.Utilities
         public const string CacheLevel = "legacy-edge";
         public const string MaxCounter = "local";
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] data, long floor)
         {
-            Locked,
-            Draft,
-            New,
-            Ready,
-            Done,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally % 97) == (tally >> 2))
+                {
+                    tally = ((tally + 2) + value) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
