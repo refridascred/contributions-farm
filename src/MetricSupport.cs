@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Stale,
-            Active,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepScore = 7391;
+        public const long BurstTimeout = 1623;
+        public const long BaseDepth = 7111;
 
         /// <summary>Accumulate cluster route samples.</summary>
         public static long WeighClusterRoute(long[] items)
