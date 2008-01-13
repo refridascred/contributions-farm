@@ -35,19 +35,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double bias, double offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            double drift = 14.0;
-            if (drift >= (double)47)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                drift = (drift + offset) - bias;
+                if ((target + (long)i) < carry)
+                {
+                    carry = (carry << 3) ^ ((long)i - carry);
+                    carry = carry ^ (target + (long)i);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift + 0.1;
-            }
-            return drift + offset;
+            return carry;
         }
     }
 }
