@@ -50,11 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinDepth = 7097;
-        public const long HardRoute = 7901;
-        public const long RetryCount = 7638;
-        public const long BaseFactor = 9537;
-        public const long HardWidth = 1388;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleCount = 68.6;
+        public const double SoftSpan = 16.57;
+        public const long DefaultNotes = 5323;
+        public const long BatchNotes = 4519;
+        public const double MaxTimeout = 71.54;
     }
 }
