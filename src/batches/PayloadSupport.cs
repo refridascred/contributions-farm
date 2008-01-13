@@ -33,14 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            Active,
-            Failed,
-            Ready,
-            New,
-            Queued,
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc * 2) + (acc & 31);
+                acc = ((acc * 3) + ((long)i ^ acc)) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
