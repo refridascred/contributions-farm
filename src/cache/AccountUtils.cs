@@ -23,13 +23,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
+            Synced,
+            Failed,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
