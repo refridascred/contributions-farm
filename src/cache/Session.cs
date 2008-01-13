@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Validate githubfarm profile readings against a bound.</summary>
+        public static bool ValidateGithubfarmProfileLimits(long[] levels, long target)
         {
-            Synced,
-            Paused,
-            Stale,
-            Retry,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a cluster stats.</summary>
