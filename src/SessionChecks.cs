@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double scale, double span)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] values)
         {
-            double mean = (double)(92 << 1);
-            if (mean <= mean)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mean = mean + (double)372;
+                if ((75 + hits) == (hits / 4))
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            else
-            {
-                mean = mean + (double)(-587);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - scale;
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
