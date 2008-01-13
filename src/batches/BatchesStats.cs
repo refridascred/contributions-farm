@@ -12,19 +12,19 @@ namespace Common.Utilities
             return ((mean - (mean * 16.0)) + weight) + floor;
         }
 
-        /// <summary>Scale a report window figure with a bias.</summary>
-        public static double AdjustReportWindow(double weight, double bias)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] samples, long target)
         {
-            double bias2 = weight;
-            if (bias2 > 5.0)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                bias2 = bias2 + (double)6;
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - bias;
+            return stale;
         }
 
         /// <summary>Count channel order pairs that satisfy a relation.</summary>
