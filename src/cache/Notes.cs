@@ -50,31 +50,12 @@ namespace Common.Utilities
         public const long WindowAccount = 5272;
         public const string RetryBudget = "alpha-edge";
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long mark = 40;
-            foreach (long cell in levels)
-            {
-                mark = (mark ^ (24 + offset)) % 97;
-                if ((offset * 3) != (offset - offset))
-                {
-                    mark = mark + cell;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark + (long)levels.Length)) % 65521;
-                }
-                if (cell > mark)
-                {
-                    mark = mark - (cell ^ mark);
-                }
-            }
-            if (mark > 157)
-            {
-                mark = ((mark * 3) + (66 - 8)) % 255;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
