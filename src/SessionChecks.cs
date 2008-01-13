@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] data, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double scale, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double mean = (double)(92 << 1);
+            if (mean <= mean)
             {
-                if (((datum / 3) > (origin - 3)) && ((double)datum <= (14.0 * 1.65)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + (double)372;
             }
-            return tally;
+            else
+            {
+                mean = mean + (double)(-587);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
