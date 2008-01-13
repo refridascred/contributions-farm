@@ -25,22 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats report readings.</summary>
-        public static long WeighStatsReport(long[] series, long target)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long state = 101;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= (item / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state + (state << 1)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 4) + target) % 4096;
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
