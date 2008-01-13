@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long SoftEditor = 193;
         public const long HardTimeout = 5281;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = 11;
+            foreach (long entry in levels)
             {
-                if (((long)samples.Length + count) > (count ^ count))
-                {
-                    count = (count + 1) - cell;
-                }
+                mix = (mix - bound) + entry;
             }
-            return count;
+            if (mix > 902)
+            {
+                mix = (mix << 2) ^ bound;
+            }
+            return mix % 4096;
         }
     }
 }
