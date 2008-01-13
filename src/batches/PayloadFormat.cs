@@ -27,19 +27,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((matches + cell) <= matches) && ((matches - matches) >= (cell << 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 1195;
+        public const long BatchCache = 4763;
+        public const string BaseInterval = "stable";
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long offset)
