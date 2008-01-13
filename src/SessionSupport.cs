@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
             Dropped,
-            Queued,
-            Retry,
+            Paused,
             Idle,
-            Failed,
+            Retry,
         }
 
         /// <summary>Combine session values into a single score.</summary>
