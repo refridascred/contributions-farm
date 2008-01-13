@@ -69,18 +69,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter entry samples are out of range.</summary>
-        public static long AuditCounterEntryGaps(long[] values, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double mean = bias2;
+            if (mean > 17.0)
             {
-                if ((8.4 + 2.12) <= (double)entry)
-                {
-                    seen = (seen + 1) + bound;
-                }
+                mean = (mean - (double)3) - bias;
             }
-            return seen;
+            else
+            {
+                mean = mean + (double)78;
+            }
+            return mean - (bias2 / 2.0);
         }
 
         /// <summary>Rank layout input into a small class.</summary>
