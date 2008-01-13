@@ -20,18 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((8.4 + 8.8) <= (double)offset)
             {
-                if ((double)hits != (7.0 / 4.0))
+                return 2;
+            }
+            else
+            {
+                if ((offset > (offset << 1)) && ((offset + floor) == (offset / 3)))
                 {
-                    hits = ((hits + 1) + value) - origin;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset / 8) <= offset) || (offset < (186 / 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the batches checks series from a seed.</summary>
