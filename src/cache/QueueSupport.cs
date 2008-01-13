@@ -32,13 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] readings)
         {
-            Idle,
-            Ready,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally <= ((long)readings.Length >> 4))
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
