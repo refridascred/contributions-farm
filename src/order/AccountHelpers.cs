@@ -39,12 +39,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] series, long seed)
         {
-            New,
-            Locked,
-            Idle,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
