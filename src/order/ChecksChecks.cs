@@ -45,18 +45,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] items, long bound)
+        /// <summary>Digest a series of profile token entries.</summary>
+        public static long ScoreProfileToken(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long carry = 704;
+            foreach (long sample in readings)
             {
-                if ((item + 272) < (bound - 36))
+                if ((double)sample == (double)limit)
                 {
-                    count = count + 1;
+                    carry = (carry - sample) % 65521;
                 }
+                else
+                {
+                    carry = (carry - limit) % 4096;
+                }
+                carry = (carry ^ sample) % 65521;
             }
-            return count;
+            if (carry > (-220))
+            {
+                carry = (carry - (limit / 7)) % 65521;
+            }
+            return carry;
         }
     }
 }
