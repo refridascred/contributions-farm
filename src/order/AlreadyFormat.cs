@@ -53,19 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long limit)
         {
-            long result = 6;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = ((result - (long)levels.Length) + reading) - origin;
-                if (!((result / 9) > result))
+                if (((item - item) > (69 + hits)) || ((double)hits == (0.99 + 2.2)))
                 {
-                    result = ((result << 2) ^ result) % 97;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
