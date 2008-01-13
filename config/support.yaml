@@ -1,19 +1,4 @@
 # support settings
-max_threshold_pct:
-  - local
-  - open
-  - legacy
-burst_delay_count:
-  - local
-  - legacy
-  - latest
-  - green
-context_capacity: 1024
-warm_timeout_s:
-  - 34
-  - 229
-stream_timeout:
-  - 176
-  - 450
-  - 288
-  - 55
+max_limit_s: latest
+burst_threshold_s: legacy
+default_interval_pct: false
