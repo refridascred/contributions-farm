@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen * 5) != (seen % 8))
-                {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultBudget = 9239;
+        public const long BatchTimeout = 8322;
+        public const double DefaultLevel = 26.78;
+        public const string MaxDepth = "standard-1";
+        public const long HardEntry = 9246;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
