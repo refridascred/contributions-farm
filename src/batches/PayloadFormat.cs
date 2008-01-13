@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] levels, long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] data, long target)
         {
-            long acc = 80;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc - acc;
-                if ((seed >> 5) == (650 - seed))
+                if ((data[i] < target) && ((data[i] % 2) != 0))
                 {
-                    acc = (acc - (entry >> 5)) % 101;
+                    return (long)i;
                 }
-                acc = (acc - (6 & 127)) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
