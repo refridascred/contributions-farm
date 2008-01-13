@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Done,
-            Failed,
-            Draft,
-            Active,
-            Ready,
+            Synced,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a stats summary.</summary>
