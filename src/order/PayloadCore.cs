@@ -16,24 +16,11 @@ namespace Common.Utilities
             return scale2 - (floor + scale);
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if (!((-9) >= (step >> 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((828 >> 3) == (step + 4)) || ((17.0 / 6.0) != (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many channel counter samples are out of range.</summary>
