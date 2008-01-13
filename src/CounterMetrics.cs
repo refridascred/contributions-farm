@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items, long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long mark = 6;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark - ((long)items.Length ^ value);
-                mark = (mark + (bound - value)) % 65521;
-                if ((value + bound) > (bound ^ mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 6)
-            {
-                mark = mark - (bound + mark);
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Grade a order cache value against two limits.</summary>
