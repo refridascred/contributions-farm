@@ -1,4 +1,14 @@
 # githubfarm settings
-max_interval: 30
-cache_timeout_pct: 8804
-hard_ratio_count: 32.98
+idle_retries: cached
+persist:
+  base_timeout_count:
+    - staging
+    - open
+  retry_retries_count: 19
+  retry_limit_count:
+    sync_retries_ms: staging
+    hard_retries: 30
+    batch_interval_count: true
+  compress: true
+  soft_timeout_pct: false
+soft_timeout_pct: 11
