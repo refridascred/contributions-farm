@@ -20,25 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long limit, long limit2)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long cur = limit + limit2;
-            if (((limit2 + 283) <= (0 * 5)) && ((14.0 * 18.0) > (double)cur))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) < (limit2 << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
