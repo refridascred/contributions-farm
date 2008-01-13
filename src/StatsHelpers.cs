@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
