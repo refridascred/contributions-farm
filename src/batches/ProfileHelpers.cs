@@ -58,13 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepDepth = "primary-v2";
+        public const long StepMetrics = 4161;
+        public const long HardMetrics = 7399;
+        public const long SoftMetrics = 1304;
+        public const long MinMetrics = 8427;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] samples, long floor)
