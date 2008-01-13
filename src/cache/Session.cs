@@ -33,21 +33,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target / 2) != (target >> 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target - target) <= ((-597) << 1))
                 {
-                    if ((data[i] - data[j]) < 1)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target >= 7.2)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.7 - 8.84) != (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a session info.</summary>
