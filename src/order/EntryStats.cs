@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] series, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long bound = offset ^ step;
+            if ((bound * 3) <= (step % 64))
             {
-                if ((double)990 != (double)reading)
+                return 2;
+            }
+            else
+            {
+                if (offset <= (step % 64))
                 {
-                    seen = (seen + 3) - step;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + 836) != (offset & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((74 < (753 - bound)) || ((double)bound > (4.5 * 5.83)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
