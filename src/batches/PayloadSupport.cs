@@ -29,24 +29,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            if (origin <= (origin & 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin >= (7.51 / 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Idle,
+            Synced,
         }
     }
 }
