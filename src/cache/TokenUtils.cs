@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 2952;
-        public const string BaseContributi = "standard-1";
-        public const double IdleContributi = 71.21;
-        public const double DefaultContributi = 62.49;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((9.02 >= (double)value) || ((tally % 7) > (value + tally))) && (tally >= 53))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next token stats value.</summary>
         public static double ScaleTokenStats(double scale, double bias)
