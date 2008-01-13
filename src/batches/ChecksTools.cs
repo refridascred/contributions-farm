@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window session readings.</summary>
-        public static long OverlapWindowSessionCount(long[] items)
+        /// <summary>Count the batch cache entries that pass the check.</summary>
+        public static long MeasureBatchCacheHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)entry > (7.4 - 7.0)) && ((entry << 3) <= (hits * 5)))
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
