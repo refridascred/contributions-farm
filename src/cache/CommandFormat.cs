@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally <= (tally + (long)values.Length))
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
