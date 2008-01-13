@@ -28,22 +28,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((5 - offset) == (370 & 255))
             {
-                if (84 <= hits)
+                return 2;
+            }
+            else
+            {
+                if (((step ^ offset) >= (offset - offset)) || ((step ^ offset) >= (step - step)))
                 {
-                    hits = (hits + 1) - entry;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (1 > (offset + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-2) << 3) > offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up stream samples.</summary>
