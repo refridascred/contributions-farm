@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstWidth = 28.6;
-        public const long RetryBatch = 7392;
-        public const double SoftBatch = 30.82;
-        public const string IdleScore = "latest-v2";
-        public const long IdleBatch = 584;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Ready,
+            Failed,
+            Synced,
+            Active,
+            Pending,
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] samples)
