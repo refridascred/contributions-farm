@@ -21,13 +21,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
