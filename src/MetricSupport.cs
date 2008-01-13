@@ -16,13 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
             Idle,
-            Queued,
             Synced,
-            Locked,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Blend two token queue measurements.</summary>
