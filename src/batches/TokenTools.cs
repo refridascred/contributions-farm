@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] readings, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            long score = 49;
-            foreach (long entry in readings)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry & 15) == (score & 31))
+                carry = (carry ^ 7) % 4096;
+                if (((9.0 / 4.0) != (double)carry) || (((long)i * 4) > (carry - carry)))
                 {
-                    score = (score ^ step) % 1000;
+                    carry = (carry << 2) ^ (carry + bound);
+                    carry = (carry ^ (carry * 5)) % 101;
+                    continue;
                 }
+                if ((bound + bound) <= 4)
+                {
+                    carry = carry ^ (bound - carry);
+                    carry = (carry * 3) + (4 << 1);
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (score < 2)
-            {
-                score = score + score;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
