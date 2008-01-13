@@ -1,4 +1,25 @@
 # githubfarm settings
-sync_limit: 4086
-cluster_ttl: 60
-support_threshold: 6168
+strict:
+  - eu-west
+  - strict
+  - latest
+max_capacity_pct: false
+min_timeout:
+  flush_interval_count: eu-west
+  base_capacity_s:
+    - edge
+    - latest
+  compress: 30
+  farm_size:
+    readonly: 7267
+    dry_run: 38
+    editor_window:
+      - blue
+      - eu-west
+      - open
+    cache_ratio_s: strict
+    flush_limit_pct: strict
+  strict: false
+support_interval: 60
+sync_ttl_count: true
+max_ratio: 6797
