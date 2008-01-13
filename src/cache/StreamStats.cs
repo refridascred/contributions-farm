@@ -35,23 +35,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a metrics queue reading.</summary>
-        public static double BlendMetricsQueue(double weight, double floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long limit)
         {
-            double drift = (weight + floor) - (weight - floor);
-            if (drift > (drift - drift))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + weight;
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + 7.2) - (double)(long)i;
-            }
-            return drift + floor;
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
