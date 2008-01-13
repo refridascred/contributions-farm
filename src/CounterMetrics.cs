@@ -40,12 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long TallySupportOrderGaps(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((4.2 * 0.25) > (19.0 + 7.81))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
