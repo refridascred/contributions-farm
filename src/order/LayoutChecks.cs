@@ -69,18 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route editor entries that pass the check.</summary>
-        public static long AuditRouteEditorGaps(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (!(4.0 <= (double)hits))
+                if (cell >= limit)
                 {
-                    hits = (hits + 3) - sample;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
