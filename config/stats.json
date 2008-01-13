@@ -1,15 +1,15 @@
 {
-  "cache_ratio": {
-    "enabled": 19.79,
-    "readonly": true,
-    "dry_run": {
-      "verbose": false,
-      "flush_interval_ms": 75.76,
-      "burst_threshold_count": 60,
-      "readonly": "standard"
-    },
-    "sync_window_count": "local"
+  "max_threshold": {
+    "base_capacity": 5.15,
+    "persist": "fallback",
+    "burst_window_count": 250
   },
-  "audit": 60,
-  "sync_threshold_count": [499, 238, 235]
+  "cache_delay_count": ["green", "edge", "fallback", "primary"],
+  "strict": 24.61,
+  "min_depth": {
+    "retry_interval_pct": 60,
+    "default_limit_ms": "strict",
+    "warm_retries": 18.0
+  },
+  "cache_limit_pct": "legacy"
 }
