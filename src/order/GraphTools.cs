@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema channel sample.</summary>
-        public static long LookupSchemaChannelIndex(long[] values, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == target)
+                if (series[i] < limit)
                 {
                     return (long)i;
                 }
