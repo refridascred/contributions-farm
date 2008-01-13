@@ -22,18 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry >= (double)tally)
+                if (floor < ((long)i ^ score))
                 {
-                    tally = tally + 1;
+                    continue;
                 }
+                score = ((score * 4) + (84 + floor)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
