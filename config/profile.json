@@ -1,11 +1,8 @@
 {
-  "compress": 60,
-  "readonly": {
-    "soft_limit_count": false,
-    "support_window": 24,
-    "idle_ratio_ms": 100,
-    "context_size": 8515,
-    "idle_retries": 2568
-  },
-  "sync_delay_count": "legacy"
+  "cache_limit": "local",
+  "record_ratio": "green",
+  "flush_ratio_s": 60,
+  "burst_window_pct": false,
+  "batch_timeout": ["legacy", "staging"],
+  "default_threshold_pct": "legacy"
 }
