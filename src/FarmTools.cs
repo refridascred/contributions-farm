@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] series, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
