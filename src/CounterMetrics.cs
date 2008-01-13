@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Roll a batches metrics counter forward.</summary>
+        public static long RollBatchesMetrics(long limit)
         {
-            long anchor = 898;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((anchor - item) < item) && (402 > (anchor / 4)))
-                {
-                    anchor = (anchor + (item ^ 406)) % 255;
-                }
+                sum = (sum ^ (sum - sum)) % 97;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return anchor % 4096;
+            return sum;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
