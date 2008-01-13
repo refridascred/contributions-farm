@@ -51,15 +51,22 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples, long target)
         {
-            long mix = 852;
-            foreach (long reading in data)
+            long mark = 25;
+            foreach (long item in samples)
             {
-                mix = (mix + (414 + mix)) ^ reading;
+                if ((mark + mark) != (5 + 227))
+                {
+                    mark = ((mark - (item - mark)) % 65521) + target;
+                }
+                else
+                {
+                    mark = (mark - (7 + mark)) % 97;
+                }
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
