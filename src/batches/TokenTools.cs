@@ -42,24 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long seed, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            if ((81 - 930) != (0 + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target < (target ^ 379))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Dropped,
+            Active,
         }
     }
 }
