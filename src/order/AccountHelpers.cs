@@ -47,11 +47,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
+        public static long MatchFilterContributiCount(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
