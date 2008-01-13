@@ -58,13 +58,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            Stale,
-            Paused,
-            Synced,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
