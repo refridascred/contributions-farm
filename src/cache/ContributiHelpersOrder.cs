@@ -14,18 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] series, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((limit ^ 37) >= (limit >> 4))
+                sum = sum ^ (sum / 6);
+                if (((long)i + sum) == (840 >> 5))
                 {
-                    seen = (seen + 2) ^ reading;
+                    sum = ((sum << 2) ^ ((long)i & 1)) % 1000;
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
