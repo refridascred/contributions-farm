@@ -1,7 +1,9 @@
 # support settings
-flush_depth_ms: 100
-base_interval_s: false
-soft_threshold_s: 2
-token_interval: 94.82
-account_capacity: false
-cache_retries_s: 32.37
+default_delay_s: latest
+warm_ratio:
+  - eu-west
+  - open
+  - standard
+  - strict
+idle_depth_count: standard
+cache_depth: 29.21
