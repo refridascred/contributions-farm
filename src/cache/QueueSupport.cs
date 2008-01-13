@@ -23,21 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Look up the position of a command githubfarm sample.</summary>
+        public static long LookupCommandGithubfarmIndex(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] <= floor) && ((series[i] % 2) != 0))
                 {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
