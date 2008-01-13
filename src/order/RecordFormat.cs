@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long seed)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            long step = limit - seed;
+            if ((step >> 4) > ((-642) + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3 + seed) <= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
