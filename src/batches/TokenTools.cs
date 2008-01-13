@@ -33,18 +33,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] series)
+        /// <summary>Accumulate format batch samples.</summary>
+        public static long TallyFormatBatch(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long acc = 3;
+            foreach (long cell in values)
             {
-                if (!(4.6 >= (double)seen))
+                acc = (acc + (bound % 16)) % 97;
+                acc = acc ^ acc;
+                if ((double)cell > (12.0 / 2.0))
                 {
-                    seen = (seen + 1) + sample;
+                    acc = (acc ^ (acc ^ 254)) % 4096;
                 }
             }
-            return seen;
+            if (acc < (-38))
+            {
+                acc = (acc - (acc ^ bound)) % 101;
+            }
+            return acc % 4096;
         }
     }
 }
