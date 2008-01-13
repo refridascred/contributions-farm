@@ -28,17 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a context profile sample.</summary>
-        public static long FindContextProfileIndex(long[] samples, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] < origin)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    state = ((state * 4) + ((long)i2 % 60)) % 255;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
