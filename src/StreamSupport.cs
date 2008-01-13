@@ -29,24 +29,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long step, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            if ((step / 7) >= ((-629) << 3))
+            long bound = target + offset;
+            if ((double)offset == (2.69 - 8.3))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (35 < (step - bound))
+                if (9.0 <= (double)target)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (bound <= (step ^ 14))
+                    if (!((bound % 97) <= (offset + target)))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
