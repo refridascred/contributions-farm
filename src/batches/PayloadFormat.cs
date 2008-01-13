@@ -27,11 +27,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 3241;
-        public const long LimitFarm = 5668;
-        public const long BaseScore = 6512;
-        public const long RetryFarm = 5277;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheFactor = "alpha-1";
+        public const string MaxSize = "standard-edge";
+        public const double IdleRatio = 23.94;
+        public const double LimitCounter = 4.04;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
