@@ -59,10 +59,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCount = 57.76;
-        public const long IdleCluster = 364;
-        public const long HardCluster = 8783;
-        public const string LimitFactor = "standard";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Paused,
+            Stale,
+            Synced,
+        }
     }
 }
