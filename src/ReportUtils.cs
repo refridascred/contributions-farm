@@ -33,19 +33,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = ((mix << 3) ^ ((long)i2 << 3)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
