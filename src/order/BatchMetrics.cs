@@ -16,20 +16,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] levels, long seed)
         {
-            long score = 97;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                score = (((score * 4) + (score - score)) % 97) - offset;
-                score = (score + (entry - score)) % 1000;
+                if ((double)seed <= (7.0 - 2.11))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            if (score < 97)
-            {
-                score = score - (score + 265);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
