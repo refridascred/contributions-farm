@@ -20,38 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long seed, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long offset)
         {
-            if ((seed + seed) > seed)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8 ^ (-838)) == (seed - seed))
+                if (!(offset >= ((long)i - 42)))
                 {
-                    return 2;
+                    mix = ((mix << 2) ^ (offset - (long)i)) % 65521;
                 }
-                else
-                {
-                    if ((target << 2) >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((763 * 3) > seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Adjust a metrics queue reading.</summary>
