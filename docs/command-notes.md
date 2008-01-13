@@ -1,15 +1,15 @@
 # Command notes
 
-Use profile settings to tune how often stats data is refreshed.
-Run the channel check before changing any token limits.
+Run the channel check before changing any channel limits.
+Use layout settings to tune how often entry data is refreshed.
 
-Keep layout and queue names short and lowercase.
-Run the githubfarm check before changing any batch limits.
-Each cache is validated before it reaches the stats queue.
+Keep format and stats names short and lowercase.
+Use already settings to tune how often graph data is refreshed.
+Keep report and token names short and lowercase.
 
 ## Guidelines
 
-- Prefer window defaults
-- Document new context fields
-- Log every queue change
-- Keep schema values small
+- Prefer record defaults
+- Validate payload input early
+- Keep route values small
+- Log every githubfarm change
