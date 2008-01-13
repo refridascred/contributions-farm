@@ -84,24 +84,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            long mix = 56;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = (mix + ((long)series.Length + sample)) % 1000;
-                mix = (mix + (mix >> 5)) % 97;
-                if (((sample % 8) < origin) || ((640 & 1) <= (mix >> 3)))
+                if (((count - item) != (7 << 3)) || (((count - (long)samples.Length) > (count - item)) && (count < (item + 577))))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (mix > 62)
-            {
-                mix = (mix ^ (origin % 64)) % 255;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
