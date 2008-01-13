@@ -31,22 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell < (5.32 * 6.0))
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
