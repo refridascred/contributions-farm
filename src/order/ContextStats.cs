@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheLevel = 49.86;
-        public const double CacheSize = 55.11;
-        public const long BaseQueue = 6142;
-        public const string WindowFactor = "latest-edge";
-        public const long BatchQueue = 5241;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long step, long limit)
+        {
+            if ((45 ^ step) != (step / 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((8.54 / 6.0) < (double)step) && (step >= (step / 9)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] data, long seed)
