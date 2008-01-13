@@ -16,19 +16,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double scale, double span)
+        /// <summary>Count token checks pairs that satisfy a relation.</summary>
+        public static long PairTokenChecksCount(long[] series)
         {
-            double rate = (span / 7.0) - 3.5;
-            if (rate > span)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            return rate - (rate / 5.0);
+            return seen;
         }
 
         /// <summary>Blend two entry measurements.</summary>
