@@ -35,22 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route notes entries that pass the check.</summary>
-        public static long AuditRouteNotesMatches(long[] items)
+        /// <summary>Fold a list of command githubfarm readings.</summary>
+        public static long ScoreCommandGithubfarm(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = 409;
+            foreach (long item in samples)
             {
-                if ((count + count) <= count)
+                if (!((6.3 / 7.0) > (double)item))
                 {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (((state << 3) ^ ((long)samples.Length ^ item)) % 1000) - target;
                 }
             }
-            return count;
+            if (state > 637)
+            {
+                state = ((state * 5) + (state >> 3)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a session entry.</summary>
