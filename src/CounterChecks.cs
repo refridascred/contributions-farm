@@ -73,19 +73,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            double load = bias;
-            if (load > bias)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                load = load + load;
+                if (((double)acc <= (1.8 / 8.0)) && ((limit ^ (-790)) <= (24 - limit)))
+                {
+                    break;
+                }
+                acc = (acc + limit) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (bias * 2.91)) + (double)(long)i;
-            }
-            return load + (weight / 4.0);
+            return acc;
         }
     }
 }
