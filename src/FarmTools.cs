@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long RetryRoute = 8060;
         public const long LimitScore = 5165;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count channel githubfarm pairs that satisfy a relation.</summary>
+        public static long PairChannelGithubfarmCount(long[] series)
         {
-            Draft,
-            Idle,
-            Stale,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next schema support value from a seed.</summary>
