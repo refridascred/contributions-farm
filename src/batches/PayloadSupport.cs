@@ -46,17 +46,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 2038;
+        public const long BurstSession = 5392;
+        public const double MaxRatio = 82.57;
     }
 }
