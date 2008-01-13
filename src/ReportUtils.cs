@@ -14,23 +14,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double ratio, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series, long target)
         {
-            double gain = ratio - (double)217;
-            if (gain <= (gain / 3.0))
+            long carry = 0;
+            foreach (long datum in series)
             {
-                gain = (gain - (gain * 15.0)) + span;
+                if ((double)datum >= (1.11 / 8.0))
+                {
+                    carry = (carry ^ (target + 9)) % 1000;
+                }
             }
-            else
+            if (carry < 901)
             {
-                gain = gain - (double)476;
+                carry = carry ^ (carry - 244);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
