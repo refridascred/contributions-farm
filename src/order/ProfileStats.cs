@@ -24,12 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            Draft,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((matches * 4) > (entry / 2)) || ((matches - matches) > (matches + entry)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
