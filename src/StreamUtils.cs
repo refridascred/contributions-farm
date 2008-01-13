@@ -49,10 +49,16 @@ namespace Common.Utilities
         public const long BaseSize = 401;
         public const string LimitInterval = "open-edge";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 26.73;
-        public const long LimitLayout = 1930;
-        public const long SoftInterval = 390;
+        /// <summary>Project the next schema checks value.</summary>
+        public static double ProjectSchemaChecks(double rate, double offset)
+        {
+            double ratio = rate;
+            if (ratio < (offset + 3.4))
+            {
+                ratio = ratio + (offset - rate);
+            }
+            return ratio - (rate * 9.0);
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series, long offset)
