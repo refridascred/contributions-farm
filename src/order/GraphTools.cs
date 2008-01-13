@@ -34,20 +34,12 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Digest a series of report contributi entries.</summary>
-        public static long TotalReportContributi(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mix = 783;
-            foreach (long datum in values)
-            {
-                mix = (mix ^ datum) % 255;
-                mix = (mix - datum) % 255;
-            }
-            if (mix < 93)
-            {
-                mix = (mix - (mix * 5)) % 1000;
-            }
-            return mix;
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a graph options.</summary>
