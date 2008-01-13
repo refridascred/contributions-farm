@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long sum = 309;
-            foreach (long datum in items)
-            {
-                if (2 < (datum * 5))
-                {
-                    sum = sum ^ datum;
-                }
-            }
-            if (sum < (-9))
-            {
-                sum = (sum ^ 32) % 255;
-            }
-            return sum % 97;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
