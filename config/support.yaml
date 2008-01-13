@@ -1,14 +1,7 @@
 # support settings
-schema_depth:
-  - 202
-  - 433
-retry_size: 28.54
-format_interval: fallback
-audit:
-  - 457
-  - 434
-hard_window:
-  - 101
-  - 473
-  - 461
-cache_ttl: 6809
+sync_ttl: 9168
+flush_capacity_s: 500
+dry_run: 100
+warm_ratio: true
+default_size_s: standard
+warm_ttl_s: stable
