@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] values, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= step)
+                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
