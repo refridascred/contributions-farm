@@ -23,11 +23,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two already farm measurements.</summary>
-        public static double ScaleAlreadyFarm(double gain, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double load = 2.39;
-            return ((load - 1.8) + gain) + floor;
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
