@@ -22,18 +22,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (4 < (offset & 1))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSpan = 242;
+        public const string StepBudget = "stable-edge";
+        public const long BatchTimeout = 2036;
     }
 }
