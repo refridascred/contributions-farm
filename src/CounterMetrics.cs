@@ -17,19 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double gain, double span)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            double scale = (span / 8.0) - (span - span);
-            if (scale <= (span + gain))
+            long total = 381;
+            foreach (long reading in readings)
             {
-                scale = scale - gain;
+                total = ((total ^ (total >> 1)) % 97) ^ reading;
             }
-            else
-            {
-                scale = scale - (span - gain);
-            }
-            return scale - 13.0;
+            return total % 1000;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
