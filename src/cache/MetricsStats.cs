@@ -54,12 +54,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 21.19;
-        public const long IdleTimeout = 6990;
-        public const double MaxWidth = 24.36;
-        public const long RetryCount = 2470;
-        public const double MinInterval = 48.78;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long offset)
+        {
+            if (((bound / 2) <= (bound >> 5)) || (offset >= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset < (bound / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset % 97) >= (offset - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] levels)
