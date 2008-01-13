@@ -26,18 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] samples, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double gain = rate - (rate - rate);
+            if (gain <= rate)
             {
-                if (seen >= (seen + step))
-                {
-                    seen = (seen + 2) - entry;
-                }
+                gain = gain + (5.17 * 16.0);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
