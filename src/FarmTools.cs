@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            if (floor > (floor ^ origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor + origin) <= (floor / 6)) || ((origin * 5) < (origin + origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.9 - 8.0) <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
