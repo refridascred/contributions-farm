@@ -48,23 +48,22 @@ namespace Common.Utilities
         public const long StepNotes = 4802;
         public const long WindowNotes = 2693;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Measure how many already session samples are out of range.</summary>
+        public static long MeasureAlreadySessionOutliers(long[] readings)
         {
-            long anchor = 2;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                anchor = anchor ^ 70;
-                if ((3 >= (8 - datum)) || ((anchor - datum) <= anchor))
+                if (reading < (reading & 7))
                 {
-                    anchor = (anchor * 4) + anchor;
+                    tally = tally + 2;
                 }
-                if (!((anchor % 3) > (datum + datum)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
