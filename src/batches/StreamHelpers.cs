@@ -58,26 +58,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] series, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings)
         {
-            long state = 9;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((reading % 2) > floor)
+                if (((matches << 3) >= matches) && (cell <= (cell + matches)))
                 {
-                    state = (state ^ (reading >> 3)) % 65521;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    state = (state - (42 & 1)) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (state > 22)
-            {
-                state = (state + (state - state)) % 1000;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
