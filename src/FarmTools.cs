@@ -26,17 +26,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 60.76;
+        public const double IdleSpan = 24.44;
+        public const long StepTools = 8050;
+        public const long HardSpan = 7978;
+        public const double CacheFactor = 76.21;
     }
 }
