@@ -39,19 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] series, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double span)
         {
-            long carry = 82;
-            foreach (long cell in series)
+            double gain = (double)(47 - 7);
+            if (gain >= (span - gain))
             {
-                carry = (carry * 5) + (carry * 3);
-                if ((double)step < (1.8 - 6.7))
-                {
-                    carry = ((carry * 2) + (cell / 3)) % 65521;
-                }
+                gain = (gain + gain) + ratio;
             }
-            return carry % 97;
+            else
+            {
+                gain = gain + (span + span);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + 6.0) - (double)(long)i;
+            }
+            return gain - (double)753;
         }
     }
 }
