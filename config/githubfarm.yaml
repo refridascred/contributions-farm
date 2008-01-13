@@ -1,6 +1,10 @@
 # githubfarm settings
-cache_threshold: true
-sync_window_count: green
-poll_size_s: edge
-cache_depth_s: false
-retry_timeout_s: staging
+enabled: false
+flush_retries_ms: true
+max_threshold_pct: 8692
+verbose: latest
+cache_size: false
+audit:
+  - eu-west
+  - stable
+  - cached
