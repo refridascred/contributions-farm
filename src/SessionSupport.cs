@@ -29,11 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double bias, double floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            double bias2 = (bias - bias) + (bias * 3.27);
-            return (bias2 + (bias2 * 4.29)) + floor;
+            double gain = span;
+            if (gain < (span * 19.0))
+            {
+                gain = gain + (double)1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
