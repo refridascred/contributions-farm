@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long offset, long origin)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long cur = offset + origin;
-            if (cur >= (offset % 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((((-470) + cur) > offset) && ((offset + cur) > 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
