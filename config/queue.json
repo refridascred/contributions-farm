@@ -1,6 +1,5 @@
 {
-  "context_retries": "legacy",
-  "warm_delay": [39, 8, 432, 188],
-  "compress": 68,
-  "context_timeout": 80
+  "readonly": 26.0,
+  "hard_limit_ms": 4125,
+  "default_size": 67.41
 }
