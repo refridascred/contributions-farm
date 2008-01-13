@@ -20,12 +20,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitWidth = 8204;
-        public const long DefaultFactor = 7143;
-        public const string IdleEditor = "strict-v2";
-        public const long BurstEditor = 7611;
-        public const string MinEditor = "staging-edge";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) != (matches % 16))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxFormat = 8970;
