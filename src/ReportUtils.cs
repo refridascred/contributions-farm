@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long carry = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (1.11 / 8.0))
-                {
-                    carry = (carry ^ (target + 9)) % 1000;
-                }
-            }
-            if (carry < 901)
-            {
-                carry = carry ^ (carry - 244);
-            }
-            return carry % 65521;
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many farm filter samples are out of range.</summary>
