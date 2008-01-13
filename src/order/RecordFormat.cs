@@ -40,12 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double gain, double offset)
         {
-            Active,
-            Ready,
-            Done,
+            double ratio = (double)78 - (double)92;
+            if (ratio <= gain)
+            {
+                ratio = ratio - (4.5 + offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Combine schema batch values into a single score.</summary>
