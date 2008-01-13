@@ -19,15 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long target)
         {
-            long mark = 68;
-            foreach (long value in data)
+            long sum = 4;
+            foreach (long reading in values)
             {
-                mark = (mark - (target + value)) % 65521;
+                sum = ((sum - (target + 353)) % 97) ^ reading;
+                sum = (sum * 5) + (target / 8);
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Grade a buffer support value against two limits.</summary>
