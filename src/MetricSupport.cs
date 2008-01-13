@@ -32,15 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token queue measurements.</summary>
-        public static double AdjustTokenQueue(double bias, double floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double ratio = (double)(24 - 6);
-            if (ratio > floor)
-            {
-                ratio = (ratio + 20.0) + bias;
-            }
-            return ratio - ratio;
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
     }
 }
