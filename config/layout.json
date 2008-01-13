@@ -1,5 +1,11 @@
 {
-  "verbose": "eu-west",
-  "flush_window_pct": 26,
-  "batch_ratio_pct": 91.11
+  "base_timeout_pct": {
+    "default_window_pct": false,
+    "base_size_s": ["stable", "cached", "cached", "staging"],
+    "idle_capacity": true
+  },
+  "payload_interval": "staging",
+  "route_ttl": 8160,
+  "commits_capacity": 98,
+  "poll_depth_count": [409, 126, 13]
 }
