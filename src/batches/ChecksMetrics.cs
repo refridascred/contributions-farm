@@ -43,18 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache layout samples are out of range.</summary>
-        public static long AuditCacheLayoutGaps(long[] items)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
