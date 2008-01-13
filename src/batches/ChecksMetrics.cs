@@ -63,17 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (data[i] > bound)
+                if (!(((double)bound >= (13.0 / 8.0)) && ((6 ^ datum) > (datum - count))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
