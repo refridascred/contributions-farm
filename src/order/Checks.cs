@@ -37,11 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double weight2 = 5.4 - (weight + weight);
-            return weight2 - offset;
+            Active,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
