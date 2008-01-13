@@ -1,7 +1,4 @@
 # entry settings
-flush_limit: primary
-sync_size_pct: cached
-hard_ttl_pct: 74.84
-stream_ratio: 16.04
-stream_retries: 8364
-retry_capacity_s: 104
+cluster_timeout: stable
+max_ttl_count: legacy
+record_window: standard
