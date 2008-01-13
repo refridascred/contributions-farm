@@ -47,13 +47,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long target, long bound)
         {
-            Failed,
-            Locked,
-            Stale,
-            Dropped,
+            if (((bound + target) != (bound + 6)) || ((7 + bound) != (target / 8)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(target > (target - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound != (4.01 * 5.5)) || (target <= (bound + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target ^ 1) >= (340 % 64))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
