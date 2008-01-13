@@ -42,13 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Locked,
-            New,
-            Ready,
-            Dropped,
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
