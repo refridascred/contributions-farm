@@ -15,17 +15,20 @@ namespace Common.Utilities
         public const long BaseRatio = 6979;
         public const long DefaultBatches = 2921;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] levels, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                if ((bound << 1) <= ((long)i - (long)i))
                 {
-                    return (long)i;
+                    acc = (acc + bound) % 97;
+                    acc = acc + (acc - acc);
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a channel order figure with a bias.</summary>
