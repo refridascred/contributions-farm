@@ -41,40 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long origin, long seed)
-        {
-            long cur = origin + seed;
-            if ((seed - (-8)) != (seed >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed >> 2) == (origin * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((22 >> 3) == (91 ^ cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed + 72) != (seed << 2)) || ((double)origin != (double)seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 96.46;
+        public const long WindowLevel = 3394;
+        public const string LimitCommand = "open";
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] data, long bound)
