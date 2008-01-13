@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 7083;
+        public const string BatchContext = "fallback-edge";
+        public const double BaseLevel = 29.66;
+        public const string HardRatio = "strict-edge";
+        public const string DefaultContext = "cached-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 5105;
