@@ -40,16 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] readings)
         {
-            long score = 98;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                score = (score - (2 + score)) ^ entry;
-                score = ((score * 2) + score) % 97;
+                if (((value << 3) < 99) || ((count % 60) > (count ^ count)))
+                {
+                    count = count + 1;
+                }
             }
-            return score % 97;
+            return count;
         }
     }
 }
