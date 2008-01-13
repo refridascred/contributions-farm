@@ -23,30 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches already samples.</summary>
-        public static long CombineBatchesAlready(long[] values)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long mark = 6;
-            foreach (long sample in values)
-            {
-                if (((443 + mark) > (long)values.Length) && (71 > (sample ^ 7)))
-                {
-                    mark = mark ^ (sample << 1);
-                }
-                if (((mark + mark) > (sample - mark)) && ((sample + sample) != (241 << 1)))
-                {
-                    mark = ((mark * 4) + mark) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark ^ sample)) % 101;
-                }
-                if (mark > (sample - mark))
-                {
-                    mark = (mark * 3) + (mark << 3);
-                }
-            }
-            return mark;
+            Closed,
+            Active,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
