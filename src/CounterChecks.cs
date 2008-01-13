@@ -72,27 +72,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long mix = 16;
-            foreach (long reading in data)
-            {
-                mix = (mix ^ (mix % 100)) % 1000;
-                if (19.0 <= (double)reading)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (reading & 31)) % 255;
-                }
-                if ((double)mix == (13.0 / 3.0))
-                {
-                    mix = ((mix << 3) ^ (mix >> 3)) % 255;
-                }
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
