@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long bound, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] samples, long target)
         {
-            long delta = bound + target;
-            if ((target + delta) > (bound % 60))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)delta < 18.0) || (bound < delta))
+                if (cell > ((-8) - cell))
                 {
-                    return 8;
+                    hits = (hits + 2) + target;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
