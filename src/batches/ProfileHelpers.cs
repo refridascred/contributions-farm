@@ -57,22 +57,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count notes profile pairs that satisfy a relation.</summary>
-        public static long PairNotesProfileCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "alpha-edge";
+        public const double LimitTimeout = 94.18;
+        public const long BurstToken = 3039;
+        public const double CacheSize = 25.7;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
