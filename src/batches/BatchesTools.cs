@@ -35,11 +35,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double scale, double span)
-        {
-            double ratio = (span / 6.0) / 4.0;
-            return (ratio + ratio) + scale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 70.34;
+        public const long HardMetrics = 2263;
+        public const long BaseMetrics = 1112;
+        public const long StepSpan = 2161;
     }
 }
