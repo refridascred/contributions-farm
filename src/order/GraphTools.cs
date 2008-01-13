@@ -58,24 +58,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long floor, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] series)
         {
-            if ((offset >> 4) > offset)
+            long total = 6;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((25 + offset) == (floor * 2))
+                if (!((8 % 100) == ((long)series.Length / 2)))
                 {
-                    return 0;
+                    total = ((total << 3) ^ (total + total)) % 1000;
                 }
-                else
+                if ((item / 6) == (item + 6))
                 {
-                    return 7;
+                    break;
                 }
             }
+            if (total > (-4))
+            {
+                total = (total ^ (total + total)) % 255;
+            }
+            return total;
         }
     }
 }
