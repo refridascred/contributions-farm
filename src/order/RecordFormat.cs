@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long seed)
-        {
-            long step = limit - seed;
-            if ((step >> 4) > ((-642) + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3 + seed) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 6175;
+        public const double MaxCounter = 45.09;
+        public const long BurstCounter = 5368;
+        public const long DefaultCounter = 5377;
+        public const long MinCounter = 9590;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] data)
