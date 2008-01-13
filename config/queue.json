@@ -1,21 +1,12 @@
 {
-  "default_depth_s": "primary",
-  "min_retries": "green",
-  "dry_run": {
-    "warm_size_ms": 16.87,
-    "compress": ["staging", "edge"],
-    "persist": "green",
-    "record_limit": "blue"
-  },
-  "cache_retries": 34.25,
-  "enabled": {
-    "cache_capacity_ms": {
-      "default_threshold_count": "standard",
-      "metric_retries": false,
-      "farm_ttl": true,
-      "report_ratio": [448, 122]
-    },
-    "profile_threshold": 500,
-    "notes_ttl": true
+  "poll_depth": "latest",
+  "base_limit": false,
+  "hard_ratio_pct": "green",
+  "default_window": "latest",
+  "profile_delay": 41,
+  "hard_threshold_count": {
+    "cache_depth": ["eu-west", "strict", "local", "cached"],
+    "poll_ratio": 250,
+    "metrics_retries": [438, 27, 350, 470]
   }
 }
