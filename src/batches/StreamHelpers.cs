@@ -32,21 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] data, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (carry > (carry * 2))
+                if ((data[i] == offset) && ((data[i] % 5) == 0))
                 {
-                    carry = ((carry * 2) + (70 * 4)) % 4096;
-                    carry = ((carry << 3) ^ (step % 64)) % 1000;
+                    return (long)i;
                 }
-                carry = (carry << 2) ^ (carry >> 1);
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
