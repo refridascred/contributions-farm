@@ -73,11 +73,13 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxRatio = 64;
-        public const string HardReport = "local-1";
-        public const double CacheBudget = 59.39;
-        public const long LimitReport = 2738;
-        public const long SoftInterval = 9978;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Failed,
+            Locked,
+            Dropped,
+            Stale,
+        }
     }
 }
