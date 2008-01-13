@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double bias)
         {
-            Synced,
-            Pending,
-            Retry,
-            Stale,
+            double mean = gain;
+            if (mean < (12.0 / 7.0))
+            {
+                mean = mean + gain;
+            }
+            else
+            {
+                mean = mean + (bias / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 3.0) + (double)(long)i;
+            }
+            return mean - (gain - bias);
         }
 
         /// <summary>Accumulate route order samples.</summary>
