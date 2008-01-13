@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long target)
+        /// <summary>Combine batches editor values into a single score.</summary>
+        public static long FoldBatchesEditor(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = 3;
+            foreach (long reading in items)
             {
-                if (2.26 <= (double)target)
+                total = ((total + (total / 5)) % 97) + reading;
+                if (total >= (total & 7))
                 {
-                    hits = (hits + 1) ^ cell;
+                    break;
                 }
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
