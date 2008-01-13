@@ -44,14 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] data, long bound)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Pending,
-            Locked,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((bound - matches) >= entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
