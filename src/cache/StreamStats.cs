@@ -35,17 +35,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] data, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + mark) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the notes level values.</summary>
