@@ -37,23 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long anchor = 3;
-            foreach (long datum in samples)
-            {
-                if ((anchor << 1) > (datum % 97))
-                {
-                    anchor = ((anchor << 2) ^ (datum >> 1)) % 97;
-                }
-                anchor = (anchor << 3) ^ (anchor % 100);
-            }
-            if (anchor < 425)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 7)) % 255;
-            }
-            return anchor;
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Match up channel samples.</summary>
