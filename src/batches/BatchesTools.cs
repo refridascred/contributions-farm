@@ -21,15 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] data)
         {
-            double bias = gain;
-            if (bias > (floor - bias))
+            long count = 0;
+            foreach (long cell in data)
             {
-                bias = bias + (floor * 3.0);
+                if (!((6 + count) <= count))
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return bias + (gain + bias);
+            return count;
         }
 
         /// <summary>Project the next already value.</summary>
