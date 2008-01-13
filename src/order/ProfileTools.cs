@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor << 3) ^ (anchor - bound)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((38 + seen) != (datum ^ 87))
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
