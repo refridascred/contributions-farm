@@ -37,23 +37,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            long anchor = 579;
-            foreach (long item in values)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = anchor - (751 + item);
-                if (((item << 2) <= anchor) && ((item % 10) == (anchor & 7)))
+                if (!((mark & 63) >= mark))
                 {
-                    anchor = (anchor * 2) + (item >> 1);
+                    mark = ((mark * 3) + (floor ^ floor)) % 65521;
+                    continue;
                 }
-                if ((15.0 + 5.56) > (double)item)
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Adjust a commits checks reading.</summary>
