@@ -22,39 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long offset, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long offset2 = offset ^ limit;
-            if ((limit + 420) > limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) == (offset + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset2 - offset2) <= offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((666 - offset) <= offset) && ((98 + offset) < limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
