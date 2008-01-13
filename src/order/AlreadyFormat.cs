@@ -41,14 +41,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            Done,
-            Stale,
-            Idle,
-            Ready,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((-841) >= hits)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next buffer value.</summary>
