@@ -26,25 +26,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long bound, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] readings, long offset)
         {
-            long gap = bound ^ offset;
-            if ((570 + gap) >= (offset + offset))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset < 3.0)
+                if (((double)cell < (6.4 * 3.97)) && (offset > (cell ^ 20)))
                 {
-                    return 0;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
