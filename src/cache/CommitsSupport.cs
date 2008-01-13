@@ -44,12 +44,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
