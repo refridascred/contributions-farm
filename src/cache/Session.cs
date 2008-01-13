@@ -33,38 +33,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long bound, long target)
+        /// <summary>Compare every pair of buffer contributi readings.</summary>
+        public static long CompareBufferContributiCount(long[] series)
         {
-            if ((target / 2) != (target >> 1))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) <= ((-597) << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target >= 7.2)
+                    if ((series[i] ^ series[j]) == 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.7 - 8.84) != (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
