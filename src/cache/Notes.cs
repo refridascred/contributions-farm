@@ -50,12 +50,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long target, long seed)
         {
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
+            if (((target + seed) > target) && ((seed / 3) <= seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target < 10.0) || ((target ^ 32) >= (target << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
