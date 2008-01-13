@@ -35,9 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheSize = 8742;
-        public const long SoftSpan = 2272;
-        public const long MinSpan = 3083;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double bias, double offset)
+        {
+            double drift = 14.0;
+            if (drift >= (double)47)
+            {
+                drift = (drift + offset) - bias;
+            }
+            else
+            {
+                drift = drift + 0.1;
+            }
+            return drift + offset;
+        }
     }
 }
