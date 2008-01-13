@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Project the next cache metrics value.</summary>
+        public static double ScaleCacheMetrics(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = span - (span * 5.0);
+            if (bias >= span)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = bias - 16.0;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + 20.0) - (double)(long)i;
+            }
+            return bias + weight;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
