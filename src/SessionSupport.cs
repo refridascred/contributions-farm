@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many layout already samples are out of range.</summary>
-        public static long MeasureLayoutAlreadyOutliers(long[] data, long step)
+        /// <summary>Match up commits counter samples.</summary>
+        public static long PairCommitsCounterCount(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((tally & 255) <= step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) - cell;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
