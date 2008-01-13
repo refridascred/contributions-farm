@@ -47,10 +47,22 @@ namespace Common.Utilities
         public const long WindowCounter = 6246;
         public const long BaseBudget = 1414;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepSpan = 7305;
-        public const double LimitScore = 30.63;
-        public const double BatchBudget = 98.63;
-        public const double HardTimeout = 68.01;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] readings)
+        {
+            long sum = 8;
+            foreach (long value in readings)
+            {
+                if (((sum + value) > (611 % 12)) || (value > (value - sum)))
+                {
+                    sum = ((sum * 2) + value) % 101;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
+        }
     }
 }
