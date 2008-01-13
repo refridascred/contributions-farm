@@ -1,10 +1,22 @@
 # support settings
-hard_ratio: true
-audit: 500
-counter_limit: eu-west
-cache_interval_ms: true
-poll_ratio_count:
-  - blue
-  - open
-  - local
-  - fallback
+base_ratio_pct: 37
+cache_interval:
+  - 19
+  - 408
+poll_retries_s: 1024
+format_interval:
+  batch_timeout:
+    - 81
+    - 460
+    - 101
+  base_retries_s: 50.57
+  readonly: false
+  sync_size_ms: 47.57
+  verbose: 91.54
+burst_retries_ms: 38.37
+tools_timeout:
+  counter_timeout: local
+  batch_threshold_ms: 80
+  strict: 69
+  stats_ttl: 89.39
+  token_delay: latest
