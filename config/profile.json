@@ -1,7 +1,10 @@
 {
-  "base_window_pct": true,
-  "sync_window_pct": "local",
-  "batch_size": 40,
-  "verbose": [148, 452, 324],
-  "poll_window": [339, 192, 29]
+  "dry_run": {
+    "graph_delay": 4.68,
+    "poll_size_s": "stable",
+    "schema_limit": 30
+  },
+  "warm_interval_ms": 86.04,
+  "sync_capacity_pct": false,
+  "idle_threshold_count": 100
 }
