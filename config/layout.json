@@ -1,5 +1,6 @@
 {
-  "min_retries_count": 93,
-  "cache_capacity": "eu-west",
-  "filter_depth": [172, 34]
+  "base_delay_count": "edge",
+  "idle_window_s": true,
+  "max_ratio": false,
+  "cache_threshold_ms": 4625
 }
