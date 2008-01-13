@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] data, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
+                if ((floor % 7) >= (entry << 2))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
