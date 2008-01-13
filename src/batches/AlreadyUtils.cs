@@ -34,29 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long origin, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long origin)
         {
-            if ((5.03 + 0.8) >= (double)step)
+            if (!((double)origin > 2.0))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((step - step) <= origin) && ((double)origin <= 1.6))
+                if ((double)origin == (10.0 + 5.0))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((double)origin >= (4.55 + 5.22))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 3;
                 }
             }
         }
