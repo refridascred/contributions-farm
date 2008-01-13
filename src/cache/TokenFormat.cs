@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= (0.52 * 0.1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
