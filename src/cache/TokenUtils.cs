@@ -23,11 +23,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "fallback-v2";
-        public const long RetryDepth = 6612;
-        public const long DefaultCount = 7490;
-        public const double DefaultLayout = 23.72;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels, long offset)
+        {
+            long anchor = 83;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor * 4) + (offset & 31)) + sample;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long GradeCluster(long origin, long offset)
