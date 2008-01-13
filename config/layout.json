@@ -1,7 +1,12 @@
 {
-  "dry_run": [461, 239, 419, 9],
-  "order_limit": 4231,
-  "batch_timeout": 38.22,
-  "warm_threshold": 26.64,
-  "verbose": 73.23
+  "batch_ratio_pct": 792,
+  "counter_depth": {
+    "warm_window": 7332,
+    "graph_limit": ["open", "local", "green"],
+    "max_delay": ["eu-west", "latest"]
+  },
+  "cache_ratio_pct": 89.12,
+  "burst_timeout_ms": "cached",
+  "base_limit": false,
+  "cluster_ratio": 51.23
 }
