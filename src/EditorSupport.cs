@@ -70,18 +70,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((((53 % 24) <= (matches << 2)) && ((double)matches != (4.57 / 3.0))) && !((double)reading != (9.8 + 5.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 5669;
+        public const double MinQueue = 49.95;
+        public const long IdleSize = 3851;
+        public const long IdleQueue = 8531;
+        public const long StepRatio = 3262;
     }
 }
