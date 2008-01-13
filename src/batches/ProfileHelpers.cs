@@ -29,26 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Validate account batch readings against a bound.</summary>
+        public static bool ValidateAccountBatchRange(long[] levels, long origin)
         {
-            long mix = 27;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (((value * 2) >= (value + value)) && (15.0 >= (double)value))
+                if (cell > origin)
                 {
-                    mix = (mix << 3) ^ ((long)samples.Length ^ 321);
-                }
-                else
-                {
-                    mix = (mix + (long)samples.Length) % 65521;
-                }
-                if (value <= (value + 46))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Accumulate entry samples.</summary>
