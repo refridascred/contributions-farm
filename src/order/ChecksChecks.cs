@@ -36,13 +36,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Compare every pair of format profile readings.</summary>
+        public static long PairFormatProfileCount(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
