@@ -17,23 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            double weight = rate;
-            if (weight >= weight)
+            long matches = 0;
+            foreach (long item in data)
             {
-                weight = weight + 19.0;
+                if ((item << 2) > (item << 1))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                weight = weight - 0.92;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - offset) - (double)(long)i;
-            }
-            return weight + (double)1;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
