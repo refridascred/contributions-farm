@@ -13,13 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 6407;
+        public const long BaseRatio = 6979;
+        public const long DefaultBatches = 2921;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ScaleCommits(double gain, double span)
