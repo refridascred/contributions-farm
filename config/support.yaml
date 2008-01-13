@@ -1,14 +1,10 @@
 # support settings
-token_delay: blue
-verbose:
-  format_ttl: 24.29
-  poll_size_ms: false
-  enabled:
-    - 10
-    - 5
-flush_ratio_pct:
-  - 200
-  - 116
-min_threshold_count: 54.84
-persist: 7066
-sync_delay: open
+idle_depth_count: blue
+cache_timeout_ms: 87.16
+metric_window:
+  - 198
+  - 44
+  - 429
+compress: 5326
+enabled: false
+max_depth_ms: cached
