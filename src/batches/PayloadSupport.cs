@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate filter contributi samples.</summary>
