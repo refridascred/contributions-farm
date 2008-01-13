@@ -1,5 +1,7 @@
 # support settings
-readonly: blue
-hard_ratio: edge
-token_limit: 3971
-min_size: false
+soft_delay_pct: 6564
+githubfarm_depth: 69.63
+flush_ttl_ms: 77.79
+graph_retries: 47
+burst_window_pct: 96
+audit: 10.44
