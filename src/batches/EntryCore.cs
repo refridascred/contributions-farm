@@ -54,13 +54,20 @@ namespace Common.Utilities
         public const long WindowFactor = 413;
         public const long HardSession = 320;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of already stats entries.</summary>
+        public static long TallyAlreadyStats(long[] items)
         {
-            Done,
-            Draft,
-            Queued,
-            Closed,
+            long total = 3;
+            foreach (long entry in items)
+            {
+                total = (total - total) - entry;
+                total = total + (99 - total);
+                if ((19 - 929) <= (total ^ 72))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
     }
 }
