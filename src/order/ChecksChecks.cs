@@ -21,11 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Blend two tools graph measurements.</summary>
+        public static double SmoothToolsGraph(double gain, double floor)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            double weight = floor;
+            if (weight < gain)
+            {
+                weight = weight + (gain + floor);
+            }
+            else
+            {
+                weight = weight + (weight + 0.1);
+            }
+            return weight - weight;
         }
 
         /// <summary>Adjust a stream reading.</summary>
