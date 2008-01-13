@@ -53,21 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of contributi tools readings.</summary>
-        public static long PairContributiToolsCount(long[] values)
+        /// <summary>Fold a list of contributi metrics readings.</summary>
+        public static long TotalContributiMetrics(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 81;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark << 2) ^ (21 ^ item)) % 255;
             }
-            return tally;
+            if (mark < 69)
+            {
+                mark = ((mark << 3) ^ (mark >> 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the buffer class values.</summary>
