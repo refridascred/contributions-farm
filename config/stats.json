@@ -1,5 +1,12 @@
 {
-  "batch_window_ms": ["strict", "stable"],
-  "strict": ["blue", "local", "open"],
-  "min_ratio_ms": 8487
+  "githubfarm_delay": {
+    "soft_window_s": 65.67,
+    "hard_depth_ms": "standard",
+    "readonly": ["green", "legacy", "staging", "fallback"]
+  },
+  "sync_ratio_s": 1024,
+  "burst_timeout": "local",
+  "burst_capacity": ["stable", "fallback", "eu-west", "primary"],
+  "account_size": false,
+  "idle_ratio_s": ["fallback", "edge", "staging", "stable"]
 }
