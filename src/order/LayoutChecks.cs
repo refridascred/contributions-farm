@@ -30,31 +30,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long seed2)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] items, long origin)
         {
-            if (((double)seed2 != (5.49 / 5.0)) || ((6.38 * 9.87) > (double)seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (8 >= (seed >> 3))
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed2 > (14.0 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
