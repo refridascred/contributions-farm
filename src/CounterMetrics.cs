@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double offset)
-        {
-            double scale = (double)((-453) - (-290));
-            if (scale > scale)
-            {
-                scale = (scale + scale) + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + (offset * 5.97);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepInterval = 9206;
+        public const long CacheCommits = 7354;
+        public const long WindowSpan = 4858;
+        public const long BatchCommits = 2525;
+        public const long MaxBudget = 3866;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] values, long target)
