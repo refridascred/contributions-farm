@@ -54,10 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 20.48;
-        public const double MinMetric = 67.93;
-        public const long LimitMetric = 5630;
-        public const long RetryRatio = 2610;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Active,
+            Dropped,
+            Locked,
+            Queued,
+        }
     }
 }
