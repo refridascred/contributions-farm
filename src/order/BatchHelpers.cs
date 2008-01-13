@@ -22,24 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((11 / 9) < (offset & 1))
-                {
-                    continue;
-                }
-                if ((7.0 / 5.0) != (double)(long)i)
-                {
-                    mix = mix - (offset + mix);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 4157;
+        public const long MinCluster = 2034;
+        public const double BurstCluster = 13.15;
+        public const long IdleBudget = 7315;
+        public const long RetryCluster = 8997;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] levels, long limit)
