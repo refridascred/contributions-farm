@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=12
-log "limit is ${CHANNEL_LIMIT}"
+for item in staging open legacy strict; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 3 ]; do
