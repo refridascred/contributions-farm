@@ -33,19 +33,21 @@ namespace Common.Utilities
             return drift + (bias - bias2);
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] values, long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
