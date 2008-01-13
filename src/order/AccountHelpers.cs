@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 5185;
-        public const long IdleProfile = 5311;
-        public const double HardSpan = 34.56;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheDepth = 5372;
+        public const long MinPayload = 544;
+        public const string SoftPayload = "stable-edge";
+        public const long SoftLevel = 681;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] series)
