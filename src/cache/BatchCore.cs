@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 76.19;
+        public const long LimitDepth = 4809;
+        public const long WindowWidth = 282;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long offset, long limit)
