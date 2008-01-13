@@ -41,19 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double bias, double bias2)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double mean = bias2;
-            if (mean > 17.0)
-            {
-                mean = (mean - (double)3) - bias;
-            }
-            else
-            {
-                mean = mean + (double)78;
-            }
-            return mean - (bias2 / 2.0);
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
