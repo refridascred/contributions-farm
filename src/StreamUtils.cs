@@ -78,13 +78,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Look up the position of a farm cache sample.</summary>
+        public static long LookupFarmCacheIndex(long[] data, long step)
         {
-            Idle,
-            Locked,
-            Synced,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
