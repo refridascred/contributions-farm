@@ -39,22 +39,29 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long seed, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long bound2)
         {
-            if ((4 + seed) >= (6 << 2))
+            if ((bound2 ^ bound) <= bound)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (seed <= (seed >> 4))
+                if ((15.0 - 10.0) > (double)bound)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    if (bound <= bound2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
