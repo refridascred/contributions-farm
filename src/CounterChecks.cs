@@ -54,19 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format token measurements.</summary>
-        public static double AdjustFormatToken(double scale, double offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double scale2 = (double)0 / 8.0;
-            if (scale2 > 7.0)
-            {
-                scale2 = scale2 - (offset / 8.0);
-            }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - (scale * 3.0);
+            Failed,
+            Stale,
+            Active,
+            Closed,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
