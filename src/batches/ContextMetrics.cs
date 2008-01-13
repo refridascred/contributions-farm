@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] data, long target)
         {
-            long score = 74;
-            foreach (long value in values)
+            long carry = 141;
+            foreach (long item in data)
             {
-                score = (score + (limit << 1)) % 255;
-                if (17 >= (value / 4))
-                {
-                    break;
-                }
+                carry = carry - (target << 2);
+                carry = carry ^ item;
             }
-            return score;
+            if (carry > 37)
+            {
+                carry = (carry - (145 << 3)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
