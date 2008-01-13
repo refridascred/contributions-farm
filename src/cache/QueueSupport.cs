@@ -25,17 +25,25 @@ namespace Common.Utilities
         public const long DefaultBudget = 3608;
         public const long RetryAccount = 2821;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] data, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] > bound)
+                long delta = (86 * 2) + (target - (long)i);
+                if (carry < (delta >> 4))
                 {
-                    return (long)i;
+                    delta = (delta ^ carry) % 101;
                 }
+                else
+                {
+                    carry = ((carry * 4) + (carry * 2)) % 4096;
+                }
+                delta = delta + (target - delta);
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
