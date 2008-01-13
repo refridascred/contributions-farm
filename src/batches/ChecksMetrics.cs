@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Pending,
-            Draft,
-            Ready,
+            Queued,
+            New,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
