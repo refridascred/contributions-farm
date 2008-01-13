@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double rate, double span)
         {
-            long total = 374;
-            foreach (long cell in series)
+            double scale = span;
+            if (scale > 14.0)
             {
-                total = total - (total + total);
-                if (total > (cell - total))
-                {
-                    break;
-                }
+                scale = (scale + (double)986) - rate;
             }
-            return total % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (scale * 20.0)) + (double)(long)i;
+            }
+            return scale - 4.8;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
