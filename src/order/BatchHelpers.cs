@@ -29,31 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window channel pair into a bucket.</summary>
-        public static long RankWindowChannel(long bound, long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            if (0 >= (step ^ step))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((9.82 - 9.36) < (9.98 - 3.9)) && ((step % 3) <= step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.0 - 2.31) < (double)bound)
+                    if ((levels[i] ^ levels[j]) != 5)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
