@@ -44,5 +44,12 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
     }
 }
