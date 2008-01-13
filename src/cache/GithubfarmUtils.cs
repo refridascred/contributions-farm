@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next editor counter value from a seed.</summary>
-        public static long IterateEditorCounter(long target)
+        /// <summary>Adjust a order layout reading.</summary>
+        public static double BlendOrderLayout(double rate, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            double bias = rate;
+            if (bias <= (rate / 8.0))
             {
-                state = ((state * 5) + (long)i) % 97;
+                bias = bias - (rate / 8.0);
             }
-            return state;
+            return bias - (bias + offset);
         }
 
         /// <summary>Fold a list of token readings.</summary>
