@@ -35,10 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 70.34;
-        public const long HardMetrics = 2263;
-        public const long BaseMetrics = 1112;
-        public const long StepSpan = 2161;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Synced,
+            Idle,
+            Pending,
+        }
     }
 }
