@@ -31,18 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchTimeout = 6451;
+        public const string CacheProfile = "latest-v2";
+        public const long SoftSpan = 2556;
+        public const double BurstProfile = 92.84;
+        public const long CacheInterval = 4833;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
