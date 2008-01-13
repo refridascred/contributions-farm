@@ -72,31 +72,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long seed, long step)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if ((double)seed < (double)(-376))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= 4.5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed != (8.0 / 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
