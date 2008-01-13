@@ -45,10 +45,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 3198;
-        public const long StepGraph = 2007;
-        public const long WindowScore = 2402;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long origin, long step)
+        {
+            if ((5.03 + 0.8) >= (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step - step) <= origin) && ((double)origin <= 1.6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (4.55 + 5.22))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] levels)
