@@ -1,16 +1,4 @@
 # entry settings
-editor_retries: primary
-retry_interval_count:
-  verbose: 61.2
-  compress: open
-  batches_interval:
-    - open
-    - green
-    - open
-    - latest
-tools_retries:
-  - fallback
-  - legacy
-hard_depth:
-  - 385
-  - 114
+sync_threshold_count: 77
+max_capacity_s: standard
+token_limit: 81.42
