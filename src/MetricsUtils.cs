@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] readings, long target)
+        /// <summary>Derive the next counter support value from a seed.</summary>
+        public static long RollCounterSupport(long step)
         {
-            long result = 447;
-            foreach (long reading in readings)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                result = (result ^ (235 << 3)) - target;
-                if (!((9.4 + 12.0) < (double)reading))
-                {
-                    break;
-                }
+                anchor = anchor + (93 % 16);
+                anchor = (anchor + anchor) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
