@@ -30,19 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long origin)
+        /// <summary>Classify a layout commits pair into a bucket.</summary>
+        public static long ClassifyLayoutCommits(long seed, long limit)
         {
-            long slot = offset + origin;
-            if (((offset ^ offset) < (slot / 7)) && (offset <= slot))
+            if ((seed - 546) != (seed * 2))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (78 <= (slot / 5))
+                if (((double)limit <= (4.9 + 6.82)) || ((limit + limit) < seed))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
