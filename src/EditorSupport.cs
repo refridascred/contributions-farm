@@ -64,10 +64,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardWidth = 89.62;
-        public const double BatchSize = 64.89;
-        public const long RetryContributi = 1784;
+        /// <summary>Audit channel account readings against a rule.</summary>
+        public static long MeasureChannelAccountOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (hits > (hits ^ datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double scale, double bias)
