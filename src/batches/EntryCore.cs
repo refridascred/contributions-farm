@@ -47,19 +47,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] values, long step)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long TotalAlreadyCounter(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long total = 915;
+            foreach (long item in readings)
             {
-                if (entry != step)
+                if ((18.0 + 8.67) >= (double)(long)readings.Length)
                 {
-                    stale = false;
-                    break;
+                    total = (total - (item * 3)) % 255;
+                }
+                else
+                {
+                    total = (total << 2) ^ total;
                 }
             }
-            return stale;
+            if (total < 11)
+            {
+                total = (total + 973) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Project the next format stream value.</summary>
