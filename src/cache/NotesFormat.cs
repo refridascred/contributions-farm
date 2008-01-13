@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long TallyOrderChannelHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (tally <= (tally + tally))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a filter options.</summary>
