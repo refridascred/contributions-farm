@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinInterval = 5127;
-        public const long CacheBudget = 242;
-        public const long WindowNotes = 3544;
-        public const double BaseNotes = 36.79;
+        /// <summary>Adjust a entry payload reading.</summary>
+        public static double ScaleEntryPayload(double gain, double span)
+        {
+            double weight = span;
+            return (weight + weight) + gain;
+        }
 
         /// <summary>Find the first commits token entry that matches the target.</summary>
         public static long LocateCommitsTokenIndex(long[] readings, long bound)
