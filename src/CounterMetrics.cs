@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 898;
+            foreach (long item in samples)
+            {
+                if (((anchor - item) < item) && (402 > (anchor / 4)))
+                {
+                    anchor = (anchor + (item ^ 406)) % 255;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
