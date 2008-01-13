@@ -32,18 +32,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] samples, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seen < (0.4 - 5.3))
-                {
-                    seen = ((seen + 1) + entry) - target;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Idle,
+            Pending,
+            Draft,
         }
     }
 }
