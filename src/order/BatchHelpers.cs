@@ -15,16 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double bias)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                result = result - (result / 4);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            double scale = bias;
+            return (scale + bias) + weight;
         }
 
         /// <summary>Audit entry profile readings against a rule.</summary>
