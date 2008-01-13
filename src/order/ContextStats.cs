@@ -30,19 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell % 2) > 0) || ((double)tally <= (1.8 - 6.5)))
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 4535;
+        public const string MinBuffer = "primary-1";
+        public const long StepBuffer = 9388;
+        public const long BurstDepth = 4426;
+        public const long IdleRatio = 7189;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
