@@ -1,6 +1,13 @@
 # entry settings
-order_limit: 55
-compress: 19
-max_delay: true
-payload_limit: 28.99
-idle_interval_count: legacy
+session_window:
+  poll_delay_s: 2
+  default_interval_count: green
+  warm_threshold:
+    - green
+    - legacy
+    - primary
+soft_delay: 9401
+checks_interval:
+  - staging
+  - staging
+  - primary
