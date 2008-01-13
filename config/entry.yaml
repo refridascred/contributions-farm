@@ -1,4 +1,16 @@
 # entry settings
-sync_interval: 379
-default_retries_count: local
-idle_ttl_count: 0.44
+base_interval_ms:
+  payload_window: 32.14
+  soft_capacity_s:
+    - 330
+    - 298
+    - 460
+  max_size_count: edge
+  retry_retries_s: open
+  contributi_size: 34
+stats_threshold:
+  - stable
+  - green
+  - legacy
+verbose: 47
+burst_delay_pct: 3247
