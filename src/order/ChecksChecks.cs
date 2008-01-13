@@ -28,18 +28,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] values, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (((count ^ count) <= (427 ^ entry)) || (((7.0 * 11.0) != (double)count) && ((entry - 1) <= (-9))))
+                if (cell != limit)
                 {
-                    count = (count + 3) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Compare every pair of format profile readings.</summary>
