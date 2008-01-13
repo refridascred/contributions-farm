@@ -11,20 +11,14 @@ namespace Common.Utilities
         public const long WindowGraph = 365;
         public const double MaxSpan = 75.73;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((limit >> 1) >= limit)
-                {
-                    total = (total * 4) + total;
-                    total = (total ^ (limit % 7)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Idle,
+            Done,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine report commits values into a single score.</summary>
