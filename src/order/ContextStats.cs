@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const long BurstDepth = 4426;
         public const long IdleRatio = 7189;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Ready,
+            Queued,
+            Synced,
         }
     }
 }
