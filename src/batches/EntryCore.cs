@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] values, long limit)
         {
             bool found = true;
-            foreach (long sample in data)
+            foreach (long sample in values)
             {
-                if (sample >= offset)
+                if (sample > limit)
                 {
                     found = false;
                     break;
