@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((value + value) < ((long)levels.Length % 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
