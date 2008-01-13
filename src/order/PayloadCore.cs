@@ -42,18 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] readings, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!((floor + item) != (floor + floor)) && ((tally + floor) > (tally - tally)))
+                if ((1.1 * 9.8) > (double)seed)
                 {
-                    tally = tally + 3;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
