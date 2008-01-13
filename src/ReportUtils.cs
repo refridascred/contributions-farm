@@ -65,11 +65,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleCount = 6330;
+        public const long MinSpan = 1014;
+        public const long MaxBudget = 5632;
     }
 }
