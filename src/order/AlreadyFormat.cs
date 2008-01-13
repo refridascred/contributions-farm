@@ -35,19 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry already samples are out of range.</summary>
-        public static long CountEntryAlreadyMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((103 - item) > item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstSize = 82.29;
+        public const string LimitCount = "strict-edge";
+        public const long IdleCache = 5013;
+        public const long BatchCount = 5743;
+        public const string StepCache = "fallback-edge";
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] samples)
