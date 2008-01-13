@@ -48,18 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] data, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((bound - matches) >= entry)
+                if ((8 * 3) >= (reading + seen))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a graph header.</summary>
