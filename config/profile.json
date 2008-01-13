@@ -1,5 +1,5 @@
 {
-  "hard_threshold_s": true,
-  "retry_depth": [57, 381, 289],
-  "warm_size": [219, 395, 75, 382]
+  "poll_delay": 30,
+  "hard_timeout_ms": 500,
+  "burst_delay": 100
 }
