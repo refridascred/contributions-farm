@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 3190;
-        public const long BurstInterval = 6262;
-        public const long StepCluster = 3916;
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double ratio, double bias)
+        {
+            double bias2 = ratio;
+            if (bias2 >= (9.6 - bias))
+            {
+                bias2 = bias2 - (bias + bias2);
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] levels)
