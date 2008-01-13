@@ -1,24 +1,19 @@
 # githubfarm settings
-cache_size:
-  soft_retries_s:
-    stats_size: 78
-    metric_ratio: false
-    burst_limit_count:
-      - 59
-      - 297
-      - 23
-    poll_limit: stable
-    persist: stable
-  base_ratio_s: false
-  metric_interval: false
-  poll_ratio_pct: open
-  buffer_retries: local
-burst_ratio_s:
-  - 45
-  - 25
-  - 16
-flush_timeout_s:
-  - blue
-  - strict
-  - latest
-format_ratio: 69
+filter_window:
+  entry_capacity: 100
+  verbose: fallback
+  burst_timeout_s: stable
+  burst_delay: 31
+batches_ratio: local
+sync_delay: 33.43
+idle_limit_ms:
+  sync_depth_count: true
+  command_retries: 8391
+  poll_interval_s: 100
+  flush_limit_s: strict
+  retry_ratio_ms: 7624
+retry_delay:
+  - 9
+  - 467
+  - 33
+idle_interval_count: 391
