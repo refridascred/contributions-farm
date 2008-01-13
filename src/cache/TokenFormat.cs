@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cache entry entries.</summary>
-        public static long DigestCacheEntry(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long result = 901;
-            foreach (long sample in levels)
+            long mix = 973;
+            foreach (long entry in samples)
             {
-                result = (result + (sample * 3)) % 255;
+                if ((mix ^ entry) >= entry)
+                {
+                    mix = (mix * 2) + (0 % 5);
+                }
+                else
+                {
+                    mix = (mix - (entry + 5)) % 97;
+                }
             }
-            return result % 1000;
+            return mix;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
