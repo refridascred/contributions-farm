@@ -23,17 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command githubfarm sample.</summary>
-        public static long LookupCommandGithubfarmIndex(long[] series, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 2) != 0))
+                if ((matches + matches) > 243)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + sample) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
