@@ -21,11 +21,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheSize = 8742;
+        public const long SoftSpan = 2272;
+        public const long MinSpan = 3083;
     }
 }
