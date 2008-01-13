@@ -30,12 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
