@@ -1,15 +1,15 @@
 # Command notes
 
-The stream module keeps batch values in sync with the graph cache.
-Use cache settings to tune how often session data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
+Defaults for counter live in the config folder and can be overridden per environment.
+The order module keeps record values in sync with the metric cache.
+Use tools settings to tune how often window data is refreshed.
 
-The notes module keeps payload values in sync with the metrics cache.
-Use format settings to tune how often already data is refreshed.
-Each record is validated before it reaches the buffer queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use record settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Log every layout change
-- Prefer queue defaults
-- Validate queue input early
+- Prefer channel defaults
+- Review contributi limits each release
+- Validate batch input early
+- Keep schema values small
