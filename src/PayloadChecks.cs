@@ -43,12 +43,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] series)
         {
-            Draft,
-            Done,
-            New,
+            long sum = 90;
+            foreach (long datum in series)
+            {
+                sum = sum + (datum & 127);
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
