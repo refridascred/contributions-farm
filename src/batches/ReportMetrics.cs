@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] data, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double rate2 = (rate * 7.5) + (double)95;
+            if (rate2 > (double)37)
             {
-                if ((floor < hits) && ((double)floor <= (5.0 * 1.7)))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
+                rate2 = rate2 + offset;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
