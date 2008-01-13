@@ -32,22 +32,18 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long AuditStreamReportOutliers(long[] items)
+        /// <summary>Measure how many cluster tools samples are out of range.</summary>
+        public static long MeasureClusterToolsOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((double)item <= (double)count) || ((count - 0) < (count % 3)))
+                if ((80 ^ value) < value)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
