@@ -29,12 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheScore = 3.48;
-        public const long CacheSchema = 7847;
-        public const string RetryCount = "strict-v2";
-        public const long IdleSchema = 279;
-        public const double BatchSize = 34.07;
+        /// <summary>Audit command stats readings against a rule.</summary>
+        public static long CountCommandStatsOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((double)(-318) > (double)sample) || ((sample % 7) > (matches / 3))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchBounds(long[] readings, long seed)
