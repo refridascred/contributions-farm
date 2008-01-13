@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double offset)
         {
-            Stale,
-            Queued,
-            Locked,
+            double weight = (double)(95 / 3);
+            if (weight >= weight)
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (bias * 0.27)) - (double)(long)i;
+            }
+            return weight + (offset - 8.3);
         }
     }
 }
