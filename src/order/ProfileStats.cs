@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double drift = (double)((-2) + 141);
-            if (drift >= (bias / 7.0))
-            {
-                drift = drift - (double)84;
-            }
-            return drift + floor;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
