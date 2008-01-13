@@ -25,13 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] readings, long step)
         {
-            Retry,
-            Queued,
-            Locked,
-            Dropped,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
