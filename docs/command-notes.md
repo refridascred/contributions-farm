@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The account report groups every stream by context.
+Keep profile and session names short and lowercase.
+The route report groups every entry by format.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate stats input early
-- Keep schema values small
-- Log every session change
+- Prefer counter defaults
+- Review stream limits each release
+- Log every farm change
