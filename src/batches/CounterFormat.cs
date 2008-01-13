@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (ratio * 15.0) - ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = ((gain + gain) + (double)(long)i) - bias;
             }
-            return -1;
+            return gain + (gain * 17.0);
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
