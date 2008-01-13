@@ -70,32 +70,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster batch value against two limits.</summary>
-        public static long BucketClusterBatch(long floor, long step)
+        /// <summary>Derive the next route payload value from a seed.</summary>
+        public static long DeriveRoutePayload(long limit)
         {
-            long cur = floor ^ step;
-            if (((step * 5) == (step + 5)) && ((cur << 2) <= (step - step)))
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor != (double)cur))
+                total = total - (limit + limit);
+                if ((8.8 + 0.3) <= (double)total)
                 {
-                    return 4;
+                    total = (total + ((-2) / 9)) % 65521;
+                    total = ((total * 3) + (total & 127)) % 101;
+                    continue;
                 }
                 else
                 {
-                    if ((3.3 * 10.0) < (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total + (limit + total)) % 65521;
                 }
+                total = ((total << 3) ^ limit) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
     }
 }
