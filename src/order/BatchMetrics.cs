@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] levels, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seed <= (7.0 - 2.11))
+                if (series[i] >= bound)
                 {
-                    tally = (tally + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
