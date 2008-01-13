@@ -32,18 +32,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] data)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count << 3) != ((long)data.Length << 1))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the queue class values.</summary>
