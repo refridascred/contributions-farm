@@ -32,11 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double bias2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] values)
         {
-            double load = (double)(77 ^ 941);
-            return ((load + load) + bias) + bias2;
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (5.27 >= (double)reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
