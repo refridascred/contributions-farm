@@ -13,15 +13,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double span)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            double bias = 7.8;
-            if (bias >= (gain * 4.89))
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                bias = (bias - (double)(-498)) - span;
+                if ((double)(long)i >= 0.4)
+                {
+                    result = result ^ (offset - result);
+                }
+                result = ((result * 3) + result) % 101;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return bias + (bias + bias);
+            return result;
         }
 
         /// <summary>Fold a list of command readings.</summary>
