@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] series, long limit)
         {
-            Paused,
-            Closed,
-            Stale,
+            long result = 875;
+            foreach (long datum in series)
+            {
+                if (!((result >> 5) == (long)series.Length))
+                {
+                    result = ((result + (datum % 5)) % 1000) + limit;
+                }
+            }
+            if (result < 384)
+            {
+                result = (result ^ ((-9) / 5)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
