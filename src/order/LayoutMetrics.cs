@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats commits values into a single score.</summary>
-        public static long FoldStatsCommits(long[] series)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long sum = 34;
-            foreach (long item in series)
-            {
-                if (((item + item) == (item << 2)) && ((sum << 2) != (item % 16)))
-                {
-                    sum = ((sum * 5) + (sum << 3)) % 4096;
-                }
-            }
-            return sum % 97;
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
