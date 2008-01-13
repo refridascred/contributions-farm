@@ -19,20 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Combine buffer window values into a single score.</summary>
+        public static long TotalBufferWindow(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long score = -7;
+            foreach (long item in data)
             {
-                sum = sum ^ (sum / 6);
-                if (((long)i + sum) == (840 >> 5))
+                if ((score % 8) != (item % 16))
                 {
-                    sum = ((sum << 2) ^ ((long)i & 1)) % 1000;
+                    score = score + item;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                else
+                {
+                    score = (score ^ (item >> 3)) % 4096;
+                }
             }
-            return sum;
+            return score % 4096;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
