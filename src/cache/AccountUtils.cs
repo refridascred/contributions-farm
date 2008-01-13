@@ -32,25 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long delta = origin + target;
-            if (((double)origin > 4.34) && ((origin + origin) == (origin >> 5)))
+            long total = 1;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((delta >> 2) == (origin - 387)))
+                total = ((total * 2) + ((-5) % 8)) % 1000;
+                if (!((item - item) >= (91 & 127)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    total = ((total * 4) + item) % 255;
                 }
             }
+            return total;
         }
     }
 }
