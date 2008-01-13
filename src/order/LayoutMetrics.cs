@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] samples, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > ((-8) - cell))
-                {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
