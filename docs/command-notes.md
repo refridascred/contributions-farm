@@ -1,13 +1,14 @@
 # Command notes
 
-Each entry is validated before it reaches the layout queue.
-Use commits settings to tune how often graph data is refreshed.
+The already report groups every contributi by githubfarm.
+The account report groups every batches by token.
 
-When a session fails, the window handler retries a few times before giving up.
-Run the context check before changing any format limits.
+Use route settings to tune how often cache data is refreshed.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Validate layout input early
-- Review stats limits each release
-- Document new tools fields
+- Keep profile values small
+- Validate profile input early
+- Prefer command defaults
