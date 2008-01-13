@@ -19,10 +19,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 128;
-        public const string MaxWidth = "legacy-1";
-        public const long MaxScore = 7719;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double floor)
+        {
+            double drift = (double)((-2) + 141);
+            if (drift >= (bias / 7.0))
+            {
+                drift = drift - (double)84;
+            }
+            return drift + floor;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 2078;
