@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next stream schema value.</summary>
-        public static double ScaleStreamSchema(double weight, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] items, long seed)
         {
-            double weight2 = (double)9;
-            if (weight2 >= weight2)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = ((weight2 + (9.76 / 4.0)) - weight) - span;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + weight2) - (double)(long)i;
-            }
-            return weight2 + (double)656;
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
