@@ -24,22 +24,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long acc = 195;
+            foreach (long datum in series)
             {
-                if (((matches * 4) > (entry / 2)) || ((matches - matches) > (matches + entry)))
+                acc = acc + (218 + (-5));
+                if ((683 / 6) <= (datum * 3))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc ^ (datum << 1)) % 255;
                 }
             }
-            return matches;
+            if (acc < (-5))
+            {
+                acc = (acc - ((long)series.Length / 6)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of githubfarm batch entries.</summary>
