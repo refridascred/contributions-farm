@@ -64,12 +64,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Idle,
-            New,
-            Synced,
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
