@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long origin)
         {
-            long sum = 16;
-            foreach (long cell in series)
+            long cur = target - origin;
+            if ((origin > (8 % 3)) && ((cur - origin) <= origin))
             {
-                sum = ((sum << 3) ^ cell) % 97;
-                if ((975 > (sum - 629)) && ((floor ^ (-2)) <= (floor + floor)))
+                return 1;
+            }
+            else
+            {
+                if ((cur + cur) <= (origin - target))
                 {
-                    sum = (sum ^ (cell + floor)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if (!(917 < (target % 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (sum < 36)
-            {
-                sum = ((sum * 4) + (floor - sum)) % 97;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Describe the commits state values.</summary>
