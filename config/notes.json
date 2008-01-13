@@ -1,20 +1,5 @@
 {
-  "layout_limit": {
-    "idle_delay_count": 24.09,
-    "readonly": 250,
-    "stream_timeout": 56,
-    "buffer_capacity": "stable",
-    "strict": 54,
-    "channel_timeout": 9228
-  },
-  "farm_depth": 14.5,
-  "tools_window": ["local", "blue", "blue", "standard"],
-  "queue_interval": 25.49,
-  "account_delay": {
-    "farm_ratio": [459, 116, 32, 64],
-    "poll_ratio_ms": 1024,
-    "session_delay": [216, 37, 494],
-    "readonly": 250,
-    "soft_delay": ["stable", "blue"]
-  }
+  "soft_retries": 61.36,
+  "cluster_delay": false,
+  "warm_delay_count": 4958
 }
