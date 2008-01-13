@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const double BurstCommits = 93.73;
         public const string HardSize = "latest-1";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)tally <= (8.98 / 7.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
