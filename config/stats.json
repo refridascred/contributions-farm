@@ -1,6 +1,13 @@
 {
-  "persist": false,
-  "max_limit_ms": "strict",
-  "min_ratio": "standard",
-  "idle_limit": "latest"
+  "stream_size": 69.89,
+  "enabled": {
+    "metrics_interval": false,
+    "poll_limit": 1024,
+    "batch_size_s": "primary",
+    "buffer_ratio": 2935,
+    "default_limit_s": "green"
+  },
+  "base_capacity": 100,
+  "base_interval": 7800,
+  "hard_delay_s": 696
 }
