@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] readings, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            long sum = 87;
-            foreach (long reading in readings)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading & 63) > reading)
-                {
-                    sum = (sum + (278 + offset)) % 4096;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
             return sum;
         }
