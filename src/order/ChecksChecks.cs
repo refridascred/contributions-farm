@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] items, long origin)
+        /// <summary>Measure how many route account samples are out of range.</summary>
+        public static long AuditRouteAccountGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((reading << 1) <= (hits << 1))
+                if (86 < tally)
                 {
-                    hits = (hits + 3) - origin;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
