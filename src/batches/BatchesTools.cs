@@ -33,18 +33,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long bound, long step)
         {
-            long total = 98;
-            foreach (long reading in values)
+            long delta = bound + step;
+            if (!((delta - 65) < (step ^ delta)))
             {
-                if ((16.0 * 8.0) != (double)total)
+                return 7;
+            }
+            else
+            {
+                if (((4.8 - 9.0) <= (double)bound) || ((double)delta != (17.0 + 17.0)))
                 {
-                    total = ((total - (origin + total)) % 97) - reading;
+                    return 4;
+                }
+                else
+                {
+                    if (step >= delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total;
         }
     }
 }
