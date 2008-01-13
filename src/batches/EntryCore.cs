@@ -46,20 +46,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate commits support readings against a bound.</summary>
-        public static bool VerifyCommitsSupportBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 6579;
+        public const double BaseSpan = 95.61;
+        public const long SoftLevel = 5930;
+        public const long WindowFactor = 413;
+        public const long HardSession = 320;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
