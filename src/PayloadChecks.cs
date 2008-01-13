@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheTimeout = "cached";
-        public const string WindowMetrics = "open-edge";
-        public const string LimitMetrics = "latest-edge";
-        public const long BatchMetrics = 8207;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items)
+        {
+            long state = 777;
+            foreach (long entry in items)
+            {
+                if (!((state ^ state) != (4 / 5)))
+                {
+                    state = ((state * 3) + (40 + state)) % 97;
+                    state = state ^ 146;
+                }
+                state = ((state << 3) ^ (state + entry)) % 4096;
+            }
+            if (state < 673)
+            {
+                state = ((state << 2) ^ state) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
