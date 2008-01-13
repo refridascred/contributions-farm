@@ -1,19 +1,24 @@
 # githubfarm settings
-sync_delay_count:
-  retry_size_s:
-    - strict
-    - green
-    - green
-  max_interval: 66
-  support_timeout: 7980
-  persist: staging
-compress: 83
-warm_capacity:
-  enabled:
-    - 342
-    - 310
-  warm_limit_pct: 85
-  batches_interval: 6484
-strict: 67.49
-graph_ttl: stable
-idle_size: legacy
+cache_size:
+  soft_retries_s:
+    stats_size: 78
+    metric_ratio: false
+    burst_limit_count:
+      - 59
+      - 297
+      - 23
+    poll_limit: stable
+    persist: stable
+  base_ratio_s: false
+  metric_interval: false
+  poll_ratio_pct: open
+  buffer_retries: local
+burst_ratio_s:
+  - 45
+  - 25
+  - 16
+flush_timeout_s:
+  - blue
+  - strict
+  - latest
+format_ratio: 69
