@@ -1,8 +1,11 @@
 {
-  "context_capacity": 4,
-  "graph_capacity": 61.13,
-  "metrics_timeout": 96,
-  "metric_ratio": "local",
-  "metrics_delay": 90.26,
-  "checks_ttl": "strict"
+  "support_retries": false,
+  "session_interval": {
+    "warm_timeout_count": 45,
+    "strict": [72, 39],
+    "burst_depth_count": 63.38
+  },
+  "persist": 29,
+  "dry_run": "stable",
+  "min_size_s": "green"
 }
