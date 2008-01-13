@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate already support readings against a bound.</summary>
-        public static bool VerifyAlreadySupportLimits(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6074;
+        public const long LimitCommits = 2869;
+        public const long CacheSpan = 1734;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long target)
