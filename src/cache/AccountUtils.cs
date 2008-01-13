@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every stats editor entry stays within the limit.</summary>
-        public static bool VerifyStatsEditorBounds(long[] levels, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long sum = 9;
+            foreach (long entry in levels)
             {
-                if (item > target)
+                if (!(entry >= (entry >> 4)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (sum / 4)) % 101;
+                }
+                else
+                {
+                    sum = sum - entry;
                 }
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Blend two already farm measurements.</summary>
