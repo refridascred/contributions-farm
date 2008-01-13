@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout session readings against a bound.</summary>
-        public static bool ValidateLayoutSessionLimits(long[] items, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a schema entry.</summary>
