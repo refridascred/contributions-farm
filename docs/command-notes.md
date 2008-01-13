@@ -1,10 +1,11 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-The record report groups every route by already.
+Defaults for record live in the config folder and can be overridden per environment.
+The account report groups every stream by context.
 
 ## Guidelines
 
-- Review account limits each release
-- Log every cache change
-- Keep context values small
+- Prefer record defaults
+- Validate stats input early
+- Keep schema values small
+- Log every session change
