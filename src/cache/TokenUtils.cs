@@ -23,23 +23,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next payload token value from a seed.</summary>
-        public static long StepPayloadToken(long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long mix = 17;
+            foreach (long cell in samples)
             {
-                if (!((double)carry <= (double)(long)i))
+                if ((mix ^ cell) > (bound ^ cell))
                 {
-                    carry = (carry * 2) + origin;
+                    mix = (mix - mix) % 4096;
                 }
-                if ((origin ^ 53) != (carry + 2))
-                {
-                    carry = (carry * 4) + (long)i;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
