@@ -21,10 +21,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 4004;
-        public const long SoftCount = 3550;
-        public const long HardNotes = 7731;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] data)
