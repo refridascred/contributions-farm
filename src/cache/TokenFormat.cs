@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mix = (mix << 3) ^ (floor << 2);
-                mix = mix + ((long)i >> 4);
-                mix = (mix << 2) ^ mix;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((double)reading >= (0.52 * 0.1))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a format stats.</summary>
