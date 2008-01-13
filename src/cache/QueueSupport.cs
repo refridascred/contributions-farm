@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double bias)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double bias2 = bias - (double)1;
-            return (bias2 - (bias2 + bias2)) + gain;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
