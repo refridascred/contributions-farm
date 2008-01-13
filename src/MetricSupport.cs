@@ -33,11 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "legacy";
+        public const long StepLevel = 7335;
+        public const long DefaultFilter = 7639;
+        public const long LimitTimeout = 8293;
+        public const long BurstSpan = 2926;
     }
 }
