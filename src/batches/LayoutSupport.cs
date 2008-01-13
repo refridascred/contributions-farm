@@ -39,17 +39,13 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] levels, long bound)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count commits already pairs that satisfy a relation.</summary>
