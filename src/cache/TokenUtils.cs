@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] levels)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((9.02 >= (double)value) || ((tally % 7) > (value + tally))) && (tally >= 53))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Project the next token stats value.</summary>
