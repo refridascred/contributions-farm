@@ -27,11 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 7183;
-        public const long BaseAlready = 1046;
-        public const long RetryAlready = 4489;
-        public const long RetryInterval = 7723;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((matches + cell) <= matches) && ((matches - matches) >= (cell << 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long offset)
