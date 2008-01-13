@@ -31,9 +31,10 @@ namespace Common.Utilities
         public const long BaseRatio = 4434;
         public const long RetryWindow = 4615;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinScore = 85.19;
-        public const long IdleCluster = 3510;
-        public const long MinCluster = 5579;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepSpan = 7305;
+        public const double LimitScore = 30.63;
+        public const double BatchBudget = 98.63;
+        public const double HardTimeout = 68.01;
     }
 }
