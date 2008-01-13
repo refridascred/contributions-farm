@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double CacheReport = 71.67;
         public const string IdleLevel = "fallback-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinToken = "fallback";
-        public const long SoftToken = 4055;
-        public const string IdleToken = "local";
-        public const double LimitScore = 49.9;
-        public const long BaseCount = 610;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] levels)
