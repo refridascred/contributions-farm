@@ -40,22 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long TallySupportOrderGaps(long[] data)
+        /// <summary>Validate window checks readings against a bound.</summary>
+        public static bool CheckWindowChecksBounds(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((4.2 * 0.25) > (19.0 + 7.81))
+                if (item < floor)
                 {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of token entries.</summary>
