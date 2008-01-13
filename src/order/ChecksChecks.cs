@@ -28,12 +28,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((count ^ count) <= (427 ^ entry)) || (((7.0 * 11.0) != (double)count) && ((entry - 1) <= (-9))))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of format profile readings.</summary>
