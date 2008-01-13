@@ -1,15 +1,6 @@
 {
-  "poll_limit_ms": {
-    "max_depth_count": 13.03,
-    "retry_interval_count": ["strict", "open"],
-    "dry_run": {
-      "idle_depth_count": "blue",
-      "burst_ttl": true,
-      "retry_depth": "cached",
-      "default_limit_ms": false
-    }
-  },
-  "readonly": "edge",
-  "sync_ratio_ms": "edge",
-  "window_threshold": 30
+  "cache_delay_s": "edge",
+  "min_timeout": 69.53,
+  "burst_retries_ms": 51,
+  "counter_ttl": "latest"
 }
