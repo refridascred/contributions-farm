@@ -72,13 +72,19 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            long acc = 48;
+            foreach (long sample in values)
+            {
+                acc = (((acc << 2) ^ (288 >> 2)) % 1000) + sample;
+            }
+            if (acc < 688)
+            {
+                acc = (acc * 5) + (acc >> 3);
+            }
+            return acc;
         }
     }
 }
