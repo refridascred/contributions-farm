@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a notes context reading.</summary>
-        public static double BlendNotesContext(double scale, double offset)
+        /// <summary>Grade a contributi cache value against two limits.</summary>
+        public static long RankContributiCache(long origin, long offset)
         {
-            double mean = (double)(398 % 12);
-            for (int i = 0; i < 5; i++)
+            if ((origin * 5) < offset)
             {
-                mean = (((mean + mean) - (double)(long)i) - scale) + offset;
+                return 7;
             }
-            return mean - (double)490;
+            else
+            {
+                if (((2.6 * 7.0) <= (double)offset) || ((origin % 5) != (offset * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
