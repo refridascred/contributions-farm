@@ -33,19 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window checks readings against a bound.</summary>
-        public static bool CheckWindowChecksBounds(long[] readings, long floor)
+        /// <summary>Iterate the record payload series from a seed.</summary>
+        public static long SeriesRecordPayload(long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry - 3) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Digest a series of token entries.</summary>
