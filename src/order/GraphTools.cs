@@ -48,37 +48,22 @@ namespace Common.Utilities
         public const string BaseSize = "local-1";
         public const long BurstTimeout = 8553;
 
-        /// <summary>Rank window token input into a small class.</summary>
-        public static long ClassifyWindowToken(long seed, long floor)
+        /// <summary>Rank session route input into a small class.</summary>
+        public static long RankSessionRoute(long step, long bound)
         {
-            long slot = seed - floor;
-            if (!((slot - seed) >= (floor * 3)))
+            if (((step * 5) < (bound * 5)) && ((step >> 1) != (step % 5)))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((845 >> 4) < (seed & 7))
+                if ((8.9 + 7.41) == (double)step)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((7.6 - 3.27) >= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed % 97) > floor) || (slot <= (floor ^ 949)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
