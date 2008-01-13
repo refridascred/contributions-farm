@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy-1";
         public const long SoftChecks = 4016;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] series, long origin)
         {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate schema samples.</summary>
