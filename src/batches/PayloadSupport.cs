@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            long result = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Accumulate filter contributi samples.</summary>
