@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double bias, double offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double drift = offset;
-            if (drift < offset)
-            {
-                drift = drift - (offset - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (offset / 3.0)) + (double)(long)i;
-            }
-            return drift - bias;
+            Paused,
+            Dropped,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Audit buffer batch readings against a rule.</summary>
