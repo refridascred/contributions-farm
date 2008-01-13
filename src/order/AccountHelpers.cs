@@ -28,22 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((item + item) == (count << 1)) || ((count << 1) > (count + 1)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the batch mode values.</summary>
