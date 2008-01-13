@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+CHANNEL_LIMIT=486
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in edge green; do
+for item in staging latest edge fallback; do
     log "checking ${item}"
 done
+
+mode="${1:-strict}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
