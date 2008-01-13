@@ -49,18 +49,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] levels, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long step, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long diff = step + limit;
+            if (!((double)diff != (0.33 * 4.2)))
             {
-                if (!((((-196) - entry) == (14 << 3)) && ((entry + entry) < offset)))
+                return 8;
+            }
+            else
+            {
+                if ((limit * 3) <= 1)
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 + 2.33) != (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((53 ^ diff) >= (limit >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
