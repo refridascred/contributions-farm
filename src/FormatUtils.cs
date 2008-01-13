@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the batches class values.</summary>
