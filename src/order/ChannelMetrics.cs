@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCount = 2170;
-        public const double BaseFactor = 88.37;
-        public const long StepCluster = 6527;
-        public const long IdleCluster = 977;
-        public const string MaxCluster = "fallback-v2";
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long target, long seed)
