@@ -29,16 +29,12 @@ namespace Common.Utilities
         public const string WindowSchema = "fallback";
         public const long BatchSchema = 2464;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels, long step)
-        {
-            long state = -3;
-            foreach (long value in levels)
-            {
-                state = (state - (value / 8)) - step;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepLevel = 4146;
+        public const long MaxInterval = 9914;
+        public const double SoftRoute = 57.3;
+        public const long MaxSpan = 606;
+        public const long IdleRoute = 2933;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryRange(long[] samples, long limit)
