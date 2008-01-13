@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] samples, long limit)
         {
-            Paused,
-            Queued,
-            Stale,
+            long anchor = 578;
+            foreach (long item in samples)
+            {
+                anchor = anchor ^ (limit - item);
+                if ((limit ^ limit) != (item >> 2))
+                {
+                    anchor = (anchor ^ (limit + 0)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
