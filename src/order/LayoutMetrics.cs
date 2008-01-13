@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] items, long bound)
-        {
-            long anchor = 79;
-            foreach (long item in items)
-            {
-                anchor = (anchor ^ (long)items.Length) % 1000;
-                if (!((double)bound > (6.43 * 8.0)))
-                {
-                    anchor = anchor ^ (bound - bound);
-                }
-                else
-                {
-                    anchor = anchor ^ (bound + item);
-                }
-                if (((20.0 / 3.0) != (double)bound) && ((double)item == (5.6 * 14.0)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "cached-1";
+        public const long RetryFactor = 5342;
+        public const long LimitDepth = 6007;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxSpan = 2582;
