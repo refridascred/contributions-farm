@@ -35,20 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "open-edge";
+        public const double DefaultFarm = 57.22;
+        public const string BatchFarm = "local-1";
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
