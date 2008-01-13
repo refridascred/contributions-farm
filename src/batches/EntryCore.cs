@@ -47,22 +47,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] samples, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((step & 3) < (74 + seed))
             {
-                if ((((double)item > (16.0 - 7.4)) || ((double)item <= (11.0 * 6.1))) && (((double)bound >= (5.0 + 7.0)) && ((item & 3) < (matches * 3))))
+                return 6;
+            }
+            else
+            {
+                if ((7.0 * 2.0) < (9.59 / 5.0))
                 {
-                    matches = matches + 3;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((238 + seed) <= step) && (seed < (seed - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step >> 5) > (seed - seed)) && ((step * 3) >= (step / 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next format stream value.</summary>
