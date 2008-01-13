@@ -20,18 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] readings, long floor)
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long MeasureSessionPayloadOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((14.0 + 16.0) >= (15.0 * 6.38)) || ((hits & 7) >= (sample >> 4)))
+                if (matches <= cell)
                 {
-                    hits = (hits + 1) + floor;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
