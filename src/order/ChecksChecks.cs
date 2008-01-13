@@ -34,27 +34,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of profile token entries.</summary>
-        public static long ScoreProfileToken(long[] readings, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] levels, long offset)
         {
-            long carry = 704;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)sample == (double)limit)
+                if ((hits < (hits * 3)) && ((hits + hits) <= entry))
                 {
-                    carry = (carry - sample) % 65521;
+                    hits = (hits + 1) + offset;
                 }
-                else
-                {
-                    carry = (carry - limit) % 4096;
-                }
-                carry = (carry ^ sample) % 65521;
             }
-            if (carry > (-220))
-            {
-                carry = (carry - (limit / 7)) % 65521;
-            }
-            return carry;
+            return hits;
         }
     }
 }
