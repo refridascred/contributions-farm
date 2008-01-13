@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long carry = 8;
-            foreach (long reading in levels)
-            {
-                carry = ((carry * 4) + (carry - reading)) % 1000;
-                carry = (carry + (8 + 4)) % 97;
-            }
-            if (carry < 4)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
