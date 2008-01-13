@@ -23,11 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
