@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the metrics queue entries that pass the check.</summary>
-        public static long AuditMetricsQueueHits(long[] samples, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((floor + seen) != (floor - seen))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the account state values.</summary>
