@@ -16,14 +16,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] series)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Failed,
-            Paused,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(hits >= (hits - 740)))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit session payload readings against a rule.</summary>
