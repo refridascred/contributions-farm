@@ -14,11 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((limit ^ 37) >= (limit >> 4))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
