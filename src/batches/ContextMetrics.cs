@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinChecks = 47.0;
-        public const long MinScore = 9049;
-        public const long BurstChecks = 8576;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "legacy-edge";
+        public const string CacheSpan = "primary-1";
+        public const long SoftNotes = 6555;
+        public const string MaxNotes = "strict-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftScore = 6525;
