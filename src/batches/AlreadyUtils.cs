@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 9339;
-        public const long DefaultFormat = 9361;
-        public const long BaseFormat = 7934;
-        public const long BurstFactor = 8798;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 7319;
+        public const long IdleGraph = 8137;
+        public const long WindowGraph = 365;
+        public const double MaxSpan = 75.73;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long limit)
