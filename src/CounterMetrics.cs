@@ -30,31 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items, long offset)
+        /// <summary>Fold a list of payload farm readings.</summary>
+        public static long CombinePayloadFarm(long[] data)
         {
-            long total = 723;
-            foreach (long entry in items)
+            long result = 415;
+            foreach (long datum in data)
             {
-                if ((total < (entry + total)) && ((total >> 3) <= (offset + (long)items.Length)))
+                if (((datum - datum) >= 6) && ((54 - datum) > (datum ^ 1)))
                 {
-                    total = total ^ (entry + total);
+                    result = ((result * 2) + (2 + result)) % 65521;
                 }
-                else
-                {
-                    total = (total + (total >> 1)) % 65521;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    total = ((total << 2) ^ 9) - (long)i;
-                }
-                total = (total * 3) + (total * 3);
             }
-            if (total > 613)
-            {
-                total = (total * 3) + (total / 2);
-            }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Accumulate token samples.</summary>
