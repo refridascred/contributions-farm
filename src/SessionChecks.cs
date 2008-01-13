@@ -42,17 +42,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first format metric entry that matches the target.</summary>
-        public static long LookupFormatMetricIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepScore = "alpha";
+        public const double BurstAccount = 4.93;
+        public const string MaxTimeout = "open-v2";
     }
 }
