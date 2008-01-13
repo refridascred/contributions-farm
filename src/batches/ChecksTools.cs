@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 64.2;
+        public const string BatchSpan = "legacy";
+        public const double MaxPayload = 35.07;
+        public const long MaxDepth = 153;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
