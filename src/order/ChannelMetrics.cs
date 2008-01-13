@@ -25,13 +25,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            Retry,
-            Done,
-            Ready,
-            Synced,
+            double drift = weight - weight;
+            if (drift >= drift)
+            {
+                drift = drift - (drift - drift);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (double)230) + (double)(long)i;
+            }
+            return drift + (offset + offset);
         }
     }
 }
