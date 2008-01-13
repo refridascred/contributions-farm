@@ -33,15 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long FoldPayloadStats(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long origin)
         {
-            long acc = 535;
-            foreach (long sample in series)
+            long total = 98;
+            foreach (long reading in values)
             {
-                acc = (((acc << 3) ^ (acc << 3)) % 65521) - sample;
+                if ((16.0 * 8.0) != (double)total)
+                {
+                    total = ((total - (origin + total)) % 97) - reading;
+                }
             }
-            return acc % 4096;
+            return total;
         }
     }
 }
