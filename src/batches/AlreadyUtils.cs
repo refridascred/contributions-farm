@@ -63,9 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 2182;
-        public const long IdleTimeout = 6609;
-        public const long CachePayload = 2549;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
