@@ -63,20 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((((long)i >> 3) <= (acc << 3)) && ((acc + acc) <= (83 + acc)))
-                {
-                    acc = ((acc << 2) ^ (origin << 1)) % 4096;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            New,
+            Done,
+            Stale,
+            Dropped,
         }
     }
 }
