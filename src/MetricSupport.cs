@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Count filter commits pairs that satisfy a relation.</summary>
+        public static long MatchFilterCommitsCount(long[] items)
         {
             long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)levels.Length != (item * 3)) || !(count < (item >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
