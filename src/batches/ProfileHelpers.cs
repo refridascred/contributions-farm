@@ -70,12 +70,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Combine stream session values into a single score.</summary>
