@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
+            Closed,
             Locked,
             Active,
-            Ready,
+            New,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
