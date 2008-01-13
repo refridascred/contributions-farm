@@ -48,15 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data, long limit)
+        /// <summary>Look up the position of a notes session sample.</summary>
+        public static long FindNotesSessionIndex(long[] readings, long bound)
         {
-            long mix = 75;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix - datum)) % 1000) - limit;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
