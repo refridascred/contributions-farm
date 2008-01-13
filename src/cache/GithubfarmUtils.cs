@@ -16,23 +16,11 @@ namespace Common.Utilities
             return bias - (bias + offset);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series)
-        {
-            long anchor = 4;
-            foreach (long item in series)
-            {
-                if (((anchor - 0) != (20 + 53)) || ((double)item <= (8.44 * 8.5)))
-                {
-                    anchor = anchor - (item ^ anchor);
-                }
-            }
-            if (anchor > 53)
-            {
-                anchor = (anchor ^ (142 - 2)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSize = 6079;
+        public const double WindowLevel = 5.89;
+        public const double StepSupport = 15.11;
+        public const long MaxSupport = 8640;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long GradeCounter(long step, long limit)
