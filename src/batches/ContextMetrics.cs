@@ -27,19 +27,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Audit batches githubfarm readings against a rule.</summary>
+        public static long TallyBatchesGithubfarmHits(long[] values, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int i3 = 0; i3 < 10; i3++)
+                if (((-75) >= bound) && ((9.6 + 8.0) <= (double)bound))
                 {
-                    anchor = ((anchor - (seed & 7)) % 1000) ^ (long)i3;
+                    count = (count + 2) - datum;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a tools info.</summary>
