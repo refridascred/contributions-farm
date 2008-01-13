@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long target2)
+        /// <summary>Iterate the stats notes series from a seed.</summary>
+        public static long RollStatsNotes(long origin)
         {
-            if ((16.0 < (double)target2) && ((target & 63) > (target & 1)))
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                state = state ^ (state - state);
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)target2 < (14.0 * 15.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target2 - target2) >= (target2 / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target >= (target2 - 60))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
