@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 4565;
+        public const double BatchAccount = 34.75;
+        public const long RetryAccount = 5753;
+        public const long SoftAccount = 434;
+        public const long WindowRatio = 956;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
