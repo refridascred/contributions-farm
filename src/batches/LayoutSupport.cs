@@ -42,18 +42,17 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] series, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum + matches) > datum) || ((seed - datum) < seed))
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a report token figure with a bias.</summary>
