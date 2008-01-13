@@ -27,22 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format stats entries.</summary>
-        public static long DigestFormatStats(long[] readings, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = 17;
-            foreach (long cell in readings)
-            {
-                if ((4 % 16) <= mix)
-                {
-                    mix = ((mix << 2) ^ (731 - offset)) + cell;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = ((mix << 3) ^ 6) % 101;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
