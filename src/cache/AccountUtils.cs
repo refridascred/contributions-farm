@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double offset)
+        /// <summary>Blend two already farm measurements.</summary>
+        public static double ScaleAlreadyFarm(double gain, double floor)
         {
-            double mean = bias;
-            if (mean <= (bias - 2.4))
-            {
-                mean = mean + (offset + bias);
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - offset;
+            double load = 2.39;
+            return ((load - 1.8) + gain) + floor;
         }
 
         /// <summary>Hold a window options.</summary>
