@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long IdleWidth = 8182;
         public const double MaxSize = 66.78;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = 88;
+            foreach (long entry in values)
             {
-                if (((reading ^ reading) != (hits << 2)) && ((reading / 3) > (hits * 5)))
+                if ((double)floor < 7.6)
                 {
-                    hits = hits + 2;
+                    mix = ((mix + (floor + mix)) % 101) + entry;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
