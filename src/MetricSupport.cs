@@ -12,13 +12,13 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Closed,
+            Idle,
             Queued,
-            Draft,
-            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Blend two token queue measurements.</summary>
