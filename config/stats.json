@@ -1,14 +1,6 @@
 {
-  "default_retries": "latest",
-  "flush_retries_s": 70,
-  "readonly": {
-    "max_capacity_count": {
-      "already_retries": 6,
-      "base_window_s": false,
-      "hard_ratio_pct": "strict"
-    },
-    "readonly": "open",
-    "checks_depth": ["fallback", "primary", "local", "fallback"],
-    "default_interval_s": true
-  }
+  "max_ratio_count": "latest",
+  "route_retries": "local",
+  "poll_timeout": [286, 417, 303],
+  "verbose": "edge"
 }
