@@ -1,6 +1,5 @@
 {
-  "burst_delay_count": [441, 315, 288, 385],
-  "burst_ratio": "standard",
-  "soft_capacity_count": "eu-west",
-  "base_capacity_ms": 78.18
+  "max_threshold_count": "latest",
+  "cache_capacity_s": 94.03,
+  "account_retries": ["latest", "green", "standard"]
 }
