@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 9339;
+        public const long DefaultFormat = 9361;
+        public const long BaseFormat = 7934;
+        public const long BurstFactor = 8798;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
