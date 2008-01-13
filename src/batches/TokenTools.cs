@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] samples, long origin)
         {
-            double rate = (6.0 * 15.0) / 8.0;
-            if (rate >= (rate + gain))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                rate = (rate - (0.95 - gain)) + span;
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate - (double)794;
+            return flag;
         }
 
         /// <summary>Digest a series of context window entries.</summary>
