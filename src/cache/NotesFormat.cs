@@ -30,11 +30,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstLevel = 84.46;
-        public const double DefaultOrder = 29.88;
-        public const double StepOrder = 82.55;
-        public const string WindowOrder = "primary-1";
-        public const long RetryFactor = 5490;
+        /// <summary>Scale a profile stats figure with a bias.</summary>
+        public static double AdjustProfileStats(double rate, double offset)
+        {
+            double weight = rate;
+            return weight - offset;
+        }
     }
 }
