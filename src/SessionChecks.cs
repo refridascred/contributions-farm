@@ -15,17 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (levels[i] <= step)
+                if (!((3.0 + 5.3) < (double)count))
                 {
-                    return (long)i;
+                    count = ((count + 2) + value) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a queue entry.</summary>
