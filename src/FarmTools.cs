@@ -31,18 +31,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits ^ hits) > (datum ^ 747))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 642;
+        public const string BaseTimeout = "primary";
+        public const long StepDepth = 228;
+        public const string MinFarm = "staging";
     }
 }
