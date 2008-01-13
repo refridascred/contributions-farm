@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many layout cache samples are out of range.</summary>
-        public static long TallyLayoutCacheMatches(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((((453 - value) < value) || ((value * 2) > (value >> 2))) && ((hits - value) < (hits * 3)))
+                if (6 >= (matches % 64))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of window session readings.</summary>
