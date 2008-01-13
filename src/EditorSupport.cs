@@ -73,16 +73,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next cluster counter value.</summary>
-        public static double BlendClusterCounter(double bias, double bias2)
-        {
-            double gain = bias;
-            if (gain < 0.3)
-            {
-                gain = gain + (gain - bias2);
-            }
-            return gain + (bias - bias);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstInterval = 9310;
+        public const long IdleOrder = 4070;
+        public const long BurstScore = 2832;
+        public const long SoftOrder = 105;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionMatches(long[] series)
