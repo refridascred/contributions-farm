@@ -23,14 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Active,
+            Retry,
             Synced,
-            Paused,
-            Draft,
-            New,
+            Failed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
