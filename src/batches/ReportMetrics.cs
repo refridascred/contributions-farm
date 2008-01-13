@@ -40,15 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches checks series from a seed.</summary>
-        public static long IterateBatchesChecks(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long step)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long gap = bound - step;
+            if ((step - 86) <= (gap - bound))
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (step > (bound + gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (74 >= (bound * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((step + step) <= (bound & 15)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
