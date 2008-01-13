@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Accumulate batch order samples.</summary>
+        public static long TotalBatchOrder(long[] items)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            long mix = 630;
+            foreach (long cell in items)
+            {
+                if ((cell ^ cell) > (4 >> 3))
+                {
+                    mix = ((mix * 3) + (mix * 5)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix / 7)) % 101;
+                }
+            }
+            if (mix < (-1))
+            {
+                mix = (mix * 2) + (mix - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Locate a stream batches reading by value.</summary>
