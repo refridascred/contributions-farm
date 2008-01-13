@@ -59,18 +59,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] items, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long score = 208;
-            foreach (long value in items)
-            {
-                if ((double)value == (3.28 + 5.46))
-                {
-                    score = (score - value) - floor;
-                }
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
