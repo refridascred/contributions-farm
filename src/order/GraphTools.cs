@@ -14,32 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long lane = step + seed;
-            if ((2.0 - 1.0) <= (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed >= (double)lane)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 + step) >= (seed ^ 547))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
