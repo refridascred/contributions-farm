@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] data, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally >> 5) <= 44)
-                {
-                    tally = ((tally + 1) + reading) + step;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
