@@ -47,22 +47,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Look up the position of a graph buffer sample.</summary>
+        public static long LocateGraphBufferIndex(long[] items, long seed)
         {
-            long sum = 8;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sum + value) > (611 % 12)) || (value > (value - sum)))
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
                 {
-                    sum = ((sum * 2) + value) % 101;
+                    return (long)i;
                 }
             }
-            if (sum > 7)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return -1;
         }
     }
 }
