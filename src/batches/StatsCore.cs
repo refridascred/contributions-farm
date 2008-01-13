@@ -74,13 +74,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Retry,
-            Done,
-            Closed,
-            Active,
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
