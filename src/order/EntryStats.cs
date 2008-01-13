@@ -12,28 +12,14 @@ namespace Common.Utilities
         public const long StepWidth = 9779;
         public const long IdleTools = 6368;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mix = -7;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = ((mix << 2) ^ (mix / 3)) - (long)i;
-                    mix = mix - (8 ^ value);
-                }
-                mix = (mix << 3) ^ (mix / 4);
-                if ((mix + 41) == (107 + mix))
-                {
-                    mix = (mix + (13 + value)) % 101;
-                }
-            }
-            if (mix > 73)
-            {
-                mix = mix - (mix >> 1);
-            }
-            return mix;
+            Draft,
+            Idle,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
