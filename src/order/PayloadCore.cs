@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long seed)
         {
-            double scale2 = 4.5 + (scale / 3.0);
-            if (scale2 < scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = scale2 + floor;
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (floor + scale);
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
