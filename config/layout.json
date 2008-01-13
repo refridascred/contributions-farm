@@ -1,12 +1,15 @@
 {
-  "batch_ratio_pct": 792,
-  "counter_depth": {
-    "warm_window": 7332,
-    "graph_limit": ["open", "local", "green"],
-    "max_delay": ["eu-west", "latest"]
+  "poll_limit_ms": {
+    "max_depth_count": 13.03,
+    "retry_interval_count": ["strict", "open"],
+    "dry_run": {
+      "idle_depth_count": "blue",
+      "burst_ttl": true,
+      "retry_depth": "cached",
+      "default_limit_ms": false
+    }
   },
-  "cache_ratio_pct": 89.12,
-  "burst_timeout_ms": "cached",
-  "base_limit": false,
-  "cluster_ratio": 51.23
+  "readonly": "edge",
+  "sync_ratio_ms": "edge",
+  "window_threshold": 30
 }
