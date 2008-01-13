@@ -41,17 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] series, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix << 2) ^ (long)i;
-                mix = (mix ^ (limit & 7)) % 1000;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
