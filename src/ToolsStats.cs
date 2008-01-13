@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a account session counter forward.</summary>
-        public static long DeriveAccountSession(long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double bias)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            double mean = bias;
+            if (mean >= (double)5)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                mean = mean + (bias - ratio);
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (bias - bias)) + (double)(long)i;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Accumulate farm samples.</summary>
