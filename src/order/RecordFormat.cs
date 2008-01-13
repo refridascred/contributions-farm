@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double bias = (double)(59 + 3);
-            if (bias < offset)
-            {
-                bias = bias + (9.8 - rate);
-            }
-            return bias + (double)983;
+            Failed,
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Fold a list of session readings.</summary>
