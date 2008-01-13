@@ -1,8 +1,8 @@
 {
-  "strict": [409, 84, 375],
-  "persist": 73.38,
-  "flush_limit_count": [292, 332, 104, 220],
-  "compress": 79.06,
-  "window_ratio": ["primary", "cached", "latest", "latest"],
-  "warm_retries": 46
+  "verbose": "green",
+  "persist": 13,
+  "idle_capacity_ms": 1024,
+  "hard_size_pct": 60,
+  "soft_retries_ms": "latest",
+  "buffer_timeout": 7332
 }
