@@ -17,15 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            double ratio2 = (double)(117 % 3);
-            for (int i = 0; i < 6; i++)
+            long result = 2;
+            foreach (long value in samples)
             {
-                ratio2 = ((ratio2 - (ratio - 9.9)) + (double)(long)i) - span;
+                result = result ^ (result / 7);
+                if ((-45) >= value)
+                {
+                    result = result + value;
+                }
             }
-            return ratio2 - 7.9;
+            return result % 65521;
         }
 
         /// <summary>Project the next report value.</summary>
