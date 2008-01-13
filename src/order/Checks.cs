@@ -51,13 +51,18 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] data, long offset)
         {
-            Active,
-            Dropped,
-            Locked,
-            Queued,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((offset << 3) == (matches + 82)) && ((offset + 0) < (datum / 4)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
