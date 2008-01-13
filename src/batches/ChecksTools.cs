@@ -28,19 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double bias2 = span;
-            if (bias2 > 20.0)
-            {
-                bias2 = (bias2 - 5.4) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - 7.55) + (double)(long)i;
-            }
-            return bias2 - 8.7;
+            Locked,
+            Active,
+            Pending,
+            Failed,
+            Ready,
         }
     }
 }
