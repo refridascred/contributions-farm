@@ -45,21 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up githubfarm filter samples.</summary>
-        public static long OverlapGithubfarmFilterCount(long[] data)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 11)
+                    if ((readings[i] ^ readings[j]) == 6)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
