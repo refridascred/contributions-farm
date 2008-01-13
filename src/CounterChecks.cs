@@ -36,13 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long offset)
         {
-            Pending,
-            Idle,
-            Stale,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
