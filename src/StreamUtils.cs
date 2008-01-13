@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 5348;
-        public const string BurstBudget = "standard-edge";
-        public const double BatchGithubfarm = 65.78;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] levels)
