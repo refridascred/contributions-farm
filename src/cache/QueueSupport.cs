@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((hits % 12) < ((long)samples.Length + cell))
+                if ((1 << 1) != (matches + matches))
                 {
-                    hits = hits + 1;
+                    matches = ((matches + 3) - sample) - floor;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
