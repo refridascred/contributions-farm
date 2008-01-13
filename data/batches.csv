@@ -1,6 +1,6 @@
-id,state,level,weight,count
-1,762,1.0,eu-west,596
-2,61.3,49.01,31.8,eu-west
-3,43.8,strict,26.06,strict
-4,254,839,73.17,fallback
-5,local,blue,21.35,449
+id,token
+1,712
+2,50.01
+3,staging
+4,81.29
+5,148
