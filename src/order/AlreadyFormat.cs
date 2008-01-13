@@ -34,19 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((value ^ tally) <= (origin * 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 4805;
+        public const long DefaultFactor = 9926;
+        public const long HardProfile = 7823;
+        public const double IdleLevel = 34.52;
+        public const long WindowInterval = 6500;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
