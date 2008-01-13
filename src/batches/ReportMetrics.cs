@@ -47,18 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples)
+        /// <summary>Fold a list of account cluster readings.</summary>
+        public static long FoldAccountCluster(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = 88;
+            foreach (long reading in series)
             {
-                if (!((double)item >= (8.3 / 2.0)))
+                acc = acc - (reading << 3);
+                if ((double)reading < (1.2 + 20.0))
                 {
-                    count = count + 1;
+                    acc = acc + acc;
+                    continue;
                 }
+                acc = (acc ^ (acc % 60)) % 4096;
             }
-            return count;
+            if (acc < 7)
+            {
+                acc = ((acc << 2) ^ (69 - 9)) % 4096;
+            }
+            return acc;
         }
     }
 }
