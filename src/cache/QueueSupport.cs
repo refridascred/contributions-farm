@@ -27,16 +27,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long state = -122;
-            foreach (long datum in data)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state << 2) ^ (datum + datum);
-                state = state + (datum >> 1);
+                if (!(floor <= (long)i))
+                {
+                    sum = (sum * 5) + 634;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
     }
 }
