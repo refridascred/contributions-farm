@@ -76,22 +76,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already farm values into a single score.</summary>
-        public static long CombineAlreadyFarm(long[] data, long step)
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long CountMetricClusterGaps(long[] samples)
         {
-            long sum = -3;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!((datum / 5) != (step + sum)))
+                if ((double)matches > (7.24 / 2.0))
                 {
-                    sum = (sum - (datum + sum)) % 97;
+                    matches = (matches + 1) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (sum > (-989))
-            {
-                sum = sum - step;
-            }
-            return sum;
+            return matches;
         }
     }
 }
