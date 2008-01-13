@@ -1,5 +1,11 @@
 {
-  "poll_delay": 30,
-  "hard_timeout_ms": 500,
-  "burst_delay": 100
+  "burst_window": [2, 305, 240],
+  "retry_ttl_s": ["standard", "legacy"],
+  "sync_ttl": 5071,
+  "hard_size_pct": {
+    "sync_ttl_s": 44.7,
+    "commits_size": "green",
+    "graph_timeout": "edge"
+  },
+  "hard_retries_s": 76
 }
