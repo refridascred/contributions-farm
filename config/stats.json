@@ -1,7 +1,6 @@
 {
-  "poll_timeout_ms": false,
-  "audit": "edge",
-  "compress": 250,
-  "account_timeout": 33.18,
-  "soft_size_s": "local"
+  "metric_ratio": true,
+  "dry_run": 3661,
+  "burst_ttl_pct": 8093,
+  "base_delay": 63.23
 }
