@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] data, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long cur = origin ^ target;
+            if (origin < (origin + origin))
             {
-                if (datum != offset)
+                return 0;
+            }
+            else
+            {
+                if (!((1.4 / 3.0) <= (double)target))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((947 + target) < (cur + origin)) || ((origin >> 2) <= (origin - target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)cur != (5.8 / 8.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
