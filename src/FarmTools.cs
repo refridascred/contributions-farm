@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] readings)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((3.92 * 1.22) > (double)matches))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
