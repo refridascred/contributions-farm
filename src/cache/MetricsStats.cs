@@ -49,13 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Closed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 72.56;
+        public const long BurstBatch = 7181;
+        public const long WindowRatio = 1969;
+        public const long CacheScore = 387;
+        public const string DefaultBatch = "alpha-edge";
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphOutliers(long[] items, long floor)
