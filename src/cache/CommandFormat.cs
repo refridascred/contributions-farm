@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric contributi value.</summary>
-        public static double SmoothMetricContributi(double bias, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
-            double load = span;
-            if (load >= load)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                load = (load - (double)328) - bias;
+                if (tally <= (tally + (long)values.Length))
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 1.17) - (double)(long)i;
-            }
-            return load - (double)0;
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
