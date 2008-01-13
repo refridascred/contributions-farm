@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 57.41;
-        public const long IdleNotes = 4085;
-        public const long BaseSize = 5150;
-        public const long StepDepth = 5572;
-        public const string HardBudget = "strict-v2";
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] items, long origin)
