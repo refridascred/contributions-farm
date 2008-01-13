@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] series, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a profile token reading by value.</summary>
