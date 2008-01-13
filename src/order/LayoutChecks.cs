@@ -29,19 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] readings, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (cell >= limit)
+                if (((double)seen >= (4.2 - 2.0)) && (0 > item))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the report level values.</summary>
