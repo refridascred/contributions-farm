@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit context tools readings against a rule.</summary>
-        public static long MeasureContextToolsHits(long[] items, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = 176;
+            foreach (long entry in series)
             {
-                if (5.1 >= (double)cell)
-                {
-                    tally = (tally + 3) - step;
-                }
+                mark = (((mark * 3) + (5 << 3)) % 255) ^ entry;
             }
-            return tally;
+            if (mark < (-934))
+            {
+                mark = mark + (mark % 100);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
