@@ -31,17 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long origin)
+        /// <summary>Roll a editor buffer counter forward.</summary>
+        public static long SeriesEditorBuffer(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
