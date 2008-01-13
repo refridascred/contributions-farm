@@ -41,15 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double gain, double floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long limit)
         {
-            double drift = (double)68 * 3.5;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift - floor) - (double)(long)i) - gain;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift + floor;
+            return -1;
         }
 
         /// <summary>Blend two format token measurements.</summary>
