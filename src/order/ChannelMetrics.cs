@@ -25,26 +25,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] series, long offset)
         {
-            long mark = 927;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading == (5.0 + 12.0))
+                if (series[i] > offset)
                 {
-                    mark = mark - (reading & 255);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (reading + reading)) % 255;
-                }
-                if ((reading / 4) > mark)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
