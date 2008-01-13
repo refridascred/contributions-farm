@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset / 9) < (step + step)) || ((step + step) > (step >> 4)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)step < (13.0 - 7.89)) && ((double)27 > (double)step))
                 {
-                    if ((samples[i] + samples[j]) < 17)
+                    return 8;
+                }
+                else
+                {
+                    if ((step + 2) < step)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step > (3.71 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
