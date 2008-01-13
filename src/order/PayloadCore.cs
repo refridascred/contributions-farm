@@ -41,21 +41,25 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = floor ^ bound;
+            if ((double)bound != (0.3 + 8.61))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (399 < (floor + cur))
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
