@@ -18,12 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long seed)
         {
-            Failed,
-            Idle,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (sum - seed) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    sum = ((sum ^ sum) % 101) + (long)i3;
+                    sum = ((sum << 3) ^ (seed / 3)) % 65521;
+                }
+                if (((long)i % 24) < (-759))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum * 5) + seed) % 65521;
+                    sum = ((sum << 3) ^ sum) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
