@@ -87,19 +87,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (reading > seed)
+                if ((double)460 < (double)value)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
