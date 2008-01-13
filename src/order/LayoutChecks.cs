@@ -69,22 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] readings)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches ^ (-8)) == (matches + entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
