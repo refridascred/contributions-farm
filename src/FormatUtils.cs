@@ -45,17 +45,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a filter profile counter forward.</summary>
-        public static long IterateFilterProfile(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state + floor) % 1000;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 44.75;
+        public const double BatchTimeout = 93.56;
+        public const string BaseCount = "open-1";
+        public const double BurstTimeout = 72.96;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
