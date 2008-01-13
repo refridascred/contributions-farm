@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] readings, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double bias = (double)(59 + 3);
+            if (bias < offset)
             {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias + (9.8 - rate);
             }
-            return found;
+            return bias + (double)983;
         }
 
         /// <summary>Fold a list of session readings.</summary>
