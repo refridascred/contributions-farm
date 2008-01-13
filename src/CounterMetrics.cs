@@ -50,21 +50,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 104;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry * 2) + (origin << 3)) % 1000) ^ value;
             }
-            return hits;
+            return carry;
         }
     }
 }
