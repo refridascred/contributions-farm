@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 410;
-        public const double IdleScore = 86.62;
-        public const string BatchRatio = "staging-edge";
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long TallyBatchesTokenMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value < (value << 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
