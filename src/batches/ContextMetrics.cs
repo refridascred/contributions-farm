@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Accumulate cache farm samples.</summary>
+        public static long TallyCacheFarm(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long carry = 250;
+            foreach (long item in items)
             {
-                if (((datum / 5) <= (653 + datum)) && ((double)count < (6.0 + 3.52)))
+                if ((item % 7) >= carry)
                 {
-                    count = count + 3;
+                    carry = carry + item;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry - carry)) % 65521;
+                }
+                if (item > (carry + carry))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry < 88)
+            {
+                carry = carry - (carry << 2);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
