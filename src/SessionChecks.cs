@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples, long step)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long result = 52;
+            foreach (long reading in samples)
+            {
+                result = ((result * 4) + 2) - step;
+                result = (result << 2) ^ (result % 10);
+                if ((reading << 1) < reading)
+                {
+                    result = (result - (result + reading)) % 65521;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
