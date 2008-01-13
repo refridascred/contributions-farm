@@ -58,25 +58,18 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] data)
         {
-            long prev = offset ^ bound;
-            if ((bound % 8) < offset)
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev - offset) != (offset + bound))
+                if (((item + seen) > (item - item)) && ((seen + seen) <= (55 + seen)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a graph options.</summary>
