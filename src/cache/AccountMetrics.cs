@@ -20,24 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long limit, long limit2)
         {
-            long mix = 46;
-            foreach (long cell in readings)
+            long cur = limit + limit2;
+            if (((limit2 + 283) <= (0 * 5)) && ((14.0 * 18.0) > (double)cur))
             {
-                if (!((7.24 / 6.0) <= (double)cell))
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) < (limit2 << 1))
                 {
-                    mix = mix ^ (mix ^ mix);
+                    return 8;
                 }
-                mix = ((mix << 3) ^ (93 >> 2)) % 101;
-                mix = (mix - cell) % 4096;
+                else
+                {
+                    return 5;
+                }
             }
-            if (mix < 543)
-            {
-                mix = (mix - (20 + mix)) % 101;
-            }
-            return mix;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
