@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            New,
+            Draft,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
