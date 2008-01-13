@@ -24,13 +24,13 @@ namespace Common.Utilities
             return load + 4.8;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            Done,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
