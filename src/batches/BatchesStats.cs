@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ 111) != (count * 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double mean = (double)(4 - 5);
+            return ((mean - (mean * 16.0)) + weight) + floor;
         }
 
         /// <summary>Scale a report window figure with a bias.</summary>
