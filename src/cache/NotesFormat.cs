@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many order channel samples are out of range.</summary>
-        public static long TallyOrderChannelHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (tally <= (tally + tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5288;
+        public const long IdleBuffer = 5668;
+        public const long StepSpan = 837;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long offset, long floor)
