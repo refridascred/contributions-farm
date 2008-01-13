@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mix = 585;
-            foreach (long cell in data)
-            {
-                if (!(mix >= ((long)data.Length ^ cell)))
-                {
-                    mix = (mix - (mix - mix)) % 4096;
-                }
-                if (mix < (mix << 2))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Paused,
+            Locked,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the farm state values.</summary>
