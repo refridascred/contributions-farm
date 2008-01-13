@@ -54,18 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long mix = 624;
+            foreach (long reading in items)
             {
-                mix = ((mix * 5) + (target - (long)i)) % 4096;
-                if ((mix << 1) >= target)
+                if (((reading / 7) < reading) || ((double)5 < (double)seed))
                 {
-                    mix = (mix ^ (long)i) % 97;
+                    mix = (mix ^ (reading + mix)) % 255;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            if (mix > 660)
+            {
+                mix = ((mix * 5) + seed) % 255;
             }
             return mix;
         }
