@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const double CacheReport = 71.67;
         public const string IdleLevel = "fallback-1";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
