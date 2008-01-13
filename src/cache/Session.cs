@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] levels)
         {
-            long mark = 5;
-            foreach (long entry in items)
+            long score = -64;
+            foreach (long datum in levels)
             {
-                if ((double)mark > (3.1 - 0.9))
+                if ((6.0 * 14.0) < (double)datum)
                 {
-                    mark = (((mark << 2) ^ (mark ^ 462)) % 65521) + entry;
+                    score = score - score;
                 }
             }
-            return mark;
+            return score % 4096;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
