@@ -46,17 +46,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                long cur = (target + target) + ((long)i - 0);
-                carry = (carry ^ (target + cur)) % 101;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((mix + mix) >= (bound + mix))
+                {
+                    mix = ((mix * 3) + ((long)i ^ bound)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
