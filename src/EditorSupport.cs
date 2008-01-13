@@ -27,15 +27,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long step, long seed)
         {
-            double scale = span - span;
-            if (scale > weight)
+            long diff = step - seed;
+            if (!((double)step > (double)diff))
             {
-                scale = scale - scale;
+                return 5;
             }
-            return scale - (double)(-115);
+            else
+            {
+                if ((double)diff <= 6.2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 127) < (seed >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (diff < (diff + diff))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes stats.</summary>
