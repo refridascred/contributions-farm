@@ -48,27 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long mix = -87;
-            foreach (long entry in samples)
-            {
-                if ((mix >> 1) > (3 + mix))
-                {
-                    mix = ((mix * 2) + (entry & 255)) % 255;
-                    break;
-                }
-                if (((6.1 - 13.0) < (double)mix) && ((3.0 + 3.3) >= (double)entry))
-                {
-                    mix = (mix + entry) % 4096;
-                }
-                if (((953 + mix) <= (entry + entry)) || (4.7 <= (double)mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
