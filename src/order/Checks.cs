@@ -12,21 +12,17 @@ namespace Common.Utilities
             return ((gain + 4.25) + weight) + span;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] < seed)
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
