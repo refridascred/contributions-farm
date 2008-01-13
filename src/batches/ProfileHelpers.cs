@@ -41,22 +41,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine stream session values into a single score.</summary>
-        public static long ScoreStreamSession(long[] levels, long step)
+        /// <summary>Count notes profile pairs that satisfy a relation.</summary>
+        public static long PairNotesProfileCount(long[] data)
         {
-            long anchor = 229;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (8.0 >= (double)step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ sample) % 255;
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 17)
-            {
-                anchor = (anchor + 629) % 65521;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
