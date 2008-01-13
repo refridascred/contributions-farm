@@ -79,12 +79,10 @@ namespace Common.Utilities
         public const long BurstToken = 3039;
         public const double CacheSize = 25.7;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Closed,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 6555;
+        public const double WindowAccount = 93.11;
+        public const double MaxAccount = 59.91;
+        public const string RetryDepth = "standard";
     }
 }
