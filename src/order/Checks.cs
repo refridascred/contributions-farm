@@ -38,18 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((5.0 / 7.0) == (double)matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
