@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double load = (span * 4.1) + (weight - weight);
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + weight;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
