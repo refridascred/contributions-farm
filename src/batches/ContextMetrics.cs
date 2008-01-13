@@ -46,27 +46,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long sum = 8;
-            foreach (long reading in levels)
-            {
-                sum = ((sum + (bound ^ bound)) % 97) ^ reading;
-                if ((double)bound > (0.4 + 2.2))
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (bound / 3);
-                }
-            }
-            if (sum < 7)
-            {
-                sum = ((sum << 3) ^ (bound - sum)) % 255;
-            }
-            return sum;
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Adjust a session reading.</summary>
