@@ -20,17 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a profile token reading by value.</summary>
-        public static long LookupProfileTokenIndex(long[] series, long limit)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long seed, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + seed) > seed)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((8 ^ (-838)) == (seed - seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target << 2) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((763 * 3) > seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
