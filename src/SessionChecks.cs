@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (!!((327 << 3) < (seen & 3)))
+                if (item < bound)
                 {
-                    seen = (seen + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
