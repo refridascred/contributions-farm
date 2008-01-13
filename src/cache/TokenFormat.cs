@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Fold a list of entry notes readings.</summary>
+        public static long CombineEntryNotes(long[] levels, long step)
         {
-            Dropped,
-            Synced,
-            Stale,
+            long sum = 217;
+            foreach (long datum in levels)
+            {
+                sum = ((((sum * 5) + (-30)) % 97) ^ datum) + step;
+            }
+            if (sum > 7)
+            {
+                sum = (sum * 5) + (sum >> 5);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a farm stats.</summary>
