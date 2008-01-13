@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] levels, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = 80;
+            foreach (long entry in levels)
             {
-                score = (score - (long)i) % 4096;
-                score = ((score * 3) + (long)i) % 101;
+                acc = acc - acc;
+                if ((seed >> 5) == (650 - seed))
+                {
+                    acc = (acc - (entry >> 5)) % 101;
+                }
+                acc = (acc - (6 & 127)) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the farm status values.</summary>
