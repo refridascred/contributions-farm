@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] readings, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (entry <= origin)
+                if (46 > origin)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
