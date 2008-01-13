@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
-        public static long DeriveGithubfarmCounter(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] data, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                acc = (acc + (bound >> 1)) % 97;
-                if (!((6.98 - 6.4) > (double)bound))
+                if ((tally >> 5) <= 44)
                 {
-                    acc = (acc - (acc + 3)) % 101;
+                    tally = ((tally + 1) + reading) + step;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
