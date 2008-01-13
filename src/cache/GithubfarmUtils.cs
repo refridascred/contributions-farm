@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (((double)sample == (0.16 - 7.3)) && (sample > (sample + sample)))
+                if (reading < target)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
