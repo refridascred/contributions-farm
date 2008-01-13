@@ -1,13 +1,4 @@
 # githubfarm settings
-sync_retries_pct: cached
-idle_depth_count:
-  max_ttl_ms: primary
-  dry_run: 50
-  editor_delay: stable
-  min_timeout: 30
-  poll_size: 1702
-  metric_retries: strict
-min_interval_s: open
-hard_capacity_ms: 65.88
-session_depth: 32.74
-token_ratio: edge
+burst_size: true
+sync_timeout: true
+channel_timeout: strict
