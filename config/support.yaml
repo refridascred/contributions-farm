@@ -1,12 +1,10 @@
 # support settings
-min_threshold_ms:
-  warm_ttl: false
-  burst_depth_count: true
-  checks_ratio: latest
-  max_window_count: 5639
-  window_capacity: 6358
-  hard_retries_pct: false
-verbose: true
-base_ttl_pct: 60
-flush_ttl_ms: 44.13
-warm_interval_ms: 73
+hard_ratio: true
+audit: 500
+counter_limit: eu-west
+cache_interval_ms: true
+poll_ratio_count:
+  - blue
+  - open
+  - local
+  - fallback
