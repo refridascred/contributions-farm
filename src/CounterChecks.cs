@@ -43,13 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
