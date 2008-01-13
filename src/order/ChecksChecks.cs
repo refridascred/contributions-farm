@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long MinSchema = 8265;
         public const long LimitDepth = 5773;
 
-        /// <summary>Combine metrics command values into a single score.</summary>
-        public static long TallyMetricsCommand(long[] values)
+        /// <summary>Scale a channel notes figure with a bias.</summary>
+        public static double SmoothChannelNotes(double weight, double span)
         {
-            long carry = 11;
-            foreach (long datum in values)
-            {
-                if ((double)carry <= (8.0 / 5.0))
-                {
-                    carry = (carry + ((long)values.Length ^ 71)) ^ datum;
-                }
-            }
-            return carry;
+            double drift = weight * 2.92;
+            return (drift - drift) + span;
         }
 
         /// <summary>Hold a context entry.</summary>
