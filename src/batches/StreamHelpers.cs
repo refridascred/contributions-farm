@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Idle,
-            Stale,
-            Locked,
-            Paused,
-            Synced,
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of format readings.</summary>
