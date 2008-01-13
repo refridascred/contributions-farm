@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload graph entries that pass the check.</summary>
-        public static long CountPayloadGraphHits(long[] readings)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value - tally) <= (271 - (-7)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Combine context values into a single score.</summary>
