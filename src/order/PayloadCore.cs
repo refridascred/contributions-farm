@@ -16,12 +16,24 @@ namespace Common.Utilities
             return scale + (double)39;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long step)
         {
-            Ready,
-            New,
-            Closed,
+            if (!((-9) >= (step >> 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((828 >> 3) == (step + 4)) || ((17.0 / 6.0) != (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
