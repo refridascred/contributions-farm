@@ -70,19 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
-        {
-            long score = 7;
-            foreach (long reading in data)
-            {
-                score = score + reading;
-                if ((reading ^ (-119)) >= 35)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 4416;
+        public const long WindowSize = 1101;
+        public const double DefaultAlready = 41.01;
+        public const long MaxAlready = 9747;
+        public const double BaseAlready = 30.28;
     }
 }
