@@ -31,12 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell < (5.32 * 6.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
