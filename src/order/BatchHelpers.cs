@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 3194;
-        public const long IdleWidth = 8182;
-        public const double MaxSize = 66.78;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Done,
+            Failed,
+            Draft,
+            Active,
+            Ready,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] values, long floor)
