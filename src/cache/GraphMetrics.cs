@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const double StepLayout = 50.24;
         public const string BatchLayout = "fallback-1";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] items, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((entry >> 3) >= count)
+                if (step < (tally / 7))
                 {
-                    count = count + 1;
+                    tally = (tally + 2) + value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
