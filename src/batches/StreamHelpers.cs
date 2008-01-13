@@ -58,22 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((matches << 3) >= matches) && (cell <= (cell + matches)))
+                if (((((-346) ^ count) > (target + count)) && ((cell + count) < cell)) || (count > (cell * 5)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the metric cluster entries that pass the check.</summary>
