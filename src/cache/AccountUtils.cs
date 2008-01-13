@@ -20,14 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            Synced,
-            Failed,
-            Stale,
-            Draft,
-            Paused,
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor << 2) ^ seed) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
