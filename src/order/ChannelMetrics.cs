@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] data, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((104 / 3) >= (entry - (-800))) && ((seed + entry) >= (entry % 10)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the stats kind values.</summary>
