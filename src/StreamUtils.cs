@@ -29,13 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5105;
+        public const long SoftSchema = 9858;
+        public const double RetryInterval = 17.46;
+        public const long BaseSize = 401;
+        public const string LimitInterval = "open-edge";
 
         /// <summary>Measure how many metric support samples are out of range.</summary>
         public static long AuditMetricSupportOutliers(long[] levels)
