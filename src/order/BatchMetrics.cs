@@ -32,11 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3595;
-        public const long WindowStats = 4247;
-        public const long BurstTimeout = 7853;
-        public const string IdleStats = "alpha-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((long)series.Length <= (sample - (-654)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] items, long offset)
