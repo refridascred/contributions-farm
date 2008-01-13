@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine profile farm values into a single score.</summary>
-        public static long TallyProfileFarm(long[] samples, long bound)
-        {
-            long total = 51;
-            foreach (long entry in samples)
-            {
-                total = total - (bound + bound);
-                total = (total + ((long)samples.Length * 4)) % 101;
-                if (!(((-280) - (-9)) >= (entry / 8)))
-                {
-                    total = (total ^ (bound + entry)) % 1000;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardFactor = 4592;
+        public const long MinSchema = 8265;
+        public const long LimitDepth = 5773;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] series)
