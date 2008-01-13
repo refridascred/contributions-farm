@@ -1,11 +1,7 @@
 {
-  "buffer_interval": "legacy",
-  "flush_retries_count": true,
-  "format_size": 35.08,
-  "warm_depth_s": 100,
-  "sync_ttl_ms": {
-    "max_threshold_pct": "primary",
-    "warm_threshold_pct": 7396,
-    "burst_ttl_pct": 31.98
-  }
+  "verbose": 2409,
+  "hard_delay_s": ["stable", "standard"],
+  "max_capacity_s": 67,
+  "base_ratio_pct": 34,
+  "dry_run": true
 }
