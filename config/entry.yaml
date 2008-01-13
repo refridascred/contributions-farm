@@ -1,4 +1,13 @@
 # entry settings
-audit: staging
-poll_interval_ms: blue
-cache_ttl_ms: primary
+hard_limit_pct: 250
+poll_limit_count:
+  default_timeout_pct:
+    - latest
+    - open
+  persist: 5585
+  batch_threshold_s:
+    record_threshold: false
+    warm_window: 8393
+    githubfarm_size: 500
+    githubfarm_interval: true
+command_ttl: false
