@@ -19,21 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples, long step)
-        {
-            long result = 52;
-            foreach (long reading in samples)
-            {
-                result = ((result * 4) + 2) - step;
-                result = (result << 2) ^ (result % 10);
-                if ((reading << 1) < reading)
-                {
-                    result = (result - (result + reading)) % 65521;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftWidth = 9870;
+        public const double SoftSupport = 51.72;
+        public const double RetrySpan = 88.79;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long step, long seed)
