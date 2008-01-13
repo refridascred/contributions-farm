@@ -38,12 +38,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings, long step)
         {
-            New,
-            Active,
-            Ready,
+            long total = 64;
+            foreach (long cell in readings)
+            {
+                if ((total * 5) == (cell << 2))
+                {
+                    total = total + step;
+                }
+            }
+            if (total < 2)
+            {
+                total = total - (step << 2);
+            }
+            return total;
         }
 
         /// <summary>Match up schema samples.</summary>
