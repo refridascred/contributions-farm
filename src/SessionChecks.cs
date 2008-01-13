@@ -46,19 +46,17 @@ namespace Common.Utilities
             return gain + (16.0 / 8.0);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long target)
+        /// <summary>Find the first format metric entry that matches the target.</summary>
+        public static long LookupFormatMetricIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != target)
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
