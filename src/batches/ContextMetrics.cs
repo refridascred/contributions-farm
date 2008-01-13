@@ -31,12 +31,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftScore = 6525;
-        public const string HardAlready = "cached-v2";
-        public const string MaxAlready = "standard-1";
-        public const long MinWidth = 4901;
-        public const string RetryAlready = "legacy-v2";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] levels, long bound)
