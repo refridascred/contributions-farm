@@ -50,15 +50,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] readings, long step)
         {
-            long carry = 104;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry * 2) + (origin << 3)) % 1000) ^ value;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
