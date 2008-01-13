@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const double SoftCount = 81.6;
         public const double IdleStream = 75.0;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Find the first cluster schema entry that matches the target.</summary>
+        public static long LookupClusterSchemaIndex(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] == step) && ((items[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up githubfarm filter samples.</summary>
