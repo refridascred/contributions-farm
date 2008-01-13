@@ -37,11 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long step, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long prev = step - seed;
+            if ((3 + 6) < step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + 0) <= prev)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
