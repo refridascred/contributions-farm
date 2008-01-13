@@ -1,6 +1,5 @@
 {
-  "metric_ratio": true,
-  "dry_run": 3661,
-  "burst_ttl_pct": 8093,
-  "base_delay": 63.23
+  "retry_capacity": "green",
+  "farm_timeout": 100,
+  "metric_ttl": 2872
 }
