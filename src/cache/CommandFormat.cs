@@ -15,19 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double gain, double bias)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            double scale = gain;
-            if (scale <= 1.28)
+            long result = 0;
+            foreach (long item in levels)
             {
-                scale = scale + bias;
+                if ((618 >> 5) <= (item * 2))
+                {
+                    result = (result << 3) ^ (item % 64);
+                }
+                if ((43 + item) < (671 + item))
+                {
+                    result = (result ^ (item ^ 7)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (gain - 8.6);
+            return result;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
