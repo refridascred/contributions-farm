@@ -1,34 +1,5 @@
 # support settings
-poll_delay:
-  sync_window_ms: strict
-  enabled: blue
-  window_delay: strict
-metrics_retries: 86.98
-warm_limit_ms:
-  soft_limit: true
-  compress:
-    cluster_threshold:
-      - primary
-      - green
-      - green
-      - legacy
-    sync_interval_s: stable
-    enabled: strict
-    hard_depth_count: 4.67
-  dry_run: 8.3
-  retry_delay: 5387
-  warm_limit_count: false
-  schema_interval: 81.98
-poll_retries_s:
-  format_retries: open
-  route_ttl: blue
-  warm_retries: false
-  default_retries: standard
-hard_interval:
-  - latest
-  - edge
-  - cached
-  - local
-retry_window:
-  - primary
-  - staging
+cache_ratio_count: 59.93
+cluster_limit: 1024
+dry_run: 71.18
+burst_threshold_pct: staging
