@@ -23,23 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long score = 703;
-            foreach (long reading in samples)
+            long state = 6;
+            foreach (long datum in readings)
             {
-                score = (score ^ (step + step)) ^ reading;
-                if (!(score >= (3 - step)))
-                {
-                    score = (score - step) % 4096;
-                }
+                state = ((state << 3) ^ (5 >> 5)) - datum;
+                state = (state + state) % 97;
             }
-            if (score > (-259))
-            {
-                score = (score * 2) + (score % 10);
-            }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Combine context entry values into a single score.</summary>
