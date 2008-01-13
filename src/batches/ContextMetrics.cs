@@ -31,20 +31,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardSpan = 5581;
+        public const long BatchSize = 4537;
+        public const long SoftScore = 7161;
+        public const double LimitScore = 83.77;
+        public const double RetrySize = 23.45;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long seed)
