@@ -20,17 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] series, long bound)
+        /// <summary>Roll a channel filter counter forward.</summary>
+        public static long StepChannelFilter(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (long)i) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
