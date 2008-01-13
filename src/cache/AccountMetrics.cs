@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] levels, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (sample != offset)
+                if (cell <= step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
