@@ -41,20 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next buffer entry value from a seed.</summary>
-        public static long DeriveBufferEntry(long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (acc <= 381)
-                {
-                    acc = ((acc * 2) + 9) % 1000;
-                }
-                acc = (acc ^ (step >> 5)) % 101;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
