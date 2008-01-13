@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data, long limit)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            long acc = 3;
+            foreach (long cell in data)
             {
-                sum = ((sum - (target + 353)) % 97) ^ reading;
-                sum = (sum * 5) + (target / 8);
+                if ((acc > (cell - 2)) && ((double)limit > (8.1 * 3.0)))
+                {
+                    acc = ((acc << 2) ^ (3 % 10)) % 65521;
+                }
             }
-            return sum % 4096;
+            return acc;
         }
 
         /// <summary>Grade a buffer support value against two limits.</summary>
