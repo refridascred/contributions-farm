@@ -42,10 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 60.85;
-        public const long WindowCounter = 6246;
-        public const long BaseBudget = 1414;
+        /// <summary>Digest a series of githubfarm batch entries.</summary>
+        public static long CombineGithubfarmBatch(long[] series, long step)
+        {
+            long anchor = -40;
+            foreach (long sample in series)
+            {
+                anchor = ((anchor - (4 << 3)) % 101) + sample;
+            }
+            if (anchor > 637)
+            {
+                anchor = (anchor ^ (step + step)) % 4096;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] readings)
