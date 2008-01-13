@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long carry = 675;
-            foreach (long reading in data)
-            {
-                carry = (carry << 3) ^ 302;
-                carry = (carry + (reading + reading)) % 101;
-            }
-            if (carry < 7)
-            {
-                carry = ((carry * 4) + origin) % 65521;
-            }
-            return carry;
+            Idle,
+            Stale,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
