@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Locate a profile token reading by value.</summary>
+        public static long LookupProfileTokenIndex(long[] series, long limit)
         {
-            double load = (bias * 4.0) + rate;
-            if (load > (3.51 * 6.13))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - (rate - bias);
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (13.0 / 7.0);
+            return -1;
         }
 
         /// <summary>Describe the context status values.</summary>
