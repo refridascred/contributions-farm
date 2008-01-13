@@ -58,18 +58,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Fold a list of context queue readings.</summary>
+        public static long FoldContextQueue(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 930;
+            foreach (long sample in series)
             {
-                if (((count - item) != (7 << 3)) || (((count - (long)samples.Length) > (count - item)) && (count < (item + 577))))
-                {
-                    count = count + 2;
-                }
+                result = ((result << 2) ^ (sample - (long)series.Length)) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
