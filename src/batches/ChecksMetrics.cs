@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record queue samples.</summary>
-        public static long TotalRecordQueue(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] data, long limit)
         {
-            long score = 6;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((score <= (datum ^ datum)) && ((score << 2) > (datum / 7)))
+                if (reading > limit)
                 {
-                    score = ((score << 2) ^ datum) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return flag;
         }
 
         /// <summary>Look up the position of a context profile sample.</summary>
