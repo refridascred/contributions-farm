@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of layout channel readings.</summary>
-        public static long CombineLayoutChannel(long[] samples)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long mix = 59;
-            foreach (long reading in samples)
-            {
-                mix = ((mix << 2) ^ 10) - reading;
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
