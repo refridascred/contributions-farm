@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long step)
         {
-            long state = 7;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((7.0 / 4.0) >= (double)floor)
+                if (item >= step)
                 {
-                    state = (state + (cell - state)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (state > 941)
-            {
-                state = (state - (state % 3)) % 255;
-            }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
