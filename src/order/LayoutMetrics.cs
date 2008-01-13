@@ -28,21 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((anchor * 4) >= limit) && ((anchor / 2) == (limit >> 1)))
-                {
-                    anchor = anchor - (limit + 5);
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxSpan = 2582;
+        public const long StepScore = 5388;
+        public const long SoftRecord = 6477;
+        public const string WindowCount = "latest-1";
+        public const long MinBudget = 6822;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
