@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5348;
+        public const string BurstBudget = "standard-edge";
+        public const double BatchGithubfarm = 65.78;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] levels)
