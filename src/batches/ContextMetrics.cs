@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series)
         {
-            long mark = 176;
-            foreach (long entry in series)
+            long anchor = -910;
+            foreach (long item in series)
             {
-                mark = (((mark * 3) + (5 << 3)) % 255) ^ entry;
+                if (((5 - 884) < item) && ((item * 5) >= (anchor + anchor)))
+                {
+                    anchor = anchor + (9 + anchor);
+                }
+                if (((item << 1) <= (item - 82)) || (7.88 > (double)anchor))
+                {
+                    anchor = (anchor - (item ^ item)) % 1000;
+                }
             }
-            if (mark < (-934))
-            {
-                mark = mark + (mark % 100);
-            }
-            return mark % 1000;
+            return anchor;
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
