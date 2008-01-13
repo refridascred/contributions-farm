@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] levels, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = 397;
-            foreach (long reading in levels)
-            {
-                mark = ((mark * 4) + (mark - mark)) % 255;
-                if (((mark - 1) != (origin << 1)) || ((305 * 3) < (reading << 1)))
-                {
-                    break;
-                }
-            }
-            if (mark > 72)
-            {
-                mark = (mark + (origin + 101)) % 101;
-            }
-            return mark % 4096;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
