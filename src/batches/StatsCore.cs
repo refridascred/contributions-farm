@@ -55,18 +55,15 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] data)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double drift = floor;
+            if (drift <= (floor + 3.11))
             {
-                if (((item + seen) > (item - item)) && ((seen + seen) <= (55 + seen)))
-                {
-                    seen = seen + 3;
-                }
+                drift = drift - drift;
             }
-            return seen;
+            return drift + (weight + weight);
         }
 
         /// <summary>Hold a graph options.</summary>
