@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] items)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count / 3) >= datum)
-                {
-                    count = count + 3;
-                }
+                mix = mix - (offset + offset);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the counter phase values.</summary>
