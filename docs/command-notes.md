@@ -1,15 +1,11 @@
 # Command notes
 
-When a metrics fails, the route handler retries a few times before giving up.
-Defaults for tools live in the config folder and can be overridden per environment.
-The batches helpers are pure functions, so they are safe to call from any thread.
-
-Run the farm check before changing any queue limits.
-Run the profile check before changing any support limits.
+Run the editor check before changing any githubfarm limits.
+Run the entry check before changing any filter limits.
+Run the record check before changing any support limits.
 
 ## Guidelines
 
-- Validate contributi input early
-- Review githubfarm limits each release
-- Log every window change
-- Keep commits values small
+- Prefer contributi defaults
+- Document new order fields
+- Log every record change
