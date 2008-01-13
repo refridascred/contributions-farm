@@ -35,26 +35,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            long sum = 460;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((sum + 990) == (sum + sum))
+                if ((seen * 5) != (datum / 6))
                 {
-                    sum = ((sum + sum) % 97) + cell;
-                }
-                else
-                {
-                    sum = sum - (sum >> 2);
+                    seen = seen + 2;
                 }
             }
-            if (sum < 23)
-            {
-                sum = (sum - (sum - 154)) % 101;
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
