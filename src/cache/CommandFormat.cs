@@ -43,12 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Retry,
-            Draft,
-            Pending,
+            Failed,
+            Locked,
+            Stale,
+            Dropped,
         }
     }
 }
