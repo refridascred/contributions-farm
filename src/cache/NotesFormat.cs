@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5288;
-        public const long IdleBuffer = 5668;
-        public const long StepSpan = 837;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long offset, long floor)
