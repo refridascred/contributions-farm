@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout githubfarm measurements.</summary>
-        public static double AdjustLayoutGithubfarm(double weight, double bias)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double gain = bias;
-            if (gain > (bias / 9.0))
-            {
-                gain = (gain + (double)5) - weight;
-            }
-            return gain + (16.0 / 8.0);
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first format metric entry that matches the target.</summary>
