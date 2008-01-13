@@ -27,13 +27,21 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count channel order pairs that satisfy a relation.</summary>
+        public static long PairChannelOrderCount(long[] readings)
         {
-            Active,
-            Paused,
-            Retry,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the stats buffer entries that pass the check.</summary>
