@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 8836;
         public const long SoftRatio = 3396;
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] items, long origin)
         {
-            double weight = bias;
-            if (weight > (bias * 4.48))
+            bool ok = true;
+            foreach (long item in items)
             {
-                weight = weight - floor;
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (bias * 7.6);
+            return ok;
         }
 
         /// <summary>Hold a checks info.</summary>
