@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double gain, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long limit)
         {
-            double weight = (double)(4 ^ (-96));
-            if (weight <= (double)604)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (offset + weight)) + gain;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)89;
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
