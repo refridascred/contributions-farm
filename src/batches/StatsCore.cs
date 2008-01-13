@@ -52,15 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data, long bound)
         {
-            double drift = floor;
-            if (drift <= (floor + 3.11))
+            long total = 434;
+            foreach (long datum in data)
             {
-                drift = drift - drift;
+                total = ((total << 2) ^ (datum / 9)) - bound;
+                if ((768 / 4) < datum)
+                {
+                    break;
+                }
             }
-            return drift + (weight + weight);
+            return total % 97;
         }
 
         /// <summary>Hold a session options.</summary>
