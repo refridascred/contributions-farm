@@ -48,13 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Iterate the format window series from a seed.</summary>
+        public static long StepFormatWindow(long floor)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (((sum * 5) + (973 - sum)) % 97) ^ (long)i2;
+                    sum = sum + (floor + sum);
+                }
+                sum = sum - floor;
+                sum = sum + (sum / 5);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
