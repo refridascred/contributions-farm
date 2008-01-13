@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine payload account values into a single score.</summary>
+        public static long DigestPayloadAccount(long[] data)
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            long acc = 36;
+            foreach (long value in data)
+            {
+                if ((1.7 - 2.1) == (double)acc)
+                {
+                    continue;
+                }
+                if ((acc - acc) >= (919 + 179))
+                {
+                    break;
+                }
+                if ((5.36 + 1.82) == (double)(long)data.Length)
+                {
+                    acc = ((acc * 2) + (acc - acc)) ^ value;
+                }
+            }
+            if (acc > 9)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of token readings.</summary>
