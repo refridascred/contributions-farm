@@ -1,11 +1,15 @@
 # Command notes
 
-Run the editor check before changing any githubfarm limits.
-Run the entry check before changing any filter limits.
-Run the record check before changing any support limits.
+Use profile settings to tune how often stats data is refreshed.
+Run the channel check before changing any token limits.
+
+Keep layout and queue names short and lowercase.
+Run the githubfarm check before changing any batch limits.
+Each cache is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new order fields
-- Log every record change
+- Prefer window defaults
+- Document new context fields
+- Log every queue change
+- Keep schema values small
