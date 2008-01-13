@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            long mix = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound - mix) <= bound) || (((-418) & 1) <= (mix + 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (bound - 19)) - datum;
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix ^ (mix % 3)) % 255;
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
