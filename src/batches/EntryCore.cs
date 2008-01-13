@@ -85,16 +85,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels, long seed)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mark = 381;
-            foreach (long entry in levels)
-            {
-                mark = (mark * 5) + (seed + 4);
-                mark = ((mark * 5) + entry) % 97;
-            }
-            return mark % 97;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
