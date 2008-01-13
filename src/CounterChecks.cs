@@ -69,12 +69,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            double load = bias;
+            if (load > bias)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (bias * 2.91)) + (double)(long)i;
+            }
+            return load + (weight / 4.0);
         }
     }
 }
