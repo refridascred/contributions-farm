@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryTimeout = 7461;
-        public const long SoftRatio = 2875;
-        public const long BurstStats = 2252;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((double)entry < (10.0 + 9.5)) || !((offset + offset) <= (offset & 63)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
