@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] series, long step)
+        /// <summary>Grade a buffer report value against two limits.</summary>
+        public static long GradeBufferReport(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = limit ^ offset;
+            if ((double)offset == (3.6 / 3.0))
             {
-                if ((series[i] > step) && ((series[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)edge <= (1.0 * 7.86))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a tools reading.</summary>
