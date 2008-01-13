@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cluster schema entry that matches the target.</summary>
-        public static long LookupClusterSchemaIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowLevel = "stable";
+        public const long WindowSpan = 5043;
+        public const string SoftFactor = "staging-v2";
+        public const long BaseQueue = 3182;
+        public const double BurstScore = 62.89;
 
         /// <summary>Match up githubfarm filter samples.</summary>
         public static long OverlapGithubfarmFilterCount(long[] data)
