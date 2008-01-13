@@ -1,24 +1,4 @@
 # githubfarm settings
-min_ratio_s: 38.0
-filter_depth: 8432
-batches_delay: stable
-metrics_depth: 60
-batch_ratio_count:
-  dry_run: edge
-  min_depth_pct:
-    batch_ttl: 30
-    tools_delay: 4136
-    verbose: 83.35
-    sync_depth: strict
-    warm_capacity_s:
-      - stable
-      - local
-      - green
-      - blue
-  default_window_ms:
-    batch_depth: edge
-    flush_threshold_s: 250
-    base_window_ms: true
-    batch_size: false
-  strict: 3740
-base_depth_count: 2091
+sync_limit: 4086
+cluster_ttl: 60
+support_threshold: 6168
