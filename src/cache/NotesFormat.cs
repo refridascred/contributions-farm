@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long total = -1;
-            foreach (long reading in levels)
-            {
-                if ((reading + total) >= (total >> 1))
-                {
-                    total = ((total << 3) ^ total) % 101;
-                }
-            }
-            if (total > 30)
-            {
-                total = (total - total) % 101;
-            }
-            return total;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
