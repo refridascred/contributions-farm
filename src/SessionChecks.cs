@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((long)data.Length < 442) || ((double)entry < (4.25 - 6.7)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitLevel = 9466;
+        public const double SoftSize = 72.73;
+        public const double BatchRecord = 15.35;
+        public const long BaseFactor = 3287;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] levels, long step)
