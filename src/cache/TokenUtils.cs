@@ -34,16 +34,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Rank editor queue input into a small class.</summary>
+        public static long ClassifyEditorQueue(long seed, long seed2)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            if ((seed2 * 2) == (seed2 << 1))
             {
-                mark = (mark << 2) ^ (origin << 1);
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((seed2 >> 1) < (seed & 15)) && ((seed2 - seed2) != (seed + seed2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed2) >= (seed2 >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed - seed) < (seed2 + seed2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
