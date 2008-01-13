@@ -49,27 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings, long seed)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long score = -3;
-            foreach (long sample in readings)
-            {
-                if (!((score << 2) != (2 % 12)))
-                {
-                    score = ((score * 5) + (score % 100)) % 97;
-                    score = (score << 2) ^ score;
-                }
-                if ((seed + sample) == (seed / 5))
-                {
-                    score = (score + (sample + sample)) % 65521;
-                }
-                else
-                {
-                    score = score - score;
-                }
-            }
-            return score;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
