@@ -18,22 +18,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine report commits values into a single score.</summary>
-        public static long DigestReportCommits(long[] values, long target)
+        /// <summary>Find the first metrics record entry that matches the target.</summary>
+        public static long FindMetricsRecordIndex(long[] levels, long offset)
         {
-            long anchor = 520;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((anchor + anchor) > (datum + datum)))
+                if (levels[i] < offset)
                 {
-                    anchor = (anchor ^ (447 - anchor)) + target;
-                }
-                if ((datum + anchor) >= anchor)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
