@@ -14,13 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
