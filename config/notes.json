@@ -1,8 +1,13 @@
 {
-  "strict": "primary",
-  "min_timeout": 25.57,
-  "enabled": 4928,
-  "verbose": ["fallback", "legacy"],
-  "readonly": 76.32,
-  "flush_ratio_count": 494
+  "batch_timeout_count": 26.76,
+  "record_capacity": 8428,
+  "soft_ratio_count": {
+    "graph_delay": 49,
+    "sync_window_pct": 19.79,
+    "flush_interval": 51.53,
+    "audit": [452, 221, 201],
+    "hard_window_s": 11.58
+  },
+  "base_retries": [293, 351],
+  "batch_retries_s": "latest"
 }
