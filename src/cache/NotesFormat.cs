@@ -12,25 +12,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long offset, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] values, long target)
         {
-            long bound = offset ^ floor;
-            if ((33 + bound) >= (bound << 3))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.9 / 2.0) != (double)floor)
+                if (sample > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a payload info.</summary>
