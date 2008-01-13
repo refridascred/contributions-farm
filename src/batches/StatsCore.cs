@@ -58,19 +58,19 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (datum <= step)
+                if (sample > offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a graph options.</summary>
