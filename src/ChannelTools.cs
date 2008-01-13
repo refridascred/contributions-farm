@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stats entry samples.</summary>
-        public static long TallyStatsEntry(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long step, long seed)
         {
-            long total = 120;
-            foreach (long datum in levels)
+            if (seed > (51 * 3))
             {
-                if (datum < (total * 2))
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) != (83 + step)) || (seed < (seed + seed)))
                 {
-                    total = ((total << 3) ^ 549) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 3) >= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((267 << 1) > (seed + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total > 1)
-            {
-                total = total - (total / 3);
-            }
-            return total % 4096;
         }
 
         /// <summary>Hold a farm entry.</summary>
