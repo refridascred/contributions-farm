@@ -1,14 +1,10 @@
 # support settings
-default_interval_s: edge
-buffer_capacity: 6386
-cache_threshold: 7009
-burst_limit_ms:
-  base_ratio_pct: 250
-  cache_capacity_count: cached
-  enabled: blue
-  batch_limit: eu-west
-  warm_interval_pct: open
-max_ratio_ms:
-  - staging
+cache_ratio_s:
+  - latest
+  - latest
+batch_retries: eu-west
+burst_delay_s: eu-west
+profile_threshold: blue
+support_depth:
+  - cached
   - strict
-tools_timeout: 44
