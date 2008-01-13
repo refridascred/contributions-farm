@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools graph measurements.</summary>
-        public static double SmoothToolsGraph(double gain, double floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            double weight = floor;
-            if (weight < gain)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (gain + floor);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (weight + 0.1);
-            }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
