@@ -34,9 +34,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 9229;
-        public const long DefaultSize = 1071;
-        public const long BurstInterval = 5978;
+        /// <summary>Project the next metric layout value.</summary>
+        public static double ScaleMetricLayout(double ratio, double offset)
+        {
+            double mean = ratio * 2.51;
+            if (mean > (double)13)
+            {
+                mean = (mean + ratio) - offset;
+            }
+            else
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean * 8.03)) - (double)(long)i;
+            }
+            return mean - ratio;
+        }
     }
 }
