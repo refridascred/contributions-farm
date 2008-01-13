@@ -51,23 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already session samples are out of range.</summary>
-        public static long MeasureAlreadySessionOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (reading < (reading & 7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 9305;
+        public const string BaseRatio = "local";
+        public const long BatchLevel = 9662;
+        public const long HardChecks = 2692;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
