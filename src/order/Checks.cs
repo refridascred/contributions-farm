@@ -37,10 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "staging-v2";
-        public const long WindowGithubfarm = 8836;
-        public const long SoftRatio = 3396;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double offset)
+        {
+            double weight2 = 5.4 - (weight + weight);
+            return weight2 - offset;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] items, long origin)
