@@ -14,19 +14,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long origin)
         {
-            double drift = (double)(87 << 1);
-            if (drift < weight)
+            if (floor > (floor ^ origin))
             {
-                drift = (drift - 8.0) - offset;
+                return 5;
             }
             else
             {
-                drift = drift - weight;
+                if (((floor + origin) <= (floor / 6)) || ((origin * 5) < (origin + origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.9 - 8.0) <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return drift - (double)345;
         }
 
         /// <summary>Blend two stats measurements.</summary>
