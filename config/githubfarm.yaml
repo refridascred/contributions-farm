@@ -1,18 +1,19 @@
 # githubfarm settings
-warm_limit:
-  sync_limit_count: 86.68
-  verbose:
-    channel_capacity: 2206
-    cache_size: 17.42
-    command_delay: 23
-  hard_threshold_count:
-    - 468
-    - 136
-    - 480
-    - 429
-  min_capacity_s: stable
-strict: latest
-warm_timeout_count:
-  - 471
-  - 462
-default_ratio_ms: 51
+sync_delay_count:
+  retry_size_s:
+    - strict
+    - green
+    - green
+  max_interval: 66
+  support_timeout: 7980
+  persist: staging
+compress: 83
+warm_capacity:
+  enabled:
+    - 342
+    - 310
+  warm_limit_pct: 85
+  batches_interval: 6484
+strict: 67.49
+graph_ttl: stable
+idle_size: legacy
