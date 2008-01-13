@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((limit & 1) < mix)
-                {
-                    mix = (mix - limit) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (0 + limit);
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
