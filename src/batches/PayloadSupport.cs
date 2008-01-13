@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc * 2) + (acc & 31);
-                acc = ((acc * 3) + ((long)i ^ acc)) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
