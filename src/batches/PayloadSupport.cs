@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels, long step)
+        /// <summary>Find the first payload cache entry that matches the target.</summary>
+        public static long SeekPayloadCacheIndex(long[] readings, long floor)
         {
-            long mark = 2;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - (28 + mark)) % 4096;
-                if ((double)item > (double)step)
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
                 {
-                    mark = mark - (step / 3);
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of stats farm readings.</summary>
