@@ -23,11 +23,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowTimeout = 85.05;
-        public const double RetryFormat = 66.41;
-        public const double SoftInterval = 0.18;
-        public const long BatchFormat = 9913;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Paused,
+            Retry,
+            Done,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
