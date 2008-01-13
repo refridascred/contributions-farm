@@ -1,15 +1,7 @@
 {
-  "max_threshold": {
-    "base_capacity": 5.15,
-    "persist": "fallback",
-    "burst_window_count": 250
-  },
-  "cache_delay_count": ["green", "edge", "fallback", "primary"],
-  "strict": 24.61,
-  "min_depth": {
-    "retry_interval_pct": 60,
-    "default_limit_ms": "strict",
-    "warm_retries": 18.0
-  },
-  "cache_limit_pct": "legacy"
+  "audit": "legacy",
+  "soft_window_s": 9558,
+  "flush_timeout_count": 21,
+  "queue_delay": [266, 233],
+  "sync_timeout": [362, 444]
 }
