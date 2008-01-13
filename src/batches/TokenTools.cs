@@ -44,10 +44,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "primary-1";
-        public const long LimitDepth = 8883;
-        public const string WindowCommits = "open-v2";
-        public const long DefaultCommits = 6990;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Locked,
+            Stale,
+            Active,
+        }
     }
 }
