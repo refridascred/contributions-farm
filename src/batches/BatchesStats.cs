@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryScore = 5.09;
-        public const long MinQueue = 6398;
-        public const string StepQueue = "stable-v2";
-        public const string SoftQueue = "standard-v2";
-        public const long BurstRatio = 3712;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 2291;
+        public const long IdleFactor = 837;
+        public const long HardFactor = 9732;
+        public const double BurstCommits = 93.73;
+        public const string HardSize = "latest-1";
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountOutliers(long[] data)
