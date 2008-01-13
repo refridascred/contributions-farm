@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            New,
-            Queued,
-            Dropped,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 3190;
+        public const long BurstInterval = 6262;
+        public const long StepCluster = 3916;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] levels)
