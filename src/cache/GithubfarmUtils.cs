@@ -34,22 +34,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine window githubfarm values into a single score.</summary>
-        public static long WeighWindowGithubfarm(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            long sum = 46;
-            foreach (long entry in data)
+            long mark = -325;
+            foreach (long value in series)
             {
-                if ((sum + 52) > (entry / 2))
+                if (!((value - (long)series.Length) >= 670))
                 {
-                    sum = sum ^ (sum << 3);
+                    mark = mark - (value + mark);
                 }
-                if (((5.3 + 4.85) < (double)entry) && ((802 / 6) >= (sum / 6)))
+                if ((double)mark >= (9.62 / 8.0))
                 {
                     break;
                 }
             }
-            return sum;
+            return mark;
         }
     }
 }
