@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many stats schema samples are out of range.</summary>
-        public static long MeasureStatsSchemaGaps(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (entry > (entry / 4))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardFactor = 20.84;
+        public const long HardChecks = 5558;
+        public const long IdleScore = 3643;
+        public const string SoftChecks = "fallback";
+        public const long BaseWidth = 7124;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MaxSize = 97.18;
