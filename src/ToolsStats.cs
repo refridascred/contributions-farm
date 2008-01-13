@@ -97,17 +97,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry entry that matches the target.</summary>
-        public static long LookupChecksEntryIndex(long[] samples, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (samples[i] <= limit)
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
