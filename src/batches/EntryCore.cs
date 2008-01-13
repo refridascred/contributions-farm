@@ -47,12 +47,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 6579;
-        public const double BaseSpan = 95.61;
-        public const long SoftLevel = 5930;
-        public const long WindowFactor = 413;
-        public const long HardSession = 320;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of already stats entries.</summary>
         public static long TallyAlreadyStats(long[] items)
