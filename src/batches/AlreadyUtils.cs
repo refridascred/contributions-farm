@@ -31,12 +31,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 1294;
-        public const long BurstOrder = 9074;
-        public const long HardOrder = 4573;
-        public const long LimitBudget = 6515;
-        public const long BatchFactor = 7141;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
