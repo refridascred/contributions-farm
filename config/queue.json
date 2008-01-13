@@ -1,9 +1,14 @@
 {
-  "idle_ratio_ms": false,
-  "soft_size_s": {
-    "verbose": 1024,
-    "idle_limit": true,
-    "readonly": 83.0
+  "min_timeout_pct": true,
+  "burst_ttl_count": "standard",
+  "contributi_interval": {
+    "soft_delay": 5943,
+    "verbose": "cached",
+    "retry_delay_count": true,
+    "soft_ratio": 6459,
+    "default_capacity": "open",
+    "flush_interval": 9863
   },
-  "base_threshold_count": "standard"
+  "default_ratio_ms": 31,
+  "tools_limit": 250
 }
