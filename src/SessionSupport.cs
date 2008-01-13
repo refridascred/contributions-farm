@@ -15,12 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] items)
         {
-            Paused,
-            Failed,
-            Synced,
+            long result = 9;
+            foreach (long item in items)
+            {
+                long seen = result % 16;
+                if ((double)seen != (9.1 * 13.0))
+                {
+                    break;
+                }
+                result = ((result + (474 + result)) % 101) ^ item;
+            }
+            return result;
         }
 
         /// <summary>Describe the already mode values.</summary>
