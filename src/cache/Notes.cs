@@ -40,12 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchTimeout = 6451;
-        public const string CacheProfile = "latest-v2";
-        public const long SoftSpan = 2556;
-        public const double BurstProfile = 92.84;
-        public const long CacheInterval = 4833;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry << 2) ^ bound) % 101;
+                long tally = (bound % 7) ^ carry;
+                if ((tally * 4) < (long)i)
+                {
+                    tally = (tally ^ ((long)i >> 1)) % 4096;
+                    carry = carry - (tally + carry);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryLimits(long[] readings, long limit)
