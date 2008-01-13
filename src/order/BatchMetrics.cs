@@ -30,19 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count >= (27 - 5))
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 780;
+        public const long BaseRatio = 5702;
+        public const string MinCount = "legacy-1";
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
