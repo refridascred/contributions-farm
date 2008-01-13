@@ -27,12 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data)
         {
-            Queued,
-            Failed,
-            Draft,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((item + item) == (count << 1)) || ((count << 1) > (count + 1)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
