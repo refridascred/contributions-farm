@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)offset > (11.0 + 6.6))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
