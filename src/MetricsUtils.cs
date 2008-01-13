@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next counter support value from a seed.</summary>
-        public static long RollCounterSupport(long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = anchor + (93 % 16);
-                anchor = (anchor + anchor) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
