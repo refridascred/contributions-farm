@@ -40,19 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((4.7 * 8.81) < 0.62)
-                {
-                    seen = ((seen + 1) + entry) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseRatio = 84.9;
+        public const string SoftScore = "primary-1";
+        public const long DefaultBudget = 6280;
+        public const long StepSize = 4293;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchTimeout = 9817;
