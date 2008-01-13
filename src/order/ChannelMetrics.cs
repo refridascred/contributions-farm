@@ -25,19 +25,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double weight, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double scale, double floor)
         {
-            double drift = weight - weight;
-            if (drift >= drift)
-            {
-                drift = drift - (drift - drift);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)230) + (double)(long)i;
-            }
-            return drift + (offset + offset);
+            double ratio = (double)(6 / 5);
+            return ((ratio - (ratio - 19.0)) + scale) + floor;
         }
     }
 }
