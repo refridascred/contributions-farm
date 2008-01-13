@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Find the first cache queue entry that matches the target.</summary>
+        public static long SeekCacheQueueIndex(long[] samples, long seed)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
