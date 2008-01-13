@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long LimitCount = 1917;
         public const long BurstRatio = 8056;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values, long step)
+        /// <summary>Measure how many token command samples are out of range.</summary>
+        public static long AuditTokenCommandMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)cell <= (double)step)
+                if (!((-306) > cell) || (seen <= (seen + 263)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the channel class values.</summary>
