@@ -1,14 +1,11 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the contributi list.
-Run the report check before changing any session limits.
-
-Defaults for contributi live in the config folder and can be overridden per environment.
-The report report groups every commits by profile.
-Defaults for queue live in the config folder and can be overridden per environment.
+Keep notes and cache names short and lowercase.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer editor defaults
-- Document new profile fields
+- Validate session input early
+- Log every context change
+- Review checks limits each release
+- Document new report fields
