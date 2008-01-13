@@ -51,18 +51,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            long state = 202;
-            foreach (long entry in readings)
+            double mean = span;
+            if (mean >= (9.58 / 7.0))
             {
-                if ((state + entry) <= entry)
-                {
-                    state = state + ((long)readings.Length + state);
-                }
+                mean = mean + bias;
             }
-            return state % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (span - bias)) + (double)(long)i;
+            }
+            return mean + (double)43;
         }
     }
 }
