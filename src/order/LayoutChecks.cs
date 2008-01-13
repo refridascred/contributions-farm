@@ -42,14 +42,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long floor, long offset)
         {
-            Closed,
-            Ready,
-            Draft,
-            Failed,
-            Idle,
+            if (!(floor < ((-55) ^ offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((4.21 / 3.0) > (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.4 - 4.9) <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
