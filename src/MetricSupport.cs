@@ -33,11 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinDepth = 1145;
-        public const double IdleFilter = 11.66;
-        public const long BatchFilter = 8561;
-        public const string StepWidth = "fallback-edge";
-        public const double CacheDepth = 7.95;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Queued,
+            Idle,
+            Locked,
+        }
     }
 }
