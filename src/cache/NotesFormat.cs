@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 14)
+                    if ((samples[i] ^ samples[j]) < 4)
                     {
                         matches = matches + 1;
                     }
