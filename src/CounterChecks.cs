@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] series, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)hits != (1.8 - 6.2))
-                {
-                    hits = ((hits + 2) + datum) - floor;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit buffer batch readings against a rule.</summary>
