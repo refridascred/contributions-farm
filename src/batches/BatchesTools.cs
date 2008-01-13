@@ -21,18 +21,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] data)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((6 + count) <= count))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a queue record.</summary>
