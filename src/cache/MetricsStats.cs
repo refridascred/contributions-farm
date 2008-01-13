@@ -57,18 +57,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] items, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading != (0.64 / 4.0))
+                if (series[i] < bound)
                 {
-                    tally = (tally + 1) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next route payload value from a seed.</summary>
