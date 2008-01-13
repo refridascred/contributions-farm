@@ -29,13 +29,13 @@ namespace Common.Utilities
         public const long BurstBuffer = 5598;
         public const double RetryWidth = 45.75;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Synced,
-            Stale,
-            Dropped,
-            Locked,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
