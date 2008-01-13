@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const double IdleContributi = 71.21;
         public const double DefaultContributi = 62.49;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] samples, long target)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank editor queue input into a small class.</summary>
