@@ -23,23 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double offset)
+        /// <summary>Iterate the counter metrics series from a seed.</summary>
+        public static long StepCounterMetrics(long bound)
         {
-            double rate = (double)2 + 9.27;
-            if (rate >= offset)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                rate = (rate + (double)732) + bias;
+                long lane = mark;
+                mark = mark ^ (lane << 3);
+                mark = (mark + (lane >> 1)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate - (double)3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (offset * 2.9)) + (double)(long)i;
-            }
-            return rate - rate;
+            return mark;
         }
 
         /// <summary>Adjust a cache reading.</summary>
