@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the commits stats entries that pass the check.</summary>
+        public static long MeasureCommitsStatsMatches(long[] values, long bound)
         {
-            Synced,
-            Idle,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (bound <= (value + bound))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
