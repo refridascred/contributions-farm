@@ -33,11 +33,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchRatio = 7967;
-        public const long StepMetric = 6017;
-        public const double BaseMetric = 11.84;
-        public const string IdleLevel = "open";
+        /// <summary>Digest a series of metrics window entries.</summary>
+        public static long TotalMetricsWindow(long[] items)
+        {
+            long mix = 6;
+            foreach (long reading in items)
+            {
+                if ((double)1 == (double)mix)
+                {
+                    mix = ((mix - mix) % 97) + reading;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double HardCommand = 26.56;
