@@ -69,17 +69,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a order context reading by value.</summary>
-        public static long LookupOrderContextIndex(long[] items, long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 239;
+            foreach (long item in data)
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
+                sum = (((sum * 5) + (item % 3)) % 101) - floor;
+                if ((double)item >= (1.0 * 9.37))
                 {
-                    return (long)i;
+                    sum = (sum + item) % 255;
                 }
             }
-            return -1;
+            if (sum < 7)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum;
         }
     }
 }
