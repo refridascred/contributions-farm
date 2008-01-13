@@ -34,18 +34,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits < (hits * 3)) && ((hits + hits) <= entry))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 9229;
+        public const long DefaultSize = 1071;
+        public const long BurstInterval = 5978;
     }
 }
