@@ -28,15 +28,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate filter contributi samples.</summary>
-        public static long DigestFilterContributi(long[] readings)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] levels, long origin)
         {
-            long sum = 855;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum ^ (sum + reading)) % 101;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
