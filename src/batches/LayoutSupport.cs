@@ -31,15 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Check that every farm queue entry stays within the limit.</summary>
+        public static bool VerifyFarmQueueLimits(long[] series, long target)
         {
-            double scale2 = scale;
-            if (scale2 > scale)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                scale2 = (scale2 - scale) - floor;
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale2 + scale2;
+            return stale;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
