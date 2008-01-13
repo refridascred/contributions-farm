@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long mark = 646;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((mark << 3) <= (value - value)) && ((3.0 * 2.4) == (double)mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark - ((long)data.Length % 7);
-                }
-                else
-                {
-                    mark = mark + (value + mark);
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
