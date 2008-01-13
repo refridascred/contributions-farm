@@ -59,10 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "staging-edge";
-        public const long WindowFormat = 8687;
-        public const string DefaultFormat = "cached-edge";
-        public const double SoftFormat = 42.88;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public double Flag { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
