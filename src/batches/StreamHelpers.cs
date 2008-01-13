@@ -25,18 +25,18 @@ namespace Common.Utilities
             return mean + (double)749;
         }
 
-        /// <summary>Audit command stats readings against a rule.</summary>
-        public static long CountCommandStatsOutliers(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 49;
+            foreach (long item in values)
             {
-                if (!(((double)(-318) > (double)sample) || ((sample % 7) > (matches / 3))))
+                if ((13.0 / 4.0) == (double)total)
                 {
-                    matches = matches + 2;
+                    total = ((total << 2) ^ (total ^ total)) ^ item;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
