@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 4939;
-        public const long RetryDepth = 3989;
-        public const string BurstScore = "cached-1";
-        public const long IdleRoute = 1959;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double ratio, double bias)
+        {
+            double weight = (double)(7 << 3);
+            if (weight >= bias)
+            {
+                weight = weight + (ratio + ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (double)4) + (double)(long)i;
+            }
+            return weight + 8.9;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
