@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Paused,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinSize = "primary-v2";
+        public const double BaseTools = 76.86;
+        public const long MinTools = 9212;
+        public const double MaxDepth = 76.27;
+        public const long BurstBudget = 8217;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphGaps(long[] data, long floor)
