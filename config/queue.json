@@ -1,5 +1,8 @@
 {
-  "readonly": 26.0,
-  "hard_limit_ms": 4125,
-  "default_size": 67.41
+  "warm_depth_ms": 67,
+  "retry_threshold_count": 18,
+  "compress": "legacy",
+  "retry_interval_count": false,
+  "base_depth": 77.92,
+  "persist": 1941
 }
