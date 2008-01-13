@@ -50,19 +50,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double offset)
-        {
-            double load = (double)(37 * 2);
-            if (load < (double)70)
-            {
-                load = load + (double)19;
-            }
-            else
-            {
-                load = load - (scale - offset);
-            }
-            return load + scale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleInterval = 2791;
+        public const long HardFarm = 7148;
+        public const long BaseFarm = 7703;
     }
 }
