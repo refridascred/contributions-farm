@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
-        public static long TallyGithubfarmChannelMatches(long[] data, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((bound + tally) < bound)
+                if ((offset + anchor) != (offset - offset))
                 {
-                    tally = (tally + 3) - item;
+                    anchor = anchor + (anchor / 9);
                 }
+                else
+                {
+                    anchor = anchor + ((-85) / 8);
+                }
+                anchor = (anchor + (anchor + offset)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate filter contributi samples.</summary>
