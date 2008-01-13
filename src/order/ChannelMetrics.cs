@@ -26,11 +26,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double scale, double floor)
+        /// <summary>Iterate the payload order series from a seed.</summary>
+        public static long DerivePayloadOrder(long floor)
         {
-            double ratio = (double)(6 / 5);
-            return ((ratio - (ratio - 19.0)) + scale) + floor;
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark ^ ((long)i ^ floor);
+                if (((long)i ^ mark) <= mark)
+                {
+                    mark = ((mark << 2) ^ ((long)i - 72)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
