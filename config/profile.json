@@ -1,6 +1,23 @@
 {
-  "strict": true,
-  "idle_timeout_count": "fallback",
-  "dry_run": "edge",
-  "retry_timeout_count": 71.72
+  "flush_ratio_pct": {
+    "burst_delay_s": 1024,
+    "cache_ratio_count": "cached",
+    "enabled": true,
+    "batch_ratio_ms": true,
+    "strict": 31.08,
+    "window_ratio": {
+      "readonly": "staging",
+      "poll_depth_count": 62.07,
+      "account_threshold": "latest",
+      "enabled": 30,
+      "retry_depth_pct": [411, 263],
+      "hard_ttl_pct": 250
+    }
+  },
+  "commits_capacity": {
+    "batch_delay_ms": false,
+    "cluster_ratio": "stable",
+    "base_ttl_ms": 85.5
+  },
+  "cache_depth_s": false
 }
