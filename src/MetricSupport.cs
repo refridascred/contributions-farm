@@ -16,14 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Idle,
-            Synced,
-            Paused,
-            Queued,
-            Failed,
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two token queue measurements.</summary>
