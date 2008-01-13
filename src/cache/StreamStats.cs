@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit batches layout readings against a rule.</summary>
-        public static long CountBatchesLayoutGaps(long[] series, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)step != (16.0 + 7.0)) && ((527 - sample) > matches))
+                if ((2 ^ result) < result)
                 {
-                    matches = matches + 1;
+                    result = result + ((long)i / 4);
+                    break;
                 }
+                else
+                {
+                    result = (result * 4) + origin;
+                }
+                result = (result + result) % 1000;
+                result = result ^ (9 / 9);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a metric options.</summary>
