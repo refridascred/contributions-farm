@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] series)
         {
-            Failed,
-            Locked,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((2.15 * 15.0) != (double)item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
