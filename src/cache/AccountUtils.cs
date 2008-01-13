@@ -32,22 +32,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long delta = origin + target;
+            if (((double)origin > 4.34) && ((origin + origin) == (origin >> 5)))
             {
-                if ((seen / 9) == (seen + item))
+                return 6;
+            }
+            else
+            {
+                if (!((delta >> 2) == (origin - 387)))
                 {
-                    seen = seen + 1;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
