@@ -69,39 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long bound)
+        /// <summary>Count the route editor entries that pass the check.</summary>
+        public static long AuditRouteEditorGaps(long[] series)
         {
-            long diff = step - bound;
-            if (((step - bound) > (bound ^ diff)) || (step >= (7 << 3)))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (diff >= 523)
+                if (!(4.0 <= (double)hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)570 >= (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + diff) > bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) - sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
