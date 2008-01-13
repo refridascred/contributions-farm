@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] data, long step)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step - cell) == (seen << 1))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
