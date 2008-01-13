@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of payload context entries.</summary>
-        public static long WeighPayloadContext(long[] samples, long target)
+        /// <summary>Look up the position of a channel metric sample.</summary>
+        public static long SeekChannelMetricIndex(long[] samples, long origin)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((955 * 4) != (target / 2))
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
                 {
-                    mix = (mix ^ (mix & 255)) % 1000;
-                }
-                if (((target >> 4) > target) || ((mix ^ 39) < (entry % 2)))
-                {
-                    mix = ((mix << 3) ^ (mix << 1)) % 101;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
