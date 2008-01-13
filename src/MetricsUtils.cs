@@ -45,15 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double bias, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            double bias2 = floor;
-            for (int i = 0; i < 5; i++)
+            long state = 62;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 + (double)(long)i) + bias;
+                if ((99 << 2) < entry)
+                {
+                    state = state - state;
+                }
             }
-            return bias2 - floor;
+            return state % 65521;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
