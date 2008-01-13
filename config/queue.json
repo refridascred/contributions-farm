@@ -1,7 +1,21 @@
 {
-  "record_retries": "standard",
-  "audit": [365, 243, 369, 221],
-  "verbose": "primary",
-  "retry_retries_count": true,
-  "retry_timeout_s": 1024
+  "default_depth_s": "primary",
+  "min_retries": "green",
+  "dry_run": {
+    "warm_size_ms": 16.87,
+    "compress": ["staging", "edge"],
+    "persist": "green",
+    "record_limit": "blue"
+  },
+  "cache_retries": 34.25,
+  "enabled": {
+    "cache_capacity_ms": {
+      "default_threshold_count": "standard",
+      "metric_retries": false,
+      "farm_ttl": true,
+      "report_ratio": [448, 122]
+    },
+    "profile_threshold": 500,
+    "notes_ttl": true
+  }
 }
