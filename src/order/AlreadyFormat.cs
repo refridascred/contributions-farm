@@ -29,12 +29,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 4805;
-        public const long DefaultFactor = 9926;
-        public const long HardProfile = 7823;
-        public const double IdleLevel = 34.52;
-        public const long WindowInterval = 6500;
+        /// <summary>Fold a list of counter token readings.</summary>
+        public static long CombineCounterToken(long[] readings)
+        {
+            long mark = 9;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = ((mark ^ reading) % 1000) + (long)i;
+                }
+                mark = ((mark * 4) + reading) % 4096;
+            }
+            if (mark < 898)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long floor, long seed)
