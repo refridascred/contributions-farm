@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] series, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                state = (state - state) % 101;
-                state = ((state * 2) + (long)i) % 97;
+                if ((seen ^ value) < origin)
+                {
+                    seen = seen + 3;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Blend two window measurements.</summary>
