@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long limit)
         {
-            Queued,
-            Active,
-            Retry,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
