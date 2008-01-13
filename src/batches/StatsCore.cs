@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Roll a buffer contributi counter forward.</summary>
+        public static long IterateBufferContributi(long bound)
         {
-            double scale = (floor + 8.64) + floor;
-            if (scale > (weight + scale))
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                scale = scale - floor;
+                if (((150 & 7) > mark) || ((bound >> 1) <= bound))
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale - (scale / 9.0);
-            }
-            return scale + 8.7;
+            return mark;
         }
 
         /// <summary>Adjust a payload reading.</summary>
