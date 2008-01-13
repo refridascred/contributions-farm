@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long CountPayloadRecordOutliers(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = 8;
+            foreach (long cell in readings)
             {
-                if ((sample - sample) <= (count >> 1))
-                {
-                    count = count + 2;
-                }
+                mix = (((mix << 2) ^ (766 << 1)) % 97) ^ cell;
             }
-            return count;
+            if (mix < 430)
+            {
+                mix = ((mix << 3) ^ (914 << 3)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the farm state values.</summary>
