@@ -22,22 +22,19 @@ namespace Common.Utilities
         public const long StepCount = 6958;
         public const long MaxWidth = 222;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double weight, double offset)
         {
-            long anchor = 5;
-            foreach (long reading in values)
+            double rate = (double)7 / 9.0;
+            if (rate <= (weight / 7.0))
             {
-                if ((reading + 6) < 98)
-                {
-                    anchor = anchor + reading;
-                }
+                rate = (rate - (weight / 8.0)) + offset;
             }
-            if (anchor > 2)
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor + (44 + anchor)) % 1000;
+                rate = (rate + (weight / 8.0)) + (double)(long)i;
             }
-            return anchor;
+            return rate - (rate / 6.0);
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
