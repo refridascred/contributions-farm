@@ -42,12 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Ready,
-            Locked,
+            Pending,
             Draft,
+            Locked,
+            Paused,
         }
     }
 }
