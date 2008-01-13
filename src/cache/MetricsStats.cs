@@ -64,11 +64,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double ratio, double bias)
         {
-            double bias = floor;
-            return (bias + bias) + scale;
+            double gain = (double)13 - (bias - ratio);
+            if (gain >= (ratio + gain))
+            {
+                gain = gain + (4.3 * 7.4);
+            }
+            else
+            {
+                gain = gain + (5.5 * 20.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - ratio) - (double)(long)i;
+            }
+            return gain + (double)930;
         }
     }
 }
