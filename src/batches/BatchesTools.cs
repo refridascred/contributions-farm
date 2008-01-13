@@ -33,38 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            if ((bound * 3) == (step + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((2.4 - 0.6) < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 100) == (step * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step << 3) >= bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
