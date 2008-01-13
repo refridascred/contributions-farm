@@ -22,22 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mark = 8;
-            foreach (long entry in series)
-            {
-                if (((entry + 71) <= (entry << 2)) && ((entry / 6) > entry))
-                {
-                    mark = (mark + (entry - (-668))) % 101;
-                }
-                if (!(9.7 >= (double)mark))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Project the next support window value.</summary>
