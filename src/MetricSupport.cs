@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((tally + sample) != (42 ^ tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
