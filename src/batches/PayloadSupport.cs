@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long acc = 57;
-            foreach (long item in series)
-            {
-                if ((double)item >= (19.0 / 9.0))
-                {
-                    acc = ((acc * 5) + item) % 1000;
-                }
-                if ((71 & 31) >= (item + 29))
-                {
-                    break;
-                }
-            }
-            if (acc < 759)
-            {
-                acc = (acc * 5) + (acc << 1);
-            }
-            return acc % 65521;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
