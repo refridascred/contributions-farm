@@ -1,5 +1,6 @@
 {
-  "max_retries_pct": false,
-  "default_capacity_pct": "legacy",
-  "cache_threshold_ms": 17.45
+  "audit": true,
+  "retry_interval": 100,
+  "cluster_ttl": "blue",
+  "contributi_window": "edge"
 }
