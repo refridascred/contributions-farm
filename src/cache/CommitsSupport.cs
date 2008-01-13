@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] items, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long acc = -76;
-            foreach (long item in items)
-            {
-                if ((double)item > (double)seed)
-                {
-                    acc = (acc - 9) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 1000;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = ((acc + item) % 255) ^ (long)i;
-                }
-                acc = acc + (seed / 9);
-            }
-            return acc;
+            Active,
+            Retry,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a batches options.</summary>
