@@ -23,39 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long bound, long bound2)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double offset)
         {
-            long step = bound ^ bound2;
-            if ((bound << 2) != (bound2 ^ 36))
+            double rate = (double)2 + 9.27;
+            if (rate >= offset)
             {
-                return 7;
+                rate = (rate + (double)732) + bias;
             }
             else
             {
-                if (((bound + step) == (57 << 3)) && (((-9) + step) > (bound2 - 79)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step < (1.0 / 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step - bound2) > 4) && ((0.88 - 15.0) > (double)step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = rate - (double)3;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (offset * 2.9)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Adjust a cache reading.</summary>
