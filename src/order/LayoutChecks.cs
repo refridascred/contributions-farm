@@ -44,18 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (floor <= (hits * 5))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
