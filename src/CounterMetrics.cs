@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = (anchor ^ ((long)i + (long)i)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
