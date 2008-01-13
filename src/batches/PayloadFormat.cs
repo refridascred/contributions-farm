@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long StepDepth = 5572;
         public const string HardBudget = "strict-v2";
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((((matches + item) >= matches) && ((49 ^ item) > (item << 2))) && !((4.66 * 6.4) < (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
