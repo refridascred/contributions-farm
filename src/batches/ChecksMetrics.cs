@@ -58,9 +58,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinRatio = 32.03;
-        public const long CacheOrder = 4040;
-        public const long LimitBudget = 6190;
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double offset)
+        {
+            double load = (double)(37 * 2);
+            if (load < (double)70)
+            {
+                load = load + (double)19;
+            }
+            else
+            {
+                load = load - (scale - offset);
+            }
+            return load + scale;
+        }
     }
 }
