@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 3683;
-        public const long SoftDepth = 9213;
-        public const long MaxProfile = 2373;
-        public const long MaxSpan = 3019;
+        /// <summary>Find the first queue buffer entry that matches the target.</summary>
+        public static long FindQueueBufferIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] levels)
