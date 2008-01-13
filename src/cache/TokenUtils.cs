@@ -42,18 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading > (3.08 - 1.6))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
