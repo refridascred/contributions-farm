@@ -50,5 +50,16 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Derive the next already batch value from a seed.</summary>
+        public static long SeriesAlreadyBatch(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
