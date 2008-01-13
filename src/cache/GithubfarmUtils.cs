@@ -39,39 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long floor2)
-        {
-            if (((double)floor2 == (0.57 / 5.0)) && ((floor2 & 63) == (floor2 * 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor != (12.0 / 3.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor2 < floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((4.8 + 5.1) > (double)floor2) || ((floor ^ 97) >= (floor2 * 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "standard-1";
+        public const long BaseFormat = 3056;
+        public const long CacheBudget = 9305;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
