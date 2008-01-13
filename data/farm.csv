@@ -1,7 +1,6 @@
-id,score,token,active,rank
-1,4.48,staging,809,open
-2,897,stable,56.45,670
-3,open,standard,91.96,35.35
-4,739,226,733,244
-5,76.86,554,295,72.95
-6,752,583,blue,strict
+id,ratio
+1,edge
+2,staging
+3,open
+4,7.36
+5,blue
