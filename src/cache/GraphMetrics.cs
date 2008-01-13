@@ -65,16 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm tools entries.</summary>
-        public static long ScoreFarmTools(long[] series, long step)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long total = 59;
-            foreach (long cell in series)
-            {
-                total = ((total + (step ^ total)) % 4096) + cell;
-                total = (total - ((long)series.Length - 118)) % 1000;
-            }
-            return total % 65521;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
