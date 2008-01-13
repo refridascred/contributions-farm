@@ -46,13 +46,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Failed,
-            Locked,
-            Dropped,
+            Pending,
             Stale,
+            Queued,
+            Paused,
+            Synced,
         }
     }
 }
