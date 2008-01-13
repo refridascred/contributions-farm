@@ -63,13 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            Failed,
-            Stale,
-            Active,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support snapshot.</summary>
