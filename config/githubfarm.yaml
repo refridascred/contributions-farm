@@ -1,4 +1,8 @@
 # githubfarm settings
-flush_ratio_ms: staging
-retry_size: blue
-min_capacity: 3.93
+token_ratio: 60
+contributi_threshold: latest
+soft_limit_s: 52.06
+metric_limit:
+  - 60
+  - 354
+hard_ttl_ms: 51.36
