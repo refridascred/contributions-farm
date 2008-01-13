@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long SoftRatio = 2875;
         public const long BurstStats = 2252;
 
-        /// <summary>Fold a list of entry notes readings.</summary>
-        public static long CombineEntryNotes(long[] levels, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long sum = 217;
-            foreach (long datum in levels)
-            {
-                sum = ((((sum * 5) + (-30)) % 97) ^ datum) + step;
-            }
-            if (sum > 7)
-            {
-                sum = (sum * 5) + (sum >> 5);
-            }
-            return sum % 65521;
+            Closed,
+            Dropped,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Iterate the schema filter series from a seed.</summary>
