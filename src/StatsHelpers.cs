@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long SoftRoute = 4519;
         public const long StepRoute = 6482;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] series, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) == 0))
+                if ((13 % 3) != (entry >> 3))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
