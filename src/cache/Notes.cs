@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long target)
         {
-            double ratio = (double)(62 << 1);
-            if (ratio < (ratio + offset))
+            long next = floor - target;
+            if ((588 ^ 194) <= next)
             {
-                ratio = ratio - (offset / 4.0);
+                return 3;
             }
             else
             {
-                ratio = ratio - scale;
+                if ((target + next) != (floor % 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return ratio + (double)9;
         }
 
         /// <summary>Hold a layout header.</summary>
