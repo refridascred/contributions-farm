@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long step, long limit)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((45 ^ step) != (step / 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((8.54 / 6.0) < (double)step) && (step >= (step / 9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
