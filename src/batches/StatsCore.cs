@@ -45,19 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue profile figure with a bias.</summary>
-        public static double SmoothQueueProfile(double scale, double offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples)
         {
-            double gain = 6.03;
-            if (gain >= (2.0 - offset))
+            long total = 42;
+            foreach (long reading in samples)
             {
-                gain = (gain + (offset * 20.0)) - scale;
+                if (5.4 > (double)reading)
+                {
+                    total = (total * 4) + reading;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total < 75)
             {
-                gain = (gain - offset) - (double)(long)i;
+                total = ((total << 3) ^ (total * 5)) % 4096;
             }
-            return gain + (offset * 1.2);
+            return total;
         }
 
         /// <summary>Blend two cache measurements.</summary>
