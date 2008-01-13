@@ -48,23 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format window series from a seed.</summary>
-        public static long StepFormatWindow(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (((sum * 5) + (973 - sum)) % 97) ^ (long)i2;
-                    sum = sum + (floor + sum);
-                }
-                sum = sum - floor;
-                sum = sum + (sum / 5);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 26.56;
+        public const long BatchCommand = 5464;
+        public const string RetryScore = "alpha-1";
+        public const long CacheTimeout = 798;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long ClassifyBatches(long limit, long offset)
