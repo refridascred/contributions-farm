@@ -1,8 +1,8 @@
 {
-  "batches_delay": "edge",
-  "max_timeout_pct": "stable",
-  "min_depth_count": false,
-  "persist": 35.89,
-  "enabled": [379, 412, 108, 166],
-  "dry_run": "blue"
+  "strict": "primary",
+  "min_timeout": 25.57,
+  "enabled": 4928,
+  "verbose": ["fallback", "legacy"],
+  "readonly": 76.32,
+  "flush_ratio_count": 494
 }
