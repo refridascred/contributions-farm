@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const string LimitMetrics = "latest-edge";
         public const long BatchMetrics = 8207;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Match up graph batch samples.</summary>
+        public static long PairGraphBatchCount(long[] data)
         {
-            Draft,
-            Idle,
-            Synced,
-            Ready,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
