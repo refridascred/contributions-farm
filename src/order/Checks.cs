@@ -40,18 +40,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] values)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen * 5) != (datum / 6))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
