@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 4565;
-        public const double BatchAccount = 34.75;
-        public const long RetryAccount = 5753;
-        public const long SoftAccount = 434;
-        public const long WindowRatio = 956;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryScore = 5.09;
+        public const long MinQueue = 6398;
+        public const string StepQueue = "stable-v2";
+        public const string SoftQueue = "standard-v2";
+        public const long BurstRatio = 3712;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
