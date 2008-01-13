@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of farm githubfarm entries.</summary>
-        public static long WeighFarmGithubfarm(long[] levels)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = 45;
-            foreach (long reading in levels)
-            {
-                if (((1.4 * 6.4) <= (double)reading) && (anchor > (21 % 12)))
-                {
-                    break;
-                }
-                if ((321 % 2) <= reading)
-                {
-                    anchor = (anchor + (anchor >> 5)) % 255;
-                }
-            }
-            return anchor;
+            Queued,
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Accumulate route samples.</summary>
