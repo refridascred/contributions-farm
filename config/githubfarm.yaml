@@ -1,7 +1,7 @@
 # githubfarm settings
-max_ratio_s: true
-cache_timeout_pct: 6569
-idle_size: 30
-report_capacity: cached
-stats_delay: strict
-idle_timeout_s: blue
+warm_limit_ms: 5307
+idle_retries_s: 73
+route_interval: 81
+compress: 1024
+report_interval: 47.81
+sync_window_s: true
