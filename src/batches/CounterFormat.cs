@@ -15,18 +15,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if (0 >= (offset & 255))
             {
-                if ((6.75 - 8.55) < (double)datum)
+                return 6;
+            }
+            else
+            {
+                if (2.03 > (double)bound)
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset & 15) != (offset ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the notes kind values.</summary>
