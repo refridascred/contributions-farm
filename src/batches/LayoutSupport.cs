@@ -46,17 +46,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                if (((long)i + (long)i) <= limit)
                 {
-                    return (long)i;
+                    state = (state + (state - limit)) % 4096;
                 }
+                state = ((state * 2) + limit) % 1000;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Scale a report token figure with a bias.</summary>
