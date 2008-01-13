@@ -40,12 +40,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long origin)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long slot = offset + origin;
+            if (((offset ^ offset) < (slot / 7)) && (offset <= slot))
+            {
+                return 5;
+            }
+            else
+            {
+                if (78 <= (slot / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
