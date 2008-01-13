@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((63 + acc) > (target * 2))
-                {
-                    acc = (acc ^ target) % 4096;
-                    acc = (acc ^ (acc - 95)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 93.57;
+        public const double MinOrder = 52.11;
+        public const long WindowOrder = 1754;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferBounds(long[] samples, long target)
