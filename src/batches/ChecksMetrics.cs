@@ -43,18 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] data, long bound)
+        /// <summary>Measure how many cache layout samples are out of range.</summary>
+        public static long AuditCacheLayoutGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (!(((double)bound >= (13.0 / 8.0)) && ((6 ^ datum) > (datum - count))))
+                if (datum > seen)
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
