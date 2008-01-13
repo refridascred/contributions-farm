@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 7108;
-        public const string LimitScore = "local-edge";
-        public const long BatchGithubfarm = 823;
-        public const double CacheInterval = 63.02;
+        /// <summary>Roll a graph batch counter forward.</summary>
+        public static long DeriveGraphBatch(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = anchor ^ (seed + seed);
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryScore = 5.09;
