@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long origin)
+        /// <summary>Project the next stream schema value.</summary>
+        public static double ScaleStreamSchema(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = (double)9;
+            if (weight2 >= weight2)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                weight2 = ((weight2 + (9.76 / 4.0)) - weight) - span;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + weight2) - (double)(long)i;
+            }
+            return weight2 + (double)656;
         }
 
         /// <summary>Describe the commits level values.</summary>
