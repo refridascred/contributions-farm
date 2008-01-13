@@ -1,7 +1,10 @@
-id,label,rank,state,count
-1,eu-west,latest,65.3,359
-2,527,standard,primary,stable
-3,513,390,877,92.09
-4,32.97,edge,edge,fallback
-5,180,648,976,local
-6,61.61,30.11,primary,98.22
+id,token,count
+1,94.8,eu-west
+2,70.87,801
+3,staging,eu-west
+4,10.4,local
+5,edge,38.49
+6,604,697
+7,90.48,legacy
+8,8.04,562
+9,449,strict
