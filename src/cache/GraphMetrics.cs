@@ -19,18 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Derive the next route context value from a seed.</summary>
+        public static long SeriesRouteContext(long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry + entry) != (matches % 16))
-                {
-                    matches = matches + 3;
-                }
+                state = (state + (state >> 2)) % 255;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
