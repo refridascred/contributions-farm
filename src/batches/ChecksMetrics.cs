@@ -42,10 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 96.46;
-        public const long WindowLevel = 3394;
-        public const string LimitCommand = "open";
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a tools token pair into a bucket.</summary>
         public static long ClassifyToolsToken(long limit, long bound)
