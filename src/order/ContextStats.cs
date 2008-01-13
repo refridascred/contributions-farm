@@ -45,18 +45,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] data, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double bias, double offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            double ratio = (offset * 4.75) - (double)74;
+            if (ratio < ratio)
             {
-                if ((2.52 / 5.0) == (double)count)
-                {
-                    count = ((count + 1) + item) + seed;
-                }
+                ratio = ratio - bias;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
