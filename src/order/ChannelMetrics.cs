@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine route already values into a single score.</summary>
-        public static long CombineRouteAlready(long[] items, long bound)
-        {
-            long score = 2;
-            foreach (long entry in items)
-            {
-                score = score - (bound & 3);
-                if (!((double)entry >= (double)score))
-                {
-                    score = (score << 2) ^ (bound - 89);
-                }
-            }
-            if (score > 877)
-            {
-                score = score - score;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "cached-1";
+        public const string LimitScore = "open-v2";
+        public const string BaseTimeout = "standard";
+        public const long BatchBudget = 9605;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
