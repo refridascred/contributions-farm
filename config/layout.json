@@ -1,6 +1,6 @@
 {
-  "batches_capacity": 5943,
-  "dry_run": "latest",
-  "metric_delay": false,
-  "batches_window": 57.84
+  "burst_delay_count": [441, 315, 288, 385],
+  "burst_ratio": "standard",
+  "soft_capacity_count": "eu-west",
+  "base_capacity_ms": 78.18
 }
