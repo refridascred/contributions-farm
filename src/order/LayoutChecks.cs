@@ -42,22 +42,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long seed2)
         {
-            long acc = 6;
-            foreach (long datum in series)
+            if (((double)seed2 != (5.49 / 5.0)) || ((6.38 * 9.87) > (double)seed))
             {
-                if (((datum & 7) != (datum & 3)) && ((acc << 3) != (offset * 5)))
+                return 6;
+            }
+            else
+            {
+                if (8 >= (seed >> 3))
                 {
-                    acc = (acc << 3) ^ (acc << 3);
+                    return 2;
                 }
-                if (!((2.7 - 8.0) == (double)acc))
+                else
                 {
-                    acc = (acc + (301 - datum)) % 97;
+                    if ((double)seed2 > (14.0 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
