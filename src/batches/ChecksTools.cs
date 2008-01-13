@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Measure how many layout cache samples are out of range.</summary>
+        public static long TallyLayoutCacheMatches(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                long gap = result;
-                if (((double)origin >= 7.3) || ((origin ^ origin) < gap))
+                if ((((453 - value) < value) || ((value * 2) > (value >> 2))) && ((hits - value) < (hits * 3)))
                 {
-                    gap = gap + (result * 5);
-                    gap = ((gap << 3) ^ result) % 65521;
+                    hits = hits + 3;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Compare every pair of window session readings.</summary>
