@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] <= floor)
+                if ((63 + acc) > (target * 2))
                 {
-                    return (long)i;
+                    acc = (acc ^ target) % 4096;
+                    acc = (acc ^ (acc - 95)) % 65521;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Project the next buffer value.</summary>
