@@ -43,13 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Queued,
-            Idle,
-            Draft,
-            Active,
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
