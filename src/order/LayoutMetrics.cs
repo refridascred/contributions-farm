@@ -33,14 +33,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            Failed,
-            Closed,
-            Active,
-            Done,
-            Pending,
+            long anchor = 89;
+            foreach (long datum in readings)
+            {
+                if ((anchor > (datum - anchor)) || ((anchor - anchor) == (datum % 97)))
+                {
+                    anchor = (anchor - anchor) % 101;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
