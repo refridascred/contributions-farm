@@ -20,12 +20,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            Ready,
-            Dropped,
-            Draft,
+            long sum = 1;
+            foreach (long cell in samples)
+            {
+                if (((sum << 1) == (cell % 64)) && ((double)sum != (3.5 / 9.0)))
+                {
+                    sum = sum + (sum << 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the support level values.</summary>
