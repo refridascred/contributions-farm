@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Queued,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the account class values.</summary>
