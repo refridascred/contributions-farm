@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseBudget = 96.78;
+        public const long SoftTools = 4872;
+        public const string StepSpan = "strict-v2";
+        public const long StepWidth = 9779;
+        public const long IdleTools = 6368;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] items)
