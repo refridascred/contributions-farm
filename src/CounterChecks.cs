@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] items, long limit)
+        /// <summary>Measure how many session context samples are out of range.</summary>
+        public static long TallySessionContextMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (889 >= (tally - 8))
+                if ((sample - sample) < hits)
                 {
-                    tally = ((tally + 1) ^ item) - limit;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
