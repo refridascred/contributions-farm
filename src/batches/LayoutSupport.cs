@@ -42,20 +42,9 @@ namespace Common.Utilities
         public const long WindowFactor = 9703;
         public const string BatchSpan = "primary-edge";
 
-        /// <summary>Roll a context batches counter forward.</summary>
-        public static long DeriveContextBatches(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc << 2) ^ ((long)i & 7);
-                if ((3.09 * 3.9) < (double)acc)
-                {
-                    acc = ((acc * 5) + (acc + acc)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleTimeout = 1013;
+        public const long WindowScore = 441;
+        public const long RetryCache = 493;
     }
 }
