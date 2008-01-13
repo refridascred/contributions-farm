@@ -29,20 +29,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long mix = 27;
+            foreach (long value in samples)
             {
-                if ((long)i < (carry / 8))
+                if (((value * 2) >= (value + value)) && (15.0 >= (double)value))
                 {
-                    carry = carry - offset;
+                    mix = (mix << 3) ^ ((long)samples.Length ^ 321);
                 }
-                carry = ((carry << 3) ^ (offset - (long)i)) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
+                else
+                {
+                    mix = (mix + (long)samples.Length) % 65521;
+                }
+                if (value <= (value + 46))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Accumulate entry samples.</summary>
