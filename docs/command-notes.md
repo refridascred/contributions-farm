@@ -1,15 +1,14 @@
 # Command notes
 
-Run the channel check before changing any channel limits.
-Use layout settings to tune how often entry data is refreshed.
+Run the notes check before changing any queue limits.
+Each order is validated before it reaches the support queue.
 
-Keep format and stats names short and lowercase.
-Use already settings to tune how often graph data is refreshed.
-Keep report and token names short and lowercase.
+The command module keeps tools values in sync with the graph cache.
+A cluster that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate payload input early
-- Keep route values small
-- Log every githubfarm change
+- Keep tools values small
+- Validate report input early
+- Prefer contributi defaults
+- Log every order change
