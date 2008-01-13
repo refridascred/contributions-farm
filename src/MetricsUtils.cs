@@ -38,12 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            Active,
-            Ready,
-            Synced,
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
