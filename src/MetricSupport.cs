@@ -33,11 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "legacy";
-        public const long StepLevel = 7335;
-        public const long DefaultFilter = 7639;
-        public const long LimitTimeout = 8293;
-        public const long BurstSpan = 2926;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)seen < (0.4 - 5.3))
+                {
+                    seen = ((seen + 1) + entry) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
