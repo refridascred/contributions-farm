@@ -49,21 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
