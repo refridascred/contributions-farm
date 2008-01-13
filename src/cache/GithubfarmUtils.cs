@@ -14,17 +14,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long floor, long floor2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((double)floor2 == (0.57 / 5.0)) && ((floor2 & 63) == (floor2 * 2)))
             {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor != (12.0 / 3.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (floor2 < floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((4.8 + 5.1) > (double)floor2) || ((floor ^ 97) >= (floor2 * 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
