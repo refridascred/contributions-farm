@@ -37,22 +37,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long floor)
         {
-            long total = 64;
-            foreach (long cell in readings)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((total * 5) == (cell << 2))
-                {
-                    total = total + step;
-                }
+                acc = ((acc * 2) + acc) % 1000;
+                acc = (acc - (94 >> 4)) % 97;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (total < 2)
-            {
-                total = total - (step << 2);
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Match up schema samples.</summary>
