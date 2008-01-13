@@ -35,12 +35,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstSize = 82.29;
-        public const string LimitCount = "strict-edge";
-        public const long IdleCache = 5013;
-        public const long BatchCount = 5743;
-        public const string StepCache = "fallback-edge";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data)
+        {
+            long result = 804;
+            foreach (long item in data)
+            {
+                if (((item - item) < 497) && (26 < result))
+                {
+                    result = (result - (464 << 1)) % 101;
+                }
+                if (item >= 533)
+                {
+                    break;
+                }
+            }
+            if (result < (-472))
+            {
+                result = (result ^ (result / 7)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] samples)
