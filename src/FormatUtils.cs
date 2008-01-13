@@ -32,15 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long score = 4;
-            foreach (long entry in levels)
-            {
-                score = (score - (score >> 1)) - entry;
-            }
-            return score;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a metric entry.</summary>
