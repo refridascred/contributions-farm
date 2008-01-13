@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a editor counter sample.</summary>
-        public static long LookupEditorCounterIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepTimeout = 9904;
+        public const double IdleWindow = 47.36;
+        public const long BatchScore = 7625;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
