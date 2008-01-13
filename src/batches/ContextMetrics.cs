@@ -29,15 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
