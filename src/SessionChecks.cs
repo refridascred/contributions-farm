@@ -62,21 +62,11 @@ namespace Common.Utilities
         public const long BaseFarm = 7047;
         public const double BurstFarm = 40.51;
 
-        /// <summary>Match up channel counter samples.</summary>
-        public static long OverlapChannelCounterCount(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
