@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] items, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] >= step)
+                if ((reading + tally) < (reading - reading))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
