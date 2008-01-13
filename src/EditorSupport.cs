@@ -35,12 +35,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of farm channel entries.</summary>
+        public static long WeighFarmChannel(long[] data, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long carry = 17;
+            foreach (long reading in data)
+            {
+                carry = carry - reading;
+                if (carry >= (504 >> 2))
+                {
+                    carry = (carry + step) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
