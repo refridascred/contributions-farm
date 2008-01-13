@@ -44,21 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((714 & 7) < (carry - (-4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry - (carry >> 1)) % 4096;
-                    carry = (carry * 4) + ((long)i % 60);
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry << 2) ^ carry) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
     }
 }
