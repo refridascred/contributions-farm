@@ -25,20 +25,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark * 4) + (55 * 4);
-                if (!((8.61 / 9.0) > (double)target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 3) ^ mark) % 4096;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
