@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (tally > origin)
-                {
-                    tally = (tally + 3) - value;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Digest a series of context entries.</summary>
