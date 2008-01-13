@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many route account samples are out of range.</summary>
-        public static long AuditRouteAccountGaps(long[] series)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (86 < tally)
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
