@@ -26,14 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] series, long bound)
         {
-            Locked,
-            Draft,
-            Synced,
-            Ready,
-            Done,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (bound >= (bound + (-82)))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next account value.</summary>
