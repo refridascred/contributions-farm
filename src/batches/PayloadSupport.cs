@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
