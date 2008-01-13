@@ -85,11 +85,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] levels, long step)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            long mark = 119;
+            foreach (long value in levels)
+            {
+                if ((step + value) >= (mark / 6))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
