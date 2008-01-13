@@ -28,15 +28,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double bias2)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double gain = bias2 / 9.0;
-            if (gain < (13.0 / 7.0))
-            {
-                gain = (gain - gain) - bias;
-            }
-            return gain + 5.55;
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
