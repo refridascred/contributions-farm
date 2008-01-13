@@ -21,17 +21,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 36;
+            foreach (long cell in series)
             {
-                if ((items[i] <= limit) && ((items[i] % 3) != 0))
+                if ((acc >= (acc + 92)) && ((5.1 + 9.6) < (double)acc))
                 {
-                    return (long)i;
+                    acc = acc ^ cell;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Hold a context entry.</summary>
