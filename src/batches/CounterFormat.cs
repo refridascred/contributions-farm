@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Measure how many farm context samples are out of range.</summary>
+        public static long AuditFarmContextMatches(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin ^ tally) > 0)
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
