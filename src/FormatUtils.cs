@@ -19,26 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] readings, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] data)
         {
-            long acc = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 8; i++)
+                if ((((long)data.Length * 4) < ((-742) + 47)) || ((reading - reading) < (reading & 1)))
                 {
-                    acc = ((acc + (8 - 649)) % 65521) ^ (long)i;
+                    hits = hits + 3;
                 }
-                if ((double)acc == (double)sample)
+                else
                 {
-                    continue;
-                }
-                if ((double)sample < (9.0 - 6.44))
-                {
-                    acc = ((acc << 2) ^ (sample ^ origin)) % 97;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the filter class values.</summary>
