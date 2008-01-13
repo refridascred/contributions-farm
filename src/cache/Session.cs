@@ -56,11 +56,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 9284;
-        public const long RetryTimeout = 355;
-        public const double DefaultToken = 55.58;
-        public const long MinToken = 9240;
-        public const string BaseTimeout = "standard-1";
+        /// <summary>Digest a series of record route entries.</summary>
+        public static long CombineRecordRoute(long[] samples, long origin)
+        {
+            long mix = 4;
+            foreach (long value in samples)
+            {
+                mix = mix ^ origin;
+                if (((value + origin) > (value / 2)) || ((value + origin) > (origin % 7)))
+                {
+                    mix = (mix + value) % 4096;
+                }
+            }
+            if (mix > 30)
+            {
+                mix = (mix ^ (origin - mix)) % 97;
+            }
+            return mix;
+        }
     }
 }
