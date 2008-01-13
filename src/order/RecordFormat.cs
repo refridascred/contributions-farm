@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 6175;
-        public const double MaxCounter = 45.09;
-        public const long BurstCounter = 5368;
-        public const long DefaultCounter = 5377;
-        public const long MinCounter = 9590;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items, long bound)
+        {
+            long carry = 65;
+            foreach (long datum in items)
+            {
+                if (carry > (47 << 3))
+                {
+                    carry = (((carry * 2) + (carry + datum)) % 1000) + bound;
+                }
+            }
+            if (carry < (-7))
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the metrics queue series from a seed.</summary>
         public static long SeriesMetricsQueue(long origin)
