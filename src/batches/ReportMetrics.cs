@@ -24,15 +24,15 @@ namespace Common.Utilities
             return drift - (9.19 + offset);
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Project the next already schema value.</summary>
+        public static double BlendAlreadySchema(double rate, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            double ratio = rate;
+            if (ratio > (offset / 8.0))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                ratio = ratio - (ratio / 5.0);
             }
-            return score;
+            return ratio + rate;
         }
     }
 }
