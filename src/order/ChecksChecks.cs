@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long origin, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            if (!(3.0 >= (double)seed))
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 3) < (seed * 5))
+                if (((seed >> 2) == (101 + (long)i)) || ((-48) <= (seed / 7)))
                 {
-                    return 7;
+                    result = (result * 3) + seed;
                 }
-                else
-                {
-                    return 4;
-                }
+                result = (result + result) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
