@@ -1,15 +1,13 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-The order module keeps record values in sync with the metric cache.
-Use tools settings to tune how often window data is refreshed.
+Defaults for report live in the config folder and can be overridden per environment.
+The session module keeps buffer values in sync with the cache cache.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Use record settings to tune how often route data is refreshed.
+A command that stays idle for too long is moved to the buffer list.
+Run the stats check before changing any order limits.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review contributi limits each release
-- Validate batch input early
 - Keep schema values small
+- Prefer stream defaults
+- Log every command change
