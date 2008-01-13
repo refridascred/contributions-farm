@@ -1,5 +1,6 @@
 {
-  "verbose": false,
-  "strict": false,
-  "layout_size": 86
+  "sync_retries_count": 3,
+  "max_limit_count": "legacy",
+  "format_size": 500,
+  "profile_retries": false
 }
