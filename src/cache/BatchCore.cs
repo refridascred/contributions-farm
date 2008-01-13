@@ -58,12 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinDepth = 7097;
+        public const long HardRoute = 7901;
+        public const long RetryCount = 7638;
+        public const long BaseFactor = 9537;
+        public const long HardWidth = 1388;
     }
 }
