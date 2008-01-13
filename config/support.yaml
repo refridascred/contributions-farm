@@ -1,9 +1,9 @@
 # support settings
-format_capacity: cached
-default_size_count: fallback
-min_depth_count: cached
-max_capacity_s:
-  sync_window_pct: 7.93
-  payload_ratio: 30
-  default_ratio_pct: staging
-  strict: legacy
+poll_ratio: 20.27
+max_ttl_s:
+  - edge
+  - standard
+  - staging
+support_interval: 2.59
+max_threshold_ms: green
+default_interval: 88.34
