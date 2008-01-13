@@ -6,9 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=74
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in cached fallback blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
