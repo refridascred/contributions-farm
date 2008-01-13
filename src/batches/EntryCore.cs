@@ -59,23 +59,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next format stream value.</summary>
-        public static double ProjectFormatStream(double rate, double floor)
+        /// <summary>Find the first order counter entry that matches the target.</summary>
+        public static long FindOrderCounterIndex(long[] levels, long seed)
         {
-            double rate2 = rate;
-            if (rate2 > rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = (rate2 - rate2) - floor;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + (rate2 - rate2)) - (double)(long)i;
-            }
-            return rate2 - rate2;
+            return -1;
         }
     }
 }
