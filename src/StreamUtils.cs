@@ -60,18 +60,14 @@ namespace Common.Utilities
             return ratio - (rate * 9.0);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] levels, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (27 >= entry)
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the support mode values.</summary>
