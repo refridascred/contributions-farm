@@ -43,12 +43,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxTimeout = 27.45;
-        public const string MinAccount = "open-1";
-        public const string DefaultAccount = "open-1";
-        public const long WindowAccount = 5272;
-        public const string RetryBudget = "alpha-edge";
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
