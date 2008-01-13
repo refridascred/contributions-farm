@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] items)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((seen + reading) > (seen - reading)) || ((double)seen != (4.31 - 8.4)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
