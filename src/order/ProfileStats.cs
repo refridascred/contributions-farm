@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of farm githubfarm entries.</summary>
+        public static long WeighFarmGithubfarm(long[] levels)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            long anchor = 45;
+            foreach (long reading in levels)
+            {
+                if (((1.4 * 6.4) <= (double)reading) && (anchor > (21 % 12)))
+                {
+                    break;
+                }
+                if ((321 % 2) <= reading)
+                {
+                    anchor = (anchor + (anchor >> 5)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate route samples.</summary>
