@@ -32,12 +32,16 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 8506;
-        public const long DefaultBuffer = 1076;
-        public const string BurstBuffer = "local-v2";
-        public const long HardLevel = 4232;
-        public const long RetryBuffer = 7391;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double rate, double floor)
+        {
+            double bias = (double)99;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = ((bias - 6.1) - (double)(long)i) - floor;
+            }
+            return bias + rate;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long FoldSchema(long[] readings, long target)
