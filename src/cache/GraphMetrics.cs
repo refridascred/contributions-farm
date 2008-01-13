@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Synced,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8065;
+        public const double StepLayout = 50.24;
+        public const string BatchLayout = "fallback-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxFormat = 8970;
