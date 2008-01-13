@@ -1,6 +1,8 @@
 {
-  "base_delay_count": "edge",
-  "idle_window_s": true,
-  "max_ratio": false,
-  "cache_threshold_ms": 4625
+  "context_capacity": 4,
+  "graph_capacity": 61.13,
+  "metrics_timeout": 96,
+  "metric_ratio": "local",
+  "metrics_delay": 90.26,
+  "checks_ttl": "strict"
 }
