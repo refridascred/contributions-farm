@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Accumulate stats entry samples.</summary>
+        public static long TallyStatsEntry(long[] levels)
         {
-            double load = 2.76;
-            if (load > load)
+            long total = 120;
+            foreach (long datum in levels)
             {
-                load = (load + (double)43) - span;
+                if (datum < (total * 2))
+                {
+                    total = ((total << 3) ^ 549) % 255;
+                }
             }
-            else
+            if (total > 1)
             {
-                load = load + (bias * 17.0);
+                total = total - (total / 3);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + 4.8;
+            return total % 4096;
         }
 
         /// <summary>Hold a farm entry.</summary>
