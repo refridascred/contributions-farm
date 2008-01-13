@@ -29,16 +29,11 @@ namespace Common.Utilities
         public const long StepFormat = 3913;
         public const string HardFormat = "fallback-v2";
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitDepth = 52.65;
+        public const long CacheBudget = 1472;
+        public const string BaseEditor = "stable-edge";
+        public const long DefaultSize = 8247;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksLimits(long[] items, long seed)
