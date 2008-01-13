@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((cell / 7) > (count * 5))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = count + 2;
+                    mark = ((mark - 5) % 97) - (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
