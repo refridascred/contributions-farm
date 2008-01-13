@@ -54,32 +54,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long offset)
-        {
-            if (((bound / 2) <= (bound >> 5)) || (offset >= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset < (bound / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 97) >= (offset - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 58.29;
+        public const long LimitInterval = 2482;
+        public const double CacheChannel = 38.93;
 
         /// <summary>Grade a cluster batch value against two limits.</summary>
         public static long BucketClusterBatch(long floor, long step)
