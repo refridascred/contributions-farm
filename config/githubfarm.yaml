@@ -1,7 +1,7 @@
 # githubfarm settings
-default_size_pct: 6121
-checks_delay: 100
-soft_retries_count:
-  - legacy
-  - strict
-window_retries: 96
+max_ratio_s: true
+cache_timeout_pct: 6569
+idle_size: 30
+report_capacity: cached
+stats_delay: strict
+idle_timeout_s: blue
