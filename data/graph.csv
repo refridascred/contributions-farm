@@ -1,8 +1,9 @@
-id,score,owner,level
-1,177,613,green
-2,strict,29.11,standard
-3,958,700,staging
-4,96,latest,833
-5,local,58.24,70.96
-6,46.96,849,fallback
-7,18.71,staging,strict
+id,count,token,region,weight
+1,987,97.73,737,local
+2,open,legacy,strict,560
+3,76.93,stable,10.72,edge
+4,strict,748,247,875
+5,open,447,35.2,2
+6,21.66,12.88,829,75.28
+7,fallback,131,standard,847
+8,527,135,local,943
