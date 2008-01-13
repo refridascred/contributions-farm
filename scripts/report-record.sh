@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge open cached; do
+for item in staging standard primary eu-west; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=13
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
