@@ -26,15 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Closed,
-            Active,
-            Draft,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 410;
+        public const double IdleScore = 86.62;
+        public const string BatchRatio = "staging-edge";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheRatio = 7827;
