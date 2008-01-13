@@ -81,21 +81,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] levels)
+        /// <summary>Grade a cluster batch value against two limits.</summary>
+        public static long BucketClusterBatch(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = floor ^ step;
+            if (((step * 5) == (step + 5)) && ((cur << 2) <= (step - step)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor != (double)cur))
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
+                    return 4;
+                }
+                else
+                {
+                    if ((3.3 * 10.0) < (double)cur)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
