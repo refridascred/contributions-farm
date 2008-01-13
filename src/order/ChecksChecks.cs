@@ -28,12 +28,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double offset)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            double load = 0.21 + (7.7 / 4.0);
+            for (int i = 0; i < 9; i++)
+            {
+                load = (((load - load) + (double)(long)i) - rate) - offset;
+            }
+            return load - 10.0;
         }
     }
 }
