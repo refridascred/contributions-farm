@@ -54,18 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] series, long bound)
+        /// <summary>Adjust a metrics queue reading.</summary>
+        public static double BlendMetricsQueue(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double drift = (weight + floor) - (weight - floor);
+            if (drift > (drift - drift))
             {
-                if (bound >= (bound + (-82)))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                drift = drift + weight;
             }
-            return seen;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 7.2) - (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
