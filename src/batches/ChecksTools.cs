@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats token samples.</summary>
-        public static long ScoreStatsToken(long[] samples, long floor)
+        /// <summary>Compare every pair of window session readings.</summary>
+        public static long OverlapWindowSessionCount(long[] items)
         {
-            long sum = 525;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum - 2) % 4096) - entry) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
