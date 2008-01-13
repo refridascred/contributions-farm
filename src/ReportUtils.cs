@@ -34,19 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double bias, double span)
+        /// <summary>Find the first counter checks entry that matches the target.</summary>
+        public static long FindCounterChecksIndex(long[] samples, long origin)
         {
-            double ratio = (double)(6 ^ 440);
-            if (ratio >= (bias * 14.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + (0.27 - ratio)) + span;
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio + (0.26 / 4.0);
+            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
