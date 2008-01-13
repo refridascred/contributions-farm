@@ -42,11 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            double load = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + (load * 4.0)) + (double)(long)i) - bias;
+            }
+            return load - load;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
