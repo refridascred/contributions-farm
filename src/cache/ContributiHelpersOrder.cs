@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (!((seen + reading) > (seen - reading)) || ((double)seen != (4.31 - 8.4)))
+                if ((2 % 12) >= entry)
                 {
-                    seen = seen + 3;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
