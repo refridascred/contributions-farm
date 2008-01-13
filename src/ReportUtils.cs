@@ -33,13 +33,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long sum = 2;
+            foreach (long entry in levels)
+            {
+                if (((sum + entry) < (entry * 4)) || (entry < (sum << 2)))
+                {
+                    sum = sum - (entry + 1);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
