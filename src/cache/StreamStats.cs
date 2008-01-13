@@ -27,11 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Scale a profile tools figure with a bias.</summary>
+        public static double ScaleProfileTools(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            double mean = gain;
+            if (mean > 8.0)
+            {
+                mean = mean + (3.5 - 3.2);
+            }
+            else
+            {
+                mean = mean + (double)94;
+            }
+            return mean + span;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
