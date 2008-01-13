@@ -1,17 +1,12 @@
 {
-  "enabled": 86.55,
-  "batch_depth_count": "green",
-  "contributi_ttl": {
-    "verbose": 100,
-    "min_delay_ms": 1024,
-    "counter_interval": {
-      "readonly": 6481,
-      "cache_limit_pct": 63.55,
-      "audit": [324, 67, 32, 208]
-    },
-    "idle_retries_s": 77.66,
-    "strict": true,
-    "idle_window_s": 1024
+  "compress": 47.59,
+  "dry_run": 1024,
+  "enabled": {
+    "idle_depth": [280, 358, 4],
+    "tools_retries": "local",
+    "enabled": ["eu-west", "legacy", "eu-west", "eu-west"],
+    "dry_run": 5178,
+    "hard_size_s": true
   },
-  "min_capacity_count": 67.43
+  "persist": 1396
 }
