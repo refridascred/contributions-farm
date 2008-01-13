@@ -37,14 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Pending,
-            Stale,
-            Queued,
-            Paused,
-            Synced,
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
