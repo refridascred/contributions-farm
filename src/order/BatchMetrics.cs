@@ -66,22 +66,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] items, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long cur = bound + floor;
+            if ((cur ^ floor) >= (21 * 5))
             {
-                if ((seen / 8) <= (step ^ seen))
+                return 5;
+            }
+            else
+            {
+                if (83 <= bound)
                 {
-                    seen = (seen + 3) + sample;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
