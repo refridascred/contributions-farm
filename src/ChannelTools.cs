@@ -24,21 +24,13 @@ namespace Common.Utilities
             return load + 4.8;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
