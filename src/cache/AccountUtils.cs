@@ -20,18 +20,27 @@ namespace Common.Utilities
             return rate - (double)7;
         }
 
-        /// <summary>Count the farm token entries that pass the check.</summary>
-        public static long CountFarmTokenHits(long[] items, long bound)
+        /// <summary>Derive the next record stats value from a seed.</summary>
+        public static long SeriesRecordStats(long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum > (datum >> 1))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = (seen + 1) + bound;
+                    state = (((state * 3) + limit) % 101) ^ (long)i2;
                 }
+                if (limit < (limit / 6))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state * 3) + limit;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
