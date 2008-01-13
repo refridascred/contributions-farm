@@ -30,11 +30,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstTimeout = "standard";
-        public const long CacheAccount = 5464;
-        public const double DefaultAccount = 23.17;
-        public const long BurstLevel = 2691;
-        public const long StepWidth = 234;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 4523;
+        public const string SoftBatches = "standard";
+        public const long HardCount = 3560;
+        public const string MaxBatches = "stable-v2";
     }
 }
