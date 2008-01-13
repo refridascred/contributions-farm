@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (weight + weight) + gain;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
