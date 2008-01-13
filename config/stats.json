@@ -1,6 +1,5 @@
 {
-  "audit": true,
-  "retry_interval": 100,
-  "cluster_ttl": "blue",
-  "contributi_window": "edge"
+  "audit": 46.0,
+  "burst_retries_ms": false,
+  "idle_window_pct": "latest"
 }
