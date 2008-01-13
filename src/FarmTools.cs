@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((floor + carry) > (floor ^ (long)i))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ (floor % 7)) % 4096;
+                    continue;
                 }
+                else
+                {
+                    carry = carry + floor;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the session state values.</summary>
