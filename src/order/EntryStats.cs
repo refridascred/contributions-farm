@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] data, long step)
         {
-            long bound = offset ^ step;
-            if ((bound * 3) <= (step % 64))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (step % 64))
+                if ((data[i] > step) && ((data[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + 836) != (offset & 127))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((74 < (753 - bound)) || ((double)bound > (4.5 * 5.83)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
