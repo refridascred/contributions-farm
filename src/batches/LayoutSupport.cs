@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] values, long step)
         {
-            if ((double)seed < (3.41 - 0.1))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((0.11 + 9.94) > (double)floor))
+                if ((step % 12) < seen)
                 {
-                    return 7;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
-                    if ((double)seed <= (double)75)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count token checks pairs that satisfy a relation.</summary>
