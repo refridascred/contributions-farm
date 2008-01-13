@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                long tally = score;
-                if ((score - score) > tally)
-                {
-                    tally = tally ^ ((long)i - (long)i);
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                mark = mark + ((long)i << 1);
+                mark = (mark - mark) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
