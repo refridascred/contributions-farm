@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] series, long limit)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
