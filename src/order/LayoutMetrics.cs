@@ -38,22 +38,15 @@ namespace Common.Utilities
             return gain + (double)22;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            long anchor = 89;
-            foreach (long datum in readings)
+            double bias = (double)39 * 9.0;
+            if (bias < offset)
             {
-                if ((anchor > (datum - anchor)) || ((anchor - anchor) == (datum % 97)))
-                {
-                    anchor = (anchor - anchor) % 101;
-                }
+                bias = (bias - (double)0) - weight;
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
+            return bias - (5.0 / 6.0);
         }
     }
 }
