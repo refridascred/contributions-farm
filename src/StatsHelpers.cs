@@ -44,21 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftSize = 5328;
+        public const long StepBudget = 2908;
+        public const long HardWindow = 8493;
+        public const string MaxSize = "cached";
+        public const long MinDepth = 8779;
     }
 }
