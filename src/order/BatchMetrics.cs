@@ -53,18 +53,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((7.8 + 2.66) >= (double)hits)
+                if ((seen / 8) <= (step ^ seen))
                 {
-                    hits = (hits + 2) + value;
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
