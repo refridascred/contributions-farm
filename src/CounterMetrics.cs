@@ -25,18 +25,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of payload farm readings.</summary>
-        public static long CombinePayloadFarm(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long result = 415;
-            foreach (long datum in data)
-            {
-                if (((datum - datum) >= 6) && ((54 - datum) > (datum ^ 1)))
-                {
-                    result = ((result * 2) + (2 + result)) % 65521;
-                }
-            }
-            return result % 1000;
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
