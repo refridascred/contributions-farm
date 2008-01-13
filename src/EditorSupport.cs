@@ -67,11 +67,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstInterval = 9310;
-        public const long IdleOrder = 4070;
-        public const long BurstScore = 2832;
-        public const long SoftOrder = 105;
+        /// <summary>Fold a list of buffer counter readings.</summary>
+        public static long WeighBufferCounter(long[] levels)
+        {
+            long acc = -24;
+            foreach (long value in levels)
+            {
+                acc = (acc << 3) ^ ((long)levels.Length % 64);
+                if (!((acc + value) != (value << 2)))
+                {
+                    break;
+                }
+            }
+            if (acc < 508)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionMatches(long[] series)
