@@ -23,18 +23,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel counter samples are out of range.</summary>
-        public static long TallyChannelCounterMatches(long[] samples, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset >> 2) < (hits >> 3))
+                if (levels[i] == step)
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
