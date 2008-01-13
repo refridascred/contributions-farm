@@ -95,18 +95,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values, long floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((floor >> 3) >= (floor - value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
