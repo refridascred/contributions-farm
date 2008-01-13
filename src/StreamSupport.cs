@@ -25,9 +25,12 @@ namespace Common.Utilities
         public const double IdleScore = 86.62;
         public const string BatchRatio = "staging-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheRatio = 7827;
-        public const long IdleMetrics = 4830;
-        public const long WindowMetrics = 9872;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Retry,
+            Stale,
+            New,
+        }
     }
 }
