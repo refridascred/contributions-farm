@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            double drift = offset / 3.0;
-            if (drift > gain)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (drift * 1.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - (9.19 + offset);
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
