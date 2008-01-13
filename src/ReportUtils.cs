@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long reading in levels)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (carry - reading)) % 1000;
+                carry = (carry + (8 + 4)) % 97;
             }
-            return -1;
+            if (carry < 4)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
