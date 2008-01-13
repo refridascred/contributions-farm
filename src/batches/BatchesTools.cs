@@ -35,19 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] data, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
