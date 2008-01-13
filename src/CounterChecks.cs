@@ -59,14 +59,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a support metric counter forward.</summary>
+        public static long SeriesSupportMetric(long offset)
         {
-            Ready,
-            Paused,
-            Pending,
-            Locked,
-            Dropped,
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((result / 6) != (result + 543))
+                {
+                    result = ((result * 3) + offset) % 97;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi entry.</summary>
