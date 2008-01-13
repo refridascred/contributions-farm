@@ -1,6 +1,11 @@
-id,region,level
-1,904,primary
-2,254,85.3
-3,staging,primary
-4,409,142
-5,74.92,217
+id,score,owner
+1,844,890
+2,691,209
+3,74,101
+4,latest,open
+5,233,151
+6,legacy,14.19
+7,952,37.35
+8,green,8.82
+9,68.01,eu-west
+10,fallback,74.09
