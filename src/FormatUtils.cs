@@ -73,13 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] values, long offset)
         {
-            New,
-            Done,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (value < (1 / 9))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
