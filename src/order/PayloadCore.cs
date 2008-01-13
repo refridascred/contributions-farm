@@ -16,11 +16,16 @@ namespace Common.Utilities
             return scale2 - (floor + scale);
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long step)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 3) + ((long)i * 3)) % 65521;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel class values.</summary>
