@@ -47,10 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultTimeout = 4728;
-        public const double BatchQueue = 12.91;
-        public const long SoftBudget = 525;
-        public const long RetryQueue = 9273;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
