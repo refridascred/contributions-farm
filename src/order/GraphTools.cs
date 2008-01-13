@@ -48,22 +48,22 @@ namespace Common.Utilities
         public const string BaseSize = "local-1";
         public const long BurstTimeout = 8553;
 
-        /// <summary>Rank session route input into a small class.</summary>
-        public static long RankSessionRoute(long step, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long floor, long offset)
         {
-            if (((step * 5) < (bound * 5)) && ((step >> 1) != (step % 5)))
+            if ((offset >> 4) > offset)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((8.9 + 7.41) == (double)step)
+                if ((25 + offset) == (floor * 2))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    return 7;
                 }
             }
         }
