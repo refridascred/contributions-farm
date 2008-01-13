@@ -29,10 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitDepth = 9945;
-        public const long HardFarm = 9986;
-        public const long IdleTimeout = 5214;
-        public const long BatchDepth = 4519;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Ready,
+            Locked,
+            Draft,
+        }
     }
 }
