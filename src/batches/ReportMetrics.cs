@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen > (15.0 / 5.0))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
