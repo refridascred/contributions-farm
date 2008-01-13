@@ -31,12 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            New,
-            Done,
-            Failed,
+            double weight = span;
+            if (weight <= span)
+            {
+                weight = weight + span;
+            }
+            return weight - gain;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
