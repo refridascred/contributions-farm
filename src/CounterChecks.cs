@@ -74,18 +74,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Find the first metrics commits entry that matches the target.</summary>
+        public static long SeekMetricsCommitsIndex(long[] series, long seed)
         {
-            long mix = 553;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum % 10) >= (datum + datum))
+                if (series[i] > seed)
                 {
-                    mix = mix + datum;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
