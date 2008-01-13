@@ -28,23 +28,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next metric layout value.</summary>
-        public static double ScaleMetricLayout(double ratio, double offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long bound)
         {
-            double mean = ratio * 2.51;
-            if (mean > (double)13)
+            if (((652 - floor) != (75 + bound)) || ((floor >> 4) < (bound + bound)))
             {
-                mean = (mean + ratio) - offset;
+                return 1;
             }
             else
             {
-                mean = mean - ratio;
+                if ((double)bound >= (8.0 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean * 8.03)) - (double)(long)i;
-            }
-            return mean - ratio;
         }
     }
 }
