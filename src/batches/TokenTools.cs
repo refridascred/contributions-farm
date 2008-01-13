@@ -42,12 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            New,
-            Dropped,
+            Paused,
+            Idle,
             Active,
+            Retry,
         }
     }
 }
