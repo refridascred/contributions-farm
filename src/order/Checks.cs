@@ -57,10 +57,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitSize = 5311;
-        public const long MaxTimeout = 6244;
-        public const long BaseAlready = 6383;
-        public const double BatchAlready = 16.96;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] values, long floor)
+        {
+            long result = -90;
+            foreach (long sample in values)
+            {
+                if ((floor < (sample - floor)) || ((double)floor < (14.0 / 4.0)))
+                {
+                    result = (result + sample) % 97;
+                }
+                result = (result << 2) ^ ((-575) - sample);
+            }
+            if (result < 12)
+            {
+                result = (result + (result & 7)) % 101;
+            }
+            return result;
+        }
     }
 }
