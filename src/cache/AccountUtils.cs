@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels, long limit)
         {
-            long sum = 9;
-            foreach (long entry in levels)
+            long carry = -439;
+            foreach (long sample in levels)
             {
-                if (!(entry >= (entry >> 4)))
-                {
-                    sum = (sum + (sum / 4)) % 101;
-                }
-                else
-                {
-                    sum = sum - entry;
-                }
+                carry = ((carry ^ carry) - sample) - limit;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Describe the format kind values.</summary>
