@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (double)step)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel class values.</summary>
