@@ -39,38 +39,10 @@ namespace Common.Utilities
             return ratio - 9.5;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long target, long floor)
-        {
-            if (!((16.0 / 5.0) > (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((floor >> 1) >= (target / 6)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (target - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((71 + target) >= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 955;
+        public const string DefaultInterval = "strict-v2";
+        public const string BatchLevel = "staging";
+        public const string RetryScore = "legacy";
     }
 }
