@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Grade a channel cluster value against two limits.</summary>
+        public static long ClassifyChannelCluster(long step, long target)
         {
-            Active,
-            Retry,
-            Done,
-            Closed,
-            Queued,
+            if ((double)target < (9.04 * 14.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((2.59 - 5.2) < (double)target) || ((step ^ target) < (target & 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a batches options.</summary>
