@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const long BaseRatio = 6979;
         public const long DefaultBatches = 2921;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double span)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double weight = span;
-            if (weight <= span)
-            {
-                weight = weight + span;
-            }
-            return weight - gain;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
