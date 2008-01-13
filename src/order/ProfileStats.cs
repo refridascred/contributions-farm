@@ -48,12 +48,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            Done,
-            New,
-            Paused,
+            long total = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((bound - bound) == (bound + (long)i))
+                {
+                    total = ((total << 3) ^ (bound + (long)i)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
