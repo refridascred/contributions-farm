@@ -10,32 +10,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 1623;
         public const long BaseDepth = 7111;
 
-        /// <summary>Accumulate cluster route samples.</summary>
-        public static long WeighClusterRoute(long[] items)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long score = 48;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) > sample)
-                {
-                    long offset = (score * 3) - ((-59) >> 1);
-                    score = (score * 5) + offset;
-                }
-                else
-                {
-                    score = score + (score + (-4));
-                    score = (score * 2) + (score << 3);
-                }
-                if ((2 + score) > (sample ^ 57))
-                {
-                    score = (score * 2) + (48 - score);
-                }
-            }
-            if (score < (-73))
-            {
-                score = (score * 5) + ((-46) % 10);
-            }
-            return score;
+            Closed,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Blend two token queue measurements.</summary>
