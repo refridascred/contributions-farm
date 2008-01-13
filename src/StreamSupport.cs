@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] readings, long target)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long cur = step - seed;
+            if ((cur < (75 ^ seed)) && ((cur - seed) <= (step + step)))
             {
-                if (item > target)
+                return 8;
+            }
+            else
+            {
+                if ((step % 3) > step)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the commits kind values.</summary>
