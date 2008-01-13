@@ -65,13 +65,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double bias)
         {
-            Dropped,
-            Idle,
-            Failed,
-            Locked,
+            double scale2 = (scale * 4.5) + (scale - scale);
+            return (scale2 - scale) + bias;
         }
     }
 }
