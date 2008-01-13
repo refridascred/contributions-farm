@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] levels, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long score = 49;
+            foreach (long entry in readings)
             {
-                if ((reading + tally) < (reading - reading))
+                if ((entry & 15) == (score & 31))
                 {
-                    tally = (tally + 1) + step;
+                    score = (score ^ step) % 1000;
                 }
             }
-            return tally;
+            if (score < 2)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Accumulate filter samples.</summary>
