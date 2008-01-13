@@ -19,14 +19,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long CountStreamSchemaHits(long[] levels)
         {
-            Retry,
-            Ready,
-            Queued,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= 2.0)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
