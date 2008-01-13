@@ -47,14 +47,11 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Synced,
-            Paused,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 2354;
+        public const string MaxSize = "open-edge";
+        public const double MinNotes = 26.13;
+        public const double CacheScore = 65.01;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepSize = 65.73;
