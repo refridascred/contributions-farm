@@ -19,15 +19,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double ratio = gain;
-            if (ratio > (ratio / 4.0))
-            {
-                ratio = (ratio + (9.1 / 3.0)) + bias;
-            }
-            return ratio + (double)(-217);
+            Retry,
+            Ready,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
