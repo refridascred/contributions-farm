@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] readings, long floor)
+        /// <summary>Validate cluster batches readings against a bound.</summary>
+        public static bool GuardClusterBatchesBounds(long[] readings, long bound)
         {
-            long matches = 0;
+            bool stale = true;
             foreach (long datum in readings)
             {
-                if (matches >= (datum - matches))
+                if (datum >= bound)
                 {
-                    matches = (matches + 2) - floor;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
