@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Roll a layout contributi counter forward.</summary>
+        public static long RollLayoutContributi(long offset)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((long)i > (sum + sum))
+                {
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next already context value from a seed.</summary>
