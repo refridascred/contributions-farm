@@ -37,22 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long limit)
         {
-            long sum = 50;
-            foreach (long sample in series)
+            if (((target + target) < (limit ^ target)) && ((limit << 1) > target))
             {
-                if (sample <= (768 * 3))
+                return 6;
+            }
+            else
+            {
+                if (target < (limit - 3))
                 {
-                    sum = sum - sum;
+                    return 5;
                 }
-                if ((0.3 * 2.85) <= (11.0 * 3.0))
+                else
                 {
-                    break;
+                    return 3;
                 }
             }
-            return sum;
         }
 
         /// <summary>Digest a series of record route entries.</summary>
