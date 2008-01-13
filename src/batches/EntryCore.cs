@@ -47,38 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route stream value against two limits.</summary>
-        public static long BucketRouteStream(long target, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] samples, long bound)
         {
-            if ((target - seed) < (seed ^ 36))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) != (878 + target))
+                if ((((double)item > (16.0 - 7.4)) || ((double)item <= (11.0 * 6.1))) && (((double)bound >= (5.0 + 7.0)) && ((item & 3) < (matches * 3))))
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((seed % 10) > (seed - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (6.0 >= (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next format stream value.</summary>
