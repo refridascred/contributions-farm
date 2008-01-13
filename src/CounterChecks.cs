@@ -71,17 +71,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first metrics commits entry that matches the target.</summary>
-        public static long SeekMetricsCommitsIndex(long[] series, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
