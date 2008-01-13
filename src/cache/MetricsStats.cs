@@ -57,10 +57,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 58.29;
-        public const long LimitInterval = 2482;
-        public const double CacheChannel = 38.93;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading != (0.64 / 4.0))
+                {
+                    tally = (tally + 1) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a cluster batch value against two limits.</summary>
         public static long BucketClusterBatch(long floor, long step)
