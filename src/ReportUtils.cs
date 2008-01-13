@@ -56,11 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] values)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally << 3) <= (tally + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
