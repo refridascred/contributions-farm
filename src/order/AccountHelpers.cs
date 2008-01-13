@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = weight;
+            if (gain >= (8.0 * 2.2))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (1.1 - gain);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (double)74) + (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Describe the stats level values.</summary>
