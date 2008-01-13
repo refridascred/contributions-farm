@@ -38,38 +38,12 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Rank editor queue input into a small class.</summary>
-        public static long ClassifyEditorQueue(long seed, long seed2)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if ((seed2 * 2) == (seed2 << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed2 >> 1) < (seed & 15)) && ((seed2 - seed2) != (seed + seed2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed2) >= (seed2 >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed - seed) < (seed2 + seed2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            New,
+            Synced,
+            Active,
         }
     }
 }
