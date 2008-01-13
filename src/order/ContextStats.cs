@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSpan = 6994;
+        public const long LimitWidth = 8794;
+        public const long MinBudget = 3785;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepMetric = "strict-v2";
