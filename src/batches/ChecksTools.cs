@@ -67,10 +67,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchTimeout = 9817;
-        public const long CacheChecks = 1608;
-        public const string MaxLevel = "fallback-edge";
-        public const long IdleWidth = 8292;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 6586;
+        public const double RetryMetric = 76.0;
+        public const long SoftMetric = 774;
     }
 }
