@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long TallyContextFormatHits(long[] data, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!(offset >= ((long)i - 42)))
+                if (seed <= (hits & 63))
                 {
-                    mix = ((mix << 2) ^ (offset - (long)i)) % 65521;
+                    hits = (hits + 3) - item;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
