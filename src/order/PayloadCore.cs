@@ -12,17 +12,13 @@ namespace Common.Utilities
             return (weight + weight) + gain;
         }
 
-        /// <summary>Find the first commits token entry that matches the target.</summary>
-        public static long LocateCommitsTokenIndex(long[] readings, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
