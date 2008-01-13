@@ -13,23 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next token stats value.</summary>
-        public static double ScaleTokenStats(double scale, double bias)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            double drift = scale;
-            if (drift < 8.63)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)1;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)579;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift * 4.5)) - (double)(long)i;
-            }
-            return drift + bias;
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
