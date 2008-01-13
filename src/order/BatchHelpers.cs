@@ -20,18 +20,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 6;
+            foreach (long sample in series)
             {
-                if (((16 <= (tally % 16)) && ((76 + tally) < 264)) || !((tally + cell) <= (tally % 100)))
+                mark = mark - (sample + 429);
+                if (50 < (sample * 4))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ 9) % 255;
                 }
             }
-            return tally;
+            if (mark > 0)
+            {
+                mark = (mark << 2) ^ (1 / 7);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
