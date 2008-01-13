@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] readings, long offset)
         {
-            long carry = -439;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                carry = ((carry ^ carry) - sample) - limit;
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Describe the format kind values.</summary>
