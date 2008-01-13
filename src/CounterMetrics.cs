@@ -17,30 +17,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long slot = floor - offset;
+            if (!((double)floor == (1.2 / 3.0)))
             {
-                if ((5.0 + 8.53) > (double)limit)
+                return 8;
+            }
+            else
+            {
+                if (((floor / 7) == (floor << 1)) && (offset >= (slot + slot)))
                 {
-                    result = (result ^ (limit + limit)) % 101;
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    result = (result << 3) ^ result;
+                    if (floor <= (98 * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor >> 1) < (87 / 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                long matches = result;
-                if (((matches * 5) > result) && ((result - 3) < (result << 3)))
-                {
-                    result = result + (result >> 3);
-                    matches = ((matches << 2) ^ (limit * 4)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
         }
 
         /// <summary>Fold a list of payload farm readings.</summary>
