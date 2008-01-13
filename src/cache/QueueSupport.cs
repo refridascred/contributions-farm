@@ -25,25 +25,16 @@ namespace Common.Utilities
         public const long DefaultBudget = 3608;
         public const long RetryAccount = 2821;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long state = -122;
+            foreach (long datum in data)
             {
-                long delta = (86 * 2) + (target - (long)i);
-                if (carry < (delta >> 4))
-                {
-                    delta = (delta ^ carry) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry * 2)) % 4096;
-                }
-                delta = delta + (target - delta);
-                carry = ((carry * 4) + (long)i) % 97;
+                state = (state << 2) ^ (datum + datum);
+                state = state + (datum >> 1);
             }
-            return carry;
+            return state;
         }
     }
 }
