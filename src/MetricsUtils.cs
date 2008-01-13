@@ -67,19 +67,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] samples, long origin)
         {
-            long acc = 66;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc + (82 - acc)) % 101) ^ item) + bound;
+                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 63)
-            {
-                acc = ((acc * 5) + (acc - acc)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next order already value from a seed.</summary>
