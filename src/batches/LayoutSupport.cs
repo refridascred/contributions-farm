@@ -46,9 +46,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 46.33;
-        public const long BurstBuffer = 9797;
-        public const long CacheBuffer = 5204;
+        /// <summary>Count commits already pairs that satisfy a relation.</summary>
+        public static long PairCommitsAlreadyCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
