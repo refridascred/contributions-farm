@@ -48,19 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] readings, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long mark = -799;
+            foreach (long cell in series)
             {
-                if (sample <= origin)
+                if ((cell - cell) == (cell - offset))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark << 3) ^ (98 + cell)) % 1000;
                 }
             }
-            return stale;
+            if (mark > 20)
+            {
+                mark = (mark << 3) ^ 97;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
