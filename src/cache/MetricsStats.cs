@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] values, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long mix = 585;
+            foreach (long cell in data)
             {
-                if (sample > floor)
+                if (!(mix >= ((long)data.Length ^ cell)))
                 {
-                    stale = false;
+                    mix = (mix - (mix - mix)) % 4096;
+                }
+                if (mix < (mix << 2))
+                {
                     break;
                 }
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Describe the farm state values.</summary>
