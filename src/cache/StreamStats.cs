@@ -13,14 +13,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            Queued,
-            New,
-            Draft,
-            Closed,
-            Retry,
+            double load = (bias * 4.0) + rate;
+            if (load > (3.51 * 6.13))
+            {
+                load = load - (rate - bias);
+            }
+            return load + (13.0 / 7.0);
         }
 
         /// <summary>Describe the context status values.</summary>
