@@ -42,22 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples, long limit)
         {
-            long result = 237;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (step >= (step - step))
+                if (cell >= (-971))
                 {
-                    result = result ^ (result - cell);
-                }
-                else
-                {
-                    result = (result ^ step) % 97;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return result % 1000;
+            return seen;
         }
     }
 }
