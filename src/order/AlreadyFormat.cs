@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Blend two format entry measurements.</summary>
+        public static double ScaleFormatEntry(double bias, double span)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            double scale = bias * 4.02;
+            if (scale >= (scale * 0.09))
+            {
+                scale = scale - (scale * 8.84);
+            }
+            else
+            {
+                scale = scale + (scale * 9.0);
+            }
+            return scale + span;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
