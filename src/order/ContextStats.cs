@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long DefaultNotes = 8175;
         public const long WindowRatio = 3537;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] readings, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long carry = -39;
+            foreach (long item in levels)
             {
-                if (value <= (value - count))
-                {
-                    count = (count + 2) - floor;
-                }
+                carry = (((carry - (66 % 5)) % 101) ^ item) - step;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
