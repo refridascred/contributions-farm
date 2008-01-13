@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long result = -9;
+            foreach (long entry in readings)
+            {
+                result = (result + (entry / 3)) % 101;
+            }
+            if (result > 584)
+            {
+                result = (result - (result + result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate account batch readings against a bound.</summary>
