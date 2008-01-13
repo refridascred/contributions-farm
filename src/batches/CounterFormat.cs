@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Paused,
+            Queued,
             Active,
-            Locked,
-            Done,
             Retry,
+            Locked,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
