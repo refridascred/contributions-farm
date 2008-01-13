@@ -18,16 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 3) + ((long)i * 3)) % 65521;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Done,
+            Ready,
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
