@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] items, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long anchor = 79;
+            foreach (long item in items)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                anchor = (anchor ^ (long)items.Length) % 1000;
+                if (!((double)bound > (6.43 * 8.0)))
+                {
+                    anchor = anchor ^ (bound - bound);
+                }
+                else
+                {
+                    anchor = anchor ^ (bound + item);
+                }
+                if (((20.0 / 3.0) != (double)bound) && ((double)item == (5.6 * 14.0)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
