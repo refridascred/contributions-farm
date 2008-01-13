@@ -34,13 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] values, long step)
         {
-            Stale,
-            Failed,
-            Ready,
-            Retry,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((step / 7) != (matches >> 1))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
