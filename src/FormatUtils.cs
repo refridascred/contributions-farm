@@ -42,12 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Match up schema samples.</summary>
