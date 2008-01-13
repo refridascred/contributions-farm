@@ -51,18 +51,10 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((offset << 3) == (matches + 82)) && ((offset + 0) < (datum / 4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitSize = 5311;
+        public const long MaxTimeout = 6244;
+        public const long BaseAlready = 6383;
+        public const double BatchAlready = 16.96;
     }
 }
