@@ -27,11 +27,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowScore = 62.38;
-        public const double BaseSize = 18.12;
-        public const string MaxSize = "staging";
-        public const long SoftInterval = 3751;
-        public const double MaxCount = 98.37;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples, long seed)
+        {
+            long total = 655;
+            foreach (long datum in samples)
+            {
+                if (((-840) - 225) == (seed >> 1))
+                {
+                    total = ((total ^ ((long)samples.Length ^ 143)) % 4096) + datum;
+                }
+                else
+                {
+                    total = (total - seed) % 1000;
+                }
+            }
+            if (total < (-67))
+            {
+                total = (total ^ (total / 5)) % 255;
+            }
+            return total % 1000;
+        }
     }
 }
