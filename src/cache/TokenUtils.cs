@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = acc ^ (long)i;
+                if (!!(floor > ((long)i + floor)))
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - acc) % 1000;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc ^ (floor * 3)) % 97) - (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a cache info.</summary>
