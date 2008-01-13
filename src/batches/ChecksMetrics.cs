@@ -17,22 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long mark = 68;
-            foreach (long item in readings)
-            {
-                if (((-7) + mark) == (item + mark))
-                {
-                    mark = (mark ^ (mark + 94)) % 65521;
-                }
-            }
-            if (mark > 41)
-            {
-                mark = (mark - (mark & 15)) % 4096;
-            }
-            return mark % 1000;
+            Done,
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
