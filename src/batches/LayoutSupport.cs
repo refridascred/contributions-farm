@@ -56,12 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] series)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((1.0 * 18.0) >= (double)tally) || (entry >= (entry / 4)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
