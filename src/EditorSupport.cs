@@ -51,14 +51,24 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long seed, long floor)
         {
-            Ready,
-            Closed,
-            Draft,
-            Pending,
-            Paused,
+            if (seed >= (seed * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed < (floor & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
