@@ -16,18 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double span)
         {
-            long score = -64;
-            foreach (long datum in levels)
+            double drift = span;
+            if (drift >= (drift + 5.9))
             {
-                if ((6.0 * 14.0) < (double)datum)
-                {
-                    score = score - score;
-                }
+                drift = (drift - span) - weight;
             }
-            return score % 4096;
+            return drift + (span / 3.0);
         }
 
         /// <summary>Compare every pair of buffer contributi readings.</summary>
