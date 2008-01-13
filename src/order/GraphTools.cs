@@ -28,14 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a channel order figure with a bias.</summary>
+        public static double SmoothChannelOrder(double rate, double bias)
         {
-            Idle,
-            Synced,
-            New,
-            Ready,
-            Stale,
+            double ratio = (double)(154 - 794);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (rate - rate)) - (double)(long)i) - bias;
+            }
+            return ratio - 9.5;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
