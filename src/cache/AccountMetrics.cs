@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepScore = 74.35;
-        public const long HardProfile = 8740;
-        public const long MaxDepth = 367;
-        public const long CacheFactor = 9764;
-        public const double RetryProfile = 71.65;
+        /// <summary>Measure how many stats schema samples are out of range.</summary>
+        public static long MeasureStatsSchemaGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (entry > (entry / 4))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MaxSize = 97.18;
