@@ -45,13 +45,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "primary-1";
+        public const long LimitDepth = 8883;
+        public const string WindowCommits = "open-v2";
+        public const long DefaultCommits = 6990;
     }
 }
