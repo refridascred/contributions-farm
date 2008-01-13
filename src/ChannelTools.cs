@@ -35,21 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] == origin) && ((values[i] % 3) == 0))
                 {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
