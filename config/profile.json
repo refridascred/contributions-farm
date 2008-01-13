@@ -1,17 +1,11 @@
 {
-  "poll_threshold_s": "local",
-  "batch_size_pct": {
-    "retry_ttl_ms": "primary",
-    "report_size": 6480,
-    "warm_delay_count": [246, 108, 391, 199],
-    "dry_run": [471, 302, 345, 264]
+  "compress": 60,
+  "readonly": {
+    "soft_limit_count": false,
+    "support_window": 24,
+    "idle_ratio_ms": 100,
+    "context_size": 8515,
+    "idle_retries": 2568
   },
-  "min_window_pct": [217, 148, 349, 368],
-  "cache_capacity_s": ["latest", "green", "eu-west"],
-  "retry_interval_pct": {
-    "cache_window": "latest",
-    "sync_depth_count": 13,
-    "audit": "legacy"
-  },
-  "max_limit": "fallback"
+  "sync_delay_count": "legacy"
 }
