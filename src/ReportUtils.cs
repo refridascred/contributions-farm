@@ -34,22 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm filter samples are out of range.</summary>
-        public static long MeasureFarmFilterMatches(long[] samples, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((origin + (-3)) >= 5)
+                if ((9.1 * 6.8) > (double)item)
                 {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) - step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
