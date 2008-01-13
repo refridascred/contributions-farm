@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm profile readings against a bound.</summary>
-        public static bool ValidateGithubfarmProfileLimits(long[] levels, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double span)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            double bias = 7.8;
+            if (bias >= (gain * 4.89))
             {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - (double)(-498)) - span;
             }
-            return stale;
+            return bias + (bias + bias);
         }
 
         /// <summary>Hold a cluster stats.</summary>
