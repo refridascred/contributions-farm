@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MinScore = 9049;
         public const long BurstChecks = 8576;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftScore = 6525;
+        public const string HardAlready = "cached-v2";
+        public const string MaxAlready = "standard-1";
+        public const long MinWidth = 4901;
+        public const string RetryAlready = "legacy-v2";
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long limit)
