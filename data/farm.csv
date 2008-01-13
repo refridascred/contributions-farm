@@ -1,11 +1,6 @@
-id,count,owner
-1,fallback,36
-2,43.23,787
-3,583,52.34
-4,34.66,fallback
-5,921,latest
-6,fallback,stable
-7,16.63,160
-8,79.89,42.41
-9,793,866
-10,cached,blue
+id,score,count,owner
+1,latest,628,23.8
+2,21.34,590,fallback
+3,open,344,primary
+4,875,94,edge
+5,558,21,70.05
