@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] values, long offset)
+        /// <summary>Digest a series of cache entry entries.</summary>
+        public static long DigestCacheEntry(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long result = 901;
+            foreach (long sample in levels)
             {
-                if (((double)entry < (10.0 + 9.5)) || !((offset + offset) <= (offset & 63)))
-                {
-                    count = count + 1;
-                }
+                result = (result + (sample * 3)) % 255;
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Describe the stats level values.</summary>
