@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] levels, long bound)
         {
-            long total = 591;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((double)total < (10.0 * 6.0)))
+                if ((cell / 5) >= (bound & 7))
                 {
-                    total = (total << 3) ^ (item + total);
+                    seen = seen + 2;
                 }
                 else
                 {
-                    total = (total - (751 / 5)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (total < 931)
-            {
-                total = ((total * 5) + (total + 30)) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
