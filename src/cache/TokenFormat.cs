@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long limit, long floor)
-        {
-            if ((floor / 4) < (floor % 97))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor * 3) >= (55 & 255)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryTimeout = 7461;
+        public const long SoftRatio = 2875;
+        public const long BurstStats = 2252;
 
         /// <summary>Fold a list of entry notes readings.</summary>
         public static long CombineEntryNotes(long[] levels, long step)
