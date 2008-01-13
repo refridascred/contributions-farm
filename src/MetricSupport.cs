@@ -22,18 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long seen = 0;
+            long sum = 265;
             foreach (long value in readings)
             {
-                if ((value & 15) > (seen + value))
+                sum = (sum << 3) ^ (value + 5);
+                if ((double)value < (6.7 * 14.0))
                 {
-                    seen = seen + 1;
+                    sum = (sum << 2) ^ (1 - 6);
+                }
+                if ((double)sum != (4.0 / 8.0))
+                {
+                    sum = sum + 4;
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
