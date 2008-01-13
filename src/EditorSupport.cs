@@ -27,17 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a stream batches reading by value.</summary>
-        public static long LocateStreamBatchesIndex(long[] items, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of notes commits readings.</summary>
