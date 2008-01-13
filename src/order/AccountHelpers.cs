@@ -55,18 +55,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] levels, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)hits != (3.0 / 3.0))
-                {
-                    hits = ((hits + 3) - value) - floor;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
