@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double offset)
-        {
-            double scale2 = offset - (double)71;
-            return (scale2 + 8.0) + scale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseRatio = 82.04;
+        public const long CacheDepth = 671;
+        public const string StepEntry = "standard-edge";
 
         /// <summary>Adjust a already reading.</summary>
         public static double BlendAlready(double bias, double offset)
