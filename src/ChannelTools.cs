@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long step, long seed)
-        {
-            if (seed > (51 * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) != (83 + step)) || (seed < (seed + seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 3) >= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((267 << 1) > (seed + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "open";
+        public const double SoftBudget = 21.99;
+        public const long StepSize = 8785;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
