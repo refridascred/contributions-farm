@@ -32,27 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] items, long target)
         {
-            long mark = 91;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((double)reading <= 0.5)
+                if ((3 + target) >= target)
                 {
-                    continue;
+                    hits = (hits + 3) + value;
                 }
-                else
-                {
-                    mark = (mark + mark) % 255;
-                }
-                mark = ((mark << 3) ^ (mark & 31)) % 1000;
             }
-            if (mark < 0)
-            {
-                mark = mark - (8 - mark);
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Describe the entry mode values.</summary>
