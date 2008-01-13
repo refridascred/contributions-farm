@@ -1,9 +1,7 @@
-id,rank,active,weight
-1,295,643,50.99
-2,fallback,primary,41.93
-3,45.87,primary,21.43
-4,41.22,19.53,934
-5,26,local,strict
-6,21.21,50.88,704
-7,693,legacy,33.06
-8,strict,391,latest
+id,level,ratio,state
+1,standard,staging,stable
+2,219,565,0
+3,638,516,87.44
+4,89.97,stable,eu-west
+5,712,944,edge
+6,primary,staging,26.17
