@@ -1,10 +1,7 @@
-id,region,owner
-1,130,local
-2,legacy,24.66
-3,712,eu-west
-4,stable,187
-5,1.47,81.61
-6,66.46,76.19
-7,22.88,717
-8,740,eu-west
-9,primary,913
+id,count,token
+1,235,49.93
+2,primary,28
+3,blue,421
+4,409,51
+5,993,76.21
+6,161,3.65
