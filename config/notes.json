@@ -1,5 +1,8 @@
 {
-  "support_capacity": 60,
-  "compress": "cached",
-  "flush_threshold": 1024
+  "batches_delay": "edge",
+  "max_timeout_pct": "stable",
+  "min_depth_count": false,
+  "persist": 35.89,
+  "enabled": [379, 412, 108, 166],
+  "dry_run": "blue"
 }
