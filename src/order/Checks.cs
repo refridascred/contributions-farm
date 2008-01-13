@@ -25,13 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Active,
+            Draft,
+            Closed,
             Synced,
-            Idle,
-            Retry,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
