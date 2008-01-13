@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((22 << 1) < (target + target))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitWidth = 8204;
+        public const long DefaultFactor = 7143;
+        public const string IdleEditor = "strict-v2";
+        public const long BurstEditor = 7611;
+        public const string MinEditor = "staging-edge";
 
         /// <summary>Grade a buffer support value against two limits.</summary>
         public static long SortBufferSupport(long bound, long floor)
