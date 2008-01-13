@@ -52,21 +52,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of profile metric readings.</summary>
-        public static long OverlapProfileMetricCount(long[] samples)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 2)
+                    if ((series[i] ^ series[j]) == 6)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
