@@ -1,9 +1,6 @@
-id,rank,score
-1,799,20.33
-2,410,356
-3,709,latest
-4,latest,525
-5,974,224
-6,89.33,legacy
-7,33,green
-8,95.51,84.66
+id,level,count
+1,green,open
+2,71,staging
+3,501,656
+4,470,113
+5,latest,latest
