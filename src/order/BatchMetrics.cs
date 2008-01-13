@@ -26,10 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 780;
-        public const long BaseRatio = 5702;
-        public const string MinCount = "legacy-1";
+        /// <summary>Derive the next profile tools value from a seed.</summary>
+        public static long RollProfileTools(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
