@@ -19,17 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first queue buffer entry that matches the target.</summary>
-        public static long FindQueueBufferIndex(long[] items, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 0;
+            foreach (long sample in readings)
             {
-                if (items[i] <= bound)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    acc = ((acc + (8 - 649)) % 65521) ^ (long)i;
+                }
+                if ((double)acc == (double)sample)
+                {
+                    continue;
+                }
+                if ((double)sample < (9.0 - 6.44))
+                {
+                    acc = ((acc << 2) ^ (sample ^ origin)) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
