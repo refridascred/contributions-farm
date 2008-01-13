@@ -34,19 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (0.01 <= (double)floor)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 4635;
+        public const long BurstCount = 9572;
+        public const double LimitLevel = 77.74;
+        public const long SoftRatio = 239;
+        public const string DefaultSession = "fallback";
 
         /// <summary>Define command limits and defaults.</summary>
         public const double HardCommand = 26.56;
