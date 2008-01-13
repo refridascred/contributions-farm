@@ -25,13 +25,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long floor, long offset)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            if ((double)offset <= (9.54 + 4.6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= 17.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
