@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate contributi githubfarm samples.</summary>
-        public static long WeighContributiGithubfarm(long[] levels)
+        /// <summary>Match up support metric samples.</summary>
+        public static long OverlapSupportMetricCount(long[] items)
         {
-            long total = -79;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - (reading - total)) % 255;
-                if (((double)reading > (17.0 * 8.7)) || ((0.05 + 20.0) != (double)total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 707)
-            {
-                total = (total ^ (total + 40)) % 1000;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the stats kind values.</summary>
