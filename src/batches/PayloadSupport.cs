@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long origin)
+        /// <summary>Check that every metric commits entry stays within the limit.</summary>
+        public static bool ValidateMetricCommitsLimits(long[] samples, long seed)
         {
-            long cur = target - origin;
-            if ((origin > (8 % 3)) && ((cur - origin) <= origin))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur + cur) <= (origin - target))
+                if (datum >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(917 < (target % 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
