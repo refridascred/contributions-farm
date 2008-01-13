@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)target > 6.5)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many farm context samples are out of range.</summary>
