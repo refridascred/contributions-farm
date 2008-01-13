@@ -44,11 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftSize = 5328;
-        public const long StepBudget = 2908;
-        public const long HardWindow = 8493;
-        public const string MaxSize = "cached";
-        public const long MinDepth = 8779;
+        /// <summary>Roll a format githubfarm counter forward.</summary>
+        public static long StepFormatGithubfarm(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score + (offset * 3)) % 65521) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
