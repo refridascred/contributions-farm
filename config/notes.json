@@ -1,19 +1,5 @@
 {
-  "context_ttl": {
-    "sync_interval": "strict",
-    "stream_retries": false,
-    "tools_retries": 12.88
-  },
-  "notes_depth": {
-    "hard_retries_ms": "legacy",
-    "max_depth_ms": "open",
-    "sync_threshold_count": "blue",
-    "dry_run": {
-      "flush_threshold_ms": ["eu-west", "edge", "legacy", "edge"],
-      "persist": 86,
-      "cache_window_count": "primary",
-      "default_size": "staging"
-    }
-  },
-  "base_delay_s": "eu-west"
+  "batch_capacity_s": "primary",
+  "layout_depth": true,
+  "cache_depth_ms": "cached"
 }
