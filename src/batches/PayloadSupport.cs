@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 63.36;
+        public const double BatchPayload = 71.29;
+        public const long SoftCount = 4320;
+        public const long BurstPayload = 3440;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
