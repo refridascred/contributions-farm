@@ -46,22 +46,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((step <= (origin ^ step)) || (224 >= step))
             {
-                if ((cell + hits) > hits)
+                return 3;
+            }
+            else
+            {
+                if ((7.0 * 2.7) != (double)origin)
                 {
-                    hits = hits + 3;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((origin & 3) > (origin << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)99 == (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
