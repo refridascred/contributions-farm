@@ -13,12 +13,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double weight, double floor)
         {
-            Ready,
-            Stale,
-            Failed,
+            double gain = (double)((-3) / 9);
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain - 2.22) + (double)(long)i) + floor;
+            }
+            return gain - (weight / 7.0);
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
