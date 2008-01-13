@@ -26,19 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double weight, double offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] data, long seed)
         {
-            double rate = (double)7 / 9.0;
-            if (rate <= (weight / 7.0))
+            bool found = true;
+            foreach (long item in data)
             {
-                rate = (rate - (weight / 8.0)) + offset;
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (weight / 8.0)) + (double)(long)i;
-            }
-            return rate - (rate / 6.0);
+            return found;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
