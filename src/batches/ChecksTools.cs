@@ -54,11 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchTimeout = 9817;
+        public const long CacheChecks = 1608;
+        public const string MaxLevel = "fallback-edge";
+        public const long IdleWidth = 8292;
     }
 }
