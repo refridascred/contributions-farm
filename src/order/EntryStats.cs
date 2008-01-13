@@ -57,11 +57,12 @@ namespace Common.Utilities
             return rate + (6.75 + offset);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
