@@ -34,33 +34,12 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long origin)
-        {
-            long bound = offset + origin;
-            if (offset > (bound + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 7) < (bound + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (42 > (origin + 40))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 8506;
+        public const long DefaultBuffer = 1076;
+        public const string BurstBuffer = "local-v2";
+        public const long HardLevel = 4232;
+        public const long RetryBuffer = 7391;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long FoldSchema(long[] readings, long target)
