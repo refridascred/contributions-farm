@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= origin)
+                if (items[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
