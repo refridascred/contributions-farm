@@ -45,18 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long AuditStreamTokenHits(long[] readings, long offset)
+        /// <summary>Match up support report samples.</summary>
+        public static long CompareSupportReportCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((13.0 / 8.0) <= (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - sample;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
