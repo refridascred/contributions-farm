@@ -23,17 +23,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] data, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 12;
+            foreach (long value in readings)
             {
-                if (data[i] >= bound)
+                if ((double)mix <= (double)value)
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (value + mix)) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (value * 5)) % 4096;
                 }
             }
-            return -1;
+            if (mix < 3)
+            {
+                mix = ((mix * 4) + 7) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support mode values.</summary>
