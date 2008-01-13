@@ -69,22 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] samples, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (limit < item)
+                if (((double)sample == (0.16 - 7.3)) && (sample > (sample + sample)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
