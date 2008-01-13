@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                long step = (8 + limit) >> 3;
-                if ((step - (long)i) <= (long)i)
-                {
-                    acc = ((acc * 4) + (step + acc)) % 4096;
-                }
-                if ((acc / 4) > (acc + acc))
-                {
-                    acc = (acc + (long)i) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Idle,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a queue record.</summary>
