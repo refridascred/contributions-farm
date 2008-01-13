@@ -37,19 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next support window value.</summary>
-        public static double SmoothSupportWindow(double weight, double offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long step)
         {
-            double drift = (offset + weight) + offset;
-            if (drift >= 10.0)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                drift = drift + offset;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + (offset - drift);
-            }
-            return drift + (double)55;
+            return state;
         }
     }
 }
