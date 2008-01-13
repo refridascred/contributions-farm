@@ -28,21 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix << 3) ^ (bound * 2)) % 4096;
+                mix = mix + (3 & 15);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix - (bound / 7)) % 97) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
