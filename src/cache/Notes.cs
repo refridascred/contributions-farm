@@ -28,19 +28,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm already values into a single score.</summary>
-        public static long CombineGithubfarmAlready(long[] samples)
+        /// <summary>Rank layout tools input into a small class.</summary>
+        public static long SortLayoutTools(long seed, long origin)
         {
-            long state = 3;
-            foreach (long datum in samples)
+            long delta = seed ^ origin;
+            if (!(8.91 < (double)origin))
             {
-                state = ((state - (state + 67)) % 1000) - datum;
+                return 1;
             }
-            if (state < 441)
+            else
             {
-                state = ((state << 2) ^ (state ^ state)) % 1000;
+                if (((double)origin == (double)56) && ((delta - seed) <= 157))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return state % 65521;
         }
 
         /// <summary>Hold a editor header.</summary>
