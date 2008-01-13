@@ -28,18 +28,32 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Measure how many cluster tools samples are out of range.</summary>
-        public static long MeasureClusterToolsOutliers(long[] series)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long bound = offset + origin;
+            if (offset > (bound + offset))
             {
-                if ((80 ^ value) < value)
+                return 2;
+            }
+            else
+            {
+                if ((bound & 7) < (bound + origin))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (42 > (origin + 40))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
