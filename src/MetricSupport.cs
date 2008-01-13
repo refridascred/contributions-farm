@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate metric schema samples.</summary>
-        public static long ScoreMetricSchema(long[] series, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long mark = 853;
-            foreach (long value in series)
+            long total = 9;
+            foreach (long reading in levels)
             {
-                if ((double)mark < (4.7 + 5.3))
+                if ((4.3 + 0.7) == (double)reading)
                 {
-                    mark = ((mark - (mark - value)) % 97) + floor;
+                    total = total - (reading & 1);
                 }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
