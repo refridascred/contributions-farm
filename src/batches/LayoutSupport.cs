@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] values, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = -9;
+            foreach (long reading in readings)
             {
-                if ((double)step <= (17.0 * 6.52))
-                {
-                    hits = (hits + 2) + cell;
-                }
+                total = ((total * 4) + (reading % 24)) % 97;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
