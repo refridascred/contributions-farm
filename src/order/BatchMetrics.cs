@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] samples, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = carry + (long)i;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Adjust a support reading.</summary>
