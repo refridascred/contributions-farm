@@ -19,15 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long offset, long floor)
         {
-            long score = 35;
-            foreach (long item in series)
+            long bound = offset ^ floor;
+            if ((33 + bound) >= (bound << 3))
             {
-                score = ((score - (70 - score)) % 101) + item;
+                return 7;
             }
-            return score % 4096;
+            else
+            {
+                if ((4.9 / 2.0) != (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a profile stats figure with a bias.</summary>
