@@ -29,16 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric cache series from a seed.</summary>
-        public static long SeriesMetricCache(long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = result ^ floor;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Retry,
+            Locked,
+            Failed,
         }
     }
 }
