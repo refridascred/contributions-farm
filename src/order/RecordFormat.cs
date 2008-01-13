@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long DefaultCounter = 5377;
         public const long MinCounter = 9590;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 86.06;
-        public const long MaxLevel = 9886;
-        public const double CacheLevel = 12.49;
-        public const long MaxSpan = 7611;
-        public const long BaseLevel = 7984;
+        /// <summary>Iterate the metrics queue series from a seed.</summary>
+        public static long SeriesMetricsQueue(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total << 2) ^ ((long)i & 255)) % 255;
+                if (((total + origin) >= (total >> 1)) || ((2 - total) > (total - origin)))
+                {
+                    total = ((total << 2) ^ (total - (long)i)) % 101;
+                    total = total ^ 5;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
