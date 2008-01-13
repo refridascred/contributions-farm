@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Active,
-            Pending,
-            Done,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 9452;
+        public const double MinOrder = 94.64;
+        public const double HardOrder = 11.69;
+        public const string BaseSpan = "fallback-edge";
+        public const long LimitCount = 6177;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
