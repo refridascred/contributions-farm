@@ -29,10 +29,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleScore = 9770;
-        public const long MinBatches = 3139;
-        public const double SoftBatches = 45.54;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up support report samples.</summary>
         public static long CompareSupportReportCount(long[] readings)
