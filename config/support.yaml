@@ -1,8 +1,14 @@
 # support settings
-buffer_timeout: latest
-cache_timeout_pct:
-  - 354
-  - 206
-base_threshold_count: 100
-soft_retries: blue
-poll_retries_pct: 1952
+token_delay: blue
+verbose:
+  format_ttl: 24.29
+  poll_size_ms: false
+  enabled:
+    - 10
+    - 5
+flush_ratio_pct:
+  - 200
+  - 116
+min_threshold_count: 54.84
+persist: 7066
+sync_delay: open
