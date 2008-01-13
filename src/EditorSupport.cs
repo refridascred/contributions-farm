@@ -31,15 +31,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long anchor = 5;
-            foreach (long entry in readings)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor - (entry - entry)) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Describe the notes class values.</summary>
