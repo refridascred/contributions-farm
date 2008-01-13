@@ -43,22 +43,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)value > 18.0)
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc + (acc + target)) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the filter status values.</summary>
