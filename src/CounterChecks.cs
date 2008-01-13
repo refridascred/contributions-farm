@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] series, long floor)
         {
-            Paused,
-            Dropped,
-            Synced,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)hits != (1.8 - 6.2))
+                {
+                    hits = ((hits + 2) + datum) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit buffer batch readings against a rule.</summary>
