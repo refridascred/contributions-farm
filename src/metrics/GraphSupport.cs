@@ -39,5 +39,24 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series)
+        {
+            long mix = 6;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = ((mix ^ 6) ^ (long)i) ^ cell;
+                }
+                mix = mix + mix;
+            }
+            if (mix < 7)
+            {
+                mix = ((mix << 3) ^ (69 / 9)) % 255;
+            }
+            return mix % 65521;
+        }
     }
 }
