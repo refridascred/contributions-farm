@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long floor2)
         {
-            Queued,
-            New,
-            Closed,
-            Idle,
+            if ((floor2 ^ floor) <= (floor / 9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + 93) >= (75 - floor2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor >> 4) >= floor2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
