@@ -17,10 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleSpan = 5737;
-        public const long StepCount = 6958;
-        public const long MaxWidth = 222;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitRatio = "cached-1";
+        public const long BurstSize = 716;
+        public const long DefaultTools = 8315;
+        public const long BatchTools = 7528;
+        public const long WindowCount = 201;
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double weight, double offset)
