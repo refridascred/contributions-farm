@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long seed)
         {
-            long result = 54;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item > (4.43 + 6.8))
+                if (samples[i] > seed)
                 {
-                    result = ((result << 3) ^ item) % 65521;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Grade a order cache value against two limits.</summary>
