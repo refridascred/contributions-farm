@@ -15,11 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 2479;
-        public const long DefaultWidth = 8305;
-        public const long WindowChecks = 3544;
-        public const long BurstSpan = 2425;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit schema command readings against a rule.</summary>
         public static long MeasureSchemaCommandOutliers(long[] items, long seed)
