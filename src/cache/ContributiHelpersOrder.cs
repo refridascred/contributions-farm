@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long sum = 48;
-            foreach (long entry in levels)
-            {
-                if ((entry * 5) < sum)
-                {
-                    sum = sum - (sum << 1);
-                }
-                if ((2 / 2) < (sum & 15))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Retry,
+            Failed,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
