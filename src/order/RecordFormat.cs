@@ -65,12 +65,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] series, long seed)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
