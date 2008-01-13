@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const string SoftQueue = "standard-v2";
         public const long BurstRatio = 3712;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally <= (8.98 / 7.0))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
