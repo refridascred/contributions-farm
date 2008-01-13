@@ -22,31 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm editor pair into a bucket.</summary>
-        public static long BucketFarmEditor(long offset, long origin)
+        /// <summary>Count the payload graph entries that pass the check.</summary>
+        public static long CountPayloadGraphHits(long[] readings)
         {
-            if ((double)offset >= 0.15)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin == (6.98 + 1.0))
+                if ((value - tally) <= (271 - (-7)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - offset) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
