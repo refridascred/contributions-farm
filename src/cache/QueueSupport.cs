@@ -28,39 +28,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] series)
         {
-            long edge = target + limit;
-            if (((target ^ 81) >= target) || ((limit / 6) < target))
+            long sum = 9;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) == (70 - target))
+                if (((12.0 - 5.42) < (double)sum) && ((17 * 2) <= (sum & 15)))
                 {
-                    return 7;
+                    sum = (sum - ((long)series.Length - sum)) % 101;
                 }
-                else
+                if (!((6.0 - 0.4) >= (double)datum))
                 {
-                    if (!((double)target == (double)edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((limit + limit) <= (edge - target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            if (sum < (-4))
+            {
+                sum = ((sum * 3) + (sum - sum)) % 97;
+            }
+            return sum;
         }
     }
 }
