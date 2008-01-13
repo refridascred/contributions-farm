@@ -40,14 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Pending,
             Dropped,
-            Draft,
+            Stale,
             New,
-            Paused,
-            Idle,
         }
 
         /// <summary>Roll a filter profile counter forward.</summary>
