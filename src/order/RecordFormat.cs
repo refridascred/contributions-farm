@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] data)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((2.15 * 15.0) != (double)item)
+                if (!!(62 >= (tally & 255)))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) + item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
