@@ -44,19 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a format githubfarm counter forward.</summary>
-        public static long StepFormatGithubfarm(long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((714 & 7) < (carry - (-4)))
                 {
-                    score = ((score + (offset * 3)) % 65521) - (long)i2;
+                    carry = (carry - (carry >> 1)) % 4096;
+                    carry = (carry * 4) + ((long)i % 60);
                 }
-                score = ((score * 2) + (long)i) % 101;
+                carry = ((carry << 2) ^ carry) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
     }
 }
