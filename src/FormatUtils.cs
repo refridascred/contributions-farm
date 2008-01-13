@@ -28,19 +28,15 @@ namespace Common.Utilities
         public const long MaxProfile = 2373;
         public const long MaxSpan = 3019;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data, long seed)
+        /// <summary>Iterate the record token series from a seed.</summary>
+        public static long SeriesRecordToken(long origin)
         {
-            long state = 1;
-            foreach (long cell in data)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state ^ (cell / 9)) % 1000) - seed;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (state < 5)
-            {
-                state = state ^ state;
-            }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Describe the account level values.</summary>
