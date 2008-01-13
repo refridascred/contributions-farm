@@ -36,21 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Measure how many channel counter samples are out of range.</summary>
+        public static long TallyChannelCounterMatches(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset >> 2) < (hits >> 3))
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
