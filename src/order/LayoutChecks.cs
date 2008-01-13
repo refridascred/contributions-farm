@@ -55,18 +55,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] levels, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long mark = 119;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step + value) >= (mark / 6))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - mark) % 65521;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
