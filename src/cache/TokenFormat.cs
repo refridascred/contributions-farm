@@ -25,13 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long seed)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long lane = step ^ seed;
+            if ((step << 3) == (lane % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step + step) <= (lane - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed >= (13.0 - 1.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up githubfarm filter samples.</summary>
