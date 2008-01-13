@@ -40,11 +40,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double span)
         {
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            double drift = 8.5 / 3.0;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift - span) + (double)(long)i) + ratio;
+            }
+            return drift - span;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
