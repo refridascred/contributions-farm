@@ -53,9 +53,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultScore = 15.57;
-        public const long LimitSize = 7190;
-        public const long LimitEditor = 7209;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Idle,
+            New,
+            Synced,
+        }
     }
 }
