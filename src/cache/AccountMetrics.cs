@@ -56,18 +56,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cache editor readings.</summary>
-        public static long WeighCacheEditor(long[] readings, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] samples, long floor)
         {
-            long mark = 7;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((double)limit <= (3.49 - 1.81)) || (119 <= (limit + limit)))
+                if ((double)value > 18.0)
                 {
-                    mark = ((mark << 3) ^ (mark * 4)) - cell;
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the filter status values.</summary>
