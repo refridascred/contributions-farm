@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open local; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=286
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in blue eu-west; do
+    log "checking ${item}"
+done
