@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry >= target) || !(entry < (entry + target)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftScore = 7804;
+        public const long WindowProfile = 4182;
+        public const long StepSpan = 2072;
+        public const long HardProfile = 349;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] readings)
