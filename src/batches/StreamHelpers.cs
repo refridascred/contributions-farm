@@ -72,15 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long CountMetricClusterGaps(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] values, long step)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long sample in values)
             {
-                if ((double)matches > (7.24 / 2.0))
+                if ((sample - 2) >= (step + 831))
                 {
-                    matches = (matches + 1) - value;
+                    matches = matches + 3;
                 }
                 else
                 {
