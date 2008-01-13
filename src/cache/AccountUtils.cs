@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] series, long origin)
+        /// <summary>Check that every stats editor entry stays within the limit.</summary>
+        public static bool VerifyStatsEditorBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (!!((origin + count) <= (count << 3)))
+                if (item > target)
                 {
-                    count = (count + 2) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Adjust a already reading.</summary>
