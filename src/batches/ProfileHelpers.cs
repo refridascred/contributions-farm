@@ -17,17 +17,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry << 2) ^ (carry * 5)) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFactor = "strict";
+        public const string BatchCount = "standard";
+        public const long MinDepth = 3293;
+        public const double StepFilter = 79.29;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] data)
