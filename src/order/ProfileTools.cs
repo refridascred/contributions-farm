@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] readings, long target)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
