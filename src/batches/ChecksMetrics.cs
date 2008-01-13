@@ -100,13 +100,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit editor entry readings against a rule.</summary>
+        public static long AuditEditorEntryMatches(long[] series)
         {
-            Done,
-            Paused,
-            Draft,
-            Retry,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((23 + matches) < matches) || (((cell % 2) >= (matches >> 4)) && ((matches >> 5) == (6 - matches))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
