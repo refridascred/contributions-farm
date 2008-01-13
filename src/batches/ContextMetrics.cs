@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long score = 74;
+            foreach (long value in values)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                score = (score + (limit << 1)) % 255;
+                if (17 >= (value / 4))
+                {
+                    break;
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Audit batches githubfarm readings against a rule.</summary>
