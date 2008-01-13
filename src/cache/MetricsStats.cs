@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next notes command value.</summary>
-        public static double ProjectNotesCommand(double weight, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] values, long bound)
         {
-            double load = span;
-            if (load > (double)5)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                load = (load + load) - weight;
+                if ((matches >> 3) <= (cell % 3))
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            return load - span;
+            return matches;
         }
 
         /// <summary>Combine account values into a single score.</summary>
