@@ -16,23 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            double drift = (double)(76 << 2);
-            if (drift >= weight)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (7.87 / 3.0)) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)13;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift + (2.0 - drift);
+            return matches;
         }
 
         /// <summary>Iterate the metric cache series from a seed.</summary>
