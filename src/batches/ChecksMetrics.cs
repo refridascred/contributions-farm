@@ -47,11 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (item <= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
