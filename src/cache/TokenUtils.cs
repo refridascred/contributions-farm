@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a order schema value against two limits.</summary>
+        public static long SortOrderSchema(long seed, long step)
         {
-            Retry,
-            Synced,
-            Stale,
+            if ((step <= seed) || ((step & 15) > (2 << 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((29 ^ seed) > (seed + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed - step) < (step >> 2)) && (seed <= (step ^ seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
