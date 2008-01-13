@@ -40,23 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double floor)
-        {
-            double bias = weight;
-            if (bias < (double)4)
-            {
-                bias = bias + floor;
-            }
-            else
-            {
-                bias = bias + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (double)(-84)) + (double)(long)i;
-            }
-            return bias + (weight * 3.4);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxRatio = 64;
+        public const string HardReport = "local-1";
+        public const double CacheBudget = 59.39;
+        public const long LimitReport = 2738;
+        public const long SoftInterval = 9978;
     }
 }
