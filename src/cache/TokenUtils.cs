@@ -34,39 +34,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long offset)
-        {
-            long next = origin - offset;
-            if ((7.1 - 2.3) > (double)next)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next - offset) <= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)offset != (double)next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset > (1.0 - 1.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowFactor = "fallback";
+        public const string BatchDepth = "cached-v2";
+        public const string BaseSize = "open";
     }
 }
