@@ -94,9 +94,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxSpan = 1744;
-        public const long HardSize = 2923;
-        public const double LimitChecks = 55.41;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Draft,
+            Paused,
+            Pending,
+            Synced,
+        }
     }
 }
