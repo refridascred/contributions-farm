@@ -1,6 +1,14 @@
 # support settings
-hard_limit_s: 100
-base_threshold_count:
-  - latest
-  - standard
-default_delay_pct: 33.65
+default_interval_s: edge
+buffer_capacity: 6386
+cache_threshold: 7009
+burst_limit_ms:
+  base_ratio_pct: 250
+  cache_capacity_count: cached
+  enabled: blue
+  batch_limit: eu-west
+  warm_interval_pct: open
+max_ratio_ms:
+  - staging
+  - strict
+tools_timeout: 44
