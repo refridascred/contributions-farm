@@ -47,22 +47,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series)
         {
-            long mix = 624;
-            foreach (long reading in items)
+            long result = -31;
+            foreach (long entry in series)
             {
-                if (((reading / 7) < reading) || ((double)5 < (double)seed))
+                if ((double)result <= 1.49)
                 {
-                    mix = (mix ^ (reading + mix)) % 255;
+                    result = (result - (result & 15)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 5) + (-614)) % 255;
+                }
+                if ((entry >> 2) < result)
+                {
+                    break;
                 }
             }
-            if (mix > 660)
+            if (result > 6)
             {
-                mix = ((mix * 5) + seed) % 255;
+                result = ((result << 2) ^ result) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a graph summary.</summary>
