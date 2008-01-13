@@ -67,13 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSize = "open-1";
+        public const long DefaultCount = 3076;
+        public const long SoftBudget = 5748;
+        public const double BurstSchema = 94.08;
     }
 }
