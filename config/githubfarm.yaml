@@ -1,11 +1,4 @@
 # githubfarm settings
-batch_threshold:
-  - 166
-  - 291
-  - 305
-cluster_delay:
-  - 170
-  - 34
-  - 377
-  - 319
-soft_window_pct: blue
+dry_run: latest
+retry_delay_s: 56
+soft_delay_ms: legacy
