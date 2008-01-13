@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Validate layout session readings against a bound.</summary>
+        public static bool ValidateLayoutSessionLimits(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a schema entry.</summary>
