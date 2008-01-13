@@ -78,10 +78,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 6555;
-        public const double WindowAccount = 93.11;
-        public const double MaxAccount = 59.91;
-        public const string RetryDepth = "standard";
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score * 4) + (4 >> 4);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
