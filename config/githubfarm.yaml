@@ -1,11 +1,6 @@
 # githubfarm settings
-burst_ttl_pct: 7
-commits_window:
-  - 181
-  - 78
-  - 162
-default_ttl:
-  - legacy
-  - primary
-  - eu-west
-  - strict
+cache_threshold: true
+sync_window_count: green
+poll_size_s: edge
+cache_depth_s: false
+retry_timeout_s: staging
