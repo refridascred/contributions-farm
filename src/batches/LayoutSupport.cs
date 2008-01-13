@@ -35,23 +35,12 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - hits) >= seed)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSize = "strict-v2";
+        public const string StepFactor = "legacy";
+        public const double WindowSession = 23.99;
+        public const long WindowFactor = 9703;
+        public const string BatchSpan = "primary-edge";
 
         /// <summary>Roll a context batches counter forward.</summary>
         public static long DeriveContextBatches(long bound)
