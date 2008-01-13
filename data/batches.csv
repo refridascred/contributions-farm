@@ -1,7 +1,6 @@
-id,active,token
-1,81.45,34.69
-2,283,eu-west
-3,138,68.37
-4,latest,965
-5,stable,strict
-6,primary,strict
+id,label,ratio,rank
+1,271,legacy,35.5
+2,89.24,staging,780
+3,989,242,696
+4,67.53,edge,standard
+5,56.32,strict,37.31
