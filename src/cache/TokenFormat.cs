@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowLevel = "stable";
-        public const long WindowSpan = 5043;
-        public const string SoftFactor = "staging-v2";
-        public const long BaseQueue = 3182;
-        public const double BurstScore = 62.89;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Match up githubfarm filter samples.</summary>
         public static long OverlapGithubfarmFilterCount(long[] data)
