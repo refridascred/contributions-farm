@@ -36,10 +36,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 450;
-        public const string MaxBudget = "strict";
-        public const double RetryWindow = 57.22;
-        public const long BatchWindow = 7097;
+        /// <summary>Count the stats buffer entries that pass the check.</summary>
+        public static long CountStatsBufferGaps(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((target - target) >= (10 + value))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
