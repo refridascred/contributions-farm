@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] series, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank support input into a small class.</summary>
