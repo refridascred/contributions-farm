@@ -84,32 +84,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels, long seed)
         {
-            long bound = seed + floor;
-            if ((bound - seed) < (floor + bound))
+            long mark = 381;
+            foreach (long entry in levels)
             {
-                return 7;
+                mark = (mark * 5) + (seed + 4);
+                mark = ((mark * 5) + entry) % 97;
             }
-            else
-            {
-                if ((1.23 - 18.0) >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed << 3) < (seed - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark % 97;
         }
     }
 }
