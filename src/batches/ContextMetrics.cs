@@ -23,15 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics order series from a seed.</summary>
-        public static long RollMetricsOrder(long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long limit)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
