@@ -33,12 +33,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            double bias = weight;
+            if (bias < (double)4)
+            {
+                bias = bias + floor;
+            }
+            else
+            {
+                bias = bias + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)(-84)) + (double)(long)i;
+            }
+            return bias + (weight * 3.4);
         }
     }
 }
