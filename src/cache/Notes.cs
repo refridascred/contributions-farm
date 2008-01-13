@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitScore = 446;
-        public const string LimitLevel = "alpha-v2";
-        public const double RetryBudget = 97.52;
-        public const long SoftSize = 5112;
-        public const double MinChecks = 64.74;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series)
+        {
+            long total = 374;
+            foreach (long cell in series)
+            {
+                total = total - (total + total);
+                if (total > (cell - total))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesGaps(long[] levels)
