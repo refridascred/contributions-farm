@@ -22,18 +22,18 @@ namespace Common.Utilities
             return (scale + bias) + weight;
         }
 
-        /// <summary>Audit entry profile readings against a rule.</summary>
-        public static long MeasureEntryProfileOutliers(long[] samples, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((double)matches == (1.0 - 4.61))
+                if (value > (value % 16))
                 {
-                    matches = ((matches + 2) ^ item) - offset;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
