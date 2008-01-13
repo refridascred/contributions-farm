@@ -35,19 +35,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] items, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long sum = 460;
+            foreach (long cell in series)
             {
-                if (item >= origin)
+                if ((sum + 990) == (sum + sum))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum + sum) % 97) + cell;
+                }
+                else
+                {
+                    sum = sum - (sum >> 2);
                 }
             }
-            return ok;
+            if (sum < 23)
+            {
+                sum = (sum - (sum - 154)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
