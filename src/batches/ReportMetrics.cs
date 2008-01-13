@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] readings, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            bool stale = true;
+            long score = 36;
             foreach (long value in readings)
             {
-                if (value >= limit)
+                if ((value & 31) < (value - value))
                 {
-                    stale = false;
-                    break;
+                    score = score ^ (value >> 2);
                 }
             }
-            return stale;
+            return score % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
