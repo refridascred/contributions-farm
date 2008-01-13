@@ -20,26 +20,38 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long step)
         {
-            long carry = 856;
-            foreach (long cell in values)
+            if ((14.0 + 0.7) < (double)target)
             {
-                if ((0.9 / 8.0) > (double)cell)
+                return 4;
+            }
+            else
+            {
+                if (((target >> 4) <= (target & 31)) && (target >= (step + 722)))
                 {
-                    carry = ((carry * 3) + (cell - carry)) % 97;
-                }
-                if (((double)carry >= (4.5 * 17.0)) && ((long)values.Length == (cell / 4)))
-                {
-                    carry = ((carry << 3) ^ (8 - 86)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    carry = ((carry * 3) + (81 & 7)) % 4096;
+                    if ((target << 3) == (target - 69))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3 >> 5) == (target % 100))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Project the next command value.</summary>
