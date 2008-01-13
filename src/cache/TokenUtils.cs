@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Paused,
-            Idle,
-            Synced,
             Retry,
-            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Project the next token stats value.</summary>
