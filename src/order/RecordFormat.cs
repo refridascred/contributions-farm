@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items, long bound)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long carry = 65;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (carry > (47 << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (((carry * 2) + (carry + datum)) % 1000) + bound;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < (-7))
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Iterate the counter metrics series from a seed.</summary>
