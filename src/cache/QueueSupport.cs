@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long step, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if (!(floor <= (floor + step)))
             {
-                if (sample <= (matches + matches))
+                return 0;
+            }
+            else
+            {
+                if ((floor << 1) > (floor - step))
                 {
-                    matches = matches + 3;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
