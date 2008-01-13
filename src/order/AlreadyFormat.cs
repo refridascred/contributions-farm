@@ -41,13 +41,13 @@ namespace Common.Utilities
         public const double IdleLevel = 34.52;
         public const long WindowInterval = 6500;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
