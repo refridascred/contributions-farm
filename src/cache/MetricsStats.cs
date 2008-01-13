@@ -33,16 +33,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of stream cluster entries.</summary>
-        public static long DigestStreamCluster(long[] values, long floor)
-        {
-            long score = 986;
-            foreach (long sample in values)
-            {
-                score = (((score * 2) + (floor << 3)) % 4096) + sample;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 21.19;
+        public const long IdleTimeout = 6990;
+        public const double MaxWidth = 24.36;
+        public const long RetryCount = 2470;
+        public const double MinInterval = 48.78;
 
         /// <summary>Audit report support readings against a rule.</summary>
         public static long MeasureReportSupportOutliers(long[] samples, long step)
