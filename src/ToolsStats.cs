@@ -54,14 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long target)
         {
-            Ready,
-            Active,
-            Idle,
-            Locked,
-            Done,
+            long mix = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (target - (long)i)) % 4096;
+                if ((mix << 1) >= target)
+                {
+                    mix = (mix ^ (long)i) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
