@@ -40,18 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] readings)
+        /// <summary>Combine stats queue values into a single score.</summary>
+        public static long TotalStatsQueue(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long state = -73;
+            foreach (long reading in series)
             {
-                if (((value << 3) < 99) || ((count % 60) > (count ^ count)))
+                if ((reading ^ reading) >= reading)
                 {
-                    count = count + 1;
+                    state = (state * 2) + reading;
                 }
             }
-            return count;
+            if (state > 15)
+            {
+                state = (state << 2) ^ (state - state);
+            }
+            return state;
         }
     }
 }
