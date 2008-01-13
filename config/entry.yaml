@@ -1,7 +1,4 @@
 # entry settings
-batch_interval_s:
-  - 15
-  - 213
-persist: strict
-compress: cached
-warm_ttl_pct: 500
+sync_interval: 379
+default_retries_count: local
+idle_ttl_count: 0.44
