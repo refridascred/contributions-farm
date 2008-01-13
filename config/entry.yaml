@@ -1,11 +1,10 @@
 # entry settings
-persist: green
-batch_ratio: stable
-strict:
-  - eu-west
-  - blue
-audit: edge
-soft_depth_s:
-  - stable
-  - standard
-  - green
+enabled: 57
+default_window: false
+max_ttl_pct: eu-west
+counter_capacity: primary
+metric_interval: open
+session_window:
+  - 81
+  - 198
+  - 318
