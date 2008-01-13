@@ -36,39 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long seed, long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long edge = seed + target;
-            if ((seed ^ target) <= (edge % 100))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4 ^ target) >= (edge & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target != (5.2 + 0.41))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (80 <= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
