@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_limit_s: legacy
-soft_ttl_s: green
-verbose: legacy
-compress: 398
-batch_ratio: 30
-burst_threshold_s: 20.19
+max_interval: 30
+cache_timeout_pct: 8804
+hard_ratio_count: 32.98
