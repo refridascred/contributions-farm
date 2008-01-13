@@ -31,22 +31,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long offset)
         {
-            long total = 42;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.4 > (double)reading)
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
                 {
-                    total = (total * 4) + reading;
+                    return (long)i;
                 }
             }
-            if (total < 75)
-            {
-                total = ((total << 3) ^ (total * 5)) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
