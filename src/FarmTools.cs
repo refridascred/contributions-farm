@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const double IdleWindow = 47.36;
         public const long BatchScore = 7625;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] values)
         {
-            Ready,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!(tally > (reading + (long)values.Length)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
