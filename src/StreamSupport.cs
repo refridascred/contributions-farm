@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstSize = 2623;
-        public const long RetrySpan = 8919;
-        public const double SoftCommits = 37.8;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data, long offset)
+        {
+            long result = 144;
+            foreach (long cell in data)
+            {
+                if (((result >> 1) >= ((-114) / 9)) || ((double)cell < (double)result))
+                {
+                    result = (result ^ (offset - result)) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
