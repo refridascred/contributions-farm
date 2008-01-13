@@ -20,19 +20,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the schema filter series from a seed.</summary>
-        public static long IterateSchemaFilter(long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((2.7 / 7.0) == (double)seed)
-                {
-                    carry = (carry << 2) ^ ((long)i * 2);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Queued,
+            Retry,
         }
     }
 }
