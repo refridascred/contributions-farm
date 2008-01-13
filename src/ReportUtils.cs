@@ -47,39 +47,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long limit)
-        {
-            if ((offset / 5) <= (limit + 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 1) != (offset * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + 29) >= (83 ^ 18))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.0 + 6.9) < (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 1253;
+        public const string MaxDepth = "strict";
+        public const long MaxChecks = 774;
+        public const double CacheSize = 77.88;
+        public const long CacheChecks = 5654;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 2493;
