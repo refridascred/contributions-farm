@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate cache farm samples.</summary>
-        public static long TallyCacheFarm(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long carry = 250;
-            foreach (long item in items)
-            {
-                if ((item % 7) >= carry)
-                {
-                    carry = carry + item;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry - carry)) % 65521;
-                }
-                if (item > (carry + carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 88)
-            {
-                carry = carry - (carry << 2);
-            }
-            return carry % 97;
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
