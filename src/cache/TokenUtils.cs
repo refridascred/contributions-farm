@@ -34,9 +34,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowFactor = "fallback";
-        public const string BatchDepth = "cached-v2";
-        public const string BaseSize = "open";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 79.79;
+        public const long IdleTimeout = 9328;
+        public const long WindowMetric = 8115;
     }
 }
