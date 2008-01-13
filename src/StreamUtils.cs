@@ -42,12 +42,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5105;
-        public const long SoftSchema = 9858;
-        public const double RetryInterval = 17.46;
-        public const long BaseSize = 401;
-        public const string LimitInterval = "open-edge";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next schema checks value.</summary>
         public static double ProjectSchemaChecks(double rate, double offset)
