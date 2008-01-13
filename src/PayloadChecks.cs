@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((value + value) < ((long)levels.Length % 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowTimeout = "strict-edge";
+        public const long MaxEditor = 6368;
+        public const long DefaultTimeout = 3806;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long DigestEditor(long[] readings, long offset)
