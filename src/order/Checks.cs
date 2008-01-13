@@ -42,11 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            double weight = bias;
+            if (weight > (bias * 4.48))
+            {
+                weight = weight - floor;
+            }
+            return weight + (bias * 7.6);
         }
 
         /// <summary>Describe the farm class values.</summary>
