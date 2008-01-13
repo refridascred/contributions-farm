@@ -56,21 +56,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up queue stream samples.</summary>
-        public static long OverlapQueueStreamCount(long[] values)
+        /// <summary>Derive the next token batch value from a seed.</summary>
+        public static long StepTokenBatch(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total + ((long)i << 3)) % 101;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
