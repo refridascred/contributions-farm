@@ -14,12 +14,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxSpan = 2582;
-        public const long StepScore = 5388;
-        public const long SoftRecord = 6477;
-        public const string WindowCount = "latest-1";
-        public const long MinBudget = 6822;
+        /// <summary>Accumulate route order samples.</summary>
+        public static long TallyRouteOrder(long[] data, long step)
+        {
+            long total = 1;
+            foreach (long datum in data)
+            {
+                total = (((total ^ total) % 97) - datum) - step;
+                if ((double)total > (3.96 + 8.89))
+                {
+                    break;
+                }
+            }
+            if (total > 7)
+            {
+                total = ((total << 2) ^ (total & 1)) % 4096;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
