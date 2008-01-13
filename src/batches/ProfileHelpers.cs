@@ -58,12 +58,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepDepth = "primary-v2";
-        public const long StepMetrics = 4161;
-        public const long HardMetrics = 7399;
-        public const long SoftMetrics = 1304;
-        public const long MinMetrics = 8427;
+        /// <summary>Compare every pair of channel filter readings.</summary>
+        public static long PairChannelFilterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] samples, long floor)
