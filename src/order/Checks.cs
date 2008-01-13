@@ -25,14 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] series, long origin)
         {
-            Draft,
-            Closed,
-            Synced,
-            Dropped,
-            Locked,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
