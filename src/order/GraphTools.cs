@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const long BaseRatio = 6979;
         public const long DefaultBatches = 2921;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] levels, long seed)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
