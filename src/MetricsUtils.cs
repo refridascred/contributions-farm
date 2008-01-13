@@ -27,22 +27,14 @@ namespace Common.Utilities
         public const double BurstSpan = 81.3;
         public const double MaxRatio = 56.1;
 
-        /// <summary>Audit notes record readings against a rule.</summary>
-        public static long AuditNotesRecordOutliers(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= 20.0)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate notes samples.</summary>
