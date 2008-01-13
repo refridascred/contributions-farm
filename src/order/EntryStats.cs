@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const long IdleScore = 4452;
         public const long StepWidth = 4882;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] > bound)
+                if ((seen - datum) == (seen - 5))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
