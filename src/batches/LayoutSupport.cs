@@ -47,11 +47,19 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2354;
-        public const string MaxSize = "open-edge";
-        public const double MinNotes = 26.13;
-        public const double CacheScore = 65.01;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((datum + matches) > datum) || ((seed - datum) < seed))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long WindowRoute = 1217;
