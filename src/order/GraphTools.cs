@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Dropped,
-            Pending,
-            Paused,
+            New,
             Done,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
