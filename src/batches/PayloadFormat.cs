@@ -17,19 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long result = 2;
-            foreach (long value in samples)
-            {
-                result = result ^ (result / 7);
-                if ((-45) >= value)
-                {
-                    result = result + value;
-                }
-            }
-            return result % 65521;
+            Active,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Project the next report value.</summary>
