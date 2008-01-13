@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            Queued,
-            Failed,
-            Locked,
-            Active,
-            New,
+            long sum = target;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum - (sum / 8)) % 1000;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
