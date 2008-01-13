@@ -30,12 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Draft,
-            Dropped,
-            Failed,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
