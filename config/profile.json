@@ -1,16 +1,11 @@
 {
-  "record_threshold": {
-    "counter_capacity": {
-      "poll_size": false,
-      "editor_ratio": 2210,
-      "payload_timeout": ["strict", "standard"],
-      "poll_size_count": "local",
-      "graph_depth": [41, 108, 408]
-    },
-    "max_window_s": true,
-    "idle_capacity_pct": "primary",
-    "sync_limit": [150, 340, 266, 95]
-  },
-  "min_threshold": "eu-west",
-  "cache_retries": "staging"
+  "buffer_interval": "legacy",
+  "flush_retries_count": true,
+  "format_size": 35.08,
+  "warm_depth_s": 100,
+  "sync_ttl_ms": {
+    "max_threshold_pct": "primary",
+    "warm_threshold_pct": 7396,
+    "burst_ttl_pct": 31.98
+  }
 }
