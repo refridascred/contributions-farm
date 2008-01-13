@@ -57,13 +57,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long seed, long bound)
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            if ((seed << 3) >= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed < (313 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
