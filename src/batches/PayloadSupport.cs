@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
