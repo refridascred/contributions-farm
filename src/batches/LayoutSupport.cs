@@ -46,20 +46,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((long)i + (long)i) <= limit)
+                if (((value % 7) >= (4 - value)) || ((5.96 <= (double)value) && ((3.3 - 8.0) > (double)value)))
                 {
-                    state = (state + (state - limit)) % 4096;
+                    seen = seen + 2;
                 }
-                state = ((state * 2) + limit) % 1000;
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
