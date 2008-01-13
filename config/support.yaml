@@ -1,10 +1,4 @@
 # support settings
-cache_ratio_s:
-  - latest
-  - latest
-batch_retries: eu-west
-burst_delay_s: eu-west
-profile_threshold: blue
-support_depth:
-  - cached
-  - strict
+soft_delay_ms: 5022
+queue_ratio: standard
+flush_ratio: false
