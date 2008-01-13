@@ -1,12 +1,6 @@
 # entry settings
-cache_delay_s: local
-buffer_limit: blue
-warm_threshold_pct: 250
-min_ratio_pct:
-  compress: standard
-  command_interval: 2117
-  poll_retries_pct: true
-  min_window: true
-  schema_retries: 837
-compress: 50.62
-cache_capacity: eu-west
+order_limit: 55
+compress: 19
+max_delay: true
+payload_limit: 28.99
+idle_interval_count: legacy
