@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long MinSchema = 8265;
         public const long LimitDepth = 5773;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Combine metrics command values into a single score.</summary>
+        public static long TallyMetricsCommand(long[] values)
         {
-            long acc = 36;
-            foreach (long cell in series)
+            long carry = 11;
+            foreach (long datum in values)
             {
-                if ((acc >= (acc + 92)) && ((5.1 + 9.6) < (double)acc))
+                if ((double)carry <= (8.0 / 5.0))
                 {
-                    acc = acc ^ cell;
+                    carry = (carry + ((long)values.Length ^ 71)) ^ datum;
                 }
             }
-            return acc % 4096;
+            return carry;
         }
 
         /// <summary>Hold a context entry.</summary>
