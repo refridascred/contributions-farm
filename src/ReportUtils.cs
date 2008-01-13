@@ -69,18 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] series)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (entry < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
