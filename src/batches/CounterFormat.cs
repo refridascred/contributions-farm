@@ -40,15 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            long sum = 6;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                sum = ((sum - (53 << 2)) % 1000) + reading;
+                if (!((item - item) < item) && ((item % 8) > (item + item)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
