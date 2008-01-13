@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] data, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = 4;
+            foreach (long datum in items)
             {
-                if ((step - cell) == (seen << 1))
+                state = (state + datum) % 1000;
+                if (((state + state) != (6 - state)) && ((double)state <= (13.0 - 2.0)))
                 {
-                    seen = seen + 3;
+                    state = ((state << 3) ^ (state - limit)) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = (state - (limit << 1)) % 1000;
                 }
+                state = ((state * 2) + (state & 127)) % 255;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Accumulate order samples.</summary>
