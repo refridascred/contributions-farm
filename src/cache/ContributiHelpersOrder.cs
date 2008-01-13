@@ -38,20 +38,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((target + (long)i) < carry)
+                if (item > offset)
                 {
-                    carry = (carry << 3) ^ ((long)i - carry);
-                    carry = carry ^ (target + (long)i);
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
     }
 }
