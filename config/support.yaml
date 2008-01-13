@@ -1,12 +1,5 @@
 # support settings
-command_window: 44.02
-default_ratio:
-  tools_timeout: 87
-  idle_limit_ms: 250
-  poll_threshold_count:
-    soft_window_pct: staging
-    format_threshold: green
-    hard_depth: 5768
-    route_size: 3267
-  persist: staging
-queue_timeout: 250
+readonly: blue
+hard_ratio: edge
+token_limit: 3971
+min_size: false
