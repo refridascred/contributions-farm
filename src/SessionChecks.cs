@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long limit, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] data)
         {
-            if ((8.0 - 4.0) <= (double)limit)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit / 7) >= (limit - floor)) || ((limit ^ 49) != (limit >> 5)))
+                if (!!((327 << 3) < (seen & 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3 >> 5) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit % 3) < floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the command mode values.</summary>
