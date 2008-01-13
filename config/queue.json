@@ -1,6 +1,6 @@
 {
-  "retry_ttl_ms": ["eu-west", "latest", "open"],
-  "farm_timeout": [141, 492, 297, 470],
-  "verbose": ["edge", "edge", "legacy"],
-  "idle_capacity_count": "primary"
+  "batches_depth": "strict",
+  "readonly": "legacy",
+  "filter_threshold": 89,
+  "support_ttl": 13.38
 }
