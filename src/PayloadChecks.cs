@@ -21,24 +21,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long floor, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings, long offset)
         {
-            if ((double)offset <= (9.54 + 4.6))
+            long mark = 988;
+            foreach (long reading in readings)
             {
-                return 0;
+                mark = (((mark - 22) % 1000) + reading) - offset;
             }
-            else
-            {
-                if ((double)offset >= 17.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
