@@ -1,9 +1,8 @@
-id,state,rank,label
-1,57.91,53.47,standard
-2,833,614,local
-3,81,95.77,56.12
-4,stable,89,green
-5,29.2,strict,standard
-6,69.12,61.2,209
-7,local,456,51.52
-8,579,947,primary
+id,score,owner,level
+1,177,613,green
+2,strict,29.11,standard
+3,958,700,staging
+4,96,latest,833
+5,local,58.24,70.96
+6,46.96,849,fallback
+7,18.71,staging,strict
