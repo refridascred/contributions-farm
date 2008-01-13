@@ -1,6 +1,27 @@
 # support settings
-burst_ttl_ms: 53
-base_limit: 250
-sync_interval: 4976
-batch_threshold: 80.33
-notes_timeout: latest
+retry_ratio: 15
+cache_retries_count:
+  - local
+  - staging
+  - edge
+min_ttl: latest
+burst_ratio_s:
+  - 478
+  - 381
+  - 298
+  - 317
+base_threshold: 30
+order_capacity:
+  readonly:
+    strict: 55
+    compress: blue
+    burst_interval_ms: false
+    retry_size: stable
+    readonly: 5331
+    flush_size_ms: 1024
+  min_ratio_s: standard
+  enabled:
+    entry_ratio: 95.1
+    readonly: cached
+    retry_size: true
+    max_threshold_pct: 34.19
