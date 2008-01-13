@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
