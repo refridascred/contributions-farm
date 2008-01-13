@@ -12,14 +12,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Dropped,
-            Done,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxSize = 97.18;
+        public const string CacheLevel = "legacy-edge";
+        public const string MaxCounter = "local";
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
