@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 6623;
-        public const double IdleSpan = 76.3;
-        public const long StepTimeout = 3637;
-        public const long WindowRecord = 4736;
+        /// <summary>Audit buffer support readings against a rule.</summary>
+        public static long CountBufferSupportGaps(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell >= 0.8)
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long StepAccount(long seed)
