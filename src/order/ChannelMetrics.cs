@@ -20,9 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSpan = 242;
-        public const string StepBudget = "stable-edge";
-        public const long BatchTimeout = 2036;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
