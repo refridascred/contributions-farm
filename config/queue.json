@@ -1,17 +1,7 @@
 {
-  "max_window_ms": {
-    "flush_timeout": false,
-    "warm_ratio": 34,
-    "poll_timeout": "open",
-    "base_delay": "eu-west",
-    "retry_threshold_count": false
-  },
-  "cache_capacity": {
-    "metric_ratio": 71.33,
-    "readonly": "cached",
-    "contributi_depth": "edge",
-    "order_capacity": false
-  },
-  "soft_depth_ms": 71,
-  "stats_timeout": 31.91
+  "retry_depth_pct": ["eu-west", "open"],
+  "warm_limit_s": ["edge", "standard", "green", "local"],
+  "sync_threshold_ms": 81.8,
+  "idle_retries_count": 60,
+  "max_timeout_pct": true
 }
