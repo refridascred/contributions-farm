@@ -25,24 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long score = 13;
-            foreach (long item in data)
-            {
-                score = ((score * 2) + 73) % 4096;
-                score = score + (item + score);
-                if (((7.42 + 5.9) == (double)score) || (item > (score * 2)))
-                {
-                    score = ((score << 3) ^ score) % 255;
-                }
-            }
-            if (score < 535)
-            {
-                score = (score - (score / 2)) % 4096;
-            }
-            return score;
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a farm stats.</summary>
