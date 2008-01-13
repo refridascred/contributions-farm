@@ -90,20 +90,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long score = 44;
-            foreach (long item in readings)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                score = score ^ (item + score);
-                score = score - (item - score);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (score < 841)
-            {
-                score = ((score * 2) + (score + score)) % 97;
-            }
-            return score % 65521;
+            return score;
         }
     }
 }
