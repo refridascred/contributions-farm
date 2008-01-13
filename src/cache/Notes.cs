@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((3.24 + 2.81) > (double)sample) || ((8.0 * 0.4) == (double)sample))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitScore = 446;
+        public const string LimitLevel = "alpha-v2";
+        public const double RetryBudget = 97.52;
+        public const long SoftSize = 5112;
+        public const double MinChecks = 64.74;
 
         /// <summary>Rank layout tools input into a small class.</summary>
         public static long SortLayoutTools(long seed, long origin)
