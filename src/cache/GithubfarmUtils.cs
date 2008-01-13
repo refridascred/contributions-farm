@@ -31,12 +31,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long bound)
         {
-            Done,
-            Failed,
-            Stale,
+            if ((double)bound <= (double)490)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (5.5 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= (4 << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound + bound) > (bound % 97))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
