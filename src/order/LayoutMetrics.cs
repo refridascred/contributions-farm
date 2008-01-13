@@ -17,12 +17,11 @@ namespace Common.Utilities
         public const string WindowCount = "latest-1";
         public const long MinBudget = 6822;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Retry,
-            Locked,
-            Failed,
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
