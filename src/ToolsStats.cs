@@ -63,38 +63,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long limit, long step)
+        /// <summary>Find the first checks entry entry that matches the target.</summary>
+        public static long LookupChecksEntryIndex(long[] samples, long limit)
         {
-            if ((247 + 75) >= (step & 127))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 2) <= (limit + step))
+                if (samples[i] <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)step <= 0.72))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step < (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
