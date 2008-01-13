@@ -1,12 +1,17 @@
 # entry settings
-commits_window:
-  metric_interval: 6491
-  min_timeout_count:
-    - 272
-    - 96
-  sync_depth_count: 9769
-  compress: 19
-cache_window_s: false
-default_size_ms:
-  - legacy
-  - blue
+graph_timeout: 7371
+payload_window: 75
+batch_limit: 25
+retry_capacity_pct: 9772
+strict: 34.31
+readonly:
+  idle_limit_count: fallback
+  min_delay_ms:
+    sync_depth_s: 30
+    dry_run: 67
+    enabled: local
+  poll_size: 6661
+  warm_size_s:
+    min_interval: 7763
+    commits_size: stable
+    sync_retries: fallback
