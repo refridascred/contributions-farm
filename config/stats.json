@@ -1,11 +1,17 @@
 {
-  "warm_delay": {
-    "default_ttl": 100,
-    "counter_timeout": "latest",
-    "context_timeout": "fallback",
-    "persist": 3585,
-    "burst_ttl_pct": "local"
-  },
-  "report_size": "strict",
-  "compress": 5031
+  "default_capacity_pct": "latest",
+  "max_interval": true,
+  "min_window": 2721,
+  "batch_retries_pct": {
+    "compress": {
+      "min_ratio": false,
+      "stream_ratio": "strict",
+      "default_delay": 100,
+      "flush_timeout_s": 83.88,
+      "persist": [327, 496, 5, 127],
+      "max_timeout_pct": true
+    },
+    "persist": 83,
+    "order_size": true
+  }
 }
