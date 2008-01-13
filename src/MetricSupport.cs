@@ -19,24 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long target, long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long limit)
         {
-            if ((1.63 - 19.0) > (double)target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target / 3) <= (limit / 5))
+                if (series[i] >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two token queue measurements.</summary>
