@@ -21,5 +21,14 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
