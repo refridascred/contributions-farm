@@ -1,6 +1,7 @@
 {
-  "default_ratio_pct": "green",
-  "entry_interval": false,
-  "schema_ttl": 6593,
-  "max_limit": "cached"
+  "record_retries": "standard",
+  "audit": [365, 243, 369, 221],
+  "verbose": "primary",
+  "retry_retries_count": true,
+  "retry_timeout_s": 1024
 }
