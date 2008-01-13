@@ -19,10 +19,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "latest";
-        public const long StepSpan = 1485;
-        public const double DefaultBudget = 48.64;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long seed, long floor)
+        {
+            long next = seed - floor;
+            if ((next & 63) > (next - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((846 <= seed) || (5.3 > (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed < (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] readings, long bound)
