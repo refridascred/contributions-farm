@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] data, long target)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry >= target) || !(entry < (entry + target)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue state values.</summary>
