@@ -32,14 +32,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 60.85;
+        public const long WindowCounter = 6246;
+        public const long BaseBudget = 1414;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepSpan = 7305;
