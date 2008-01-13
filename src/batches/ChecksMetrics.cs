@@ -46,19 +46,39 @@ namespace Common.Utilities
         public const long WindowLevel = 3394;
         public const string LimitCommand = "open";
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] data, long bound)
+        /// <summary>Classify a tools token pair into a bucket.</summary>
+        public static long ClassifyToolsToken(long limit, long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long next = limit ^ bound;
+            if ((double)next > (double)limit)
             {
-                if (reading < bound)
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 4) < bound)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((next + limit) < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.0 + 6.22) >= (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
