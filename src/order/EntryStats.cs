@@ -77,32 +77,11 @@ namespace Common.Utilities
             return rate + (6.75 + offset);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long offset, long offset2)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long edge = offset ^ offset2;
-            if ((3.15 * 6.17) > (double)edge)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((edge + edge) > (offset2 * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset2 >> 2) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
