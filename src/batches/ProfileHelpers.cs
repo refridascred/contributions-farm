@@ -66,10 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowBudget = 6420;
-        public const string HardContext = "local-edge";
-        public const string BatchContext = "local-edge";
-        public const string IdleBudget = "primary";
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Closed,
+            Paused,
+            Ready,
+        }
     }
 }
