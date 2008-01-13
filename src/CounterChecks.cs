@@ -50,19 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi metrics readings.</summary>
-        public static long TotalContributiMetrics(long[] items)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double gain, double floor)
         {
-            long mark = 81;
-            foreach (long item in items)
+            double drift = (double)68 * 3.5;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark << 2) ^ (21 ^ item)) % 255;
+                drift = ((drift - floor) - (double)(long)i) - gain;
             }
-            if (mark < 69)
-            {
-                mark = ((mark << 3) ^ (mark >> 5)) % 4096;
-            }
-            return mark;
+            return drift + floor;
         }
 
         /// <summary>Describe the buffer class values.</summary>
