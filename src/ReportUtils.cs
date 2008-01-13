@@ -23,11 +23,13 @@ namespace Common.Utilities
             return ratio - (ratio + rate);
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double ratio, double bias)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double drift = bias;
-            return (drift + (double)(-551)) + ratio;
+            Draft,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
