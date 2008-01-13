@@ -62,13 +62,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Active,
-            Failed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCount = 57.76;
+        public const long IdleCluster = 364;
+        public const long HardCluster = 8783;
+        public const string LimitFactor = "standard";
     }
 }
