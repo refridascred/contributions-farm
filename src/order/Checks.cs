@@ -40,18 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context entry values into a single score.</summary>
-        public static long FoldContextEntry(long[] values, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long acc = 260;
-            foreach (long reading in values)
-            {
-                if ((seed & 7) <= ((long)values.Length - 499))
-                {
-                    acc = (acc ^ (seed - reading)) % 1000;
-                }
-            }
-            return acc;
+            New,
+            Active,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Project the next record value.</summary>
