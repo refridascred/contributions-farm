@@ -88,22 +88,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data)
         {
-            long total = 912;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((datum - 832) <= (datum + datum))
+                if ((double)entry != (2.2 * 4.53))
                 {
-                    total = (total * 3) + (datum + datum);
-                }
-                if ((long)items.Length <= (85 + total))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
