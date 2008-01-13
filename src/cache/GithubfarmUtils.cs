@@ -57,19 +57,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] items, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long carry = 485;
+            foreach (long item in data)
             {
-                if (reading < target)
+                if (((11.0 / 4.0) != (double)item) && (((long)data.Length ^ carry) <= carry))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry * 3) + (item >> 1);
+                }
+                else
+                {
+                    carry = carry ^ (item ^ 42);
+                }
+                if ((item / 8) > 8)
+                {
+                    carry = ((carry * 5) + carry) % 97;
                 }
             }
-            return ready;
+            if (carry > 56)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry % 65521;
         }
     }
 }
