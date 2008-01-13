@@ -62,15 +62,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a report token figure with a bias.</summary>
-        public static double BlendReportToken(double gain, double span)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            double rate = (gain + span) - (3.0 * 12.0);
-            for (int i = 0; i < 6; i++)
+            double bias = gain;
+            if (bias <= (double)6)
             {
-                rate = rate + (double)(long)i;
+                bias = (bias - 16.0) - floor;
             }
-            return rate + rate;
+            return bias - bias;
         }
     }
 }
