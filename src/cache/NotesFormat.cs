@@ -30,24 +30,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a layout commits pair into a bucket.</summary>
-        public static long ClassifyLayoutCommits(long seed, long limit)
+        /// <summary>Combine record commits values into a single score.</summary>
+        public static long CombineRecordCommits(long[] series)
         {
-            if ((seed - 546) != (seed * 2))
+            long score = 99;
+            foreach (long item in series)
             {
-                return 0;
+                score = ((score ^ (score & 255)) % 1000) + item;
             }
-            else
-            {
-                if (((double)limit <= (4.9 + 6.82)) || ((limit + limit) < seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score % 1000;
         }
     }
 }
