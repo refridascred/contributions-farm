@@ -38,18 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of queue filter readings.</summary>
-        public static long ScoreQueueFilter(long[] data, long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            long state = -82;
-            foreach (long value in data)
+            double ratio = (double)(252 ^ (-51));
+            for (int i = 0; i < 7; i++)
             {
-                if ((value - value) >= (state - limit))
-                {
-                    state = state ^ ((-438) & 31);
-                }
+                ratio = ((ratio + span) + (double)(long)i) - rate;
             }
-            return state;
+            return ratio + 12.0;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
