@@ -27,19 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state * 4) + ((long)i2 % 60)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                sum = (sum * 5) + (sum + 299);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
