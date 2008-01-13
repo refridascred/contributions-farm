@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySpan = "fallback";
+        public const long BatchSupport = 7241;
+        public const string HardSupport = "cached-v2";
+        public const double IdleSize = 85.74;
+        public const double SoftSupport = 94.17;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] data)
