@@ -73,12 +73,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next window value.</summary>
