@@ -1,7 +1,8 @@
 {
-  "verbose": 45.87,
-  "sync_window_s": 54,
-  "flush_ttl_s": "strict",
-  "poll_retries_s": 250,
-  "poll_timeout_count": 500
+  "verbose": false,
+  "enabled": 55.24,
+  "default_depth_ms": 17.05,
+  "hard_capacity": "fallback",
+  "flush_window_pct": "strict",
+  "readonly": "blue"
 }
