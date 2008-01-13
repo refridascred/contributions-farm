@@ -35,18 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many checks batches samples are out of range.</summary>
-        public static long AuditChecksBatchesMatches(long[] readings, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (cell >= (seed % 10))
+                if (item <= seed)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
