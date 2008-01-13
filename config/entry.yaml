@@ -1,7 +1,5 @@
 # entry settings
-persist: 57.13
-dry_run: true
-token_limit: true
-counter_interval: 250
-base_capacity_ms: 1024
-base_timeout_count: 100
+flush_interval_count: stable
+audit: 16.54
+retry_capacity_s: true
+batch_delay_pct: stable
