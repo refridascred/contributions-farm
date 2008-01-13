@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            long total = 9;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((4.3 + 0.7) == (double)reading)
+                if (((long)levels.Length != (item * 3)) || !(count < (item >> 3)))
                 {
-                    total = total - (reading & 1);
+                    count = count + 3;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
