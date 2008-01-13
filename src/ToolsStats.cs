@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double bias)
+        /// <summary>Audit account entry readings against a rule.</summary>
+        public static long MeasureAccountEntryGaps(long[] samples)
         {
-            double mean = bias;
-            if (mean >= (double)5)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mean = mean + (bias - ratio);
+                if (11 > (sample % 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (bias - bias)) + (double)(long)i;
-            }
-            return mean - (double)5;
+            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
