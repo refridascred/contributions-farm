@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Count the batches editor entries that pass the check.</summary>
+        public static long CountBatchesEditorMatches(long[] series, long floor)
         {
-            long anchor = -204;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((cell << 3) >= anchor)
+                if ((entry - floor) >= (entry - entry))
                 {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 38) % 1000;
+                    matches = matches + 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
