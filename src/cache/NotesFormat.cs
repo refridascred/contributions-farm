@@ -22,21 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -1;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading + total) >= (total >> 1))
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ total) % 101;
                 }
             }
-            return matches;
+            if (total > 30)
+            {
+                total = (total - total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
