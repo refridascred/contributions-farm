@@ -1,11 +1,11 @@
 # Editor notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Run the channel check before changing any schema limits.
-A report that stays idle for too long is moved to the graph list.
+Use metrics settings to tune how often payload data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
+Run the farm check before changing any booking limits.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new entry fields
-- Log every buffer change
+- Keep batches values small
+- Review graph limits each release
+- Log every checks change
