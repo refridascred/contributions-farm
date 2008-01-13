@@ -58,22 +58,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up support report samples.</summary>
-        public static long CompareSupportReportCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 8360;
+        public const long RetryWindow = 4250;
+        public const long HardTimeout = 5808;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
