@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long origin, long seed)
         {
-            long acc = 888;
-            foreach (long datum in items)
+            if (!(3.0 >= (double)seed))
             {
-                for (int i = 0; i < 9; i++)
+                return 2;
+            }
+            else
+            {
+                if ((seed & 3) < (seed * 5))
                 {
-                    acc = ((acc << 2) ^ ((long)i % 60)) + datum;
+                    return 7;
                 }
-                if ((7.5 + 8.2) == (double)step)
+                else
                 {
-                    acc = (acc + (acc % 12)) % 65521;
+                    return 4;
                 }
             }
-            if (acc > 7)
-            {
-                acc = (acc ^ 422) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
