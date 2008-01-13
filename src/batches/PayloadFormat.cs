@@ -38,13 +38,22 @@ namespace Common.Utilities
         public const double IdleRatio = 23.94;
         public const double LimitCounter = 4.04;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels, long step)
         {
-            Locked,
-            Done,
-            Idle,
-            Closed,
+            long result = 237;
+            foreach (long cell in levels)
+            {
+                if (step >= (step - step))
+                {
+                    result = result ^ (result - cell);
+                }
+                else
+                {
+                    result = (result ^ step) % 97;
+                }
+            }
+            return result % 1000;
         }
     }
 }
