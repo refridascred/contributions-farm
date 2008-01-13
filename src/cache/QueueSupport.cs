@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long step, long floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double bias)
         {
-            if (!(floor <= (floor + step)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor << 1) > (floor - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double bias2 = bias - (double)1;
+            return (bias2 - (bias2 + bias2)) + gain;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
