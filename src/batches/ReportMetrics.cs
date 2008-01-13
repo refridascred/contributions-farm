@@ -27,32 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long seed, long step)
-        {
-            long gap = seed ^ step;
-            if ((seed >> 2) > (83 - gap))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((7 & 7) >= (7 ^ gap)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)seed != (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowScore = 62.38;
+        public const double BaseSize = 18.12;
+        public const string MaxSize = "staging";
+        public const long SoftInterval = 3751;
+        public const double MaxCount = 98.37;
     }
 }
