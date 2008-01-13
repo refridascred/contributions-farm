@@ -64,13 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] series, long step)
         {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
