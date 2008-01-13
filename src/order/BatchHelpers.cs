@@ -22,23 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long mark = 6;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                mark = mark - (sample + 429);
-                if (50 < (sample * 4))
-                {
-                    mark = (mark ^ 9) % 255;
-                }
+                result = result - (result / 4);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (mark > 0)
-            {
-                mark = (mark << 2) ^ (1 / 7);
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
