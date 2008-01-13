@@ -1,5 +1,18 @@
 {
-  "hard_ratio": 55,
-  "dry_run": "fallback",
-  "soft_limit_ms": 512
+  "poll_limit": false,
+  "batch_depth_pct": "stable",
+  "already_depth": "staging",
+  "poll_size_count": {
+    "entry_window": 9758,
+    "verbose": "local",
+    "editor_capacity": {
+      "batch_retries": 23.4,
+      "sync_capacity": 73.27,
+      "batch_limit_count": "open"
+    },
+    "compress": "open",
+    "base_limit_pct": "blue",
+    "default_threshold_s": "legacy"
+  },
+  "idle_retries_s": "eu-west"
 }
