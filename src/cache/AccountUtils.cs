@@ -20,16 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor << 2) ^ seed) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            New,
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
