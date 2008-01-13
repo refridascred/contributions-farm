@@ -1,43 +1,7 @@
 # support settings
-flush_depth:
-  readonly: 83
-  graph_delay: true
-  format_ttl:
-    - edge
-    - standard
-    - open
-    - strict
-  persist: false
-  idle_size_s: false
-  max_retries_ms:
-    audit:
-      - 125
-      - 8
-      - 397
-      - 202
-    cluster_depth:
-      - 243
-      - 150
-      - 389
-    default_ttl_pct:
-      - 441
-      - 178
-      - 255
-    schema_ttl: 60
-    sync_ttl_s: 4
-already_size:
-  - primary
-  - edge
-  - green
-dry_run:
-  sync_delay_s: true
-  context_timeout:
-    - 306
-    - 273
-    - 6
-  readonly:
-    - standard
-    - eu-west
-  base_threshold_count: 5700
-  profile_interval: 26
-  min_timeout: false
+soft_ttl_s:
+  sync_size_s: 54.68
+  poll_delay: 9993
+  base_retries_pct: 29
+batches_depth: cached
+profile_timeout: 7892
