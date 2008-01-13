@@ -29,19 +29,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate editor stream readings against a bound.</summary>
-        public static bool VerifyEditorStreamRange(long[] data, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long target)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            if (origin <= (origin & 1))
             {
-                if (datum < origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin >= (7.51 / 3.0))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
