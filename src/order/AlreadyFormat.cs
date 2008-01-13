@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] values, long limit)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double gain, double span)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double ratio = span;
+            if (ratio < (ratio - ratio))
             {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + gain;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 15.0) - (double)(long)i;
+            }
+            return ratio - (gain * 6.0);
         }
 
         /// <summary>Fold a list of counter token readings.</summary>
