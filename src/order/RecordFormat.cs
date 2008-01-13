@@ -23,21 +23,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metrics queue series from a seed.</summary>
-        public static long SeriesMetricsQueue(long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long bound, long bound2)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long step = bound ^ bound2;
+            if ((bound << 2) != (bound2 ^ 36))
             {
-                total = ((total << 2) ^ ((long)i & 255)) % 255;
-                if (((total + origin) >= (total >> 1)) || ((2 - total) > (total - origin)))
-                {
-                    total = ((total << 2) ^ (total - (long)i)) % 101;
-                    total = total ^ 5;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((bound + step) == (57 << 3)) && (((-9) + step) > (bound2 - 79)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step < (1.0 / 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step - bound2) > 4) && ((0.88 - 15.0) > (double)step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
