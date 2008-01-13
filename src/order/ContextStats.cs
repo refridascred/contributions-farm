@@ -12,22 +12,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] data, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((12.0 > (double)seed) || ((double)sample > (5.0 - 1.2)))
+                if (value <= (value - count))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) - floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
