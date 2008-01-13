@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const long LimitCount = 1917;
         public const long BurstRatio = 8056;
 
-        /// <summary>Measure how many token command samples are out of range.</summary>
-        public static long AuditTokenCommandMatches(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((-306) > cell) || (seen <= (seen + 263)))
+                if ((11 / 9) < (offset & 1))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                if ((7.0 / 5.0) != (double)(long)i)
+                {
+                    mix = mix - (offset + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the channel class values.</summary>
