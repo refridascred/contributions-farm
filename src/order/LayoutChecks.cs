@@ -23,15 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
