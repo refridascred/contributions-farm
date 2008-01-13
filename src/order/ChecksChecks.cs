@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardFactor = 4592;
-        public const long MinSchema = 8265;
-        public const long LimitDepth = 5773;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading << 1) <= (hits << 1))
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheContributi = 981;
