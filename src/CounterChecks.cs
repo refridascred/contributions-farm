@@ -67,20 +67,15 @@ namespace Common.Utilities
             return scale2 - (scale * 3.0);
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            double bias2 = (offset - bias) + bias;
+            if (bias2 < (offset * 9.5))
             {
-                if (((double)acc <= (1.8 / 8.0)) && ((limit ^ (-790)) <= (24 - limit)))
-                {
-                    break;
-                }
-                acc = (acc + limit) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                bias2 = bias2 - bias2;
             }
-            return acc;
+            return bias2 - (bias2 * 9.9);
         }
     }
 }
