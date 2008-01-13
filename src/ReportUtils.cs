@@ -32,19 +32,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long origin)
+        /// <summary>Measure how many farm filter samples are out of range.</summary>
+        public static long MeasureFarmFilterMatches(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (datum != origin)
+                if ((origin + (-3)) >= 5)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a tools stats.</summary>
