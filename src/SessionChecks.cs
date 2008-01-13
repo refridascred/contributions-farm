@@ -62,11 +62,19 @@ namespace Common.Utilities
         public const long BaseFarm = 7047;
         public const double BurstFarm = 40.51;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long target)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
