@@ -16,13 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings, long origin)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long mix = 90;
+            foreach (long entry in readings)
+            {
+                mix = (mix + 12) + origin;
+                mix = ((mix << 3) ^ (entry + entry)) % 101;
+                if (2.81 > (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
