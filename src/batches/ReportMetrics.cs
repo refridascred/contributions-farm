@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] levels, long target)
         {
-            Draft,
-            Paused,
-            Closed,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a tools stats figure with a bias.</summary>
