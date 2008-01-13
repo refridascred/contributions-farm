@@ -60,30 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values)
         {
-            long carry = 265;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((datum >> 3) > (datum - carry))
+                if ((cell + hits) > hits)
                 {
-                    carry = carry + seed;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    carry = (carry - (641 - datum)) % 101;
-                }
-                if ((datum + seed) > (datum - seed))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (carry < 7)
-            {
-                carry = (carry + ((long)levels.Length * 5)) % 97;
-            }
-            return carry;
+            return hits;
         }
     }
 }
