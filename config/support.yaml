@@ -1,10 +1,8 @@
 # support settings
-idle_depth_count: blue
-cache_timeout_ms: 87.16
-metric_window:
-  - 198
-  - 44
-  - 429
-compress: 5326
-enabled: false
-max_depth_ms: cached
+cache_interval_s: standard
+readonly: 5648
+verbose:
+  - green
+  - strict
+  - blue
+  - cached
