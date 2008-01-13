@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Draft,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 9288;
+        public const double CacheSchema = 41.3;
+        public const long BaseWidth = 2492;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] items)
