@@ -44,21 +44,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Derive the next payload counter value from a seed.</summary>
+        public static long RollPayloadCounter(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (305 >> 5)) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
