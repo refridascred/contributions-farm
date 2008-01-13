@@ -20,21 +20,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 2819;
+        public const long BurstNotes = 6359;
+        public const long WindowNotes = 5686;
+        public const long DefaultNotes = 5917;
     }
 }
