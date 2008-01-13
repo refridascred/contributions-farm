@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long delta = step + target;
-            if (delta <= (-228))
+            long total = 591;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((8.1 * 18.0) < (double)delta))
+                if (!((double)total < (10.0 * 6.0)))
                 {
-                    return 2;
+                    total = (total << 3) ^ (item + total);
                 }
                 else
                 {
-                    return 7;
+                    total = (total - (751 / 5)) % 4096;
                 }
             }
+            if (total < 931)
+            {
+                total = ((total * 5) + (total + 30)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
