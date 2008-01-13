@@ -42,21 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstTimeout = "standard";
+        public const long CacheAccount = 5464;
+        public const double DefaultAccount = 23.17;
+        public const long BurstLevel = 2691;
+        public const long StepWidth = 234;
     }
 }
