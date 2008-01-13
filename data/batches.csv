@@ -1,6 +1,6 @@
-id,level,count
-1,green,open
-2,71,staging
-3,501,656
-4,470,113
-5,latest,latest
+id,region,level,rank
+1,74,516,latest
+2,staging,26.25,63.76
+3,59.65,973,green
+4,64.75,57,54.46
+5,primary,504,strict
