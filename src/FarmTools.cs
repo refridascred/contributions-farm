@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Look up the position of a editor counter sample.</summary>
+        public static long LookupEditorCounterIndex(long[] readings, long offset)
         {
-            Failed,
-            Draft,
-            Done,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
