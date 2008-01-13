@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] values, long step)
         {
-            long mix = 8;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mix = (((mix << 2) ^ (766 << 1)) % 97) ^ cell;
+                if ((double)step <= (17.0 * 6.52))
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            if (mix < 430)
-            {
-                mix = ((mix << 3) ^ (914 << 3)) % 4096;
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
