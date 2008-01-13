@@ -28,15 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Paused,
-            Active,
-            Dropped,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitCount = 3346;
+        public const long IdleCount = 4786;
+        public const double BurstBudget = 30.21;
+        public const string DefaultFormat = "stable";
+        public const long BaseFormat = 9777;
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] items)
