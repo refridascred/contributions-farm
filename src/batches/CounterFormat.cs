@@ -26,18 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] samples)
+        /// <summary>Accumulate commits graph samples.</summary>
+        public static long ScoreCommitsGraph(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = -3;
+            foreach (long reading in series)
             {
-                if (!((item - item) < item) && ((item % 8) > (item + item)))
+                if (sum > 259)
                 {
-                    hits = hits + 2;
+                    sum = (sum ^ (reading % 8)) % 101;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
