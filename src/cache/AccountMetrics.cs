@@ -69,12 +69,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Draft,
+            Dropped,
+            Locked,
+            Paused,
             New,
-            Closed,
+            Active,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
