@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const string SoftChecks = "fallback";
         public const long BaseWidth = 7124;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxSize = 97.18;
-        public const string CacheLevel = "legacy-edge";
-        public const string MaxCounter = "local";
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Paused,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphGaps(long[] data, long floor)
