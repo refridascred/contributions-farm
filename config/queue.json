@@ -1,6 +1,13 @@
 {
-  "sync_retries_count": 3,
-  "max_limit_count": "legacy",
-  "format_size": 500,
-  "profile_retries": false
+  "verbose": "open",
+  "hard_timeout_ms": ["legacy", "blue"],
+  "window_depth": "latest",
+  "poll_threshold": 78.76,
+  "githubfarm_ratio": "latest",
+  "filter_window": {
+    "warm_timeout_pct": 250,
+    "commits_timeout": [333, 151],
+    "burst_ttl": 6012,
+    "contributi_ratio": ["stable", "blue", "local"]
+  }
 }
