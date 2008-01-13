@@ -17,15 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Look up the position of a stats order sample.</summary>
+        public static long LookupStatsOrderIndex(long[] series, long target)
         {
-            long total = 381;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total ^ (total >> 1)) % 97) ^ reading;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
