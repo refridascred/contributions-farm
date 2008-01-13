@@ -1,6 +1,18 @@
 {
-  "soft_delay": 81.31,
-  "batches_ttl": true,
-  "default_capacity_s": false,
-  "readonly": "stable"
+  "warm_ratio": {
+    "dry_run": true,
+    "min_delay_s": true,
+    "default_limit_count": "stable",
+    "strict": "edge",
+    "poll_threshold_pct": {
+      "min_ttl_s": "staging",
+      "layout_depth": [66, 157, 39],
+      "batches_ratio": 47.22,
+      "payload_timeout": "legacy"
+    }
+  },
+  "soft_window": ["edge", "open", "eu-west"],
+  "readonly": [117, 111],
+  "flush_depth": 90,
+  "persist": [336, 102, 36]
 }
