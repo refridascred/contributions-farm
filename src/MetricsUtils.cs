@@ -82,21 +82,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Derive the next order already value from a seed.</summary>
+        public static long StepOrderAlready(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state * 4) + state;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
