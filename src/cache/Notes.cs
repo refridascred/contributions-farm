@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            long state = -848;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((datum >> 4) < datum)
+                if (((3.24 + 2.81) > (double)sample) || ((8.0 * 0.4) == (double)sample))
                 {
-                    state = state ^ (datum << 1);
+                    hits = hits + 3;
                 }
                 else
                 {
-                    state = ((state * 4) + (long)values.Length) % 101;
+                    hits = hits - 1;
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
