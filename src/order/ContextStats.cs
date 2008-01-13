@@ -65,9 +65,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitLevel = "alpha-1";
-        public const long SoftBuffer = 560;
-        public const long MinTimeout = 2532;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
