@@ -49,19 +49,18 @@ namespace Common.Utilities
         public const long MaxSpan = 606;
         public const long IdleRoute = 2933;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] samples, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (reading < limit)
+                if (!(((datum & 1) < datum) || (hits > (datum % 5))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
