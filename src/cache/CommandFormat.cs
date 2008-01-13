@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate account token readings against a bound.</summary>
-        public static bool GuardAccountTokenBounds(long[] readings, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Queued,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Project the next buffer value.</summary>
