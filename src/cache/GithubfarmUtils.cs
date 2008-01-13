@@ -14,15 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long floor)
         {
-            double drift = (double)(0 + 9);
-            if (drift < (bias2 - bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (bias2 / 7.0);
+                if ((data[i] > floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (bias - bias2);
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
