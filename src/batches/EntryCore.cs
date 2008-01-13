@@ -23,20 +23,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowTimeout = 85.05;
+        public const double RetryFormat = 66.41;
+        public const double SoftInterval = 0.18;
+        public const long BatchFormat = 9913;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
