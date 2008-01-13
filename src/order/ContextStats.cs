@@ -47,15 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] samples, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] data, long target)
         {
-            long acc = -167;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in data)
             {
-                acc = ((((acc << 2) ^ acc) % 101) - value) - floor;
+                if (value != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
     }
 }
