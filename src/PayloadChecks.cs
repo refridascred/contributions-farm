@@ -54,10 +54,33 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 8360;
-        public const long RetryWindow = 4250;
-        public const long HardTimeout = 5808;
+        /// <summary>Digest a series of metric contributi entries.</summary>
+        public static long WeighMetricContributi(long[] values, long offset)
+        {
+            long carry = 6;
+            foreach (long sample in values)
+            {
+                long step = (carry % 2) + (sample & 63);
+                if (((double)(-81) >= (double)step) && ((double)step <= (2.31 / 4.0)))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = carry - (offset / 9);
+                    carry = ((carry * 4) + (carry - offset)) % 4096;
+                }
+                if ((offset + sample) > sample)
+                {
+                    carry = (carry - sample) % 255;
+                }
+                if ((9.0 - 18.0) > (8.39 * 13.0))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
