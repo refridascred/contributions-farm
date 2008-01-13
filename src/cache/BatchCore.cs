@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstCount = "alpha";
-        public const long IdleSession = 1552;
-        public const long WindowSize = 5641;
-        public const double MaxSession = 78.7;
-        public const long BaseDepth = 2772;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardDepth = "staging-edge";
+        public const double CacheNotes = 47.19;
+        public const long MinInterval = 739;
+        public const long LimitInterval = 3540;
+        public const long BaseNotes = 3378;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long limit)
