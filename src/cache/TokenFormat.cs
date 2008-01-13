@@ -13,19 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            double load = ratio;
-            if (load <= (double)287)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (double)176;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + 8.46;
-            }
-            return load + (span / 2.0);
+            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
