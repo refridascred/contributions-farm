@@ -21,17 +21,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first metrics record entry that matches the target.</summary>
-        public static long FindMetricsRecordIndex(long[] levels, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the order contributi series from a seed.</summary>
