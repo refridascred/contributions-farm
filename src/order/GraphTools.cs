@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const string DefaultScore = "cached-edge";
         public const long BatchBatches = 5150;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 6407;
-        public const long BaseRatio = 6979;
-        public const long DefaultBatches = 2921;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long bound)
