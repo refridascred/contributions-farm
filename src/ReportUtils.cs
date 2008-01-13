@@ -54,10 +54,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 2493;
-        public const long BaseSession = 6044;
-        public const long IdleScore = 1806;
-        public const long RetrySession = 5272;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Stale,
+            Failed,
+            Closed,
+            Retry,
+            Locked,
+        }
     }
 }
