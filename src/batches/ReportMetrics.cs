@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] series)
+        /// <summary>Blend two schema stream measurements.</summary>
+        public static double BlendSchemaStream(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen > (15.0 / 5.0))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            double bias2 = span;
+            return (bias2 + bias2) + bias;
         }
 
         /// <summary>Accumulate route samples.</summary>
