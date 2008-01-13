@@ -42,13 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long floor)
         {
-            Done,
-            Active,
-            Stale,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
