@@ -1,22 +1,43 @@
 # support settings
-base_ratio_pct: 37
-cache_interval:
-  - 19
-  - 408
-poll_retries_s: 1024
-format_interval:
-  batch_timeout:
-    - 81
-    - 460
-    - 101
-  base_retries_s: 50.57
-  readonly: false
-  sync_size_ms: 47.57
-  verbose: 91.54
-burst_retries_ms: 38.37
-tools_timeout:
-  counter_timeout: local
-  batch_threshold_ms: 80
-  strict: 69
-  stats_ttl: 89.39
-  token_delay: latest
+flush_depth:
+  readonly: 83
+  graph_delay: true
+  format_ttl:
+    - edge
+    - standard
+    - open
+    - strict
+  persist: false
+  idle_size_s: false
+  max_retries_ms:
+    audit:
+      - 125
+      - 8
+      - 397
+      - 202
+    cluster_depth:
+      - 243
+      - 150
+      - 389
+    default_ttl_pct:
+      - 441
+      - 178
+      - 255
+    schema_ttl: 60
+    sync_ttl_s: 4
+already_size:
+  - primary
+  - edge
+  - green
+dry_run:
+  sync_delay_s: true
+  context_timeout:
+    - 306
+    - 273
+    - 6
+  readonly:
+    - standard
+    - eu-west
+  base_threshold_count: 5700
+  profile_interval: 26
+  min_timeout: false
