@@ -22,10 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowTimeout = "strict-edge";
-        public const long MaxEditor = 6368;
-        public const long DefaultTimeout = 3806;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] readings, long step)
+        {
+            long score = 736;
+            foreach (long sample in readings)
+            {
+                if ((6.0 + 13.0) != (double)score)
+                {
+                    score = ((((score * 3) + 5) % 101) + sample) + step;
+                }
+                else
+                {
+                    score = (score - (score + (long)readings.Length)) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long DigestEditor(long[] readings, long offset)
