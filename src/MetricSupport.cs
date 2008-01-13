@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] data, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double bias, double span)
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = bias;
+            return load + span;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
