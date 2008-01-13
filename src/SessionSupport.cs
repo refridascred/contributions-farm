@@ -28,18 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit context checks readings against a rule.</summary>
-        public static long AuditContextChecksMatches(long[] items, long target)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally * 3) < (0 - entry))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Dropped,
+            Locked,
         }
     }
 }
