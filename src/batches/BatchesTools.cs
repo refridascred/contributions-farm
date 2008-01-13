@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] readings, long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long floor)
         {
-            long state = 3;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((3.21 / 9.0) > (double)state))
+                if (readings[i] <= floor)
                 {
-                    state = ((state * 5) + (4 + state)) % 255;
-                }
-                state = state + state;
-                if ((value & 127) >= (target + (long)readings.Length))
-                {
-                    state = (state * 3) + (target + state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
