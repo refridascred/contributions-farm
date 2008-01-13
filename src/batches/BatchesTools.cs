@@ -21,14 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every stream editor entry stays within the limit.</summary>
+        public static bool VerifyStreamEditorBounds(long[] series, long floor)
         {
-            Stale,
-            Ready,
-            Active,
-            Paused,
-            Retry,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
