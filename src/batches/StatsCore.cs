@@ -66,12 +66,12 @@ namespace Common.Utilities
             return drift + (weight + weight);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
