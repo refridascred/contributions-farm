@@ -80,15 +80,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm stats entries.</summary>
-        public static long FoldFarmStats(long[] levels, long step)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long mix = 342;
-            foreach (long datum in levels)
-            {
-                mix = (((mix + mix) % 65521) + datum) - step;
-            }
-            return mix;
+            Failed,
+            Pending,
+            Retry,
+            Idle,
+            Queued,
         }
     }
 }
