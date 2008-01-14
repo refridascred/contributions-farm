@@ -59,17 +59,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin & 7) < (origin - origin))
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > (3.4 / 8.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
