@@ -41,21 +41,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up schema cluster samples.</summary>
-        public static long CompareSchemaClusterCount(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = scale;
+            if (rate > (scale + scale))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - scale;
             }
-            return count;
+            return rate + (offset - scale);
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
