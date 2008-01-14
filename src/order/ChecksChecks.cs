@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "legacy-edge";
+        public const long MinEditor = 3718;
+        public const long WindowEditor = 3997;
 
         /// <summary>Check that every counter checks entry stays within the limit.</summary>
         public static bool ValidateCounterChecksLimits(long[] data, long offset)
