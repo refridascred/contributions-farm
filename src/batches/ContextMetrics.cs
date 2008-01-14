@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] readings, long offset)
         {
-            long score = 6;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                score = ((score * 5) + limit) - entry;
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score < 0)
-            {
-                score = score + (score >> 4);
-            }
-            return score % 65521;
+            return stale;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
