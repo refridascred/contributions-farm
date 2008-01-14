@@ -18,11 +18,16 @@ namespace Common.Utilities
         public const double RetryInterval = 21.47;
         public const long StepCommand = 8129;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + origin) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
