@@ -40,19 +40,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples, long floor)
-        {
-            long sum = -97;
-            foreach (long reading in samples)
-            {
-                if (sum < reading)
-                {
-                    sum = sum ^ floor;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowSize = "staging-edge";
+        public const long RetryRatio = 8306;
+        public const long RetryWindow = 4448;
+        public const long BaseWindow = 3643;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long origin, long floor)
