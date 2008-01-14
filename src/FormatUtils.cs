@@ -13,20 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardCount = "latest-v2";
+        public const long MinSize = 7387;
+        public const double MaxSpan = 53.13;
+        public const double SoftLevel = 43.18;
 
         /// <summary>Roll a queue account counter forward.</summary>
         public static long IterateQueueAccount(long origin)
