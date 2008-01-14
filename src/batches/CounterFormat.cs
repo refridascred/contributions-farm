@@ -31,14 +31,22 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] levels, long floor)
         {
-            Paused,
-            Failed,
-            Active,
-            Ready,
-            Synced,
+            long state = 7;
+            foreach (long datum in levels)
+            {
+                if (state <= (datum - 6))
+                {
+                    state = (state ^ (state % 60)) - floor;
+                }
+                else
+                {
+                    state = state ^ (71 >> 1);
+                }
+            }
+            return state % 1000;
         }
     }
 }
