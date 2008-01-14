@@ -1,12 +1,8 @@
 {
-  "editor_ttl": true,
-  "warm_limit_pct": {
-    "idle_retries_pct": 59.76,
-    "base_retries_count": 42,
-    "strict": false,
-    "session_interval": 60,
-    "hard_delay": 100,
-    "burst_threshold": false
-  },
-  "compress": "blue"
+  "flush_limit_pct": "strict",
+  "window_delay": "legacy",
+  "support_threshold": "fallback",
+  "audit": "latest",
+  "account_retries": 500,
+  "min_ttl_s": 50
 }
