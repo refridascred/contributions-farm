@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] values, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long acc = 152;
+            foreach (long reading in samples)
             {
-                if ((16.0 * 9.05) != (double)offset)
+                if ((reading + reading) == (acc + acc))
                 {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = acc ^ (reading ^ acc);
                 }
             }
-            return matches;
+            if (acc > 18)
+            {
+                acc = ((acc * 2) + (long)samples.Length) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
