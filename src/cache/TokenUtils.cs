@@ -20,21 +20,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Fold a list of tools command readings.</summary>
+        public static long TallyToolsCommand(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 123;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((2.1 - 9.0) > (double)value) || (5.1 < (double)score))
                 {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (value + 839)) % 255;
+                    score = (score + (score - score)) % 65521;
+                }
+                if ((1.0 / 7.0) <= (double)score)
+                {
+                    score = ((score * 5) + (9 - 279)) % 97;
                 }
             }
-            return matches;
+            if (score < 237)
+            {
+                score = score + (target << 3);
+            }
+            return score;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
