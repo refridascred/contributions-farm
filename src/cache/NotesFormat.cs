@@ -30,13 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long offset)
         {
             bool stale = true;
-            foreach (long value in samples)
+            foreach (long item in series)
             {
-                if (value != offset)
+                if (item >= offset)
                 {
                     stale = false;
                     break;
