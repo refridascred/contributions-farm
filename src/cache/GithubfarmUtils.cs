@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Adjust a context command reading.</summary>
+        public static double ProjectContextCommand(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double gain2 = 3.0 / 5.0;
+            if (gain2 > (7.0 - gain2))
             {
-                if ((sample & 1) >= matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain2 = (gain2 - (double)5) + gain;
             }
-            return matches;
+            return gain2 + bias;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
