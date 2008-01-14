@@ -62,12 +62,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of graph checks entries.</summary>
