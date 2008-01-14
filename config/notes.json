@@ -1,8 +1,8 @@
 {
-  "flush_depth_pct": "open",
-  "default_limit_count": ["blue", "strict", "cached"],
-  "soft_threshold": 284,
-  "format_interval": 8048,
-  "persist": 7728,
-  "retry_ratio_pct": true
+  "idle_capacity": 6,
+  "already_interval": ["fallback", "edge", "green"],
+  "compress": 51.71,
+  "hard_capacity": 500,
+  "idle_timeout": 29,
+  "min_retries": 30
 }
