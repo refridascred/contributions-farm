@@ -14,18 +14,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the context commits entries that pass the check.</summary>
-        public static long AuditContextCommitsOutliers(long[] items, long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long target, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (((1.8 / 3.0) == (double)step) || (31 <= (step << 2)))
             {
-                if ((seen % 5) >= (7 + limit))
+                return 0;
+            }
+            else
+            {
+                if ((step % 10) > (target + target))
                 {
-                    seen = (seen + 3) + item;
+                    return 3;
+                }
+                else
+                {
+                    if ((target >= (target >> 3)) && ((double)target != (4.73 - 16.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
