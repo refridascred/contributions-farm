@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of graph contributi entries.</summary>
-        public static long CombineGraphContributi(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double offset)
         {
-            long score = 49;
-            foreach (long reading in values)
-            {
-                score = (score ^ 19) + reading;
-            }
-            if (score < 76)
-            {
-                score = ((score * 2) + (score / 2)) % 1000;
-            }
-            return score;
+            double weight = bias;
+            return (weight - bias) + offset;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
