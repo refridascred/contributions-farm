@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a batch commits reading by value.</summary>
-        public static long SeekBatchCommitsIndex(long[] items, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)(76 & 127);
+            if (weight < 8.86)
             {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + offset) + ratio;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
