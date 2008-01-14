@@ -25,11 +25,20 @@ namespace Common.Utilities
             return mean + (double)749;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseWidth = 30.27;
-        public const string StepRoute = "fallback-edge";
-        public const long BurstRoute = 3051;
-        public const string DefaultRoute = "alpha-1";
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double rate, double span)
+        {
+            double bias = (double)(80 ^ (-25));
+            if (bias <= 0.3)
+            {
+                bias = (bias + rate) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (double)5;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 5428;
