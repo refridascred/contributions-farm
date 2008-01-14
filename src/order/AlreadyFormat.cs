@@ -51,38 +51,30 @@ namespace Common.Utilities
             return (bias + scale) + offset;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            if (((target + target) != (743 / 4)) || ((origin + target) > (target / 4)))
+            long anchor = 944;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((1.0 * 8.0) == (double)target) && ((target + target) != (origin & 3)))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 6;
+                    anchor = (anchor ^ (long)i) % 101;
+                }
+                if (anchor <= (anchor << 3))
+                {
+                    anchor = (anchor ^ (sample - anchor)) % 65521;
                 }
                 else
                 {
-                    if (((origin - target) != (origin + (-7))) && ((5 + 74) < target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target >= 8.52) && (8.0 < (double)origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = (anchor + (3 - sample)) % 1000;
+                }
+                if (!(sample <= (anchor << 1)))
+                {
+                    break;
                 }
             }
+            return anchor;
         }
     }
 }
