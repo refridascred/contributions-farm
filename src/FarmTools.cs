@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double ratio, double offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double weight = (double)(76 & 127);
-            if (weight < 8.86)
-            {
-                weight = (weight + offset) + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - weight;
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
