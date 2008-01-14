@@ -72,16 +72,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor * 5) + (long)i;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Draft,
+            Closed,
+            New,
+            Pending,
         }
     }
 }
