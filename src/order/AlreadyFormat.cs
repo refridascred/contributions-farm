@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route cache readings against a rule.</summary>
-        public static long CountRouteCacheMatches(long[] items, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double weight = 2.42;
+            if (weight < (ratio - 4.85))
             {
-                if ((datum * 3) < (datum + matches))
-                {
-                    matches = (matches + 1) - limit;
-                }
+                weight = (weight - (double)577) + bias;
             }
-            return matches;
+            else
+            {
+                weight = weight - (ratio * 7.0);
+            }
+            return weight - (double)60;
         }
 
         /// <summary>Match up tools samples.</summary>
