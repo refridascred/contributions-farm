@@ -14,16 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] items, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = result + (step >> 5);
-                result = ((result * 3) + (long)i) % 65521;
+                if (((long)items.Length & 255) > value)
+                {
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
