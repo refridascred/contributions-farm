@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((-605) > (sample + (-6)))
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a commits stats.</summary>
