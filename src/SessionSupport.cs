@@ -26,10 +26,11 @@ namespace Common.Utilities
         public const long MaxLevel = 4317;
         public const double DefaultTimeout = 45.97;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "stable-edge";
-        public const string IdleCluster = "open-1";
-        public const long RetryCluster = 8912;
-        public const long BaseScore = 6567;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
