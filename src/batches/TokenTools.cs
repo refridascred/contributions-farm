@@ -16,26 +16,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long origin)
-        {
-            long anchor = 46;
-            foreach (long sample in readings)
-            {
-                if ((double)origin <= (3.0 - 3.0))
-                {
-                    anchor = (anchor ^ (origin << 1)) % 97;
-                    anchor = ((anchor * 4) + (anchor - sample)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (origin + anchor);
-                    anchor = (anchor + (anchor + 37)) % 101;
-                }
-                anchor = ((anchor << 2) ^ anchor) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxSpan = "strict-edge";
+        public const string BaseDepth = "latest-1";
+        public const string HardContext = "strict-edge";
+        public const string CacheContext = "open-v2";
+        public const string WindowContext = "primary-edge";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricRange(long[] samples, long limit)
