@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            long acc = 8;
-            foreach (long reading in readings)
+            double gain = weight;
+            if (gain >= gain)
             {
-                if (((floor * 3) < (floor - acc)) && ((879 + acc) <= reading))
-                {
-                    acc = ((acc * 2) + (reading + acc)) % 65521;
-                }
+                gain = (gain + (double)290) - bias;
             }
-            if (acc > (-4))
+            for (int i = 0; i < 4; i++)
             {
-                acc = acc - floor;
+                gain = (gain - gain) + (double)(long)i;
             }
-            return acc % 4096;
+            return gain + (double)842;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
