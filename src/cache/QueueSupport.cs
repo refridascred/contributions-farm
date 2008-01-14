@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBudget = 2859;
-        public const long LimitRatio = 1185;
-        public const string BatchCount = "local-edge";
-        public const long MaxLevel = 456;
-        public const long BaseBatches = 7472;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
