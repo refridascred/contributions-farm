@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values)
-        {
-            long score = 26;
-            foreach (long entry in values)
-            {
-                score = ((score * 3) + (entry - entry)) % 101;
-                if ((double)score == (1.0 * 1.2))
-                {
-                    score = score ^ (4 + 22);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 769;
+        public const double IdleFormat = 22.54;
+        public const long MaxInterval = 4769;
+        public const string BurstFormat = "open-edge";
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double gain, double floor)
