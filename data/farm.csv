@@ -1,8 +1,9 @@
-id,state,rank,score
-1,65,902,cached
-2,latest,73.9,edge
-3,fallback,93.08,3.03
-4,450,885,6
-5,91.33,58.86,398
-6,46.12,719,latest
-7,264,919,853
+id,region,token
+1,824,546
+2,staging,477
+3,latest,934
+4,61.51,368
+5,81,79.82
+6,edge,staging
+7,eu-west,8
+8,strict,22.84
