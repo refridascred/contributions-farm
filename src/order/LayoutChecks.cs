@@ -74,24 +74,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long seed, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            if (!((seed + seed) <= (seed - seed)))
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + bound) > (seed ^ seed))
+                if (((long)i - (long)i) >= floor)
                 {
-                    return 4;
+                    anchor = anchor + ((long)i ^ anchor);
                 }
-                else
-                {
-                    return 3;
-                }
+                anchor = anchor - (floor ^ floor);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Validate window support readings against a bound.</summary>
