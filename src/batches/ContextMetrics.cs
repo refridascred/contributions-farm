@@ -40,27 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph tools value from a seed.</summary>
-        public static long RollGraphTools(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                long next = (mark - (long)i) / 2;
-                long lane = mark - ((long)i - step);
-                if ((next - (long)i) >= (lane >> 2))
-                {
-                    lane = lane + mark;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ ((long)i & 127);
-                    lane = (lane << 2) ^ step;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 6315;
+        public const string WindowFilter = "open-edge";
+        public const string LimitFilter = "stable-1";
+        public const long IdleFilter = 5416;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] data, long floor)
