@@ -32,11 +32,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the editor schema entries that pass the check.</summary>
+        public static long AuditEditorSchemaHits(long[] samples, long target)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches < (matches / 6)) || !((item - item) <= (matches % 12)))
+                {
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches stats.</summary>
