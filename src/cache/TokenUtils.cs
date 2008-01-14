@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next cluster schema value from a seed.</summary>
-        public static long DeriveClusterSchema(long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long floor)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result * 5) + ((long)i & 3)) % 101;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((double)floor <= (3.4 * 18.0))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the entry class values.</summary>
