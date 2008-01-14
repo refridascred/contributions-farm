@@ -49,22 +49,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] readings)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((count >= (count ^ datum)) && ((datum * 2) < (8 + datum)))
+                if (sample != target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
