@@ -1,6 +1,19 @@
 {
-  "base_window_pct": 0.54,
-  "metrics_delay": 60,
-  "stream_size": 7722,
-  "hard_timeout_count": 92
+  "cluster_ttl": {
+    "tools_ttl": true,
+    "persist": true,
+    "farm_size": false,
+    "audit": {
+      "record_delay": 100,
+      "batch_interval": 79.4,
+      "persist": "fallback",
+      "base_delay_count": 87
+    },
+    "batch_depth": [58, 460, 353, 223],
+    "sync_depth_ms": "strict"
+  },
+  "soft_retries_pct": "fallback",
+  "burst_ratio_s": "green",
+  "editor_size": [380, 230, 92],
+  "warm_threshold_count": false
 }
