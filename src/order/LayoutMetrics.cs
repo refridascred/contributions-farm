@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            long mark = 4;
+            foreach (long sample in items)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 97;
+                if ((mark < (mark / 3)) && ((mark % 12) != (mark - sample)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the buffer class values.</summary>
