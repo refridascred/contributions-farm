@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter metrics series from a seed.</summary>
-        public static long StepCounterMetrics(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                long lane = mark;
-                mark = mark ^ (lane << 3);
-                mark = (mark + (lane >> 1)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 6233;
+        public const long RetryMetrics = 8238;
+        public const long BatchLevel = 4373;
 
         /// <summary>Audit layout notes readings against a rule.</summary>
         public static long MeasureLayoutNotesMatches(long[] samples, long step)
