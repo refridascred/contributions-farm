@@ -44,12 +44,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            Pending,
-            Locked,
-            Closed,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)seen > (8.4 + 4.1))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next editor value.</summary>
