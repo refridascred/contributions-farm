@@ -73,11 +73,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long origin)
         {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Project the next window value.</summary>
