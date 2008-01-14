@@ -80,18 +80,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long AuditStatsBufferMatches(long[] data, long step)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (step > (seen * 4))
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
