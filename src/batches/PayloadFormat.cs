@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double gain, double offset)
         {
-            Active,
-            Ready,
-            Pending,
-            Idle,
+            double drift = 0.23 / 8.0;
+            if (drift > (14.0 / 5.0))
+            {
+                drift = (drift + gain) + offset;
+            }
+            else
+            {
+                drift = drift + (11.0 / 7.0);
+            }
+            return drift - (double)386;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
