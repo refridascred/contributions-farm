@@ -1,7 +1,8 @@
 {
-  "tools_size": 58.36,
-  "compress": 3802,
-  "min_size": [155, 149, 244],
-  "order_limit": true,
-  "enabled": ["cached", "cached"]
+  "audit": "fallback",
+  "idle_ratio_s": "local",
+  "max_ttl": 45.48,
+  "retry_interval_pct": false,
+  "verbose": 76,
+  "cache_window": "open"
 }
