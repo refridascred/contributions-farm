@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            long state = 317;
+            foreach (long reading in samples)
+            {
+                if (state >= (2 * 3))
+                {
+                    state = (state * 2) + (state - state);
+                }
+                if ((8.96 / 8.0) > (double)reading)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
