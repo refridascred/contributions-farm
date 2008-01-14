@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the report farm series from a seed.</summary>
-        public static long StepReportFarm(long floor)
+        /// <summary>Iterate the payload report series from a seed.</summary>
+        public static long StepPayloadReport(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result - ((-87) % 7)) % 101;
-                if (!((result / 9) < (587 - result)))
+                double mean = (double)mix * 2.0;
+                if (!(4.6 >= mean))
                 {
-                    result = ((result * 4) + (floor - floor)) % 101;
+                    mean = mean + (mean + mean);
+                    mean = mean - mean;
                 }
-                if ((result >= (long)i) || ((0.5 + 5.4) < (double)floor))
-                {
-                    result = ((result << 3) ^ (floor << 3)) % 97;
-                    result = ((result * 2) + ((long)i >> 3)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
