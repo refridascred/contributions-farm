@@ -35,36 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long origin, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long bound, long seed)
         {
-            if ((double)step >= (14.0 * 8.6))
+            if ((seed + seed) >= seed)
             {
                 return 6;
             }
             else
             {
-                if ((double)step <= (17.0 + 3.0))
+                if ((6.5 + 7.47) < (double)bound)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (((7.7 / 4.0) > (double)step) || ((step + origin) == (160 + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((((-48) ^ step) <= 285) || ((3 & 255) < (origin - origin)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
