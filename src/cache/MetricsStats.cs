@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
             Active,
-            Locked,
-            Dropped,
             Draft,
+            Done,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
