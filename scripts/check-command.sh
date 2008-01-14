@@ -7,21 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in eu-west local open; do
+COMMAND_LIMIT=223
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west standard cached; do
     log "checking ${item}"
 done
-
-mode="${1:-green}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
