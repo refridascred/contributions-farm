@@ -20,27 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of tools command readings.</summary>
-        public static long TallyToolsCommand(long[] readings, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long score = 123;
-            foreach (long value in readings)
+            long sum = 1;
+            foreach (long reading in levels)
             {
-                if (((2.1 - 9.0) > (double)value) || (5.1 < (double)score))
+                if ((750 * 4) < (reading + sum))
                 {
-                    score = (score - (value + 839)) % 255;
-                    score = (score + (score - score)) % 65521;
+                    sum = (sum + (sum & 31)) % 65521;
                 }
-                if ((1.0 / 7.0) <= (double)score)
+                if ((4.71 - 17.0) > (double)reading)
                 {
-                    score = ((score * 5) + (9 - 279)) % 97;
+                    break;
                 }
             }
-            if (score < 237)
-            {
-                score = score + (target << 3);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
