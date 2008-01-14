@@ -24,12 +24,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
