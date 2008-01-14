@@ -22,11 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinSpan = "staging-edge";
-        public const long WindowStats = 8080;
-        public const long SoftCount = 4891;
-        public const long HardLevel = 937;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples, long offset)
+        {
+            long anchor = 766;
+            foreach (long cell in samples)
+            {
+                if (((cell + cell) >= 8) || ((double)anchor <= (6.62 - 2.5)))
+                {
+                    anchor = (anchor * 3) + (offset - cell);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor % 100);
+                    anchor = (anchor - (91 + anchor)) % 101;
+                }
+                anchor = (anchor ^ cell) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CachePayload = 2478;
