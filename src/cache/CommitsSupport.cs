@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine githubfarm format values into a single score.</summary>
-        public static long CombineGithubfarmFormat(long[] readings, long seed)
-        {
-            long carry = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - seed) == (carry << 2))
-                {
-                    carry = (carry ^ (carry ^ carry)) % 1000;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseWidth = 11.75;
+        public const double IdleSchema = 10.53;
+        public const long SoftSpan = 1461;
+        public const long BatchDepth = 4036;
+        public const long BurstSchema = 1887;
 
         /// <summary>Count schema already pairs that satisfy a relation.</summary>
         public static long CompareSchemaAlreadyCount(long[] values)
