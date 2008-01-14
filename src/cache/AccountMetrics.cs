@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = 72;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (value >= (anchor * 5))
+                {
+                    continue;
+                }
+                anchor = anchor - value;
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Combine account values into a single score.</summary>
