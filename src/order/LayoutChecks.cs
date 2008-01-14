@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double rate, double floor)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            double bias = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias - (bias * 15.0)) - (double)(long)i) + floor;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a notes entry.</summary>
