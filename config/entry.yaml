@@ -1,14 +1,7 @@
 # entry settings
-audit:
-  - 234
-  - 209
-  - 382
-  - 382
-cache_size_ms: false
-base_limit_s: 6.21
-flush_depth_ms:
-  format_depth: 36.02
-  warm_interval: 20
-  idle_threshold: fallback
-githubfarm_ratio: 9161
-burst_limit_pct: 100
+strict: 79.7
+verbose: 3853
+notes_limit: 30
+flush_delay_s: false
+burst_interval_s: 7165
+batch_window: 63.45
