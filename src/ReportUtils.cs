@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double rate, double offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            double ratio = (offset - offset) + rate;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - (ratio + rate);
+            return tally;
         }
 
         /// <summary>Describe the format mode values.</summary>
