@@ -1,8 +1,5 @@
 {
-  "session_delay": "open",
-  "idle_window": 1207,
-  "dry_run": true,
-  "idle_timeout_s": 85.14,
-  "cache_threshold": "staging",
-  "hard_depth": "standard"
+  "min_interval_pct": "local",
+  "poll_limit": ["open", "stable"],
+  "strict": "fallback"
 }
