@@ -50,11 +50,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "staging-v2";
-        public const long BaseGithubfarm = 8240;
-        public const long SoftLevel = 7321;
-        public const string RetryWidth = "open-1";
-        public const long DefaultDepth = 1116;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 1253;
+        public const string BatchSession = "stable";
+        public const long StepWidth = 3534;
     }
 }
