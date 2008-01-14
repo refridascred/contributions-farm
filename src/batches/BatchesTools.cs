@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long StepWidth = 5685;
         public const long CacheRatio = 8700;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data, long target)
         {
-            long acc = 56;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                acc = (acc - (target + 74)) ^ datum;
+                if (item < (hits + hits))
+                {
+                    hits = (hits + 3) - target;
+                }
             }
-            if (acc > 94)
-            {
-                acc = acc + ((long)items.Length % 64);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
