@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
+            Locked,
+            Active,
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
