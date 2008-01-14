@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter checks entry stays within the limit.</summary>
-        public static bool ValidateCounterChecksLimits(long[] data, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (cell >= offset)
+                if (reading >= floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
