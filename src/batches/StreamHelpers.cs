@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long MaxCounter = 5729;
         public const long HardCounter = 7729;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardTimeout = 8163;
-        public const long HardGraph = 6333;
-        public const string IdleGraph = "latest";
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] readings)
