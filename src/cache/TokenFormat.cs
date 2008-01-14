@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double rate, double floor)
-        {
-            double drift = (double)622 / 7.0;
-            if (drift < (floor / 3.0))
-            {
-                drift = drift + (double)29;
-            }
-            else
-            {
-                drift = drift + (13.0 + drift);
-            }
-            return drift - (floor + rate);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "standard-1";
+        public const long LimitTimeout = 9010;
+        public const long BaseEntry = 87;
+        public const string BatchEntry = "staging-v2";
+        public const double BurstScore = 69.48;
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double weight, double offset)
