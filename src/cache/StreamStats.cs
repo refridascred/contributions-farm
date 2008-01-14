@@ -26,19 +26,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] readings, long floor)
+        /// <summary>Grade a record support value against two limits.</summary>
+        public static long GradeRecordSupport(long bound, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if ((bound <= (bound + bound)) && ((limit / 5) < (limit + bound)))
             {
-                if (datum > floor)
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) >= (-744))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((564 >> 2) < (limit + limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the record status values.</summary>
