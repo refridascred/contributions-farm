@@ -20,31 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a layout farm pair into a bucket.</summary>
-        public static long SortLayoutFarm(long offset, long origin)
+        /// <summary>Locate a order metrics reading by value.</summary>
+        public static long LocateOrderMetricsIndex(long[] series, long offset)
         {
-            if (offset > (offset - offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((588 + offset) < (offset + offset))
+                if (series[i] == offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 5) <= (offset << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
