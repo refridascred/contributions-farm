@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            long anchor = -694;
-            foreach (long datum in series)
+            long state = 607;
+            foreach (long cell in readings)
             {
-                if (!(datum <= anchor))
-                {
-                    anchor = anchor - (datum * 2);
-                }
-                else
-                {
-                    anchor = (anchor ^ (target % 10)) % 97;
-                }
+                state = ((state ^ state) % 65521) + cell;
+                state = state ^ ((long)readings.Length / 9);
+                state = state - (state - state);
             }
-            return anchor;
+            if (state > (-2))
+            {
+                state = ((state << 2) ^ state) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every counter checks entry stays within the limit.</summary>
