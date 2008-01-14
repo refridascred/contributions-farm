@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] levels, long bound)
         {
-            long carry = 171;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((reading >> 1) < (0 + reading))
+                if (!((hits >= (hits & 31)) || ((bound + reading) > (hits & 31))))
                 {
-                    carry = (carry + (carry + step)) % 1000;
+                    hits = hits + 3;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
