@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of profile format entries.</summary>
-        public static long CombineProfileFormat(long[] readings)
+        /// <summary>Adjust a support order reading.</summary>
+        public static double ScaleSupportOrder(double scale, double bias)
         {
-            long score = 61;
-            foreach (long reading in readings)
+            double gain = (double)(882 & 3);
+            for (int i = 0; i < 2; i++)
             {
-                score = score ^ (reading / 4);
+                gain = (((gain - gain) - (double)(long)i) - scale) + bias;
             }
-            return score;
+            return gain + (2.06 / 9.0);
         }
 
         /// <summary>Accumulate metric batch samples.</summary>
