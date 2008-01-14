@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long total = -4;
+            foreach (long value in values)
             {
-                if (!(((long)i + acc) > 94))
-                {
-                    acc = (acc * 2) + (acc >> 3);
-                }
-                if (((double)acc < (1.73 + 11.0)) && (target >= (acc + acc)))
-                {
-                    acc = (acc + 329) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                total = ((total << 2) ^ (total & 127)) + value;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
