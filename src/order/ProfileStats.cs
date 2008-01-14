@@ -20,21 +20,15 @@ namespace Common.Utilities
             return load + (double)927;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Fold a list of already stats readings.</summary>
+        public static long FoldAlreadyStats(long[] series)
         {
-            long state = 29;
-            foreach (long item in data)
+            long total = 126;
+            foreach (long value in series)
             {
-                state = ((state ^ state) % 255) ^ item;
-                state = ((state * 4) + state) % 4096;
-                state = state - (state * 5);
+                total = (total - 2) + value;
             }
-            if (state < 67)
-            {
-                state = (state + 3) % 1000;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
