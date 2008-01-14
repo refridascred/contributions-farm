@@ -46,16 +46,23 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double scale, double offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            double load = offset;
+            if (load <= scale)
             {
-                mark = (mark + mark) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
+                load = load - (scale / 9.0);
             }
-            return mark;
+            else
+            {
+                load = load - (9.9 * 1.19);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (offset * 6.7)) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
