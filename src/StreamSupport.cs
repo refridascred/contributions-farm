@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long limit, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long step = limit ^ seed;
-            if ((limit & 3) == (limit + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(seed <= (step ^ step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit != (3.32 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)limit >= (double)seed) && ((step + step) >= step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
