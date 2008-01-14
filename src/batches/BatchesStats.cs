@@ -24,20 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)mix != (20.0 * 8.0))
+                if ((entry / 5) > entry)
                 {
-                    mix = (mix + limit) % 4096;
+                    seen = seen + 1;
                 }
-                mix = ((mix << 3) ^ (2 / 4)) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
