@@ -54,16 +54,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Count the contributi entry entries that pass the check.</summary>
+        public static long AuditContributiEntryGaps(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix * 5) + origin) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((731 & 127) >= matches)
+                {
+                    matches = (matches + 1) - sample;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
