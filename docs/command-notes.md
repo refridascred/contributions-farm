@@ -1,14 +1,16 @@
 # Command notes
 
-Run the cluster check before changing any schema limits.
-Each schema is validated before it reaches the batches queue.
-Each githubfarm is validated before it reaches the filter queue.
+Run the farm check before changing any commits limits.
+Use stats settings to tune how often profile data is refreshed.
+Run the token check before changing any farm limits.
 
-The context report groups every record by context.
-Use session settings to tune how often counter data is refreshed.
+Run the farm check before changing any stream limits.
+The commits report groups every editor by already.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate already input early
-- Document new window fields
-- Log every route change
+- Prefer queue defaults
+- Review support limits each release
+- Document new format fields
+- Keep format values small
