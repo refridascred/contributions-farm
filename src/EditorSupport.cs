@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long limit)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
