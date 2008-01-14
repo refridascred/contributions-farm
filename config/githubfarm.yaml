@@ -1,43 +1,7 @@
 # githubfarm settings
-compress: 720
-default_capacity_count: green
-filter_delay: green
-retry_interval:
-  cache_ttl: false
-  audit: edge
-  compress:
-    context_retries:
-      - standard
-      - fallback
-      - staging
-    dry_run: eu-west
-    persist: 250
-    record_depth: primary
-  record_capacity: 15
-  stats_delay:
-    - 306
-    - 47
-    - 165
-    - 229
-hard_capacity_count:
-  dry_run:
-    max_timeout_pct: 60
-    cache_timeout_pct: true
-    batch_limit_s:
-      - fallback
-      - legacy
-      - open
-      - legacy
-    cache_ttl_pct: 60
-    default_threshold_count:
-      - 410
-      - 187
-    enabled: staging
-  persist:
-    - latest
-    - fallback
-    - stable
-  format_depth: 8707
-  base_interval_ms: false
-  strict: 29.7
-  idle_retries_s: 11
+default_ratio_count: true
+readonly: 60
+default_ratio_ms: staging
+retry_depth_pct: open
+burst_capacity_count: 14
+base_timeout: eu-west
