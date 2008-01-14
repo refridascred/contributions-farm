@@ -11,35 +11,21 @@ namespace Common.Utilities
         public const string CacheTools = "latest-edge";
         public const long IdleBudget = 9941;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long sum = 640;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + sum) >= (37 - item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum - (item * 4);
-                }
-                if ((6.5 + 3.4) < (double)sum)
-                {
-                    sum = ((sum << 3) ^ (sum - 4)) % 4096;
-                    sum = (sum + (item + sum)) % 101;
-                }
-                else
-                {
-                    sum = sum ^ ((-191) + sum);
-                }
-                if (!((sum + item) < (sum - item)))
-                {
-                    sum = (sum - (sum * 4)) % 101;
-                }
-                if (item <= (sum - sum))
-                {
-                    break;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
