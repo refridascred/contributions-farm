@@ -31,18 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((3.6 + 7.0) > (double)matches)
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            Dropped,
+            Draft,
+            New,
+            Retry,
+            Synced,
         }
     }
 }
