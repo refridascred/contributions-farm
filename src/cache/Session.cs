@@ -33,15 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] items, long step)
+        /// <summary>Measure how many tools farm samples are out of range.</summary>
+        public static long TallyToolsFarmHits(long[] series, long seed)
         {
-            long sum = 3;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                sum = ((((sum << 3) ^ sum) % 1000) - value) - step;
+                if (seed >= (count + count))
+                {
+                    count = (count + 3) - item;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
