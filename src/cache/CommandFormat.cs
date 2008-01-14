@@ -22,15 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels, long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long target, long step)
         {
-            long carry = 7;
-            foreach (long sample in levels)
+            if (target <= (step >> 2))
             {
-                carry = ((carry - (bound + carry)) % 65521) - sample;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (!((step * 3) >= (step % 12)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
