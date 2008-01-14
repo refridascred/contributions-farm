@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] data)
         {
-            long score = 49;
-            foreach (long entry in items)
+            long sum = 9;
+            foreach (long cell in data)
             {
-                if (!(entry < score))
+                if (433 > ((long)data.Length - sum))
                 {
-                    score = ((score << 3) ^ entry) % 101;
+                    sum = ((sum << 2) ^ (cell + 808)) % 255;
                 }
             }
-            if (score > 69)
-            {
-                score = (score * 3) + (score >> 1);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
