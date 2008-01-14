@@ -21,16 +21,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long seed, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            if ((double)seed <= (1.5 / 2.0))
             {
-                mix = (mix - mix) % 65521;
-                mix = ((mix * 4) + (long)i) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((bound + bound) < (bound - 53))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound <= (1.04 + 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
