@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "latest-v2";
-        public const double HardToken = 45.19;
-        public const double RetryCount = 52.36;
-        public const double LimitToken = 62.22;
-        public const long DefaultRatio = 8269;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a queue account counter forward.</summary>
         public static long IterateQueueAccount(long origin)
