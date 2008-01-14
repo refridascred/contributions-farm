@@ -50,18 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Count the order payload entries that pass the check.</summary>
+        public static long TallyOrderPayloadOutliers(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((double)tally < 6.0) || ((tally - value) != (4 * 2)))
+                if (!((7.0 + 1.24) < (double)value))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) - step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the channel report entries that pass the check.</summary>
