@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultCount = "staging";
-        public const long RetryDepth = 8039;
-        public const long BurstOrder = 2636;
-        public const long HardOrder = 2845;
+        /// <summary>Find the first metric filter entry that matches the target.</summary>
+        public static long SeekMetricFilterIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] data, long step)
