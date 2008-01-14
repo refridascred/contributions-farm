@@ -70,25 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] data, long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = 57;
-            foreach (long datum in data)
-            {
-                score = (score - (83 + offset)) % 255;
-                score = (score ^ (offset << 1)) % 97;
-                score = score ^ (datum + score);
-                if ((datum * 3) != (datum & 31))
-                {
-                    break;
-                }
-            }
-            if (score < 19)
-            {
-                score = (score + offset) % 101;
-            }
-            return score % 1000;
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a profile options.</summary>
