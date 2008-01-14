@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "standard-1";
-        public const long LimitTimeout = 9010;
-        public const long BaseEntry = 87;
-        public const string BatchEntry = "staging-v2";
-        public const double BurstScore = 69.48;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples, long step)
+        {
+            long mark = 96;
+            foreach (long item in samples)
+            {
+                if (!((double)mark > 2.85))
+                {
+                    mark = mark ^ (item & 31);
+                }
+                mark = ((mark << 3) ^ step) % 255;
+            }
+            if (mark > 6)
+            {
+                mark = mark - (step + mark);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Fold a list of githubfarm report readings.</summary>
         public static long CombineGithubfarmReport(long[] values)
