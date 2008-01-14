@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string StepRatio = "stable";
         public const long DefaultFactor = 803;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!((double)value > (18.0 - 6.3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Closed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate metric samples.</summary>
