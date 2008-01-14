@@ -91,11 +91,27 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long state = 855;
+            foreach (long datum in samples)
+            {
+                state = (state - 9) % 4096;
+                if (!((datum + datum) >= state))
+                {
+                    state = state + (state + state);
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                if ((state - state) > state)
+                {
+                    state = state ^ state;
+                }
+            }
+            return state % 65521;
         }
     }
 }
