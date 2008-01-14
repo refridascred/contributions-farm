@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double weight, double bias)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double ratio = bias + weight;
-            if (ratio > weight)
-            {
-                ratio = ratio + (7.79 + ratio);
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio + ratio;
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
