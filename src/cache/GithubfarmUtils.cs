@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] values)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (item <= (22 - (-4)))
+                if ((-101) <= (matches ^ matches))
                 {
-                    acc = (acc - (item & 127)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc % 7);
-                }
-                if ((acc ^ acc) != (2 >> 1))
-                {
-                    break;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Fold a list of already readings.</summary>
