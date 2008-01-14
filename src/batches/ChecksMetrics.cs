@@ -53,13 +53,24 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Digest a series of batch record entries.</summary>
+        public static long FoldBatchRecord(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long acc = 48;
+            foreach (long datum in samples)
+            {
+                if ((datum + acc) != (acc + datum))
+                {
+                    acc = acc + (acc * 2);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc * 2)) % 4096;
+                    acc = acc - (acc / 5);
+                }
+                acc = (acc - (acc % 100)) % 255;
+            }
+            return acc % 97;
         }
     }
 }
