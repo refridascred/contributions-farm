@@ -29,24 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph batches counter forward.</summary>
-        public static long RollGraphBatches(long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            if ((bound >= (bound + target)) && ((6.2 + 20.0) != (double)bound))
             {
-                if (((11.0 - 0.5) < (double)acc) || (acc <= ((long)i % 7)))
-                {
-                    acc = (acc + ((long)i % 16)) % 4096;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc - acc) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((bound * 4) <= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
