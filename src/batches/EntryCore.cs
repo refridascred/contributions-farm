@@ -62,11 +62,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 1513;
-        public const long SoftBudget = 4543;
-        public const long BurstGraph = 8632;
-        public const long StepInterval = 974;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long origin2)
+        {
+            if ((origin + origin) < origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(origin2 <= (57 ^ origin2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin2 == (17.0 * 5.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin2 - 9) < origin) && ((double)origin >= (2.0 * 9.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double AdjustEntry(double weight, double offset)
