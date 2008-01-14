@@ -22,21 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue counter pairs that satisfy a relation.</summary>
-        public static long CompareQueueCounterCount(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a filter graph sample.</summary>
