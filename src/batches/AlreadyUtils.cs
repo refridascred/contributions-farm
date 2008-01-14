@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseScore = 5104;
-        public const long MaxLevel = 6317;
-        public const long MaxSupport = 534;
-        public const string WindowLevel = "legacy";
+        /// <summary>Project the next command support value.</summary>
+        public static double SmoothCommandSupport(double scale, double span)
+        {
+            double scale2 = (scale + span) / 9.0;
+            return scale2 + scale;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
