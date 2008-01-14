@@ -1,6 +1,11 @@
-id,count,ratio,state,weight
-1,latest,8.34,primary,57.16
-2,18.49,22.03,15.12,fallback
-3,56.88,11.6,362,752
-4,690,69,stable,latest
-5,777,latest,461,local
+id,rank,active,score
+1,135,650,latest
+2,942,staging,local
+3,32.87,open,213
+4,30.83,strict,211
+5,633,cached,legacy
+6,953,413,fallback
+7,44.34,612,105
+8,34.77,951,706
+9,457,57.27,35.14
+10,16.59,63.81,latest
