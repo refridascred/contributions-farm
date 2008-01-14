@@ -40,11 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
