@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metric profile entry that matches the target.</summary>
-        public static long LocateMetricProfileIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowDepth = 3834;
+        public const long WindowAccount = 137;
+        public const double BatchAccount = 15.43;
+        public const long MaxAccount = 1200;
+        public const long StepAccount = 4875;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long RollSchema(long seed)
