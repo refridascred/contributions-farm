@@ -54,17 +54,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a record buffer reading by value.</summary>
-        public static long FindRecordBufferIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "staging-1";
+        public const long BatchCommand = 2883;
+        public const double MinInterval = 89.68;
+        public const double StepCommand = 0.88;
+        public const string BurstSize = "staging-1";
     }
 }
