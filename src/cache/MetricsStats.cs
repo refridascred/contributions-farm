@@ -61,18 +61,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mix = 18;
+            foreach (long item in values)
             {
-                if (82 > (hits ^ hits))
+                if (((item + 32) <= item) || (mix < (mix & 31)))
                 {
-                    hits = (hits + 1) - datum;
+                    mix = (mix + (mix + mix)) % 65521;
                 }
             }
-            return hits;
+            if (mix < 74)
+            {
+                mix = ((mix << 3) ^ (mix - target)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
