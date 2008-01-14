@@ -55,12 +55,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double offset)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            double mean = 4.6;
+            return (mean - (weight + weight)) + offset;
         }
     }
 }
