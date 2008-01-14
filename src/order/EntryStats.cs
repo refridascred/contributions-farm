@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long RetrySpan = 6038;
         public const string HardAlready = "strict-1";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] values, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)value >= (double)offset)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
