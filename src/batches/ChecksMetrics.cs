@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const string BatchFactor = "alpha-1";
         public const double StepRatio = 50.69;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Queued,
-            Stale,
             Locked,
+            Active,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
