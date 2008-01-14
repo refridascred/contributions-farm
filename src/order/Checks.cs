@@ -27,20 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchInterval = 7204;
+        public const double RetryInterval = 75.39;
+        public const long WindowLevel = 8149;
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] series)
