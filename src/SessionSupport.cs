@@ -29,18 +29,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (hits > (151 / 6))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardSize = "fallback-edge";
+        public const string HardWindow = "latest-1";
+        public const long MaxInterval = 2068;
     }
 }
