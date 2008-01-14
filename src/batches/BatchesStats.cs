@@ -51,22 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout context values into a single score.</summary>
-        public static long DigestLayoutContext(long[] items, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] levels, long seed)
         {
-            long acc = -149;
-            foreach (long cell in items)
+            long state = 3;
+            foreach (long datum in levels)
             {
-                if ((cell & 31) <= origin)
+                if (seed <= (datum + datum))
                 {
-                    acc = (acc * 5) + 369;
+                    state = state - (datum % 64);
                 }
             }
-            if (acc > 794)
-            {
-                acc = ((acc * 5) + acc) % 65521;
-            }
-            return acc;
+            return state;
         }
     }
 }
