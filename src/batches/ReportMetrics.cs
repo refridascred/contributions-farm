@@ -28,11 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] readings, long seed)
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)(long)readings.Length <= (3.68 + 16.0))
+                {
+                    matches = ((matches + 2) + sample) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
