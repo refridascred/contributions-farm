@@ -25,12 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] samples, long offset)
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public long Total { get; set; }
+            long total = 181;
+            foreach (long sample in samples)
+            {
+                if (offset < (offset * 3))
+                {
+                    total = (total ^ sample) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every stream profile entry stays within the limit.</summary>
