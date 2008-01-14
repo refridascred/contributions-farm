@@ -56,9 +56,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheFactor = 8030;
-        public const string BatchGraph = "staging-v2";
-        public const long DefaultGraph = 9050;
+        /// <summary>Validate batches format readings against a bound.</summary>
+        public static bool ValidateBatchesFormatRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
