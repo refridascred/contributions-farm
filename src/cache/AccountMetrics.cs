@@ -20,26 +20,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] values)
         {
-            long carry = 1;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((double)reading <= (double)carry)
+                if ((2 << 2) >= (83 + entry))
                 {
-                    carry = (carry << 2) ^ (458 - carry);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (reading >> 2)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (carry > 14)
-            {
-                carry = (carry ^ (429 / 7)) % 255;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
