@@ -51,22 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!((seed - cell) > (cell << 1)))
+                if (seen >= (seen - seen))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate already commits samples.</summary>
