@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] readings, long offset)
+        /// <summary>Grade a report graph value against two limits.</summary>
+        public static long RankReportGraph(long target, long seed)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            if (!((target / 3) >= target))
             {
-                if (reading != offset)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (0.92 - 5.32))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
