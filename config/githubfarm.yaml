@@ -1,8 +1,4 @@
 # githubfarm settings
-default_timeout_ms: 55.68
-hard_size_ms: 100
-warm_capacity: standard
-soft_depth_s:
-  dry_run: 94.39
-  batch_timeout: 77.34
-  sync_limit_s: 77.92
+base_capacity: 75
+soft_depth: 60
+burst_retries_ms: 44
