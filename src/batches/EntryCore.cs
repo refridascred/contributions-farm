@@ -84,15 +84,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] samples)
         {
-            double bias = 3.72;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                bias = (bias + bias) + (double)(long)i;
+                if ((double)count == (2.9 + 1.44))
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias + (offset - weight);
+            return count;
         }
     }
 }
