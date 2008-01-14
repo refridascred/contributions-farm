@@ -61,15 +61,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series, long bound)
-        {
-            long mix = 8;
-            foreach (long reading in series)
-            {
-                mix = ((mix ^ (300 + bound)) % 65521) + reading;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 2.16;
+        public const double HardTimeout = 97.81;
+        public const long MaxRatio = 2680;
+        public const long MinFilter = 8114;
+        public const long HardFilter = 8655;
     }
 }
