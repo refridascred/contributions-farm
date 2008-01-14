@@ -53,18 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema editor entries that pass the check.</summary>
-        public static long CountSchemaEditorOutliers(long[] values)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((cell + cell) >= (cell + 96))
+                if (sample < offset)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Check that every notes editor entry stays within the limit.</summary>
