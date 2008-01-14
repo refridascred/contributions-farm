@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const long RetryStream = 1216;
         public const long WindowStream = 7327;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] samples, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (samples[i] == floor)
+                if ((double)value > (6.0 + 6.42))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
