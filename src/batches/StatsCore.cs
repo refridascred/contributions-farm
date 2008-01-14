@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowDepth = 62.31;
-        public const long RetryRatio = 1166;
-        public const double RetryDepth = 63.26;
-        public const long BatchInterval = 5784;
-        public const string DefaultChannel = "primary";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Ready,
+            Retry,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
