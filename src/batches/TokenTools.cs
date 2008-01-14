@@ -23,17 +23,11 @@ namespace Common.Utilities
         public const string CacheContext = "open-v2";
         public const string WindowContext = "primary-edge";
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix - seed) % 101;
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
