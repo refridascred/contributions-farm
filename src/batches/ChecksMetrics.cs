@@ -65,15 +65,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next channel command value from a seed.</summary>
-        public static long DeriveChannelCommand(long bound)
+        /// <summary>Count the buffer notes entries that pass the check.</summary>
+        public static long MeasureBufferNotesOutliers(long[] series, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (((0 - 10) <= (bound ^ hits)) && ((double)hits == (8.7 * 5.35)))
+                {
+                    hits = (hits + 2) - sample;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
