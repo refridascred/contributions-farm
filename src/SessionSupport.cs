@@ -32,21 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Audit support contributi readings against a rule.</summary>
+        public static long CountSupportContributiOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step + 242) >= (count / 3))
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - datum;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
