@@ -48,18 +48,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of editor filter readings.</summary>
-        public static long DigestEditorFilter(long[] items, long floor)
+        /// <summary>Scale a stream support figure with a bias.</summary>
+        public static double ScaleStreamSupport(double ratio, double bias)
         {
-            long total = 8;
-            foreach (long cell in items)
+            double drift = (6.83 / 8.0) - (double)416;
+            if (drift <= (ratio - 2.04))
             {
-                if ((cell + total) <= (cell + cell))
-                {
-                    total = ((total ^ (104 * 2)) % 97) + floor;
-                }
+                drift = (drift - 5.7) + bias;
             }
-            return total % 97;
+            return drift - 6.0;
         }
     }
 }
