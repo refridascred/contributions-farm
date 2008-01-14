@@ -29,22 +29,37 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long target2)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long limit, long seed)
         {
-            if ((target2 << 3) <= (target2 - 982))
+            long next = limit + seed;
+            if ((limit >> 5) >= (seed - seed))
             {
                 return 2;
             }
             else
             {
-                if ((double)target == (7.4 + 7.8))
+                if (((double)limit < (15.0 * 13.0)) && ((8.0 / 4.0) <= (double)limit))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    if (((next & 15) > (limit - limit)) || ((double)next <= (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit >> 2) <= (next - next))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
