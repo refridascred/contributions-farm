@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardDepth = 1756;
-        public const double StepBatch = 36.17;
-        public const double IdleSize = 86.35;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportRange(long[] levels, long floor)
