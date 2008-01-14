@@ -51,18 +51,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] items)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches ^ matches) <= ((-96) + value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Paused,
+            Pending,
+            Closed,
         }
     }
 }
