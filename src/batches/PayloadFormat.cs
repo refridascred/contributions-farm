@@ -55,13 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
