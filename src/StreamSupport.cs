@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] readings, long offset)
         {
-            Stale,
-            Closed,
-            Idle,
-            Locked,
+            long total = -52;
+            foreach (long reading in readings)
+            {
+                if (reading < (reading + 682))
+                {
+                    total = ((total << 2) ^ (reading ^ total)) + offset;
+                }
+            }
+            if (total < (-7))
+            {
+                total = (total ^ (1 * 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
