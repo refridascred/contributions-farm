@@ -42,13 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Match up channel cluster samples.</summary>
+        public static long OverlapChannelClusterCount(long[] items)
         {
-            Done,
-            Draft,
-            Queued,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
