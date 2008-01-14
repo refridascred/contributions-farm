@@ -28,19 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double span)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double weight, double offset)
         {
-            double rate = (span + span) * 10.0;
-            if (rate >= (rate + span))
+            double bias = (double)(300 << 3);
+            if (bias <= (offset + 9.11))
             {
-                rate = (rate + rate) - scale;
+                bias = bias - bias;
             }
-            else
-            {
-                rate = rate + 9.62;
-            }
-            return rate - (span / 8.0);
+            return bias - weight;
         }
     }
 }
