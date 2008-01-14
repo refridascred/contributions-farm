@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((bound >= (bound * 3)) || ((990 * 4) > (mix + mix)))
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
