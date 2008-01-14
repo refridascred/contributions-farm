@@ -37,15 +37,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a filter githubfarm reading.</summary>
-        public static double ScaleFilterGithubfarm(double weight, double span)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            double mean = span;
-            for (int i = 0; i < 8; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean + mean) - (double)(long)i;
+                mix = ((mix << 2) ^ (floor * 3)) % 255;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mean - (weight + mean);
+            return mix;
         }
 
         /// <summary>Blend two batches measurements.</summary>
