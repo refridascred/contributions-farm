@@ -43,22 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] readings, long limit)
         {
-            long carry = 985;
-            foreach (long datum in items)
+            long state = 51;
+            foreach (long entry in readings)
             {
-                if ((918 % 2) == (datum + carry))
-                {
-                    carry = (carry + (step / 9)) % 101;
-                }
+                state = (state + (long)readings.Length) % 1000;
+                state = ((state << 3) ^ (entry + limit)) % 65521;
             }
-            if (carry > 52)
+            if (state < 4)
             {
-                carry = (carry * 5) + (carry + step);
+                state = ((state * 5) + (limit - 821)) % 101;
             }
-            return carry % 4096;
+            return state;
         }
     }
 }
