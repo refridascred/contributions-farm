@@ -42,13 +42,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
