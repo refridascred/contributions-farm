@@ -47,19 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 5274;
+        public const long HardBatches = 3447;
+        public const string StepLevel = "alpha-edge";
+        public const long SoftBatches = 1405;
+        public const string LimitBatches = "strict-edge";
     }
 }
