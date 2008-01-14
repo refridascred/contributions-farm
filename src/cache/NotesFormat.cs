@@ -17,19 +17,16 @@ namespace Common.Utilities
         public const long SoftEditor = 193;
         public const long HardTimeout = 5281;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] levels, long bound)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long mix = 11;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix - bound) + entry;
+                mark = ((mark * 4) + (limit + mark)) % 101;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (mix > 902)
-            {
-                mix = (mix << 2) ^ bound;
-            }
-            return mix % 4096;
+            return mark;
         }
     }
 }
