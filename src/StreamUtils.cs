@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const long DefaultBatches = 6946;
         public const string BatchCount = "local-v2";
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double bias)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            double weight = (double)8 - (bias * 7.0);
+            return weight + ratio;
         }
 
         /// <summary>Match up metrics samples.</summary>
