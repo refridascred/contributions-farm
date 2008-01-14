@@ -26,17 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (levels[i] > seed)
+                if (datum > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the record status values.</summary>
