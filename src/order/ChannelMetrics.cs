@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long bound)
         {
-            double mean = rate + (rate + 4.2);
-            if (mean <= 5.7)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - rate) - span;
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - rate;
-            }
-            return mean + mean;
+            return -1;
         }
     }
 }
