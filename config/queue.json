@@ -1,5 +1,16 @@
 {
-  "default_delay_s": "strict",
-  "min_timeout_s": "primary",
-  "dry_run": 100
+  "sync_depth_ms": {
+    "batches_interval": 500,
+    "hard_window_count": [313, 353],
+    "order_capacity": 1053,
+    "persist": {
+      "min_retries": "strict",
+      "idle_window": "cached",
+      "default_window_s": 89,
+      "readonly": 30
+    },
+    "idle_ttl": "cached"
+  },
+  "sync_limit_pct": "stable",
+  "batch_size": false
 }
