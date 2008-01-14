@@ -10,17 +10,30 @@ namespace Common.Utilities
         public const string BatchPayload = "staging";
         public const long MinPayload = 2393;
 
-        /// <summary>Locate a filter already reading by value.</summary>
-        public static long FindFilterAlreadyIndex(long[] series, long target)
+        /// <summary>Digest a series of report stats entries.</summary>
+        public static long ScoreReportStats(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long sample in samples)
             {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
+                if (((long)samples.Length + state) <= (sample + floor))
                 {
-                    return (long)i;
+                    state = (state - (state + sample)) % 1000;
+                }
+                else
+                {
+                    state = state + (8 / 5);
+                }
+                if ((88 % 12) <= (sample << 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state < 2)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
