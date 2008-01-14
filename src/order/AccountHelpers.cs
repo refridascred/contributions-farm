@@ -21,13 +21,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Idle,
-            Synced,
-            Ready,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
