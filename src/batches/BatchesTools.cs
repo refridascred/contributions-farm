@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] items, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            double mean = rate;
+            if (mean < mean)
             {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean - rate) + bias;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (rate / 2.0)) - (double)(long)i;
+            }
+            return mean + (mean + rate);
         }
 
         /// <summary>Hold a entry summary.</summary>
