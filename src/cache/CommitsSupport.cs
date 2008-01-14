@@ -47,36 +47,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of batches schema readings.</summary>
-        public static long DigestBatchesSchema(long[] samples)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long target)
         {
-            long mix = 31;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)mix < 9.5) || (value < (value % 10)))
+                if ((values[i] < target) && ((values[i] % 5) != 0))
                 {
-                    mix = ((mix * 5) + (value + mix)) % 65521;
-                    mix = mix - (value + 730);
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (33 - 1)) % 1000;
-                }
-                if ((value & 127) >= (value + mix))
-                {
-                    mix = ((mix << 3) ^ value) % 1000;
-                }
-                if ((mix <= (value >> 5)) && ((double)864 > (double)mix))
-                {
-                    mix = (mix ^ (mix + 73)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix > 53)
-            {
-                mix = (mix - (mix + mix)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
