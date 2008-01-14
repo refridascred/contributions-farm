@@ -62,19 +62,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] levels, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > seed)
+                if (items[i] < origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
