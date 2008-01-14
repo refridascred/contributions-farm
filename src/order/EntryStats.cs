@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] data, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)seed < (2.01 - 5.9)) || ((seed - 199) == (item - seed)))
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
