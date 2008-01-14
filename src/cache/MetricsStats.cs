@@ -80,12 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Idle,
-            Active,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseRatio = 3671;
+        public const string CacheQueue = "staging-v2";
+        public const long IdleCount = 4557;
+        public const long MinRatio = 8933;
     }
 }
