@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout route samples are out of range.</summary>
-        public static long AuditLayoutRouteMatches(long[] levels)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if (!((1 & 63) == (limit - origin)))
             {
-                if (!((seen - seen) <= datum))
+                return 8;
+            }
+            else
+            {
+                if (7.0 >= (double)limit)
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
