@@ -40,18 +40,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] levels, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((limit + matches) < 86)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
