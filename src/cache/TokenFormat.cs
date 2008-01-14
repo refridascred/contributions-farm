@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(tally <= (entry << 2)))
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
