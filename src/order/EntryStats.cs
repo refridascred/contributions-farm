@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 264;
         public const long LimitGithubfarm = 5725;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowCount = 6140;
-        public const long WindowSpan = 267;
-        public const long LimitBatches = 5276;
-        public const long BurstInterval = 2901;
-        public const long BatchFactor = 9528;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a queue account figure with a bias.</summary>
         public static double AdjustQueueAccount(double bias, double offset)
