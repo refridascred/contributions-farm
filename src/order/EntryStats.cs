@@ -48,15 +48,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a stream support figure with a bias.</summary>
-        public static double ScaleStreamSupport(double ratio, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long step)
         {
-            double drift = (6.83 / 8.0) - (double)416;
-            if (drift <= (ratio - 2.04))
+            long count = 0;
+            foreach (long item in samples)
             {
-                drift = (drift - 5.7) + bias;
+                if ((count & 31) > (step + count))
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift - 6.0;
+            return count;
         }
     }
 }
