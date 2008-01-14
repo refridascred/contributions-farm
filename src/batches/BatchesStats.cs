@@ -32,19 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] levels, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Audit notes already readings against a rule.</summary>
