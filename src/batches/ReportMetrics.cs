@@ -12,21 +12,15 @@ namespace Common.Utilities
             return (bias2 + bias2) + bias;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(0 - 7);
+            if (drift > 5.3)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - drift) - offset;
             }
-            return hits;
+            return drift - ratio;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
