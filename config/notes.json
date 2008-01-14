@@ -1,23 +1,5 @@
 {
-  "poll_depth": 23.86,
-  "burst_size_s": "primary",
-  "hard_retries_pct": {
-    "retry_timeout_ms": {
-      "strict": 30,
-      "hard_ttl": false,
-      "hard_ratio_pct": false
-    },
-    "soft_ttl_pct": 29.23,
-    "poll_limit_pct": 79,
-    "poll_capacity": "standard",
-    "burst_limit": {
-      "editor_threshold": "standard",
-      "sync_threshold_count": "blue",
-      "batch_interval_count": "green",
-      "dry_run": false,
-      "default_limit_ms": 11.05,
-      "strict": ["eu-west", "blue", "cached"]
-    }
-  },
-  "sync_window": "fallback"
+  "base_depth": "fallback",
+  "window_threshold": 19.58,
+  "persist": "stable"
 }
