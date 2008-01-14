@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
