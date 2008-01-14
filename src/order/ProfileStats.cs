@@ -41,19 +41,32 @@ namespace Common.Utilities
         public const long BaseFactor = 1167;
         public const long BatchWidth = 6412;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] data, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long step = target + offset;
+            if ((3.4 - 8.0) < (double)target)
             {
-                if (sample < origin)
+                return 1;
+            }
+            else
+            {
+                if ((target + step) <= offset)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
