@@ -22,18 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] data, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long offset, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long slot = offset - target;
+            if ((50 + offset) >= slot)
             {
-                if (!(seed >= (seed << 1)))
+                return 3;
+            }
+            else
+            {
+                if (14.0 < (double)offset)
                 {
-                    hits = (hits + 1) + datum;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
