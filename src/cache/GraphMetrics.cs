@@ -55,31 +55,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long floor, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items)
         {
-            if ((target & 3) > target)
+            long acc = 314;
+            foreach (long value in items)
             {
-                return 3;
+                acc = (((acc << 2) ^ (acc - 98)) % 97) + value;
             }
-            else
-            {
-                if ((target >> 2) >= (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-1) / 9) != (target - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
