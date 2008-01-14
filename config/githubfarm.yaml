@@ -1,12 +1,4 @@
 # githubfarm settings
-retry_timeout_count: 86.36
-poll_size_ms:
-  - 497
-  - 245
-checks_delay: eu-west
-retry_delay: 30
-retry_ttl_count:
-  - 201
-  - 201
-  - 30
-max_window: local
+hard_ratio_ms: 88.72
+warm_depth_pct: fallback
+readonly: cached
