@@ -16,12 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 1.92;
-        public const long CacheInterval = 6337;
-        public const double RetryChecks = 74.49;
-        public const long MinBudget = 9456;
-        public const string IdleBudget = "standard";
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double rate, double offset)
+        {
+            double drift = (double)(7 % 5);
+            if (drift > offset)
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift + (drift / 8.0);
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string HardContext = "local-1";
