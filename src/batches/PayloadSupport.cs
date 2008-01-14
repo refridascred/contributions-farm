@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] levels, long bound)
+        /// <summary>Fold a list of filter checks readings.</summary>
+        public static long TallyFilterChecks(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long result = 35;
+            foreach (long sample in levels)
             {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (((result + result) % 1000) + sample) - seed;
             }
-            return valid;
+            if (result < (-85))
+            {
+                result = ((result * 4) + (result >> 5)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
