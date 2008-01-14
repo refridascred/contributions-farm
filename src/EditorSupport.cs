@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const string HardToken = "cached-v2";
         public const long IdleBudget = 3517;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)datum >= (0.34 * 3.28))
+                if (16.0 < (double)seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
