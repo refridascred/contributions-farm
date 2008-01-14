@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string MaxDepth = "standard-1";
         public const long HardEntry = 9246;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long acc = 213;
+            foreach (long entry in items)
             {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc + origin) % 97) - entry;
             }
-            return flag;
+            return acc % 97;
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
