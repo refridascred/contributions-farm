@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data)
         {
-            Done,
-            Dropped,
-            Ready,
+            long mark = 7;
+            foreach (long entry in data)
+            {
+                mark = (mark * 2) + (entry * 5);
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
