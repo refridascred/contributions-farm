@@ -1,5 +1,6 @@
 {
-  "flush_interval": 10,
-  "compress": "edge",
-  "sync_depth_s": 57
+  "cache_threshold": true,
+  "dry_run": 9213,
+  "counter_capacity": "blue",
+  "default_ttl": false
 }
