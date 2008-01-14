@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitLevel = 870;
-        public const long BatchBudget = 6246;
-        public const double CacheMetric = 57.16;
-        public const double SoftMetric = 26.89;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] samples)
