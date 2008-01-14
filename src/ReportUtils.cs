@@ -44,18 +44,19 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Digest a series of support cache entries.</summary>
-        public static long TotalSupportCache(long[] samples, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data)
         {
-            long mix = 6;
-            foreach (long value in samples)
+            long anchor = 539;
+            foreach (long value in data)
             {
-                if ((double)value <= (7.83 + 5.24))
-                {
-                    mix = (mix + value) - origin;
-                }
+                anchor = anchor - value;
             }
-            return mix;
+            if (anchor < 2)
+            {
+                anchor = (anchor + (anchor % 60)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
