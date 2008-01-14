@@ -25,38 +25,12 @@ namespace Common.Utilities
         public const double MaxSpan = 53.13;
         public const double SoftLevel = 43.18;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long step, long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            if (bound < (step + 821))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + bound) > bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((step << 2) <= (bound % 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
