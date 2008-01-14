@@ -1,7 +1,8 @@
 {
-  "soft_threshold": "cached",
-  "metric_delay": ["legacy", "local"],
-  "max_limit": true,
-  "flush_threshold": "green",
-  "flush_window": true
+  "schema_retries": "primary",
+  "max_retries_ms": "stable",
+  "default_ttl_count": 7169,
+  "persist": "fallback",
+  "soft_limit_s": 7797,
+  "window_ratio": 3303
 }
