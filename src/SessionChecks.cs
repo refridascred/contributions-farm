@@ -31,32 +31,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long limit, long limit2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            long span = limit + limit2;
-            if (!((limit - limit2) < (limit2 - 7)))
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                result = (result - result) % 97;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit << 1) == (0 + span))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 >= limit) || ((limit2 % 5) == (limit2 ^ 585)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
