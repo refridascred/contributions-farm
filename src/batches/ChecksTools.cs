@@ -70,10 +70,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultInterval = "fallback";
-        public const double DefaultRatio = 87.7;
-        public const double MaxBudget = 23.45;
-        public const string DefaultBudget = "primary-1";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels)
+        {
+            long carry = 86;
+            foreach (long sample in levels)
+            {
+                if ((double)carry != (0.8 * 9.61))
+                {
+                    carry = ((carry * 2) + (carry & 31)) + sample;
+                }
+                if (carry < (-8))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
