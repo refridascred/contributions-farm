@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double CacheTimeout = 89.07;
         public const long MinMetrics = 9104;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
