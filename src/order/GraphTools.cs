@@ -64,12 +64,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepTimeout = "staging-1";
-        public const double IdleContributi = 56.43;
-        public const double DefaultContributi = 1.42;
-        public const string MinContributi = "alpha";
-        public const string SoftContributi = "stable-v2";
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((74 >> 3) < (datum & 15))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of layout token readings.</summary>
         public static long PairLayoutTokenCount(long[] readings)
