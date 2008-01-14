@@ -1,8 +1,4 @@
 # githubfarm settings
-max_ttl_s:
-  - primary
-  - edge
-max_window: strict
-dry_run: local
-batch_timeout_pct: 67.78
-cache_interval_count: 79.78
+min_ratio_s: edge
+base_capacity_s: fallback
+metric_limit: 1024
