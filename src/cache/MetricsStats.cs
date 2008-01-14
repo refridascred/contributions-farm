@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Active,
-            Draft,
-            Done,
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
