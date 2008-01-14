@@ -46,22 +46,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] series, long offset)
+        /// <summary>Combine layout cache values into a single score.</summary>
+        public static long TallyLayoutCache(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long acc = 87;
+            foreach (long reading in series)
             {
-                if (((81 + matches) <= offset) && ((offset / 8) == (matches << 3)))
+                if (acc <= (acc - acc))
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = acc - (reading + reading);
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
