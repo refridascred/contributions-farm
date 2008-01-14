@@ -1,8 +1,6 @@
 {
-  "metrics_ttl": 9368,
-  "sync_threshold_pct": "strict",
-  "sync_limit_count": 4573,
-  "payload_capacity": 100,
-  "warm_size_ms": "staging",
-  "verbose": ["eu-west", "stable", "standard", "primary"]
+  "cache_limit_ms": 500,
+  "warm_window": false,
+  "compress": "edge",
+  "min_ttl": "fallback"
 }
