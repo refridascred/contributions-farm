@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long StepFarm = 6848;
         public const double LimitCount = 39.07;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell >> 5) == (41 - seen))
+                if (readings[i] > bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a schema reading.</summary>
