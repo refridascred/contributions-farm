@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
