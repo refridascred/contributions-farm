@@ -32,15 +32,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double span)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            double bias = 2.1 * 3.48;
-            if (bias < (double)452)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = ((bias - 9.4) - rate) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias - (9.8 / 4.0);
+            return seen;
         }
     }
 }
