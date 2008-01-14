@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleInterval = "strict-edge";
+        public const long MaxBatch = 2586;
+        public const double SoftBudget = 1.71;
+        public const long BaseRatio = 3270;
+        public const long WindowBatch = 9157;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardCount = "latest-v2";
