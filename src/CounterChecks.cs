@@ -61,35 +61,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] levels, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (((long)i * 4) > (mark >> 3))
+                if (reading > seed)
                 {
-                    mark = (mark * 3) + (mark << 1);
+                    found = false;
                     break;
                 }
-                else
-                {
-                    mark = ((mark * 5) + (mark / 7)) % 1000;
-                    mark = ((mark << 2) ^ (mark / 7)) % 97;
-                }
-                if (((long)i >= origin) || ((double)origin != (7.0 + 5.0)))
-                {
-                    mark = (mark * 2) + (51 + mark);
-                    mark = (mark - (origin + mark)) % 65521;
-                    break;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark ^ (mark & 3)) % 97) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return found;
         }
     }
 }
