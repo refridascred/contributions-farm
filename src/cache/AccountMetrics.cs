@@ -77,18 +77,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (tally >= reading)
+                if (!((90 % 2) != (target << 1)))
                 {
-                    tally = tally + 1;
+                    mark = (mark + (long)i) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
     }
 }
