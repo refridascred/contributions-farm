@@ -33,18 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long seed)
+        /// <summary>Accumulate support queue samples.</summary>
+        public static long ScoreSupportQueue(long[] samples, long step)
         {
-            long anchor = 309;
+            long total = 875;
             foreach (long item in samples)
             {
-                if ((item / 5) != (item + anchor))
+                if (!((double)total <= (4.85 / 6.0)))
                 {
-                    anchor = (anchor << 2) ^ (seed >> 4);
+                    total = ((((total * 3) + ((-7) ^ total)) % 1000) - item) + step;
                 }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Fold a list of session readings.</summary>
