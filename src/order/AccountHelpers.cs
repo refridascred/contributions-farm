@@ -32,14 +32,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "alpha-v2";
+        public const double DefaultFactor = 73.59;
+        public const long BurstRatio = 6203;
+        public const long WindowFarm = 462;
+        public const long DefaultDepth = 2120;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] readings, long origin)
