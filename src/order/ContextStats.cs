@@ -20,12 +20,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long seed, long limit)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            if ((limit - seed) != (seed / 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit <= (seed + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
