@@ -52,21 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = floor;
+            if (ratio >= (ratio / 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (ratio * 3.7)) - rate;
             }
-            return count;
+            return ratio - (floor * 5.03);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
