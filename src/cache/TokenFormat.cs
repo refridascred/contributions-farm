@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] levels, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!((hits >= (hits & 31)) || ((bound + reading) > (hits & 31))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
