@@ -75,15 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] levels, long step)
         {
-            double bias = rate;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                bias = (bias - 20.0) + (double)(long)i;
+                if ((double)seen != (1.2 * 3.28))
+                {
+                    seen = ((seen + 2) + item) - step;
+                }
             }
-            return bias - (span * 9.1);
+            return seen;
         }
     }
 }
