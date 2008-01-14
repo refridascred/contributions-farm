@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings)
-        {
-            long result = 42;
-            foreach (long reading in readings)
-            {
-                result = ((result - (982 & 15)) % 65521) + reading;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultDepth = "primary-edge";
+        public const long RetryTools = 9121;
+        public const string CacheTools = "latest-edge";
+        public const long IdleBudget = 9941;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TallyGraph(long[] values)
