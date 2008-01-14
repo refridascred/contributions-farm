@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Check that every counter checks entry stays within the limit.</summary>
+        public static bool ValidateCounterChecksLimits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= offset)
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
