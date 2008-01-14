@@ -67,18 +67,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long TallyContributiFormatGaps(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((773 + seed) > (0 + datum)) && (seen >= (707 - datum))) || !(seen > (seen ^ seed)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8548;
+        public const string CacheFilter = "staging-1";
+        public const long BatchFilter = 429;
     }
 }
