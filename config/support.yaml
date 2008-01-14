@@ -1,9 +1,21 @@
 # support settings
-burst_ratio_s:
-  - 424
-  - 305
-max_retries_count: primary
-enabled: 3235
-batch_window_count:
-  - fallback
-  - latest
+warm_delay:
+  min_delay: staging
+  metrics_timeout: 5328
+  buffer_ratio: 500
+  verbose: 4835
+flush_retries: 94.07
+stats_ttl: 1024
+flush_retries_count:
+  retry_delay:
+    - 391
+    - 473
+    - 498
+  base_ratio_ms: latest
+  batch_ttl: standard
+  sync_timeout_ms:
+    strict: stable
+    dry_run: local
+    poll_ratio_ms: 60
+  batch_threshold: false
+  base_interval_count: 3
