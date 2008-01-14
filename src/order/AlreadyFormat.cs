@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long TallyToolsEditorOutliers(long[] items, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((reading + reading) == (reading << 2)) && ((count ^ floor) <= (floor + reading)))
+                if (reading > offset)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Classify a batches profile pair into a bucket.</summary>
