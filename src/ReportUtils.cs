@@ -42,13 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            Done,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
