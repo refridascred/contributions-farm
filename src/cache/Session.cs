@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples, long bound)
-        {
-            long carry = 26;
-            foreach (long cell in samples)
-            {
-                if (!((cell << 2) != (carry - carry)))
-                {
-                    carry = ((carry - (carry << 3)) % 65521) - bound;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (22 >> 2)) % 65521;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 1091;
+        public const double MinGraph = 3.08;
+        public const long MinLevel = 6126;
+        public const long LimitGraph = 503;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long IterateOrder(long step)
