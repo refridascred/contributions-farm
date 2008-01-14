@@ -19,10 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8065;
-        public const double StepLayout = 50.24;
-        public const string BatchLayout = "fallback-1";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Done,
+            Dropped,
+            Ready,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] data)
