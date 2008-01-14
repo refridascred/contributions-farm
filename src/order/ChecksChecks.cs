@@ -38,18 +38,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long MeasureMetricsCommitsGaps(long[] readings)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count - count) != (reading >> 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Pending,
+            Active,
+            Retry,
         }
     }
 }
