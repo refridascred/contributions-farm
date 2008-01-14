@@ -27,12 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long score = 1;
+            foreach (long item in readings)
+            {
+                if ((double)item <= (4.9 + 0.4))
+                {
+                    score = ((score << 3) ^ (item >> 1)) % 65521;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a channel options.</summary>
