@@ -1,8 +1,11 @@
 {
-  "session_size": 2758,
-  "soft_size_pct": 60,
-  "retry_capacity_count": ["cached", "latest", "fallback"],
-  "warm_delay_pct": [203, 117, 237, 93],
-  "profile_delay": true,
-  "persist": "local"
+  "base_threshold_pct": 52,
+  "batch_delay_s": {
+    "counter_ttl": 39.49,
+    "max_depth_ms": 53.31,
+    "enabled": 5
+  },
+  "flush_depth": 67,
+  "default_ttl_s": false,
+  "cache_depth": "primary"
 }
