@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const double HardTimeout = 62.5;
         public const double WindowScore = 38.1;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches - reading) == (reading - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
