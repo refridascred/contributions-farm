@@ -1,6 +1,18 @@
 {
-  "batch_depth_count": 5,
-  "buffer_retries": "blue",
-  "batch_delay": "stable",
-  "flush_window_count": "fallback"
+  "dry_run": false,
+  "soft_timeout": {
+    "burst_capacity": 60,
+    "readonly": "standard",
+    "hard_delay": ["legacy", "blue", "green"],
+    "audit": 93.78,
+    "layout_delay": "cached",
+    "retry_threshold_s": {
+      "burst_timeout_count": 18,
+      "cache_ttl_pct": "local",
+      "base_threshold_count": 1024,
+      "schema_limit": 50.85
+    }
+  },
+  "min_depth": [428, 353],
+  "batch_threshold": "blue"
 }
