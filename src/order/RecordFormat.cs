@@ -51,11 +51,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Scale a profile farm figure with a bias.</summary>
-        public static double ScaleProfileFarm(double rate, double floor)
+        /// <summary>Digest a series of githubfarm layout entries.</summary>
+        public static long TotalGithubfarmLayout(long[] data)
         {
-            double ratio = rate;
-            return (ratio + (ratio * 0.13)) + floor;
+            long result = -874;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((result ^ ((long)i - (long)i)) % 101) ^ entry;
+                }
+                result = (result + (result % 60)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
