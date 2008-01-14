@@ -38,12 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseLevel = "stable-1";
-        public const long BaseFactor = 3661;
-        public const long BurstDepth = 2208;
-        public const long StepAlready = 2594;
-        public const long LimitRatio = 3432;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseTimeout = 33.97;
+        public const double BatchContext = 29.77;
+        public const double BatchCount = 74.46;
+        public const long MinContext = 2473;
+        public const double MinSpan = 44.84;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
