@@ -45,10 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitDepth = 65.45;
-        public const double HardSpan = 95.85;
-        public const string DefaultQueue = "standard-edge";
-        public const long WindowQueue = 3432;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels)
+        {
+            long mix = -265;
+            foreach (long entry in levels)
+            {
+                if ((mix / 7) <= (entry * 2))
+                {
+                    mix = (mix - (entry + 358)) % 97;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
