@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] samples, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 90;
+            foreach (long datum in readings)
             {
-                if (samples[i] < limit)
+                if (((double)datum < (18.0 / 7.0)) && (datum <= (offset % 60)))
                 {
-                    return (long)i;
+                    sum = (sum + datum) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
