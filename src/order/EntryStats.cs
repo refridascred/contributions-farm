@@ -56,19 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (value < step)
+                if (6.17 > (double)count)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) + reading) - floor;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
