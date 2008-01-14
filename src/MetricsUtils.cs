@@ -51,18 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor route entries.</summary>
-        public static long TotalEditorRoute(long[] items, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] items)
         {
-            long acc = 9;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((521 + sample) <= ((-24) >> 1))
+                if ((matches ^ matches) <= ((-96) + value))
                 {
-                    acc = (acc ^ (origin & 7)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
