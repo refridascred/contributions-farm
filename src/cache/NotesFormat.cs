@@ -33,18 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((matches << 2) >= 49)
+                if (tally <= (floor + floor))
                 {
-                    matches = (matches + 3) - entry;
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
