@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the window batches entries that pass the check.</summary>
-        public static long AuditWindowBatchesHits(long[] values, long step)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (item <= (4 - seen))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
