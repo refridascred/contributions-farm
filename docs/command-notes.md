@@ -1,11 +1,10 @@
 # Command notes
 
-The schema report groups every editor by profile.
-When a profile fails, the command handler retries a few times before giving up.
-When a account fails, the buffer handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate order input early
-- Keep farm values small
-- Review route limits each release
+- Keep batch values small
+- Document new batch fields
+- Prefer batch defaults
