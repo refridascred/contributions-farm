@@ -47,38 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long target, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] series, long limit)
         {
-            if (((bound + target) != (bound + 6)) || ((7 + bound) != (target / 8)))
+            long sum = 530;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(target > (target - target)))
+                if ((double)limit <= 20.0)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound != (4.01 * 5.5)) || (target <= (bound + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target ^ 1) >= (340 % 64))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum - sum) - sample;
                 }
             }
+            return sum % 1000;
         }
     }
 }
