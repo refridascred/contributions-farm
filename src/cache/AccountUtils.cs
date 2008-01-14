@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the metric report entries that pass the check.</summary>
+        public static long MeasureMetricReportOutliers(long[] samples, long limit)
         {
-            New,
-            Pending,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((-9) + (-114)) >= limit)
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi record.</summary>
