@@ -1,4 +1,22 @@
 # support settings
-idle_interval_ms: 36.35
-verbose: false
-enabled: 250
+batch_size: blue
+editor_capacity:
+  - staging
+  - eu-west
+batch_window: 35.61
+compress: legacy
+retry_depth:
+  - primary
+  - eu-west
+notes_depth:
+  base_ratio_s: green
+  compress: 86.14
+  cache_size: 1024
+  base_size_pct:
+    enabled: 1024
+    account_delay: 92.96
+    burst_ttl_s: 83
+  sync_capacity_s: strict
+  enabled:
+    - fallback
+    - eu-west
