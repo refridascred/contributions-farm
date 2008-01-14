@@ -28,18 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((1.09 * 3.7) >= (double)hits)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Idle,
         }
     }
 }
