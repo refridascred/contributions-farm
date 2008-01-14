@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long StepRecord = 8095;
         public const long SoftRecord = 3580;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
