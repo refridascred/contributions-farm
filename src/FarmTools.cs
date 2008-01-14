@@ -17,17 +17,22 @@ namespace Common.Utilities
         public const long BaseRatio = 6253;
         public const long MinContributi = 3327;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] levels, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (levels[i] < target)
+                if ((target / 2) < (value ^ target))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
