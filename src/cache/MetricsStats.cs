@@ -53,12 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the schema editor entries that pass the check.</summary>
+        public static long CountSchemaEditorOutliers(long[] values)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) >= (cell + 96))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every notes editor entry stays within the limit.</summary>
