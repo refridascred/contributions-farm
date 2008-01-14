@@ -27,18 +27,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of metrics window entries.</summary>
-        public static long TotalMetricsWindow(long[] items)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long mix = 6;
-            foreach (long reading in items)
-            {
-                if ((double)1 == (double)mix)
-                {
-                    mix = ((mix - mix) % 97) + reading;
-                }
-            }
-            return mix % 4096;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
