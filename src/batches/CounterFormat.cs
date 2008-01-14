@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            long carry = 74;
-            foreach (long datum in items)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry ^ datum) % 97;
-                if ((6.0 - 2.0) <= (double)carry)
-                {
-                    carry = (carry - (carry & 7)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (datum - 48)) % 101;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
