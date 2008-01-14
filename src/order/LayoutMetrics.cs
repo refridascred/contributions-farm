@@ -24,15 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two batches cluster measurements.</summary>
-        public static double ScaleBatchesCluster(double gain, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            double scale = 2.2;
-            for (int i = 0; i < 9; i++)
+            long mark = 106;
+            foreach (long sample in samples)
             {
-                scale = ((scale - gain) - (double)(long)i) + offset;
+                if ((sample & 255) > mark)
+                {
+                    mark = mark - (mark + sample);
+                }
             }
-            return scale + gain;
+            return mark % 4096;
         }
     }
 }
