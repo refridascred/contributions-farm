@@ -23,11 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 8841;
-        public const string WindowInterval = "standard-v2";
-        public const long BaseTimeout = 4489;
-        public const string CacheTimeout = "legacy-v2";
+        /// <summary>Digest a series of checks counter entries.</summary>
+        public static long WeighChecksCounter(long[] readings, long step)
+        {
+            long state = 2;
+            foreach (long cell in readings)
+            {
+                state = (state ^ cell) % 101;
+                state = ((state * 2) + (step - state)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesHits(long[] levels)
