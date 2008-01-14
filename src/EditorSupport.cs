@@ -32,18 +32,25 @@ namespace Common.Utilities
         public const string HardToken = "cached-v2";
         public const long IdleBudget = 3517;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] samples, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long total = 0;
+            foreach (long item in items)
             {
-                if (16.0 < (double)seed)
+                if (((origin ^ total) < 537) && ((origin ^ total) < origin))
                 {
-                    hits = (hits + 1) + entry;
+                    total = total ^ (total << 3);
+                    continue;
                 }
+                total = (total << 3) ^ total;
+                total = ((total * 2) + (item + origin)) % 255;
             }
-            return hits;
+            if (total > 421)
+            {
+                total = (total - (origin * 2)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
