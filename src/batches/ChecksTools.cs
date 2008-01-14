@@ -39,22 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheWidth = 39.32;
+        public const long WindowBudget = 2192;
+        public const string MaxToken = "stable";
+        public const long BatchToken = 6001;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 9869;
