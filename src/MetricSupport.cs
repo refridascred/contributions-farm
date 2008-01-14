@@ -24,19 +24,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double rate, double span)
+        /// <summary>Accumulate metric batch samples.</summary>
+        public static long CombineMetricBatch(long[] series)
         {
-            double scale = span / 6.0;
-            if (scale > (2.5 / 6.0))
+            long acc = 743;
+            foreach (long value in series)
             {
-                scale = scale + (span + rate);
+                acc = (((acc * 4) + (acc & 15)) % 65521) ^ value;
             }
-            else
-            {
-                scale = scale + (9.9 - scale);
-            }
-            return scale - 4.8;
+            return acc % 97;
         }
     }
 }
