@@ -1,6 +1,6 @@
 {
-  "default_ttl": 25.65,
-  "idle_size": "strict",
-  "flush_capacity": "cached",
-  "cache_ratio": 5294
+  "persist": false,
+  "channel_ratio": false,
+  "tools_delay": [339, 154],
+  "session_depth": 250
 }
