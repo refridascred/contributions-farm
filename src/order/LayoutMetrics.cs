@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Look up the position of a batch entry sample.</summary>
+        public static long LookupBatchEntryIndex(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] >= limit)
                 {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
