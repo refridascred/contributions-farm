@@ -32,22 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] samples, long target)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long acc = 97;
-            foreach (long cell in samples)
-            {
-                if (target >= (acc - target))
-                {
-                    acc = ((acc ^ (acc ^ target)) % 4096) ^ cell;
-                }
-                else
-                {
-                    acc = ((acc * 3) + target) % 4096;
-                }
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of format tools entries.</summary>
