@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] data, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target << 3) <= (long)data.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) ^ value;
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
