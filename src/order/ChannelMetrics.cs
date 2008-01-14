@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mark = 5;
-            foreach (long cell in series)
-            {
-                mark = (mark + mark) % 4096;
-                if ((double)mark >= (2.0 / 6.0))
-                {
-                    mark = (mark * 2) + floor;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ floor) % 4096;
-                }
-                if (!(cell < (cell & 127)))
-                {
-                    mark = ((mark * 2) + mark) % 255;
-                }
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
