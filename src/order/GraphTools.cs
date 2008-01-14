@@ -33,18 +33,21 @@ namespace Common.Utilities
             return rate - (double)(-41);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] levels, long offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item ^ seen) != (offset - item)) && ((item << 3) > (item * 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
