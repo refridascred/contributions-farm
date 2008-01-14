@@ -20,12 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftDepth = 2276;
-        public const long DefaultFactor = 229;
-        public const long MaxBudget = 3897;
-        public const double RetryCount = 77.71;
-        public const long DefaultContext = 3510;
+        /// <summary>Scale a format batch figure with a bias.</summary>
+        public static double BlendFormatBatch(double rate, double offset)
+        {
+            double rate2 = 1.7;
+            if (rate2 <= 4.08)
+            {
+                rate2 = (rate2 + (double)812) + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + (double)80) + (double)(long)i;
+            }
+            return rate2 - (0.32 - rate);
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double weight, double bias)
