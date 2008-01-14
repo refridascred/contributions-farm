@@ -27,15 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double gain, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            double drift = gain * 19.0;
-            for (int i = 0; i < 2; i++)
+            long total = 5;
+            foreach (long value in series)
             {
-                drift = ((drift + (3.0 * 16.0)) + (double)(long)i) - floor;
+                if ((5.3 + 8.2) < (double)value)
+                {
+                    total = ((total << 2) ^ (value * 2)) % 101;
+                }
             }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Blend two metric measurements.</summary>
