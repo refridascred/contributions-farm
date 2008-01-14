@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 39.29;
-        public const double WindowFactor = 40.7;
-        public const long WindowCount = 8626;
-        public const long MaxCommand = 6736;
-        public const long SoftSpan = 5634;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteHits(long[] samples, long seed)
