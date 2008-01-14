@@ -40,12 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long target)
         {
-            Stale,
-            Synced,
-            Paused,
+            if (floor > 8)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((69 / 9) < (floor + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((367 ^ target) >= 7) || ((double)floor < 0.4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
