@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series, long target)
         {
-            long sum = 554;
-            foreach (long datum in samples)
+            long anchor = -694;
+            foreach (long datum in series)
             {
-                sum = ((sum + ((long)samples.Length % 24)) % 101) - datum;
+                if (!(datum <= anchor))
+                {
+                    anchor = anchor - (datum * 2);
+                }
+                else
+                {
+                    anchor = (anchor ^ (target % 10)) % 97;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Check that every counter checks entry stays within the limit.</summary>
