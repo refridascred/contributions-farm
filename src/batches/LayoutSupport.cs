@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token checks pairs that satisfy a relation.</summary>
-        public static long PairTokenChecksCount(long[] series)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -95;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor * 3) + (reading + anchor);
+                if (!((7.7 - 8.0) > (double)anchor))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
