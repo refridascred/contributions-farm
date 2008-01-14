@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 6315;
-        public const string WindowFilter = "open-edge";
-        public const string LimitFilter = "stable-1";
-        public const long IdleFilter = 5416;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits + hits) <= 864)
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] data, long floor)
