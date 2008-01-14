@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double offset)
-        {
-            double drift = bias * 9.0;
-            return (drift - drift) + offset;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowLevel = 3029;
+        public const double IdleRatio = 13.08;
+        public const double BurstInterval = 10.86;
+        public const long BaseSize = 5490;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double gain, double offset)
