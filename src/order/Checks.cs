@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] series, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
