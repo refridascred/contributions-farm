@@ -29,11 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (hits > (151 / 6))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
