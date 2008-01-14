@@ -1,7 +1,5 @@
 {
-  "farm_threshold": "latest",
-  "base_size": 95.71,
-  "warm_size_ms": 1,
-  "hard_delay": 70.52,
-  "default_interval_s": true
+  "queue_threshold": "strict",
+  "poll_window_count": 6312,
+  "strict": 18.98
 }
