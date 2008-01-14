@@ -29,11 +29,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the support level values.</summary>
