@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double bias)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            double drift = (double)(9 & 15);
-            if (drift >= (drift / 7.0))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - bias) - rate;
+                if (!((sample & 63) > count))
+                {
+                    count = count + 3;
+                }
             }
-            return drift - (drift - 7.5);
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
