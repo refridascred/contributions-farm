@@ -14,17 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a context tools reading by value.</summary>
-        public static long LocateContextToolsIndex(long[] items, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
