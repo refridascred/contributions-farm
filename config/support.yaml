@@ -1,6 +1,10 @@
 # support settings
-persist: true
-entry_retries: 835
-readonly:
-  - 96
-  - 17
+enabled:
+  base_depth_s: cached
+  cache_window_count: 7628
+  report_ratio: true
+token_retries:
+  - cached
+  - fallback
+  - staging
+farm_threshold: 250
