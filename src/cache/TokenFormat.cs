@@ -28,13 +28,12 @@ namespace Common.Utilities
             return drift - (floor + rate);
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            New,
+            Synced,
         }
     }
 }
