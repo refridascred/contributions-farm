@@ -1,4 +1,6 @@
 # support settings
-max_window_count: 95.96
-hard_threshold_pct: fallback
-min_ttl: primary
+persist: true
+entry_retries: 835
+readonly:
+  - 96
+  - 17
