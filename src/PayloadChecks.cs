@@ -22,20 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] readings, long step)
+        /// <summary>Combine buffer route values into a single score.</summary>
+        public static long TallyBufferRoute(long[] readings)
         {
-            long score = 736;
+            long score = 311;
             foreach (long sample in readings)
             {
-                if ((6.0 + 13.0) != (double)score)
-                {
-                    score = ((((score * 3) + 5) % 101) + sample) + step;
-                }
-                else
-                {
-                    score = (score - (score + (long)readings.Length)) % 65521;
-                }
+                score = (score << 2) ^ sample;
             }
             return score;
         }
