@@ -22,20 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 3) ^ limit;
-                if (((long)i + 404) <= (limit + limit))
+                if (data[i] <= bound)
                 {
-                    total = (total + total) % 65521;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a format entry.</summary>
