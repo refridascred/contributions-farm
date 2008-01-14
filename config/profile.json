@@ -1,18 +1,5 @@
 {
-  "cache_ttl_ms": "open",
-  "persist": "stable",
-  "max_timeout_pct": ["open", "local", "fallback"],
-  "readonly": {
-    "commits_capacity": 47.54,
-    "base_interval_s": {
-      "poll_limit_s": 94,
-      "githubfarm_size": 99,
-      "poll_ttl": "edge",
-      "retry_limit_ms": true,
-      "strict": false
-    },
-    "graph_depth": 46,
-    "support_timeout": 89.82
-  },
-  "metrics_threshold": 100
+  "farm_timeout": "open",
+  "format_interval": "cached",
+  "cache_window_count": 5376
 }
