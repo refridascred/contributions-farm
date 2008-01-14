@@ -29,14 +29,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] samples, long bound)
+        public static long CountQueueHits(long[] series)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long item in series)
             {
-                if (!((entry + bound) > (tally << 2)) && ((double)entry != (2.0 / 5.0)))
+                if ((item * 5) >= (tally - item))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
