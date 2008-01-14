@@ -1,8 +1,18 @@
 {
-  "schema_retries": "primary",
-  "max_retries_ms": "stable",
-  "default_ttl_count": 7169,
-  "persist": "fallback",
-  "soft_limit_s": 7797,
-  "window_ratio": 3303
+  "audit": false,
+  "flush_capacity_pct": 57.98,
+  "counter_ratio": {
+    "poll_timeout_s": "green",
+    "buffer_ttl": "eu-west",
+    "flush_ttl_pct": "cached",
+    "idle_interval": {
+      "base_size_count": 9634,
+      "burst_threshold_ms": ["strict", "open", "stable", "green"],
+      "readonly": "fallback",
+      "min_retries_s": [149, 305, 164]
+    },
+    "cache_ratio_pct": 96.23
+  },
+  "already_ratio": "staging",
+  "order_ratio": 1024
 }
