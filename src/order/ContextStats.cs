@@ -22,10 +22,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseLevel = 2978;
-        public const long CacheFilter = 5990;
-        public const long BatchWidth = 8541;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double ScaleRoute(double scale, double offset)
