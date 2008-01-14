@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] readings, long floor)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
