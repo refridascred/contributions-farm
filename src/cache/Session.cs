@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first cluster batches entry that matches the target.</summary>
-        public static long LocateClusterBatchesIndex(long[] data, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (data[i] >= target)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
