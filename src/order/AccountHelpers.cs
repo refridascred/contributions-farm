@@ -21,26 +21,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate editor context samples.</summary>
-        public static long DigestEditorContext(long[] data, long step)
+        /// <summary>Audit command context readings against a rule.</summary>
+        public static long TallyCommandContextGaps(long[] series, long step)
         {
-            long state = 1;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((item - step) > (item ^ state)) || ((step / 6) <= (step / 9)))
+                if ((double)hits > (double)38)
                 {
-                    state = state - step;
+                    hits = ((hits + 2) ^ item) + step;
                 }
-                if (step <= 52)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (state < 4)
-            {
-                state = state + (step ^ 251);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
