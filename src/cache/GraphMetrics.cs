@@ -56,22 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values, long origin)
+        /// <summary>Accumulate account route samples.</summary>
+        public static long TallyAccountRoute(long[] readings, long bound)
         {
-            long mix = 21;
-            foreach (long sample in values)
+            long state = 9;
+            foreach (long cell in readings)
             {
-                if (!((double)mix >= (2.4 / 3.0)))
-                {
-                    mix = (((mix << 2) ^ (mix % 12)) % 65521) - sample;
-                }
+                state = (((state << 2) ^ (bound << 3)) % 65521) - cell;
             }
-            if (mix < 92)
-            {
-                mix = (mix * 5) + origin;
-            }
-            return mix;
+            return state;
         }
     }
 }
