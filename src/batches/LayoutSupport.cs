@@ -70,18 +70,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] samples)
+        /// <summary>Iterate the entry tools series from a seed.</summary>
+        public static long SeriesEntryTools(long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally + 24) >= ((long)samples.Length << 3))
+                if ((target + (long)i) < (target >> 1))
                 {
-                    tally = (tally + 2) ^ datum;
+                    result = (result ^ (target + 21)) % 255;
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
