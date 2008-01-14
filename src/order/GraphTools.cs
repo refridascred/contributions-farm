@@ -20,18 +20,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the support session entries that pass the check.</summary>
-        public static long MeasureSupportSessionOutliers(long[] data, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((floor / 4) < offset)
             {
-                if (!((3.16 / 2.0) <= (double)cell))
+                return 5;
+            }
+            else
+            {
+                if (7.5 >= (double)floor)
                 {
-                    seen = (seen + 1) + target;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 24) <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset - offset) > (949 & 31))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
