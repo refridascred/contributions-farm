@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 3539;
-        public const double CacheTimeout = 89.07;
-        public const long MinMetrics = 9104;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double floor)
+        {
+            double ratio = (double)(25 % 24);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio + gain) + (double)(long)i) - floor;
+            }
+            return ratio - gain;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] readings, long origin)
