@@ -1,12 +1,13 @@
 {
-  "entry_interval": 69.61,
-  "poll_window_count": "cached",
-  "hard_threshold_s": 42,
-  "compress": "cached",
-  "payload_ratio": {
-    "flush_threshold": 27.3,
-    "idle_retries_ms": 60,
-    "idle_timeout_s": "strict"
+  "schema_interval": 100,
+  "poll_ttl": false,
+  "default_interval_pct": 100,
+  "cache_size": [297, 10, 338, 317],
+  "compress": {
+    "persist": 5810,
+    "checks_capacity": false,
+    "compress": [478, 40, 387],
+    "readonly": "latest"
   },
-  "dry_run": ["legacy", "strict", "stable"]
+  "burst_retries_pct": [496, 369]
 }
