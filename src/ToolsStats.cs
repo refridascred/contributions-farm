@@ -104,31 +104,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            if (((step & 3) == (step + step)) && ((step >> 5) == (3 / 8)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (70 >= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-5) / 4) > step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Queued,
+            Stale,
         }
     }
 }
