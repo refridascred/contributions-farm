@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long CacheDepth = 1023;
         public const string CacheLevel = "staging-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 4.88;
-        public const long BaseToken = 7182;
-        public const long WindowToken = 958;
-        public const string HardToken = "cached-v2";
-        public const long IdleBudget = 3517;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 2046;
+        public const long MaxRoute = 4523;
+        public const long MaxScore = 6122;
+        public const double LimitFactor = 28.22;
+        public const double SoftSize = 41.0;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TallyGithubfarm(long[] items, long origin)
