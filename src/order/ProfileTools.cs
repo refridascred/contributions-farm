@@ -44,18 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples, long floor)
         {
-            long score = -30;
-            foreach (long sample in values)
+            long sum = -97;
+            foreach (long reading in samples)
             {
-                if (sample > (score - bound))
+                if (sum < reading)
                 {
-                    score = ((score << 2) ^ (score % 12)) % 1000;
+                    sum = sum ^ floor;
                 }
             }
-            return score;
+            return sum % 1000;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
