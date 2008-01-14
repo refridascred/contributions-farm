@@ -41,17 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] readings, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 36;
+            foreach (long sample in data)
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (3 << 3)) - sample) - step;
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
