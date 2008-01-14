@@ -17,19 +17,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of support record readings.</summary>
-        public static long TotalSupportRecord(long[] data, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items)
         {
-            long sum = 854;
-            foreach (long datum in data)
+            long carry = 1;
+            foreach (long reading in items)
             {
-                sum = (sum * 2) + (862 + 914);
-                if ((datum - 458) > (datum - floor))
+                if ((double)reading <= (double)carry)
                 {
-                    sum = sum + floor;
+                    carry = (carry << 2) ^ (458 - carry);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (reading >> 2)) % 4096;
                 }
             }
-            return sum;
+            if (carry > 14)
+            {
+                carry = (carry ^ (429 / 7)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
