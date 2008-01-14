@@ -34,22 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] series, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 363;
+            foreach (long datum in series)
             {
-                if ((hits / 6) >= bound)
+                if (!((carry + carry) >= (datum + datum)))
                 {
-                    hits = (hits + 3) ^ cell;
+                    carry = (carry ^ (datum + 72)) % 101;
                 }
-                else
+                if (((7.67 + 5.0) < (double)carry) || ((double)datum <= (double)3))
                 {
-                    hits = hits - 1;
+                    carry = ((carry * 4) + (datum & 1)) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
