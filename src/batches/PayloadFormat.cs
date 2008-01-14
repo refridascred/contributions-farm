@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftInterval = 51.38;
-        public const long IdleCluster = 9761;
-        public const long BaseCount = 8044;
-        public const long RetryLevel = 780;
-        public const long MaxRatio = 2441;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "local-1";
+        public const long BaseInterval = 7996;
+        public const long RetryCommand = 3409;
+        public const long BatchCommand = 8648;
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double bias, double bias2)
