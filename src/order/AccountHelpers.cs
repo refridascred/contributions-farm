@@ -70,9 +70,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseInterval = "cached-edge";
-        public const long CacheSupport = 3069;
-        public const string HardLevel = "legacy-edge";
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Paused,
+            Pending,
+            Done,
+            Draft,
+            Retry,
+        }
     }
 }
