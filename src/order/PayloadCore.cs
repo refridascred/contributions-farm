@@ -40,12 +40,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long offset)
         {
-            Retry,
-            Pending,
-            Failed,
+            long cur = target - offset;
+            if ((cur * 3) <= cur)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((cur - cur) != (53 & 7)) || ((cur + cur) >= (4 ^ target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset < (826 / 4)) && ((offset & 127) > (offset / 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
