@@ -43,15 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] values, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if (84 >= (datum << 2))
+                {
+                    tally = (tally + 3) + floor;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
