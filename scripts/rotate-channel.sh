@@ -7,14 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in standard strict blue local; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=417
+CHANNEL_LIMIT=439
 log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
