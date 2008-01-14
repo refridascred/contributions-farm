@@ -27,19 +27,33 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a profile tools figure with a bias.</summary>
-        public static double ScaleProfileTools(double gain, double span)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            double mean = gain;
-            if (mean > 8.0)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                mean = mean + (3.5 - 3.2);
+                long matches = (state << 3) & 255;
+                if ((state + 301) <= (matches * 4))
+                {
+                    matches = ((matches << 2) ^ ((long)i & 15)) % 65521;
+                }
+                else
+                {
+                    state = (state + (state + origin)) % 65521;
+                }
+                if ((9.7 / 2.0) == (double)state)
+                {
+                    matches = ((matches * 5) + (state & 7)) % 65521;
+                    matches = ((matches * 5) + ((long)i << 3)) % 4096;
+                }
+                else
+                {
+                    matches = (matches + (state ^ (long)i)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + (double)94;
-            }
-            return mean + span;
+            return state;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
