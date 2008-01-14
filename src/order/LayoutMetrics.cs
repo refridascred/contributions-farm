@@ -14,12 +14,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitScore = 83.13;
-        public const double WindowCommand = 40.63;
-        public const long BaseCommand = 4458;
-        public const long CacheDepth = 111;
-        public const long BatchFactor = 1709;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two batches cluster measurements.</summary>
         public static double ScaleBatchesCluster(double gain, double offset)
