@@ -20,13 +20,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Done,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxScore = 3973;
+        public const string DefaultLevel = "fallback";
+        public const long BaseTools = 3632;
+        public const long MaxTools = 1351;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
