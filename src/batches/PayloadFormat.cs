@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (weight - bias) + offset;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double gain, double offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            double drift = 0.23 / 8.0;
-            if (drift > (14.0 / 5.0))
+            double load = bias2;
+            if (load < load)
             {
-                drift = (drift + gain) + offset;
+                load = load + bias;
             }
             else
             {
-                drift = drift + (11.0 / 7.0);
+                load = load + (bias - load);
             }
-            return drift - (double)386;
+            return load - (double)5;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
