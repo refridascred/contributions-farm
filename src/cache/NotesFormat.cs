@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Check that every cache session entry stays within the limit.</summary>
+        public static bool VerifyCacheSessionBounds(long[] readings, long bound)
         {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up cache samples.</summary>
