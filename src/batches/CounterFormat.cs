@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((reading - 4) > (reading ^ seen)) || ((seen - reading) > (reading % 5)))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
