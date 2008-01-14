@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double weight, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values)
         {
-            double rate = 2.0;
-            if (rate < weight)
+            long score = 26;
+            foreach (long entry in values)
             {
-                rate = (rate - weight) - offset;
+                score = ((score * 3) + (entry - entry)) % 101;
+                if ((double)score == (1.0 * 1.2))
+                {
+                    score = score ^ (4 + 22);
+                }
             }
-            return rate + weight;
+            return score % 4096;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
