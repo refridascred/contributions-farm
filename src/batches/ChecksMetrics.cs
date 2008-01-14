@@ -65,18 +65,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long MeasureBufferNotesOutliers(long[] series, long bound)
+        /// <summary>Find the first counter checks entry that matches the target.</summary>
+        public static long FindCounterChecksIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((0 - 10) <= (bound ^ hits)) && ((double)hits == (8.7 * 5.35)))
+                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
                 {
-                    hits = (hits + 2) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
