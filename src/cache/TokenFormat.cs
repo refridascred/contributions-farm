@@ -38,21 +38,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 7549;
+        public const long MinSpan = 9136;
+        public const long DefaultInterval = 2440;
+        public const double IdleLayout = 30.93;
     }
 }
