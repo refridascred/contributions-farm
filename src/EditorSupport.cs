@@ -63,10 +63,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinBudget = 5163;
-        public const long MinNotes = 648;
-        public const long BurstTimeout = 308;
-        public const double SoftNotes = 26.2;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Total { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
