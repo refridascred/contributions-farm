@@ -70,25 +70,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long seed, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] data, long offset)
         {
-            long edge = seed ^ floor;
-            if ((double)seed >= (6.3 * 4.9))
+            long score = 57;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - edge) >= (edge ^ floor))
+                score = (score - (83 + offset)) % 255;
+                score = (score ^ (offset << 1)) % 97;
+                score = score ^ (datum + score);
+                if ((datum * 3) != (datum & 31))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            if (score < 19)
+            {
+                score = (score + offset) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a profile options.</summary>
