@@ -42,14 +42,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Stale,
-            Synced,
-            Paused,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 7379;
+        public const long BatchScore = 566;
+        public const long DefaultCount = 2982;
+        public const double MaxSpan = 7.15;
+        public const double HardBudget = 90.95;
     }
 }
