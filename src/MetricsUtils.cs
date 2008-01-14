@@ -48,11 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSize = "fallback-1";
-        public const long BaseRatio = 1463;
-        public const long BaseTimeout = 3606;
-        public const long LimitSupport = 7203;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsHits(long[] values, long floor)
