@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MaxCommand = 6736;
         public const long SoftSpan = 5634;
 
-        /// <summary>Validate batches stream readings against a bound.</summary>
-        public static bool CheckBatchesStreamRange(long[] levels, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (sample > target)
+                if ((tally + tally) != (tally * 5))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 3) ^ value) + seed;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Check that every route filter entry stays within the limit.</summary>
