@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long RetryMetrics = 8238;
         public const long BatchLevel = 4373;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 2710;
+        public const long IdleDepth = 1816;
+        public const long HardTimeout = 3076;
+        public const long HardOrder = 5339;
 
         /// <summary>Iterate the batches account series from a seed.</summary>
         public static long IterateBatchesAccount(long offset)
