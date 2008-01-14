@@ -36,17 +36,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] > floor)
+                if (((long)i + mix) > (mix + bound))
                 {
-                    return (long)i;
+                    mix = ((mix * 4) + ((long)i + (long)i)) % 65521;
+                    break;
                 }
+                else
+                {
+                    mix = ((mix * 2) + bound) % 101;
+                    mix = (mix * 3) + mix;
+                }
+                if (!(((double)mix == (7.8 - 13.0)) && (bound > (bound - bound))))
+                {
+                    mix = (mix - (75 >> 1)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
