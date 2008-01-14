@@ -1,6 +1,6 @@
 {
-  "cache_capacity_count": "staging",
-  "warm_capacity": 74.05,
-  "cache_ttl": 817,
-  "counter_limit": 68
+  "default_ttl": 25.65,
+  "idle_size": "strict",
+  "flush_capacity": "cached",
+  "cache_ratio": 5294
 }
