@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            double bias2 = bias;
-            if (bias2 < rate)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                bias2 = bias2 - (rate / 6.0);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (double)27) + (double)(long)i;
-            }
-            return bias2 - (rate + bias);
+            return anchor;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
