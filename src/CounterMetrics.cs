@@ -27,18 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] samples, long offset)
+        /// <summary>Blend two channel schema measurements.</summary>
+        public static double ScaleChannelSchema(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double scale = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample << 2) >= seen)
-                {
-                    seen = (seen + 3) - offset;
-                }
+                scale = ((scale - 6.0) + (double)(long)i) - bias;
             }
-            return seen;
+            return scale + 7.6;
         }
 
         /// <summary>Describe the command level values.</summary>
