@@ -26,14 +26,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Ready,
-            Done,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 4.88;
+        public const long BaseToken = 7182;
+        public const long WindowToken = 958;
+        public const string HardToken = "cached-v2";
+        public const long IdleBudget = 3517;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteHits(long[] data)
