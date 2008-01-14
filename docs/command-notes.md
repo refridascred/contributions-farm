@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the account list.
+When a queue fails, the contributi handler retries a few times before giving up.
+Use batch settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Log every graph change
-- Validate format input early
-- Document new entry fields
+- Validate filter input early
+- Review notes limits each release
+- Document new batches fields
