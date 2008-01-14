@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string BatchPayload = "staging";
         public const long MinPayload = 2393;
 
-        /// <summary>Roll a layout contributi counter forward.</summary>
-        public static long RollLayoutContributi(long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] samples, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)i > (sum + sum))
+                if (samples[i] < step)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a metric reading.</summary>
