@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const long MaxCounter = 5729;
         public const long HardCounter = 7729;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Dropped,
-            New,
-            Retry,
-            Ready,
-            Closed,
+            Locked,
+            Draft,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Digest a series of token entries.</summary>
