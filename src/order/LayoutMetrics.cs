@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long acc = -93;
-            foreach (long entry in items)
-            {
-                acc = (acc - (entry + acc)) % 97;
-                if ((766 + acc) < (entry >> 3))
-                {
-                    break;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = (acc + (acc - acc)) % 65521;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
