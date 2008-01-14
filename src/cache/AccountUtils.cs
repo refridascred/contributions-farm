@@ -14,12 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] values, long bound)
+        /// <summary>Locate a context tools reading by value.</summary>
+        public static long LocateContextToolsIndex(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                if (items[i] == floor)
                 {
                     return (long)i;
                 }
