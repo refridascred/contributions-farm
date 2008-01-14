@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 8.06;
-        public const long MinChecks = 5975;
-        public const string LimitBudget = "strict-v2";
-        public const string MinLevel = "latest";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next channel stream value from a seed.</summary>
         public static long RollChannelStream(long limit)
