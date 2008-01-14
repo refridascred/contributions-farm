@@ -22,31 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long target, long step)
+        /// <summary>Match up contributi record samples.</summary>
+        public static long CompareContributiRecordCount(long[] samples)
         {
-            if (target <= (step >> 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((step * 3) >= (step % 12)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= (step << 1))
+                    if ((samples[i] - samples[j]) < 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
