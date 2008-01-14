@@ -1,6 +1,7 @@
 {
-  "cache_limit_ms": 500,
-  "warm_window": false,
-  "compress": "edge",
-  "min_ttl": "fallback"
+  "command_ratio": 96,
+  "warm_ratio": 30,
+  "command_capacity": "local",
+  "contributi_limit": false,
+  "batch_timeout_pct": "local"
 }
