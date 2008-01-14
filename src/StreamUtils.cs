@@ -45,19 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] samples, long target)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
