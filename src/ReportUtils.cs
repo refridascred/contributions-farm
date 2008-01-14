@@ -46,17 +46,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 73.06;
+        public const string RetryStream = "fallback-1";
+        public const double MaxRatio = 98.93;
     }
 }
