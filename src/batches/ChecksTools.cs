@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long score = 674;
-            foreach (long sample in series)
-            {
-                if ((score << 1) < sample)
-                {
-                    score = score + (sample - score);
-                }
-                score = (score << 2) ^ (sample - sample);
-            }
-            if (score < 97)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
