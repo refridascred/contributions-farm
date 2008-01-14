@@ -25,21 +25,9 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryQueue = 98.88;
+        public const long MaxQueue = 188;
+        public const double BaseQueue = 6.2;
     }
 }
