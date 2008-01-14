@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const double IdleChecks = 93.05;
         public const long StepSize = 4494;
 
-        /// <summary>Fold a list of context commits readings.</summary>
-        public static long TallyContextCommits(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
         {
-            long state = -84;
-            foreach (long value in series)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                state = (state - ((-7) + value)) % 65521;
+                if ((double)offset != (20.0 - 2.0))
+                {
+                    state = (state * 2) + (397 * 4);
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                state = ((state * 3) + (offset % 8)) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
             return state;
         }
