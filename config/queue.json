@@ -1,5 +1,15 @@
 {
-  "base_interval_ms": 250,
-  "readonly": 5.49,
-  "flush_interval": [14, 398, 230]
+  "dry_run": 250,
+  "max_window_pct": true,
+  "enabled": 60,
+  "sync_ratio_count": {
+    "cache_window_pct": [232, 289, 309, 101],
+    "min_size": 36.77,
+    "session_depth": {
+      "readonly": "strict",
+      "flush_delay_pct": 97.34,
+      "dry_run": true
+    }
+  },
+  "window_threshold": "fallback"
 }
