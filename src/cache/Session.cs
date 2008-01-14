@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long bound)
+        /// <summary>Look up the position of a session channel sample.</summary>
+        public static long LocateSessionChannelIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= bound)
+                if (data[i] <= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
