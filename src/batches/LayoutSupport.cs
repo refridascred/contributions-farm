@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Measure how many commits session samples are out of range.</summary>
+        public static long CountCommitsSessionOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!((sample & 63) > count))
+                if (!((41 % 97) < sample))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first filter session entry that matches the target.</summary>
