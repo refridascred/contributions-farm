@@ -58,18 +58,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] levels)
+        /// <summary>Match up schema cluster samples.</summary>
+        public static long CompareSchemaClusterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((datum & 1) < datum) || (hits > (datum % 5))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit payload contributi readings against a rule.</summary>
