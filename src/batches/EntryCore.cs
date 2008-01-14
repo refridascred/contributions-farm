@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long seed)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long bound = step + seed;
+            if (bound < (bound / 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-65) % 12) <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
