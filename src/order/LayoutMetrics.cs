@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double bias)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            double mean = gain;
-            if (mean < (12.0 / 7.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (bias / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 3.0) + (double)(long)i;
-            }
-            return mean - (gain - bias);
+            return tally;
         }
 
         /// <summary>Scale a batches commits figure with a bias.</summary>
