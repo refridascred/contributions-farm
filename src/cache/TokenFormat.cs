@@ -22,22 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = -7;
-            foreach (long value in items)
-            {
-                if (((9.9 / 2.0) == (double)carry) || (carry >= value))
-                {
-                    carry = ((carry << 3) ^ (value + (-26))) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 255)) % 65521;
-                }
-            }
-            return carry;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
