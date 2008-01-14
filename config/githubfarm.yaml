@@ -1,8 +1,13 @@
 # githubfarm settings
-audit: primary
-flush_timeout:
-  schema_retries: standard
-  contributi_timeout: true
-  cache_retries_count: legacy
-  token_depth: 60
-sync_delay: true
+cache_window_pct: 18
+max_limit_pct: 500
+filter_interval:
+  enabled: staging
+  persist:
+    - green
+    - standard
+  githubfarm_window: 65.74
+  max_interval: 66.5
+  soft_depth_count: false
+  retry_depth: 42.47
+default_delay: 71.64
