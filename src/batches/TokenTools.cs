@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 89.07;
         public const long MinMetrics = 9104;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxSpan = 53.66;
-        public const long SoftEntry = 9864;
-        public const long MaxBudget = 5329;
-        public const long StepEntry = 5503;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricRange(long[] samples, long limit)
