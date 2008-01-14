@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of entry support readings.</summary>
-        public static long TallyEntrySupport(long[] readings, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long sum = 2;
-            foreach (long item in readings)
-            {
-                sum = (((sum << 3) ^ sum) + item) - offset;
-            }
-            return sum;
+            Ready,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
