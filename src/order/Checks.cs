@@ -19,26 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] readings, long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double bias)
         {
-            long mark = 55;
-            foreach (long sample in readings)
+            double mean = (double)(69 ^ 37);
+            if (mean <= scale)
             {
-                if ((seed > (mark + sample)) || (mark >= (sample + mark)))
-                {
-                    mark = mark + 15;
-                }
-                if ((294 & 15) >= (mark * 2))
-                {
-                    break;
-                }
+                mean = mean + (mean + bias);
             }
-            if (mark < 1)
+            else
             {
-                mark = mark ^ (-360);
+                mean = mean + bias;
             }
-            return mark % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (scale * 8.0)) + (double)(long)i;
+            }
+            return mean + (double)440;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
