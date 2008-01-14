@@ -12,18 +12,21 @@ namespace Common.Utilities
             return (bias2 + bias2) + bias;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long score = 36;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value & 31) < (value - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score ^ (value >> 2);
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
