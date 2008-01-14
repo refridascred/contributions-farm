@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Closed,
-            Active,
-            Queued,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBudget = 2859;
+        public const long LimitRatio = 1185;
+        public const string BatchCount = "local-edge";
+        public const long MaxLevel = 456;
+        public const long BaseBatches = 7472;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
