@@ -39,12 +39,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long step, long step2)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
+            if ((step + step2) == (step & 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step2 >> 2) > (step * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.1 / 2.0) > (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
