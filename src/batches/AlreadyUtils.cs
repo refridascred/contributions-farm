@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] samples, long seed)
         {
-            Retry,
-            Synced,
-            Ready,
-            Closed,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (seed < (seed + (-2)))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
