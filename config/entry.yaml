@@ -1,8 +1,16 @@
 # entry settings
-format_depth: 28.32
-default_threshold_s:
-  hard_threshold: strict
-  verbose: local
-  token_capacity: false
-base_interval_s: 16
-hard_retries_pct: 5636
+idle_window_s:
+  poll_interval: 97.21
+  hard_timeout_count: false
+  audit: true
+sync_depth_ms: 66.63
+persist:
+  batch_timeout:
+    - 244
+    - 26
+  max_window_ms: true
+  batch_depth_pct: 8972
+  readonly:
+    idle_ratio_s: 18
+    flush_retries_s: standard
+    checks_retries: standard
