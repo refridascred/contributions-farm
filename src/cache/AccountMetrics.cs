@@ -20,18 +20,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] values)
+        /// <summary>Roll a report stream counter forward.</summary>
+        public static long StepReportStream(long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((2 << 2) >= (83 + entry))
+                carry = (carry << 2) ^ offset;
+                if (!((double)carry < (17.0 + 7.0)))
                 {
-                    tally = tally + 2;
+                    carry = (carry ^ offset) % 1000;
+                    carry = (carry << 2) ^ (offset / 8);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
