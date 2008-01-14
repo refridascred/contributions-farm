@@ -37,18 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] samples)
+        /// <summary>Validate batch stats readings against a bound.</summary>
+        public static bool VerifyBatchStatsLimits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((count <= (count * 3)) && ((count << 2) < ((long)samples.Length - reading)))
+                if (sample <= offset)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
