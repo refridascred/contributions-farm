@@ -80,11 +80,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Digest a series of farm stats entries.</summary>
+        public static long FoldFarmStats(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            long mix = 342;
+            foreach (long datum in levels)
+            {
+                mix = (((mix + mix) % 65521) + datum) - step;
+            }
+            return mix;
         }
     }
 }
