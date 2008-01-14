@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for item in standard primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-RECORD_LIMIT=489
+RECORD_LIMIT=400
 log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
