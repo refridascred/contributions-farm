@@ -44,22 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of filter support readings.</summary>
-        public static long TallyFilterSupport(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long bound)
         {
-            long score = 85;
-            foreach (long datum in readings)
+            long score = -30;
+            foreach (long sample in values)
             {
-                if ((datum ^ score) < 8)
+                if (sample > (score - bound))
                 {
-                    score = score + (24 ^ 955);
+                    score = ((score << 2) ^ (score % 12)) % 1000;
                 }
             }
-            if (score < 420)
-            {
-                score = ((score << 2) ^ 54) % 97;
-            }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
