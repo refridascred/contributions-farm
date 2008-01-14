@@ -20,13 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit contributi account readings against a rule.</summary>
+        public static long AuditContributiAccountMatches(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((double)value > (5.0 * 1.6)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format entry.</summary>
