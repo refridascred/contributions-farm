@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long state = 1;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state ^ cell) > (state % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state + (cell + 7)) % 101;
-                }
-                if (state <= (cell * 4))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Hold a entry options.</summary>
