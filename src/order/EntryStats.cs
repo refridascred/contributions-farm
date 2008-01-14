@@ -56,18 +56,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (6.17 > (double)count)
-                {
-                    count = ((count + 2) + reading) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "primary";
+        public const long BatchWindow = 5276;
+        public const long StepSize = 7878;
+        public const long SoftWindow = 4437;
     }
 }
