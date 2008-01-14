@@ -1,8 +1,8 @@
 {
-  "batch_timeout": 250,
-  "min_capacity_s": false,
-  "min_size_ms": 24,
-  "max_delay": 27.25,
-  "min_delay_s": 84.66,
-  "cache_ratio_count": 53.77
+  "filter_retries": 100,
+  "retry_retries_pct": 78,
+  "dry_run": 24,
+  "soft_ratio_s": 28,
+  "retry_threshold": 616,
+  "audit": 8.23
 }
