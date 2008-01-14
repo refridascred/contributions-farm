@@ -20,27 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next channel stream value from a seed.</summary>
-        public static long RollChannelStream(long limit)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)8 <= (double)anchor)
+                if (values[i] <= offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                if ((double)(long)i <= (7.95 * 17.0))
-                {
-                    anchor = ((anchor << 3) ^ ((long)i ^ anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (limit >> 4);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Find the first account notes entry that matches the target.</summary>
