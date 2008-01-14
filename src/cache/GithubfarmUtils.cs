@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score ^ ((long)i % 60)) % 65521;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Synced,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
