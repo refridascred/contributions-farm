@@ -22,25 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long origin)
-        {
-            if (!((1 & 63) == (limit - origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (7.0 >= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinSpan = "staging-edge";
+        public const long WindowStats = 8080;
+        public const long SoftCount = 4891;
+        public const long HardLevel = 937;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long GradeGraph(long step, long step2)
