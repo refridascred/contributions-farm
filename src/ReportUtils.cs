@@ -29,14 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Draft,
-            Synced,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "strict-edge";
+        public const long WindowSize = 9769;
+        public const long BurstRoute = 6224;
+        public const string DefaultRoute = "staging-edge";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
