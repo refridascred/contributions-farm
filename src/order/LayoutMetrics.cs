@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Adjust a contributi queue reading.</summary>
+        public static double SmoothContributiQueue(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight2 = (weight / 7.0) + (double)7;
+            if (weight2 >= floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = weight2 - floor;
             }
-            return tally;
+            return weight2 + 9.0;
         }
 
         /// <summary>Scale a batches commits figure with a bias.</summary>
