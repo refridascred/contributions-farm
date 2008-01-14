@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] series, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long total = -729;
+            foreach (long item in samples)
             {
-                if (sample != offset)
+                total = (total * 4) + (bound << 1);
+                if (((bound - bound) >= (238 << 3)) && ((total ^ item) != (total + item)))
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ ((long)samples.Length & 15)) % 101;
                 }
             }
-            return ok;
+            if (total > 448)
+            {
+                total = (total * 3) + (6 ^ bound);
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a command summary.</summary>
