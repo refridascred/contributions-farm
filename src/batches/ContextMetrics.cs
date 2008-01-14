@@ -18,21 +18,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a stats window counter forward.</summary>
-        public static long DeriveStatsWindow(long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] levels, long target)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (cell != target)
                 {
-                    score = ((score ^ (score >> 1)) % 65521) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                score = (score ^ 9) % 97;
-                score = ((score << 3) ^ (step >> 1)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine route checks values into a single score.</summary>
