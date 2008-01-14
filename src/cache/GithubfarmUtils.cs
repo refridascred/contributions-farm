@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a context command reading.</summary>
-        public static double ProjectContextCommand(double gain, double bias)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            double gain2 = 3.0 / 5.0;
-            if (gain2 > (7.0 - gain2))
+            double mean = bias;
+            if (mean < span)
             {
-                gain2 = (gain2 - (double)5) + gain;
+                mean = mean - mean;
             }
-            return gain2 + bias;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + bias;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
