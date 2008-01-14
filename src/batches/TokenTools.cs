@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (seed < value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 8297;
+        public const double DefaultFactor = 74.98;
+        public const long HardBudget = 6244;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] values)
