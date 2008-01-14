@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinCount = 12.9;
-        public const double MinFactor = 49.26;
-        public const long RetryCount = 3370;
-        public const long BatchGraph = 3683;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] samples)
