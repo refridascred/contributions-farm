@@ -1,6 +1,11 @@
 # githubfarm settings
-queue_ttl: edge
-strict: 6603
-soft_window_ms: false
-persist: 84.57
-flush_timeout: 9731
+contributi_capacity: true
+poll_ttl: true
+queue_ratio: latest
+burst_limit_pct: stable
+cache_ratio:
+  - 62
+  - 298
+  - 197
+  - 9
+burst_threshold: 4.33
