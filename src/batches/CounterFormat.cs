@@ -31,19 +31,10 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Validate profile contributi readings against a bound.</summary>
-        public static bool ValidateProfileContributiLimits(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseTimeout = 6467;
+        public const long MinSchema = 8607;
+        public const long BaseSchema = 3113;
+        public const double MaxSchema = 27.47;
     }
 }
