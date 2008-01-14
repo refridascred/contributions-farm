@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] series, long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = -2;
-            foreach (long item in series)
-            {
-                sum = (sum - (bound ^ item)) % 101;
-            }
-            return sum % 1000;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
