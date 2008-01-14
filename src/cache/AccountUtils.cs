@@ -38,13 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepLevel = "strict-v2";
+        public const long DefaultContributi = 2009;
+        public const long BaseContributi = 7354;
+        public const long SoftContributi = 9824;
+        public const long BurstContributi = 1925;
     }
 }
