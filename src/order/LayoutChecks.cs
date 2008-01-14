@@ -62,21 +62,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] data, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] readings, long target)
         {
-            long score = 116;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!((offset % 5) <= (reading % 7)))
+                if (!(((target % 64) != (7 - target)) || (55 > (value / 8))))
                 {
-                    score = (score ^ 93) % 255;
-                    score = ((score << 3) ^ (offset - offset)) % 1000;
+                    matches = matches + 1;
                 }
-                score = score - (score & 255);
-                score = score + score;
             }
-            return score;
+            return matches;
         }
     }
 }
