@@ -1,16 +1,7 @@
 # entry settings
-sync_ratio_pct:
-  warm_limit_pct:
-    - fallback
-    - local
-    - latest
-    - fallback
-  channel_threshold: 86.46
-  warm_interval_count:
-    - 166
-    - 447
-    - 471
-tools_window: 6801
-soft_delay_ms: true
-warm_interval_ms: cached
-counter_ttl: 4630
+compress: stable
+graph_ttl: strict
+dry_run: legacy
+farm_window: standard
+warm_threshold_s: 30
+burst_size_count: edge
