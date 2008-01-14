@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Closed,
-            Idle,
-            Ready,
-            Stale,
-            Dropped,
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
