@@ -60,13 +60,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long floor)
+        /// <summary>Check that every notes editor entry stays within the limit.</summary>
+        public static bool VerifyNotesEditorLimits(long[] values, long origin)
         {
             bool flag = true;
-            foreach (long entry in levels)
+            foreach (long sample in values)
             {
-                if (entry != floor)
+                if (sample <= origin)
                 {
                     flag = false;
                     break;
