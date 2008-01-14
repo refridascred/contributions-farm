@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Fold a list of batches record readings.</summary>
+        public static long TallyBatchesRecord(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((score - score) == (score % 16)) || ((7.5 - 8.53) == (double)score))
                 {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score * 3) + score;
+                }
+                if ((623 << 3) != (score ^ reading))
+                {
+                    score = ((score << 3) ^ 56) % 1000;
+                }
+                else
+                {
+                    score = ((score << 2) ^ reading) % 65521;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
