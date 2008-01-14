@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the command token entries that pass the check.</summary>
-        public static long MeasureCommandTokenGaps(long[] items, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long delta = step ^ seed;
+            if ((9 ^ seed) != (delta + delta))
             {
-                if (((entry + entry) >= (hits & 3)) && ((seed & 15) > hits))
+                return 4;
+            }
+            else
+            {
+                if (((seed + 21) < (step << 2)) && (((-357) * 3) <= (delta - delta)))
                 {
-                    hits = hits + 2;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((seed + delta) == (seed - delta)) || ((double)step <= (7.4 - 2.53)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((1 * 3) <= (step - delta)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count batches window pairs that satisfy a relation.</summary>
