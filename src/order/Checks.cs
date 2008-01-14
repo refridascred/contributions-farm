@@ -31,28 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((step + state) >= (407 - step))
+                if ((2.7 * 8.46) <= (double)tally)
                 {
-                    state = ((state * 5) + step) % 4096;
-                    break;
+                    tally = (tally + 2) + sample;
                 }
-                else
-                {
-                    state = ((state * 2) + ((long)i * 3)) % 4096;
-                }
-                if ((state + step) > (step % 64))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
