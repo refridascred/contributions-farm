@@ -42,11 +42,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 7379;
-        public const long BatchScore = 566;
-        public const long DefaultCount = 2982;
-        public const double MaxSpan = 7.15;
-        public const double HardBudget = 90.95;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
