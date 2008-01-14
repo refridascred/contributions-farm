@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long state = 33;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((83 >> 5) < value) && ((4.6 - 17.0) >= (double)value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - (value * 5)) % 65521;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
