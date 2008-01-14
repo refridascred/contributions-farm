@@ -28,20 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long mix = 0;
-            foreach (long sample in data)
-            {
-                mix = (mix - mix) % 97;
-                mix = ((mix * 5) + (sample >> 5)) % 101;
-            }
-            if (mix < 31)
-            {
-                mix = (mix ^ bound) % 255;
-            }
-            return mix;
+            Queued,
+            Active,
+            Failed,
         }
     }
 }
