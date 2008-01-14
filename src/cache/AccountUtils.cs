@@ -38,13 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values, long origin)
         {
-            Stale,
-            Retry,
-            Idle,
-            Synced,
+            long total = 6;
+            foreach (long cell in values)
+            {
+                if (origin <= 5)
+                {
+                    total = ((total * 3) + (cell - cell)) % 97;
+                }
+                else
+                {
+                    total = (total + (origin & 15)) % 255;
+                }
+            }
+            if (total > (-489))
+            {
+                total = (total - total) % 1000;
+            }
+            return total;
         }
     }
 }
