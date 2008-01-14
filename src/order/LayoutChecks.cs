@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] levels, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            New,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a notes entry.</summary>
