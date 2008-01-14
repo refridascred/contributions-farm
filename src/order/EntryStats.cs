@@ -64,13 +64,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            Active,
-            New,
-            Pending,
-            Queued,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((((long)values.Length << 2) >= reading) || (((0.9 - 4.0) < (7.67 - 11.0)) || ((seen + reading) > seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
