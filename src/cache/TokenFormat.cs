@@ -22,24 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples, long step)
-        {
-            long mark = 96;
-            foreach (long item in samples)
-            {
-                if (!((double)mark > 2.85))
-                {
-                    mark = mark ^ (item & 31);
-                }
-                mark = ((mark << 3) ^ step) % 255;
-            }
-            if (mark > 6)
-            {
-                mark = mark - (step + mark);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 9308;
+        public const long BurstRatio = 4309;
+        public const string SoftLayout = "stable-edge";
+        public const long BatchLayout = 3278;
+        public const string DefaultCount = "primary";
 
         /// <summary>Fold a list of githubfarm report readings.</summary>
         public static long CombineGithubfarmReport(long[] values)
