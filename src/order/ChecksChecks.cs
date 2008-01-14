@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine command filter values into a single score.</summary>
-        public static long ScoreCommandFilter(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] samples)
         {
-            long score = 29;
-            foreach (long value in items)
+            long sum = 554;
+            foreach (long datum in samples)
             {
-                score = ((score + ((-642) + score)) % 101) + value;
+                sum = ((sum + ((long)samples.Length % 24)) % 101) - datum;
             }
-            if (score < 609)
-            {
-                score = ((score * 2) + (score >> 5)) % 65521;
-            }
-            return score % 1000;
+            return sum;
         }
 
         /// <summary>Check that every counter checks entry stays within the limit.</summary>
