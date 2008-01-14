@@ -24,22 +24,17 @@ namespace Common.Utilities
         public const long RetryMetrics = 8238;
         public const long BatchLevel = 4373;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long origin)
         {
-            long sum = 637;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((5.1 / 2.0) > (1.39 + 13.0)) && ((item % 2) == (764 << 2)))
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
                 {
-                    sum = (sum << 3) ^ (item + 44);
+                    return (long)i;
                 }
             }
-            if (sum < 82)
-            {
-                sum = ((sum * 4) + sum) % 255;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the batches account series from a seed.</summary>
