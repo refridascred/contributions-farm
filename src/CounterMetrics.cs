@@ -14,11 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 3177;
-        public const string IdleLayout = "standard-v2";
-        public const long RetryLayout = 9569;
-        public const string SoftScore = "open";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 48.55;
+        public const string BaseLevel = "stable-edge";
+        public const string BatchScore = "standard-edge";
+        public const string LimitSpan = "stable-1";
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double weight, double floor)
