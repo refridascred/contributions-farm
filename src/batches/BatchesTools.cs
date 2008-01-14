@@ -28,11 +28,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "alpha-1";
+        public const long DefaultCount = 869;
+        public const double MinFactor = 2.58;
+        public const string DefaultFactor = "primary-1";
+        public const double HardCommits = 53.06;
     }
 }
