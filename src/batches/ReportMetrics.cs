@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultCount = 76.66;
+        public const double StepBatch = 93.93;
+        public const long BatchSpan = 2837;
+        public const string MaxBatch = "primary-edge";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 7994;
