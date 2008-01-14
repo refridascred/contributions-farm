@@ -15,15 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
             long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally + tally) == (3 + tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + item;
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
