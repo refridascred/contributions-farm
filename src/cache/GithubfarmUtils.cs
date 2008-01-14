@@ -46,11 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 36.53;
+        public const long RetryAlready = 9819;
+        public const long DefaultLevel = 9485;
     }
 }
