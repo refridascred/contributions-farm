@@ -53,38 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long seed)
         {
-            if ((offset - offset) < step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 9) >= step)
+                if (data[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step + (-7)) >= offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset >= (offset + (-76)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
