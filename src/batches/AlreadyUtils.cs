@@ -30,18 +30,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long total = 730;
-            foreach (long entry in readings)
-            {
-                if (((double)entry == (1.0 - 9.98)) && ((17.0 / 4.0) != (double)total))
-                {
-                    total = ((total * 3) + (481 + total)) % 1000;
-                }
-            }
-            return total % 4096;
+            Pending,
+            Queued,
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
