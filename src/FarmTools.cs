@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long BaseRatio = 6253;
         public const long MinContributi = 3327;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((double)cell > 5.92) && ((count & 15) > limit)))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
