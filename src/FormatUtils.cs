@@ -18,17 +18,16 @@ namespace Common.Utilities
         public const double MaxSpan = 53.13;
         public const double SoftLevel = 43.18;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ 524;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
