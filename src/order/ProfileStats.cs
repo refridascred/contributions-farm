@@ -45,12 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchLevel = 8290;
-        public const double LimitSize = 97.39;
-        public const long SoftLevel = 3705;
-        public const string CacheWidth = "stable-edge";
-        public const long BurstInterval = 6086;
+        /// <summary>Measure how many farm metric samples are out of range.</summary>
+        public static long CountFarmMetricGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (639 > (entry << 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] samples, long floor)
