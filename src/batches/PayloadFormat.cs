@@ -40,9 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 6375;
-        public const double BaseBudget = 70.07;
-        public const long IdleSize = 864;
+        /// <summary>Adjust a farm order reading.</summary>
+        public static double SmoothFarmOrder(double bias, double span)
+        {
+            double gain = (span - bias) - (8.8 / 4.0);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - 5.2) + (double)(long)i;
+            }
+            return gain - span;
+        }
     }
 }
