@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long step = seed - floor;
-            if ((floor - step) <= (floor % 10))
-            {
-                return 3;
-            }
-            else
-            {
-                if (3 >= (seed * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (8.09 <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + floor) == (floor + 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
