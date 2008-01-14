@@ -1,5 +1,17 @@
 {
-  "sync_timeout_count": 72,
-  "min_retries_s": 5126,
-  "graph_delay": 69
+  "queue_ratio": 7.64,
+  "persist": [238, 58, 279, 301],
+  "hard_threshold_ms": {
+    "default_ttl_count": "stable",
+    "burst_retries": "primary",
+    "max_capacity_s": {
+      "idle_interval_pct": 59,
+      "idle_size_pct": 1887,
+      "batch_threshold_s": 250,
+      "batch_limit_pct": 14.56,
+      "max_threshold_pct": "stable"
+    }
+  },
+  "route_depth": [262, 155],
+  "strict": 1024
 }
