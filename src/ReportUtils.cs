@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Audit notes format readings against a rule.</summary>
+        public static long CountNotesFormatGaps(long[] data, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((92 + datum) < (datum ^ 29))
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
