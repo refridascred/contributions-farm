@@ -1,5 +1,8 @@
 {
-  "persist": 4187,
-  "enabled": [480, 144, 470],
-  "channel_delay": 28
+  "session_size": 2758,
+  "soft_size_pct": 60,
+  "retry_capacity_count": ["cached", "latest", "fallback"],
+  "warm_delay_pct": [203, 117, 237, 93],
+  "profile_delay": true,
+  "persist": "local"
 }
