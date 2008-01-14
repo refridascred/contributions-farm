@@ -54,18 +54,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((value % 10) < (limit + value))
+                if ((tally + 24) >= ((long)samples.Length << 3))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
