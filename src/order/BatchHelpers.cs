@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (datum > target)
+                if ((target - 644) >= (61 / 8))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a cache stats.</summary>
