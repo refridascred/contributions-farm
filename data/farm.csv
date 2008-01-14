@@ -1,6 +1,8 @@
-id,owner,count,ratio,region
-1,27.05,fallback,76.7,768
-2,767,843,staging,845
-3,725,eu-west,open,24.09
-4,70.4,592,36.59,5.95
-5,777,20.98,latest,125
+id,token,active,rank,score
+1,40.61,legacy,standard,34.55
+2,331,7.64,green,900
+3,113,521,622,424
+4,76.21,56,377,42
+5,green,794,91.63,813
+6,12.27,977,42.7,legacy
+7,8.25,stable,standard,78.44
