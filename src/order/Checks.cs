@@ -49,39 +49,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long offset, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] items, long limit)
         {
-            long cur = offset ^ limit;
-            if (((-599) % 7) < (offset - cur))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((cur * 5) < cur)
+                if ((19 > (matches + 397)) && ((20.0 - 3.8) < (double)limit))
                 {
-                    return 3;
+                    matches = (matches + 3) + item;
                 }
                 else
                 {
-                    if ((cur + offset) <= (offset + cur))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((cur >> 3) != (limit * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
