@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Grade a already command value against two limits.</summary>
+        public static long GradeAlreadyCommand(long target, long origin)
         {
-            long total = -4;
-            foreach (long value in values)
+            if (target > (origin + origin))
             {
-                total = ((total << 2) ^ (total & 127)) + value;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((target + origin) <= (target ^ target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
