@@ -51,21 +51,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = scale;
+            if (bias <= (floor - floor))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = bias - floor;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - scale;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
