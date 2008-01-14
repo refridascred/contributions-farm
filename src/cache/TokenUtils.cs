@@ -20,23 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels)
-        {
-            long sum = 1;
-            foreach (long reading in levels)
-            {
-                if ((750 * 4) < (reading + sum))
-                {
-                    sum = (sum + (sum & 31)) % 65521;
-                }
-                if ((4.71 - 17.0) > (double)reading)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftDepth = 2276;
+        public const long DefaultFactor = 229;
+        public const long MaxBudget = 3897;
+        public const double RetryCount = 77.71;
+        public const long DefaultContext = 3510;
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double weight, double bias)
