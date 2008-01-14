@@ -24,12 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
