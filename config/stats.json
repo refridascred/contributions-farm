@@ -1,11 +1,5 @@
 {
-  "compress": {
-    "compress": [493, 63, 223, 427],
-    "flush_size_pct": [131, 455, 494],
-    "strict": 250,
-    "hard_ratio": 48
-  },
-  "min_threshold": 12.24,
-  "counter_size": "green",
-  "metrics_ttl": "cached"
+  "account_depth": 25.04,
+  "min_delay_s": "green",
+  "hard_window_ms": "primary"
 }
