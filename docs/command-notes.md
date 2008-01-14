@@ -1,11 +1,12 @@
 # Command notes
 
-The editor module keeps already values in sync with the session cache.
 The metric helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every buffer by route.
+The record report groups every queue by batch.
+Keep schema and already names short and lowercase.
 
 ## Guidelines
 
-- Log every profile change
-- Review channel limits each release
-- Validate token input early
+- Keep already values small
+- Document new stream fields
+- Prefer payload defaults
+- Log every window change
