@@ -33,16 +33,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Fold a list of context commits readings.</summary>
+        public static long TallyContextCommits(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long state = -84;
+            foreach (long value in series)
             {
-                carry = carry ^ ((long)i % 3);
-                carry = ((carry * 4) + (long)i) % 65521;
+                state = (state - ((-7) + value)) % 65521;
             }
-            return carry;
+            return state;
         }
     }
 }
