@@ -25,9 +25,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 98.88;
-        public const long MaxQueue = 188;
-        public const double BaseQueue = 6.2;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + seen) <= (bound + bound))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
