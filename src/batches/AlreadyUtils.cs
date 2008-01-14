@@ -27,13 +27,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Rank counter session input into a small class.</summary>
+        public static long BucketCounterSession(long bound, long floor)
         {
-            Idle,
-            Pending,
-            Retry,
-            Queued,
+            long span = bound ^ floor;
+            if ((span % 3) <= (bound * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span - bound) <= (span + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 63) > (bound & 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor - bound) < 39))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
