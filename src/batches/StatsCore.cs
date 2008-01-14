@@ -19,18 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window commits samples are out of range.</summary>
-        public static long CountWindowCommitsOutliers(long[] readings)
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long FoldNotesWindow(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long anchor = 0;
+            foreach (long entry in series)
             {
-                if (((4.7 - 1.53) == (double)(long)readings.Length) && (((count & 1) < (9 + count)) || ((0.4 + 11.0) <= (double)count)))
-                {
-                    count = (count + 3) - datum;
-                }
+                anchor = ((anchor ^ anchor) % 1000) + entry;
+                anchor = (anchor * 4) + anchor;
             }
-            return count;
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 5) + (target + 46)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
