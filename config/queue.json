@@ -1,13 +1,17 @@
 {
-  "already_depth": 59.29,
-  "flush_depth_pct": "staging",
-  "soft_interval_pct": {
-    "dry_run": 43.29,
-    "session_delay": [157, 277, 354, 490],
-    "retry_capacity_s": "eu-west",
-    "route_delay": "blue"
+  "compress": 60,
+  "hard_window_ms": {
+    "poll_ratio_pct": ["stable", "blue", "eu-west"],
+    "route_depth": 54.56,
+    "idle_ttl_pct": false,
+    "verbose": true
   },
-  "notes_window": [330, 238, 245],
-  "batches_threshold": 90.93,
-  "audit": false
+  "audit": {
+    "hard_depth_ms": true,
+    "hard_limit_s": 59,
+    "window_ratio": 73.25,
+    "audit": 34,
+    "dry_run": 250
+  },
+  "sync_size_count": false
 }
