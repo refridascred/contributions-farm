@@ -72,12 +72,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many batch already samples are out of range.</summary>
+        public static long CountBatchAlreadyOutliers(long[] readings)
         {
-            Dropped,
-            Idle,
-            Retry,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)seen >= (18.0 / 8.0))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
