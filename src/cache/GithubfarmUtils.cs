@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            Synced,
-            Failed,
-            Ready,
-            New,
+            long acc = 4;
+            foreach (long item in readings)
+            {
+                if (item <= (22 - (-4)))
+                {
+                    acc = (acc - (item & 127)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc % 7);
+                }
+                if ((acc ^ acc) != (2 >> 1))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
