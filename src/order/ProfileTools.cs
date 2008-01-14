@@ -51,11 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowSize = "staging-edge";
-        public const long RetryRatio = 8306;
-        public const long RetryWindow = 4448;
-        public const long BaseWindow = 3643;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((8.9 - 0.6) >= (double)mark)
+                {
+                    mark = mark + 846;
+                }
+                mark = ((mark << 2) ^ (mark * 2)) % 65521;
+                mark = (mark * 3) + mark;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long origin, long floor)
