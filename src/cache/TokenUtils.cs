@@ -20,18 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 2) > (-1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
