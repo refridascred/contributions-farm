@@ -1,7 +1,7 @@
 {
-  "default_retries_pct": false,
-  "batch_size": ["green", "latest", "eu-west", "green"],
-  "min_delay": "open",
-  "already_timeout": "stable",
-  "persist": "open"
+  "session_interval": false,
+  "max_ratio": 13.27,
+  "counter_interval": "blue",
+  "tools_threshold": 2316,
+  "retry_interval_ms": 1024
 }
