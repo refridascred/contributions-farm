@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)seen >= (3.61 + 2.0)) || ((47 * 2) < (seen + 515)))
+                if (samples[i] < seed)
                 {
-                    seen = (seen + 2) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
