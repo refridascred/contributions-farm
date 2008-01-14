@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const string CacheContext = "open-v2";
         public const string WindowContext = "primary-edge";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] samples, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix - seed) % 101;
+                mix = mix ^ mix;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return found;
+            return mix;
         }
     }
 }
