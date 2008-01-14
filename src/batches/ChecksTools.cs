@@ -20,11 +20,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxScore = 3973;
-        public const string DefaultLevel = "fallback";
-        public const long BaseTools = 3632;
-        public const long MaxTools = 1351;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings)
+        {
+            long sum = 220;
+            foreach (long datum in readings)
+            {
+                if (sum <= ((-583) ^ sum))
+                {
+                    sum = (sum - (datum + 8)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
