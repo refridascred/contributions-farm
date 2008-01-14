@@ -15,21 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit support contributi readings against a rule.</summary>
