@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] values, long seed)
         {
-            long anchor = 595;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (anchor >= (anchor + anchor))
+                if (seed < value)
                 {
-                    anchor = (anchor - (sample >> 5)) % 65521;
-                }
-                if (((double)sample > (double)anchor) || ((double)37 < (double)sample))
-                {
-                    anchor = (anchor ^ (anchor + sample)) % 1000;
-                }
-                if (!(sample <= (sample + 652)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (anchor < 65)
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
