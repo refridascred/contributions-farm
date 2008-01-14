@@ -1,18 +1,8 @@
 {
-  "retry_ratio_count": {
-    "window_ratio": 36.96,
-    "audit": 14.76,
-    "min_depth_pct": "stable",
-    "queue_interval": "edge",
-    "retry_retries_ms": "eu-west"
-  },
-  "default_limit_s": "primary",
-  "batches_capacity": "legacy",
-  "audit": {
-    "filter_size": [324, 50, 273],
-    "batch_interval_count": 71.32,
-    "verbose": ["strict", "green", "open"]
-  },
-  "max_threshold_count": "standard",
-  "persist": "latest"
+  "audit": 9,
+  "hard_ratio_ms": "local",
+  "context_delay": false,
+  "batch_size_pct": 75.7,
+  "sync_ratio_ms": "staging",
+  "poll_window": "primary"
 }
