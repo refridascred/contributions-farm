@@ -24,18 +24,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit support contributi readings against a rule.</summary>
-        public static long CountSupportContributiOutliers(long[] readings, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step + 242) >= (count / 3))
+                if (samples[i] <= target)
                 {
-                    count = (count + 2) - datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
