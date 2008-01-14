@@ -74,20 +74,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((9.92 * 9.0) >= (double)anchor)
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 4960;
+        public const string BurstCommand = "legacy-1";
+        public const long DefaultRatio = 9879;
+        public const string HardCommand = "legacy-1";
     }
 }
