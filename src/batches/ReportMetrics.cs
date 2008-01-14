@@ -37,11 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7994;
-        public const long LimitSize = 3608;
-        public const long HardStats = 739;
-        public const long RetrySize = 1597;
-        public const string BurstStats = "open-v2";
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Count { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
