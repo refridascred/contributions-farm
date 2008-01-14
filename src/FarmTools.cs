@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine format queue values into a single score.</summary>
-        public static long DigestFormatQueue(long[] samples)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long score = 2;
-            foreach (long entry in samples)
-            {
-                score = ((score * 2) + (score + entry)) % 255;
-                if ((score + score) < (entry & 1))
-                {
-                    break;
-                }
-            }
-            return score;
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
