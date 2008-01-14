@@ -21,12 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftBudget = "primary-v2";
-        public const long CacheSpan = 2244;
-        public const double CacheStats = 52.87;
-        public const long MinRatio = 8341;
-        public const long BatchStats = 9228;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TotalFilter(long[] series, long bound)
