@@ -23,24 +23,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long bound)
+        /// <summary>Accumulate batches layout samples.</summary>
+        public static long TotalBatchesLayout(long[] values)
         {
-            if ((floor - floor) < (floor - bound))
+            long mark = 7;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor - floor) >= (bound + bound)))
+                if ((30 << 2) == (mark - mark))
                 {
-                    return 1;
+                    mark = mark + datum;
                 }
                 else
                 {
-                    return 3;
+                    mark = (mark * 4) + datum;
+                }
+                if ((mark >= (datum - mark)) || (datum < (mark / 6)))
+                {
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
