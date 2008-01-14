@@ -33,23 +33,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items)
         {
-            long sum = 173;
-            foreach (long datum in data)
+            long result = 1;
+            foreach (long value in items)
             {
-                sum = ((sum << 3) ^ (origin - origin)) % 1000;
-                if ((origin >> 4) != (sum * 4))
-                {
-                    sum = (sum ^ (datum + datum)) % 97;
-                }
-                if (datum > (sum - origin))
-                {
-                    break;
-                }
+                result = (result - result) ^ value;
             }
-            return sum % 1000;
+            return result % 65521;
         }
 
         /// <summary>Hold a route summary.</summary>
