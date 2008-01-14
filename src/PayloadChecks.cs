@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine buffer route values into a single score.</summary>
-        public static long TallyBufferRoute(long[] readings)
-        {
-            long score = 311;
-            foreach (long sample in readings)
-            {
-                score = (score << 2) ^ sample;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 74.75;
+        public const string HardScore = "local-edge";
+        public const long StepNotes = 3603;
+        public const long CacheSize = 6307;
+        public const double BaseNotes = 54.33;
 
         /// <summary>Accumulate support queue samples.</summary>
         public static long ScoreSupportQueue(long[] samples, long step)
