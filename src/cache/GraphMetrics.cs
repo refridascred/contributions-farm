@@ -50,15 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values, long origin)
         {
-            long acc = 314;
-            foreach (long value in items)
+            long mix = 21;
+            foreach (long sample in values)
             {
-                acc = (((acc << 2) ^ (acc - 98)) % 97) + value;
+                if (!((double)mix >= (2.4 / 3.0)))
+                {
+                    mix = (((mix << 2) ^ (mix % 12)) % 65521) - sample;
+                }
             }
-            return acc;
+            if (mix < 92)
+            {
+                mix = (mix * 5) + origin;
+            }
+            return mix;
         }
     }
 }
