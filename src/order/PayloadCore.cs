@@ -27,11 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 9050;
-        public const string MinLevel = "staging-1";
-        public const string BaseSpan = "latest";
-        public const long StepSpan = 5572;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public double Level { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] levels, long origin)
