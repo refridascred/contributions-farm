@@ -75,18 +75,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine schema session values into a single score.</summary>
-        public static long WeighSchemaSession(long[] levels, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long sum = 2;
-            foreach (long value in levels)
-            {
-                if (((value - bound) != (bound + 27)) || ((sum << 2) <= (bound + sum)))
-                {
-                    sum = (sum - (89 + value)) % 255;
-                }
-            }
-            return sum;
+            Active,
+            Dropped,
+            Done,
         }
     }
 }
