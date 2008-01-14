@@ -1,17 +1,13 @@
 {
-  "readonly": {
-    "batch_ratio": 0.13,
-    "batches_size": "legacy",
-    "max_delay_pct": "stable",
-    "base_delay": "fallback",
-    "sync_limit": {
-      "base_size": "green",
-      "schema_size": 30,
-      "route_depth": ["edge", "local", "open", "green"]
+  "hard_ttl": {
+    "idle_retries_ms": 90.16,
+    "idle_timeout_count": 32,
+    "flush_ttl_ms": {
+      "max_size_pct": 60.15,
+      "sync_timeout_pct": "legacy",
+      "retry_limit_count": "staging"
     }
   },
-  "default_size_ms": "standard",
-  "cache_capacity_pct": ["blue", "edge", "green", "staging"],
-  "cache_timeout": "staging",
-  "audit": 80
+  "payload_timeout": [1, 380],
+  "poll_ratio_ms": "legacy"
 }
