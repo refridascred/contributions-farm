@@ -1,11 +1,10 @@
 # entry settings
-profile_ttl: true
-default_retries: strict
-compress:
-  burst_limit_ms: true
-  audit: 6583
-  dry_run: 59
-  burst_capacity_s: strict
-  record_window: 1024
-  retry_size_s: 61.05
-base_retries_count: 937
+hard_retries_ms: standard
+burst_retries_s: fallback
+strict: standard
+batch_threshold: 3228
+max_window_count: blue
+hard_size_ms:
+  cache_ttl: false
+  batch_interval_count: 57.52
+  default_size_count: 4096
