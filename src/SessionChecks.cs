@@ -33,23 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches << 2) >= (matches / 3))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxWidth = 6352;
+        public const long BatchContext = 3782;
+        public const long CacheContext = 2668;
+        public const string WindowContext = "latest";
 
         /// <summary>Project the next stats value.</summary>
         public static double SmoothStats(double ratio, double bias)
