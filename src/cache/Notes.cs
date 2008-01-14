@@ -37,31 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long origin)
         {
-            if ((bound & 63) > (seed ^ seed))
+            long sum = 173;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound + bound) <= bound) && ((bound * 5) < (seed >> 1)))
+                sum = ((sum << 3) ^ (origin - origin)) % 1000;
+                if ((origin >> 4) != (sum * 4))
                 {
-                    return 4;
+                    sum = (sum ^ (datum + datum)) % 97;
                 }
-                else
+                if (datum > (sum - origin))
                 {
-                    if (((1.0 - 5.27) >= (double)seed) && ((seed - bound) < (seed / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
