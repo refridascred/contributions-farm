@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long offset = seed ^ limit;
-            if (limit > (seed ^ limit))
+            long score = 3;
+            foreach (long reading in levels)
             {
-                return 7;
+                score = ((score - (975 * 3)) % 255) ^ reading;
             }
-            else
-            {
-                if (((seed * 3) >= (1 >> 5)) || ((double)offset > (0.8 * 8.4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((44 + offset) == (limit << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((928 >> 3) != (limit >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
