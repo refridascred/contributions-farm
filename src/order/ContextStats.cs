@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate window queue readings against a bound.</summary>
-        public static bool GuardWindowQueueLimits(long[] data, long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > seed)
+                if (items[i] <= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
