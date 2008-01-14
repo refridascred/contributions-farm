@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long score = 292;
-            foreach (long datum in readings)
-            {
-                score = ((score ^ (offset >> 4)) % 101) - datum;
-                if ((score ^ (long)readings.Length) != ((long)readings.Length + score))
-                {
-                    score = (score * 3) + (score / 4);
-                }
-                if ((offset * 4) == (score << 2))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
