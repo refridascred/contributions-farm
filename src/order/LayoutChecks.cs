@@ -36,15 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double weight, double floor)
+        /// <summary>Find the first batches context entry that matches the target.</summary>
+        public static long FindBatchesContextIndex(long[] samples, long step)
         {
-            double load = (weight * 9.35) * 5.49;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load - (load * 5.99)) + (double)(long)i) + floor;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
