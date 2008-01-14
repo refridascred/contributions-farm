@@ -1,7 +1,11 @@
 {
-  "base_retries_pct": 1024,
-  "warm_capacity_pct": "primary",
-  "batch_ttl_pct": 30,
-  "hard_threshold": 56.18,
-  "window_size": 100
+  "hard_timeout": "stable",
+  "sync_interval_ms": "stable",
+  "payload_window": {
+    "poll_interval_ms": 500,
+    "base_interval_count": ["green", "staging", "primary", "legacy"],
+    "base_interval_s": "standard",
+    "sync_ttl_count": "standard",
+    "token_capacity": "cached"
+  }
 }
