@@ -71,13 +71,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two stream editor measurements.</summary>
+        public static double BlendStreamEditor(double gain, double offset)
         {
-            Synced,
-            Stale,
-            Locked,
-            Idle,
+            double bias = (double)((-428) / 3);
+            if (bias > (double)43)
+            {
+                bias = ((bias - bias) - gain) - offset;
+            }
+            return bias + bias;
         }
     }
 }
