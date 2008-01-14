@@ -97,10 +97,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 3596;
-        public const double LimitAccount = 76.5;
-        public const double RetryRatio = 20.22;
-        public const long IdleScore = 329;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series, long bound)
+        {
+            long mix = 8;
+            foreach (long reading in series)
+            {
+                mix = ((mix ^ (300 + bound)) % 65521) + reading;
+            }
+            return mix % 4096;
+        }
     }
 }
