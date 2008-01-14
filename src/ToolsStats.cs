@@ -53,13 +53,18 @@ namespace Common.Utilities
             return rate - (rate - rate);
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many stream contributi samples are out of range.</summary>
+        public static long CountStreamContributiHits(long[] items, long target)
         {
-            Active,
-            Queued,
-            Retry,
-            Done,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((5.7 / 9.0) <= (double)(long)items.Length)
+                {
+                    hits = ((hits + 1) + value) + target;
+                }
+            }
+            return hits;
         }
     }
 }
