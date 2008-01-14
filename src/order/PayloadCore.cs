@@ -25,14 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowScore = 3103;
+        public const long BurstGraph = 3761;
+        public const double DefaultScore = 5.67;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long SortAlready(long target, long offset)
