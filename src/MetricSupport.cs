@@ -30,15 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Find the first notes order entry that matches the target.</summary>
+        public static long SeekNotesOrderIndex(long[] readings, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((readings[i] <= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
