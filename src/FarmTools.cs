@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a contributi format sample.</summary>
-        public static long LocateContributiFormatIndex(long[] series, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                if ((double)origin >= 4.3)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
