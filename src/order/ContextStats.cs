@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double weight, double offset)
         {
-            Retry,
-            Locked,
-            Pending,
+            double rate = 2.0;
+            if (rate < weight)
+            {
+                rate = (rate - weight) - offset;
+            }
+            return rate + weight;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
