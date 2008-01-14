@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.0 - 3.8) <= (double)seen)
                 {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
