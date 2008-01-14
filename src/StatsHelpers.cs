@@ -45,10 +45,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardLevel = 390;
-        public const long SoftBudget = 8404;
-        public const string WindowAlready = "staging-v2";
-        public const long RetryAlready = 9666;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
