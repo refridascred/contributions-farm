@@ -32,19 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] samples, long target)
         {
-            double gain = (double)(65 + 943);
-            if (gain <= gain)
+            long acc = 97;
+            foreach (long cell in samples)
             {
-                gain = (gain - gain) - weight;
+                if (target >= (acc - target))
+                {
+                    acc = ((acc ^ (acc ^ target)) % 4096) ^ cell;
+                }
+                else
+                {
+                    acc = ((acc * 3) + target) % 4096;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + 12.0) + (double)(long)i;
-            }
-            return gain - (gain + offset);
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
