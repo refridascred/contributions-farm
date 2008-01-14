@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] series, long step)
         {
-            double gain2 = gain;
-            if (gain2 < offset)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                gain2 = gain2 - (gain2 - offset);
+                if ((12 - step) >= (datum ^ 9))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - offset;
-            }
-            return gain2 + (double)7;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
