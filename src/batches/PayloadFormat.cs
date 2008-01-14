@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] data, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell < step)
+                if (((double)carry >= (double)9) || ((double)carry >= (3.46 * 0.2)))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry * 2) + (long)i;
                 }
+                else
+                {
+                    carry = (carry - limit) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the support phase values.</summary>
