@@ -10,11 +10,33 @@ namespace Common.Utilities
         public const double SoftSize = 40.9;
         public const long LimitSupport = 539;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "staging-1";
-        public const long MinChannel = 4916;
-        public const long RetryRatio = 7106;
-        public const double HardChannel = 22.48;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values, long bound)
+        {
+            long sum = 826;
+            foreach (long datum in values)
+            {
+                if ((sum & 3) >= (datum >> 4))
+                {
+                    sum = ((sum << 2) ^ (datum + sum)) % 101;
+                    sum = sum + ((-749) ^ datum);
+                }
+                if (!((long)values.Length == (sum >> 4)))
+                {
+                    sum = (sum + (77 >> 2)) % 4096;
+                }
+                sum = (sum - bound) % 101;
+                if (sum >= datum)
+                {
+                    break;
+                }
+            }
+            if (sum > 11)
+            {
+                sum = (sum * 4) + (9 - (long)values.Length);
+            }
+            return sum;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
