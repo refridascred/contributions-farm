@@ -42,15 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue account figure with a bias.</summary>
-        public static double AdjustQueueAccount(double bias, double offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double rate = bias;
-            if (rate <= 7.5)
-            {
-                rate = rate + (rate - rate);
-            }
-            return rate + (6.75 + offset);
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
