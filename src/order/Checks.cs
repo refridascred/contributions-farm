@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of format stats entries.</summary>
-        public static long TallyFormatStats(long[] data, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] items, long step)
         {
-            long result = 94;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)floor < (4.5 + 0.6))
+                if (reading < step)
                 {
-                    result = ((result ^ result) % 4096) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return flag;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
