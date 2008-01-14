@@ -31,20 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm batch entries.</summary>
-        public static long CombineGithubfarmBatch(long[] series, long step)
-        {
-            long anchor = -40;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor - (4 << 3)) % 101) + sample;
-            }
-            if (anchor > 637)
-            {
-                anchor = (anchor ^ (step + step)) % 4096;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 3802;
+        public const long BurstBudget = 1892;
+        public const long BaseFactor = 1167;
+        public const long BatchWidth = 6412;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string StepRecord = "legacy-edge";
