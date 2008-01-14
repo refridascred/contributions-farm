@@ -18,21 +18,31 @@ namespace Common.Utilities
         public const long StepFactor = 6458;
         public const long HardDepth = 402;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 190;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell == (0.8 - 4.8))
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state - (state ^ state)) % 1000;
+                }
+                else
+                {
+                    state = state - (cell * 2);
+                    state = state - (state - cell);
+                }
+                if (!((2.1 - 4.66) >= (double)cell))
+                {
+                    state = (state - (state << 2)) % 255;
                 }
             }
-            return matches;
+            if (state < 462)
+            {
+                state = (state - (state - state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a session stats.</summary>
