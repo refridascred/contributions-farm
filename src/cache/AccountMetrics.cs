@@ -77,18 +77,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long mark = 29;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + entry) > (mark + entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark + (9 + mark)) % 97;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
