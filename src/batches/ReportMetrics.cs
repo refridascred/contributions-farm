@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long target)
         {
-            double drift = (double)(0 - 7);
-            if (drift > 5.3)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - drift) - offset;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return drift - ratio;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
