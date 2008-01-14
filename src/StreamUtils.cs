@@ -72,9 +72,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardLevel = 2881;
-        public const double CacheFarm = 60.09;
-        public const double MaxFactor = 56.37;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((9.92 * 9.0) >= (double)anchor)
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
