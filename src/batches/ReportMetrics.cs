@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultCount = 76.66;
-        public const double StepBatch = 93.93;
-        public const long BatchSpan = 2837;
-        public const string MaxBatch = "primary-edge";
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double bias)
+        {
+            double gain2 = gain + (double)562;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = ((gain2 - 6.5) + (double)(long)i) - bias;
+            }
+            return gain2 - (gain2 / 2.0);
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 7994;
