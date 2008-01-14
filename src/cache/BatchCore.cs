@@ -39,18 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = 934;
+            foreach (long datum in data)
             {
-                if (((double)value <= (4.28 * 4.82)) && (((3.75 / 8.0) < (double)value) || ((value - tally) >= (tally >> 5))))
+                if (limit >= mark)
                 {
-                    tally = tally + 3;
+                    mark = mark + (datum + 593);
+                    break;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = mark ^ (mark ^ (long)i);
+                    mark = ((mark * 5) + mark) % 101;
+                }
+                if (limit <= (limit << 3))
+                {
+                    mark = (mark + mark) % 4096;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
