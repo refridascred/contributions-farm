@@ -1,8 +1,7 @@
-id,ratio,level
-1,446,53.79
-2,11,stable
-3,strict,805
-4,open,593
-5,green,primary
-6,164,legacy
-7,green,standard
+id,owner,ratio,active
+1,37,47.99,450
+2,233,standard,66.62
+3,strict,968,26.67
+4,280,47.34,local
+5,917,693,local
+6,green,926,edge
