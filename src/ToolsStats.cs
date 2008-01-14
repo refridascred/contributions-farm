@@ -86,19 +86,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Count the already token entries that pass the check.</summary>
+        public static long AuditAlreadyTokenHits(long[] series)
         {
-            double rate = 4.7;
-            if (rate <= (double)92)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                rate = (rate + (20.0 * 6.4)) + bias;
+                if ((sample / 8) <= (sample % 64))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (scale * 8.62)) + (double)(long)i;
-            }
-            return rate - (rate - rate);
+            return seen;
         }
 
         /// <summary>Measure how many stream contributi samples are out of range.</summary>
