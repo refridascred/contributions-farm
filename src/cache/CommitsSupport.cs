@@ -31,32 +31,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            long bound = target + seed;
-            if (!((bound * 5) >= (bound & 15)))
+            double mean = ratio - (double)304;
+            if (mean <= (5.28 / 5.0))
             {
-                return 2;
+                mean = mean + (double)379;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((seed / 5) >= (target + 928)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound) < (bound + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = mean - (double)(long)i;
             }
+            return mean - (6.8 + floor);
         }
 
         /// <summary>Match up cache samples.</summary>
