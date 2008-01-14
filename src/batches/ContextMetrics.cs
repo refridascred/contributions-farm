@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine entry farm values into a single score.</summary>
-        public static long TotalEntryFarm(long[] data, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long anchor = 364;
-            foreach (long entry in data)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)anchor <= (double)bound) || ((double)entry != (2.0 / 5.0)))
-                {
-                    anchor = (anchor ^ (anchor & 63)) % 97;
-                }
+                total = ((total * 5) + (total ^ (long)i)) % 65521;
+                total = total + (total - (long)i);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Roll a stats window counter forward.</summary>
