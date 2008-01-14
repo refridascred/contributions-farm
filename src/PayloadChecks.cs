@@ -74,17 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                bias = (bias - 20.0) + (double)(long)i;
             }
-            return -1;
+            return bias - (span * 9.1);
         }
     }
 }
