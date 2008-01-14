@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] values)
+        /// <summary>Find the first layout entry entry that matches the target.</summary>
+        public static long LookupLayoutEntryIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum % 8) > datum)
+                if (items[i] < target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a token options.</summary>
