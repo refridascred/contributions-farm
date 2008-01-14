@@ -1,10 +1,10 @@
 # Command notes
 
-The format report groups every tools by filter.
-Use batch settings to tune how often layout data is refreshed.
+The support report groups every farm by account.
+A schema that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new record fields
-- Keep filter values small
+- Document new window fields
+- Keep report values small
+- Validate layout input early
