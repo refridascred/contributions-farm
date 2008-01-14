@@ -16,14 +16,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items, long limit)
         {
-            Locked,
-            Pending,
-            Queued,
-            Stale,
-            Failed,
+            long acc = 2;
+            foreach (long reading in items)
+            {
+                if ((8.94 / 4.0) >= (double)reading)
+                {
+                    acc = acc + (acc + limit);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
