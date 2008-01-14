@@ -36,19 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] data, long seed)
         {
-            long anchor = 539;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                anchor = anchor - value;
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor + (anchor % 60)) % 65521;
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
