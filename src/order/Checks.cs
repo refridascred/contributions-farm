@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                long span = (seed ^ seed) * 5;
-                total = (total + span) % 1000;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 6460;
+        public const string MinMetrics = "cached-v2";
+        public const long BurstFactor = 2160;
+        public const long MinTimeout = 2445;
+        public const long CacheTimeout = 9998;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
