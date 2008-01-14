@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Count the tools token entries that pass the check.</summary>
+        public static long AuditToolsTokenGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry + 459) <= (hits - hits))
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
