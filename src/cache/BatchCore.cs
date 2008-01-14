@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] data, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = (ratio / 8.0) / 5.0;
+            return (weight + (ratio + weight)) + span;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
