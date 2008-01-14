@@ -41,16 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total << 3) ^ total) % 101;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
