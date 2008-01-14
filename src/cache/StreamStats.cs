@@ -31,31 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a record support value against two limits.</summary>
-        public static long GradeRecordSupport(long bound, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] items, long bound)
         {
-            if ((bound <= (bound + bound)) && ((limit / 5) < (limit + bound)))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) >= (-744))
+                if ((8 >> 2) > (matches % 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((564 >> 2) < (limit + limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = ((matches + 2) + cell) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
