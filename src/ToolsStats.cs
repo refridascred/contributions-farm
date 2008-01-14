@@ -104,18 +104,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream contributi samples are out of range.</summary>
-        public static long CountStreamContributiHits(long[] items, long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (((step & 3) == (step + step)) && ((step >> 5) == (3 / 8)))
             {
-                if ((5.7 / 9.0) <= (double)(long)items.Length)
+                return 0;
+            }
+            else
+            {
+                if (70 >= seed)
                 {
-                    hits = ((hits + 1) + value) + target;
+                    return 5;
+                }
+                else
+                {
+                    if (((-5) / 4) > step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
