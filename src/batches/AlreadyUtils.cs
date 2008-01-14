@@ -30,14 +30,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Pending,
-            Queued,
-            Locked,
-            Retry,
+            Done,
             Idle,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
