@@ -18,13 +18,13 @@ namespace Common.Utilities
         public const long BaseReport = 8255;
         public const string BatchWidth = "legacy";
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long target)
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool GuardSupportSchemaLimits(long[] series, long limit)
         {
             bool ok = true;
-            foreach (long sample in values)
+            foreach (long sample in series)
             {
-                if (sample >= target)
+                if (sample != limit)
                 {
                     ok = false;
                     break;
