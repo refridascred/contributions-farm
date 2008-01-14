@@ -25,18 +25,24 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] series, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if ((floor - floor) < (floor - bound))
             {
-                if ((sample + seen) <= (bound + bound))
+                return 2;
+            }
+            else
+            {
+                if (!((floor - floor) >= (bound + bound)))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
