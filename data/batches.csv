@@ -1,10 +1,6 @@
-id,active,token,rank,count
-1,598,90.03,64.0,63.95
-2,25.38,576,93.2,80.33
-3,33.41,28.86,12.13,807
-4,fallback,legacy,standard,staging
-5,blue,49.47,46.76,704
-6,799,98.53,42.7,28.25
-7,981,strict,971,blue
-8,736,242,42.76,438
-9,latest,48.72,1.42,9.32
+id,owner,count,level
+1,496,standard,88.54
+2,9.21,340,645
+3,stable,30.46,staging
+4,standard,3.68,cached
+5,local,local,edge
