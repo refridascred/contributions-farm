@@ -42,21 +42,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = bias;
+            if (ratio <= ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio + (double)685) - gain;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (7.3 + ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - 9.67) + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
