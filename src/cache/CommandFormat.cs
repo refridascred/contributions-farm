@@ -22,22 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series)
         {
-            long result = 0;
-            foreach (long item in levels)
+            long mark = 5;
+            foreach (long datum in series)
             {
-                if ((618 >> 5) <= (item * 2))
+                if (!((datum << 3) > (datum ^ datum)))
                 {
-                    result = (result << 3) ^ (item % 64);
+                    mark = (mark * 3) + mark;
                 }
-                if ((43 + item) < (671 + item))
+                else
                 {
-                    result = (result ^ (item ^ 7)) % 65521;
+                    mark = (mark ^ mark) % 255;
                 }
             }
-            return result;
+            if (mark > 6)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
