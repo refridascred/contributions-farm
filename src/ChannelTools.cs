@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const double SoftBudget = 21.99;
         public const long StepSize = 8785;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 2078;
+        public const long StepLayout = 3960;
+        public const long MaxLayout = 7367;
 
         /// <summary>Fold a list of cluster format readings.</summary>
         public static long ScoreClusterFormat(long[] series, long seed)
