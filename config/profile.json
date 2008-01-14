@@ -1,5 +1,8 @@
 {
-  "farm_timeout": "open",
-  "format_interval": "cached",
-  "cache_window_count": 5376
+  "metrics_ttl": 9368,
+  "sync_threshold_pct": "strict",
+  "sync_limit_count": 4573,
+  "payload_capacity": 100,
+  "warm_size_ms": "staging",
+  "verbose": ["eu-west", "stable", "standard", "primary"]
 }
