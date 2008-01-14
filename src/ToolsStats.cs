@@ -60,24 +60,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long offset2)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if ((offset2 / 6) > (offset & 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (171 <= (offset + offset2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Retry,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit tools channel readings against a rule.</summary>
