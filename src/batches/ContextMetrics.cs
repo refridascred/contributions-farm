@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double bias, double offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long step)
         {
-            double load = offset + (7.0 - offset);
-            return (load + offset) + bias;
+            long slot = bound ^ step;
+            if ((12.0 - 9.0) <= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-396) / 6) != (slot / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((slot / 4) <= (slot + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4 * 3) < (slot / 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next graph tools value from a seed.</summary>
