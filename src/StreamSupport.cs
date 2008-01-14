@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Fold a list of format graph readings.</summary>
+        public static long CombineFormatGraph(long[] samples, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long sum = 867;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((double)reading > (19.0 / 6.0))
+                {
+                    sum = sum - (sum + reading);
+                    sum = (sum ^ 102) % 1000;
+                    continue;
+                }
+                if (((-6) ^ reading) <= ((-5) + (long)samples.Length))
+                {
+                    sum = ((sum * 2) + (target / 3)) % 97;
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
