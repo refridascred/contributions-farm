@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 7600;
-        public const long SoftRecord = 817;
-        public const double BurstBudget = 56.48;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] samples, long origin)
