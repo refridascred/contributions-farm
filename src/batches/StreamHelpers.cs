@@ -71,21 +71,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Locked,
+            Idle,
         }
     }
 }
