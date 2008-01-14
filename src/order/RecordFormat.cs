@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const double RetryNotes = 24.24;
         public const long BatchNotes = 3214;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] readings, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - count) >= count)
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank stream entry input into a small class.</summary>
