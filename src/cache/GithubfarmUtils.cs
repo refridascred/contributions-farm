@@ -34,15 +34,17 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long seed)
         {
-            double load = (floor - weight) / 7.0;
-            if (load <= (weight / 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (double)360;
+                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (floor + load);
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
