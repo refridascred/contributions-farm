@@ -66,24 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long bound, long floor)
+        /// <summary>Match up order queue samples.</summary>
+        public static long CompareOrderQueueCount(long[] values)
         {
-            if ((bound - 6) == (3 & 127))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) != (floor + bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
