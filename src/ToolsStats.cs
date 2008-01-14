@@ -25,15 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile checks value.</summary>
-        public static double ProjectProfileChecks(double scale, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] values, long limit)
         {
-            double weight = 3.0 / 6.0;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                weight = (((weight - (2.0 + 9.2)) + (double)(long)i) - scale) + offset;
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - (double)4;
+            return valid;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
