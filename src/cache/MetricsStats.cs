@@ -61,22 +61,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mix = 18;
-            foreach (long item in values)
-            {
-                if (((item + 32) <= item) || (mix < (mix & 31)))
-                {
-                    mix = (mix + (mix + mix)) % 65521;
-                }
-            }
-            if (mix < 74)
-            {
-                mix = ((mix << 3) ^ (mix - target)) % 101;
-            }
-            return mix % 4096;
+            Idle,
+            Active,
+            Failed,
         }
     }
 }
