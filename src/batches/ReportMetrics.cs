@@ -29,13 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] values, long floor)
         {
-            Failed,
-            Closed,
-            Locked,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
