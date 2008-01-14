@@ -1,13 +1,8 @@
 {
-  "max_capacity_ms": {
-    "verbose": false,
-    "poll_retries": false,
-    "warm_retries_ms": 22,
-    "sync_timeout_pct": 68.44,
-    "route_threshold": [345, 468, 121],
-    "batch_size_s": false
-  },
-  "max_retries_count": true,
-  "channel_retries": "fallback",
-  "flush_ttl_s": [247, 290]
+  "layout_retries": 500,
+  "compress": false,
+  "sync_timeout_ms": "fallback",
+  "burst_timeout_s": [455, 200, 276, 225],
+  "buffer_window": "legacy",
+  "batch_retries": 84
 }
