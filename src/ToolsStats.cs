@@ -18,17 +18,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a farm tools sample.</summary>
-        public static long LookupFarmToolsIndex(long[] items, long seed)
+        /// <summary>Project the next profile checks value.</summary>
+        public static double ProjectProfileChecks(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = 3.0 / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (((weight - (2.0 + 9.2)) + (double)(long)i) - scale) + offset;
             }
-            return -1;
+            return weight - (double)4;
         }
 
         /// <summary>Hold a schema entry.</summary>
