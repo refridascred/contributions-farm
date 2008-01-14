@@ -66,14 +66,10 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Paused,
-            Pending,
-            Done,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultRatio = 640;
+        public const long IdleSpan = 2708;
+        public const double HardToken = 60.12;
+        public const long LimitSpan = 610;
     }
 }
