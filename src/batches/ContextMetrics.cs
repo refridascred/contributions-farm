@@ -34,39 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank farm profile input into a small class.</summary>
-        public static long SortFarmProfile(long seed, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            long edge = seed - bound;
-            if (!((seed - bound) <= 37))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ bound) >= edge)
+                if (!((reading + reading) > (7 - tally)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound >= (18.0 / 2.0)) && ((bound << 2) >= (edge ^ 22)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(bound < (seed >> 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
