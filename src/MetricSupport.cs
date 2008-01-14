@@ -33,19 +33,9 @@ namespace Common.Utilities
             return gain + (2.06 / 9.0);
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double scale, double span)
-        {
-            double gain = scale / 8.0;
-            if (gain < 7.18)
-            {
-                gain = (gain + (gain - gain)) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (double)9) + (double)(long)i;
-            }
-            return gain + (double)3;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitInterval = 73.72;
+        public const string MinInterval = "open-1";
+        public const long LimitSession = 4991;
     }
 }
