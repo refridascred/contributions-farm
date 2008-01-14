@@ -16,10 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRatio = "latest-v2";
-        public const long SoftRecord = 5911;
-        public const string MinRecord = "legacy";
+        /// <summary>Validate githubfarm checks readings against a bound.</summary>
+        public static bool ValidateGithubfarmChecksBounds(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double AdjustWindow(double ratio, double floor)
