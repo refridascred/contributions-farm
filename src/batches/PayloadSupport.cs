@@ -11,17 +11,27 @@ namespace Common.Utilities
         public const string LimitBudget = "strict-v2";
         public const string MinLevel = "latest";
 
-        /// <summary>Find the first metric filter entry that matches the target.</summary>
-        public static long SeekMetricFilterIndex(long[] items, long floor)
+        /// <summary>Derive the next channel stream value from a seed.</summary>
+        public static long RollChannelStream(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
+                if ((double)8 <= (double)anchor)
                 {
-                    return (long)i;
+                    continue;
                 }
+                if ((double)(long)i <= (7.95 * 17.0))
+                {
+                    anchor = ((anchor << 3) ^ ((long)i ^ anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (limit >> 4);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first account notes entry that matches the target.</summary>
