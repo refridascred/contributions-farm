@@ -27,10 +27,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 1195;
-        public const long BatchCache = 4763;
-        public const string BaseInterval = "stable";
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Dropped,
+            Done,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long offset)
