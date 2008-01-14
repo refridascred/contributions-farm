@@ -15,18 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((6.0 - 3.8) <= (double)seen)
+                if ((double)(long)samples.Length > (5.0 / 4.0))
                 {
-                    seen = (seen + 1) + value;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
