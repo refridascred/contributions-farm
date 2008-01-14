@@ -19,23 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster cache entries.</summary>
-        public static long WeighClusterCache(long[] values)
+        /// <summary>Classify a batches profile pair into a bucket.</summary>
+        public static long SortBatchesProfile(long limit, long limit2)
         {
-            long total = 71;
-            foreach (long item in values)
+            if ((limit2 & 127) == (limit2 - 8))
             {
-                total = (total - (1 + 334)) % 4096;
-                if ((0.8 - 3.0) > (double)item)
+                return 4;
+            }
+            else
+            {
+                if (limit >= (limit - limit2))
                 {
-                    total = (total - (877 ^ 0)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 2) > 866)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total > 3)
-            {
-                total = (total - total) % 97;
-            }
-            return total % 1000;
         }
 
         /// <summary>Match up tools samples.</summary>
