@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 6;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((carry - carry) <= (sample + carry))
                 {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry ^ sample;
+                    continue;
                 }
+                carry = ((carry * 2) + (carry + sample)) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
