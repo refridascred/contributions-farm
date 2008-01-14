@@ -24,22 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] data, long step)
+        /// <summary>Find the first account notes entry that matches the target.</summary>
+        public static long SeekAccountNotesIndex(long[] items, long offset)
         {
-            long sum = 960;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (2 <= (sum ^ datum))
+                if (items[i] == offset)
                 {
-                    sum = ((sum - (sum + sum)) % 1000) + step;
-                }
-                if ((sum * 4) < (datum & 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
