@@ -1,11 +1,14 @@
 # entry settings
-filter_retries: true
-batch_window:
-  verbose: green
-  poll_ttl: 9126
-  entry_interval: strict
-  persist: 13.36
-  readonly: 41.35
-cache_ttl_ms: 13
-checks_window: 76
-max_ratio_ms: 203
+graph_size: 6.72
+idle_delay: primary
+min_window_count: false
+dry_run:
+  - 293
+  - 269
+  - 443
+  - 176
+strict:
+  channel_delay: 500
+  hard_threshold_pct: false
+  stats_capacity: stable
+  strict: 64.2
