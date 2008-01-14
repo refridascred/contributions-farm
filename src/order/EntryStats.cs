@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsOutliers(long[] data)
+        /// <summary>Combine stats farm values into a single score.</summary>
+        public static long CombineStatsFarm(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 0;
+            foreach (long value in data)
             {
-                if (((tally * 3) < (tally + tally)) || (datum < (-745)))
-                {
-                    tally = tally + 2;
-                }
+                score = (((score << 3) ^ 886) + value) + seed;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
