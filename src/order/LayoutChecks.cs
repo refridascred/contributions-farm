@@ -26,17 +26,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = step + bound;
+            if (((double)gap < (double)15) || ((bound ^ step) < step))
             {
-                if (samples[i] >= floor)
+                return 4;
+            }
+            else
+            {
+                if (!((gap >> 1) == (step - bound)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - gap) >= 710)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((gap - bound) == (gap % 12))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first batches context entry that matches the target.</summary>
