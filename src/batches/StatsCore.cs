@@ -45,18 +45,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 4) != (matches + 91))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
