@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "legacy-edge";
-        public const long MinEditor = 3718;
-        public const long WindowEditor = 3997;
+        /// <summary>Audit token stats readings against a rule.</summary>
+        public static long TallyTokenStatsHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((7.0 - 6.8) < (double)item)
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every counter checks entry stays within the limit.</summary>
         public static bool ValidateCounterChecksLimits(long[] data, long offset)
