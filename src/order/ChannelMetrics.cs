@@ -20,20 +20,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next stats notes value from a seed.</summary>
-        public static long StepStatsNotes(long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long offset, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long prev = offset + bound;
+            if (((prev - bound) > (bound + offset)) && (349 <= offset))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (sum ^ ((-4) - sum)) + (long)i2;
-                }
-                sum = (sum * 5) + (8 - origin);
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((bound >> 1) < (221 + prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)prev < (5.5 + 10.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two profile measurements.</summary>
