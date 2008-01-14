@@ -33,18 +33,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long total = -249;
-            foreach (long reading in readings)
-            {
-                if (((reading >> 3) < (reading - reading)) && ((reading ^ total) == ((-61) + reading)))
-                {
-                    total = (total - (total - total)) % 4096;
-                }
-            }
-            return total % 65521;
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a graph account reading by value.</summary>
