@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (seen >= ((long)values.Length << 1))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowDepth = 62.31;
+        public const long RetryRatio = 1166;
+        public const double RetryDepth = 63.26;
+        public const long BatchInterval = 5784;
+        public const string DefaultChannel = "primary";
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
