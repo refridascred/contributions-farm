@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 6890;
+        public const double CacheCounter = 81.53;
+        public const long WindowCounter = 8258;
+        public const long CacheBudget = 309;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 9308;
