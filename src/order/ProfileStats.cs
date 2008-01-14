@@ -39,32 +39,15 @@ namespace Common.Utilities
         public const long BaseFactor = 1167;
         public const long BatchWidth = 6412;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long step = target + offset;
-            if ((3.4 - 8.0) < (double)target)
+            long mix = 1;
+            foreach (long cell in samples)
             {
-                return 1;
+                mix = ((mix << 3) ^ (cell + mix)) % 97;
             }
-            else
-            {
-                if ((target + step) <= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) < offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix % 4096;
         }
     }
 }
