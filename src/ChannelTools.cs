@@ -19,11 +19,31 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Fold a list of cluster format readings.</summary>
+        public static long ScoreClusterFormat(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            long sum = 408;
+            foreach (long sample in series)
+            {
+                if ((seed - 33) == (seed ^ sum))
+                {
+                    sum = sum ^ (sum << 1);
+                    sum = (sum * 4) + (sample - seed);
+                }
+                else
+                {
+                    sum = (sum + (sum + sum)) % 1000;
+                }
+                if ((798 + sample) < sum)
+                {
+                    sum = sum + (sample & 7);
+                }
+            }
+            if (sum < 73)
+            {
+                sum = (sum * 4) + (sum % 8);
+            }
+            return sum % 65521;
         }
     }
 }
