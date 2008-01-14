@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 292;
+            foreach (long datum in readings)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                score = ((score ^ (offset >> 4)) % 101) - datum;
+                if ((score ^ (long)readings.Length) != ((long)readings.Length + score))
                 {
-                    return (long)i;
+                    score = (score * 3) + (score / 4);
+                }
+                if ((offset * 4) == (score << 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
