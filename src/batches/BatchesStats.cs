@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] series, long floor)
         {
-            Locked,
-            Synced,
-            Failed,
+            long total = 90;
+            foreach (long cell in series)
+            {
+                total = (total - (8 + floor)) + cell;
+            }
+            return total;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
