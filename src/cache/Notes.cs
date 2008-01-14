@@ -35,25 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long floor)
-        {
-            if ((double)floor != (6.26 + 4.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit / 4) == (88 >> 1)) && (((-28) + (-5)) != (floor << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "legacy-edge";
+        public const long BaseSpan = 4755;
+        public const string BatchTimeout = "local-v2";
+        public const double RetryChecks = 5.24;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BurstEntry = 88.82;
