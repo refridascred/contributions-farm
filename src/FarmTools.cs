@@ -16,21 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 23;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total + (step + reading);
+                total = ((total * 5) + (reading << 2)) % 101;
             }
-            return seen;
+            if (total < 311)
+            {
+                total = (total + (total - (-991))) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
