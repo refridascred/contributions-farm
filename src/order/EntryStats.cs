@@ -53,23 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] values, long bound)
-        {
-            long mix = 231;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((((mix << 2) ^ bound) % 97) ^ (long)i) + sample;
-                }
-                mix = (mix + (bound << 3)) % 65521;
-            }
-            if (mix > 136)
-            {
-                mix = (mix * 2) + bound;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultSpan = 11.24;
+        public const long IdleDepth = 243;
+        public const double MinDepth = 58.41;
+        public const long CacheWidth = 3096;
+        public const long HardContributi = 7812;
     }
 }
