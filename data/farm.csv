@@ -1,9 +1,7 @@
-id,token,weight,state,rank
-1,389,176,771,51.9
-2,509,49.46,staging,legacy
-3,29.59,staging,green,open
-4,789,fallback,389,681
-5,781,cached,252,edge
-6,2.04,edge,5.19,eu-west
-7,open,54.13,69.3,93.44
-8,cached,82.14,17.05,550
+id,owner,count,token
+1,fallback,333,66.59
+2,626,840,56.33
+3,standard,659,15.6
+4,853,598,stable
+5,484,stable,47.5
+6,strict,staging,standard
