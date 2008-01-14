@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Iterate the contributi graph series from a seed.</summary>
+        public static long SeriesContributiGraph(long target)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long mark = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((mark > (long)i) || (((long)i & 255) <= ((long)i + mark))))
+                {
+                    mark = (mark ^ mark) % 4096;
+                }
+                if (!(((long)i - 90) < (long)i))
+                {
+                    mark = mark ^ (target / 8);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
