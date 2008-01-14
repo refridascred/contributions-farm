@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] levels, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items)
         {
-            long carry = 95;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                carry = carry + (cell & 255);
+                if ((matches << 2) >= 49)
+                {
+                    matches = (matches + 3) - entry;
+                }
             }
-            if (carry > 779)
-            {
-                carry = (carry + (step - step)) % 101;
-            }
-            return carry % 65521;
+            return matches;
         }
     }
 }
