@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double ratio, double bias)
         {
-            Locked,
-            Ready,
-            Retry,
-            Draft,
+            double rate = ratio;
+            if (rate > rate)
+            {
+                rate = (rate + (double)(-92)) + bias;
+            }
+            return rate - (double)42;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
