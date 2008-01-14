@@ -55,22 +55,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit tools channel readings against a rule.</summary>
-        public static long MeasureToolsChannelMatches(long[] items, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((seed & 127) < (seed + cell))
+                if (entry >= seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
