@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstDepth = 7600;
+        public const long SoftRecord = 817;
+        public const double BurstBudget = 56.48;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long seed)
