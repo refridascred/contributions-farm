@@ -22,26 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels, long bound)
         {
-            long mark = 5;
-            foreach (long datum in series)
+            long carry = 7;
+            foreach (long sample in levels)
             {
-                if (!((datum << 3) > (datum ^ datum)))
-                {
-                    mark = (mark * 3) + mark;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 255;
-                }
+                carry = ((carry - (bound + carry)) % 65521) - sample;
             }
-            if (mark > 6)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
