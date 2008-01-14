@@ -59,21 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long TallyContributiFormatGaps(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((773 + seed) > (0 + datum)) && (seen >= (707 - datum))) || !(seen > (seen ^ seed)))
                 {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
