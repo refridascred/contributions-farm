@@ -1,8 +1,5 @@
 {
-  "batches_size": 32.35,
-  "record_timeout": 91.4,
-  "strict": "latest",
-  "dry_run": "latest",
-  "window_size": 100,
-  "poll_window": "cached"
+  "default_capacity_count": [475, 314, 74, 416],
+  "record_interval": 56,
+  "flush_timeout_pct": "staging"
 }
