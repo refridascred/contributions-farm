@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the cluster token entries that pass the check.</summary>
-        public static long CountClusterTokenGaps(long[] levels)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry - entry) > (matches + matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
