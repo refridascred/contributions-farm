@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long origin, long seed)
-        {
-            long delta = origin + seed;
-            if ((-1) > seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin <= delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin < (3.0 * 2.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftBudget = "stable";
+        public const double MinCluster = 7.49;
+        public const long MaxCluster = 2163;
+        public const long IdleScore = 7244;
+        public const double BurstSpan = 38.05;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] data)
