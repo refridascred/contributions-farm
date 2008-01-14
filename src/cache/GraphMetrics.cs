@@ -44,11 +44,31 @@ namespace Common.Utilities
         public const long RetryBuffer = 4980;
         public const long StepBuffer = 6499;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseLevel = 21.56;
-        public const long MinScore = 1433;
-        public const long BaseRatio = 4997;
-        public const long IdleSchema = 9299;
-        public const long SoftSchema = 1024;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long floor, long target)
+        {
+            if ((target & 3) > target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target >> 2) >= (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-1) / 9) != (target - floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
