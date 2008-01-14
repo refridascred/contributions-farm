@@ -51,38 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long origin)
+        /// <summary>Digest a series of editor route entries.</summary>
+        public static long TotalEditorRoute(long[] items, long origin)
         {
-            if ((step <= (origin ^ step)) || (224 >= step))
+            long acc = 9;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.0 * 2.7) != (double)origin)
+                if ((521 + sample) <= ((-24) >> 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 3) > (origin << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)99 == (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc ^ (origin & 7)) % 65521;
                 }
             }
+            return acc;
         }
     }
 }
