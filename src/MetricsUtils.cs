@@ -57,18 +57,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] values, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = 127;
+            foreach (long sample in data)
             {
-                if (84 >= (datum << 2))
+                if ((score < 397) || ((score / 3) < 1))
                 {
-                    tally = (tally + 3) + floor;
+                    score = ((score << 2) ^ (score - 847)) % 65521;
+                }
+                if ((sample < score) && (sample >= (score + sample)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 44)
+            {
+                score = (score - (score ^ score)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the buffer state values.</summary>
