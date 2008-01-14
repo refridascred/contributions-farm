@@ -28,19 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] readings, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = (double)1 + (rate + offset);
+            return mean + mean;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
