@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const string BatchPayload = "staging";
         public const long MinPayload = 2393;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] levels, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] levels, long bound)
         {
-            long total = 223;
+            long count = 0;
             foreach (long item in levels)
             {
-                if (((item & 3) > (target + target)) || ((item % 12) != (target + (-8))))
+                if (((3 - count) >= (item >> 1)) && (((152 * 4) < count) && ((bound & 15) == (count + bound))))
                 {
-                    total = ((total * 3) + (item + total)) % 101;
+                    count = count + 1;
                 }
-                total = (total ^ (item >> 1)) % 255;
             }
-            if (total > 916)
-            {
-                total = ((total << 2) ^ (9 & 255)) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Fold a list of report queue readings.</summary>
