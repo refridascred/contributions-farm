@@ -1,11 +1,6 @@
 {
-  "sync_depth_ms": {
-    "context_ratio": 4347,
-    "retry_retries_ms": "cached",
-    "max_limit": false
-  },
-  "default_timeout_count": "standard",
-  "soft_limit": 80.13,
-  "verbose": ["latest", "fallback", "green", "eu-west"],
-  "audit": 66
+  "warm_depth_count": false,
+  "idle_depth_count": 67.59,
+  "cache_retries": 7566,
+  "farm_size": "stable"
 }
