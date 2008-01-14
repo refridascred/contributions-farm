@@ -14,14 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            Done,
-            Locked,
-            Retry,
-            Ready,
-            Closed,
+            double scale = ratio;
+            if (scale >= scale)
+            {
+                scale = scale - ratio;
+            }
+            return scale - span;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
