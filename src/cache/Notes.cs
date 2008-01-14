@@ -47,9 +47,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 88.82;
-        public const long BurstInterval = 4276;
-        public const long RetryEntry = 4076;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Retry,
+            Ready,
+            Idle,
+            Synced,
+        }
     }
 }
