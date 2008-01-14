@@ -1,9 +1,6 @@
-id,state,label,level
-1,934,latest,staging
-2,344,stable,cached
-3,933,primary,4.08
-4,580,75.6,157
-5,3.09,78.76,standard
-6,local,25.54,872
-7,57.56,91.0,39.02
-8,373,eu-west,197
+id,owner,region
+1,351,42.04
+2,517,25.24
+3,914,eu-west
+4,618,eu-west
+5,742,147
