@@ -31,28 +31,21 @@ namespace Common.Utilities
             return weight - (5.6 + span);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long acc = 31;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long cur = 9;
-                if ((acc / 9) >= (value << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    cur = ((cur << 3) ^ ((long)levels.Length >> 3)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (cur - value)) % 65521;
-                }
-                acc = acc ^ (acc - value);
-                if (!(value > (value - acc)))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
