@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "local-1";
-        public const long BaseInterval = 7996;
-        public const long RetryCommand = 3409;
-        public const long BatchCommand = 8648;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long MatchChecksCount(long[] items)
