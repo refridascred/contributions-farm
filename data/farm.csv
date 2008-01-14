@@ -1,10 +1,6 @@
-id,state,rank,count,active
-1,1.21,41.71,523,33.33
-2,637,202,636,966
-3,green,green,21.21,713
-4,34.04,92.02,24.35,84.78
-5,129,235,167,73.88
-6,56.7,89.14,fallback,47.79
-7,801,3.86,blue,legacy
-8,eu-west,latest,local,704
-9,primary,54.18,616,14
+id,owner,weight
+1,eu-west,540
+2,470,staging
+3,latest,24.17
+4,39.82,legacy
+5,25.14,10.6
