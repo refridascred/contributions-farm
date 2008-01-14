@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const long MaxCounter = 5729;
         public const long HardCounter = 7729;
 
-        /// <summary>Accumulate metrics layout samples.</summary>
-        public static long DigestMetricsLayout(long[] levels)
-        {
-            long result = 84;
-            foreach (long item in levels)
-            {
-                if ((121 & 63) == (result ^ 351))
-                {
-                    result = (result - (item % 97)) % 101;
-                }
-            }
-            if (result < 4)
-            {
-                result = result ^ (result & 63);
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardTimeout = 8163;
+        public const long HardGraph = 6333;
+        public const string IdleGraph = "latest";
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ProjectQueue(double rate, double offset)
