@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double mean = (double)(4 - 5);
-            return ((mean - (mean * 16.0)) + weight) + floor;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the cluster token entries that pass the check.</summary>
