@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine stats farm values into a single score.</summary>
-        public static long CombineStatsFarm(long[] data, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] data, long seed)
         {
-            long score = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                score = (((score << 3) ^ 886) + value) + seed;
+                if (((double)seed < (2.01 - 5.9)) || ((seed - 199) == (item - seed)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
