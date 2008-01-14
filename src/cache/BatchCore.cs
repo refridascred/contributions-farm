@@ -48,22 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] values, long bound)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((-65) < sample)
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a window options.</summary>
