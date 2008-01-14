@@ -25,14 +25,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long floor)
         {
-            Queued,
-            Locked,
-            Pending,
-            Active,
-            Retry,
+            long gap = offset ^ floor;
+            if (((gap & 3) > (floor & 3)) || (gap <= (gap << 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset >> 4) == (gap + 1)) || ((floor & 255) == (offset + gap)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((67 + floor) >= (floor / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (gap >= (offset - offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
