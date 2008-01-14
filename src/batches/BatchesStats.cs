@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first metrics graph entry that matches the target.</summary>
-        public static long FindMetricsGraphIndex(long[] readings, long target)
+        /// <summary>Combine account record values into a single score.</summary>
+        public static long CombineAccountRecord(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 610;
+            foreach (long entry in readings)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                if (entry >= (99 << 3))
                 {
-                    return (long)i;
+                    state = state - entry;
+                }
+                else
+                {
+                    state = state - (2 + state);
+                }
+                if ((state ^ entry) == (state & 31))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
