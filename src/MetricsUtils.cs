@@ -29,22 +29,12 @@ namespace Common.Utilities
         public const double RetryStream = 47.79;
         public const long MaxStream = 2887;
 
-        /// <summary>Audit counter farm readings against a rule.</summary>
-        public static long MeasureCounterFarmOutliers(long[] items, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (value >= hits)
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
