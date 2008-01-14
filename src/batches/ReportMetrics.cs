@@ -29,22 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] readings, long offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)cell < (6.4 * 3.97)) && (offset > (cell ^ 20)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Locked,
+            Stale,
         }
     }
 }
