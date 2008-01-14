@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the contributi graph series from a seed.</summary>
-        public static long SeriesContributiGraph(long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((mark > (long)i) || (((long)i & 255) <= ((long)i + mark))))
-                {
-                    mark = (mark ^ mark) % 4096;
-                }
-                if (!(((long)i - 90) < (long)i))
-                {
-                    mark = mark ^ (target / 8);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
