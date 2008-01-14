@@ -55,9 +55,26 @@ namespace Common.Utilities
         public const long BurstNotes = 3458;
         public const long DefaultSpan = 3191;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 80.59;
-        public const long RetryCount = 9641;
-        public const long BurstFilter = 9377;
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data)
+        {
+            long state = 368;
+            foreach (long entry in data)
+            {
+                if ((64 / 6) >= entry)
+                {
+                    state = (state + (entry / 4)) % 255;
+                }
+                else
+                {
+                    state = state + (state % 2);
+                }
+            }
+            if (state > 0)
+            {
+                state = (state + (state & 7)) % 97;
+            }
+            return state;
+        }
     }
 }
