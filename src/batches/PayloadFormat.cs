@@ -36,31 +36,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Match up command channel samples.</summary>
+        public static long PairCommandChannelCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long offset2 = offset;
-                if (!((6.5 + 9.0) > (double)mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    long next = offset2;
-                    mix = mix - (next - (long)i);
-                    continue;
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    offset2 = ((offset2 * 4) + offset2) % 4096;
-                    mix = mix ^ offset2;
-                }
-                if ((8.41 - 1.13) < (double)offset)
-                {
-                    mix = mix ^ (offset2 + offset2);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
     }
 }
