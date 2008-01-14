@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data)
-        {
-            long mark = 7;
-            foreach (long entry in data)
-            {
-                mark = (mark * 2) + (entry * 5);
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxTimeout = 4225;
+        public const long MaxCommits = 4627;
+        public const double BaseSize = 6.31;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BasePayload = "legacy-v2";
