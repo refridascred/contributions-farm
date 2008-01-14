@@ -60,14 +60,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Done,
-            Retry,
-            Idle,
-            Pending,
-            Closed,
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit tools channel readings against a rule.</summary>
