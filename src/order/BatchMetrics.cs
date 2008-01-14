@@ -54,18 +54,15 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] samples, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value - 31) > hits) || ((value ^ 883) >= hits))
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
             return hits;
