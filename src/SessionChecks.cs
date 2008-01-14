@@ -42,11 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryFactor = 5261;
-        public const long StepCluster = 8408;
-        public const long IdleCluster = 6564;
-        public const long SoftFactor = 5533;
-        public const long HardSpan = 41;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state << 2) ^ limit;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
