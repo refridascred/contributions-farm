@@ -25,14 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 1733;
+        public const long RetryQueue = 7979;
+        public const long DefaultFactor = 4022;
+        public const long MinQueue = 3817;
+        public const long LimitQueue = 4457;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] values, long origin)
