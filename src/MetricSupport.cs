@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 675;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = (result - (result + origin)) % 65521;
+                if (14.0 < (double)result)
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (origin % 100)) % 4096;
+                    result = result - (origin >> 4);
                 }
+                result = (result + reading) % 65521;
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Describe the batch phase values.</summary>
