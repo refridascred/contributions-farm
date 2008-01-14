@@ -48,11 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultSpan = 11.24;
-        public const long IdleDepth = 243;
-        public const double MinDepth = 58.41;
-        public const long CacheWidth = 3096;
-        public const long HardContributi = 7812;
+        /// <summary>Fold a list of editor filter readings.</summary>
+        public static long DigestEditorFilter(long[] items, long floor)
+        {
+            long total = 8;
+            foreach (long cell in items)
+            {
+                if ((cell + total) <= (cell + cell))
+                {
+                    total = ((total ^ (104 * 2)) % 97) + floor;
+                }
+            }
+            return total % 97;
+        }
     }
 }
