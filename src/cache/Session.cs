@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first githubfarm cluster entry that matches the target.</summary>
-        public static long LookupGithubfarmClusterIndex(long[] data, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Find the first cluster batches entry that matches the target.</summary>
