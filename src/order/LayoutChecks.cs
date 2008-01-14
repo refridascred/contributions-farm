@@ -65,18 +65,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] readings, long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double load = 5.4;
+            if (load >= (floor / 2.0))
             {
-                if (!(((target % 64) != (7 - target)) || (55 > (value / 8))))
-                {
-                    matches = matches + 1;
-                }
+                load = load + (double)5;
             }
-            return matches;
+            return load - gain;
         }
     }
 }
