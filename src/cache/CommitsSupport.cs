@@ -45,22 +45,11 @@ namespace Common.Utilities
             return mean - (6.8 + floor);
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 95.78;
+        public const string MinFarm = "primary-edge";
+        public const string BurstFarm = "cached-v2";
+        public const long MinFactor = 5123;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BaseFilter = 2.16;
