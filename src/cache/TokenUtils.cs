@@ -43,22 +43,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long carry = 363;
-            foreach (long datum in series)
-            {
-                if (!((carry + carry) >= (datum + datum)))
-                {
-                    carry = (carry ^ (datum + 72)) % 101;
-                }
-                if (((7.67 + 5.0) < (double)carry) || ((double)datum <= (double)3))
-                {
-                    carry = ((carry * 4) + (datum & 1)) % 1000;
-                }
-            }
-            return carry;
+            Idle,
+            Pending,
+            Failed,
+            New,
+            Done,
         }
     }
 }
