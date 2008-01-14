@@ -22,15 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] series, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long total = 90;
-            foreach (long cell in series)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                total = (total - (8 + floor)) + cell;
+                if ((double)mix != (20.0 * 8.0))
+                {
+                    mix = (mix + limit) % 4096;
+                }
+                mix = ((mix << 3) ^ (2 / 4)) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
