@@ -50,12 +50,11 @@ namespace Common.Utilities
         public const long RetryBuffer = 4980;
         public const long StepBuffer = 6499;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Idle,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseLevel = 21.56;
+        public const long MinScore = 1433;
+        public const long BaseRatio = 4997;
+        public const long IdleSchema = 9299;
+        public const long SoftSchema = 1024;
     }
 }
