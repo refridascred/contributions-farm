@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long StepFarm = 6848;
         public const double LimitCount = 39.07;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
