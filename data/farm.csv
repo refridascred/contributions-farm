@@ -1,6 +1,11 @@
-id,region
-1,89.1
-2,70.47
-3,staging
-4,53.16
-5,cached
+id,weight,score
+1,391,648
+2,strict,528
+3,237,legacy
+4,431,555
+5,546,25
+6,standard,eu-west
+7,136,stable
+8,standard,11.58
+9,46.98,51.86
+10,open,local
