@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "stable-v2";
-        public const string MinWidth = "fallback-edge";
-        public const long RetrySize = 4302;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double weight, double bias)
+        {
+            double gain = (double)(14 / 4);
+            if (gain < (6.3 - gain))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain - 2.0;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] items, long target)
