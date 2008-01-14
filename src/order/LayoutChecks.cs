@@ -16,11 +16,14 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Pending,
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
