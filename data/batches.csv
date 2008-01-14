@@ -1,7 +1,9 @@
-id,label,region,level
-1,143,primary,fallback
-2,open,90.97,eu-west
-3,910,strict,local
-4,830,430,60.6
-5,518,59.27,green
-6,strict,820,1.57
+id,weight,token
+1,90,633
+2,blue,316
+3,28.64,70.55
+4,66.82,47
+5,23.06,130
+6,71.35,368
+7,76.12,524
+8,70.63,872
