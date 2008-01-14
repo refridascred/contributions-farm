@@ -1,17 +1,6 @@
 {
-  "compress": 60,
-  "hard_window_ms": {
-    "poll_ratio_pct": ["stable", "blue", "eu-west"],
-    "route_depth": 54.56,
-    "idle_ttl_pct": false,
-    "verbose": true
-  },
-  "audit": {
-    "hard_depth_ms": true,
-    "hard_limit_s": 59,
-    "window_ratio": 73.25,
-    "audit": 34,
-    "dry_run": 250
-  },
-  "sync_size_count": false
+  "batch_depth_count": 5,
+  "buffer_retries": "blue",
+  "batch_delay": "stable",
+  "flush_window_count": "fallback"
 }
