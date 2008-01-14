@@ -14,11 +14,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 6257;
-        public const double CacheGithubfarm = 65.2;
-        public const long BurstGithubfarm = 264;
-        public const long LimitGithubfarm = 5725;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series, long target)
+        {
+            long result = 352;
+            foreach (long entry in series)
+            {
+                result = (((result + 0) % 101) ^ entry) - target;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] levels)
