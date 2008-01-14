@@ -1,10 +1,11 @@
 {
-  "flush_limit": 5077,
-  "burst_threshold_s": [42, 400],
-  "warm_interval_ms": 30,
-  "counter_interval": {
-    "verbose": 5017,
-    "flush_size_ms": "latest",
-    "cache_size_pct": 88
+  "flush_interval": "green",
+  "route_timeout": 49.04,
+  "batch_limit": {
+    "stats_limit": 5791,
+    "dry_run": "open",
+    "burst_retries_count": 30,
+    "enabled": "primary",
+    "burst_ttl": 0.45
   }
 }
