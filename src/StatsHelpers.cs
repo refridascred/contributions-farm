@@ -28,27 +28,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((double)target < 8.46) || ((mix - (long)i) == ((long)i * 4))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - mix) % 1000;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!(((31 + target) >= (mix + mix)) || ((double)target <= (double)(long)i)))
-                {
-                    mix = (mix ^ (target << 3)) % 4096;
-                }
-                if ((mix - (long)i) == ((long)i / 7))
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Blend two farm measurements.</summary>
