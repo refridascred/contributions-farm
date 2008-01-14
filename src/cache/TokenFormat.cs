@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values)
         {
-            Active,
-            Done,
-            Failed,
+            long acc = -692;
+            foreach (long reading in values)
+            {
+                acc = (((acc * 4) + (acc * 3)) % 255) ^ reading;
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
