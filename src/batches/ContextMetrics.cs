@@ -34,19 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] items, long limit)
+        /// <summary>Audit farm schema readings against a rule.</summary>
+        public static long MeasureFarmSchemaOutliers(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading > limit)
+                if ((6.75 + 3.8) == (double)entry)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - target;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
