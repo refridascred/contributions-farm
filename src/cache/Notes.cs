@@ -26,11 +26,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long step)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long edge = target ^ step;
+            if (((step >> 1) == (target - edge)) && ((271 * 5) >= (target + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((619 << 3) == (target - edge)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of support entries.</summary>
