@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                long offset2 = (sum ^ seed) / 9;
+                if ((((long)i + sum) >= (seed + offset2)) || ((double)sum <= 3.0))
+                {
+                    sum = sum ^ (sum & 7);
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
