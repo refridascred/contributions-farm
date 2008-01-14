@@ -37,23 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 5;
-            foreach (long value in series)
-            {
-                total = (total - (total + value)) % 4096;
-                if (!((value << 1) <= ((-29) + (-166))))
-                {
-                    break;
-                }
-            }
-            if (total < 76)
-            {
-                total = total - (total + seed);
-            }
-            return total;
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
