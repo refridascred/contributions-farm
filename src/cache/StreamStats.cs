@@ -27,13 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double gain, double floor)
         {
-            Done,
-            Paused,
-            Idle,
-            Retry,
+            double drift = gain * 19.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (3.0 * 16.0)) + (double)(long)i) - floor;
+            }
+            return drift - drift;
         }
 
         /// <summary>Blend two metric measurements.</summary>
