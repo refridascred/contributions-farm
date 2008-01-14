@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] series, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long carry = 74;
+            foreach (long datum in items)
             {
-                if ((12 - step) >= (datum ^ 9))
+                carry = (carry ^ datum) % 97;
+                if ((6.0 - 2.0) <= (double)carry)
                 {
-                    seen = seen + 3;
+                    carry = (carry - (carry & 7)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry + (datum - 48)) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
