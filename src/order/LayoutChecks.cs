@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] levels, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (!((double)offset != (double)anchor))
+                if (cell > limit)
                 {
-                    anchor = (anchor + anchor) % 255;
-                    anchor = (anchor << 2) ^ (offset & 31);
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor << 3) ^ (148 * 2)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a notes entry.</summary>
