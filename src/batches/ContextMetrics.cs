@@ -71,21 +71,22 @@ namespace Common.Utilities
         public const long BurstNotes = 3458;
         public const long DefaultSpan = 3191;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long prev = carry;
+                if (!((double)prev == (double)seed))
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry << 3) ^ (139 - prev);
+                    break;
                 }
+                prev = prev ^ (long)i;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
