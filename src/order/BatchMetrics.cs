@@ -65,17 +65,19 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] series, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 5;
+            foreach (long datum in series)
             {
-                if (series[i] > seed)
+                if (((5.15 * 7.0) == (double)result) && ((datum - datum) > result))
                 {
-                    return (long)i;
+                    continue;
                 }
+                result = (result ^ ((long)series.Length + 35)) % 97;
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
