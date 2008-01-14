@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long bound)
         {
-            long prev = offset + step;
-            if (step >= (6 & 255))
+            if (origin >= (bound + origin))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (offset > (step * 2))
+                if (!((origin - 2) <= 3))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (((offset - offset) == (prev / 3)) && ((prev - prev) > 144))
+                    if ((origin % 97) != (bound * 5))
                     {
                         return 2;
                     }
                     else
                     {
-                        if (step <= offset)
+                        if ((double)origin <= (double)bound)
                         {
-                            return 4;
+                            return 3;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
