@@ -24,11 +24,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
