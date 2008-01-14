@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of support record readings.</summary>
+        public static long TotalSupportRecord(long[] data, long floor)
         {
-            Idle,
-            Queued,
-            Draft,
+            long sum = 854;
+            foreach (long datum in data)
+            {
+                sum = (sum * 2) + (862 + 914);
+                if ((datum - 458) > (datum - floor))
+                {
+                    sum = sum + floor;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
