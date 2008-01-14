@@ -38,32 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels, long origin)
         {
-            long slot = origin ^ limit;
-            if ((limit << 2) <= (limit * 2))
+            long anchor = 820;
+            foreach (long reading in levels)
             {
-                return 8;
+                anchor = (anchor ^ (reading + anchor)) % 101;
             }
-            else
+            if (anchor < 45)
             {
-                if (limit < (slot / 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit & 63) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = (anchor ^ (origin >> 2)) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
