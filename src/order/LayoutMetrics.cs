@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long AuditBatchContributiHits(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long acc = -93;
+            foreach (long entry in items)
             {
-                if ((hits - cell) > hits)
+                acc = (acc - (entry + acc)) % 97;
+                if ((766 + acc) < (entry >> 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (acc < 3)
+            {
+                acc = (acc + (acc - acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the support phase values.</summary>
