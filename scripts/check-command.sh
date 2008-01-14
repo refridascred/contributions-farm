@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=491
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard latest; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=223
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west standard cached; do
-    log "checking ${item}"
-done
