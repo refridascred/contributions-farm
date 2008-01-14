@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            New,
-            Ready,
-            Active,
-            Stale,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)hits < 16.0)
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
