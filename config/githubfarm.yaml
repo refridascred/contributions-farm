@@ -1,7 +1,18 @@
 # githubfarm settings
-compress: false
-strict: edge
-githubfarm_timeout: true
-audit: 2932
-soft_ratio_ms: 250
-metrics_retries: green
+warm_limit_s:
+  - 23
+  - 400
+poll_retries_ms: true
+persist:
+  readonly: true
+  warm_delay:
+    min_threshold_count:
+      - primary
+      - legacy
+      - eu-west
+    cache_window_count: true
+    min_size_ms:
+      - legacy
+      - primary
+  audit: 70
+flush_retries_count: cached
