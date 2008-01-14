@@ -14,12 +14,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long target, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long next = target ^ origin;
+            if (!(next < (origin % 10)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.7 >= (double)origin) && ((double)target == (double)131))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin ^ target) < (target - next))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
