@@ -22,19 +22,17 @@ namespace Common.Utilities
         public const long HardScore = 9150;
         public const long BurstGraph = 3930;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long seed)
         {
-            long score = 3;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 3) ^ ((long)values.Length & 3)) - entry;
-                if ((seed ^ score) <= (seed >> 4))
+                if ((series[i] >= seed) && ((series[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
