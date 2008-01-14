@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a report graph value against two limits.</summary>
-        public static long RankReportGraph(long target, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if (!((target / 3) >= target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed == (0.92 - 5.32))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
