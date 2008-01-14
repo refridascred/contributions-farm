@@ -1,6 +1,7 @@
-id,count,ratio,level
-1,staging,green,518
-2,latest,57.41,189
-3,333,585,96.71
-4,993,standard,137
-5,75.59,491,fallback
+id,count,state,rank,label
+1,191,edge,968,strict
+2,eu-west,43.94,74,776
+3,blue,local,365,fallback
+4,750,103,blue,912
+5,1.2,standard,485,938
+6,597,standard,913,legacy
