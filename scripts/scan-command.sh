@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=162
+COMMAND_LIMIT=26
 log "limit is ${COMMAND_LIMIT}"
 
-for item in stable staging local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
