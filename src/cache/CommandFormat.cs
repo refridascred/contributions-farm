@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = bias + weight;
+            if (ratio > weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (7.79 + ratio);
             }
-            return count;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Match up stats samples.</summary>
