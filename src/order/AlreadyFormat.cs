@@ -25,32 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long target, long offset)
+        /// <summary>Accumulate order cluster samples.</summary>
+        public static long CombineOrderCluster(long[] data, long offset)
         {
-            long gap = target ^ offset;
-            if ((37 - 43) > (gap + target))
+            long result = 827;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap < (target - offset)) && (offset < (target / 3)))
+                result = ((result ^ (long)data.Length) % 97) - item;
+                for (int i = 0; i < 9; i++)
                 {
-                    return 3;
+                    result = (((result * 5) + result) % 4096) - (long)i;
                 }
-                else
+                if (((1 % 3) > (result + offset)) && (offset <= (343 * 3)))
                 {
-                    if ((4.0 - 6.83) <= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result + (result ^ 6)) % 4096;
                 }
             }
+            if (result < 615)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
