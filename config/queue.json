@@ -1,6 +1,12 @@
 {
-  "strict": 8672,
-  "flush_ratio": true,
-  "farm_depth": ["legacy", "green"],
-  "idle_timeout_count": 5746
+  "flush_ttl_ms": "local",
+  "warm_window": {
+    "default_timeout": 31.69,
+    "enabled": "cached",
+    "max_capacity_count": false
+  },
+  "batch_limit": true,
+  "max_retries_s": 19.25,
+  "soft_depth_pct": 40.48,
+  "sync_timeout": ["eu-west", "strict"]
 }
