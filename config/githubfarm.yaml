@@ -1,4 +1,5 @@
 # githubfarm settings
-compress: 60
-base_ttl_count: 20
-burst_size_count: 30
+burst_window_pct: latest
+retry_capacity_ms: eu-west
+base_depth_ms: standard
+readonly: true
