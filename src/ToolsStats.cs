@@ -12,25 +12,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long step, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long next = step ^ bound;
-            if ((step % 16) < (bound ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + next) < (next - next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Look up the position of a farm tools sample.</summary>
