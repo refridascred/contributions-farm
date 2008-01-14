@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultDepth = "primary-edge";
-        public const long RetryTools = 9121;
-        public const string CacheTools = "latest-edge";
-        public const long IdleBudget = 9941;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 7) >= (target << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] series)
