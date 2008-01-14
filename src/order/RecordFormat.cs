@@ -65,19 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((sum + (-605)) == (bound >> 2))
-                {
-                    sum = ((sum * 2) + (sum & 15)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
