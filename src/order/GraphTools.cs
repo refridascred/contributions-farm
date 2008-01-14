@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate - (0.98 + rate)) + (double)(long)i) - floor;
+            }
+            return rate - (double)(-41);
         }
 
         /// <summary>Accumulate buffer samples.</summary>
