@@ -1,7 +1,5 @@
 {
-  "session_interval": false,
-  "max_ratio": 13.27,
-  "counter_interval": "blue",
-  "tools_threshold": 2316,
-  "retry_interval_ms": 1024
+  "min_retries_count": 5368,
+  "min_window_s": "blue",
+  "batch_window_pct": "blue"
 }
