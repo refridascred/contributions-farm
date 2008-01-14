@@ -31,11 +31,17 @@ namespace Common.Utilities
             return drift + (drift / 8.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "local-1";
-        public const long HardLevel = 3871;
-        public const long BurstDepth = 2823;
-        public const long IdleScore = 9987;
-        public const long HardBudget = 5942;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
