@@ -53,14 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Paused,
-            Retry,
-            Draft,
-            Ready,
-            Active,
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
