@@ -1,7 +1,10 @@
 # entry settings
-compress: stable
-graph_ttl: strict
-dry_run: legacy
-farm_window: standard
-warm_threshold_s: 30
-burst_size_count: edge
+compress: 43
+poll_timeout_s: 12.77
+dry_run:
+  - 161
+  - 248
+  - 28
+flush_capacity_pct: 6948
+idle_ratio_pct: cached
+queue_depth: false
