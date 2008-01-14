@@ -42,10 +42,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 3650;
-        public const long SoftSize = 5079;
-        public const long CacheLevel = 1598;
+        /// <summary>Digest a series of graph checks entries.</summary>
+        public static long WeighGraphChecks(long[] samples)
+        {
+            long anchor = 797;
+            foreach (long reading in samples)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor * 2) + 235) + (long)i2;
+                    anchor = anchor - anchor;
+                }
+                anchor = anchor - (reading << 3);
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] samples)
