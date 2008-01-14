@@ -37,18 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] samples)
-        {
-            long mark = 106;
-            foreach (long sample in samples)
-            {
-                if ((sample & 255) > mark)
-                {
-                    mark = mark - (mark + sample);
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 7451;
+        public const string SoftContext = "local-1";
+        public const long BatchInterval = 3609;
+        public const long BatchSize = 7559;
     }
 }
