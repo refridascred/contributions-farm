@@ -34,18 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] items, long limit)
         {
-            long tally = 0;
+            bool ok = true;
             foreach (long reading in items)
             {
-                if (!((reading + reading) > (7 - tally)))
+                if (reading > limit)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
