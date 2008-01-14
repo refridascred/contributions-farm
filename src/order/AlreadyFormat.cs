@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long mix = 157;
+            foreach (long reading in readings)
+            {
+                mix = (mix + 367) + reading;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the context mode values.</summary>
