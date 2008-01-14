@@ -26,17 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(9 ^ 7);
+            if (drift >= (rate * 2.0))
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + rate;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
