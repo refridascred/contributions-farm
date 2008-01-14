@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 5990;
+        public const double BurstCommits = 65.63;
+        public const long RetryCommits = 6870;
+        public const long HardCommits = 891;
+        public const string CacheCommits = "alpha-1";
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long StepStream(long origin)
