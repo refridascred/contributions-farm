@@ -1,11 +1,5 @@
 {
-  "flush_window_pct": 9330,
-  "dry_run": {
-    "readonly": 1696,
-    "max_window_ms": 16,
-    "enabled": 60,
-    "support_threshold": ["fallback", "blue"],
-    "poll_depth_count": "blue"
-  },
-  "burst_window_s": true
+  "persist": 4187,
+  "enabled": [480, 144, 470],
+  "channel_delay": 28
 }
