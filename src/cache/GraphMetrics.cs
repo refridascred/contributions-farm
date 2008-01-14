@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] series)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((7.3 - 14.0) == (double)entry) && ((entry <= (entry << 3)) && ((count >> 4) <= (count & 31))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the stream phase values.</summary>
