@@ -46,22 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long state = 962;
-            foreach (long value in levels)
-            {
-                if (!((state + 19) <= (state - value)))
-                {
-                    state = (state << 3) ^ (state * 4);
-                }
-                if ((target - 449) > target)
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
