@@ -51,15 +51,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
