@@ -43,19 +43,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches == (3.0 * 5.8))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 3650;
+        public const long SoftSize = 5079;
+        public const long CacheLevel = 1598;
 
         /// <summary>Blend two contributi session measurements.</summary>
         public static double ScaleContributiSession(double gain, double bias)
