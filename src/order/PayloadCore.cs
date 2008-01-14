@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long target, long target2)
+        /// <summary>Locate a githubfarm batch reading by value.</summary>
+        public static long LocateGithubfarmBatchIndex(long[] series, long bound)
         {
-            if (((9 - 2) <= target2) || ((target >> 2) == (target2 - target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (target <= (target - 556))
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the checks metrics entries that pass the check.</summary>
