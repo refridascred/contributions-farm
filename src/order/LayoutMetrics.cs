@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a batch entry sample.</summary>
-        public static long LookupBatchEntryIndex(long[] readings, long limit)
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long AuditBatchContributiHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (readings[i] >= limit)
+                if ((hits - cell) > hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the support phase values.</summary>
