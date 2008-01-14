@@ -1,5 +1,11 @@
 # entry settings
-retry_timeout: 1180
-max_timeout: 81
-enabled: green
-retry_limit: 15.32
+filter_retries: true
+batch_window:
+  verbose: green
+  poll_ttl: 9126
+  entry_interval: strict
+  persist: 13.36
+  readonly: 41.35
+cache_ttl_ms: 13
+checks_window: 76
+max_ratio_ms: 203
