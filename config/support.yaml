@@ -1,17 +1,11 @@
 # support settings
-cache_size_count:
-  - blue
-  - stable
-  - blue
-warm_ttl: eu-west
-strict:
-  - cached
-  - fallback
-  - staging
-  - eu-west
-enabled:
-  - staging
-  - eu-west
-  - edge
-  - primary
-audit: true
+idle_interval_ms:
+  - 458
+  - 223
+  - 356
+flush_timeout: strict
+command_capacity:
+  contributi_timeout: 500
+  audit: 50
+  flush_depth: 74
+window_limit: edge
