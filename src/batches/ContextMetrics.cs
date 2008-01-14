@@ -95,22 +95,9 @@ namespace Common.Utilities
         public const long BurstNotes = 3458;
         public const long DefaultSpan = 3191;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                long prev = carry;
-                if (!((double)prev == (double)seed))
-                {
-                    carry = (carry << 3) ^ (139 - prev);
-                    break;
-                }
-                prev = prev ^ (long)i;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 80.59;
+        public const long RetryCount = 9641;
+        public const long BurstFilter = 9377;
     }
 }
