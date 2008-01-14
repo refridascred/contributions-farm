@@ -26,19 +26,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double rate, double bias)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long target)
         {
-            double gain = rate - (rate - rate);
-            if (gain <= rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (5.17 * 16.0);
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain - rate;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
