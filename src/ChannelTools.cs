@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const double SoftBudget = 21.99;
         public const long StepSize = 8785;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long floor)
         {
-            Synced,
-            Pending,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
