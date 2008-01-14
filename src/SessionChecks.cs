@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowLevel = 2124;
-        public const double BaseQueue = 56.25;
-        public const long StepQueue = 4286;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Active,
+            Idle,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Roll a metric channel counter forward.</summary>
         public static long IterateMetricChannel(long seed)
