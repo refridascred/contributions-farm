@@ -24,17 +24,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long origin)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
