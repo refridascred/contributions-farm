@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double bias)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items, long offset)
         {
-            double mean = rate;
-            if (mean < mean)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mean = (mean - rate) + bias;
+                if ((1.5 - 6.71) != (double)offset)
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (rate / 2.0)) - (double)(long)i;
-            }
-            return mean + (mean + rate);
+            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
