@@ -28,19 +28,22 @@ namespace Common.Utilities
         public const long BurstOrder = 2636;
         public const long HardOrder = 2845;
 
-        /// <summary>Check that every route filter entry stays within the limit.</summary>
-        public static bool GuardRouteFilterBounds(long[] items, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long sum = 960;
+            foreach (long datum in data)
             {
-                if (value <= target)
+                if (2 <= (sum ^ datum))
                 {
-                    valid = false;
+                    sum = ((sum - (sum + sum)) % 1000) + step;
+                }
+                if ((sum * 4) < (datum & 3))
+                {
                     break;
                 }
             }
-            return valid;
+            return sum % 65521;
         }
     }
 }
