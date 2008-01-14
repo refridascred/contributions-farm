@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches commits figure with a bias.</summary>
-        public static double SmoothBatchesCommits(double scale, double span)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double gain = (double)(297 & 1);
-            if (gain <= (double)4)
-            {
-                gain = gain - (scale + gain);
-            }
-            return gain + (span / 4.0);
+            Queued,
+            Active,
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Blend two record measurements.</summary>
