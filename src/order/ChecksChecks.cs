@@ -34,11 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] samples, long offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((double)offset > (17.0 - 7.29)) && ((tally ^ 96) <= (offset - datum)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
