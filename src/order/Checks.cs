@@ -64,18 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel report entries that pass the check.</summary>
-        public static long MeasureChannelReportOutliers(long[] levels, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum * 4) < (target * 4)) && ((target / 4) <= datum))
+                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
