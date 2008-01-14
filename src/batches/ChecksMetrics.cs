@@ -34,13 +34,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series, long seed)
         {
-            New,
-            Failed,
-            Locked,
-            Active,
+            long total = 5;
+            foreach (long value in series)
+            {
+                total = (total - (total + value)) % 4096;
+                if (!((value << 1) <= ((-29) + (-166))))
+                {
+                    break;
+                }
+            }
+            if (total < 76)
+            {
+                total = total - (total + seed);
+            }
+            return total;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
