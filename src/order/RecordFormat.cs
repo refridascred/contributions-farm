@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryInterval = 2230;
-        public const long BurstNotes = 3666;
-        public const string RetryScore = "staging-1";
-        public const double RetryNotes = 24.24;
-        public const long BatchNotes = 3214;
+        /// <summary>Combine contributi token values into a single score.</summary>
+        public static long WeighContributiToken(long[] series)
+        {
+            long anchor = -5;
+            foreach (long cell in series)
+            {
+                anchor = anchor - (4 >> 1);
+                if (!((double)cell < (9.27 + 8.87)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 60)
+            {
+                anchor = (anchor - (anchor % 64)) % 1000;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
