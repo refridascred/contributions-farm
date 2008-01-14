@@ -20,31 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a batches profile pair into a bucket.</summary>
-        public static long SortBatchesProfile(long limit, long limit2)
+        /// <summary>Look up the position of a window batches sample.</summary>
+        public static long LocateWindowBatchesIndex(long[] items, long limit)
         {
-            if ((limit2 & 127) == (limit2 - 8))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit >= (limit - limit2))
+                if (items[i] == limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 2) > 866)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
