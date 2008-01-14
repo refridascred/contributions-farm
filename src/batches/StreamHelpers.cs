@@ -67,10 +67,12 @@ namespace Common.Utilities
         public const long StepInterval = 5823;
         public const double BurstQueue = 44.19;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 6349;
-        public const long StepSupport = 323;
-        public const string LimitSupport = "latest-edge";
-        public const long MinCount = 3709;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Locked,
+            Ready,
+            Dropped,
+        }
     }
 }
