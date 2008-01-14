@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxFactor = 637;
-        public const string RetryWidth = "alpha-v2";
-        public const long RetryReport = 4179;
-        public const long StepBudget = 7347;
-        public const string LimitSpan = "primary";
+        /// <summary>Combine account cache values into a single score.</summary>
+        public static long DigestAccountCache(long[] values)
+        {
+            long mark = 347;
+            foreach (long cell in values)
+            {
+                mark = ((mark + mark) % 255) ^ cell;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
