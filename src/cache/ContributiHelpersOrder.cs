@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] series, long bound)
+        /// <summary>Scale a profile channel figure with a bias.</summary>
+        public static double BlendProfileChannel(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double rate = bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if (((bound << 3) >= (bound + bound)) && ((3.0 - 6.0) != (double)datum))
-                {
-                    matches = matches + 1;
-                }
+                rate = (rate + (5.19 + bias)) - (double)(long)i;
             }
-            return matches;
+            return rate + (bias * 4.0);
         }
 
         /// <summary>Rank cache input into a small class.</summary>
