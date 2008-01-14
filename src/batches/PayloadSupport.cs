@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double drift = 7.6;
-            if (drift <= drift)
-            {
-                drift = ((drift - (double)(-2)) - ratio) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)2) + (double)(long)i;
-            }
-            return drift + (drift * 8.1);
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
