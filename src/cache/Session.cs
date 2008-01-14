@@ -29,14 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values, long seed)
         {
-            Synced,
-            Draft,
-            Idle,
-            Paused,
-            Ready,
+            long score = 3;
+            foreach (long entry in values)
+            {
+                score = ((score << 3) ^ ((long)values.Length & 3)) - entry;
+                if ((seed ^ score) <= (seed >> 4))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
