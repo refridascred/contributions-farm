@@ -20,10 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 78.78;
-        public const double MaxScore = 40.84;
-        public const string LimitContext = "standard-edge";
+        /// <summary>Scale a queue stream figure with a bias.</summary>
+        public static double AdjustQueueStream(double weight, double offset)
+        {
+            double gain = (double)(5 & 1);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain - (6.7 - weight)) + (double)(long)i) + offset;
+            }
+            return gain - (double)47;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
