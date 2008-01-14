@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "alpha-1";
-        public const long BaseTimeout = 2775;
-        public const long LimitScore = 569;
-        public const double BatchBudget = 70.74;
+        /// <summary>Combine githubfarm format values into a single score.</summary>
+        public static long CombineGithubfarmFormat(long[] readings, long seed)
+        {
+            long carry = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - seed) == (carry << 2))
+                {
+                    carry = (carry ^ (carry ^ carry)) % 1000;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
