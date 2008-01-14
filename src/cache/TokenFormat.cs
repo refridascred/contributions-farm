@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine record batch values into a single score.</summary>
-        public static long TallyRecordBatch(long[] levels, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long step)
         {
-            long sum = 7;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (7 > (88 ^ offset))
+                if (item > step)
                 {
-                    sum = sum - (item + item);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ item) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 89)
-            {
-                sum = (sum - (20 + 666)) % 4096;
-            }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
