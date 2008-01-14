@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 8297;
-        public const double DefaultFactor = 74.98;
-        public const long HardBudget = 6244;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 3539;
+        public const double CacheTimeout = 89.07;
+        public const long MinMetrics = 9104;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] values)
