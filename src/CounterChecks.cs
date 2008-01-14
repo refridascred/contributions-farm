@@ -15,19 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] samples, long step)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
