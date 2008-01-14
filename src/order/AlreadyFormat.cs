@@ -68,30 +68,31 @@ namespace Common.Utilities
         public const long IdleFactor = 7262;
         public const long BatchGithubfarm = 4326;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values, long bound)
         {
-            long anchor = 944;
-            foreach (long sample in levels)
+            long mix = 500;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 2; i++)
+                if (item > (item % 97))
                 {
-                    anchor = (anchor ^ (long)i) % 101;
-                }
-                if (anchor <= (anchor << 3))
-                {
-                    anchor = (anchor ^ (sample - anchor)) % 65521;
+                    mix = mix - (615 << 2);
+                    continue;
                 }
                 else
                 {
-                    anchor = (anchor + (3 - sample)) % 1000;
+                    mix = (mix - mix) % 65521;
                 }
-                if (!(sample <= (anchor << 1)))
+                if ((item + bound) <= mix)
+                {
+                    mix = mix ^ (3 - mix);
+                }
+                if ((9.7 + 17.0) > (double)mix)
                 {
                     break;
                 }
             }
-            return anchor;
+            return mix % 97;
         }
     }
 }
