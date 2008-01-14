@@ -37,11 +37,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            Failed,
+            Dropped,
+            Active,
+            Retry,
         }
     }
 }
