@@ -47,18 +47,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            long sum = 935;
-            foreach (long datum in readings)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)datum == (9.4 - 1.38))
+                if ((floor << 1) == (carry & 3))
                 {
-                    sum = (sum ^ datum) % 1000;
+                    carry = carry - floor;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
