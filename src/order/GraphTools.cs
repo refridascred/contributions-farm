@@ -33,21 +33,35 @@ namespace Common.Utilities
             return rate - (double)(-41);
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum & 1) != (reading >> 2))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 2) ^ 7) % 1000;
+                }
+                else
+                {
+                    sum = sum - (sum << 1);
+                    sum = (sum ^ sum) % 4096;
+                }
+                if ((reading >> 5) >= (reading ^ reading))
+                {
+                    sum = (sum + sum) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (reading - reading)) % 65521;
                 }
             }
-            return tally;
+            if (sum < (-212))
+            {
+                sum = (sum + (sum - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
