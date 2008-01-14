@@ -41,19 +41,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a order token figure with a bias.</summary>
-        public static double BlendOrderToken(double scale, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double bias = scale;
-            if (bias > (3.4 / 4.0))
-            {
-                bias = bias + (bias + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (floor - bias)) - (double)(long)i;
-            }
-            return bias - (scale * 2.0);
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
