@@ -1,6 +1,5 @@
 {
-  "warm_ttl": "stable",
-  "enabled": 8,
-  "idle_depth": [288, 278],
-  "support_retries": "legacy"
+  "poll_depth": false,
+  "format_ratio": "strict",
+  "metrics_window": true
 }
