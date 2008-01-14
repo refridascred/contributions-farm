@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                sum = sum ^ origin;
-                sum = sum ^ ((long)i / 7);
-                sum = (sum + (sum << 2)) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((reading + 9) == (reading << 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
