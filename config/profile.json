@@ -1,8 +1,6 @@
 {
-  "layout_retries": 500,
-  "compress": false,
-  "sync_timeout_ms": "fallback",
-  "burst_timeout_s": [455, 200, 276, 225],
-  "buffer_window": "legacy",
-  "batch_retries": 84
+  "base_window_pct": 0.54,
+  "metrics_delay": 60,
+  "stream_size": 7722,
+  "hard_timeout_count": 92
 }
