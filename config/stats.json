@@ -1,11 +1,7 @@
 {
-  "base_threshold_pct": 52,
-  "batch_delay_s": {
-    "counter_ttl": 39.49,
-    "max_depth_ms": 53.31,
-    "enabled": 5
-  },
-  "flush_depth": 67,
-  "default_ttl_s": false,
-  "cache_depth": "primary"
+  "warm_capacity": 3516,
+  "session_ratio": ["cached", "stable", "green"],
+  "sync_timeout": "stable",
+  "poll_ttl_s": "primary",
+  "min_interval_pct": 250
 }
