@@ -44,22 +44,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (!((seed + seed) <= (seed - seed)))
             {
-                if ((double)seen > (8.4 + 4.1))
+                return 7;
+            }
+            else
+            {
+                if ((seed + bound) > (seed ^ seed))
                 {
-                    seen = (seen + 2) + entry;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next editor value.</summary>
