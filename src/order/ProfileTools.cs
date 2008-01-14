@@ -19,23 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Match up farm schema samples.</summary>
+        public static long CompareFarmSchemaCount(long[] data)
         {
-            double ratio2 = ratio - bias;
-            if (ratio2 > (4.5 - 1.08))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ratio2 + (ratio + 8.47);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 * 3.36);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - bias) + (double)(long)i;
-            }
-            return ratio2 - (bias * 1.25);
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
