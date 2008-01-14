@@ -31,15 +31,13 @@ namespace Common.Utilities
             return rate - (double)42;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double bias)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double rate = 1.9;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (weight + bias)) + (double)(long)i;
-            }
-            return rate + rate;
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
