@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Synced,
-            Closed,
-            New,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowRatio = "cached";
+        public const long MaxCounter = 5729;
+        public const long HardCounter = 7729;
 
         /// <summary>Accumulate metrics layout samples.</summary>
         public static long DigestMetricsLayout(long[] levels)
