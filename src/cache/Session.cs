@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "staging";
-        public const long WindowSchema = 1781;
-        public const string BatchSchema = "cached-edge";
-        public const string BaseLevel = "standard-v2";
-        public const long MinSchema = 2338;
+        /// <summary>Find the first cluster batches entry that matches the target.</summary>
+        public static long LocateClusterBatchesIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] series, long seed)
