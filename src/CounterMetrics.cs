@@ -22,25 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order cache value against two limits.</summary>
-        public static long ClassifyOrderCache(long origin, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] readings, long seed)
         {
-            long diff = origin - step;
-            if (!(diff < (origin << 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step - origin) == (origin * 3)))
+                if (readings[i] > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
