@@ -51,19 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values)
-        {
-            long carry = 61;
-            foreach (long datum in values)
-            {
-                if ((214 << 1) > (datum + (long)values.Length))
-                {
-                    carry = carry + carry;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 51.24;
+        public const string DefaultCache = "stable-v2";
+        public const long BatchLevel = 8610;
+        public const string RetryCache = "latest-v2";
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] data)
