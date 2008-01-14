@@ -38,19 +38,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stats batches entry stays within the limit.</summary>
-        public static bool VerifyStatsBatchesBounds(long[] items, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long slot = origin ^ limit;
+            if ((limit << 2) <= (limit * 2))
             {
-                if (reading != bound)
+                return 8;
+            }
+            else
+            {
+                if (limit < (slot / 6))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit & 63) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
