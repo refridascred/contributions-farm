@@ -1,6 +1,6 @@
 {
-  "audit": 8.73,
-  "cache_interval_s": "eu-west",
-  "hard_size_s": 3.06,
-  "support_retries": 195
+  "soft_timeout": "eu-west",
+  "default_window_pct": "local",
+  "audit": 27,
+  "idle_size": true
 }
