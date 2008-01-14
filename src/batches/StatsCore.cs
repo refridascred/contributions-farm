@@ -27,16 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] samples, long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long sum = 10;
-            foreach (long sample in samples)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 2) ^ sample) + step;
-                sum = (sum << 2) ^ (3 - sum);
+                if (!!((seed - (long)i) < mix))
+                {
+                    mix = mix ^ (seed + seed);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
