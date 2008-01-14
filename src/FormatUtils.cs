@@ -40,17 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                acc = ((acc * 2) + acc) % 1000;
-                acc = (acc - (94 >> 4)) % 97;
-                acc = ((acc * 3) + (long)i) % 97;
+                if (!(((floor & 3) != (matches % 7)) || ((value & 255) >= (value - floor))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up schema samples.</summary>
