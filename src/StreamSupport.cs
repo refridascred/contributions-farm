@@ -25,19 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long sum = 55;
-            foreach (long entry in items)
-            {
-                sum = (sum - entry) + step;
-            }
-            if (sum < 734)
-            {
-                sum = ((sum << 3) ^ (26 + sum)) % 255;
-            }
-            return sum;
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
