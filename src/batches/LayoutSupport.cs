@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many commits session samples are out of range.</summary>
-        public static long CountCommitsSessionOutliers(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (!((41 % 97) < sample))
+                if (entry < offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Find the first filter session entry that matches the target.</summary>
