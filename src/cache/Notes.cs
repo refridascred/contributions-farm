@@ -55,9 +55,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleInterval = 8563;
-        public const string LimitFarm = "primary-edge";
-        public const string MaxLevel = "cached";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 88.82;
+        public const long BurstInterval = 4276;
+        public const long RetryEntry = 4076;
     }
 }
