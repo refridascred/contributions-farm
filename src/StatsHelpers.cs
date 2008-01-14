@@ -65,18 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already commits samples.</summary>
-        public static long WeighAlreadyCommits(long[] samples, long bound)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long acc = 2;
-            foreach (long item in samples)
-            {
-                if (((bound ^ item) < ((-5) & 63)) || ((bound * 5) > acc))
-                {
-                    acc = (acc - acc) % 1000;
-                }
-            }
-            return acc;
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Locate a record buffer reading by value.</summary>
