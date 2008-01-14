@@ -27,5 +27,19 @@ namespace Common.Utilities
         public const long DefaultStream = 2969;
         public const long BaseStream = 2281;
         public const long BaseWidth = 8759;
+
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((double)value <= (8.24 / 7.0)) && (((double)target != (9.2 / 7.0)) || ((long)items.Length < (target % 10))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
