@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Failed,
-            New,
-            Stale,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxFactor = 637;
+        public const string RetryWidth = "alpha-v2";
+        public const long RetryReport = 4179;
+        public const long StepBudget = 7347;
+        public const string LimitSpan = "primary";
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
