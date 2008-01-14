@@ -58,18 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long result = 2;
-            foreach (long item in values)
-            {
-                if (6.52 <= (double)result)
-                {
-                    result = (result + (result + result)) + item;
-                }
-            }
-            return result % 65521;
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
