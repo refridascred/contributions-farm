@@ -38,18 +38,28 @@ namespace Common.Utilities
         public const long CacheChannel = 3279;
         public const string MinRatio = "legacy-edge";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] series, long target)
+        /// <summary>Iterate the token route series from a seed.</summary>
+        public static long RollTokenRoute(long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((((-346) ^ count) > (target + count)) && ((cell + count) < cell)) || (count > (cell * 5)))
+                if ((result / 2) == ((long)i - result))
                 {
-                    count = count + 2;
+                    result = result + (result * 2);
+                    continue;
                 }
+                if ((double)20 >= (double)result)
+                {
+                    result = (result ^ (result % 5)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 4) + (result & 1)) % 97;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
