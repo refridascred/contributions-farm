@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseDepth = 15.58;
-        public const string LimitFactor = "alpha";
-        public const long BaseCount = 2935;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] samples, long step)
