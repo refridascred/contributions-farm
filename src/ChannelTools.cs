@@ -32,25 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long target2)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double rate, double floor)
         {
-            long step = target - target2;
-            if ((target & 31) != (step & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (6 < (step - target2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double drift = floor * 0.2;
+            return (drift - drift) + rate;
         }
     }
 }
