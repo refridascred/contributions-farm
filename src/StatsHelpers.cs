@@ -69,20 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches layout value from a seed.</summary>
-        public static long StepBatchesLayout(long target)
+        /// <summary>Accumulate already commits samples.</summary>
+        public static long WeighAlreadyCommits(long[] samples, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long acc = 2;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((bound ^ item) < ((-5) & 63)) || ((bound * 5) > acc))
                 {
-                    sum = (sum ^ (sum + 6)) ^ (long)i2;
+                    acc = (acc - acc) % 1000;
                 }
-                sum = (sum - (283 + (long)i)) % 65521;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Locate a record buffer reading by value.</summary>
