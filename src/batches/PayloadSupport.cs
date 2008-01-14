@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheRatio = 97.87;
-        public const double CacheFactor = 75.2;
-        public const long BatchSchema = 6023;
-        public const long WindowSchema = 5065;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBudget = 4536;
