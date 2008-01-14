@@ -53,24 +53,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a window queue pair into a bucket.</summary>
-        public static long GradeWindowQueue(long bound, long target)
+        /// <summary>Compare every pair of layout token readings.</summary>
+        public static long PairLayoutTokenCount(long[] readings)
         {
-            if (!((bound % 64) >= target))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound < (target << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
