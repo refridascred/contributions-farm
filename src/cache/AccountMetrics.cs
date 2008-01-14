@@ -60,15 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] levels, long seed)
         {
-            double rate = (double)(0 - 550);
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                rate = ((rate + 0.74) + (double)(long)i) + ratio;
+                if (item >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate - bias;
+            return flag;
         }
     }
 }
