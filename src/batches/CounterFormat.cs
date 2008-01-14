@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] > seed)
+                if (sample >= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
