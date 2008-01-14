@@ -1,7 +1,6 @@
 {
-  "burst_retries_ms": 38.98,
-  "compress": [249, 214],
-  "cache_size_s": "stable",
-  "cache_delay": 40.14,
-  "max_interval_s": 85.23
+  "default_ratio": 64.27,
+  "base_ratio": 77,
+  "support_timeout": "blue",
+  "stats_retries": "edge"
 }
