@@ -20,18 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long result = -499;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8 ^ result) <= result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 2) ^ (result - result)) ^ entry;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
