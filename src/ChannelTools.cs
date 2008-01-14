@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] items, long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen - (long)items.Length) >= (seen - seen))
-                {
-                    seen = ((seen + 1) + entry) + seed;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
