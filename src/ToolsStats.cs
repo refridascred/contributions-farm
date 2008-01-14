@@ -34,30 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Look up the position of a farm tools sample.</summary>
+        public static long LookupFarmToolsIndex(long[] items, long seed)
         {
-            long result = -31;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)result <= 1.49)
+                if ((items[i] == seed) && ((items[i] % 5) == 0))
                 {
-                    result = (result - (result & 15)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 5) + (-614)) % 255;
-                }
-                if ((entry >> 2) < result)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 6)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a schema entry.</summary>
