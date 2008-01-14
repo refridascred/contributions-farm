@@ -1,8 +1,18 @@
 {
-  "idle_capacity": 6,
-  "already_interval": ["fallback", "edge", "green"],
-  "compress": 51.71,
-  "hard_capacity": 500,
-  "idle_timeout": 29,
-  "min_retries": 30
+  "batch_delay_count": {
+    "soft_timeout": {
+      "session_retries": 8.15,
+      "poll_interval_count": ["standard", "standard", "stable", "strict"],
+      "record_ttl": 96.38,
+      "window_timeout": 11.69,
+      "burst_retries": 59.04
+    },
+    "batch_limit_ms": 3783,
+    "cache_ratio_pct": 9187
+  },
+  "batches_depth": "latest",
+  "soft_ttl_s": 12,
+  "metric_size": 15.46,
+  "already_limit": "eu-west",
+  "account_interval": true
 }
