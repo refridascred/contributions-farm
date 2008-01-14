@@ -22,17 +22,23 @@ namespace Common.Utilities
         public const string BurstSize = "cached-1";
         public const double MinWidth = 59.4;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double floor)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            double rate = 0.9;
+            if (rate <= (floor * 3.0))
             {
-                total = total ^ (step + 18);
-                total = (total << 2) ^ (total << 2);
-                total = ((total * 5) + (long)i) % 97;
+                rate = (rate - 16.0) + scale;
             }
-            return total;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (floor + floor)) + (double)(long)i;
+            }
+            return rate + (rate * 17.0);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
