@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double ratio, double bias)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double weight = 2.42;
-            if (weight < (ratio - 4.85))
-            {
-                weight = (weight - (double)577) + bias;
-            }
-            else
-            {
-                weight = weight - (ratio * 7.0);
-            }
-            return weight - (double)60;
+            New,
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Match up tools samples.</summary>
