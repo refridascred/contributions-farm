@@ -49,15 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Digest a series of commits record entries.</summary>
+        public static long DigestCommitsRecord(long[] readings, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                total = ((total + ((long)readings.Length - 33)) % 255) + sample;
+                total = (total << 2) ^ (91 * 2);
             }
-            return anchor;
+            if (total > 478)
+            {
+                total = (total + (bound - bound)) % 4096;
+            }
+            return total % 1000;
         }
     }
 }
