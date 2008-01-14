@@ -14,22 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] series, long floor)
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmClusterLimits(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (((reading + reading) != (matches / 2)) && (matches < ((long)series.Length % 3)))
+                if (sample != step)
                 {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a counter entry.</summary>
