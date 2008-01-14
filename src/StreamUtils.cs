@@ -65,19 +65,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool CheckPayloadStreamRange(long[] samples, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double span)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double weight = 4.33 / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = ((weight - (double)(long)i) + rate) - span;
             }
-            return ready;
+            return weight - weight;
         }
     }
 }
