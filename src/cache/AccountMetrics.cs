@@ -69,12 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            New,
-            Retry,
-            Stale,
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
