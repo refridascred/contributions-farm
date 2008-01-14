@@ -26,12 +26,24 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long floor, long limit)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            if ((double)floor == (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + floor) == (floor ^ floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
