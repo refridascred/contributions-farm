@@ -1,15 +1,4 @@
 # githubfarm settings
-flush_depth:
-  - primary
-  - local
-dry_run:
-  - legacy
-  - fallback
-  - open
-hard_ratio_ms: 30
-flush_capacity: latest
-editor_size:
-  verbose: 94.97
-  metrics_delay: 2850
-  order_threshold: 78.9
-session_ttl: 302
+persist: 4
+sync_depth: 66
+flush_capacity: 88
