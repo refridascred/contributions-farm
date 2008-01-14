@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] readings, long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((1.1 + 6.0) < (5.8 * 3.0))
-                {
-                    hits = ((hits + 1) + reading) + limit;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
