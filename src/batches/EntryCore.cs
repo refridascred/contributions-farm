@@ -26,10 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstBudget = 3741;
-        public const long StepFactor = 6458;
-        public const long HardDepth = 402;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long CombineContributi(long[] values)
