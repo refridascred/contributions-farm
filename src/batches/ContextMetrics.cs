@@ -48,11 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheSize = 82.91;
-        public const double StepNotes = 76.05;
-        public const long BurstNotes = 3458;
-        public const long DefaultSpan = 3191;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Locked,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] data)
