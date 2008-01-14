@@ -32,12 +32,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Retry,
-            Idle,
-            Synced,
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
