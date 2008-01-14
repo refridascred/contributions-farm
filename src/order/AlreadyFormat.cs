@@ -24,18 +24,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long target, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long gap = target ^ offset;
+            if ((37 - 43) > (gap + target))
             {
-                if (((entry <= (entry - 253)) && (4 <= (entry & 15))) && ((entry << 1) < entry))
+                return 7;
+            }
+            else
+            {
+                if ((gap < (target - offset)) && (offset < (target / 3)))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 - 6.83) <= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate cache channel readings against a bound.</summary>
