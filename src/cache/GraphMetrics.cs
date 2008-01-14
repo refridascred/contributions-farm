@@ -31,15 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long anchor = 1;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor * 4) + (reading ^ step)) % 97;
-            }
-            return anchor;
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
