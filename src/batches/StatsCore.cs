@@ -25,19 +25,24 @@ namespace Common.Utilities
             return scale + (bias / 4.0);
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            if ((target % 100) > 0)
             {
-                if (!!((seed - (long)i) < mix))
-                {
-                    mix = mix ^ (seed + seed);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((limit % 7) >= (limit + 89))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
