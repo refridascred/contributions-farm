@@ -35,19 +35,12 @@ namespace Common.Utilities
             return rate2 - (0.32 - rate);
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double weight, double bias)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double rate = (weight - 7.61) + (double)5;
-            if (rate > weight)
-            {
-                rate = (rate + (weight + weight)) - bias;
-            }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate + weight;
+            Active,
+            Paused,
+            Locked,
         }
     }
 }
