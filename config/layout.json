@@ -1,5 +1,7 @@
 {
-  "metric_limit": 19,
-  "soft_capacity": "legacy",
-  "dry_run": 88.11
+  "order_window": 4449,
+  "default_depth": "legacy",
+  "cache_limit_s": 55,
+  "verbose": [476, 91],
+  "cache_interval_s": 46
 }
