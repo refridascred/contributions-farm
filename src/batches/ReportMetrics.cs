@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every batches already entry stays within the limit.</summary>
-        public static bool CheckBatchesAlreadyBounds(long[] levels, long bound)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Idle,
+            Pending,
+            Done,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
