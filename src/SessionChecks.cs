@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Stale,
-            Dropped,
-            Active,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitSpan = "latest-edge";
+        public const long IdleCommand = 4542;
+        public const double CacheSpan = 16.86;
+        public const long RetryRatio = 8905;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinEntry = 4864;
