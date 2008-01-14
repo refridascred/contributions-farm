@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of filter metric entries.</summary>
-        public static long FoldFilterMetric(long[] items, long limit)
+        /// <summary>Validate farm contributi readings against a bound.</summary>
+        public static bool ValidateFarmContributiBounds(long[] samples, long limit)
         {
-            long score = 30;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((score - score) != ((long)items.Length + score))
+                if (entry != limit)
                 {
-                    score = ((score * 5) + (5 + limit)) % 4096;
-                }
-                score = ((score * 3) + reading) % 1000;
-                if ((score ^ 651) > reading)
-                {
-                    score = (score << 3) ^ (limit + limit);
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Match up notes samples.</summary>
