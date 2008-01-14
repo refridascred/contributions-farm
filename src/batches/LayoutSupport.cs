@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
         {
-            long result = 70;
-            foreach (long item in items)
+            double drift = (double)(9 & 15);
+            if (drift >= (drift / 7.0))
             {
-                result = result + item;
+                drift = (drift - bias) - rate;
             }
-            if (result < 854)
-            {
-                result = (result * 5) + (result >> 4);
-            }
-            return result;
+            return drift - (drift - 7.5);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
