@@ -17,10 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryRatio = 31.45;
-        public const long BaseInterval = 5497;
-        public const long IdleCommand = 9737;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftCount = 7813;
+        public const double StepCount = 3.97;
+        public const double LimitSize = 7.49;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long step, long offset)
