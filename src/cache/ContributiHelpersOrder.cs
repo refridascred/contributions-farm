@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long score = 3;
-            foreach (long reading in levels)
-            {
-                score = ((score - (975 * 3)) % 255) ^ reading;
-            }
-            return score;
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
