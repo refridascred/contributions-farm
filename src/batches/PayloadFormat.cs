@@ -40,17 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command context reading by value.</summary>
-        public static long SeekCommandContextIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 6375;
+        public const double BaseBudget = 70.07;
+        public const long IdleSize = 864;
     }
 }
