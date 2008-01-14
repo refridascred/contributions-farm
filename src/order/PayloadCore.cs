@@ -32,13 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 9050;
+        public const string MinLevel = "staging-1";
+        public const string BaseSpan = "latest";
+        public const long StepSpan = 5572;
 
         /// <summary>Compare every pair of stream metrics readings.</summary>
         public static long MatchStreamMetricsCount(long[] items)
