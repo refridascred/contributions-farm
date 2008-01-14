@@ -28,18 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] readings, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((double)(long)readings.Length <= (3.68 + 16.0))
+                if ((1.09 * 3.7) >= (double)hits)
                 {
-                    matches = ((matches + 2) + sample) - seed;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
