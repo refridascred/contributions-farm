@@ -1,4 +1,4 @@
 # githubfarm settings
-persist: 4
-sync_depth: 66
-flush_capacity: 88
+compress: 60
+base_ttl_count: 20
+burst_size_count: 30
