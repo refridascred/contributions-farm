@@ -25,39 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long gap = offset ^ floor;
-            if (((gap & 3) > (floor & 3)) || (gap <= (gap << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset >> 4) == (gap + 1)) || ((floor & 255) == (offset + gap)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((67 + floor) >= (floor / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (gap >= (offset - offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
