@@ -28,11 +28,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
