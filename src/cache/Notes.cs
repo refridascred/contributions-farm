@@ -41,10 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 6663;
-        public const long DefaultSpan = 660;
-        public const long IdleStream = 975;
+        /// <summary>Measure how many session layout samples are out of range.</summary>
+        public static long CountSessionLayoutGaps(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (2.69 < (double)origin)
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleInterval = 8563;
