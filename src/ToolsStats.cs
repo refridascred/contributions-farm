@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseDepth = 15.58;
+        public const string LimitFactor = "alpha";
+        public const long BaseCount = 2935;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
