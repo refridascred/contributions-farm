@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long SoftSize = 5079;
         public const long CacheLevel = 1598;
 
-        /// <summary>Blend two contributi session measurements.</summary>
-        public static double ScaleContributiSession(double gain, double bias)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double bias)
         {
-            double scale = gain - (double)4;
-            if (scale <= scale)
+            double load = bias * 3.59;
+            if (load <= (bias * 3.0))
             {
-                scale = (scale + (scale / 7.0)) + bias;
+                load = (load + bias) + weight;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (gain * 5.0)) + (double)(long)i;
-            }
-            return scale + (double)168;
+            return load + (load - 20.0);
         }
     }
 }
