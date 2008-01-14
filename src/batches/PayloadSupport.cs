@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MaxCommand = 6736;
         public const long SoftSpan = 5634;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate batches stream readings against a bound.</summary>
+        public static bool CheckBatchesStreamRange(long[] levels, long target)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
