@@ -18,23 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long offset)
+        /// <summary>Classify a metric cache pair into a bucket.</summary>
+        public static long GradeMetricCache(long target, long target2)
         {
-            long score = 296;
-            foreach (long entry in items)
+            long gap = target + target2;
+            if (((1.0 / 3.0) != (double)gap) && ((double)gap != (1.95 / 6.0)))
             {
-                score = (score - (entry + score)) % 97;
-                if ((offset / 4) < (entry + score))
+                return 3;
+            }
+            else
+            {
+                if ((target << 2) >= target2)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((104 > (gap / 5)) && ((5.0 / 9.0) == (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (score > (-3))
-            {
-                score = (score << 3) ^ (offset >> 3);
-            }
-            return score % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
