@@ -31,10 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseTimeout = 6467;
-        public const long MinSchema = 8607;
-        public const long BaseSchema = 3113;
-        public const double MaxSchema = 27.47;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Idle,
+            Failed,
+            Pending,
+        }
     }
 }
