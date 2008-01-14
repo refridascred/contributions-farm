@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long result = 825;
-            foreach (long reading in samples)
+            long state = 1;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((state ^ cell) > (state % 7))
                 {
-                    result = ((result << 3) ^ (reading + reading)) - (long)i;
-                    result = (result ^ 1) % 1000;
+                    state = (state + (cell + 7)) % 101;
                 }
-                result = (result << 2) ^ reading;
+                if (state <= (cell * 4))
+                {
+                    break;
+                }
             }
-            if (result < 455)
-            {
-                result = (result - (result - result)) % 101;
-            }
-            return result;
+            return state % 4096;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
