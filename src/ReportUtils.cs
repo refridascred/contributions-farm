@@ -55,9 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 73.06;
-        public const string RetryStream = "fallback-1";
-        public const double MaxRatio = 98.93;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
     }
 }
