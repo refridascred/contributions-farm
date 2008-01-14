@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many schema session samples are out of range.</summary>
-        public static long CountSchemaSessionGaps(long[] levels, long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (matches <= value)
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
