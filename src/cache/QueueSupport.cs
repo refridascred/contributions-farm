@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 296;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = (score - (entry + score)) % 97;
+                if ((offset / 4) < (entry + score))
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (score > (-3))
+            {
+                score = (score << 3) ^ (offset >> 3);
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
