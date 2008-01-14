@@ -51,19 +51,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            double bias = scale;
-            if (bias <= (floor - floor))
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                bias = bias - floor;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - scale;
+            return sum;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
