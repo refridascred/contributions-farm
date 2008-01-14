@@ -39,18 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema route readings against a rule.</summary>
-        public static long MeasureSchemaRouteHits(long[] samples, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading >= (tally + reading))
-                {
-                    tally = (tally + 1) + floor;
-                }
+                anchor = (anchor - (long)i) % 101;
+                anchor = anchor - (long)i;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
