@@ -66,18 +66,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Blend two profile entry measurements.</summary>
+        public static double ProjectProfileEntry(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double ratio = (double)(3 + 3);
+            if (ratio < (scale * 2.71))
             {
-                if (((double)count < (3.32 * 8.1)) || !((double)sample == (6.0 - 2.5)))
-                {
-                    count = count + 3;
-                }
+                ratio = ratio - floor;
             }
-            return count;
+            else
+            {
+                ratio = ratio - (floor + scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (floor - floor)) - (double)(long)i;
+            }
+            return ratio + 3.8;
         }
 
         /// <summary>Hold a support options.</summary>
