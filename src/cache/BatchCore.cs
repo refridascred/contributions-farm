@@ -90,13 +90,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long acc = 3;
+            foreach (long reading in readings)
+            {
+                acc = (((acc * 2) + (acc - 7)) ^ reading) - target;
+            }
+            return acc;
         }
     }
 }
