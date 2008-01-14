@@ -47,11 +47,9 @@ namespace Common.Utilities
         public const long BurstWidth = 1609;
         public const double MinSchema = 6.33;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleInterval = 8563;
+        public const string LimitFarm = "primary-edge";
+        public const string MaxLevel = "cached";
     }
 }
