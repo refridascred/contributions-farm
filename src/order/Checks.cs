@@ -61,18 +61,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] series, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = 0;
+            foreach (long item in levels)
             {
-                if (offset >= cell)
-                {
-                    count = count + 2;
-                }
+                mark = (mark + (item - mark)) % 1000;
             }
-            return count;
+            if (mark > (-6))
+            {
+                mark = (mark + (mark + mark)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a support options.</summary>
