@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long step, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            if ((3.7 + 13.0) != (double)step)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((step & 7) >= (8 - 497))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
