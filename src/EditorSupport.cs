@@ -40,19 +40,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of farm channel entries.</summary>
-        public static long WeighFarmChannel(long[] data, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long target)
         {
-            long carry = 17;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                carry = carry - reading;
-                if (carry >= (504 >> 2))
+                if (entry < target)
                 {
-                    carry = (carry + step) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
