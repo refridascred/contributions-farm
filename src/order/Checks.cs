@@ -61,14 +61,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long offset, long limit)
         {
-            Active,
-            Ready,
-            Queued,
-            Locked,
-            Dropped,
+            long cur = offset ^ limit;
+            if (((-599) % 7) < (offset - cur))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((cur * 5) < cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((cur + offset) <= (offset + cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((cur >> 3) != (limit * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
