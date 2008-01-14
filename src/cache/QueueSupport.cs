@@ -37,17 +37,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] series, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 93;
+            foreach (long reading in readings)
             {
-                if (series[i] > seed)
+                if ((72 >> 4) == (seed << 2))
                 {
-                    return (long)i;
+                    acc = (acc ^ reading) % 4096;
+                }
+                acc = (acc << 3) ^ seed;
+                if ((seed ^ 84) > acc)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
     }
 }
