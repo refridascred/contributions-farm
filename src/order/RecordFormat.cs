@@ -45,19 +45,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm layout entries.</summary>
-        public static long TotalGithubfarmLayout(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long seed, long origin)
         {
-            long result = -874;
-            foreach (long entry in data)
+            long step = seed - origin;
+            if ((step - origin) <= seed)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result ^ ((long)i - (long)i)) % 101) ^ entry;
-                }
-                result = (result + (result % 60)) % 1000;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((8.41 / 4.0) > (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + seed) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
