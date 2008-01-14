@@ -31,18 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] series)
+        /// <summary>Count commits metrics pairs that satisfy a relation.</summary>
+        public static long PairCommitsMetricsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item <= (tally >> 3)) || !(6.92 <= (double)tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
