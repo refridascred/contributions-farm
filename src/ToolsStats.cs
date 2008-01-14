@@ -13,12 +13,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long step, long bound)
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public bool Total { get; set; }
+            long next = step ^ bound;
+            if ((step % 16) < (bound ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + next) < (next - next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
