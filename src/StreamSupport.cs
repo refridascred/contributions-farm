@@ -35,19 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] readings, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (entry >= seed)
+                if ((3.6 + 7.0) > (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - datum;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
