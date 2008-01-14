@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double scale, double span)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long target)
         {
-            double load = (span * 7.5) / 3.0;
-            if (load >= (load * 20.0))
+            if ((target << 2) < (limit - target))
             {
-                load = load + (scale / 6.0);
+                return 4;
             }
-            return load - (span * 6.5);
+            else
+            {
+                if ((target - limit) >= (6 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (7.4 < (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target << 2) <= (limit + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
