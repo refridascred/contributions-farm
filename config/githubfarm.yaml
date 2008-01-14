@@ -1,5 +1,5 @@
 # githubfarm settings
-buffer_window: latest
-flush_limit_pct: 4203
-verbose: stable
-metrics_interval: strict
+queue_limit: 68
+counter_threshold: primary
+verbose: 23.23
+retry_capacity: green
