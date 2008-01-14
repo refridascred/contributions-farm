@@ -1,4 +1,5 @@
 # githubfarm settings
-hard_ratio_ms: 88.72
-warm_depth_pct: fallback
-readonly: cached
+entry_capacity: cached
+flush_capacity_count: 4.14
+retry_depth: blue
+audit: 85.69
