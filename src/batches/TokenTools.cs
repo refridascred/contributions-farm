@@ -29,17 +29,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long target2)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            if ((target2 << 3) <= (target2 - 982))
             {
-                result = (result ^ step) % 255;
-                result = result + ((long)i & 31);
-                result = ((result * 4) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((double)target == (7.4 + 7.8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
