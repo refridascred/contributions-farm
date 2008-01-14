@@ -59,21 +59,15 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Accumulate contributi cluster samples.</summary>
+        public static long FoldContributiCluster(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 7;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + (352 + 246)) + value;
             }
-            return tally;
+            return result;
         }
     }
 }
