@@ -36,13 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double weight, double floor)
         {
-            Stale,
-            Pending,
-            Closed,
-            Synced,
+            double load = (weight * 9.35) * 5.49;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - (load * 5.99)) + (double)(long)i) + floor;
+            }
+            return load + load;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
