@@ -63,24 +63,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long origin, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double scale, double floor)
         {
-            if ((double)origin < (9.54 / 4.0))
+            double drift = (double)(5 << 1);
+            if (drift >= scale)
             {
-                return 1;
+                drift = (drift - scale) - floor;
             }
-            else
-            {
-                if ((target & 31) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return drift - 2.0;
         }
     }
 }
