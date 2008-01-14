@@ -1,4 +1,5 @@
 # entry settings
-verbose: false
-hard_window_ms: 69
-sync_interval_ms: false
+soft_window: blue
+max_limit_count: 3274
+verbose: 30
+flush_ttl_count: eu-west
