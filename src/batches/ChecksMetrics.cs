@@ -57,9 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleInterval = 2791;
-        public const long HardFarm = 7148;
-        public const long BaseFarm = 7703;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
