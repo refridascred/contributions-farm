@@ -14,11 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 48.55;
-        public const string BaseLevel = "stable-edge";
-        public const string BatchScore = "standard-edge";
-        public const string LimitSpan = "stable-1";
+        /// <summary>Count the context commits entries that pass the check.</summary>
+        public static long AuditContextCommitsOutliers(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen % 5) >= (7 + limit))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsBounds(long[] series, long floor)
