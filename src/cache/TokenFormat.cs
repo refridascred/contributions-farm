@@ -28,26 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm report readings.</summary>
-        public static long CombineGithubfarmReport(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long target)
         {
-            long anchor = 12;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((anchor + anchor) > (entry ^ (long)values.Length))
+                if (item > target)
                 {
-                    anchor = (anchor << 3) ^ (entry % 2);
-                }
-                if ((double)anchor != (4.4 - 1.0))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (anchor < (-1))
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor;
+            return ok;
         }
     }
 }
