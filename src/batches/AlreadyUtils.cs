@@ -18,13 +18,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long total = 730;
+            foreach (long entry in readings)
+            {
+                if (((double)entry == (1.0 - 9.98)) && ((17.0 / 4.0) != (double)total))
+                {
+                    total = ((total * 3) + (481 + total)) % 1000;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
