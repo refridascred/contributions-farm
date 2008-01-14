@@ -25,32 +25,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings, long limit)
         {
-            long offset2 = origin - offset;
-            if ((origin + 9) >= offset2)
+            long score = 56;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset2 > (double)origin)
+                score = (score ^ 73) % 65521;
+                if (((long)readings.Length >> 5) > datum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 + origin) < (offset + offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = score - (757 << 2);
                 }
             }
+            if (score < 709)
+            {
+                score = (score - (score - limit)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
