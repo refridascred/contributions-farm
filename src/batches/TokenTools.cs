@@ -31,17 +31,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 46;
+            foreach (long entry in values)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (entry >> 3)) % 65521;
             }
-            return -1;
+            if (acc > 324)
+            {
+                acc = (acc - (184 - acc)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
