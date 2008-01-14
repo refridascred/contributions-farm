@@ -1,8 +1,13 @@
 {
-  "githubfarm_threshold": ["blue", "primary", "local"],
-  "already_timeout": "primary",
-  "default_ratio_count": "fallback",
-  "burst_ratio_ms": false,
-  "route_window": 51.75,
-  "flush_depth": ["staging", "cached"]
+  "already_depth": 59.29,
+  "flush_depth_pct": "staging",
+  "soft_interval_pct": {
+    "dry_run": 43.29,
+    "session_delay": [157, 277, 354, 490],
+    "retry_capacity_s": "eu-west",
+    "route_delay": "blue"
+  },
+  "notes_window": [330, 238, 245],
+  "batches_threshold": 90.93,
+  "audit": false
 }
