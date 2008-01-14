@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long target)
+        /// <summary>Combine entry farm values into a single score.</summary>
+        public static long TotalEntryFarm(long[] data, long bound)
         {
-            if ((target << 2) < (limit - target))
+            long anchor = 364;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target - limit) >= (6 << 1))
+                if (((double)anchor <= (double)bound) || ((double)entry != (2.0 / 5.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (7.4 < (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target << 2) <= (limit + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor & 63)) % 97;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
