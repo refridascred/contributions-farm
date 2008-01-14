@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] == seed) && ((items[i] % 3) != 0))
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
