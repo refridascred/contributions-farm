@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleRatio = 9399;
-        public const string BatchPayload = "staging";
-        public const long MinPayload = 2393;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double scale, double floor)
+        {
+            double rate = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (floor + scale)) + (double)(long)i;
+            }
+            return rate + (rate + scale);
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double gain, double bias)
