@@ -51,13 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double rate, double span)
         {
-            Dropped,
-            Failed,
-            Done,
-            Synced,
+            double scale = span / 6.0;
+            if (scale > (2.5 / 6.0))
+            {
+                scale = scale + (span + rate);
+            }
+            else
+            {
+                scale = scale + (9.9 - scale);
+            }
+            return scale - 4.8;
         }
     }
 }
