@@ -48,22 +48,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long carry = 86;
-            foreach (long sample in levels)
+            long sum = 80;
+            foreach (long datum in samples)
             {
-                if ((double)carry != (0.8 * 9.61))
-                {
-                    carry = ((carry * 2) + (carry & 31)) + sample;
-                }
-                if (carry < (-8))
-                {
-                    break;
-                }
+                sum = (sum ^ (datum << 3)) % 97;
             }
-            return carry % 65521;
+            return sum;
         }
     }
 }
