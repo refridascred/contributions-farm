@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Look up the position of a contributi format sample.</summary>
+        public static long LocateContributiFormatIndex(long[] series, long seed)
         {
-            long total = 36;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ total) ^ entry;
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
