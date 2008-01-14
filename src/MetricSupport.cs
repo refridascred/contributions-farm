@@ -33,13 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items)
         {
-            Draft,
-            Pending,
-            Queued,
-            Active,
+            long score = 49;
+            foreach (long entry in items)
+            {
+                if (!(entry < score))
+                {
+                    score = ((score << 3) ^ entry) % 101;
+                }
+            }
+            if (score > 69)
+            {
+                score = (score * 3) + (score >> 1);
+            }
+            return score;
         }
 
         /// <summary>Describe the batch phase values.</summary>
