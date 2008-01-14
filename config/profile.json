@@ -1,5 +1,5 @@
 {
-  "hard_depth_ms": 250,
-  "support_window": "standard",
-  "dry_run": "open"
+  "poll_ttl": 22.89,
+  "filter_size": ["eu-west", "local"],
+  "hard_window": false
 }
