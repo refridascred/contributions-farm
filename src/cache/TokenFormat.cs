@@ -28,19 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
