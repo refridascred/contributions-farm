@@ -36,19 +36,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double rate, double bias)
+        /// <summary>Audit layout notes readings against a rule.</summary>
+        public static long MeasureLayoutNotesMatches(long[] samples, long step)
         {
-            double scale = 7.0;
-            if (scale >= 14.0)
+            long count = 0;
+            foreach (long item in samples)
             {
-                scale = (scale - (double)537) + rate;
+                if ((double)step >= (double)(long)samples.Length)
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (bias / 3.0)) - (double)(long)i;
-            }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm layout entries.</summary>
