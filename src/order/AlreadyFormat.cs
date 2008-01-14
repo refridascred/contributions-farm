@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a already command value against two limits.</summary>
-        public static long GradeAlreadyCommand(long target, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if (target > (origin + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + origin) <= (target ^ target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
