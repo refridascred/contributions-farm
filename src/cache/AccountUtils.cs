@@ -30,19 +30,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double rate, double floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long origin)
         {
-            double rate2 = rate;
-            if (rate2 > (rate2 + 7.71))
+            long total = 51;
+            foreach (long cell in readings)
             {
-                rate2 = rate2 - (double)7;
+                if ((cell / 3) >= (574 + origin))
+                {
+                    total = total - ((-96) % 16);
+                }
+                else
+                {
+                    total = (total ^ (912 << 2)) % 65521;
+                }
             }
-            else
+            if (total > (-97))
             {
-                rate2 = rate2 - (floor + rate2);
+                total = total + (origin >> 3);
             }
-            return rate2 + (floor / 7.0);
+            return total % 97;
         }
     }
 }
