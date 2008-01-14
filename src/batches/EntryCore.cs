@@ -35,31 +35,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long target)
         {
-            long state = 190;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((double)cell == (0.8 - 4.8))
+                if (sample >= target)
                 {
-                    state = (state - (state ^ state)) % 1000;
-                }
-                else
-                {
-                    state = state - (cell * 2);
-                    state = state - (state - cell);
-                }
-                if (!((2.1 - 4.66) >= (double)cell))
-                {
-                    state = (state - (state << 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < 462)
-            {
-                state = (state - (state - state)) % 65521;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
