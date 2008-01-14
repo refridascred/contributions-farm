@@ -1,10 +1,13 @@
 # entry settings
-hard_retries_ms: standard
-burst_retries_s: fallback
-strict: standard
-batch_threshold: 3228
-max_window_count: blue
-hard_size_ms:
-  cache_ttl: false
-  batch_interval_count: 57.52
-  default_size_count: 4096
+window_delay: 46.92
+max_capacity_count:
+  metric_ttl: latest
+  cache_ratio: stable
+  warm_delay_pct: 60
+  soft_timeout: staging
+  flush_ratio: eu-west
+  base_ratio: 44
+payload_depth:
+  - 212
+  - 113
+  - 150
