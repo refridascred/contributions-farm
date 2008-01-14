@@ -83,23 +83,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double ratio, double bias)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] readings)
         {
-            double gain = (double)13 - (bias - ratio);
-            if (gain >= (ratio + gain))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                gain = gain + (4.3 * 7.4);
+                if (82 > (hits ^ hits))
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            else
-            {
-                gain = gain + (5.5 * 20.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - ratio) - (double)(long)i;
-            }
-            return gain + (double)930;
+            return hits;
         }
     }
 }
