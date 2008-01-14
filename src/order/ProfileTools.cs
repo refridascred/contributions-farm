@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long floor)
         {
-            long score = 3;
-            foreach (long item in values)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((2.4 + 8.5) != (double)item)
-                {
-                    score = (score + score) - target;
-                }
-                else
-                {
-                    score = (score - score) % 65521;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Hold a account header.</summary>
