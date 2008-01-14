@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleWidth = "local-v2";
-        public const long MaxStream = 5035;
-        public const long RetryStream = 1216;
-        public const long WindowStream = 7327;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] readings)
+        {
+            long mix = 2;
+            foreach (long reading in readings)
+            {
+                if ((mix / 8) >= reading)
+                {
+                    mix = (mix + (299 ^ 770)) % 97;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
