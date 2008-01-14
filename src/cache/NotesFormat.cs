@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a metric command figure with a bias.</summary>
-        public static double AdjustMetricCommand(double gain, double bias)
+        /// <summary>Measure how many schema session samples are out of range.</summary>
+        public static long CountSchemaSessionGaps(long[] levels, long step)
         {
-            double drift = (gain - 1.15) - 6.49;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                drift = ((drift + gain) + (double)(long)i) + bias;
+                if (matches <= value)
+                {
+                    matches = (matches + 3) - step;
+                }
             }
-            return drift - gain;
+            return matches;
         }
 
         /// <summary>Match up cache samples.</summary>
