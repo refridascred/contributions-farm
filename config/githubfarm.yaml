@@ -1,24 +1,16 @@
 # githubfarm settings
-poll_interval_count:
-  cache_delay: 1891
-  sync_delay_pct: open
-  filter_window: 3495
-  audit:
-    - 152
-    - 160
-    - 288
-    - 412
-  profile_depth:
-    cache_window_pct: true
-    cache_interval: 27.58
-    commits_delay: staging
-    audit: false
-layout_retries:
-  - blue
+enabled: standard
+commits_ratio:
+  report_ratio: 30
+  base_retries_pct: true
+  readonly: 99
+  min_timeout: 6669
+  tools_interval: 33
+default_limit_pct:
   - local
-  - strict
   - standard
-sync_retries: local
-base_ttl: false
-profile_ratio: open
-format_threshold: 100
+  - strict
+  - local
+default_limit: 60
+warm_capacity_s: blue
+base_timeout: true
