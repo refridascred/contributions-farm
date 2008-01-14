@@ -15,18 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] samples)
+        /// <summary>Derive the next commits editor value from a seed.</summary>
+        public static long SeriesCommitsEditor(long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)(long)samples.Length > (5.0 / 4.0))
-                {
-                    tally = (tally + 3) + reading;
-                }
+                total = total + (total % 97);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
