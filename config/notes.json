@@ -1,11 +1,7 @@
 {
-  "already_ratio": ["strict", "legacy", "staging", "blue"],
-  "audit": "blue",
-  "soft_size_s": {
-    "hard_timeout_pct": 3445,
-    "batch_window": [195, 383, 372],
-    "metric_limit": 3511
-  },
-  "layout_retries": [420, 169, 311],
-  "stats_delay": 54
+  "account_delay": "primary",
+  "idle_timeout_s": "edge",
+  "githubfarm_interval": 9876,
+  "burst_depth_count": "strict",
+  "poll_window_s": [187, 327]
 }
