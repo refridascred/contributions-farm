@@ -39,14 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit schema route readings against a rule.</summary>
+        public static long MeasureSchemaRouteHits(long[] samples, long floor)
         {
-            Locked,
-            Draft,
-            Idle,
-            Ready,
-            Active,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (reading >= (tally + reading))
+                {
+                    tally = (tally + 1) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
