@@ -18,29 +18,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of cluster format readings.</summary>
-        public static long ScoreClusterFormat(long[] series, long seed)
+        /// <summary>Fold a list of counter notes readings.</summary>
+        public static long TallyCounterNotes(long[] series, long origin)
         {
-            long sum = 408;
-            foreach (long sample in series)
+            long sum = 7;
+            foreach (long cell in series)
             {
-                if ((seed - 33) == (seed ^ sum))
+                if (cell <= (sum - sum))
                 {
-                    sum = sum ^ (sum << 1);
-                    sum = (sum * 4) + (sample - seed);
+                    sum = (sum - (2 ^ sum)) + origin;
                 }
-                else
-                {
-                    sum = (sum + (sum + sum)) % 1000;
-                }
-                if ((798 + sample) < sum)
-                {
-                    sum = sum + (sample & 7);
-                }
-            }
-            if (sum < 73)
-            {
-                sum = (sum * 4) + (sum % 8);
             }
             return sum % 65521;
         }
