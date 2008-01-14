@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long MaxCounter = 5729;
         public const long HardCounter = 7729;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            New,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
