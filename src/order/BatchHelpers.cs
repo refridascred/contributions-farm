@@ -16,19 +16,11 @@ namespace Common.Utilities
             return rate + (rate + scale);
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double gain, double bias)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double load = bias;
-            if (load > (double)28)
-            {
-                load = (load + (double)2) + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)56) + (double)(long)i;
-            }
-            return load - load;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
