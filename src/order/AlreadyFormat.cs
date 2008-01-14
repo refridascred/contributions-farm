@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
