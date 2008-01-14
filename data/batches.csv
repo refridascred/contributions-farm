@@ -1,7 +1,10 @@
-id,token,score,ratio
-1,43.5,23.1,45.43
-2,38.93,66.68,25.32
-3,legacy,eu-west,936
-4,747,598,38
-5,fallback,66.27,58.01
-6,339,latest,primary
+id,token,ratio,rank,state
+1,53.51,490,950,21.02
+2,eu-west,786,latest,404
+3,stable,7.0,127,strict
+4,blue,569,566,edge
+5,stable,386,blue,green
+6,725,755,standard,61.8
+7,46.67,560,539,190
+8,21.32,3.89,25,strict
+9,82.78,55.44,local,cached
