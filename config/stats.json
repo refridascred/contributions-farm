@@ -1,6 +1,8 @@
 {
-  "verbose": 1024,
-  "already_ttl": false,
-  "batch_limit_count": 7.47,
-  "graph_size": 9542
+  "retry_ttl_ms": "local",
+  "report_size": "standard",
+  "retry_delay_pct": ["standard", "cached"],
+  "flush_delay": 4118,
+  "report_depth": 250,
+  "profile_retries": 8338
 }
