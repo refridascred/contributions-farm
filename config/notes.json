@@ -1,18 +1,6 @@
 {
-  "compress": 68,
-  "sync_interval": 5485,
-  "record_timeout": 7889,
-  "base_retries": {
-    "audit": {
-      "report_timeout": "edge",
-      "hard_timeout_ms": 7,
-      "retry_window_ms": "staging",
-      "readonly": "legacy",
-      "default_ttl_pct": false,
-      "hard_threshold": 27.86
-    },
-    "default_depth_count": "stable",
-    "warm_ratio_ms": "standard"
-  },
-  "flush_retries_s": false
+  "audit": 8.73,
+  "cache_interval_s": "eu-west",
+  "hard_size_s": 3.06,
+  "support_retries": 195
 }
