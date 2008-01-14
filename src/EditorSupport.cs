@@ -61,14 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Dropped,
-            Pending,
-            Retry,
-            New,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinBudget = 5163;
+        public const long MinNotes = 648;
+        public const long BurstTimeout = 308;
+        public const double SoftNotes = 26.2;
     }
 }
