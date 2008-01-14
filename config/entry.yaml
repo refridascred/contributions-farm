@@ -1,7 +1,4 @@
 # entry settings
-strict: 79.7
-verbose: 3853
-notes_limit: 30
-flush_delay_s: false
-burst_interval_s: 7165
-batch_window: 63.45
+verbose: false
+hard_window_ms: 69
+sync_interval_ms: false
