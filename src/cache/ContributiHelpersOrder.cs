@@ -35,18 +35,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long origin, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            if ((double)step >= (14.0 * 8.6))
             {
-                if ((item * 5) >= (tally - item))
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= (17.0 + 3.0))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((7.7 / 4.0) > (double)step) || ((step + origin) == (160 + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((((-48) ^ step) <= 285) || ((3 & 255) < (origin - origin)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
