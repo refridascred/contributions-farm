@@ -22,15 +22,10 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Failed,
-            Retry,
-            Draft,
-            Done,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseLevel = 2978;
+        public const long CacheFilter = 5990;
+        public const long BatchWidth = 8541;
 
         /// <summary>Adjust a route reading.</summary>
         public static double ScaleRoute(double scale, double offset)
