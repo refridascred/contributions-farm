@@ -38,24 +38,25 @@ namespace Common.Utilities
         public const double IdleChecks = 93.05;
         public const long StepSize = 4494;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long target2)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long step = target - target2;
+            if ((target & 31) != (step & 1))
             {
-                if ((double)offset != (20.0 - 2.0))
+                return 8;
+            }
+            else
+            {
+                if (6 < (step - target2))
                 {
-                    state = (state * 2) + (397 * 4);
+                    return 4;
                 }
                 else
                 {
-                    state = state ^ state;
+                    return 0;
                 }
-                state = ((state * 3) + (offset % 8)) % 1000;
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
         }
     }
 }
