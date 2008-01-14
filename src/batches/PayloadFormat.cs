@@ -46,21 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command channel samples.</summary>
-        public static long PairCommandChannelCount(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Closed,
+            New,
+            Stale,
         }
     }
 }
