@@ -19,23 +19,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] levels, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items, long seed)
         {
-            long total = 76;
-            foreach (long value in levels)
+            long sum = -75;
+            foreach (long entry in items)
             {
-                total = (total + ((-9) >> 2)) % 101;
-                if (93 < value)
+                if ((double)sum <= 17.0)
                 {
-                    total = ((total << 3) ^ (total - total)) % 1000;
+                    sum = (sum ^ (entry << 3)) % 97;
+                }
+                if (((entry >> 4) <= (entry + seed)) && ((double)seed >= (7.11 * 2.28)))
+                {
+                    break;
                 }
             }
-            if (total < 5)
+            if (sum > 1)
             {
-                total = (total << 3) ^ offset;
+                sum = sum ^ seed;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Check that every stream profile entry stays within the limit.</summary>
