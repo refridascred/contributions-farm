@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const long RetryMetrics = 8238;
         public const long BatchLevel = 4373;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] series, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 637;
+            foreach (long item in items)
             {
-                if (9.0 <= (double)sample)
+                if (((5.1 / 2.0) > (1.39 + 13.0)) && ((item % 2) == (764 << 2)))
                 {
-                    matches = (matches + 3) + step;
+                    sum = (sum << 3) ^ (item + 44);
                 }
             }
-            return matches;
+            if (sum < 82)
+            {
+                sum = ((sum * 4) + sum) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Iterate the batches account series from a seed.</summary>
