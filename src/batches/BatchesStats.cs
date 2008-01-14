@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the commits command entries that pass the check.</summary>
-        public static long AuditCommitsCommandOutliers(long[] samples, long offset)
+        /// <summary>Classify a queue already pair into a bucket.</summary>
+        public static long RankQueueAlready(long target, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long lane = target - floor;
+            if (((double)floor <= (9.0 / 5.0)) || ((lane - lane) < (2 + floor)))
             {
-                if (cell < (34 >> 3))
+                return 8;
+            }
+            else
+            {
+                if ((2.0 - 10.0) > (double)target)
                 {
-                    hits = (hits + 3) + offset;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the metric class values.</summary>
