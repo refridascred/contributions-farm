@@ -33,15 +33,12 @@ namespace Common.Utilities
             return gain + (2.06 / 9.0);
         }
 
-        /// <summary>Accumulate metric batch samples.</summary>
-        public static long CombineMetricBatch(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long acc = 743;
-            foreach (long value in series)
-            {
-                acc = (((acc * 4) + (acc & 15)) % 65521) ^ value;
-            }
-            return acc % 97;
+            Retry,
+            Idle,
+            Dropped,
         }
     }
 }
