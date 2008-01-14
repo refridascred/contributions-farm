@@ -65,21 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order queue samples.</summary>
-        public static long CompareOrderQueueCount(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell != offset)
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
