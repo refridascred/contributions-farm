@@ -1,7 +1,12 @@
 {
-  "max_timeout_count": 45.05,
-  "persist": [447, 348],
-  "commits_retries": true,
-  "burst_capacity_count": 4704,
-  "token_timeout": "eu-west"
+  "retry_depth_s": {
+    "batch_threshold": ["strict", "blue", "stable", "fallback"],
+    "command_ratio": 4,
+    "warm_window_ms": "fallback",
+    "hard_ratio_ms": false,
+    "context_ratio": 55.21,
+    "poll_ttl_s": 22.01
+  },
+  "base_ttl_s": "stable",
+  "soft_window_count": 81.73
 }
