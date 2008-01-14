@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftBudget = "stable";
-        public const double MinCluster = 7.49;
-        public const long MaxCluster = 2163;
-        public const long IdleScore = 7244;
-        public const double BurstSpan = 38.05;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] data)
