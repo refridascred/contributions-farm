@@ -66,11 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "cached-edge";
-        public const long MinCache = 8107;
-        public const long BatchRatio = 2423;
-        public const long HardCache = 3408;
-        public const long LimitDepth = 7660;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 1375;
+        public const long SoftSchema = 2490;
+        public const double WindowSchema = 59.39;
+        public const long IdleCount = 9763;
     }
 }
