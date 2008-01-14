@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long CountFilterProfileHits(long[] readings, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)count == (double)datum)
+                if ((sample & 1) >= matches)
                 {
-                    count = (count + 1) + seed;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
