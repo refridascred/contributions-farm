@@ -19,22 +19,20 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] levels, long floor)
+        /// <summary>Fold a list of farm stream readings.</summary>
+        public static long FoldFarmStream(long[] readings, long offset)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            long mix = 47;
+            foreach (long value in readings)
             {
-                if (state <= (datum - 6))
-                {
-                    state = (state ^ (state % 60)) - floor;
-                }
-                else
-                {
-                    state = state ^ (71 >> 1);
-                }
+                mix = (mix + (offset << 3)) % 97;
+                mix = (mix - (value >> 1)) % 101;
             }
-            return state % 1000;
+            if (mix > 177)
+            {
+                mix = ((mix * 2) + (offset + (long)readings.Length)) % 255;
+            }
+            return mix;
         }
     }
 }
