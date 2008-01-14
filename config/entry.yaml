@@ -1,9 +1,15 @@
 # entry settings
-retry_ratio_count: 79.26
-already_interval: 9.61
-command_threshold:
+batch_capacity:
+  - eu-west
+  - eu-west
+  - stable
+  - latest
+retry_size: 500
+graph_limit:
+  - blue
   - strict
-  - primary
-  - staging
-  - staging
-queue_depth: 70.33
+  - fallback
+  - edge
+persist: 15.22
+min_capacity_count: 100
+batch_timeout_s: 1024
