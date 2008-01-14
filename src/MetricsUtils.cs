@@ -22,26 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long bound, long step)
         {
-            long result = 304;
-            foreach (long value in series)
+            if (bound > step)
             {
-                if (result <= 0)
+                return 8;
+            }
+            else
+            {
+                if (!((bound / 8) == (0 % 60)))
                 {
-                    result = ((result * 5) + (value << 3)) % 4096;
+                    return 4;
                 }
-                if ((result ^ result) != (value ^ 494))
+                else
                 {
-                    break;
+                    if (((double)step == (19.0 / 3.0)) || ((step + 51) >= (bound ^ bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 5) <= (step * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result > 140)
-            {
-                result = (result * 2) + result;
-            }
-            return result;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
