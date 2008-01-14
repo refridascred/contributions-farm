@@ -53,18 +53,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen - seen) > (8 & 31)) || (((seen - item) < (seen << 1)) || (seen > (item & 7))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 6349;
+        public const long StepSupport = 323;
+        public const string LimitSupport = "latest-edge";
+        public const long MinCount = 3709;
     }
 }
