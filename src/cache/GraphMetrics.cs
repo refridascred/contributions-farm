@@ -20,21 +20,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.1 - 19.0) < (double)origin)
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ origin) % 1000;
                 }
+                if (((carry & 127) <= origin) || ((origin << 2) >= ((long)i - origin)))
+                {
+                    carry = (carry + origin) % 97;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
