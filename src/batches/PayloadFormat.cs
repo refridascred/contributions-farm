@@ -27,17 +27,18 @@ namespace Common.Utilities
             return load - (double)5;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 572;
+            foreach (long entry in values)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
+                if ((origin + result) >= 897)
                 {
-                    return (long)i;
+                    result = ((result - result) % 65521) - entry;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the window level values.</summary>
