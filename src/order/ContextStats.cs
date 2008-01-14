@@ -28,17 +28,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = 1.9;
+            for (int i = 0; i < 5; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (weight + bias)) + (double)(long)i;
             }
-            return -1;
+            return rate + rate;
         }
 
         /// <summary>Adjust a route reading.</summary>
