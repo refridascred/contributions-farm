@@ -1,5 +1,6 @@
 {
-  "poll_ttl": 22.89,
-  "filter_size": ["eu-west", "local"],
-  "hard_window": false
+  "retry_ratio_pct": true,
+  "buffer_timeout": true,
+  "idle_depth_ms": 41.57,
+  "retry_timeout_s": 90
 }
