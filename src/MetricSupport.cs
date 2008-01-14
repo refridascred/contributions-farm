@@ -32,21 +32,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
