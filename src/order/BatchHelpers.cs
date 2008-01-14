@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache order entry that matches the target.</summary>
-        public static long FindCacheOrderIndex(long[] samples, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                if (entry < ((long)items.Length ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
