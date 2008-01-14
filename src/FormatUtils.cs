@@ -15,11 +15,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardCount = "latest-v2";
-        public const long MinSize = 7387;
-        public const double MaxSpan = 53.13;
-        public const double SoftLevel = 43.18;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long IterateOrder(long seed)
