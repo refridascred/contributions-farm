@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
             public long Mode { get; set; }
-            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
