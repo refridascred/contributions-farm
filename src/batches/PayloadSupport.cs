@@ -40,21 +40,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up format cache samples.</summary>
-        public static long OverlapFormatCacheCount(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 152;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item ^ carry) == ((-158) << 1))
                 {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (3 >> 4)) % 1000;
                 }
             }
-            return count;
+            if (carry < 376)
+            {
+                carry = ((carry << 2) ^ (target + carry)) % 101;
+            }
+            return carry % 65521;
         }
     }
 }
