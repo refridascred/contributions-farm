@@ -29,19 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] readings, long floor)
         {
-            double gain = span;
-            if (gain < (span * 19.0))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                gain = gain + (double)1;
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain - gain;
+            return found;
         }
     }
 }
