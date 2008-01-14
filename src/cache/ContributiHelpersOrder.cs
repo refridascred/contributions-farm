@@ -31,19 +31,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double mean = (ratio * 2.0) / 4.0;
-            if (mean < (mean * 2.51))
-            {
-                mean = mean - (floor - mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 14.0) + (double)(long)i;
-            }
-            return mean - (double)25;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
