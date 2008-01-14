@@ -34,17 +34,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] levels, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] < origin)
+                if ((0.8 + 0.5) <= (double)sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
