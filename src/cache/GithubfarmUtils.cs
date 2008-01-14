@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double scale, double floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double rate, double offset)
         {
-            double ratio = (floor * 2.63) / 6.0;
-            if (ratio <= (9.09 / 2.0))
+            double ratio = (double)(675 & 3);
+            if (ratio >= ratio)
             {
-                ratio = (ratio + (double)980) - scale;
+                ratio = (ratio + (offset - offset)) + rate;
             }
-            return ratio - floor;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (7.0 + ratio)) + (double)(long)i;
+            }
+            return ratio - 7.9;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
