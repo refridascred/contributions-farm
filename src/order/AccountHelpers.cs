@@ -21,19 +21,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long floor)
+        /// <summary>Accumulate editor context samples.</summary>
+        public static long DigestEditorContext(long[] data, long step)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long state = 1;
+            foreach (long item in data)
             {
-                if (entry != floor)
+                if (((item - step) > (item ^ state)) || ((step / 6) <= (step / 9)))
                 {
-                    found = false;
+                    state = state - step;
+                }
+                if (step <= 52)
+                {
                     break;
                 }
             }
-            return found;
+            if (state < 4)
+            {
+                state = state + (step ^ 251);
+            }
+            return state;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
