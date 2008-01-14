@@ -34,22 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] samples, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long bound, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((step / 8) == (372 + 894))
             {
-                if (!((double)offset > (17.0 - 7.29)) && ((tally ^ 96) <= (offset - datum)))
+                return 4;
+            }
+            else
+            {
+                if (!((1.57 + 2.0) <= (double)bound))
                 {
-                    tally = tally + 1;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
