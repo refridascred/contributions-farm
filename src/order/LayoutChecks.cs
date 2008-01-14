@@ -20,21 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
