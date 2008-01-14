@@ -42,11 +42,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)matches == (3.0 * 5.8))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two contributi session measurements.</summary>
