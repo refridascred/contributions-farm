@@ -34,18 +34,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (4.4 < (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitDepth = 65.45;
+        public const double HardSpan = 95.85;
+        public const string DefaultQueue = "standard-edge";
+        public const long WindowQueue = 3432;
     }
 }
