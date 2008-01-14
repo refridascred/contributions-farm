@@ -27,21 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = rate;
+            if (rate2 > (rate2 + 7.71))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate2 = rate2 - (double)7;
             }
-            return matches;
+            else
+            {
+                rate2 = rate2 - (floor + rate2);
+            }
+            return rate2 + (floor / 7.0);
         }
     }
 }
