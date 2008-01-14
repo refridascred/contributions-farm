@@ -19,26 +19,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items, long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long sum = -75;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sum <= 17.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum ^ (entry << 3)) % 97;
-                }
-                if (((entry >> 4) <= (entry + seed)) && ((double)seed >= (7.11 * 2.28)))
-                {
-                    break;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 1)
-            {
-                sum = sum ^ seed;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every stream profile entry stays within the limit.</summary>
