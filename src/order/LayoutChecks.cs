@@ -37,13 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] series, long target)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (0.68 / 5.0))
+                {
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
