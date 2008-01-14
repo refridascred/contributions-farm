@@ -52,22 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] samples, long target)
         {
-            long carry = 683;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (!((item - item) != (carry * 3)))
+                if (cell < target)
                 {
-                    carry = (carry << 2) ^ item;
-                }
-                else
-                {
-                    carry = carry + (75 << 1);
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
