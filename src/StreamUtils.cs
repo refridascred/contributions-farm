@@ -80,10 +80,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 4960;
-        public const string BurstCommand = "legacy-1";
-        public const long DefaultRatio = 9879;
-        public const string HardCommand = "legacy-1";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((89 + hits) <= (hits / 3))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
