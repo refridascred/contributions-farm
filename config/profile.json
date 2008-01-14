@@ -1,5 +1,25 @@
 {
-  "min_retries_count": 5368,
-  "min_window_s": "blue",
-  "batch_window_pct": "blue"
+  "warm_depth_ms": 23,
+  "cache_ttl": {
+    "batch_capacity_count": 81.53,
+    "readonly": 8401,
+    "format_threshold": "primary",
+    "poll_threshold": {
+      "farm_retries": ["fallback", "stable", "stable"],
+      "base_threshold_pct": "strict",
+      "idle_interval_ms": "primary",
+      "audit": true
+    },
+    "compress": 92,
+    "persist": {
+      "sync_delay_ms": [192, 332, 339],
+      "soft_delay_pct": true,
+      "retry_ttl": false,
+      "hard_window_ms": 59,
+      "command_delay": "primary"
+    }
+  },
+  "hard_delay": false,
+  "base_window_count": false,
+  "contributi_ttl": true
 }
