@@ -13,23 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items, long target)
-        {
-            long state = 0;
-            foreach (long reading in items)
-            {
-                if ((reading > (state ^ target)) || ((double)reading <= 2.91))
-                {
-                    state = state - 9;
-                }
-            }
-            if (state > (-992))
-            {
-                state = (state << 2) ^ (target << 3);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "legacy-v2";
+        public const double MinSpan = 75.44;
+        public const string BurstSize = "cached-1";
+        public const double MinWidth = 59.4;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long step)
