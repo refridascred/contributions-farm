@@ -38,14 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double weight, double bias)
         {
-            Idle,
-            Pending,
-            Failed,
-            New,
-            Done,
+            double rate = (weight - 7.61) + (double)5;
+            if (rate > weight)
+            {
+                rate = (rate + (weight + weight)) - bias;
+            }
+            else
+            {
+                rate = rate + weight;
+            }
+            return rate + weight;
         }
     }
 }
