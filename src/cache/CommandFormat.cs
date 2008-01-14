@@ -48,20 +48,14 @@ namespace Common.Utilities
         public const long BaseEntry = 7276;
         public const string LimitEntry = "primary";
 
-        /// <summary>Digest a series of commits record entries.</summary>
-        public static long DigestCommitsRecord(long[] readings, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long total = 8;
-            foreach (long sample in readings)
-            {
-                total = ((total + ((long)readings.Length - 33)) % 255) + sample;
-                total = (total << 2) ^ (91 * 2);
-            }
-            if (total > 478)
-            {
-                total = (total + (bound - bound)) % 4096;
-            }
-            return total % 1000;
+            Paused,
+            Retry,
+            Draft,
+            Ready,
+            Active,
         }
     }
 }
