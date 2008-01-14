@@ -73,17 +73,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a farm cache sample.</summary>
-        public static long LookupFarmCacheIndex(long[] data, long step)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool CheckPayloadStreamRange(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (data[i] <= step)
+                if (value < bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
