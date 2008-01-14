@@ -34,21 +34,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Combine route checks values into a single score.</summary>
+        public static long FoldRouteChecks(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 724;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sum / 9) >= sum)
                 {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    sum = (sum * 4) + (step - item);
+                }
+                if ((step % 12) < (long)readings.Length)
+                {
+                    sum = (sum + (step - 19)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (sum - sum)) % 65521;
+                }
+                sum = (sum + 9) % 255;
+                if (((double)item == (6.09 - 7.65)) || (item <= (5 + 963)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
