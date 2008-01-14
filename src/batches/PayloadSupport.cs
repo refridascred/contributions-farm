@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster checks reading by value.</summary>
-        public static long FindClusterChecksIndex(long[] readings, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 7.6;
+            if (drift <= drift)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift - (double)(-2)) - ratio) + offset;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)2) + (double)(long)i;
+            }
+            return drift + (drift * 8.1);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
