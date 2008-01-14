@@ -58,12 +58,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 10.34;
+        public const long CacheInterval = 9529;
+        public const long WindowDepth = 213;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
