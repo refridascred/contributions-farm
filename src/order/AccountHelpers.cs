@@ -32,12 +32,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "alpha-v2";
-        public const double DefaultFactor = 73.59;
-        public const long BurstRatio = 6203;
-        public const long WindowFarm = 462;
-        public const long DefaultDepth = 2120;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultWidth = 28.94;
+        public const long StepTimeout = 4322;
+        public const long BurstContext = 2383;
+        public const double WindowBudget = 39.78;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] readings, long origin)
