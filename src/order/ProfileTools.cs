@@ -41,15 +41,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double scale, double offset)
+        /// <summary>Scale a order token figure with a bias.</summary>
+        public static double BlendOrderToken(double scale, double floor)
         {
-            double rate = scale;
-            if (rate > (scale + scale))
+            double bias = scale;
+            if (bias > (3.4 / 4.0))
             {
-                rate = rate - scale;
+                bias = bias + (bias + scale);
             }
-            return rate + (offset - scale);
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (floor - bias)) - (double)(long)i;
+            }
+            return bias - (scale * 2.0);
         }
 
         /// <summary>Roll a checks counter forward.</summary>
