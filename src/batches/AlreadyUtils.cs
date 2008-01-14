@@ -50,29 +50,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i + mix) > (mix + bound))
-                {
-                    mix = ((mix * 4) + ((long)i + (long)i)) % 65521;
-                    break;
-                }
-                else
-                {
-                    mix = ((mix * 2) + bound) % 101;
-                    mix = (mix * 3) + mix;
-                }
-                if (!(((double)mix == (7.8 - 13.0)) && (bound > (bound - bound))))
-                {
-                    mix = (mix - (75 >> 1)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 3531;
+        public const long HardCount = 3829;
+        public const long RetryTools = 2652;
+        public const long BaseDepth = 153;
+        public const long BatchFactor = 3367;
     }
 }
