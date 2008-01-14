@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metric report entries that pass the check.</summary>
-        public static long MeasureMetricReportOutliers(long[] samples, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-9) + (-114)) >= limit)
+                if (samples[i] >= floor)
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
