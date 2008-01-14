@@ -12,38 +12,23 @@ namespace Common.Utilities
             return (weight - (ratio / 4.0)) + bias;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            if ((limit ^ 410) == (8 % 100))
+            double weight = span;
+            if (weight <= 5.8)
             {
-                return 4;
+                weight = weight + weight;
             }
             else
             {
-                if (((limit / 4) >= (origin << 1)) || (limit > origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((12.0 - 4.0) > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((9.0 + 16.0) >= (double)origin) || ((double)4 != (double)origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                weight = weight + (scale + weight);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - (5.6 + span);
         }
 
         /// <summary>Digest a series of notes entries.</summary>
