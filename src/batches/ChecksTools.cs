@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long offset, long step)
         {
-            Draft,
-            Stale,
-            Closed,
-            Failed,
+            long prev = offset + step;
+            if (step >= (6 & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > (step * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - offset) == (prev / 3)) && ((prev - prev) > 144))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step <= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
