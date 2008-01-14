@@ -1,6 +1,7 @@
 {
-  "sync_delay_s": 5390,
-  "window_size": 38,
-  "cluster_interval": 1024,
-  "strict": 1024
+  "tools_size": 58.36,
+  "compress": 3802,
+  "min_size": [155, 149, 244],
+  "order_limit": true,
+  "enabled": ["cached", "cached"]
 }
