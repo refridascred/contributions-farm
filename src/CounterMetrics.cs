@@ -56,19 +56,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batches format readings against a bound.</summary>
-        public static bool ValidateBatchesFormatRange(long[] values, long limit)
+        /// <summary>Compare every pair of counter cluster readings.</summary>
+        public static long MatchCounterClusterCount(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
