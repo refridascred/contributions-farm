@@ -1,7 +1,10 @@
-id,level,score,label
-1,edge,477,459
-2,281,primary,21.97
-3,204,325,86.67
-4,90.03,5.39,1.45
-5,8.15,64.03,32.87
-6,73.18,74.93,357
+id,owner,active,weight,state
+1,113,918,41.71,staging
+2,96.92,open,507,33.86
+3,308,strict,820,standard
+4,9.24,open,7.8,897
+5,latest,standard,5.86,429
+6,47.99,708,895,653
+7,latest,cached,156,813
+8,808,39.37,53.04,378
+9,fallback,staging,fallback,eu-west
