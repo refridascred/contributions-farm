@@ -54,23 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] values, long floor)
+        /// <summary>Count the channel report entries that pass the check.</summary>
+        public static long MeasureChannelReportOutliers(long[] levels, long target)
         {
-            long result = -90;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((floor < (sample - floor)) || ((double)floor < (14.0 / 4.0)))
+                if (((datum * 4) < (target * 4)) && ((target / 4) <= datum))
                 {
-                    result = (result + sample) % 97;
+                    matches = matches + 3;
                 }
-                result = (result << 2) ^ ((-575) - sample);
             }
-            if (result < 12)
-            {
-                result = (result + (result & 7)) % 101;
-            }
-            return result;
+            return matches;
         }
     }
 }
