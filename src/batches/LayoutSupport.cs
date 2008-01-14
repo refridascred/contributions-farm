@@ -66,11 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstInterval = "standard";
-        public const long WindowBuffer = 1028;
-        public const long SoftDepth = 3608;
-        public const long IdleTimeout = 787;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 1181;
+        public const string MaxTimeout = "alpha";
+        public const long WindowLevel = 1523;
 
         /// <summary>Iterate the entry tools series from a seed.</summary>
         public static long SeriesEntryTools(long target)
