@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score ^ ((long)i % 60)) % 65521;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
