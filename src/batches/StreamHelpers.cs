@@ -37,16 +37,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next notes session value from a seed.</summary>
-        public static long SeriesNotesSession(long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state << 3) ^ (state ^ 22)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
