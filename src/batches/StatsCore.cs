@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] items, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = span;
+            if (drift >= (scale * 2.7))
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                drift = drift + (drift * 17.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (drift / 2.0);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
