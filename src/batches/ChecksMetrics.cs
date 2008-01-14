@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next order editor value from a seed.</summary>
-        public static long RollOrderEditor(long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total ^ (total << 2)) % 101;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
