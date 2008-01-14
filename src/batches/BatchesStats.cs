@@ -12,19 +12,18 @@ namespace Common.Utilities
             return ((mean - (mean * 16.0)) + weight) + floor;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] samples, long target)
+        /// <summary>Count the cluster token entries that pass the check.</summary>
+        public static long CountClusterTokenGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (entry > target)
+                if (!((entry - entry) > (matches + matches)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count channel order pairs that satisfy a relation.</summary>
