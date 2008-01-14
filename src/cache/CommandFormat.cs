@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            double bias2 = ratio;
-            if (bias2 >= (9.6 - bias))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 - (bias + bias2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + bias;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
