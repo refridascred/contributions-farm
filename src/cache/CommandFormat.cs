@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long result = 42;
+            foreach (long reading in readings)
+            {
+                result = ((result - (982 & 15)) % 65521) + reading;
+            }
+            return result % 4096;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
