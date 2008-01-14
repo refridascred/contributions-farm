@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] values, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            long mix = -850;
-            foreach (long sample in values)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)seed > 5.0) || ((mix / 5) >= 6))
+                if (!(((long)i + acc) > 94))
                 {
-                    mix = ((mix ^ mix) % 255) + sample;
+                    acc = (acc * 2) + (acc >> 3);
                 }
-                else
+                if (((double)acc < (1.73 + 11.0)) && (target >= (acc + acc)))
                 {
-                    mix = (mix - (mix >> 4)) % 255;
+                    acc = (acc + 329) % 65521;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mix % 97;
+            return acc;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
