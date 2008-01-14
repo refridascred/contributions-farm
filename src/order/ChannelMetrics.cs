@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 29;
+            foreach (long sample in items)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (sample * 5)) % 255) + origin;
             }
-            return -1;
+            if (anchor > (-39))
+            {
+                anchor = (anchor ^ (774 + anchor)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next stats notes value from a seed.</summary>
