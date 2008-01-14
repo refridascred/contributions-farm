@@ -26,20 +26,15 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Fold a list of farm stream readings.</summary>
-        public static long FoldFarmStream(long[] readings, long offset)
+        /// <summary>Derive the next route metric value from a seed.</summary>
+        public static long DeriveRouteMetric(long origin)
         {
-            long mix = 47;
-            foreach (long value in readings)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix + (offset << 3)) % 97;
-                mix = (mix - (value >> 1)) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (mix > 177)
-            {
-                mix = ((mix * 2) + (offset + (long)readings.Length)) % 255;
-            }
-            return mix;
+            return sum;
         }
     }
 }
