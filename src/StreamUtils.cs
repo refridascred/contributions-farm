@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate report session readings against a bound.</summary>
+        public static bool GuardReportSessionLimits(long[] values, long seed)
         {
-            Locked,
-            Done,
-            Dropped,
-            Stale,
-            Retry,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate farm graph samples.</summary>
