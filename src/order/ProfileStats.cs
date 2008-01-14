@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long seed)
         {
-            Failed,
-            Pending,
-            Stale,
-            Queued,
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
