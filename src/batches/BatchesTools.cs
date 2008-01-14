@@ -20,21 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
