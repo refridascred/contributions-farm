@@ -1,16 +1,6 @@
 {
-  "hard_ratio": 42.71,
-  "poll_delay_count": {
-    "batch_timeout": [41, 30],
-    "filter_retries": "standard",
-    "base_size": [188, 78, 224],
-    "strict": true,
-    "max_limit_pct": {
-      "audit": false,
-      "verbose": 9483,
-      "cache_threshold_ms": 41,
-      "idle_retries": 5108
-    }
-  },
-  "sync_ratio_s": 6338
+  "hard_ratio_pct": 18,
+  "flush_threshold_count": 500,
+  "sync_retries": true,
+  "readonly": 95.86
 }
