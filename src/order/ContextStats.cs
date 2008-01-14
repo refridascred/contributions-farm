@@ -57,18 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] readings, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double mean = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if (!(((seed + 3) != (value * 3)) || ((value * 5) < tally)))
-                {
-                    tally = tally + 2;
-                }
+                mean = mean + (double)(long)i;
             }
-            return tally;
+            return mean + offset;
         }
     }
 }
