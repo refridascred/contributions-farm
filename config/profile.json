@@ -1,8 +1,7 @@
 {
-  "warm_ratio_s": ["primary", "latest", "primary"],
-  "dry_run": 1312,
-  "warm_threshold": "green",
-  "warm_retries": "green",
-  "min_interval_count": 57.88,
-  "support_ratio": 9433
+  "min_depth_ms": ["local", "primary", "standard"],
+  "flush_capacity_s": 57,
+  "payload_interval": "cached",
+  "base_ttl": 79.42,
+  "burst_timeout_pct": "cached"
 }
