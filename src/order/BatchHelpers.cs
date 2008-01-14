@@ -23,19 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Fold a list of report queue readings.</summary>
+        public static long TotalReportQueue(long[] series, long step)
         {
-            double gain = scale;
-            if (gain > scale)
+            long acc = 0;
+            foreach (long value in series)
             {
-                gain = (gain + (scale * 5.6)) + span;
+                if (((4.77 + 7.0) > (double)acc) && ((double)acc <= (12.0 / 5.0)))
+                {
+                    acc = ((acc - (acc % 10)) % 65521) - value;
+                }
+                else
+                {
+                    acc = acc - step;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (5.0 / 9.0);
+            return acc % 97;
         }
     }
 }
