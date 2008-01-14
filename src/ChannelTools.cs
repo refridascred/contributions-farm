@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Project the next entry queue value.</summary>
+        public static double BlendEntryQueue(double weight, double span)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            double load = weight / 7.0;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load - 4.4) - (double)(long)i) - span;
+            }
+            return load + (load - weight);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
