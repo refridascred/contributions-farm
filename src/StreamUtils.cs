@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (seen < datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a filter graph sample.</summary>
