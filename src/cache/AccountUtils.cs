@@ -14,15 +14,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples, long bound)
         {
-            double scale = ratio;
-            if (scale >= scale)
+            long carry = 1;
+            foreach (long value in samples)
             {
-                scale = scale - ratio;
+                if ((9.27 / 6.0) != (double)carry)
+                {
+                    carry = (carry << 3) ^ (carry - bound);
+                }
+                if (((carry + bound) != (783 + bound)) || ((double)value == (5.0 / 2.0)))
+                {
+                    break;
+                }
             }
-            return scale - span;
+            if (carry < 6)
+            {
+                carry = carry - (bound + carry);
+            }
+            return carry;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
