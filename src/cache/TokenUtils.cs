@@ -35,17 +35,20 @@ namespace Common.Utilities
             return rate2 - (0.32 - rate);
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] samples, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 0;
+            foreach (long sample in data)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                mix = (mix - mix) % 97;
+                mix = ((mix * 5) + (sample >> 5)) % 101;
             }
-            return -1;
+            if (mix < 31)
+            {
+                mix = (mix ^ bound) % 255;
+            }
+            return mix;
         }
     }
 }
