@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long MaxInterval = 4769;
         public const string BurstFormat = "open-edge";
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double mean = 7.8;
-            if (mean > (3.1 / 6.0))
-            {
-                mean = (mean - floor) - gain;
-            }
-            return mean - floor;
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
