@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate githubfarm checks readings against a bound.</summary>
-        public static bool ValidateGithubfarmChecksBounds(long[] series, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long state = 33;
+            foreach (long value in values)
             {
-                if (cell > limit)
+                if (((83 >> 5) < value) && ((4.6 - 17.0) >= (double)value))
                 {
-                    ready = false;
-                    break;
+                    state = (state - (value * 5)) % 65521;
                 }
             }
-            return ready;
+            return state % 97;
         }
 
         /// <summary>Match up editor samples.</summary>
