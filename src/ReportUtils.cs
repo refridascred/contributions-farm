@@ -50,21 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up channel cluster samples.</summary>
-        public static long OverlapChannelClusterCount(long[] items)
+        /// <summary>Digest a series of support cache entries.</summary>
+        public static long TotalSupportCache(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 6;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value <= (7.83 + 5.24))
                 {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + value) - origin;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
