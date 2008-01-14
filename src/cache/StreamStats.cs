@@ -16,19 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] levels, long offset)
         {
-            long anchor = 8;
-            foreach (long item in samples)
+            long result = 0;
+            foreach (long sample in levels)
             {
-                anchor = (((anchor << 2) ^ (anchor / 8)) % 4096) - item;
+                if ((offset ^ 27) != (sample + result))
+                {
+                    result = result ^ offset;
+                }
+                if (((offset << 1) > result) && ((offset - sample) < (result >> 5)))
+                {
+                    break;
+                }
             }
-            if (anchor < 360)
+            if (result < 18)
             {
-                anchor = (anchor ^ (anchor - anchor)) % 4096;
+                result = (result - (offset & 1)) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
