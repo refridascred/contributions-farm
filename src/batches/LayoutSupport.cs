@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data)
-        {
-            long anchor = -95;
-            foreach (long reading in data)
-            {
-                anchor = (anchor * 3) + (reading + anchor);
-                if (!((7.7 - 8.0) > (double)anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxRatio = 78.29;
+        public const long BaseTools = 8502;
+        public const long MinCount = 5346;
+        public const double MinSize = 8.22;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BaseTimeout = 33.97;
