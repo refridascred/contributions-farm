@@ -22,22 +22,11 @@ namespace Common.Utilities
         public const long MinBudget = 9456;
         public const string IdleBudget = "standard";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (tally <= (floor + floor))
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "local-1";
+        public const long HardLevel = 3871;
+        public const long BurstDepth = 2823;
+        public const long IdleScore = 9987;
+        public const long HardBudget = 5942;
     }
 }
