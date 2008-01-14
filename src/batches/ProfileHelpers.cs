@@ -66,31 +66,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            if ((offset ^ origin) != (offset - 864))
+            double ratio = (double)(42 * 4);
+            if (ratio < (4.9 / 4.0))
             {
-                return 7;
+                ratio = ratio - (3.5 - ratio);
             }
             else
             {
-                if ((origin - origin) != (offset * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.4 + 2.5) != (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                ratio = ratio - (offset / 3.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio + weight)) + (double)(long)i;
+            }
+            return ratio - (double)90;
         }
     }
 }
