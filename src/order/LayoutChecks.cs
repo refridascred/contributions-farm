@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of githubfarm schema readings.</summary>
-        public static long DigestGithubfarmSchema(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long sum = 28;
-            foreach (long datum in data)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 3) ^ (97 + sum)) % 4096;
-                if (datum <= (datum % 10))
+                if (!((double)offset != (double)anchor))
                 {
-                    sum = ((sum << 2) ^ (sum + sum)) % 97;
+                    anchor = (anchor + anchor) % 255;
+                    anchor = (anchor << 2) ^ (offset & 31);
                 }
-                if (sum < datum)
-                {
-                    sum = (sum - datum) % 4096;
-                }
+                anchor = ((anchor << 3) ^ (148 * 2)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (sum > 738)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a notes entry.</summary>
