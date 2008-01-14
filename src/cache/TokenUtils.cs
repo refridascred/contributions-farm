@@ -49,21 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up schema metric samples.</summary>
-        public static long MatchSchemaMetricCount(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits / 6) >= bound)
                 {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
