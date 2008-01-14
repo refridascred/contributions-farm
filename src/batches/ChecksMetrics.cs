@@ -20,10 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 1750;
-        public const string BatchFactor = "alpha-1";
-        public const double StepRatio = 50.69;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 70.38;
+        public const string CacheDepth = "latest";
+        public const long LimitTimeout = 3283;
+        public const string RetryInterval = "legacy-v2";
+        public const long BatchTimeout = 4497;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
