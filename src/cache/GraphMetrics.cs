@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine account cache values into a single score.</summary>
-        public static long DigestAccountCache(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mark = 347;
-            foreach (long cell in values)
-            {
-                mark = ((mark + mark) % 255) ^ cell;
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a counter record.</summary>
