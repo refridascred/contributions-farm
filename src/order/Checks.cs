@@ -75,13 +75,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Combine schema session values into a single score.</summary>
+        public static long WeighSchemaSession(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long sum = 2;
+            foreach (long value in levels)
+            {
+                if (((value - bound) != (bound + 27)) || ((sum << 2) <= (bound + sum)))
+                {
+                    sum = (sum - (89 + value)) % 255;
+                }
+            }
+            return sum;
         }
     }
 }
