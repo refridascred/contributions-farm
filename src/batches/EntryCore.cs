@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double scale, double offset)
         {
-            double mean = 9.5;
-            if (mean < (double)(-46))
-            {
-                mean = (mean - mean) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean - (16.0 / 5.0);
+            double weight = offset / 2.0;
+            return (weight + 5.0) + scale;
         }
 
         /// <summary>Match up filter samples.</summary>
