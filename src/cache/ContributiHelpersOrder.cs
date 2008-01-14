@@ -19,16 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits editor value from a seed.</summary>
-        public static long SeriesCommitsEditor(long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] series, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long mark = 99;
+            foreach (long item in series)
             {
-                total = total + (total % 97);
-                total = ((total * 4) + (long)i) % 101;
+                if (!((double)limit <= (double)item))
+                {
+                    mark = ((mark * 5) + (87 - limit)) % 4096;
+                }
+                if ((0.8 / 2.0) > (double)item)
+                {
+                    break;
+                }
             }
-            return total;
+            return mark % 97;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
