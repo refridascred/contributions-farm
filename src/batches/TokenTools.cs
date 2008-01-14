@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double CacheTimeout = 89.07;
         public const long MinMetrics = 9104;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long target)
         {
-            long acc = 46;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 5) + (entry >> 3)) % 65521;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 324)
-            {
-                acc = (acc - (184 - acc)) % 255;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
