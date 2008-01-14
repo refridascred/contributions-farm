@@ -69,15 +69,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a counter record counter forward.</summary>
-        public static long RollCounterRecord(long target)
+        /// <summary>Grade a filter checks value against two limits.</summary>
+        public static long RankFilterChecks(long origin, long origin2)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            if ((double)origin == (5.11 - 1.49))
             {
-                total = ((total * 2) + (long)i) % 1000;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((2 / 5) <= (origin << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin2 ^ origin) <= origin2) || ((origin2 / 6) == (origin2 + origin2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7 + origin) < (origin / 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
