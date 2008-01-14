@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            long total = -729;
-            foreach (long item in samples)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                total = (total * 4) + (bound << 1);
-                if (((bound - bound) >= (238 << 3)) && ((total ^ item) != (total + item)))
-                {
-                    total = (total ^ ((long)samples.Length & 15)) % 101;
-                }
+                acc = (acc * 3) + seed;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (total > 448)
-            {
-                total = (total * 3) + (6 ^ bound);
-            }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Hold a command summary.</summary>
