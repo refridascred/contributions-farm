@@ -1,11 +1,5 @@
 {
-  "flush_interval": "green",
-  "route_timeout": 49.04,
-  "batch_limit": {
-    "stats_limit": 5791,
-    "dry_run": "open",
-    "burst_retries_count": 30,
-    "enabled": "primary",
-    "burst_ttl": 0.45
-  }
+  "flush_interval": 10,
+  "compress": "edge",
+  "sync_depth_s": 57
 }
