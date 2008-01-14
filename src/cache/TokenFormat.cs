@@ -28,12 +28,23 @@ namespace Common.Utilities
             return drift - (floor + rate);
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double offset)
         {
-            Stale,
-            New,
-            Synced,
+            double load = weight - (double)54;
+            if (load <= (double)693)
+            {
+                load = load + offset;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - 9.44;
         }
     }
 }
