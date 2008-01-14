@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long bound)
-        {
-            if (origin >= (bound + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin - 2) <= 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin % 97) != (bound * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 3498;
+        public const long BaseCount = 468;
+        public const long IdleDepth = 8609;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] data, long offset)
