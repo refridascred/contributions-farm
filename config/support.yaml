@@ -1,9 +1,20 @@
 # support settings
-verbose: true
-poll_ttl_ms: strict
-cache_ratio_ms: staging
-channel_ttl: standard
-readonly: local
-stream_threshold:
+retry_threshold:
+  - 147
   - 339
-  - 134
+  - 58
+warm_depth_s: latest
+soft_limit_ms:
+  - 13
+  - 161
+warm_interval_ms:
+  retry_window_count: 63.2
+  min_timeout: true
+  buffer_retries: 30
+  soft_size_s: 100
+  burst_window_ms: false
+  token_retries:
+    - eu-west
+    - staging
+    - primary
+burst_limit_ms: 50.82
