@@ -48,12 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values)
         {
-            Locked,
-            Queued,
-            Failed,
+            long carry = 61;
+            foreach (long datum in values)
+            {
+                if ((214 << 1) > (datum + (long)values.Length))
+                {
+                    carry = carry + carry;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate report samples.</summary>
