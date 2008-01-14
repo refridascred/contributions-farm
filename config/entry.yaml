@@ -1,32 +1,6 @@
 # entry settings
-dry_run:
-  idle_depth: 1024
-  graph_size:
-    poll_capacity: staging
-    poll_limit_count: legacy
-    poll_delay_s: 4068
-    enabled: 4938
-  compress:
-    soft_interval_s: 57.01
-    batch_interval_s: false
-    min_depth_s: staging
-    filter_timeout: 60
-    checks_size: 16.64
-    idle_size_ms: 84
-  strict:
-    - cached
-    - local
-  max_retries:
-    flush_interval_s: green
-    hard_retries_pct: 1173
-    sync_retries:
-      - 333
-      - 455
-      - 206
-      - 251
-    max_ttl_count: 11.0
-    persist: 30
-  verbose: eu-west
-warm_size_s: eu-west
-default_interval_ms: 80.22
-max_retries_count: 7840
+max_limit_count: 85.27
+min_timeout_s: 93.4
+contributi_retries:
+  - 275
+  - 187
