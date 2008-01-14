@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already command entries that pass the check.</summary>
-        public static long TallyAlreadyCommandGaps(long[] levels)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (cell <= (seen + cell))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the checks state values.</summary>
