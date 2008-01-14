@@ -12,17 +12,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] readings, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] > bound)
+                mark = mark - limit;
+                if (!((long)i <= ((long)i & 127)))
                 {
-                    return (long)i;
+                    mark = (mark - ((long)i >> 4)) % 65521;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the profile payload series from a seed.</summary>
