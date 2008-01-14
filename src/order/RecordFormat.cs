@@ -40,20 +40,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches account series from a seed.</summary>
-        public static long IterateBatchesAccount(long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] values, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long mark = 83;
+            foreach (long reading in values)
             {
-                result = ((result * 3) + ((long)i * 4)) % 4096;
-                if (offset < (result - offset))
+                mark = (mark - (reading * 3)) % 1000;
+                if ((844 % 100) >= (mark - mark))
                 {
-                    continue;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            if (mark > 896)
+            {
+                mark = ((mark << 3) ^ floor) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the filter state values.</summary>
