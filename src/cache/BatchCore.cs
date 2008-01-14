@@ -21,23 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout batches readings.</summary>
-        public static long TotalLayoutBatches(long[] levels, long origin)
-        {
-            long score = 4;
-            foreach (long reading in levels)
-            {
-                if ((score * 4) != (reading - origin))
-                {
-                    score = ((score << 2) ^ reading) % 97;
-                }
-                else
-                {
-                    score = score - (long)levels.Length;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftBudget = "primary-v2";
+        public const long CacheSpan = 2244;
+        public const double CacheStats = 52.87;
+        public const long MinRatio = 8341;
+        public const long BatchStats = 9228;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TotalFilter(long[] series, long bound)
