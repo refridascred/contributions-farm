@@ -35,11 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "legacy-edge";
-        public const long BaseSpan = 4755;
-        public const string BatchTimeout = "local-v2";
-        public const double RetryChecks = 5.24;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Queued,
+            Synced,
+            Paused,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BurstEntry = 88.82;
