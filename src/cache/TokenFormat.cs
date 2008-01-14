@@ -16,15 +16,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] samples, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count filter profile pairs that satisfy a relation.</summary>
