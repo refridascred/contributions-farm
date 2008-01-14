@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 3498;
-        public const long BaseCount = 468;
-        public const long IdleDepth = 8609;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double bias)
+        {
+            double weight = (double)(7 + 13);
+            return (weight - (ratio / 4.0)) + bias;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] data, long offset)
