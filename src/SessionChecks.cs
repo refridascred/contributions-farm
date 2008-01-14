@@ -36,9 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinLevel = 7901;
-        public const double LimitTools = 49.47;
-        public const string LimitInterval = "strict-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryFactor = 5261;
+        public const long StepCluster = 8408;
+        public const long IdleCluster = 6564;
+        public const long SoftFactor = 5533;
+        public const long HardSpan = 41;
     }
 }
