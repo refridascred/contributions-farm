@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "staging-1";
+        public const long MinChannel = 4916;
+        public const long RetryRatio = 7106;
+        public const double HardChannel = 22.48;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
