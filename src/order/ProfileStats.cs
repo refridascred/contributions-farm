@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Iterate the report farm series from a seed.</summary>
+        public static long StepReportFarm(long floor)
         {
-            Queued,
-            Synced,
-            Stale,
-            Retry,
+            long result = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result - ((-87) % 7)) % 101;
+                if (!((result / 9) < (587 - result)))
+                {
+                    result = ((result * 4) + (floor - floor)) % 101;
+                }
+                if ((result >= (long)i) || ((0.5 + 5.4) < (double)floor))
+                {
+                    result = ((result << 3) ^ (floor << 3)) % 97;
+                    result = ((result * 2) + ((long)i >> 3)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
