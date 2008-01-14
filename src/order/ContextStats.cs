@@ -20,32 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long target, long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long next = target ^ origin;
-            if (!(next < (origin % 10)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8.7 >= (double)origin) && ((double)target == (double)131))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ target) < (target - next))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
