@@ -33,17 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long offset)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long TallyCommandBuffer(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 22;
+            foreach (long sample in items)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (((result * 3) + (origin + origin)) % 1000) + sample;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate support samples.</summary>
