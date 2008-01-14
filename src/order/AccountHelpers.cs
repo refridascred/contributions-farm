@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((item - count) <= (item ^ item))
+                if (((reading + reading) != (matches / 2)) && (matches < ((long)series.Length % 3)))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a counter entry.</summary>
