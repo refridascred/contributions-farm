@@ -40,17 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 85;
+            foreach (long sample in series)
             {
-                if (levels[i] > offset)
+                score = ((score + bound) % 4096) + sample;
+                if ((double)(long)series.Length >= (11.0 * 8.7))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
