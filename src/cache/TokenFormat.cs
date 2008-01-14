@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(tally <= (entry << 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
