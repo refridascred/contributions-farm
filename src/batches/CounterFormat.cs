@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long bound)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
