@@ -46,18 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            long state = 600;
-            foreach (long datum in items)
+            double bias = (double)4 + (double)7;
+            if (bias >= (ratio - 5.73))
             {
-                if ((double)datum != (4.26 - 6.82))
-                {
-                    state = ((state << 2) ^ (datum ^ 665)) % 4096;
-                }
+                bias = (bias - (1.5 / 2.0)) - span;
             }
-            return state % 97;
+            return bias + (double)574;
         }
 
         /// <summary>Describe the context class values.</summary>
