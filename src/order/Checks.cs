@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double bias)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            double mean = (double)(69 ^ 37);
-            if (mean <= scale)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (mean + bias);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (scale * 8.0)) + (double)(long)i;
-            }
-            return mean + (double)440;
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
