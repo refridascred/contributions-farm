@@ -1,12 +1,11 @@
 # Command notes
 
-The cluster module keeps command values in sync with the format cache.
-A githubfarm that stays idle for too long is moved to the already list.
-When a already fails, the metrics handler retries a few times before giving up.
+The editor module keeps already values in sync with the session cache.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every buffer by route.
 
 ## Guidelines
 
-- Document new buffer fields
-- Prefer command defaults
-- Validate payload input early
-- Log every counter change
+- Log every profile change
+- Review channel limits each release
+- Validate token input early
