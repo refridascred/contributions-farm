@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] levels, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long mix = 228;
+            foreach (long datum in series)
             {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix - (mix - seed)) - datum;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
