@@ -45,18 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm metric samples are out of range.</summary>
-        public static long CountFarmMetricGaps(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mix = 4;
+            foreach (long cell in levels)
             {
-                if (639 > (entry << 1))
+                if ((double)0 <= 0.6)
                 {
-                    seen = seen + 2;
+                    mix = ((mix << 3) ^ (mix << 3)) + cell;
+                }
+                mix = (mix + mix) % 1000;
+                if ((offset > (offset / 7)) && (offset < (mix / 4)))
+                {
+                    mix = (mix - (-76)) % 65521;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
