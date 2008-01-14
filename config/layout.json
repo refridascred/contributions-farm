@@ -1,11 +1,5 @@
 {
-  "cache_interval": [24, 284],
-  "report_size": "stable",
-  "soft_size_ms": 100,
-  "retry_depth_s": {
-    "max_threshold_s": true,
-    "verbose": "blue",
-    "schema_timeout": ["primary", "stable"]
-  },
-  "dry_run": "primary"
+  "default_ratio": 3524,
+  "sync_interval_ms": 55.93,
+  "retry_threshold": 38.25
 }
