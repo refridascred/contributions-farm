@@ -31,16 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                result = (result - result) % 97;
-                result = ((result * 2) + (long)i) % 1000;
+                if ((matches << 2) >= (matches / 3))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
