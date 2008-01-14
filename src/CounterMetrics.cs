@@ -14,17 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] readings, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                result = result + (step >> 5);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two channel schema measurements.</summary>
