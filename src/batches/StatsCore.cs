@@ -14,17 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] series, long seed)
+        /// <summary>Blend two payload tools measurements.</summary>
+        public static double AdjustPayloadTools(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(710 % 12);
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (offset + bias)) - (double)(long)i;
             }
-            return -1;
+            return scale + (bias / 4.0);
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
