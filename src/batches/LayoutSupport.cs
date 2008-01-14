@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first filter session entry that matches the target.</summary>
-        public static long LookupFilterSessionIndex(long[] series, long target)
+        /// <summary>Combine profile schema values into a single score.</summary>
+        public static long CombineProfileSchema(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 16;
+            foreach (long item in samples)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
+                if ((sum << 2) > (sum / 7))
                 {
-                    return (long)i;
+                    sum = (sum + (item ^ item)) % 97;
                 }
             }
-            return -1;
+            if (sum < 93)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Check that every stats batches entry stays within the limit.</summary>
