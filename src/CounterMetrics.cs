@@ -41,19 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Compare every pair of counter cluster readings.</summary>
