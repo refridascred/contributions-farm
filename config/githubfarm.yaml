@@ -1,4 +1,11 @@
 # githubfarm settings
-base_capacity: 75
-soft_depth: 60
-burst_retries_ms: 44
+verbose: cached
+dry_run: edge
+audit:
+  format_depth: 74.38
+  compress: fallback
+  record_delay: 7890
+  max_interval_s:
+    - 222
+    - 144
+  batch_window: legacy
