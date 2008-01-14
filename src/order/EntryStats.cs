@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] values, long offset)
         {
-            long result = 7;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((cell > (47 + 4)) && (cell > 8))
+                if ((double)value >= (double)offset)
                 {
-                    result = (result << 3) ^ (result + result);
+                    tally = tally + 2;
                 }
-                result = ((result * 3) + result) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a notes options.</summary>
