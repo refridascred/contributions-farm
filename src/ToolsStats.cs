@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string LimitFactor = "alpha";
         public const long BaseCount = 2935;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] levels, long limit)
         {
-            Locked,
-            Dropped,
-            Draft,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next profile checks value.</summary>
