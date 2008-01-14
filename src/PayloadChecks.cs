@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] data, long step)
         {
-            Failed,
-            Closed,
-            Ready,
-            Draft,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine buffer route values into a single score.</summary>
