@@ -19,18 +19,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] series)
+        /// <summary>Audit session profile readings against a rule.</summary>
+        public static long CountSessionProfileHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!(hits >= (hits - 740)))
+                if ((double)sample <= 20.0)
                 {
-                    hits = (hits + 3) ^ cell;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count filter profile pairs that satisfy a relation.</summary>
