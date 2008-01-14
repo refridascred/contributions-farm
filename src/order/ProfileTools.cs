@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a account header.</summary>
