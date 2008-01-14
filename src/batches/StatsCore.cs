@@ -20,16 +20,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two payload tools measurements.</summary>
-        public static double AdjustPayloadTools(double bias, double offset)
-        {
-            double scale = (double)(710 % 12);
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (offset + bias)) - (double)(long)i;
-            }
-            return scale + (bias / 4.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 8617;
+        public const string RetryTimeout = "cached-1";
+        public const long BurstWidth = 6734;
+        public const long MaxInterval = 5380;
+        public const long WindowBudget = 8227;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long bound)
