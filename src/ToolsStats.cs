@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Locked,
-            Active,
-            Closed,
-            Paused,
-            Stale,
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
