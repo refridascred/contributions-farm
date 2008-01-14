@@ -14,19 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmClusterLimits(long[] readings, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
