@@ -52,15 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] series)
         {
-            double ratio = floor;
-            if (ratio >= (ratio / 3.0))
+            long carry = 683;
+            foreach (long item in series)
             {
-                ratio = (ratio + (ratio * 3.7)) - rate;
+                if (!((item - item) != (carry * 3)))
+                {
+                    carry = (carry << 2) ^ item;
+                }
+                else
+                {
+                    carry = carry + (75 << 1);
+                }
             }
-            return ratio - (floor * 5.03);
+            return carry % 4096;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
