@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell < step)
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
