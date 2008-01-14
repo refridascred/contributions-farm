@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] readings)
+        /// <summary>Combine command filter values into a single score.</summary>
+        public static long ScoreCommandFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 29;
+            foreach (long value in items)
             {
-                if ((double)hits < (double)reading)
-                {
-                    hits = hits + 3;
-                }
+                score = ((score + ((-642) + score)) % 101) + value;
             }
-            return hits;
+            if (score < 609)
+            {
+                score = ((score * 2) + (score >> 5)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every counter checks entry stays within the limit.</summary>
