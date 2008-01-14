@@ -63,31 +63,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a buffer queue value against two limits.</summary>
-        public static long SortBufferQueue(long step, long floor)
+        /// <summary>Digest a series of contributi batch entries.</summary>
+        public static long CombineContributiBatch(long[] series, long offset)
         {
-            if (((double)step <= (15.0 / 7.0)) || ((step + floor) <= 2))
+            long mix = 290;
+            foreach (long cell in series)
             {
-                return 8;
+                mix = ((mix - (mix + mix)) + cell) - offset;
             }
-            else
-            {
-                if ((29 - floor) <= 98)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step + step) < step) || ((double)195 > (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
