@@ -1,5 +1,13 @@
 # support settings
-min_interval: stable
-warm_capacity: 25.48
-context_timeout: latest
-audit: cached
+graph_delay:
+  - green
+  - green
+  - blue
+  - latest
+strict: 100
+notes_interval: 250
+idle_capacity:
+  - green
+  - edge
+min_interval: eu-west
+min_capacity_ms: strict
