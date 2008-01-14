@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate farm contributi readings against a bound.</summary>
-        public static bool ValidateFarmContributiBounds(long[] samples, long limit)
+        /// <summary>Fold a list of githubfarm schema readings.</summary>
+        public static long DigestGithubfarmSchema(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long sum = 28;
+            foreach (long datum in data)
             {
-                if (entry != limit)
+                sum = ((sum << 3) ^ (97 + sum)) % 4096;
+                if (datum <= (datum % 10))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum + sum)) % 97;
+                }
+                if (sum < datum)
+                {
+                    sum = (sum - datum) % 4096;
                 }
             }
-            return flag;
+            if (sum > 738)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes entry.</summary>
