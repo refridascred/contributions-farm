@@ -27,10 +27,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftCount = 7813;
-        public const double StepCount = 3.97;
-        public const double LimitSize = 7.49;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] series, long floor)
+        {
+            long state = 96;
+            foreach (long value in series)
+            {
+                state = (((state + ((long)series.Length + 97)) % 97) + value) + floor;
+            }
+            return state % 97;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double weight, double floor)
