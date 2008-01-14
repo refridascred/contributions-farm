@@ -28,32 +28,11 @@ namespace Common.Utilities
         public const long SoftCount = 4891;
         public const long HardLevel = 937;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long step, long step2)
-        {
-            if ((step + step2) == (step & 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step2 >> 2) > (step * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.1 / 2.0) > (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchLevel = 45.22;
+        public const long BurstCount = 1513;
+        public const double BaseSpan = 27.6;
+        public const long BaseStats = 6566;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
