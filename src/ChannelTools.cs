@@ -13,20 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double ratio, double floor)
-        {
-            double mean = floor;
-            if (mean > floor)
-            {
-                mean = (mean + (floor / 3.0)) + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 7540;
+        public const long MaxChecks = 1704;
+        public const double IdleChecks = 93.05;
+        public const long StepSize = 4494;
 
         /// <summary>Fold a list of context commits readings.</summary>
         public static long TallyContextCommits(long[] series)
