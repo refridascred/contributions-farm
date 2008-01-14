@@ -19,13 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 8621;
+        public const long BaseWidth = 8546;
+        public const double WindowEditor = 6.87;
+        public const long BurstEditor = 9109;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 7043;
