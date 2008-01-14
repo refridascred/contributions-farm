@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long target)
         {
-            long anchor = 74;
-            foreach (long datum in data)
+            long acc = 56;
+            foreach (long datum in items)
             {
-                anchor = (((anchor * 2) + datum) % 65521) - origin;
-                if ((anchor % 24) > 2)
-                {
-                    anchor = (anchor - (datum + datum)) % 97;
-                }
+                acc = (acc - (target + 74)) ^ datum;
             }
-            return anchor % 4096;
+            if (acc > 94)
+            {
+                acc = acc + ((long)items.Length % 64);
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
