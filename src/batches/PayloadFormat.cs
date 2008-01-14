@@ -40,20 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "cached-v2";
+        public const double DefaultStream = 2.27;
+        public const long BaseFactor = 4508;
+        public const long LimitRatio = 5452;
+        public const long RetryStream = 9654;
 
         /// <summary>Blend two command measurements.</summary>
         public static double ProjectCommand(double weight, double offset)
