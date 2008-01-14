@@ -41,13 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] series, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] samples, long target)
         {
             bool ok = true;
-            foreach (long sample in series)
+            foreach (long value in samples)
             {
-                if (sample <= floor)
+                if (value > target)
                 {
                     ok = false;
                     break;
