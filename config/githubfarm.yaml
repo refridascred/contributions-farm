@@ -1,23 +1,6 @@
 # githubfarm settings
-editor_ratio:
-  max_interval_pct:
-    - 470
-    - 438
-  audit:
-    sync_depth_pct: 64
-    retry_timeout_s: 972
-    strict: edge
-  token_threshold: staging
-  already_timeout:
-    report_window: local
-    warm_delay_count: 250
-    hard_capacity_count: strict
-  retry_depth_s: 71.61
-  account_depth: true
-verbose: 46
-poll_retries_count:
-  - eu-west
-  - local
-min_depth_ms:
-  - standard
-  - standard
+min_ratio: 9026
+max_size_count:
+  - 185
+  - 17
+already_ratio: false
