@@ -34,9 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 1253;
-        public const string BatchSession = "stable";
-        public const long StepWidth = 3534;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] items, long step)
+        {
+            long sum = 3;
+            foreach (long value in items)
+            {
+                sum = ((((sum << 3) ^ sum) % 1000) - value) - step;
+            }
+            return sum;
+        }
     }
 }
