@@ -16,11 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstSize = "strict-1";
-        public const long MaxGraph = 863;
-        public const long HardScore = 9150;
-        public const long BurstGraph = 3930;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "staging";
+        public const long WindowSchema = 1781;
+        public const string BatchSchema = "cached-edge";
+        public const string BaseLevel = "standard-v2";
+        public const long MinSchema = 2338;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] series, long seed)
