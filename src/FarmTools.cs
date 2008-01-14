@@ -12,10 +12,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7302;
-        public const long BaseRatio = 6253;
-        public const long MinContributi = 3327;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] data, long target)
