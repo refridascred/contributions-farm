@@ -37,21 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell >> 1) <= (cell / 2))
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
