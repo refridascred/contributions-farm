@@ -15,14 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Done,
-            Dropped,
-            Ready,
-            Closed,
-            Locked,
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
