@@ -24,15 +24,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Dropped,
-            Draft,
-            Closed,
-            Done,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 20.27;
+        public const double HardSupport = 55.8;
+        public const long RetryWidth = 7020;
+        public const string StepRatio = "strict";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] samples)
