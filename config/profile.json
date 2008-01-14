@@ -1,14 +1,7 @@
 {
-  "cache_size": {
-    "dry_run": 4031,
-    "persist": {
-      "max_interval": 8023,
-      "min_threshold_ms": 100,
-      "queue_depth": "cached",
-      "base_depth": true
-    },
-    "flush_interval_s": "green"
-  },
-  "soft_window": 20,
-  "soft_limit_s": ["standard", "stable", "edge"]
+  "persist": "standard",
+  "min_capacity_ms": 73,
+  "compress": 77.6,
+  "burst_limit_count": 500,
+  "strict": true
 }
