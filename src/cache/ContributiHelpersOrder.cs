@@ -16,32 +16,19 @@ namespace Common.Utilities
             return rate + (bias * 4.0);
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] levels, long target)
         {
-            long diff = bound + offset;
-            if ((double)offset == (3.65 - 3.0))
+            long score = 61;
+            foreach (long value in levels)
             {
-                return 4;
+                score = (((score ^ (score + score)) % 101) + value) + target;
             }
-            else
+            if (score < 126)
             {
-                if ((8.48 * 18.0) != (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound >> 4) < (diff - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = (score - score) % 1000;
             }
+            return score;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
