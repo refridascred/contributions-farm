@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 966;
-        public const long HardFactor = 7772;
-        public const long MinBatch = 6175;
-        public const string RetryBudget = "legacy-v2";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long step)
+        {
+            long sum = 731;
+            foreach (long datum in readings)
+            {
+                if ((double)sum != (double)step)
+                {
+                    sum = (sum ^ (sum * 4)) + datum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double IdleScore = 59.09;
