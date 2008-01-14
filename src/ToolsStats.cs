@@ -73,15 +73,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long offset2)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            if ((offset2 / 6) > (offset & 1))
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (171 <= (offset + offset2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
