@@ -15,22 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRatio = "latest-v2";
+        public const long SoftRecord = 5911;
+        public const string MinRecord = "legacy";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchInterval = 54;
