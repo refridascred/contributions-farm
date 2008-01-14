@@ -14,13 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 8841;
+        public const string WindowInterval = "standard-v2";
+        public const long BaseTimeout = 4489;
+        public const string CacheTimeout = "legacy-v2";
 
         /// <summary>Adjust a order reading.</summary>
         public static double BlendOrder(double gain, double floor)
