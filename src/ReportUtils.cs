@@ -42,25 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long diff = target + floor;
-            if ((floor + target) < (floor >> 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((7.0 * 2.7) <= (double)diff) && (diff <= (diff - floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
