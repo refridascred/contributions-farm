@@ -42,12 +42,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetrySpan = "stable-1";
-        public const long CacheContributi = 9782;
-        public const long LimitCount = 2095;
-        public const long IdleSpan = 5540;
-        public const double BatchDepth = 26.14;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleRatio = 8006;
+        public const long WindowEntry = 8551;
+        public const long BaseEntry = 7276;
+        public const string LimitEntry = "primary";
 
         /// <summary>Digest a series of commits record entries.</summary>
         public static long DigestCommitsRecord(long[] readings, long bound)
