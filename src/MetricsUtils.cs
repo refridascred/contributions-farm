@@ -26,11 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3510;
-        public const long HardStream = 5010;
-        public const double RetryStream = 47.79;
-        public const long MaxStream = 2887;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Paused,
+            Ready,
+            Retry,
+            Failed,
+            New,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BatchSize = "fallback-1";
