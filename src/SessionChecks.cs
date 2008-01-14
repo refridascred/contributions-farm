@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstCount = "alpha-edge";
+        public const string HardRecord = "fallback-edge";
+        public const long BatchRecord = 7395;
 
         /// <summary>Roll a metric channel counter forward.</summary>
         public static long IterateMetricChannel(long seed)
