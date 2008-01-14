@@ -26,24 +26,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long origin, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((limit - origin) >= (2 / 9))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit > (7.13 - 4.6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
