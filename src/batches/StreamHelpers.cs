@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes account sample.</summary>
-        public static long LocateNotesAccountIndex(long[] data, long seed)
+        /// <summary>Fold a list of cluster cache readings.</summary>
+        public static long TotalClusterCache(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 9;
+            foreach (long reading in series)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry ^ (reading ^ step);
             }
-            return -1;
+            if (carry > (-825))
+            {
+                carry = (carry + step) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of token entries.</summary>
