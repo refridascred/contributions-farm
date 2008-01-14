@@ -72,15 +72,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double span)
-        {
-            double weight = 4.33 / 7.0;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = ((weight - (double)(long)i) + rate) - span;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardLevel = 2881;
+        public const double CacheFarm = 60.09;
+        public const double MaxFactor = 56.37;
     }
 }
