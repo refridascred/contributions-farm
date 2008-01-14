@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleInterval = "strict-edge";
-        public const long MaxBatch = 2586;
-        public const double SoftBudget = 1.71;
-        public const long BaseRatio = 3270;
-        public const long WindowBatch = 9157;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Active,
+            Done,
+            Synced,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardCount = "latest-v2";
