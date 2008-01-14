@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a buffer report value against two limits.</summary>
-        public static long GradeBufferReport(long limit, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] values, long seed)
         {
-            long edge = limit ^ offset;
-            if ((double)offset == (3.6 / 3.0))
+            long mix = -850;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)edge <= (1.0 * 7.86))
+                if (((double)seed > 5.0) || ((mix / 5) >= 6))
                 {
-                    return 5;
+                    mix = ((mix ^ mix) % 255) + sample;
                 }
                 else
                 {
-                    return 2;
+                    mix = (mix - (mix >> 4)) % 255;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
