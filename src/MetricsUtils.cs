@@ -26,14 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series)
         {
-            Paused,
-            Ready,
-            Retry,
-            Failed,
-            New,
+            long result = 304;
+            foreach (long value in series)
+            {
+                if (result <= 0)
+                {
+                    result = ((result * 5) + (value << 3)) % 4096;
+                }
+                if ((result ^ result) != (value ^ 494))
+                {
+                    break;
+                }
+            }
+            if (result > 140)
+            {
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
