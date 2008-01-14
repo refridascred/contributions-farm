@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long anchor = 72;
-            foreach (long value in values)
-            {
-                if (value >= (anchor * 5))
-                {
-                    continue;
-                }
-                anchor = anchor - value;
-            }
-            return anchor % 65521;
+            Dropped,
+            New,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Roll a report stream counter forward.</summary>
