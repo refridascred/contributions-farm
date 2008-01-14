@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    token TEXT,
-    created_at TIMESTAMP
+    rank INTEGER,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
 
-INSERT INTO stats_logs (level, token) VALUES (43, 'green');
-INSERT INTO stats_logs (level, token) VALUES (64, 'strict');
-INSERT INTO stats_logs (level, token) VALUES (17, 'primary');
+INSERT INTO stats_logs (level, rank, weight) VALUES (59, 16, 59.87);
+INSERT INTO stats_logs (level, rank, weight) VALUES (25, 66, 63.77);
+INSERT INTO stats_logs (level, rank, weight) VALUES (82, 45, 31.33);
