@@ -49,19 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values, long origin)
-        {
-            long score = 4;
-            foreach (long cell in values)
-            {
-                if (score >= (cell % 97))
-                {
-                    score = (score - (origin + origin)) % 1000;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 2519;
+        public const long RetryBuffer = 4980;
+        public const long StepBuffer = 6499;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
