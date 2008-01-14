@@ -23,12 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleWidth = "local-v2";
+        public const long MaxStream = 5035;
+        public const long RetryStream = 1216;
+        public const long WindowStream = 7327;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LocateLayoutIndex(long[] samples, long floor)
