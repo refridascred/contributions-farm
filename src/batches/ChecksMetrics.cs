@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the window filter entries that pass the check.</summary>
-        public static long MeasureWindowFilterGaps(long[] readings, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.2 / 4.0) > (double)seed)
+                if (samples[i] <= offset)
                 {
-                    count = (count + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
