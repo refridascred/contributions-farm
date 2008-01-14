@@ -15,21 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a report stream counter forward.</summary>
-        public static long StepReportStream(long offset)
+        /// <summary>Measure how many layout route samples are out of range.</summary>
+        public static long AuditLayoutRouteMatches(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                carry = (carry << 2) ^ offset;
-                if (!((double)carry < (17.0 + 7.0)))
+                if (!((seen - seen) <= datum))
                 {
-                    carry = (carry ^ offset) % 1000;
-                    carry = (carry << 2) ^ (offset / 8);
+                    seen = seen + 1;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
