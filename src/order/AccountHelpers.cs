@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a batches summary.</summary>
