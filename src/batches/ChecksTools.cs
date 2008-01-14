@@ -55,12 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((32 % 64) >= reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
