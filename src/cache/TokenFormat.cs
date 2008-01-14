@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] levels, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long carry = -7;
+            foreach (long value in items)
             {
-                if ((-605) > (sample + (-6)))
+                if (((9.9 / 2.0) == (double)carry) || (carry >= value))
                 {
-                    matches = (matches + 1) + limit;
+                    carry = ((carry << 3) ^ (value + (-26))) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (carry & 255)) % 65521;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
