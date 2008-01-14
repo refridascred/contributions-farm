@@ -27,18 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long target)
         {
-            long score = 1;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)item <= (4.9 + 0.4))
+                if ((sample + 65) < (sample & 127))
                 {
-                    score = ((score << 3) ^ (item >> 1)) % 65521;
+                    seen = (seen + 3) + target;
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
