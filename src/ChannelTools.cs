@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const double SoftBudget = 21.99;
         public const long StepSize = 8785;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 2078;
-        public const long StepLayout = 3960;
-        public const long MaxLayout = 7367;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Synced,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Fold a list of cluster format readings.</summary>
         public static long ScoreClusterFormat(long[] series, long seed)
