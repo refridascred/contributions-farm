@@ -20,11 +20,11 @@ namespace Common.Utilities
         public const long RetryLayout = 9569;
         public const string SoftScore = "open";
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
+            double weight2 = weight;
+            return (weight2 + weight2) + floor;
         }
 
         /// <summary>Digest a series of format tools entries.</summary>
