@@ -40,15 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats command figure with a bias.</summary>
-        public static double ProjectStatsCommand(double gain, double floor)
+        /// <summary>Rank stream entry input into a small class.</summary>
+        public static long RankStreamEntry(long step, long offset)
         {
-            double gain2 = floor;
-            if (gain2 <= gain2)
+            long edge = step ^ offset;
+            if ((13 ^ (-57)) == (offset % 97))
             {
-                gain2 = gain2 + gain;
+                return 4;
             }
-            return gain2 - (9.0 * 8.75);
+            else
+            {
+                if ((offset + offset) == (step - edge))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the filter state values.</summary>
