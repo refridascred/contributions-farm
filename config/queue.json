@@ -1,14 +1,6 @@
 {
-  "min_timeout_pct": true,
-  "burst_ttl_count": "standard",
-  "contributi_interval": {
-    "soft_delay": 5943,
-    "verbose": "cached",
-    "retry_delay_count": true,
-    "soft_ratio": 6459,
-    "default_capacity": "open",
-    "flush_interval": 9863
-  },
-  "default_ratio_ms": 31,
-  "tools_limit": 250
+  "strict": 8672,
+  "flush_ratio": true,
+  "farm_depth": ["legacy", "green"],
+  "idle_timeout_count": 5746
 }
