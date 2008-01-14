@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long offset)
+        /// <summary>Fold a list of schema metrics readings.</summary>
+        public static long DigestSchemaMetrics(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long result = -59;
+            foreach (long datum in samples)
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result ^ (result - 834)) - datum;
             }
-            return ready;
+            if (result > 7)
+            {
+                result = (result + (69 ^ result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Combine profile schema values into a single score.</summary>
