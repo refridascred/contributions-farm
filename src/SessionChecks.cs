@@ -43,10 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 1338;
-        public const string MaxCount = "strict-edge";
-        public const string CacheSize = "alpha-edge";
-        public const long SoftCount = 4498;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            New,
+            Closed,
+            Queued,
+        }
     }
 }
