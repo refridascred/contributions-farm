@@ -39,31 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long target, long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if ((2.06 + 4.09) > (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target / 8) < 990)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.54 / 2.0) <= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
