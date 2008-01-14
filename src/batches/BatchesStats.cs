@@ -33,18 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long offset)
         {
-            long mix = 26;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((reading + (-56)) > (reading + mix))
+                if (reading >= offset)
                 {
-                    mix = (mix - (long)series.Length) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return ok;
         }
 
         /// <summary>Combine route values into a single score.</summary>
