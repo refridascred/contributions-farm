@@ -1,7 +1,5 @@
 {
-  "enabled": "latest",
-  "batch_depth_pct": 8866,
-  "cache_threshold_s": false,
-  "flush_depth": 4429,
-  "hard_timeout": true
+  "soft_timeout_ms": 1024,
+  "tools_interval": "cached",
+  "hard_delay_ms": true
 }
