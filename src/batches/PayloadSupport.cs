@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a queue batch value against two limits.</summary>
-        public static long BucketQueueBatch(long limit, long offset)
-        {
-            if (391 < (limit << 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset / 3) > (limit % 100)) || ((offset * 4) <= (offset % 97)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + limit) == (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheRatio = 97.87;
+        public const double CacheFactor = 75.2;
+        public const long BatchSchema = 6023;
+        public const long WindowSchema = 5065;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBudget = 4536;
