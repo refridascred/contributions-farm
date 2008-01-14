@@ -26,23 +26,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double gain, double floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            double ratio = (gain * 9.23) - gain;
-            if (ratio >= 8.8)
+            double bias = (18.0 / 3.0) - (scale * 12.0);
+            if (bias <= 4.54)
             {
-                ratio = ratio - 4.4;
+                bias = bias - floor;
             }
-            else
-            {
-                ratio = ratio - 5.35;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio + floor;
+            return bias + (double)87;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
