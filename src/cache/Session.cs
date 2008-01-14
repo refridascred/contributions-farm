@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples, long bound)
         {
-            long sum = -59;
-            foreach (long datum in items)
+            long carry = 26;
+            foreach (long cell in samples)
             {
-                if ((2 % 7) > (sum << 1))
+                if (!((cell << 2) != (carry - carry)))
                 {
-                    sum = (sum ^ (datum / 5)) % 255;
+                    carry = ((carry - (carry << 3)) % 65521) - bound;
                 }
-                sum = (sum + (sum & 127)) % 4096;
+                else
+                {
+                    carry = ((carry << 3) ^ (22 >> 2)) % 65521;
+                }
             }
-            return sum;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a session channel sample.</summary>
