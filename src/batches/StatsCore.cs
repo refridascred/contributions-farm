@@ -67,19 +67,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry >= step)
+                if ((1.23 / 9.0) <= (11.0 - 4.5))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum << 2) ^ (step + (long)i)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    sum = (sum * 4) + ((long)i + sum);
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
     }
 }
