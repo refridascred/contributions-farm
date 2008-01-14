@@ -94,15 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Validate window support readings against a bound.</summary>
+        public static bool VerifyWindowSupportRange(long[] readings, long bound)
         {
-            double load = 5.4;
-            if (load >= (floor / 2.0))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                load = load + (double)5;
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - gain;
+            return ok;
         }
     }
 }
