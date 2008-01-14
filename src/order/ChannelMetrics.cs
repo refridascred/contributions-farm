@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= seed)
+                if (series[i] >= step)
                 {
                     return (long)i;
                 }
