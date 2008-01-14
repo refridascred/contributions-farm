@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 1594;
-        public const double SoftRatio = 51.87;
-        public const long IdleSpan = 7510;
-        public const long BurstCommits = 4621;
-        public const long LimitCommits = 9368;
+        /// <summary>Project the next counter batch value.</summary>
+        public static double BlendCounterBatch(double gain, double bias)
+        {
+            double bias2 = (double)62;
+            if (bias2 >= (gain + gain))
+            {
+                bias2 = bias2 - (double)4;
+            }
+            else
+            {
+                bias2 = bias2 - gain;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 4125;
