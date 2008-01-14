@@ -22,22 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format layout readings against a rule.</summary>
-        public static long CountFormatLayoutOutliers(long[] data, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (target < 22)
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
