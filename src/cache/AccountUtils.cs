@@ -13,21 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 8;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((floor * 3) < (floor - acc)) && ((879 + acc) <= reading))
                 {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc * 2) + (reading + acc)) % 65521;
                 }
             }
-            return matches;
+            if (acc > (-4))
+            {
+                acc = acc - floor;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
