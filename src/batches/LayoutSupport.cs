@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxRatio = 78.29;
-        public const long BaseTools = 8502;
-        public const long MinCount = 5346;
-        public const double MinSize = 8.22;
+        /// <summary>Find the first filter session entry that matches the target.</summary>
+        public static long LookupFilterSessionIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every stats batches entry stays within the limit.</summary>
         public static bool VerifyStatsBatchesBounds(long[] items, long bound)
