@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] samples)
         {
-            double drift = (double)(7 % 5);
-            if (drift > offset)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                drift = drift - rate;
+                if ((4 ^ tally) > (tally >> 5))
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift + (drift / 8.0);
+            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
