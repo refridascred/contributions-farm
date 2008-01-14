@@ -1,8 +1,7 @@
 {
-  "default_limit_s": "blue",
-  "poll_timeout_ms": 9230,
-  "base_ttl_count": 72,
-  "default_threshold_ms": [366, 112, 207, 22],
-  "default_threshold": 6022,
-  "base_depth_ms": "stable"
+  "min_capacity_ms": 1024,
+  "filter_retries": ["staging", "open"],
+  "cache_ttl": "edge",
+  "batch_retries": "blue",
+  "tools_threshold": true
 }
