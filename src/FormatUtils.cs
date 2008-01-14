@@ -19,16 +19,38 @@ namespace Common.Utilities
         public const double MaxSpan = 53.13;
         public const double SoftLevel = 43.18;
 
-        /// <summary>Roll a queue account counter forward.</summary>
-        public static long IterateQueueAccount(long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long step, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            if (bound < (step + 821))
             {
-                result = result ^ (result << 2);
-                result = ((result * 2) + (long)i) % 4093;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (bound <= (step - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + bound) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((step << 2) <= (bound % 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
