@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] data, long target)
+        /// <summary>Digest a series of graph contributi entries.</summary>
+        public static long CombineGraphContributi(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 49;
+            foreach (long reading in values)
             {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ 19) + reading;
             }
-            return -1;
+            if (score < 76)
+            {
+                score = ((score * 2) + (score / 2)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
