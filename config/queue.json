@@ -1,7 +1,7 @@
 {
-  "flush_retries_ms": 500,
-  "batch_depth_s": 51.88,
-  "command_window": "cached",
-  "poll_depth": "staging",
-  "persist": ["eu-west", "local"]
+  "max_window": 81.7,
+  "compress": 30,
+  "burst_retries": 20,
+  "max_limit_ms": 905,
+  "cache_ratio_pct": "latest"
 }
