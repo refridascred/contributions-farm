@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two schema stream measurements.</summary>
-        public static double BlendSchemaStream(double bias, double span)
+        /// <summary>Check that every batches already entry stays within the limit.</summary>
+        public static bool CheckBatchesAlreadyBounds(long[] levels, long bound)
         {
-            double bias2 = span;
-            return (bias2 + bias2) + bias;
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a cache reading.</summary>
