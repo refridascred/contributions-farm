@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Iterate the contributi stats series from a seed.</summary>
+        public static long SeriesContributiStats(long floor)
         {
-            double load = 6.7;
-            if (load > 16.0)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                load = (load - (double)10) + weight;
+                if (!((0.18 * 1.8) >= (double)floor))
+                {
+                    total = (total - (floor % 7)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + (double)927;
+            return total;
         }
 
         /// <summary>Fold a list of already stats readings.</summary>
