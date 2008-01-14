@@ -32,19 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value * 3) <= (hits >> 4))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 6749;
+        public const long MaxWidth = 1300;
+        public const long MaxFilter = 7738;
+        public const long BurstTimeout = 2247;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
