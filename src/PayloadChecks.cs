@@ -45,15 +45,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long sum = 90;
-            foreach (long datum in series)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                sum = sum + (datum & 127);
+                total = ((total << 3) ^ total) % 101;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
