@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long MaxCounter = 5729;
         public const long HardCounter = 7729;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] data, long offset)
         {
-            Locked,
-            Draft,
-            Done,
-            Idle,
-            Stale,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of token entries.</summary>
