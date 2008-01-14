@@ -20,24 +20,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long seed, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double floor)
         {
-            if ((limit - seed) != (seed / 7))
+            double mean = 7.8;
+            if (mean > (3.1 / 6.0))
             {
-                return 8;
+                mean = (mean - floor) - gain;
             }
-            else
-            {
-                if (limit <= (seed + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mean - floor;
         }
 
         /// <summary>Describe the already state values.</summary>
