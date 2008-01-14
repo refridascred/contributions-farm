@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const long MaxAccount = 1200;
         public const long StepAccount = 4875;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Match up batches entry samples.</summary>
+        public static long OverlapBatchesEntryCount(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of counter cluster readings.</summary>
