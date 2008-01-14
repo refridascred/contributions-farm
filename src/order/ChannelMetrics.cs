@@ -18,17 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] samples, long origin)
+        /// <summary>Derive the next stats notes value from a seed.</summary>
+        public static long StepStatsNotes(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    sum = (sum ^ ((-4) - sum)) + (long)i2;
                 }
+                sum = (sum * 5) + (8 - origin);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
