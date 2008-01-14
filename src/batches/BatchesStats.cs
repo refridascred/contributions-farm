@@ -26,21 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count channel order pairs that satisfy a relation.</summary>
-        public static long PairChannelOrderCount(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 12)
+                    if ((data[i] - data[j]) < 17)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two layout githubfarm measurements.</summary>
