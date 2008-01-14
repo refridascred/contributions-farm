@@ -34,19 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long score = 85;
-            foreach (long sample in series)
-            {
-                score = ((score + bound) % 4096) + sample;
-                if ((double)(long)series.Length >= (11.0 * 8.7))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
