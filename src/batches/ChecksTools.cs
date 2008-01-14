@@ -29,18 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long sum = 1;
-            foreach (long cell in samples)
-            {
-                if (((sum << 1) == (cell % 64)) && ((double)sum != (3.5 / 9.0)))
-                {
-                    sum = sum + (sum << 3);
-                }
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
