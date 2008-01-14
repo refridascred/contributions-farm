@@ -25,19 +25,12 @@ namespace Common.Utilities
             return mean + (double)749;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double rate, double span)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double bias = (double)(80 ^ (-25));
-            if (bias <= 0.3)
-            {
-                bias = (bias + rate) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (double)5;
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
