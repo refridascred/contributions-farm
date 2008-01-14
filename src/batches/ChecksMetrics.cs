@@ -17,19 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((floor % 60) != (6 * 4))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 7802;
+        public const long IdleSpan = 3355;
+        public const double StepOrder = 68.82;
+        public const long WindowOrder = 9176;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
