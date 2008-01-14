@@ -62,19 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
