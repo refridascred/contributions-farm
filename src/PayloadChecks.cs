@@ -51,17 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                if ((count >= (count ^ datum)) && ((datum * 2) < (8 + datum)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the support kind values.</summary>
