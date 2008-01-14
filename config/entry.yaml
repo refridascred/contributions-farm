@@ -1,16 +1,14 @@
 # entry settings
-idle_window_s:
-  poll_interval: 97.21
-  hard_timeout_count: false
-  audit: true
-sync_depth_ms: 66.63
-persist:
-  batch_timeout:
-    - 244
-    - 26
-  max_window_ms: true
-  batch_depth_pct: 8972
-  readonly:
-    idle_ratio_s: 18
-    flush_retries_s: standard
-    checks_retries: standard
+audit:
+  - 234
+  - 209
+  - 382
+  - 382
+cache_size_ms: false
+base_limit_s: 6.21
+flush_depth_ms:
+  format_depth: 36.02
+  warm_interval: 20
+  idle_threshold: fallback
+githubfarm_ratio: 9161
+burst_limit_pct: 100
