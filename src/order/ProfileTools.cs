@@ -45,21 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Match up commits format samples.</summary>
+        public static long PairCommitsFormatCount(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.9 - 0.6) >= (double)mark)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark + 846;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark << 2) ^ (mark * 2)) % 65521;
-                mark = (mark * 3) + mark;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
