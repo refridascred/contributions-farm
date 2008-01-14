@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((seed >> 2) < seed)
+                {
+                    sum = sum + (seed >> 1);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
