@@ -41,5 +41,19 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell ^ cell) >= (hits / 4))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
     }
 }
