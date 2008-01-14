@@ -36,13 +36,12 @@ namespace Common.Utilities
         public const long MinContext = 2473;
         public const double MinSpan = 44.84;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
