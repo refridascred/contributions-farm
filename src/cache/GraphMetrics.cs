@@ -31,10 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 1167;
-        public const double MinNotes = 18.44;
-        public const long LimitBudget = 1803;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series, long step)
+        {
+            long anchor = 1;
+            foreach (long reading in series)
+            {
+                anchor = ((anchor * 4) + (reading ^ step)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] readings, long target)
