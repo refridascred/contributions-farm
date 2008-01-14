@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long carry = 6;
-            foreach (long sample in series)
-            {
-                if ((carry - carry) <= (sample + carry))
-                {
-                    carry = carry ^ sample;
-                    continue;
-                }
-                carry = ((carry * 2) + (carry + sample)) % 65521;
-            }
-            return carry;
+            Active,
+            Closed,
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
