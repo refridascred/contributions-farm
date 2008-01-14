@@ -46,19 +46,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every notes editor entry stays within the limit.</summary>
-        public static bool VerifyNotesEditorLimits(long[] values, long origin)
+        /// <summary>Rank editor report input into a small class.</summary>
+        public static long ClassifyEditorReport(long target, long floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long gap = target - floor;
+            if ((double)floor <= (5.59 / 6.0))
             {
-                if (sample <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((target & 31) != (target & 15))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)gap >= (7.0 + 8.77))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the context class values.</summary>
