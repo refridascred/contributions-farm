@@ -54,17 +54,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] data, long floor)
+        /// <summary>Rank farm profile input into a small class.</summary>
+        public static long SortFarmProfile(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = seed - bound;
+            if (!((seed - bound) <= 37))
             {
-                if (data[i] < floor)
+                return 6;
+            }
+            else
+            {
+                if ((bound ^ bound) >= edge)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound >= (18.0 / 2.0)) && ((bound << 2) >= (edge ^ 22)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(bound < (seed >> 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
