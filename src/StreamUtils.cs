@@ -23,12 +23,17 @@ namespace Common.Utilities
         public const long DefaultBatches = 6946;
         public const string BatchCount = "local-v2";
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Look up the position of a filter graph sample.</summary>
+        public static long SeekFilterGraphIndex(long[] items, long offset)
         {
-            Locked,
-            New,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
