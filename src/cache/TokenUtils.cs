@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a order schema value against two limits.</summary>
-        public static long SortOrderSchema(long seed, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long bound)
         {
-            if ((step <= seed) || ((step & 15) > (2 << 1)))
+            long total = 3;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((29 ^ seed) > (seed + step))
+                if (((-4) - reading) == (total - bound))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed - step) < (step >> 2)) && (seed <= (step ^ seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total * 5) + (bound << 2);
                 }
             }
+            if (total < 71)
+            {
+                total = (total * 2) + (total * 3);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
