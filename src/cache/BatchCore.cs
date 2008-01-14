@@ -30,22 +30,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count route tools pairs that satisfy a relation.</summary>
-        public static long PairRouteToolsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowDepth = 8342;
+        public const long DefaultCluster = 2111;
+        public const long LimitCluster = 2551;
+        public const long MinCluster = 3615;
+        public const long CacheCluster = 2007;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BaseCount = "staging-v2";
