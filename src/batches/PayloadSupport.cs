@@ -20,10 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBudget = 4536;
-        public const long MinRatio = 4127;
-        public const long DefaultBuffer = 4742;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
