@@ -46,24 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((20.0 * 2.41) > (double)anchor))
-                {
-                    anchor = (anchor * 2) + (limit + limit);
-                }
-                else
-                {
-                    anchor = anchor - limit;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepTimeout = "staging-1";
+        public const double IdleContributi = 56.43;
+        public const double DefaultContributi = 1.42;
+        public const string MinContributi = "alpha";
+        public const string SoftContributi = "stable-v2";
 
         /// <summary>Compare every pair of layout token readings.</summary>
         public static long PairLayoutTokenCount(long[] readings)
