@@ -1,7 +1,5 @@
 {
-  "min_capacity_s": 2.81,
-  "cache_timeout_pct": true,
-  "counter_capacity": 36.43,
-  "stream_threshold": false,
-  "cache_delay_ms": 18.17
+  "base_interval_ms": 250,
+  "readonly": 5.49,
+  "flush_interval": [14, 398, 230]
 }
