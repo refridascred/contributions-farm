@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long SoftRecord = 817;
         public const double BurstBudget = 56.48;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] samples, long origin)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
