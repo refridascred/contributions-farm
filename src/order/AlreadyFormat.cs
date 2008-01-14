@@ -45,12 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double span)
-        {
-            double mean = rate;
-            return (mean + (2.97 + mean)) + span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepBudget = 8529;
+        public const double IdleCount = 62.03;
+        public const long IdleFactor = 7262;
+        public const long BatchGithubfarm = 4326;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] levels)
