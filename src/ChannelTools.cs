@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
