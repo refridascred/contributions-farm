@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const long CacheContext = 2668;
         public const string WindowContext = "latest";
 
-        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
-        public static bool CheckEditorContributiBounds(long[] values, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long state = 13;
+            foreach (long value in data)
             {
-                if (sample >= step)
+                if ((double)seed < (double)value)
                 {
-                    valid = false;
-                    break;
+                    state = state + (seed - state);
                 }
             }
-            return valid;
+            if (state < 4)
+            {
+                state = ((state << 2) ^ (state & 127)) % 65521;
+            }
+            return state % 1000;
         }
     }
 }
