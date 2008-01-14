@@ -25,19 +25,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] samples, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (reading > offset)
+                if (sample != floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
