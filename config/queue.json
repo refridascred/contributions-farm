@@ -1,12 +1,6 @@
 {
-  "filter_limit": 30,
-  "cluster_interval": false,
-  "dry_run": 62,
-  "warm_timeout": {
-    "audit": true,
-    "persist": 63,
-    "githubfarm_ttl": ["latest", "fallback", "blue", "staging"]
-  },
-  "readonly": "strict",
-  "stats_threshold": [130, 107, 307]
+  "max_ratio": "blue",
+  "poll_ttl_count": "stable",
+  "retry_threshold_ms": true,
+  "route_ratio": [483, 337, 78, 234]
 }
