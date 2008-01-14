@@ -1,11 +1,11 @@
 # Command notes
 
-When a cache fails, the filter handler retries a few times before giving up.
-Use account settings to tune how often context data is refreshed.
+Each editor is validated before it reaches the order queue.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer context defaults
-- Keep githubfarm values small
+- Validate cache input early
+- Log every notes change
+- Keep farm values small
 - Review editor limits each release
-- Validate channel input early
