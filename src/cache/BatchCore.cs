@@ -34,15 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Paused,
-            Locked,
-            Retry,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "standard-edge";
+        public const long WindowFactor = 1450;
+        public const double StepPayload = 26.34;
+        public const long BaseCount = 9273;
+        public const long CacheBudget = 2570;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
