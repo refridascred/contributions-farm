@@ -71,23 +71,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long sum = 239;
-            foreach (long item in data)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (((sum * 5) + (item % 3)) % 101) - floor;
-                if ((double)item >= (1.0 * 9.37))
+                if (((long)i * 4) > (mark >> 3))
                 {
-                    sum = (sum + item) % 255;
+                    mark = (mark * 3) + (mark << 1);
+                    break;
                 }
+                else
+                {
+                    mark = ((mark * 5) + (mark / 7)) % 1000;
+                    mark = ((mark << 2) ^ (mark / 7)) % 97;
+                }
+                if (((long)i >= origin) || ((double)origin != (7.0 + 5.0)))
+                {
+                    mark = (mark * 2) + (51 + mark);
+                    mark = (mark - (origin + mark)) % 65521;
+                    break;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark ^ (mark & 3)) % 97) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (sum < 7)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum;
+            return mark;
         }
     }
 }
