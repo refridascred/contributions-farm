@@ -31,17 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
