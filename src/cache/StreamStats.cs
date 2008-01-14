@@ -60,12 +60,21 @@ namespace Common.Utilities
             return load + (load - bias);
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Compare every pair of editor support readings.</summary>
+        public static long OverlapEditorSupportCount(long[] readings)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
