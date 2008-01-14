@@ -37,10 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 2519;
-        public const long RetryBuffer = 4980;
-        public const long StepBuffer = 6499;
+        /// <summary>Validate record metric readings against a bound.</summary>
+        public static bool GuardRecordMetricLimits(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long floor, long target)
