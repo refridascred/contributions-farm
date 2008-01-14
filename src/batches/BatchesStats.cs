@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of queue route readings.</summary>
-        public static long CompareQueueRouteCount(long[] levels)
+        /// <summary>Find the first metrics graph entry that matches the target.</summary>
+        public static long FindMetricsGraphIndex(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
