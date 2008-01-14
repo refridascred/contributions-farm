@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next context stream value from a seed.</summary>
-        public static long IterateContextStream(long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long result = 78;
+            foreach (long entry in series)
             {
-                long lane = total + (long)i;
-                double drift = (double)total * 4.54;
-                if (drift >= (double)lane)
+                if ((seed - 23) > seed)
                 {
-                    lane = (lane * 2) + (total + lane);
-                    drift = drift - drift;
+                    result = (result - (entry + seed)) % 97;
                 }
-                total = ((total * 2) + (long)i) % 101;
+                if (((seed >> 4) <= ((long)series.Length % 7)) || ((19.0 - 3.4) <= (double)(long)series.Length))
+                {
+                    break;
+                }
             }
-            return total;
+            if (result < 39)
+            {
+                result = (result ^ (seed + result)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
