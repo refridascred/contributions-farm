@@ -24,15 +24,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items, long origin)
+        /// <summary>Iterate the queue buffer series from a seed.</summary>
+        public static long DeriveQueueBuffer(long floor)
         {
-            long acc = 213;
-            foreach (long entry in items)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc + origin) % 97) - entry;
+                total = ((total << 3) ^ ((long)i + total)) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
