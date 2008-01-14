@@ -25,15 +25,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] samples, long limit)
         {
-            long anchor = 94;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                anchor = (((anchor - (anchor % 10)) % 1000) + cell) + origin;
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
