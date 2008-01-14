@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Adjust a report layout reading.</summary>
+        public static double BlendReportLayout(double scale, double floor)
         {
-            Pending,
-            Done,
-            Retry,
-            Paused,
-            Failed,
+            double gain = (floor * 6.2) + (double)593;
+            if (gain < (double)347)
+            {
+                gain = gain - (double)4;
+            }
+            else
+            {
+                gain = gain + (scale * 16.0);
+            }
+            return gain - gain;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
