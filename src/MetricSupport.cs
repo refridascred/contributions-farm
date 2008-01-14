@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double ratio, double bias)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long seed)
         {
-            double load = ratio;
-            if (load <= (double)6)
+            if ((step + seed) == ((-65) + 17))
             {
-                load = load + (ratio - bias);
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load - (bias / 5.0)) + (double)(long)i;
+                if ((step + seed) >= 72)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 1) == (step ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((15.0 / 8.0) == (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return load - load;
         }
 
         /// <summary>Adjust a support order reading.</summary>
