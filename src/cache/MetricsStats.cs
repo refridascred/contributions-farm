@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
+            Active,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
