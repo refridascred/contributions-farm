@@ -40,19 +40,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] values, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double rate = 4.7;
+            if (rate <= (double)92)
             {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate + (20.0 * 6.4)) + bias;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (scale * 8.62)) + (double)(long)i;
+            }
+            return rate - (rate - rate);
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
