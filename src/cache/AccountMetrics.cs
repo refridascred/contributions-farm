@@ -61,18 +61,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] values, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 29;
+            foreach (long entry in values)
             {
-                if (9.86 > (double)count)
+                if ((entry + entry) > (mark + entry))
                 {
-                    count = ((count + 2) ^ reading) - step;
+                    mark = (mark + (9 + mark)) % 97;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
