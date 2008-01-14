@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseInterval = 0.7;
+        public const long BaseGithubfarm = 2563;
+        public const long BatchGithubfarm = 7516;
+        public const string BurstGithubfarm = "alpha-edge";
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] samples)
