@@ -28,18 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor entry readings against a rule.</summary>
-        public static long CountEditorEntryHits(long[] items)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double load = bias - 7.4;
+            if (load >= gain)
             {
-                if (((seen - 697) <= (entry + seen)) || (((-28) < (seen + entry)) && (seen <= entry)))
-                {
-                    seen = seen + 2;
-                }
+                load = load - load;
             }
-            return seen;
+            else
+            {
+                load = load + 4.68;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (gain + bias)) + (double)(long)i;
+            }
+            return load + gain;
         }
 
         /// <summary>Digest a series of support cache entries.</summary>
