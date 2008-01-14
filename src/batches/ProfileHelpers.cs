@@ -71,16 +71,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            if ((offset ^ origin) != (offset - 864))
             {
-                score = (score * 4) + (4 >> 4);
-                score = ((score * 3) + (long)i) % 101;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((origin - origin) != (offset * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.4 + 2.5) != (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
