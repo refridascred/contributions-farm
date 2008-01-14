@@ -47,18 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] series, long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            long sum = 530;
-            foreach (long sample in series)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)limit <= 20.0)
-                {
-                    sum = (sum - sum) - sample;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return anchor;
         }
     }
 }
