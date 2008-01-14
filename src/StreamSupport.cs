@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long state = 117;
-            foreach (long entry in readings)
-            {
-                if (!(((long)readings.Length << 1) == (310 * 4)))
-                {
-                    state = (state ^ (entry & 255)) % 255;
-                }
-                else
-                {
-                    state = ((state * 2) + entry) % 255;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (state ^ (state + state)) % 4096;
-                    state = (state - (long)i) % 65521;
-                }
-                state = (state * 2) + ((-3) + entry);
-            }
-            if (state > 5)
-            {
-                state = (state + state) % 255;
-            }
-            return state % 65521;
+            Stale,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
