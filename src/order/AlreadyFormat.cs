@@ -46,31 +46,17 @@ namespace Common.Utilities
         public const long IdleFactor = 7262;
         public const long BatchGithubfarm = 4326;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] data, long step)
         {
-            long mix = 500;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > (item % 97))
+                if (data[i] == step)
                 {
-                    mix = mix - (615 << 2);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - mix) % 65521;
-                }
-                if ((item + bound) <= mix)
-                {
-                    mix = mix ^ (3 - mix);
-                }
-                if ((9.7 + 17.0) > (double)mix)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
     }
 }
