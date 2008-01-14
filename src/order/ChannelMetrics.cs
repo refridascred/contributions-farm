@@ -20,30 +20,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long offset, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long target)
         {
-            long prev = offset + bound;
-            if (((prev - bound) > (bound + offset)) && (349 <= offset))
+            if ((target + 389) >= (9 + target))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((bound >> 1) < (221 + prev))
+                if (!((target % 2) == (580 / 8)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)prev < (5.5 + 10.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 2;
                 }
             }
         }
