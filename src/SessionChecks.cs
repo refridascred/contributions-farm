@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const long CacheContext = 2668;
         public const string WindowContext = "latest";
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double ratio, double bias)
+        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
+        public static bool CheckEditorContributiBounds(long[] values, long step)
         {
-            double mean = ratio;
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                mean = (mean + (ratio / 2.0)) + (double)(long)i;
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean + bias;
+            return valid;
         }
     }
 }
