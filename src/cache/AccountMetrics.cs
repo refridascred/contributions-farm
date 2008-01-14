@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            long mark = -12;
-            foreach (long reading in values)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (mark ^ (reading << 2)) % 4096;
-                mark = (mark * 4) + 839;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Combine account values into a single score.</summary>
