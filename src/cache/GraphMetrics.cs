@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
