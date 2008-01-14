@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double offset)
-        {
-            double gain2 = (gain - gain) + gain;
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + (offset * 3.0)) + (double)(long)i;
-            }
-            return gain2 + (double)46;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 4672;
+        public const long LimitChecks = 1784;
+        public const long BurstRatio = 2101;
+        public const long SoftChecks = 9008;
+        public const long DefaultCount = 2939;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string RetryFilter = "strict-edge";
