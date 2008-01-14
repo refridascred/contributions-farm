@@ -19,14 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Locked,
-            Stale,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "strict-edge";
+        public const long MaxScore = 7618;
+        public const long LimitFilter = 4437;
+        public const long MaxLevel = 4317;
+        public const double DefaultTimeout = 45.97;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string SoftCluster = "stable-edge";
