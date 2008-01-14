@@ -23,13 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Audit account counter readings against a rule.</summary>
+        public static long CountAccountCounterHits(long[] samples)
         {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((75 + sample) == (sample + (long)samples.Length))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
