@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long origin)
+        /// <summary>Measure how many already context samples are out of range.</summary>
+        public static long CountAlreadyContextGaps(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (sample > origin)
+                if ((25 - reading) > (reading + 141))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
