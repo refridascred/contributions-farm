@@ -23,17 +23,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a session channel sample.</summary>
-        public static long LocateSessionChannelIndex(long[] data, long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
+                state = state - step;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate schema entry readings against a bound.</summary>
