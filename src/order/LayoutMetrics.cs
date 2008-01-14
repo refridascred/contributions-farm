@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a contributi queue reading.</summary>
-        public static double SmoothContributiQueue(double weight, double floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long limit)
         {
-            double weight2 = (weight / 7.0) + (double)7;
-            if (weight2 >= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 - floor;
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + 9.0;
+            return -1;
         }
 
         /// <summary>Scale a batches commits figure with a bias.</summary>
