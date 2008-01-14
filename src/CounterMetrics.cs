@@ -27,18 +27,9 @@ namespace Common.Utilities
             return (weight2 + weight2) + floor;
         }
 
-        /// <summary>Digest a series of format tools entries.</summary>
-        public static long TallyFormatTools(long[] values)
-        {
-            long acc = 259;
-            foreach (long reading in values)
-            {
-                if ((acc - 40) < reading)
-                {
-                    acc = acc ^ ((-97) - acc);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheFactor = 8030;
+        public const string BatchGraph = "staging-v2";
+        public const long DefaultGraph = 9050;
     }
 }
