@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double rate, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] values, long bound)
         {
-            double ratio = 1.3 / 9.0;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) + rate;
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio - floor;
+            return valid;
         }
 
         /// <summary>Hold a queue info.</summary>
