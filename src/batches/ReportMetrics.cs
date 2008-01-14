@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            New,
-            Idle,
-            Pending,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheSpan = 8408;
+        public const long BatchStats = 1054;
+        public const long DefaultStats = 4310;
+        public const long StepStats = 911;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] series)
