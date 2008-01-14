@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next command support value.</summary>
-        public static double SmoothCommandSupport(double scale, double span)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series)
         {
-            double scale2 = (scale + span) / 9.0;
-            return scale2 + scale;
+            long sum = 3;
+            foreach (long entry in series)
+            {
+                sum = ((sum * 2) + (entry / 9)) % 65521;
+            }
+            if (sum < 85)
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
