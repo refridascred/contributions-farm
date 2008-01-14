@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the payload report series from a seed.</summary>
-        public static long StepPayloadReport(long seed)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] readings, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                double mean = (double)mix * 2.0;
-                if (!(4.6 >= mean))
+                if (readings[i] < offset)
                 {
-                    mean = mean + (mean + mean);
-                    mean = mean - mean;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
