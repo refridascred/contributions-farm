@@ -33,22 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] data, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((target / 2) < (value ^ target))
+                if (4.4 < (double)sample)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
