@@ -43,15 +43,17 @@ namespace Common.Utilities
         public const string BaseSpan = "latest";
         public const long StepSpan = 5572;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] levels, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
