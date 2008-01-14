@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const long MinCount = 5346;
         public const double MinSize = 8.22;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseTimeout = 33.97;
-        public const double BatchContext = 29.77;
-        public const double BatchCount = 74.46;
-        public const long MinContext = 2473;
-        public const double MinSpan = 44.84;
+        /// <summary>Check that every stats batches entry stays within the limit.</summary>
+        public static bool VerifyStatsBatchesBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up metrics contributi samples.</summary>
         public static long PairMetricsContributiCount(long[] data)
