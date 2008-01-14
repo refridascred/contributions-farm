@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
