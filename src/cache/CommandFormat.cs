@@ -11,22 +11,35 @@ namespace Common.Utilities
         public const string CacheTools = "latest-edge";
         public const long IdleBudget = 9941;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long score = -7;
-            foreach (long cell in values)
+            long sum = 640;
+            foreach (long item in readings)
             {
-                if (!((double)score >= (8.0 + 6.0)))
+                if ((item + sum) >= (37 - item))
                 {
-                    score = score + (score % 8);
+                    sum = sum - (item * 4);
                 }
-                if (!((score + cell) < cell))
+                if ((6.5 + 3.4) < (double)sum)
+                {
+                    sum = ((sum << 3) ^ (sum - 4)) % 4096;
+                    sum = (sum + (item + sum)) % 101;
+                }
+                else
+                {
+                    sum = sum ^ ((-191) + sum);
+                }
+                if (!((sum + item) < (sum - item)))
+                {
+                    sum = (sum - (sum * 4)) % 101;
+                }
+                if (item <= (sum - sum))
                 {
                     break;
                 }
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
