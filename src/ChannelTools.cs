@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Blend two order measurements.</summary>
