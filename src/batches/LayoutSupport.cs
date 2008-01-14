@@ -47,18 +47,13 @@ namespace Common.Utilities
         public const long StepAlready = 2594;
         public const long LimitRatio = 3432;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] values)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((value % 7) >= (4 - value)) || ((5.96 <= (double)value) && ((3.3 - 8.0) > (double)value)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
