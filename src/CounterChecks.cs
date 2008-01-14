@@ -38,14 +38,14 @@ namespace Common.Utilities
         public const long MaxFilter = 7738;
         public const long BurstTimeout = 2247;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
+            Stale,
+            Failed,
+            Dropped,
             Ready,
-            Done,
-            Queued,
-            Idle,
-            Draft,
+            Closed,
         }
 
         /// <summary>Hold a channel options.</summary>
