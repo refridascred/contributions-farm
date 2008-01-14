@@ -31,17 +31,19 @@ namespace Common.Utilities
             return drift + (drift / 8.0);
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] series, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (series[i] < bound)
+                if (value != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
