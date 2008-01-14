@@ -49,14 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long step)
         {
-            Stale,
-            New,
-            Active,
-            Paused,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((step * 5) != (cell + 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
