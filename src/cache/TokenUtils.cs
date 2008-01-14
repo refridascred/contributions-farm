@@ -19,10 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleScore = 59.09;
-        public const double HardTimeout = 62.5;
-        public const double WindowScore = 38.1;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 7043;
