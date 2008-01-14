@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowScore = 3103;
-        public const long BurstGraph = 3761;
-        public const double DefaultScore = 5.67;
+        /// <summary>Count the checks metrics entries that pass the check.</summary>
+        public static long CountChecksMetricsMatches(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((((cell / 8) < (cell - step)) || (cell < (step ^ (-1)))) || ((double)cell != (6.5 / 3.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long SortAlready(long target, long offset)
