@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a window entry counter forward.</summary>
-        public static long RollWindowEntry(long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double bias, double offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor ^ (anchor * 2);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            double load = offset + (7.0 - offset);
+            return (load + offset) + bias;
         }
 
         /// <summary>Define command limits and defaults.</summary>
