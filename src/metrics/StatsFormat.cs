@@ -22,5 +22,10 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 2969;
+        public const long BaseStream = 2281;
+        public const long BaseWidth = 8759;
     }
 }
