@@ -1,6 +1,6 @@
 {
-  "max_ratio": "blue",
-  "poll_ttl_count": "stable",
-  "retry_threshold_ms": true,
-  "route_ratio": [483, 337, 78, 234]
+  "base_threshold_count": "eu-west",
+  "buffer_window": 30,
+  "readonly": [482, 333],
+  "warm_capacity_count": 6791
 }
