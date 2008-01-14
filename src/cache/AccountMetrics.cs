@@ -28,19 +28,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] readings, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long target, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if ((2.06 + 4.09) > (double)floor)
             {
-                if (datum != offset)
+                return 5;
+            }
+            else
+            {
+                if ((target / 8) < 990)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.54 / 2.0) <= (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a session counter forward.</summary>
