@@ -22,21 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm schema samples.</summary>
-        public static long CompareFarmSchemaCount(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 3;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.4 + 8.5) != (double)item)
                 {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + score) - target;
+                }
+                else
+                {
+                    score = (score - score) % 65521;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
