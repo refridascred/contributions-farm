@@ -54,19 +54,38 @@ namespace Common.Utilities
             return (bias + scale) + offset;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long target)
         {
-            double mean = span;
-            if (mean >= (9.58 / 7.0))
+            if (((target + target) != (743 / 4)) || ((origin + target) > (target / 4)))
             {
-                mean = mean + bias;
+                return 1;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = (mean + (span - bias)) + (double)(long)i;
+                if (((1.0 * 8.0) == (double)target) && ((target + target) != (origin & 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((origin - target) != (origin + (-7))) && ((5 + 74) < target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)target >= 8.52) && (8.0 < (double)origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return mean + (double)43;
         }
     }
 }
