@@ -59,16 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long sum = 935;
+            foreach (long datum in readings)
             {
-                acc = (acc + (acc + target)) % 255;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((double)datum == (9.4 - 1.38))
+                {
+                    sum = (sum ^ datum) % 1000;
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
