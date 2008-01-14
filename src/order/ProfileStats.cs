@@ -49,10 +49,19 @@ namespace Common.Utilities
         public const long BaseFactor = 1167;
         public const long BatchWidth = 6412;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardSize = 94.42;
-        public const long BatchChannel = 2505;
-        public const double HardChannel = 77.63;
-        public const long BatchLevel = 611;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
