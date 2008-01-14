@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] samples, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 6;
+            foreach (long entry in values)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + limit) - entry;
             }
-            return -1;
+            if (score < 0)
+            {
+                score = score + (score >> 4);
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
