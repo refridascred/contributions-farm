@@ -45,18 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] data, long offset)
         {
-            long mix = -265;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((mix / 7) <= (entry * 2))
+                if (reading <= offset)
                 {
-                    mix = (mix - (entry + 358)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
     }
 }
