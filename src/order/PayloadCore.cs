@@ -39,30 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long seed)
         {
-            long cur = target - offset;
-            if ((cur * 3) <= cur)
+            long diff = limit ^ seed;
+            if (((limit / 3) >= limit) && ((diff & 255) < seed))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (((cur - cur) != (53 & 7)) || ((cur + cur) >= (4 ^ target)))
+                if ((double)seed <= (double)79)
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset < (826 / 4)) && ((offset & 127) > (offset / 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
