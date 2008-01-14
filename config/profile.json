@@ -1,5 +1,8 @@
 {
-  "audit": "local",
-  "metrics_delay": 34,
-  "counter_size": ["stable", "cached", "eu-west"]
+  "warm_ratio_s": ["primary", "latest", "primary"],
+  "dry_run": 1312,
+  "warm_threshold": "green",
+  "warm_retries": "green",
+  "min_interval_count": 57.88,
+  "support_ratio": 9433
 }
