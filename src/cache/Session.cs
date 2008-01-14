@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstSize = "strict-1";
+        public const long MaxGraph = 863;
+        public const long HardScore = 9150;
+        public const long BurstGraph = 3930;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] values, long seed)
