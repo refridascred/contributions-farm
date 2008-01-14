@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long RetryCommand = 3409;
         public const long BatchCommand = 8648;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            double load = bias2;
-            if (load < load)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (bias - load);
-            }
-            return load - (double)5;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
