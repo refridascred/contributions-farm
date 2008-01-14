@@ -23,12 +23,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Blend two window editor measurements.</summary>
+        public static double ScaleWindowEditor(double bias, double offset)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public bool Offset { get; set; }
+            double load = (double)180 / 3.0;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + offset) - (double)(long)i) - bias;
+            }
+            return load + offset;
         }
 
         /// <summary>Digest a series of support entries.</summary>
