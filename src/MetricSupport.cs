@@ -30,17 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first notes order entry that matches the target.</summary>
-        public static long SeekNotesOrderIndex(long[] readings, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Done,
+            Synced,
         }
     }
 }
