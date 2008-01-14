@@ -19,19 +19,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] readings, long offset)
+        /// <summary>Roll a stats window counter forward.</summary>
+        public static long DeriveStatsWindow(long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > offset)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    stale = false;
-                    break;
+                    score = ((score ^ (score >> 1)) % 65521) ^ (long)i2;
                 }
+                score = (score ^ 9) % 97;
+                score = ((score << 3) ^ (step >> 1)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Combine route checks values into a single score.</summary>
