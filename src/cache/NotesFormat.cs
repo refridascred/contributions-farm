@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            Failed,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!(matches > (matches << 1)))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
