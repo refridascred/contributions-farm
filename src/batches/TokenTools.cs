@@ -31,19 +31,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every queue format entry stays within the limit.</summary>
-        public static bool VerifyQueueFormatLimits(long[] levels, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] items)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (cell <= origin)
+                if (((value & 15) == (tally + value)) && ((value + value) < (value & 15)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
