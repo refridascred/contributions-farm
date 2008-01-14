@@ -24,23 +24,15 @@ namespace Common.Utilities
             return mean - (gain - bias);
         }
 
-        /// <summary>Accumulate route order samples.</summary>
-        public static long TallyRouteOrder(long[] data, long step)
+        /// <summary>Scale a batches commits figure with a bias.</summary>
+        public static double SmoothBatchesCommits(double scale, double span)
         {
-            long total = 1;
-            foreach (long datum in data)
+            double gain = (double)(297 & 1);
+            if (gain <= (double)4)
             {
-                total = (((total ^ total) % 97) - datum) - step;
-                if ((double)total > (3.96 + 8.89))
-                {
-                    break;
-                }
+                gain = gain - (scale + gain);
             }
-            if (total > 7)
-            {
-                total = ((total << 2) ^ (total & 1)) % 4096;
-            }
-            return total % 1000;
+            return gain + (span / 4.0);
         }
 
         /// <summary>Hold a counter record.</summary>
