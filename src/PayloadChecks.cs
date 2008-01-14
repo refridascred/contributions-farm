@@ -40,15 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long seed)
         {
-            long mark = 988;
-            foreach (long reading in readings)
+            long anchor = 309;
+            foreach (long item in samples)
             {
-                mark = (((mark - 22) % 1000) + reading) - offset;
+                if ((item / 5) != (item + anchor))
+                {
+                    anchor = (anchor << 2) ^ (seed >> 4);
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
