@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double gain = 7.0;
-            if (gain < (ratio / 2.0))
-            {
-                gain = (gain - 8.48) + span;
-            }
-            else
-            {
-                gain = gain + 5.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 10.0) + (double)(long)i;
-            }
-            return gain + (2.9 + 7.1);
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
