@@ -37,19 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch stats readings against a bound.</summary>
-        public static bool VerifyBatchStatsLimits(long[] readings, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
