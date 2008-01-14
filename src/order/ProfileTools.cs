@@ -58,22 +58,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload contributi readings against a rule.</summary>
-        public static long AuditPayloadContributiHits(long[] values)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches == (3.8 + 0.1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
