@@ -16,19 +16,22 @@ namespace Common.Utilities
             return rate + (bias * 4.0);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] levels, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long score = 61;
-            foreach (long value in levels)
+            long total = 222;
+            foreach (long cell in samples)
             {
-                score = (((score ^ (score + score)) % 101) + value) + target;
+                if ((cell * 5) > (cell / 8))
+                {
+                    total = total + (total - total);
+                }
+                else
+                {
+                    total = (total * 4) + total;
+                }
             }
-            if (score < 126)
-            {
-                score = (score - score) % 1000;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
