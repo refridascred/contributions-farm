@@ -27,24 +27,19 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long floor, long limit)
+        /// <summary>Validate profile contributi readings against a bound.</summary>
+        public static bool ValidateProfileContributiLimits(long[] series, long offset)
         {
-            if ((double)floor == (double)limit)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + floor) == (floor ^ floor))
+                if (datum > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
