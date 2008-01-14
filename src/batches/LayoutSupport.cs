@@ -40,21 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up metrics contributi samples.</summary>
-        public static long PairMetricsContributiCount(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
