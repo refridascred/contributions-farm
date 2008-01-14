@@ -80,11 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (12 < (175 + seen))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
