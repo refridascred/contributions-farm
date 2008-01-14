@@ -1,6 +1,6 @@
 {
-  "base_threshold_count": "eu-west",
-  "buffer_window": 30,
-  "readonly": [482, 333],
-  "warm_capacity_count": 6791
+  "persist": 8864,
+  "format_interval": 500,
+  "min_timeout_s": ["stable", "latest", "cached"],
+  "retry_retries_count": "stable"
 }
