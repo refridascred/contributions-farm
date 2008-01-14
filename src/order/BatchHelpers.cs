@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long RetryStream = 1216;
         public const long WindowStream = 7327;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value > (6.0 + 6.42))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
