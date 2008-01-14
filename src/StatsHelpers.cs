@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BurstDepth = 816;
         public const long WindowLevel = 3739;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] levels)
+        /// <summary>Validate report already readings against a bound.</summary>
+        public static bool GuardReportAlreadyLimits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((double)datum >= 9.0)
+                if (value < offset)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a payload entry.</summary>
