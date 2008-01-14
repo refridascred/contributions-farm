@@ -13,17 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first checks route entry that matches the target.</summary>
-        public static long LookupChecksRouteIndex(long[] samples, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] < floor)
+                if ((reading > (state ^ target)) || ((double)reading <= 2.91))
                 {
-                    return (long)i;
+                    state = state - 9;
                 }
             }
-            return -1;
+            if (state > (-992))
+            {
+                state = (state << 2) ^ (target << 3);
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit already buffer readings against a rule.</summary>
