@@ -45,19 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] data, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
