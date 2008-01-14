@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally + tally) != (tally * 5))
-                {
-                    tally = ((tally + 3) ^ value) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultCount = "staging";
+        public const long RetryDepth = 8039;
+        public const long BurstOrder = 2636;
+        public const long HardOrder = 2845;
 
         /// <summary>Check that every route filter entry stays within the limit.</summary>
         public static bool GuardRouteFilterBounds(long[] items, long target)
