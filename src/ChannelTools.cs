@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] items, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((step + reading) > step)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Project the next checks value.</summary>
