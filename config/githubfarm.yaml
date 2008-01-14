@@ -1,6 +1,8 @@
 # githubfarm settings
-min_ratio: 9026
-max_size_count:
-  - 185
-  - 17
-already_ratio: false
+max_ttl_s:
+  - primary
+  - edge
+max_window: strict
+dry_run: local
+batch_timeout_pct: 67.78
+cache_interval_count: 79.78
