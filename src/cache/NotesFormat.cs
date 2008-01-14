@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next counter batch value.</summary>
-        public static double BlendCounterBatch(double gain, double bias)
+        /// <summary>Validate buffer account readings against a bound.</summary>
+        public static bool GuardBufferAccountBounds(long[] series, long target)
         {
-            double bias2 = (double)62;
-            if (bias2 >= (gain + gain))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                bias2 = bias2 - (double)4;
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - gain;
-            }
-            return bias2 - bias;
+            return ok;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
