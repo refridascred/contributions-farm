@@ -20,15 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            double rate = ratio;
-            if (rate > rate)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                rate = (rate + (double)(-92)) + bias;
+                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return rate - (double)42;
+            return anchor;
         }
 
         /// <summary>Hold a entry stats.</summary>
