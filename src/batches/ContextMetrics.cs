@@ -34,15 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit farm schema readings against a rule.</summary>
-        public static long MeasureFarmSchemaOutliers(long[] series, long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] data)
         {
             long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.75 + 3.8) == (double)entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - target;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
