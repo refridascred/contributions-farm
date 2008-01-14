@@ -14,23 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((long)items.Length & 255) > value)
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 3177;
+        public const string IdleLayout = "standard-v2";
+        public const long RetryLayout = 9569;
+        public const string SoftScore = "open";
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
