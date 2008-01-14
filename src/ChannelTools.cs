@@ -14,23 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] series)
         {
-            long total = 93;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((entry / 3) >= (88 + entry))
+                if (((reading + reading) == (reading * 2)) && (reading > (hits ^ 32)))
                 {
-                    total = ((total * 2) + (seed + total)) % 101;
-                }
-                total = (total * 4) + 655;
-                if ((seed - 265) != (total - 115))
-                {
-                    total = (total ^ (long)series.Length) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of context commits readings.</summary>
