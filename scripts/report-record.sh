@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=247
-log "limit is ${RECORD_LIMIT}"
-
-for item in stable eu-west fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-latest}"
 case "${mode}" in
-    stable)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge strict; do
+    log "checking ${item}"
+done
