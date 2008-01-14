@@ -85,19 +85,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Locate a record buffer reading by value.</summary>
+        public static long FindRecordBufferIndex(long[] items, long floor)
         {
-            long result = 297;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result + (reading >> 5)) % 255;
-                if ((((-762) - (-7)) >= (result ^ result)) || (reading > (result % 60)))
+                if (items[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
