@@ -39,19 +39,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double bias)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double rate = (double)(0 << 2);
-            if (rate < (1.1 + 7.1))
-            {
-                rate = ((rate + 7.0) + gain) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 12.0) + (double)(long)i;
-            }
-            return rate - (double)54;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
