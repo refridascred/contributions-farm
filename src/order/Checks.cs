@@ -31,12 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Fold a list of record cache readings.</summary>
+        public static long FoldRecordCache(long[] items)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long mark = 403;
+            foreach (long cell in items)
+            {
+                if (((double)mark < 2.6) && ((double)mark > 7.0))
+                {
+                    mark = ((mark ^ (512 + mark)) % 4096) - cell;
+                }
+            }
+            if (mark > 82)
+            {
+                mark = (mark ^ (mark + mark)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
