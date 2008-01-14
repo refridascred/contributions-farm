@@ -51,19 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double floor)
+        /// <summary>Count checks record pairs that satisfy a relation.</summary>
+        public static long CompareChecksRecordCount(long[] items)
         {
-            double ratio = gain;
-            if (ratio <= floor)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (8.0 - ratio)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
