@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowTimeout = 5013;
-        public const long IdleRoute = 6453;
-        public const long WindowRoute = 434;
-        public const long BaseRoute = 5018;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] samples)
