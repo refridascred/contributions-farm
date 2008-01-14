@@ -35,21 +35,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values, long seed)
         {
-            long total = -23;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                total = (total ^ (datum + datum)) % 4096;
-                total = (total << 2) ^ (total + total);
-                total = total ^ (total + total);
+                if (!((seed - cell) > (cell << 1)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (total < 86)
-            {
-                total = (total * 3) + (20 * 4);
-            }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Derive the next batches layout value from a seed.</summary>
