@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long seed)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
