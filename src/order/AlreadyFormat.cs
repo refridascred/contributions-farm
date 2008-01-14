@@ -39,18 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long score = 1;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= (value << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + (score >> 4)) % 97;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
