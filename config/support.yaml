@@ -1,10 +1,17 @@
 # support settings
-enabled:
-  base_depth_s: cached
-  cache_window_count: 7628
-  report_ratio: true
-token_retries:
+cache_size_count:
+  - blue
+  - stable
+  - blue
+warm_ttl: eu-west
+strict:
   - cached
   - fallback
   - staging
-farm_threshold: 250
+  - eu-west
+enabled:
+  - staging
+  - eu-west
+  - edge
+  - primary
+audit: true
