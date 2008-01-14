@@ -5,28 +5,30 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long anchor = 595;
+            foreach (long sample in series)
             {
-                carry = (carry ^ 7) % 4096;
-                if (((9.0 / 4.0) != (double)carry) || (((long)i * 4) > (carry - carry)))
+                if (anchor >= (anchor + anchor))
                 {
-                    carry = (carry << 2) ^ (carry + bound);
-                    carry = (carry ^ (carry * 5)) % 101;
-                    continue;
+                    anchor = (anchor - (sample >> 5)) % 65521;
                 }
-                if ((bound + bound) <= 4)
+                if (((double)sample > (double)anchor) || ((double)37 < (double)sample))
                 {
-                    carry = carry ^ (bound - carry);
-                    carry = (carry * 3) + (4 << 1);
-                    continue;
+                    anchor = (anchor ^ (anchor + sample)) % 1000;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (!(sample <= (sample + 652)))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (anchor < 65)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Check that every queue format entry stays within the limit.</summary>
