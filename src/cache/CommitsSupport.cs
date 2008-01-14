@@ -86,11 +86,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 2.16;
-        public const double HardTimeout = 97.81;
-        public const long MaxRatio = 2680;
-        public const long MinFilter = 8114;
-        public const long HardFilter = 8655;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public double Count { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
