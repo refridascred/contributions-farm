@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate window queue readings against a bound.</summary>
+        public static bool GuardWindowQueueLimits(long[] data, long seed)
         {
-            Locked,
-            Active,
-            Synced,
-            Done,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
