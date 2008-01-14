@@ -1,7 +1,5 @@
 {
-  "min_ratio": true,
-  "hard_delay_count": 5,
-  "hard_limit_count": "blue",
-  "flush_window_s": [406, 473, 413],
-  "warm_size_ms": "stable"
+  "metric_limit": 19,
+  "soft_capacity": "legacy",
+  "dry_run": 88.11
 }
