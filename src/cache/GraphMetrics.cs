@@ -44,19 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record metric readings against a bound.</summary>
-        public static bool GuardRecordMetricLimits(long[] samples, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (sample <= origin)
+                if (!((double)matches < 1.6))
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 3) ^ sample) + target;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
