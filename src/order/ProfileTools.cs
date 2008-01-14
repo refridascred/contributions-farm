@@ -41,11 +41,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Fold a list of filter support readings.</summary>
+        public static long TallyFilterSupport(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            long score = 85;
+            foreach (long datum in readings)
+            {
+                if ((datum ^ score) < 8)
+                {
+                    score = score + (24 ^ 955);
+                }
+            }
+            if (score < 420)
+            {
+                score = ((score << 2) ^ 54) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
