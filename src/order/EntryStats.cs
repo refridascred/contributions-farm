@@ -25,21 +25,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Digest a series of command metric entries.</summary>
+        public static long TotalCommandMetric(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -7;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result << 2) ^ (result - result)) + cell;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate already samples.</summary>
