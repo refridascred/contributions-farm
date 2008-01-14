@@ -1,4 +1,8 @@
 # githubfarm settings
-min_ratio_s: edge
-base_capacity_s: fallback
-metric_limit: 1024
+audit: primary
+flush_timeout:
+  schema_retries: standard
+  contributi_timeout: true
+  cache_retries_count: legacy
+  token_depth: 60
+sync_delay: true
