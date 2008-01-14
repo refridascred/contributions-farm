@@ -29,13 +29,21 @@ namespace Common.Utilities
             return weight - (double)4;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
