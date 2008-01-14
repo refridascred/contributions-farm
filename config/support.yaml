@@ -1,11 +1,15 @@
 # support settings
-support_ttl: 7545
-strict: true
-cache_limit: 20.07
-readonly:
-  - 257
-  - 277
-  - 59
-  - 323
-window_delay: staging
-persist: 3863
+idle_delay_ms:
+  schema_limit: 51.76
+  schema_ttl: 2252
+  max_threshold_count: 34.32
+  batch_size_s: 28
+  flush_delay_ms:
+    - local
+    - legacy
+warm_threshold_ms: stable
+cache_threshold_count: true
+max_retries_s:
+  max_ratio: local
+  poll_ttl_count: 100
+  flush_window_pct: staging
