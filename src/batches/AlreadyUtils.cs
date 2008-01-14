@@ -55,11 +55,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 3531;
-        public const long HardCount = 3829;
-        public const long RetryTools = 2652;
-        public const long BaseDepth = 153;
-        public const long BatchFactor = 3367;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 294;
+        public const long IdleQueue = 4818;
+        public const double BaseFactor = 29.0;
     }
 }
