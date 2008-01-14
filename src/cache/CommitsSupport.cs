@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long HardCommits = 891;
         public const string CacheCommits = "alpha-1";
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 44.36;
+        public const double StepFactor = 52.49;
+        public const double RetryInterval = 21.47;
+        public const long StepCommand = 8129;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
