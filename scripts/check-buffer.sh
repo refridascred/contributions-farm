@@ -6,22 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-standard}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=403
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
