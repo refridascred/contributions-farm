@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of format graph readings.</summary>
-        public static long CombineFormatGraph(long[] samples, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long sum = 867;
-            foreach (long reading in samples)
+            long state = 117;
+            foreach (long entry in readings)
             {
-                if ((double)reading > (19.0 / 6.0))
+                if (!(((long)readings.Length << 1) == (310 * 4)))
                 {
-                    sum = sum - (sum + reading);
-                    sum = (sum ^ 102) % 1000;
-                    continue;
+                    state = (state ^ (entry & 255)) % 255;
                 }
-                if (((-6) ^ reading) <= ((-5) + (long)samples.Length))
+                else
                 {
-                    sum = ((sum * 2) + (target / 3)) % 97;
+                    state = ((state * 2) + entry) % 255;
                 }
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (state ^ (state + state)) % 4096;
+                    state = (state - (long)i) % 65521;
+                }
+                state = (state * 2) + ((-3) + entry);
             }
-            return sum;
+            if (state > 5)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
