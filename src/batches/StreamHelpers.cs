@@ -32,15 +32,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a schema graph reading.</summary>
-        public static double AdjustSchemaGraph(double scale, double offset)
+        /// <summary>Derive the next notes session value from a seed.</summary>
+        public static long SeriesNotesSession(long offset)
         {
-            double ratio = (double)(38 * 2);
-            for (int i = 0; i < 8; i++)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ((ratio - (scale * 7.48)) + (double)(long)i) + offset;
+                state = ((state << 3) ^ (state ^ 22)) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return ratio - (double)259;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
