@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((long)series.Length <= (sample - (-654)))
+                if (((double)hits < (double)5) && ((double)hits > (12.0 / 2.0)))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the commits state values.</summary>
