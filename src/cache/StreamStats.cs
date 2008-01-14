@@ -39,22 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph farm entries that pass the check.</summary>
-        public static long MeasureGraphFarmOutliers(long[] data)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((((count >> 1) > (item * 5)) && (item > ((-44) >> 3))) && !((count >> 3) != (71 >> 2)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
