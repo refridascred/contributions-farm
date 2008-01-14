@@ -48,14 +48,19 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double floor)
         {
-            Locked,
-            Paused,
-            Draft,
-            Stale,
-            New,
+            double ratio = gain;
+            if (ratio <= floor)
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (8.0 - ratio)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define support limits and defaults.</summary>
