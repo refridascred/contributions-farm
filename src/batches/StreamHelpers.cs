@@ -46,29 +46,11 @@ namespace Common.Utilities
         public const long CacheChannel = 3279;
         public const string MinRatio = "legacy-edge";
 
-        /// <summary>Iterate the token route series from a seed.</summary>
-        public static long RollTokenRoute(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((result / 2) == ((long)i - result))
-                {
-                    result = result + (result * 2);
-                    continue;
-                }
-                if ((double)20 >= (double)result)
-                {
-                    result = (result ^ (result % 5)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 4) + (result & 1)) % 97;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetrySize = 58.56;
+        public const long DefaultQueue = 6335;
+        public const long StepInterval = 5823;
+        public const double BurstQueue = 44.19;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchSupport = 6349;
