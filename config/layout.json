@@ -1,5 +1,7 @@
 {
-  "default_ratio": 3524,
-  "sync_interval_ms": 55.93,
-  "retry_threshold": 38.25
+  "max_timeout_pct": 87.79,
+  "graph_ttl": "blue",
+  "farm_delay": "fallback",
+  "idle_retries_ms": true,
+  "sync_timeout": 3
 }
