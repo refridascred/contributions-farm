@@ -38,10 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 7549;
-        public const long MinSpan = 9136;
-        public const long DefaultInterval = 2440;
-        public const double IdleLayout = 30.93;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
