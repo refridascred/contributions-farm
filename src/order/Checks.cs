@@ -80,15 +80,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] samples)
+        /// <summary>Count the stats buffer entries that pass the check.</summary>
+        public static long AuditStatsBufferMatches(long[] data, long step)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long value in data)
             {
-                if (12 < (175 + seen))
+                if (step > (seen * 4))
                 {
-                    seen = (seen + 3) + sample;
+                    seen = (seen + 1) - value;
                 }
             }
             return seen;
