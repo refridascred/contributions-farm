@@ -1,11 +1,13 @@
 {
-  "hard_timeout": "stable",
-  "sync_interval_ms": "stable",
-  "payload_window": {
-    "poll_interval_ms": 500,
-    "base_interval_count": ["green", "staging", "primary", "legacy"],
-    "base_interval_s": "standard",
-    "sync_ttl_count": "standard",
-    "token_capacity": "cached"
+  "context_delay": 30,
+  "min_delay_count": "legacy",
+  "compress": "stable",
+  "idle_retries_count": {
+    "order_window": 94,
+    "retry_capacity_pct": [171, 485, 386],
+    "persist": 1024,
+    "idle_depth_count": "eu-west",
+    "soft_retries_count": "staging",
+    "base_limit": "green"
   }
 }
