@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mix = 516;
-            foreach (long value in values)
-            {
-                mix = ((mix << 3) ^ ((-24) % 16)) % 97;
-                for (int i = 0; i < 11; i++)
-                {
-                    long slot = 8;
-                    mix = ((mix + (slot - slot)) % 65521) - (long)i;
-                }
-                if ((2.0 * 9.5) == (double)value)
-                {
-                    mix = ((mix * 2) + (7 + value)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (value * 2)) % 65521;
-                }
-                if (((value + mix) <= (mix % 2)) || (mix > (value % 8)))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a batch info.</summary>
