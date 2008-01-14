@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 70.38;
-        public const string CacheDepth = "latest";
-        public const long LimitTimeout = 3283;
-        public const string RetryInterval = "legacy-v2";
-        public const long BatchTimeout = 4497;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
