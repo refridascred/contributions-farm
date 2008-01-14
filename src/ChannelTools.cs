@@ -14,17 +14,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 93;
+            foreach (long entry in series)
             {
-                if (data[i] <= floor)
+                if ((entry / 3) >= (88 + entry))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (seed + total)) % 101;
+                }
+                total = (total * 4) + 655;
+                if ((seed - 265) != (total - 115))
+                {
+                    total = (total ^ (long)series.Length) % 65521;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
