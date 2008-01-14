@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine account values into a single score.</summary>
