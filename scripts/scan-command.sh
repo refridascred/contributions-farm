@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable primary cached; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-local}"
+mode="${1:-fallback}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=205
+log "limit is ${COMMAND_LIMIT}"
