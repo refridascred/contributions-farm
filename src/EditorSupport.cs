@@ -70,11 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Validate command format readings against a bound.</summary>
+        public static bool GuardCommandFormatLimits(long[] readings, long step)
         {
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
