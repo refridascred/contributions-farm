@@ -1,7 +1,15 @@
 {
-  "command_ratio": 96,
-  "warm_ratio": 30,
-  "command_capacity": "local",
-  "contributi_limit": false,
-  "batch_timeout_pct": "local"
+  "soft_limit_s": {
+    "sync_retries": 250,
+    "profile_limit": "stable",
+    "dry_run": true,
+    "readonly": 4147,
+    "sync_interval_ms": true,
+    "flush_size": 25.68
+  },
+  "cache_window": 11.25,
+  "min_timeout_ms": 9107,
+  "audit": 59.4,
+  "notes_ttl": 45.73,
+  "warm_delay_s": "standard"
 }
