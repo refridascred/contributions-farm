@@ -73,15 +73,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two stream editor measurements.</summary>
-        public static double BlendStreamEditor(double gain, double offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            double bias = (double)((-428) / 3);
-            if (bias > (double)43)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                bias = ((bias - bias) - gain) - offset;
+                sum = ((sum << 3) ^ (79 << 2)) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return bias + bias;
+            return sum;
         }
     }
 }
