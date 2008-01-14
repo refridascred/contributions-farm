@@ -63,11 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepBudget = 8529;
-        public const double IdleCount = 62.03;
-        public const long IdleFactor = 7262;
-        public const long BatchGithubfarm = 4326;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Failed,
+            Pending,
+            Queued,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long CompareBufferCount(long[] series)
