@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count the commits command entries that pass the check.</summary>
+        public static long AuditCommitsCommandOutliers(long[] samples, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (34 >> 3))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metric class values.</summary>
