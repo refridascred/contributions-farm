@@ -80,14 +80,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Adjust a tools report reading.</summary>
+        public static double ScaleToolsReport(double rate, double offset)
         {
-            Failed,
-            Pending,
-            Retry,
-            Idle,
-            Queued,
+            double drift = offset;
+            if (drift >= (rate * 6.6))
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (14.0 / 6.0);
         }
     }
 }
