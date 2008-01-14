@@ -28,11 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "strict-edge";
-        public const long WindowSize = 9769;
-        public const long BurstRoute = 6224;
-        public const string DefaultRoute = "staging-edge";
+        /// <summary>Audit editor entry readings against a rule.</summary>
+        public static long CountEditorEntryHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((seen - 697) <= (entry + seen)) || (((-28) < (seen + entry)) && (seen <= entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long ClassifyBatches(long target, long floor)
