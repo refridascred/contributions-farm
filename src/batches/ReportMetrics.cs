@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] values, long floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < floor)
+                if (levels[i] >= step)
                 {
                     return (long)i;
                 }
