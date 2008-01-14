@@ -60,19 +60,14 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mark = 0;
-            foreach (long item in levels)
-            {
-                mark = (mark + (item - mark)) % 1000;
-            }
-            if (mark > (-6))
-            {
-                mark = (mark + (mark + mark)) % 65521;
-            }
-            return mark % 97;
+            Active,
+            Ready,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
