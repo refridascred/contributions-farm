@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a order githubfarm counter forward.</summary>
-        public static long RollOrderGithubfarm(long origin)
+        /// <summary>Measure how many commits account samples are out of range.</summary>
+        public static long AuditCommitsAccountGaps(long[] items, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                state = (state * 5) + (origin - origin);
-                state = ((state * 4) + (long)i) % 1000;
+                if ((datum < (4 - matches)) && ((datum >> 1) > origin))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Adjust a checks reading.</summary>
