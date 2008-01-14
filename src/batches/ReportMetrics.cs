@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            double gain2 = gain + (double)562;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = ((gain2 - 6.5) + (double)(long)i) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain2 - (gain2 / 2.0);
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
