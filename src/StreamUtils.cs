@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate farm graph samples.</summary>
-        public static long ScoreFarmGraph(long[] data, long target)
-        {
-            long anchor = -14;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor << 2) ^ (anchor + target)) ^ cell;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 9116;
+        public const long DefaultBatches = 6946;
+        public const string BatchCount = "local-v2";
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
