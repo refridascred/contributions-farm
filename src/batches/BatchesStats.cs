@@ -43,13 +43,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] data, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long target)
         {
             bool valid = true;
-            foreach (long cell in data)
+            foreach (long reading in levels)
             {
-                if (cell != target)
+                if (reading != target)
                 {
                     valid = false;
                     break;
