@@ -37,15 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Validate cache channel readings against a bound.</summary>
+        public static bool ValidateCacheChannelBounds(long[] samples, long step)
         {
-            long total = 95;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                total = (total - total) ^ value;
+                if (reading >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
