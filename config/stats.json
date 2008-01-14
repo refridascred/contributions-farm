@@ -1,17 +1,6 @@
 {
-  "min_threshold_s": true,
-  "dry_run": 74.71,
-  "contributi_threshold": ["fallback", "local"],
-  "audit": {
-    "record_threshold": "open",
-    "flush_retries_pct": {
-      "default_ttl_pct": 8161,
-      "flush_retries_s": 9,
-      "enabled": 60,
-      "soft_threshold_pct": 9643
-    },
-    "verbose": 60,
-    "max_depth": "local",
-    "default_capacity_count": "standard"
-  }
+  "verbose": 1024,
+  "already_ttl": false,
+  "batch_limit_count": 7.47,
+  "graph_size": 9542
 }
