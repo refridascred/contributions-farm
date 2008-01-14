@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Measure how many route support samples are out of range.</summary>
+        public static long CountRouteSupportOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count > (value ^ value))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
