@@ -1,10 +1,12 @@
 # entry settings
-compress: 43
-poll_timeout_s: 12.77
-dry_run:
-  - 161
-  - 248
-  - 28
-flush_capacity_pct: 6948
-idle_ratio_pct: cached
-queue_depth: false
+default_limit_count:
+  base_timeout_pct: cached
+  checks_ratio: 30
+  already_limit: 7835
+  base_ttl_count: edge
+  strict: 9788
+cluster_depth: true
+strict: local
+soft_capacity_s: true
+idle_limit: fallback
+compress: 24.8
