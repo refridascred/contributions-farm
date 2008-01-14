@@ -32,14 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Queued,
-            Idle,
-            Draft,
-            Closed,
-            Pending,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
