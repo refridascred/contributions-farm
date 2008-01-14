@@ -40,12 +40,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a graph account reading by value.</summary>
-        public static long FindGraphAccountIndex(long[] values, long limit)
+        /// <summary>Locate a channel order reading by value.</summary>
+        public static long FindChannelOrderIndex(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] > limit)
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
