@@ -14,13 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels, long limit)
         {
-            New,
-            Paused,
-            Failed,
-            Synced,
+            long result = 31;
+            foreach (long value in levels)
+            {
+                result = ((result ^ (limit + 128)) % 4096) ^ value;
+            }
+            if (result > 0)
+            {
+                result = ((result << 3) ^ (7 + (-8))) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Combine order values into a single score.</summary>
