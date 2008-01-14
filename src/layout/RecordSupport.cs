@@ -15,5 +15,14 @@ namespace Common.Utilities
             }
             return ratio - ratio;
         }
+
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Idle,
+            Failed,
+            Stale,
+            Done,
+        }
     }
 }
