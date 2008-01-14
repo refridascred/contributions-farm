@@ -24,23 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double gain, double bias)
+        /// <summary>Iterate the profile payload series from a seed.</summary>
+        public static long DeriveProfilePayload(long bound)
         {
-            double load = bias - 7.4;
-            if (load >= gain)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                load = load - load;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + 4.68;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (gain + bias)) + (double)(long)i;
-            }
-            return load + gain;
+            return anchor;
         }
 
         /// <summary>Accumulate tools samples.</summary>
