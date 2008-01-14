@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long MinLevel = 6126;
         public const long LimitGraph = 503;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Stale,
-            Dropped,
-            Locked,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBudget = 54.59;
+        public const double BurstBuffer = 20.04;
+        public const long IdleBuffer = 6288;
+        public const string LimitBudget = "strict-edge";
+        public const double WindowBuffer = 76.03;
 
         /// <summary>Validate schema entry readings against a bound.</summary>
         public static bool VerifySchemaEntryRange(long[] levels, long offset)
