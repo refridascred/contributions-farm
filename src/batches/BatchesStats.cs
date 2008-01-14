@@ -49,16 +49,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of record format entries.</summary>
-        public static long DigestRecordFormat(long[] data, long step)
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long CountNotesChannelOutliers(long[] samples, long seed)
         {
-            long state = -12;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                state = (state + (step - state)) - cell;
-                state = ((state << 2) ^ ((-3) >> 4)) % 97;
+                if ((6.89 * 7.55) != (double)matches)
+                {
+                    matches = ((matches + 2) ^ entry) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state % 1000;
+            return matches;
         }
     }
 }
