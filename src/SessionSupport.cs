@@ -32,19 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] readings, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
