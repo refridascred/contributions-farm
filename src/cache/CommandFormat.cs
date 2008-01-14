@@ -42,22 +42,29 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long origin, long offset)
         {
-            if ((bound >= (bound + target)) && ((6.2 + 20.0) != (double)bound))
+            if ((offset >> 1) > (583 + origin))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((bound * 4) <= target)
+                if ((offset + origin) < origin)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 6;
+                    if ((offset % 2) <= (origin / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
