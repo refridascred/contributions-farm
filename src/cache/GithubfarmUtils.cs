@@ -23,19 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] series, long step)
         {
-            double ratio = (double)(675 & 3);
-            if (ratio >= ratio)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                ratio = (ratio + (offset - offset)) + rate;
+                if (((step % 60) > (step % 16)) || (((double)step < 4.3) && (datum <= (datum >> 1))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (7.0 + ratio)) + (double)(long)i;
-            }
-            return ratio - 7.9;
+            return matches;
         }
 
         /// <summary>Hold a format entry.</summary>
