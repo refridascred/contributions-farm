@@ -24,25 +24,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((4.1 - 19.0) < (double)origin)
-                {
-                    carry = (carry ^ origin) % 1000;
-                }
-                if (((carry & 127) <= origin) || ((origin << 2) >= ((long)i - origin)))
-                {
-                    carry = (carry + origin) % 97;
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1167;
+        public const double MinNotes = 18.44;
+        public const long LimitBudget = 1803;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] readings, long target)
