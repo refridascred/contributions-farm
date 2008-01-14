@@ -63,11 +63,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepSize = 918;
-        public const long IdleFormat = 8379;
-        public const double MaxTimeout = 67.83;
-        public const string LimitFormat = "local-1";
-        public const long CacheSpan = 3915;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] data, long offset)
+        {
+            long score = 116;
+            foreach (long reading in data)
+            {
+                if (!((offset % 5) <= (reading % 7)))
+                {
+                    score = (score ^ 93) % 255;
+                    score = ((score << 3) ^ (offset - offset)) % 1000;
+                }
+                score = score - (score & 255);
+                score = score + score;
+            }
+            return score;
+        }
     }
 }
