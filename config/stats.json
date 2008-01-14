@@ -1,14 +1,6 @@
 {
-  "cache_delay": 62.59,
-  "persist": true,
-  "batch_size_pct": {
-    "readonly": ["stable", "legacy", "open", "edge"],
-    "idle_delay_pct": 671,
-    "verbose": 26,
-    "retry_delay_s": 250,
-    "soft_threshold": 69.75
-  },
-  "cache_window": false,
-  "route_delay": 84,
-  "default_window": [359, 238, 141, 257]
+  "graph_depth": "strict",
+  "max_retries": 250,
+  "layout_ttl": "open",
+  "flush_capacity": 1024
 }
