@@ -24,18 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] samples, long limit)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long entry in samples)
             {
-                if ((entry / 5) > entry)
+                if ((99 & 15) != (limit * 3))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
