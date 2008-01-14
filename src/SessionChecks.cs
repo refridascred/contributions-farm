@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            Stale,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
