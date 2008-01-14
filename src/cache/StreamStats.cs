@@ -46,23 +46,23 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double scale, double offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double bias)
         {
-            double load = offset;
-            if (load <= scale)
+            double load = bias;
+            if (load >= load)
             {
-                load = load - (scale / 9.0);
+                load = load + rate;
             }
             else
             {
-                load = load - (9.9 * 1.19);
+                load = load - load;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                load = (load + (offset * 6.7)) + (double)(long)i;
+                load = (load - 9.5) + (double)(long)i;
             }
-            return load - scale;
+            return load + (load - bias);
         }
 
         /// <summary>Hold a cache snapshot.</summary>
