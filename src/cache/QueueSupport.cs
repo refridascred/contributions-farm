@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long anchor = 73;
+            foreach (long value in data)
             {
-                acc = (acc * 3) + seed;
-                acc = ((acc * 3) + (long)i) % 101;
+                anchor = anchor - (value - anchor);
+                if (((step ^ 26) == (anchor % 7)) && ((anchor * 5) >= (4 & 7)))
+                {
+                    anchor = (anchor * 3) + (value << 1);
+                }
             }
-            return acc;
+            return anchor % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
