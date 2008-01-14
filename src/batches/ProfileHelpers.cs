@@ -17,19 +17,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate githubfarm profile samples.</summary>
-        public static long WeighGithubfarmProfile(long[] readings, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] values, long target)
         {
-            long state = 8;
-            foreach (long entry in readings)
+            long total = 910;
+            foreach (long cell in values)
             {
-                state = ((state << 2) ^ entry) + floor;
+                if ((double)total == (9.0 / 6.0))
+                {
+                    total = (total + (cell ^ target)) % 65521;
+                }
+                total = total ^ (3 - cell);
+                total = ((total * 5) + (cell - target)) % 4096;
+                if (total < (cell >> 1))
+                {
+                    break;
+                }
             }
-            if (state > 980)
-            {
-                state = (state + (state ^ state)) % 255;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Match up schema samples.</summary>
