@@ -30,12 +30,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 5428;
-        public const long WindowChannel = 5638;
-        public const string RetryChannel = "legacy-1";
-        public const long CacheChannel = 3279;
-        public const string MinRatio = "legacy-edge";
+        /// <summary>Adjust a schema graph reading.</summary>
+        public static double AdjustSchemaGraph(double scale, double offset)
+        {
+            double ratio = (double)(38 * 2);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio - (scale * 7.48)) + (double)(long)i) + offset;
+            }
+            return ratio - (double)259;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetrySize = 58.56;
