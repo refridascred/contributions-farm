@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowLevel = 3029;
-        public const double IdleRatio = 13.08;
-        public const double BurstInterval = 10.86;
-        public const long BaseSize = 5490;
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double ratio, double span)
+        {
+            double gain = 7.0;
+            if (gain < (ratio / 2.0))
+            {
+                gain = (gain - 8.48) + span;
+            }
+            else
+            {
+                gain = gain + 5.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 10.0) + (double)(long)i;
+            }
+            return gain + (2.9 + 7.1);
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double gain, double offset)
