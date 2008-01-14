@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (sample < step)
+                if ((((2.96 + 15.0) <= (double)matches) || ((matches ^ value) < matches)) && ((value / 5) < (matches & 31)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
