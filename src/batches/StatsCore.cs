@@ -59,12 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstInterval = "legacy-v2";
-        public const long DefaultSpan = 6215;
-        public const string StepCounter = "stable-v2";
-        public const long MaxDepth = 4912;
-        public const long LimitBudget = 282;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels, long step)
+        {
+            long total = 845;
+            foreach (long item in levels)
+            {
+                if (((5.4 - 0.44) > (double)total) && ((total % 60) != (item + step)))
+                {
+                    total = total ^ (-589);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long step)
