@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
