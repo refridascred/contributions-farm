@@ -53,24 +53,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of batch record entries.</summary>
-        public static long FoldBatchRecord(long[] samples)
+        /// <summary>Derive the next channel command value from a seed.</summary>
+        public static long DeriveChannelCommand(long bound)
         {
-            long acc = 48;
-            foreach (long datum in samples)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((datum + acc) != (acc + datum))
-                {
-                    acc = acc + (acc * 2);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc * 2)) % 4096;
-                    acc = acc - (acc / 5);
-                }
-                acc = (acc - (acc % 100)) % 255;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return acc % 97;
+            return score;
         }
     }
 }
