@@ -1,11 +1,6 @@
-id,rank,token
-1,primary,standard
-2,green,973
-3,legacy,28.24
-4,758,staging
-5,12,primary
-6,green,916
-7,fallback,356
-8,14.62,69
-9,46.41,579
-10,239,89.17
+id,region
+1,89.1
+2,70.47
+3,staging
+4,53.16
+5,cached
