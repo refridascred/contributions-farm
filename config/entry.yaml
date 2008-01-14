@@ -1,12 +1,14 @@
 # entry settings
-notes_retries:
-  - cached
-  - local
-  - legacy
-default_window: 92.61
-default_delay_s: 21
-burst_ratio_ms: 127
-strict:
-  - legacy
-  - edge
-stats_interval: 60
+metric_limit:
+  strict: 94
+  cache_window_ms:
+    - 94
+    - 464
+  cache_ratio: 80
+warm_ttl_s: 500
+poll_capacity:
+  base_threshold: 492
+  min_ratio: 60
+  warm_retries_count: 2916
+  dry_run: false
+route_depth: stable
