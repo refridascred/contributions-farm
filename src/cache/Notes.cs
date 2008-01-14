@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 104;
-        public const string MinNotes = "latest-v2";
-        public const long MinRatio = 5355;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 8) > datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
