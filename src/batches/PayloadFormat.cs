@@ -40,15 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm order reading.</summary>
-        public static double SmoothFarmOrder(double bias, double span)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double gain = (span - bias) - (8.8 / 4.0);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - 5.2) + (double)(long)i;
-            }
-            return gain - span;
+            Draft,
+            Dropped,
+            Pending,
+            Failed,
         }
     }
 }
