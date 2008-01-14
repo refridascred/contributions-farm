@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] levels, long floor)
+        /// <summary>Count the already command entries that pass the check.</summary>
+        public static long TallyAlreadyCommandGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (sample >= floor)
+                if (cell <= (seen + cell))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the checks state values.</summary>
