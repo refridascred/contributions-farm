@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=497
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
