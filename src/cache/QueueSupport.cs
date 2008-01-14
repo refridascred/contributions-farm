@@ -39,21 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm support series from a seed.</summary>
-        public static long RollGithubfarmSupport(long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            if ((step - 95) < step)
             {
-                result = ((result << 3) ^ (result << 1)) % 65521;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result ^ (floor % 64)) % 1000) + (long)i2;
-                }
-                result = ((result * 2) + (floor + result)) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((seed * 2) == (10 & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
