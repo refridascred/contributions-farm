@@ -51,9 +51,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitScore = 96.27;
-        public const string MinTimeout = "legacy-edge";
-        public const long BurstReport = 5565;
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
