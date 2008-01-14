@@ -75,23 +75,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double ratio = (double)(42 * 4);
-            if (ratio < (4.9 / 4.0))
-            {
-                ratio = ratio - (3.5 - ratio);
-            }
-            else
-            {
-                ratio = ratio - (offset / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio + weight)) + (double)(long)i;
-            }
-            return ratio - (double)90;
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
