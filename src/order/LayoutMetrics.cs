@@ -24,11 +24,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 20.27;
-        public const double HardSupport = 55.8;
-        public const long RetryWidth = 7020;
-        public const string StepRatio = "strict";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] samples)
