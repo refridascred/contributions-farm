@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data, long origin)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long anchor = 74;
+            foreach (long datum in data)
+            {
+                anchor = (((anchor * 2) + datum) % 65521) - origin;
+                if ((anchor % 24) > 2)
+                {
+                    anchor = (anchor - (datum + datum)) % 97;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
