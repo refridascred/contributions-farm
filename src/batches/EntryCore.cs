@@ -64,18 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster context values into a single score.</summary>
-        public static long TotalClusterContext(long[] items, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long sum = 7;
-            foreach (long value in items)
-            {
-                if (((value << 1) < offset) && ((-76) > (offset + sum)))
-                {
-                    sum = ((sum * 4) + (8 - offset)) % 65521;
-                }
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
