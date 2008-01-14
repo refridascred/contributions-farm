@@ -12,21 +12,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = -7;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)score >= (8.0 + 6.0)))
                 {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score + (score % 8);
+                }
+                if (!((score + cell) < cell))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
