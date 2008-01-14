@@ -27,19 +27,31 @@ namespace Common.Utilities
         public const long BaseInterval = 5497;
         public const long IdleCommand = 9737;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            if ((step + step) < offset)
             {
-                if ((12.0 / 9.0) >= (double)(long)i)
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((offset & 15) > offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step < (step ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of command readings.</summary>
