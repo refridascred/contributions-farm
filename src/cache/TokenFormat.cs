@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate queue format readings against a bound.</summary>
-        public static bool ValidateQueueFormatRange(long[] readings, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double drift = (double)622 / 7.0;
+            if (drift < (floor / 3.0))
             {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + (double)29;
             }
-            return stale;
+            else
+            {
+                drift = drift + (13.0 + drift);
+            }
+            return drift - (floor + rate);
         }
 
         /// <summary>Hold a counter record.</summary>
