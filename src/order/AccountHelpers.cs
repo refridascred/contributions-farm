@@ -21,22 +21,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit command context readings against a rule.</summary>
-        public static long TallyCommandContextGaps(long[] series, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)hits > (double)38)
-                {
-                    hits = ((hits + 2) ^ item) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
