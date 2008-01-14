@@ -1,6 +1,10 @@
-id,token,weight,count,region
-1,staging,open,49.76,676
-2,133,96.96,689,14.49
-3,524,55.49,fallback,881
-4,local,cached,49.62,strict
-5,latest,cached,blue,primary
+id,ratio,state
+1,918,61.6
+2,63,cached
+3,975,80.88
+4,151,primary
+5,fallback,6.73
+6,legacy,open
+7,latest,801
+8,143,4.97
+9,strict,587
