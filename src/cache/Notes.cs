@@ -27,22 +27,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] series, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if ((limit - origin) >= (2 / 9))
             {
-                if ((seen - sample) <= (sample % 60))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit > (7.13 - 4.6))
                 {
-                    seen = (seen + 2) + seed;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
