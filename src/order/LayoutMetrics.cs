@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items)
-        {
-            long mark = 4;
-            foreach (long sample in items)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 97;
-                if ((mark < (mark / 3)) && ((mark % 12) != (mark - sample)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepTimeout = 5757;
+        public const long IdleCache = 4269;
+        public const long BatchLevel = 6309;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
