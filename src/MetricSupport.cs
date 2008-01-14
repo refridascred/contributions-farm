@@ -13,23 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long sum = 265;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum << 3) ^ (value + 5);
-                if ((double)value < (6.7 * 14.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum << 2) ^ (1 - 6);
-                }
-                if ((double)sum != (4.0 / 8.0))
-                {
-                    sum = sum + 4;
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
