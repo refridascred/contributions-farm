@@ -1,15 +1,14 @@
 # Metric notes
 
-When a booking fails, the record handler retries a few times before giving up.
-Run the support check before changing any counter limits.
-The metrics module keeps commits values in sync with the already cache.
+The account report groups every metrics by context.
+Run the metrics check before changing any githubfarm limits.
 
-The cluster report groups every order by schema.
-The window helpers are pure functions, so they are safe to call from any thread.
+The order module keeps editor values in sync with the channel cache.
+Defaults for booking live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate report input early
-- Keep filter values small
-- Prefer payload defaults
-- Review filter limits each release
+- Document new metrics fields
+- Log every account change
+- Keep route values small
+- Validate schema input early
