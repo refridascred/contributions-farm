@@ -1,7 +1,14 @@
 {
-  "record_retries": 16.28,
-  "batches_window": 2,
-  "hard_delay": ["edge", "legacy"],
-  "persist": 8400,
-  "counter_timeout": 52.61
+  "cache_size": {
+    "dry_run": 4031,
+    "persist": {
+      "max_interval": 8023,
+      "min_threshold_ms": 100,
+      "queue_depth": "cached",
+      "base_depth": true
+    },
+    "flush_interval_s": "green"
+  },
+  "soft_window": 20,
+  "soft_limit_s": ["standard", "stable", "edge"]
 }
