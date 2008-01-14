@@ -1,15 +1,8 @@
 {
-  "dry_run": 250,
-  "max_window_pct": true,
-  "enabled": 60,
-  "sync_ratio_count": {
-    "cache_window_pct": [232, 289, 309, 101],
-    "min_size": 36.77,
-    "session_depth": {
-      "readonly": "strict",
-      "flush_delay_pct": 97.34,
-      "dry_run": true
-    }
-  },
-  "window_threshold": "fallback"
+  "session_delay": "open",
+  "idle_window": 1207,
+  "dry_run": true,
+  "idle_timeout_s": 85.14,
+  "cache_threshold": "staging",
+  "hard_depth": "standard"
 }
