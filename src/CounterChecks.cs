@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowTimeout = 5013;
+        public const long IdleRoute = 6453;
+        public const long WindowRoute = 434;
+        public const long BaseRoute = 5018;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] samples)
