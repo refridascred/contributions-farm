@@ -1,13 +1,9 @@
 # entry settings
-window_delay: 46.92
-max_capacity_count:
-  metric_ttl: latest
-  cache_ratio: stable
-  warm_delay_pct: 60
-  soft_timeout: staging
-  flush_ratio: eu-west
-  base_ratio: 44
-payload_depth:
-  - 212
-  - 113
-  - 150
+retry_ratio_count: 79.26
+already_interval: 9.61
+command_threshold:
+  - strict
+  - primary
+  - staging
+  - staging
+queue_depth: 70.33
