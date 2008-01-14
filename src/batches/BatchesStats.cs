@@ -33,19 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (reading >= offset)
+                if (value != floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Combine route values into a single score.</summary>
