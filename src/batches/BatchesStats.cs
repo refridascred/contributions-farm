@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long CombineAccountRecord(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long state = 610;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= (99 << 3))
-                {
-                    state = state - entry;
-                }
-                else
-                {
-                    state = state - (2 + state);
-                }
-                if ((state ^ entry) == (state & 31))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
