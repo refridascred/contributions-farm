@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
