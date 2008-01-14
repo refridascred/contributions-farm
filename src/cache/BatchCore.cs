@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Roll a schema channel counter forward.</summary>
+        public static long StepSchemaChannel(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (total + 344) % 1000;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (((total << 3) ^ (total * 3)) % 97) + (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Fold a list of layout batches readings.</summary>
