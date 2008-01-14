@@ -30,20 +30,25 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long carry = 173;
+            foreach (long value in data)
             {
-                if ((bound << 1) <= ((long)i - (long)i))
+                if (((7.0 + 1.0) <= (double)target) && ((double)carry <= (5.26 * 7.0)))
                 {
-                    acc = (acc + bound) % 97;
-                    acc = acc + (acc - acc);
+                    carry = ((carry * 3) + (carry / 9)) % 1000;
+                    carry = ((carry * 2) + (56 - (-36))) % 97;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
+                carry = (carry - ((-33) - target)) % 97;
+                carry = (carry - (value - 28)) % 4096;
             }
-            return acc;
+            if (carry > 43)
+            {
+                carry = (carry - (66 - target)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
