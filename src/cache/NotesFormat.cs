@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long acc = 8;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item - acc) == (acc - acc))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (((acc * 3) + (90 + acc)) % 4096) + step;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
