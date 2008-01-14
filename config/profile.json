@@ -1,7 +1,6 @@
 {
-  "persist": "standard",
-  "min_capacity_ms": 73,
-  "compress": 77.6,
-  "burst_limit_count": 500,
-  "strict": true
+  "farm_ttl": "edge",
+  "route_depth": "green",
+  "persist": "edge",
+  "warm_capacity": 47.08
 }
