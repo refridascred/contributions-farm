@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] series, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((seen ^ value) < origin)
+                if (!((count >> 1) < (entry & 63)))
                 {
-                    seen = seen + 3;
+                    count = (count + 2) - seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two window measurements.</summary>
