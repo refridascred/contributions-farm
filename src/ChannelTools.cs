@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] levels, long step)
         {
-            Synced,
-            Paused,
-            Closed,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
