@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] series)
+        /// <summary>Audit already buffer readings against a rule.</summary>
+        public static long MeasureAlreadyBufferMatches(long[] readings, long origin)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long reading in readings)
             {
-                if (((double)hits < (double)5) && ((double)hits > (12.0 / 2.0)))
+                if ((reading - origin) <= hits)
                 {
-                    hits = (hits + 3) + item;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
