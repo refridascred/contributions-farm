@@ -24,16 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the queue buffer series from a seed.</summary>
-        public static long DeriveQueueBuffer(long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total << 3) ^ ((long)i + total)) % 4096;
-                total = ((total * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
