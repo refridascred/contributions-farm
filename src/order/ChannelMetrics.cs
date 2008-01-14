@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many commits account samples are out of range.</summary>
-        public static long AuditCommitsAccountGaps(long[] items, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((datum < (4 - matches)) && ((datum >> 1) > origin))
+                if (sample >= bound)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Adjust a checks reading.</summary>
