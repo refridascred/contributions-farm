@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double weight, double span)
+        /// <summary>Validate githubfarm context readings against a bound.</summary>
+        public static bool GuardGithubfarmContextBounds(long[] data, long offset)
         {
-            double gain = (double)6 / 5.0;
-            return ((gain + 4.25) + weight) + span;
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
