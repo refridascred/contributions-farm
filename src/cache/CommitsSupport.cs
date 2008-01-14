@@ -60,11 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 95.78;
-        public const string MinFarm = "primary-edge";
-        public const string BurstFarm = "cached-v2";
-        public const long MinFactor = 5123;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "staging-1";
+        public const string BurstFactor = "strict-1";
+        public const long MaxTimeout = 25;
+        public const long MaxFormat = 7770;
+        public const string StepSize = "staging-1";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BaseFilter = 2.16;
