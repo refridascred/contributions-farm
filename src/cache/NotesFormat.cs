@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every cache session entry stays within the limit.</summary>
-        public static bool VerifyCacheSessionBounds(long[] readings, long bound)
+        /// <summary>Scale a metric command figure with a bias.</summary>
+        public static double AdjustMetricCommand(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            double drift = (gain - 1.15) - 6.49;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = ((drift + gain) + (double)(long)i) + bias;
             }
-            return valid;
+            return drift - gain;
         }
 
         /// <summary>Match up cache samples.</summary>
