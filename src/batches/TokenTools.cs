@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 89.07;
         public const long MinMetrics = 9104;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Failed,
+            Done,
             Queued,
-            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
