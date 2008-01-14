@@ -1,8 +1,4 @@
 # support settings
-checks_depth: legacy
-payload_ratio: local
-idle_depth_pct: 15.01
-cache_capacity_ms: false
-audit:
-  - blue
-  - fallback
+max_window_count: 95.96
+hard_threshold_pct: fallback
+min_ttl: primary
