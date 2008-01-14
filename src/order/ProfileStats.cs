@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the contributi stats series from a seed.</summary>
-        public static long SeriesContributiStats(long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long floor, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            if ((3.4 + 7.0) < 9.0)
             {
-                if (!((0.18 * 1.8) >= (double)floor))
-                {
-                    total = (total - (floor % 7)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((floor + seed) <= (floor - 313))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1.7 + 1.0) <= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
