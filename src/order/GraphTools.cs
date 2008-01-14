@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string StepRatio = "stable";
         public const long DefaultFactor = 803;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                rate = ((rate - (0.98 + rate)) + (double)(long)i) - floor;
+                if (!((double)value > (18.0 - 6.3)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate - (double)(-41);
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
