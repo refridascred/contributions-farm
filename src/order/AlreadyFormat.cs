@@ -12,19 +12,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Digest a series of cluster cache entries.</summary>
+        public static long WeighClusterCache(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long total = 71;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                total = (total - (1 + 334)) % 4096;
+                if ((0.8 - 3.0) > (double)item)
                 {
-                    total = ((total << 3) ^ total) ^ (long)i2;
+                    total = (total - (877 ^ 0)) % 255;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            if (total > 3)
+            {
+                total = (total - total) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Match up tools samples.</summary>
