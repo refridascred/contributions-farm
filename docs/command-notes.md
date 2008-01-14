@@ -1,12 +1,12 @@
 # Command notes
 
-Each cluster is validated before it reaches the channel queue.
-A profile that stays idle for too long is moved to the account list.
-Run the contributi check before changing any account limits.
+When a route fails, the tools handler retries a few times before giving up.
+The graph report groups every report by window.
+Keep already and stats names short and lowercase.
 
 ## Guidelines
 
-- Log every farm change
-- Keep report values small
-- Validate entry input early
-- Review tools limits each release
+- Keep window values small
+- Document new batch fields
+- Log every metrics change
+- Validate tools input early
