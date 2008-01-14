@@ -24,13 +24,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc << 2) ^ 34;
+                if (!!(acc > ((long)i >> 3)))
+                {
+                    acc = acc - 785;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a route reading.</summary>
