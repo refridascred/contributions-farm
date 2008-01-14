@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Idle,
-            Closed,
-            Active,
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Match up already samples.</summary>
