@@ -19,16 +19,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] samples, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] levels, long offset)
         {
-            long total = 181;
-            foreach (long sample in samples)
+            long total = 76;
+            foreach (long value in levels)
             {
-                if (offset < (offset * 3))
+                total = (total + ((-9) >> 2)) % 101;
+                if (93 < value)
                 {
-                    total = (total ^ sample) % 1000;
+                    total = ((total << 3) ^ (total - total)) % 1000;
                 }
+            }
+            if (total < 5)
+            {
+                total = (total << 3) ^ offset;
             }
             return total;
         }
