@@ -33,21 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items, long origin)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long result = 675;
-            foreach (long reading in items)
-            {
-                result = (result - (result + origin)) % 65521;
-                if (14.0 < (double)result)
-                {
-                    result = (result + (origin % 100)) % 4096;
-                    result = result - (origin >> 4);
-                }
-                result = (result + reading) % 65521;
-            }
-            return result % 1000;
+            Draft,
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the batch phase values.</summary>
