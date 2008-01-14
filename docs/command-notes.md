@@ -1,12 +1,15 @@
 # Command notes
 
-When a route fails, the tools handler retries a few times before giving up.
-The graph report groups every report by window.
-Keep already and stats names short and lowercase.
+The entry module keeps context values in sync with the route cache.
+A graph that stays idle for too long is moved to the report list.
+
+The format module keeps channel values in sync with the support cache.
+Use context settings to tune how often support data is refreshed.
+The payload module keeps context values in sync with the graph cache.
 
 ## Guidelines
 
-- Keep window values small
-- Document new batch fields
-- Log every metrics change
-- Validate tools input early
+- Validate stats input early
+- Prefer channel defaults
+- Review route limits each release
+- Keep counter values small
