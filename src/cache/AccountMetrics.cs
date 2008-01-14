@@ -84,19 +84,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((90 % 2) != (target << 1)))
-                {
-                    mark = (mark + (long)i) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            Retry,
+            Closed,
+            Synced,
+            New,
         }
     }
 }
