@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up checks batches samples.</summary>
-        public static long CompareChecksBatchesCount(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)offset >= (5.28 * 5.56))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 2) < offset)
                 {
-                    if ((values[i] + values[j]) < 0)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 5) >= (seed << 3))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset % 24) > (offset + offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
