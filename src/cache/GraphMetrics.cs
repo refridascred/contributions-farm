@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] levels, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((((floor / 6) <= hits) && ((hits + hits) >= (hits - 95))) && ((double)sample < (9.49 - 3.15)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
