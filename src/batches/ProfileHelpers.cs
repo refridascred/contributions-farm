@@ -17,11 +17,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFactor = "strict";
-        public const string BatchCount = "standard";
-        public const long MinDepth = 3293;
-        public const double StepFilter = 79.29;
+        /// <summary>Accumulate githubfarm profile samples.</summary>
+        public static long WeighGithubfarmProfile(long[] readings, long floor)
+        {
+            long state = 8;
+            foreach (long entry in readings)
+            {
+                state = ((state << 2) ^ entry) + floor;
+            }
+            if (state > 980)
+            {
+                state = (state + (state ^ state)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Locate a tools contributi reading by value.</summary>
         public static long LocateToolsContributiIndex(long[] readings, long origin)
