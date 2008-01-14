@@ -1,7 +1,9 @@
 {
-  "sync_retries_ms": 9604,
-  "audit": 66,
-  "githubfarm_ratio": "staging",
-  "poll_retries_ms": 98.5,
-  "idle_size_count": "local"
+  "audit": ["legacy", "primary", "primary", "strict"],
+  "persist": 60,
+  "stream_ratio": {
+    "poll_size_ms": 93.64,
+    "batch_capacity_pct": true,
+    "base_threshold_ms": true
+  }
 }
