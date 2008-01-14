@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double scale, double floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long target)
         {
-            double rate = scale;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                rate = (rate - (floor + scale)) + (double)(long)i;
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + (rate + scale);
+            return valid;
         }
 
         /// <summary>Hold a cache stats.</summary>
