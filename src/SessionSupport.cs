@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double gain2 = (gain - gain) + gain;
+            for (int i = 0; i < 9; i++)
             {
-                if ((reading + 9) == (reading << 3))
-                {
-                    matches = matches + 1;
-                }
+                gain2 = (gain2 + (offset * 3.0)) + (double)(long)i;
             }
-            return matches;
+            return gain2 + (double)46;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
