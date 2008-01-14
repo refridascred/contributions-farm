@@ -53,17 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (levels[i] < seed)
+                if (value < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up schema samples.</summary>
