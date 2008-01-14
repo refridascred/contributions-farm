@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const string BatchPayload = "staging";
         public const long MinPayload = 2393;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] samples, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long total = 223;
+            foreach (long item in levels)
             {
-                if (cell >= floor)
+                if (((item & 3) > (target + target)) || ((item % 12) != (target + (-8))))
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 3) + (item + total)) % 101;
                 }
+                total = (total ^ (item >> 1)) % 255;
             }
-            return ok;
+            if (total > 916)
+            {
+                total = ((total << 2) ^ (9 & 255)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of report queue readings.</summary>
