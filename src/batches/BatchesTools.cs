@@ -40,17 +40,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a channel order reading by value.</summary>
-        public static long FindChannelOrderIndex(long[] items, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                if ((count <= (count * 3)) && ((count << 2) < ((long)samples.Length - reading)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
