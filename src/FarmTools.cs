@@ -16,20 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            long total = 23;
-            foreach (long reading in samples)
+            long acc = 2;
+            foreach (long item in samples)
             {
-                total = total + (step + reading);
-                total = ((total * 5) + (reading << 2)) % 101;
+                if ((0.52 * 6.92) > (double)item)
+                {
+                    acc = (acc + (26 ^ acc)) % 101;
+                }
             }
-            if (total < 311)
-            {
-                total = (total + (total - (-991))) % 255;
-            }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
