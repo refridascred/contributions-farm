@@ -75,12 +75,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            Active,
-            Dropped,
-            Done,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((1 ^ count) > (long)values.Length)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
