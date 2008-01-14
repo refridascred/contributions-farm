@@ -24,12 +24,17 @@ namespace Common.Utilities
         public const double MaxSpan = 53.13;
         public const double SoftLevel = 43.18;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long target)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
