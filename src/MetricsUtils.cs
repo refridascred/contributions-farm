@@ -33,18 +33,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "staging-edge";
+        public const long IdleSpan = 707;
+        public const string StepEntry = "strict-1";
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
