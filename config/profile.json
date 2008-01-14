@@ -1,6 +1,7 @@
 {
-  "retry_ratio_pct": true,
-  "buffer_timeout": true,
-  "idle_depth_ms": 41.57,
-  "retry_timeout_s": 90
+  "default_retries_pct": false,
+  "batch_size": ["green", "latest", "eu-west", "green"],
+  "min_delay": "open",
+  "already_timeout": "stable",
+  "persist": "open"
 }
