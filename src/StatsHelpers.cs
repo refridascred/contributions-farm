@@ -35,18 +35,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = -23;
+            foreach (long datum in series)
             {
-                if ((sample + 65) < (sample & 127))
-                {
-                    seen = (seen + 3) + target;
-                }
+                total = (total ^ (datum + datum)) % 4096;
+                total = (total << 2) ^ (total + total);
+                total = total ^ (total + total);
             }
-            return seen;
+            if (total < 86)
+            {
+                total = (total * 3) + (20 * 4);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a channel options.</summary>
