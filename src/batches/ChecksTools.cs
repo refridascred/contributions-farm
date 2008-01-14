@@ -14,19 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values, long limit)
         {
-            long result = 31;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                result = ((result ^ (limit + 128)) % 4096) ^ value;
+                if (limit < ((long)values.Length - limit))
+                {
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result > 0)
-            {
-                result = ((result << 3) ^ (7 + (-8))) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
