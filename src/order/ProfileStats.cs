@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            double load = 6.7;
+            if (load > 16.0)
             {
-                score = ((score * 3) + (long)i) % 97;
+                load = (load - (double)10) + weight;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + (double)927;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
