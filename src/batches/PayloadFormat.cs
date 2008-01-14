@@ -35,12 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] readings, long target)
         {
-            Retry,
-            Queued,
-            Paused,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a payload support reading by value.</summary>
