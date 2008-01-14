@@ -46,32 +46,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank editor report input into a small class.</summary>
-        public static long ClassifyEditorReport(long target, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items)
         {
-            long gap = target - floor;
-            if ((double)floor <= (5.59 / 6.0))
+            long state = 600;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 31) != (target & 15))
+                if ((double)datum != (4.26 - 6.82))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)gap >= (7.0 + 8.77))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = ((state << 2) ^ (datum ^ 665)) % 4096;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Describe the context class values.</summary>
