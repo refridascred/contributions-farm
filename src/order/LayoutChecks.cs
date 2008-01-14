@@ -63,15 +63,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double scale, double floor)
-        {
-            double drift = (double)(5 << 1);
-            if (drift >= scale)
-            {
-                drift = (drift - scale) - floor;
-            }
-            return drift - 2.0;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepSize = 918;
+        public const long IdleFormat = 8379;
+        public const double MaxTimeout = 67.83;
+        public const string LimitFormat = "local-1";
+        public const long CacheSpan = 3915;
     }
 }
