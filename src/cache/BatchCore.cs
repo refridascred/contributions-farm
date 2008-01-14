@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double ratio, double span)
+        /// <summary>Match up checks batches samples.</summary>
+        public static long CompareChecksBatchesCount(long[] values)
         {
-            double weight = (ratio / 8.0) / 5.0;
-            return (weight + (ratio + weight)) + span;
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
