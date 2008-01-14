@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next cache metrics value.</summary>
-        public static double ScaleCacheMetrics(double weight, double span)
+        /// <summary>Check that every channel metric entry stays within the limit.</summary>
+        public static bool VerifyChannelMetricBounds(long[] series, long seed)
         {
-            double bias = span - (span * 5.0);
-            if (bias >= span)
+            bool ready = true;
+            foreach (long value in series)
             {
-                bias = bias - 16.0;
+                if (value <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + 20.0) - (double)(long)i;
-            }
-            return bias + weight;
+            return ready;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
