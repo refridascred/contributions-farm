@@ -36,12 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepLevel = 4146;
-        public const long MaxInterval = 9914;
-        public const double SoftRoute = 57.3;
-        public const long MaxSpan = 606;
-        public const long IdleRoute = 2933;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long limit)
+        {
+            long mark = 91;
+            foreach (long item in samples)
+            {
+                mark = ((mark * 5) + (mark - item)) % 101;
+                if ((limit * 5) >= (item ^ 6))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+            }
+            if (mark > 93)
+            {
+                mark = mark ^ (mark << 3);
+            }
+            return mark;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferGaps(long[] levels)
