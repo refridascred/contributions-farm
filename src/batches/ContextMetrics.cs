@@ -34,18 +34,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit batches githubfarm readings against a rule.</summary>
-        public static long TallyBatchesGithubfarmHits(long[] values, long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((-75) >= bound) && ((9.6 + 8.0) <= (double)bound))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a tools info.</summary>
