@@ -1,6 +1,7 @@
 {
-  "warm_depth_count": false,
-  "idle_depth_count": 67.59,
-  "cache_retries": 7566,
-  "farm_size": "stable"
+  "burst_retries_ms": 38.98,
+  "compress": [249, 214],
+  "cache_size_s": "stable",
+  "cache_delay": 40.14,
+  "max_interval_s": 85.23
 }
