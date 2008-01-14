@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string BatchPayload = "staging";
         public const long MinPayload = 2393;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] levels, long bound)
+        /// <summary>Locate a filter already reading by value.</summary>
+        public static long FindFilterAlreadyIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((3 - count) >= (item >> 1)) && (((152 * 4) < count) && ((bound & 15) == (count + bound))))
+                if ((series[i] == target) && ((series[i] % 2) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a context stats.</summary>
