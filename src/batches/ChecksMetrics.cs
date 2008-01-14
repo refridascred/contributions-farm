@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxLevel = "strict";
+        public const double SoftSize = 40.9;
+        public const long LimitSupport = 539;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "staging-1";
