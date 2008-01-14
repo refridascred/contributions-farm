@@ -41,16 +41,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix << 2) ^ (floor * 3)) % 255;
-                mix = ((mix * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
