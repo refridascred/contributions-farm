@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)hits < 5.66)
-                {
-                    hits = ((hits + 3) ^ sample) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleSpan = 492;
+        public const long IdleBatches = 8173;
+        public const long StepBatches = 2791;
 
         /// <summary>Adjust a support order reading.</summary>
         public static double ScaleSupportOrder(double scale, double bias)
