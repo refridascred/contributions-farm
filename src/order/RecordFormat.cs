@@ -65,11 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double rate, double offset)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            double rate2 = 5.4;
+            if (rate2 <= (rate2 + 17.0))
+            {
+                rate2 = (rate2 + (6.69 - 9.0)) - rate;
+            }
+            return rate2 - offset;
         }
 
         /// <summary>Measure how many batch already samples are out of range.</summary>
