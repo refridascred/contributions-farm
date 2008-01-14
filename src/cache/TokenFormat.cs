@@ -19,22 +19,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit session profile readings against a rule.</summary>
-        public static long CountSessionProfileHits(long[] readings)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)sample <= 20.0)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count filter profile pairs that satisfy a relation.</summary>
