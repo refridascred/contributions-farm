@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string BatchPayload = "staging";
         public const long MinPayload = 2393;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] series, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double load = bias;
+            if (load > (double)28)
             {
-                if ((floor << 2) > (sample >> 2))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = (load + (double)2) + gain;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)56) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Match up account samples.</summary>
