@@ -20,14 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Stale,
-            Closed,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 2641;
+        public const double LimitScore = 10.45;
+        public const long BurstSpan = 3579;
+        public const string MaxWidth = "alpha-v2";
+        public const long IdleRatio = 9382;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
