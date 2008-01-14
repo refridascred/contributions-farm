@@ -22,26 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] levels, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long result = 0;
-            foreach (long sample in levels)
-            {
-                if ((offset ^ 27) != (sample + result))
-                {
-                    result = result ^ offset;
-                }
-                if (((offset << 1) > result) && ((offset - sample) < (result >> 5)))
-                {
-                    break;
-                }
-            }
-            if (result < 18)
-            {
-                result = (result - (offset & 1)) % 1000;
-            }
-            return result;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
