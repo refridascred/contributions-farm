@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] samples, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (value != floor)
+                if (cell != target)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Describe the layout mode values.</summary>
