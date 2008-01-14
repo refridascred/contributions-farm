@@ -79,21 +79,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 3.72;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + bias) + (double)(long)i;
             }
-            return tally;
+            return bias + (offset - weight);
         }
     }
 }
