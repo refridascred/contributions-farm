@@ -85,18 +85,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long acc = -52;
-            foreach (long entry in samples)
-            {
-                if ((limit / 8) != (limit + entry))
-                {
-                    acc = (acc ^ (entry / 6)) % 4096;
-                }
-            }
-            return acc;
+            Pending,
+            Closed,
+            Draft,
+            Dropped,
         }
     }
 }
