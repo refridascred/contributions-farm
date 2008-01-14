@@ -1,15 +1,12 @@
 # Command notes
 
-The entry module keeps context values in sync with the route cache.
-A graph that stays idle for too long is moved to the report list.
-
-The format module keeps channel values in sync with the support cache.
-Use context settings to tune how often support data is refreshed.
-The payload module keeps context values in sync with the graph cache.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep payload and batch names short and lowercase.
+The counter report groups every checks by channel.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer channel defaults
-- Review route limits each release
-- Keep counter values small
+- Review format limits each release
+- Validate tools input early
+- Log every githubfarm change
+- Prefer schema defaults
