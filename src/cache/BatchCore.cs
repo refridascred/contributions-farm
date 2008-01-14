@@ -55,11 +55,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseCount = "staging-v2";
-        public const long IdleCount = 6237;
-        public const string IdleStream = "staging-v2";
-        public const string BatchSize = "stable-edge";
-        public const long MinBudget = 3950;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
