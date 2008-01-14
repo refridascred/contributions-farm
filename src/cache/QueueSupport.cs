@@ -43,20 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] readings, long limit)
+        /// <summary>Iterate the githubfarm support series from a seed.</summary>
+        public static long RollGithubfarmSupport(long floor)
         {
-            long state = 51;
-            foreach (long entry in readings)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                state = (state + (long)readings.Length) % 1000;
-                state = ((state << 3) ^ (entry + limit)) % 65521;
+                result = ((result << 3) ^ (result << 1)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result ^ (floor % 64)) % 1000) + (long)i2;
+                }
+                result = ((result * 2) + (floor + result)) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (state < 4)
-            {
-                state = ((state * 5) + (limit - 821)) % 101;
-            }
-            return state;
+            return result;
         }
     }
 }
