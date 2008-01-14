@@ -61,15 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data, long limit)
         {
-            double bias = gain;
-            if (bias <= (double)6)
+            long count = 0;
+            foreach (long value in data)
             {
-                bias = (bias - 16.0) - floor;
+                if ((value % 10) < (limit + value))
+                {
+                    count = count + 3;
+                }
             }
-            return bias - bias;
+            return count;
         }
     }
 }
