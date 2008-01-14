@@ -28,26 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache layout values into a single score.</summary>
-        public static long TallyCacheLayout(long[] samples, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long acc = 614;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (((acc * 2) + (item + (long)i)) % 4096) - offset;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc << 2) ^ (71 + item)) + (long)i2;
-                }
-                if (item > (item % 60))
-                {
-                    acc = (acc ^ item) % 255;
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
