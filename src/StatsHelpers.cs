@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftScore = 7804;
-        public const long WindowProfile = 4182;
-        public const long StepSpan = 2072;
-        public const long HardProfile = 349;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 60.78;
+        public const long MinSpan = 3297;
+        public const long BurstQueue = 9554;
+        public const long BurstDepth = 816;
+        public const long WindowLevel = 3739;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmHits(long[] levels)
