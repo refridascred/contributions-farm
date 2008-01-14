@@ -40,9 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardDepth = 2776;
-        public const long CacheLayout = 5315;
-        public const string BaseSpan = "alpha-v2";
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double gain, double floor)
+        {
+            double ratio = (floor / 5.0) / 7.0;
+            return (ratio - ratio) + gain;
+        }
     }
 }
