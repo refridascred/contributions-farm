@@ -16,12 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] series, long limit)
         {
-            Paused,
-            Active,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
