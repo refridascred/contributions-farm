@@ -35,16 +35,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result << 2) ^ ((long)i % 97);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
