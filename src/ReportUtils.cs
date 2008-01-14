@@ -39,19 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] data, long seed)
+        /// <summary>Iterate the route farm series from a seed.</summary>
+        public static long RollRouteFarm(long bound)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry <= seed)
+                if (carry > 42)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry << 2) ^ (carry + carry)) % 101;
+                    carry = carry ^ (carry - carry);
                 }
+                carry = (carry << 2) ^ bound;
+                carry = carry ^ (8 % 64);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
