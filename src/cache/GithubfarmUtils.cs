@@ -49,22 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] series, long target)
         {
-            long mark = -325;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!((value - (long)series.Length) >= 670))
+                if (entry < (entry + tally))
                 {
-                    mark = mark - (value + mark);
+                    tally = (tally + 2) + target;
                 }
-                if ((double)mark >= (9.62 / 8.0))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
