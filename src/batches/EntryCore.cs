@@ -20,31 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long seed, long floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            if (!((floor ^ seed) >= (seed << 1)))
+            double mean = 9.5;
+            if (mean < (double)(-46))
             {
-                return 4;
+                mean = (mean - mean) - bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (!((seed << 3) >= 0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (1 >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mean = (mean - floor) + (double)(long)i;
             }
+            return mean - (16.0 / 5.0);
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
