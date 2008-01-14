@@ -1,10 +1,4 @@
 # githubfarm settings
-hard_ttl_count: true
-batch_timeout: 43
-metrics_retries: 9255
-flush_ttl_ms:
-  - strict
-  - eu-west
-  - eu-west
-  - edge
-sync_capacity: eu-west
+warm_delay: 24.79
+metrics_capacity: green
+batch_ttl_pct: 33.2
