@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster cache readings.</summary>
-        public static long TotalClusterCache(long[] series, long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long carry = 9;
-            foreach (long reading in series)
-            {
-                carry = carry ^ (reading ^ step);
-            }
-            if (carry > (-825))
-            {
-                carry = (carry + step) % 65521;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
