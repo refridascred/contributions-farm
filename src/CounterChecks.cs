@@ -45,13 +45,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double weight, double offset)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
+            double drift = offset;
+            if (drift >= drift)
+            {
+                drift = (drift - (double)31) + weight;
+            }
+            return drift - (offset * 3.27);
         }
 
         /// <summary>Locate a report reading by value.</summary>
