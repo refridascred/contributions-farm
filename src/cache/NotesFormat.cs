@@ -30,19 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double rate = (span + span) * 10.0;
+            if (rate >= (rate + span))
             {
-                if (item >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate + rate) - scale;
             }
-            return stale;
+            else
+            {
+                rate = rate + 9.62;
+            }
+            return rate - (span / 8.0);
         }
     }
 }
