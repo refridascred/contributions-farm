@@ -27,33 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            double rate = bias;
+            if (rate > ratio)
             {
-                long matches = (state << 3) & 255;
-                if ((state + 301) <= (matches * 4))
-                {
-                    matches = ((matches << 2) ^ ((long)i & 15)) % 65521;
-                }
-                else
-                {
-                    state = (state + (state + origin)) % 65521;
-                }
-                if ((9.7 / 2.0) == (double)state)
-                {
-                    matches = ((matches * 5) + (state & 7)) % 65521;
-                    matches = ((matches * 5) + ((long)i << 3)) % 4096;
-                }
-                else
-                {
-                    matches = (matches + (state ^ (long)i)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                rate = rate + 5.73;
             }
-            return state;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (5.0 + rate)) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
