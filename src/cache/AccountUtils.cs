@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
