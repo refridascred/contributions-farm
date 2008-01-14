@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long origin, long offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long bound = origin - offset;
-            if (((13.0 * 8.13) >= (double)bound) || ((1 + origin) < origin))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3 % 24) > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
