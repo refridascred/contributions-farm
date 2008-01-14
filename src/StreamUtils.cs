@@ -22,10 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 9116;
-        public const long DefaultBatches = 6946;
-        public const string BatchCount = "local-v2";
+        /// <summary>Count queue counter pairs that satisfy a relation.</summary>
+        public static long CompareQueueCounterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a filter graph sample.</summary>
         public static long SeekFilterGraphIndex(long[] items, long offset)
