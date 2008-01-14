@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] values, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
