@@ -34,16 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] levels, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = 95;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 4) + (limit + mark)) % 101;
-                mark = ((mark * 5) + (long)i) % 101;
+                carry = carry + (cell & 255);
             }
-            return mark;
+            if (carry > 779)
+            {
+                carry = (carry + (step - step)) % 101;
+            }
+            return carry % 65521;
         }
     }
 }
