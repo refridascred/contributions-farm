@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long CountBatchesFarmHits(long[] items)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((11.0 + 12.0) > (double)seen) && ((reading & 3) < (7 * 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
