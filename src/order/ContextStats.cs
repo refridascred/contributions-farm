@@ -32,13 +32,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long target)
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            long cur = limit ^ target;
+            if ((double)limit < (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit < (16.0 + 6.4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target <= limit) || ((double)cur <= (double)(-8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a route reading.</summary>
