@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Pending,
-            Idle,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheCount = "cached-edge";
+        public const long BurstCache = 439;
+        public const string IdleDepth = "fallback";
+        public const long SoftFactor = 3585;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double LimitStream = 48.55;
