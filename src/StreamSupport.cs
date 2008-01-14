@@ -31,14 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Dropped,
-            Draft,
-            New,
-            Retry,
-            Synced,
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
