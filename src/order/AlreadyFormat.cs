@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long mix = 157;
-            foreach (long reading in readings)
-            {
-                mix = (mix + 367) + reading;
-            }
-            return mix % 4096;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the context mode values.</summary>
