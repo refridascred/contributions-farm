@@ -36,19 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream profile entry stays within the limit.</summary>
-        public static bool ValidateStreamProfileBounds(long[] series, long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= floor)
+                if (levels[i] > limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
