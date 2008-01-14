@@ -1,8 +1,7 @@
-id,token,level
-1,358,open
-2,fallback,fallback
-3,53.62,317
-4,333,40.19
-5,794,stable
-6,51.19,101
-7,934,36.07
+id,label,weight
+1,29.68,501
+2,open,225
+3,19.06,509
+4,524,standard
+5,627,4.6
+6,73.83,5.01
