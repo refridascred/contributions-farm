@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 769;
-        public const double IdleFormat = 22.54;
-        public const long MaxInterval = 4769;
-        public const string BurstFormat = "open-edge";
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Locked,
+            Active,
+            Synced,
+            Done,
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
