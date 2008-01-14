@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheCount = "cached-edge";
-        public const long BurstCache = 439;
-        public const string IdleDepth = "fallback";
-        public const long SoftFactor = 3585;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double LimitStream = 48.55;
