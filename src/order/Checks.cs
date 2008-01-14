@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                long span = (seed ^ seed) * 5;
+                total = (total + span) % 1000;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Roll a context counter forward.</summary>
