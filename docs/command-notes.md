@@ -1,16 +1,10 @@
 # Command notes
 
-Each batches is validated before it reaches the token queue.
-The route report groups every context by entry.
-When a commits fails, the entry handler retries a few times before giving up.
-
-Each payload is validated before it reaches the batch queue.
-Use payload settings to tune how often window data is refreshed.
-The account report groups every cache by window.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The cache module keeps graph values in sync with the record cache.
 
 ## Guidelines
 
-- Log every farm change
-- Document new counter fields
-- Keep session values small
-- Validate tools input early
+- Validate checks input early
+- Keep channel values small
+- Log every stream change
