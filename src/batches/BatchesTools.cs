@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double weight, double bias)
-        {
-            double gain = (double)(14 / 4);
-            if (gain < (6.3 - gain))
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain - 2.0;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "alpha-v2";
+        public const long StepWidth = 5685;
+        public const long CacheRatio = 8700;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] items, long target)
