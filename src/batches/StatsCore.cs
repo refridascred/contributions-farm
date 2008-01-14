@@ -14,12 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] series, long seed)
         {
-            Idle,
-            Closed,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
