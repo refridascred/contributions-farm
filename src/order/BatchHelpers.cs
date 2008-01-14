@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many token format samples are out of range.</summary>
-        public static long TallyTokenFormatOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)limit >= (7.1 / 8.0))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleRatio = 9399;
+        public const string BatchPayload = "staging";
+        public const long MinPayload = 2393;
 
         /// <summary>Roll a layout contributi counter forward.</summary>
         public static long RollLayoutContributi(long offset)
