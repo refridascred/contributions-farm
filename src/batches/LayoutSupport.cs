@@ -40,20 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm queue entry stays within the limit.</summary>
-        public static bool VerifyFarmQueueLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseLevel = "stable-1";
+        public const long BaseFactor = 3661;
+        public const long BurstDepth = 2208;
+        public const long StepAlready = 2594;
+        public const long LimitRatio = 3432;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaMatches(long[] values)
