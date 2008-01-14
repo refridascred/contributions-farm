@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "local-1";
-        public const long StepAlready = 9956;
-        public const long RetrySpan = 6038;
-        public const string HardAlready = "strict-1";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
+        {
+            long carry = 34;
+            foreach (long cell in samples)
+            {
+                carry = (carry + 82) % 97;
+                carry = (carry - cell) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
