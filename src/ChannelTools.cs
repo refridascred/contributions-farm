@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 7540;
-        public const long MaxChecks = 1704;
-        public const double IdleChecks = 93.05;
-        public const long StepSize = 4494;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((step + reading) > step)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long RankGraph(long target, long target2)
