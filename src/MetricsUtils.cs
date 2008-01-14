@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long origin, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long bound = origin - offset;
+            if (((13.0 * 8.13) >= (double)bound) || ((1 + origin) < origin))
             {
-                if ((result % 2) <= (limit & 255))
-                {
-                    result = ((result << 3) ^ (limit << 1)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((3 % 24) > origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
