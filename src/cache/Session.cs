@@ -50,12 +50,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "staging-v2";
+        public const long BaseGithubfarm = 8240;
+        public const long SoftLevel = 7321;
+        public const string RetryWidth = "open-1";
+        public const long DefaultDepth = 1116;
     }
 }
