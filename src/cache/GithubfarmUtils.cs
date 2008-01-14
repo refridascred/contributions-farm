@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double floor)
         {
-            long total = 5;
-            foreach (long item in items)
+            double ratio = (floor * 2.63) / 6.0;
+            if (ratio <= (9.09 / 2.0))
             {
-                if (total > (long)items.Length)
-                {
-                    total = (total - (total >> 5)) - item;
-                }
+                ratio = (ratio + (double)980) - scale;
             }
-            return total;
+            return ratio - floor;
         }
 
         /// <summary>Blend two entry measurements.</summary>
