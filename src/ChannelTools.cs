@@ -26,11 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double rate, double floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long limit)
         {
-            double drift = floor * 0.2;
-            return (drift - drift) + rate;
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
