@@ -20,31 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long seed, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            if ((double)seed <= (1.5 / 2.0))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) < (bound - 53))
+                if (((double)value <= (4.28 * 4.82)) && (((3.75 / 8.0) < (double)value) || ((value - tally) >= (tally >> 5))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound <= (1.04 + 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stream class values.</summary>
