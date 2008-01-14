@@ -56,18 +56,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long item in series)
+            if ((4.1 * 9.39) <= (double)seed2)
             {
-                if (item <= matches)
+                return 2;
+            }
+            else
+            {
+                if (!((seed2 << 3) >= seed2))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
