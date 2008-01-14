@@ -1,14 +1,36 @@
 # entry settings
-graph_size: 6.72
-idle_delay: primary
-min_window_count: false
-dry_run:
-  - 293
-  - 269
-  - 443
-  - 176
-strict:
-  channel_delay: 500
-  hard_threshold_pct: false
-  stats_capacity: stable
-  strict: 64.2
+stream_interval: fallback
+persist: 8058
+session_window: true
+hard_interval_count:
+  warm_limit_ms:
+    max_size_count:
+      - 398
+      - 60
+      - 423
+    format_timeout:
+      - 31
+      - 56
+    poll_ttl_s: strict
+    cache_ratio_count: true
+    account_interval: 773
+  warm_capacity_pct: true
+  audit: standard
+  farm_limit:
+    sync_retries_count:
+      - 176
+      - 278
+      - 198
+      - 301
+    min_window_pct:
+      - 485
+      - 494
+      - 63
+    base_interval:
+      - 210
+      - 278
+      - 353
+      - 285
+    enabled: staging
+    max_threshold_pct: open
+    batch_capacity_ms: true
