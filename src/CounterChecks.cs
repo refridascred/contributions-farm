@@ -57,22 +57,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit schema token readings against a rule.</summary>
-        public static long TallySchemaTokenHits(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count << 3) < (cell - cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Roll a format counter forward.</summary>
