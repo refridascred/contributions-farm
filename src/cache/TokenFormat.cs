@@ -31,21 +31,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count filter profile pairs that satisfy a relation.</summary>
-        public static long MatchFilterProfileCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 8914;
+        public const long SoftTimeout = 7995;
+        public const double WindowInterval = 85.31;
     }
 }
