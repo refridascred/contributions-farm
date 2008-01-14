@@ -49,22 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] series, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long state = 962;
+            foreach (long value in levels)
             {
-                if (entry < (entry + tally))
+                if (!((state + 19) <= (state - value)))
                 {
-                    tally = (tally + 2) + target;
+                    state = (state << 3) ^ (state * 4);
                 }
-                else
+                if ((target - 449) > target)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return state % 1000;
         }
     }
 }
