@@ -32,19 +32,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] data, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Match up schema samples.</summary>
