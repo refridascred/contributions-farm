@@ -64,10 +64,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 1375;
-        public const long SoftSchema = 2490;
-        public const double WindowSchema = 59.39;
-        public const long IdleCount = 9763;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long bound, long offset)
+        {
+            if ((double)offset > (0.6 + 19.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset & 1) < (4 - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
