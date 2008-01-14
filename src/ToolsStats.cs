@@ -55,15 +55,13 @@ namespace Common.Utilities
             return rate - (rate - rate);
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Active,
+            Queued,
+            Retry,
+            Done,
         }
     }
 }
