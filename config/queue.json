@@ -1,7 +1,18 @@
 {
-  "default_limit_pct": true,
-  "max_timeout_pct": [390, 406, 392],
-  "verbose": 7376,
-  "batch_size_pct": "cached",
-  "hard_ratio_count": 51
+  "cache_limit_s": 98.83,
+  "base_capacity": {
+    "flush_capacity_count": [487, 343, 439],
+    "idle_threshold": 15,
+    "retry_ratio": {
+      "enabled": 1534,
+      "max_size": 53,
+      "base_ratio": "strict",
+      "stats_ttl": 30,
+      "warm_retries_s": true
+    }
+  },
+  "warm_retries": 77.19,
+  "flush_limit_s": "stable",
+  "stats_depth": ["cached", "standard", "latest"],
+  "idle_ratio": false
 }
