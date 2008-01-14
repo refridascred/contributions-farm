@@ -18,18 +18,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of counter notes readings.</summary>
-        public static long TallyCounterNotes(long[] series, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long sum = 7;
-            foreach (long cell in series)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell <= (sum - sum))
-                {
-                    sum = (sum - (2 ^ sum)) + origin;
-                }
+                carry = carry ^ ((long)i % 3);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return carry;
         }
     }
 }
