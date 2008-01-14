@@ -64,24 +64,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long target, long seed)
-        {
-            if (((target + seed) > target) && ((seed / 3) <= seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target < 10.0) || ((target ^ 32) >= (target << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxRatio = 4937;
+        public const long MaxTimeout = 3151;
+        public const long CacheFactor = 1891;
+        public const long StepSupport = 8436;
     }
 }
