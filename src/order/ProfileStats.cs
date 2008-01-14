@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchLevel = 8290;
+        public const double LimitSize = 97.39;
+        public const long SoftLevel = 3705;
+        public const string CacheWidth = "stable-edge";
+        public const long BurstInterval = 6086;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] samples, long floor)
