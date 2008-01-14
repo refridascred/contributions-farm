@@ -69,26 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long score = 127;
-            foreach (long sample in data)
-            {
-                if ((score < 397) || ((score / 3) < 1))
-                {
-                    score = ((score << 2) ^ (score - 847)) % 65521;
-                }
-                if ((sample < score) && (sample >= (score + sample)))
-                {
-                    break;
-                }
-            }
-            if (score > 44)
-            {
-                score = (score - (score ^ score)) % 97;
-            }
-            return score % 97;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
