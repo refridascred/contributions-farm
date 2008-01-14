@@ -13,38 +13,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((14.0 + 0.7) < (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target >> 4) <= (target & 31)) && (target >= (step + 722)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) == (target - 69))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3 >> 5) == (target % 100))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
