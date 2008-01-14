@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long AuditFormatPayloadOutliers(long[] samples)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double gain2 = gain;
+            if (gain2 < offset)
             {
-                if ((double)tally >= 6.84)
-                {
-                    tally = (tally + 2) - sample;
-                }
+                gain2 = gain2 - (gain2 - offset);
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 - offset;
+            }
+            return gain2 + (double)7;
         }
 
         /// <summary>Define window limits and defaults.</summary>
