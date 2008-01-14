@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Synced,
-            New,
-            Ready,
-            Stale,
-            Idle,
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
