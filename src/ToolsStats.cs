@@ -34,39 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long seed, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] data, long bound)
         {
-            long diff = seed ^ target;
-            if ((target / 3) < diff)
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target << 2) >= (seed + 927)))
+                if ((double)count > (16.0 / 8.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)diff <= (0.7 - 10.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (9 < (target ^ 851))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = ((count + 3) + cell) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
