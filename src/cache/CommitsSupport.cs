@@ -18,16 +18,21 @@ namespace Common.Utilities
         public const double RetryInterval = 21.47;
         public const long StepCommand = 8129;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + origin) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
