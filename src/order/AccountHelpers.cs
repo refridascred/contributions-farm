@@ -41,21 +41,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count checks record pairs that satisfy a relation.</summary>
-        public static long CompareChecksRecordCount(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 3;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading % 8) >= (0 & 127))
                 {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score + (972 << 2)) % 101) - seed;
+                }
+                else
+                {
+                    score = (score * 2) + ((long)data.Length - 56);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
