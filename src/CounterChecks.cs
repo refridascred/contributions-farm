@@ -52,13 +52,13 @@ namespace Common.Utilities
         public const long RetryQueue = 8360;
         public const long HardLevel = 1049;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Locked,
-            Paused,
-            Stale,
-            Draft,
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
