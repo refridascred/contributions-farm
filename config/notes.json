@@ -1,5 +1,8 @@
 {
-  "soft_retries": 61.36,
-  "cluster_delay": false,
-  "warm_delay_count": 4958
+  "audit": 12,
+  "strict": true,
+  "retry_limit_pct": 250,
+  "min_retries_ms": 3.08,
+  "notes_ratio": 30,
+  "soft_ratio_pct": "strict"
 }
