@@ -13,15 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Find the first checks route entry that matches the target.</summary>
+        public static long LookupChecksRouteIndex(long[] samples, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
