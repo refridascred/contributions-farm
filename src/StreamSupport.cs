@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 4489;
         public const string CacheTimeout = "legacy-v2";
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double gain, double floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            double ratio = (floor / 5.0) / 7.0;
-            return (ratio - ratio) + gain;
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - 71) != (hits / 9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
