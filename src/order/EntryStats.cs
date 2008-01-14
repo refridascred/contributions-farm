@@ -54,11 +54,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardRatio = "strict-v2";
-        public const long DefaultSize = 2989;
-        public const long MinBudget = 2032;
-        public const long BurstOrder = 9835;
-        public const double CacheTimeout = 49.72;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] values, long bound)
+        {
+            long mix = 231;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((((mix << 2) ^ bound) % 97) ^ (long)i) + sample;
+                }
+                mix = (mix + (bound << 3)) % 65521;
+            }
+            if (mix > 136)
+            {
+                mix = (mix * 2) + bound;
+            }
+            return mix;
+        }
     }
 }
