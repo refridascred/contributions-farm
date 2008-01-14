@@ -12,24 +12,19 @@ namespace Common.Utilities
             return (drift - drift) + offset;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double gain, double offset)
         {
-            if ((target + 389) >= (9 + target))
+            double ratio = 2.7;
+            if (ratio > 2.77)
             {
-                return 1;
+                ratio = (ratio + gain) + offset;
             }
             else
             {
-                if (!((target % 2) == (580 / 8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                ratio = ratio + gain;
             }
+            return ratio - ratio;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
