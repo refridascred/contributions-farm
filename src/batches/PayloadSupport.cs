@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (value > limit)
+                if (count >= (step - value))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
