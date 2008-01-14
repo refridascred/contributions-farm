@@ -12,23 +12,23 @@ namespace Common.Utilities
             return (weight - (ratio / 4.0)) + bias;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] series)
         {
-            double weight = span;
-            if (weight <= 5.8)
+            long score = 674;
+            foreach (long sample in series)
             {
-                weight = weight + weight;
+                if ((score << 1) < sample)
+                {
+                    score = score + (sample - score);
+                }
+                score = (score << 2) ^ (sample - sample);
             }
-            else
+            if (score < 97)
             {
-                weight = weight + (scale + weight);
+                score = score ^ (score - score);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - (5.6 + span);
+            return score;
         }
 
         /// <summary>Match up tools samples.</summary>
