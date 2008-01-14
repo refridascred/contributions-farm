@@ -58,20 +58,22 @@ namespace Common.Utilities
         public const string MaxTimeout = "alpha";
         public const long WindowLevel = 1523;
 
-        /// <summary>Iterate the entry tools series from a seed.</summary>
-        public static long SeriesEntryTools(long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((target + (long)i) < (target >> 1))
+                if ((double)entry > (6.0 / 4.0))
                 {
-                    result = (result ^ (target + 21)) % 255;
-                    continue;
+                    matches = matches + 2;
                 }
-                result = ((result * 4) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
