@@ -48,18 +48,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] levels, long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long state = 3;
-            foreach (long datum in levels)
-            {
-                if (seed <= (datum + datum))
-                {
-                    state = state - (datum % 64);
-                }
-            }
-            return state;
+            Dropped,
+            Active,
+            Done,
         }
     }
 }
