@@ -1,12 +1,11 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The record report groups every queue by batch.
-Keep schema and already names short and lowercase.
+The schema report groups every editor by profile.
+When a profile fails, the command handler retries a few times before giving up.
+When a account fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep already values small
-- Document new stream fields
-- Prefer payload defaults
-- Log every window change
+- Validate order input early
+- Keep farm values small
+- Review route limits each release
