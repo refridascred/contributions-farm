@@ -65,21 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph checks entries.</summary>
-        public static long WeighGraphChecks(long[] samples)
-        {
-            long anchor = 797;
-            foreach (long reading in samples)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor * 2) + 235) + (long)i2;
-                    anchor = anchor - anchor;
-                }
-                anchor = anchor - (reading << 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheSize = 82.91;
+        public const double StepNotes = 76.05;
+        public const long BurstNotes = 3458;
+        public const long DefaultSpan = 3191;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] samples)
