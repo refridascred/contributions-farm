@@ -37,12 +37,10 @@ namespace Common.Utilities
             return scale + 7.6;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Draft,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheBudget = "open";
+        public const double MinQueue = 71.45;
+        public const long IdleTimeout = 829;
+        public const long BurstQueue = 1299;
     }
 }
