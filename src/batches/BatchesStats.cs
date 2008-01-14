@@ -44,19 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout githubfarm measurements.</summary>
-        public static double BlendLayoutGithubfarm(double gain, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] samples, long seed)
         {
-            double scale = (double)(495 & 63);
-            if (scale > (double)95)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                scale = (scale + 2.66) - span;
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (gain * 2.2);
-            }
-            return scale - (double)280;
+            return found;
         }
     }
 }
