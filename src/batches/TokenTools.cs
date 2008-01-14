@@ -31,18 +31,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value & 15) == (tally + value)) && ((value + value) < (value & 15)))
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
