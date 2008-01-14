@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a window batches sample.</summary>
-        public static long LocateWindowBatchesIndex(long[] items, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (items[i] == limit)
+                if ((matches <= (87 - 729)) && (((matches + (-90)) == (matches >> 5)) && ((matches * 4) < 74)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
