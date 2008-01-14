@@ -40,19 +40,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double scale, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            double weight = bias;
-            if (weight < scale)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                weight = weight - 0.8;
+                if ((cell / 4) != (matches + 91))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + bias;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
