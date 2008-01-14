@@ -19,12 +19,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
