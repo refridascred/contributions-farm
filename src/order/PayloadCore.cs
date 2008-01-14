@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double rate, double floor)
         {
-            Stale,
-            Failed,
-            Queued,
+            double ratio = 1.3 / 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) + rate;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Hold a queue info.</summary>
