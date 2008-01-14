@@ -51,18 +51,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit notes already readings against a rule.</summary>
-        public static long TallyNotesAlreadyMatches(long[] readings)
+        /// <summary>Digest a series of record format entries.</summary>
+        public static long DigestRecordFormat(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = -12;
+            foreach (long cell in data)
             {
-                if ((cell << 3) > matches)
-                {
-                    matches = matches + 3;
-                }
+                state = (state + (step - state)) - cell;
+                state = ((state << 2) ^ ((-3) >> 4)) % 97;
             }
-            return matches;
+            return state % 1000;
         }
     }
 }
