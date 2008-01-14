@@ -42,26 +42,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Check that every stream profile entry stays within the limit.</summary>
+        public static bool ValidateStreamProfileBounds(long[] series, long floor)
         {
-            long total = 777;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((double)entry > (2.0 * 3.19))
+                if (entry <= floor)
                 {
-                    total = total - 655;
-                }
-                else
-                {
-                    total = (total << 3) ^ (total >> 1);
+                    flag = false;
+                    break;
                 }
             }
-            if (total < 26)
-            {
-                total = (total - total) % 1000;
-            }
-            return total % 97;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
