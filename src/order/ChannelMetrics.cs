@@ -34,21 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = rate + (rate + 4.2);
+            if (mean <= 5.7)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean - rate) - span;
             }
-            return count;
+            else
+            {
+                mean = mean - rate;
+            }
+            return mean + mean;
         }
     }
 }
