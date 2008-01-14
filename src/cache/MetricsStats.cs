@@ -46,38 +46,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            if (seed > bound)
+            long state = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ bound) > (seed - seed))
+                state = ((state << 3) ^ (cell + cell)) % 4096;
+                if ((907 >> 5) >= (state & 127))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed == (double)682)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound != (6.1 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state < 263)
+            {
+                state = ((state << 3) ^ (state & 1)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
