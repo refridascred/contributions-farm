@@ -24,12 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long AuditAlreadyPayloadOutliers(long[] data, long bound)
         {
-            Failed,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((bound - reading) <= (seen >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two batches cluster measurements.</summary>
