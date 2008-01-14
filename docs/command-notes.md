@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-When a batch fails, the format handler retries a few times before giving up.
-Keep window and cluster names short and lowercase.
+A route that stays idle for too long is moved to the entry list.
+Use window settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
+- Document new record fields
+- Keep editor values small
+- Log every filter change
 - Validate graph input early
-- Log every profile change
-- Document new githubfarm fields
-- Keep cluster values small
