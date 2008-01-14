@@ -20,12 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2641;
-        public const double LimitScore = 10.45;
-        public const long BurstSpan = 3579;
-        public const string MaxWidth = "alpha-v2";
-        public const long IdleRatio = 9382;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 78.78;
+        public const double MaxScore = 40.84;
+        public const string LimitContext = "standard-edge";
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
