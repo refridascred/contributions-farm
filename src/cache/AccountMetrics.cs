@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] readings)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches - value) <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
