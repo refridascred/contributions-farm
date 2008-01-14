@@ -41,12 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
