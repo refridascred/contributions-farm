@@ -24,18 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long AuditAlreadyPayloadOutliers(long[] data, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((bound - reading) <= (seen >> 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two batches cluster measurements.</summary>
