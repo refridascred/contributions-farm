@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,14 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy standard edge staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
