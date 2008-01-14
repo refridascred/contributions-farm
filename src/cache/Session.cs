@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long MinLevel = 6126;
         public const long LimitGraph = 503;
 
-        /// <summary>Count the farm channel entries that pass the check.</summary>
-        public static long TallyFarmChannelOutliers(long[] data, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)tally >= (13.0 / 6.0))
-                {
-                    tally = ((tally + 2) - item) - offset;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Validate schema entry readings against a bound.</summary>
