@@ -53,12 +53,13 @@ namespace Common.Utilities
             return rate + (6.75 + offset);
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            Active,
+            New,
+            Pending,
+            Queued,
         }
     }
 }
