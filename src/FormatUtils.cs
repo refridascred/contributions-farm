@@ -70,14 +70,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Rank checks buffer input into a small class.</summary>
+        public static long ClassifyChecksBuffer(long offset, long seed)
         {
-            Synced,
-            Done,
-            Closed,
-            Active,
-            New,
+            long slot = offset ^ seed;
+            if ((offset >= (slot - slot)) || ((1 - slot) <= slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.83 * 4.0) > (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed & 7) < slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
