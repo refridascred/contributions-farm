@@ -31,22 +31,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit already buffer readings against a rule.</summary>
-        public static long MeasureAlreadyBufferMatches(long[] readings, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading - origin) <= hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = total ^ (step + 18);
+                total = (total << 2) ^ (total << 2);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
