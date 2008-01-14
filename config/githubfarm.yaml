@@ -1,11 +1,22 @@
 # githubfarm settings
-verbose: cached
-dry_run: edge
-audit:
-  format_depth: 74.38
-  compress: fallback
-  record_delay: 7890
-  max_interval_s:
-    - 222
-    - 144
-  batch_window: legacy
+compress: false
+persist:
+  - 332
+  - 443
+  - 320
+  - 173
+warm_depth:
+  flush_window_ms: 95.08
+  enabled: edge
+  sync_limit_s:
+    sync_ratio: 5608
+    base_ttl:
+      - edge
+      - edge
+      - staging
+    githubfarm_capacity: legacy
+    burst_capacity_count: 51
+    context_timeout: true
+  compress: 71.93
+max_interval_s: stable
+readonly: 95
