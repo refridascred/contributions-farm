@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Idle,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a buffer options.</summary>
