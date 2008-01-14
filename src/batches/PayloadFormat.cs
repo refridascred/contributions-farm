@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long target, long step)
         {
-            long acc = 152;
-            foreach (long reading in samples)
+            if (!((step ^ step) <= step))
             {
-                if ((reading + reading) == (acc + acc))
+                return 0;
+            }
+            else
+            {
+                if ((double)(-727) > (double)target)
                 {
-                    acc = acc ^ (reading ^ acc);
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (acc > 18)
-            {
-                acc = ((acc * 2) + (long)samples.Length) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
