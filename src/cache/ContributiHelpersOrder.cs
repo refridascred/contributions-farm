@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] series, long bound)
         {
-            Ready,
-            Dropped,
-            Done,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((bound << 3) >= (bound + bound)) && ((3.0 - 6.0) != (double)datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next commits editor value from a seed.</summary>
