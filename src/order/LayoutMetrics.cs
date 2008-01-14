@@ -33,19 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double bias, double bias2)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] readings, long limit)
         {
-            double mean = bias;
-            if (mean < (bias2 * 8.59))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                mean = mean - 6.44;
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (2.27 / 2.0);
+            return flag;
         }
     }
 }
