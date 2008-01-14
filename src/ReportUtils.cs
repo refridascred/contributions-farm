@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinSize = 992;
+        public const long HardFarm = 8210;
+        public const long StepFarm = 6848;
+        public const double LimitCount = 39.07;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] samples)
