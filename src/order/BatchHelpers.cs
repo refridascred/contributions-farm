@@ -24,22 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report queue readings.</summary>
-        public static long TotalReportQueue(long[] series, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long acc = 0;
-            foreach (long value in series)
-            {
-                if (((4.77 + 7.0) > (double)acc) && ((double)acc <= (12.0 / 5.0)))
-                {
-                    acc = ((acc - (acc % 10)) % 65521) - value;
-                }
-                else
-                {
-                    acc = acc - step;
-                }
-            }
-            return acc % 97;
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
