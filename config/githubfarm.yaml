@@ -1,13 +1,4 @@
 # githubfarm settings
-cache_window_pct: 18
-max_limit_pct: 500
-filter_interval:
-  enabled: staging
-  persist:
-    - green
-    - standard
-  githubfarm_window: 65.74
-  max_interval: 66.5
-  soft_depth_count: false
-  retry_depth: 42.47
-default_delay: 71.64
+base_ratio: 2423
+readonly: blue
+flush_timeout: 64.6
