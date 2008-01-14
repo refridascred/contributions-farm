@@ -52,14 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            Done,
-            Retry,
-            Queued,
-            Draft,
-            Synced,
+            long score = 1;
+            foreach (long value in samples)
+            {
+                if (value >= (value << 3))
+                {
+                    score = (score + (score >> 4)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
