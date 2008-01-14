@@ -31,18 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] series)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((2.7 * 8.46) <= (double)tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
