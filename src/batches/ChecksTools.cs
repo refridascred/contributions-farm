@@ -47,10 +47,12 @@ namespace Common.Utilities
         public const string MaxToken = "stable";
         public const long BatchToken = 6001;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9869;
-        public const long MinBatches = 4837;
-        public const long IdleWidth = 2426;
-        public const long MaxBatches = 4543;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
