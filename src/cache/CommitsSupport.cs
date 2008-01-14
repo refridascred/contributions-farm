@@ -34,17 +34,32 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long step, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = step + bound;
+            if ((bound + bound) < step)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)span < (9.76 - 9.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound >= (2.1 + 8.65))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
