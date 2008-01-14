@@ -36,18 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm window samples.</summary>
-        public static long TallyGithubfarmWindow(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long state = 73;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)state >= (8.4 - 6.5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state + state) % 4096) - cell;
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
