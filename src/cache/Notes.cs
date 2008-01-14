@@ -41,11 +41,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 739;
-        public const string RetrySchema = "legacy-1";
-        public const long BurstWidth = 1609;
-        public const double MinSchema = 6.33;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 6663;
+        public const long DefaultSpan = 660;
+        public const long IdleStream = 975;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleInterval = 8563;
