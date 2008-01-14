@@ -35,12 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] readings, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
