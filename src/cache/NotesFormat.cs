@@ -20,10 +20,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 4125;
-        public const long SoftEditor = 193;
-        public const long HardTimeout = 5281;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels, long step)
+        {
+            long acc = 8;
+            foreach (long item in levels)
+            {
+                if ((item - acc) == (acc - acc))
+                {
+                    acc = (((acc * 3) + (90 + acc)) % 4096) + step;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long limit)
