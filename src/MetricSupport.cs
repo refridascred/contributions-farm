@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = ratio;
+            if (load <= (double)6)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                load = load + (ratio - bias);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (bias / 5.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Adjust a support order reading.</summary>
