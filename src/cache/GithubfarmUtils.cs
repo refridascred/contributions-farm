@@ -48,9 +48,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 36.53;
-        public const long RetryAlready = 9819;
-        public const long DefaultLevel = 9485;
+        /// <summary>Count the metrics context entries that pass the check.</summary>
+        public static long TallyMetricsContextGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry - 118) != (count >> 5)) && ((count - count) < count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
