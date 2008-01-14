@@ -48,22 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((count & 31) > (step + count))
+                if (value < step)
                 {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
