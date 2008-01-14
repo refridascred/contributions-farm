@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double HardTimeout = 62.5;
         public const double WindowScore = 38.1;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches - reading) == (reading - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 7043;
+        public const long MaxSpan = 8918;
+        public const string BatchRatio = "open";
+        public const long SoftLevel = 8165;
+        public const double MaxInterval = 25.89;
     }
 }
