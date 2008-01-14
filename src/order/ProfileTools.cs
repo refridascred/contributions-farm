@@ -29,12 +29,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of filter support readings.</summary>
