@@ -13,18 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 1750;
+        public const string BatchFactor = "alpha-1";
+        public const double StepRatio = 50.69;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
