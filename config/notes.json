@@ -1,5 +1,11 @@
 {
-  "min_size": 8442,
-  "audit": "staging",
-  "batch_retries_ms": "standard"
+  "sync_depth_ms": {
+    "context_ratio": 4347,
+    "retry_retries_ms": "cached",
+    "max_limit": false
+  },
+  "default_timeout_count": "standard",
+  "soft_limit": 80.13,
+  "verbose": ["latest", "fallback", "green", "eu-west"],
+  "audit": 66
 }
