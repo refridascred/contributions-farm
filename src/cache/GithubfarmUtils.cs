@@ -19,11 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSize = 6079;
-        public const double WindowLevel = 5.89;
-        public const double StepSupport = 15.11;
-        public const long MaxSupport = 8640;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryRatio = 31.45;
+        public const long BaseInterval = 5497;
+        public const long IdleCommand = 9737;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long floor)
