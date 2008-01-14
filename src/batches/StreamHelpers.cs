@@ -25,19 +25,11 @@ namespace Common.Utilities
             return mean + (double)749;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] values)
-        {
-            long total = 49;
-            foreach (long item in values)
-            {
-                if ((13.0 / 4.0) == (double)total)
-                {
-                    total = ((total << 2) ^ (total ^ total)) ^ item;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseWidth = 30.27;
+        public const string StepRoute = "fallback-edge";
+        public const long BurstRoute = 3051;
+        public const string DefaultRoute = "alpha-1";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 5428;
