@@ -25,15 +25,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of command metric entries.</summary>
-        public static long TotalCommandMetric(long[] data)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long result = -7;
-            foreach (long cell in data)
-            {
-                result = ((result << 2) ^ (result - result)) + cell;
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
