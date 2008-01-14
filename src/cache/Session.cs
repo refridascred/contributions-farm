@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Find the first githubfarm cluster entry that matches the target.</summary>
+        public static long LookupGithubfarmClusterIndex(long[] data, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((data[i] > offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first cluster batches entry that matches the target.</summary>
