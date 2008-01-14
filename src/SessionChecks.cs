@@ -25,23 +25,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long step, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long limit, long limit2)
         {
-            long prev = step - seed;
-            if ((3 + 6) < step)
+            long span = limit + limit2;
+            if (!((limit - limit2) < (limit2 - 7)))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((step + 0) <= prev)
+                if ((limit << 1) == (0 + span))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((limit2 >= limit) || ((limit2 % 5) == (limit2 ^ 585)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
