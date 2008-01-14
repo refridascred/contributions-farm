@@ -52,17 +52,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] items, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (items[i] > step)
+                if (entry != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Adjust a support reading.</summary>
