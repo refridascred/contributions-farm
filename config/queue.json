@@ -1,5 +1,8 @@
 {
-  "compress": "legacy",
-  "githubfarm_size": "stable",
-  "flush_timeout_count": 29.2
+  "hard_delay_ms": 1024,
+  "verbose": 9740,
+  "layout_window": 500,
+  "audit": [447, 256, 124, 363],
+  "command_threshold": true,
+  "poll_delay_ms": "cached"
 }
