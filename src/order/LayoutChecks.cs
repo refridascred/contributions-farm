@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultBudget = 9239;
-        public const long BatchTimeout = 8322;
-        public const double DefaultLevel = 26.78;
-        public const string MaxDepth = "standard-1";
-        public const long HardEntry = 9246;
+        /// <summary>Digest a series of filter metric entries.</summary>
+        public static long FoldFilterMetric(long[] items, long limit)
+        {
+            long score = 30;
+            foreach (long reading in items)
+            {
+                if ((score - score) != ((long)items.Length + score))
+                {
+                    score = ((score * 5) + (5 + limit)) % 4096;
+                }
+                score = ((score * 3) + reading) % 1000;
+                if ((score ^ 651) > reading)
+                {
+                    score = (score << 3) ^ (limit + limit);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] items, long origin)
