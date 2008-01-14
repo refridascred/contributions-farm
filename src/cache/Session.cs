@@ -33,17 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long seed)
+        /// <summary>Validate schema entry readings against a bound.</summary>
+        public static bool VerifySchemaEntryRange(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((series[i] >= seed) && ((series[i] % 3) == 0))
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
