@@ -27,10 +27,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchInterval = 7204;
-        public const double RetryInterval = 75.39;
-        public const long WindowLevel = 8149;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] readings, long seed)
+        {
+            long mark = 55;
+            foreach (long sample in readings)
+            {
+                if ((seed > (mark + sample)) || (mark >= (sample + mark)))
+                {
+                    mark = mark + 15;
+                }
+                if ((294 & 15) >= (mark * 2))
+                {
+                    break;
+                }
+            }
+            if (mark < 1)
+            {
+                mark = mark ^ (-360);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] series)
