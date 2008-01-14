@@ -45,10 +45,19 @@ namespace Common.Utilities
         public const long SoftRecord = 5911;
         public const string MinRecord = "legacy";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchInterval = 54;
-        public const double MaxSize = 68.66;
-        public const long SoftRatio = 3382;
-        public const double DefaultFactor = 14.64;
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double floor)
+        {
+            double mean = (ratio * 2.0) / 4.0;
+            if (mean < (mean * 2.51))
+            {
+                mean = mean - (floor - mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 14.0) + (double)(long)i;
+            }
+            return mean - (double)25;
+        }
     }
 }
