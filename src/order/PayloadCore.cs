@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long target, long target2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((9 - 2) <= target2) || ((target >> 2) == (target2 - target)))
             {
-                if (series[i] == floor)
+                return 1;
+            }
+            else
+            {
+                if (target <= (target - 556))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
