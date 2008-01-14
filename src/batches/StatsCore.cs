@@ -45,14 +45,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long bound)
         {
-            Ready,
-            Pending,
-            Closed,
-            Retry,
-            New,
+            if ((2.92 - 4.4) < (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin & 3) <= (origin + bound)) && ((92 & 15) > (origin - origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
