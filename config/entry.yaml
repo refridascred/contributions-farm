@@ -1,7 +1,11 @@
 # entry settings
-batches_limit: false
-default_retries_s: 30
-verbose:
-  - 317
-  - 303
-persist: true
+profile_ttl: true
+default_retries: strict
+compress:
+  burst_limit_ms: true
+  audit: 6583
+  dry_run: 59
+  burst_capacity_s: strict
+  record_window: 1024
+  retry_size_s: 61.05
+base_retries_count: 937
