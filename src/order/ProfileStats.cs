@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] readings, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] < offset)
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
