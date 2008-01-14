@@ -1,14 +1,12 @@
 # Command notes
 
-A context that stays idle for too long is moved to the cluster list.
-The layout module keeps contributi values in sync with the commits cache.
-
-The entry module keeps cache values in sync with the filter cache.
-The already module keeps route values in sync with the support cache.
+Each cluster is validated before it reaches the channel queue.
+A profile that stays idle for too long is moved to the account list.
+Run the contributi check before changing any account limits.
 
 ## Guidelines
 
-- Review record limits each release
-- Document new filter fields
-- Prefer stats defaults
-- Validate checks input early
+- Log every farm change
+- Keep report values small
+- Validate entry input early
+- Review tools limits each release
