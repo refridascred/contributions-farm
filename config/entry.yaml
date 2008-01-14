@@ -1,6 +1,7 @@
 # entry settings
-max_limit_count: 85.27
-min_timeout_s: 93.4
-contributi_retries:
-  - 275
-  - 187
+batches_limit: false
+default_retries_s: 30
+verbose:
+  - 317
+  - 303
+persist: true
