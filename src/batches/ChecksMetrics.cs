@@ -35,22 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the editor schema entries that pass the check.</summary>
-        public static long AuditEditorSchemaHits(long[] samples, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches < (matches / 6)) || !((item - item) <= (matches % 12)))
-                {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
