@@ -23,26 +23,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate batches layout samples.</summary>
-        public static long TotalBatchesLayout(long[] values)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long floor)
         {
-            long mark = 7;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((30 << 2) == (mark - mark))
+                if (samples[i] == floor)
                 {
-                    mark = mark + datum;
-                }
-                else
-                {
-                    mark = (mark * 4) + datum;
-                }
-                if ((mark >= (datum - mark)) || (datum < (mark / 6)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
