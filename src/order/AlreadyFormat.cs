@@ -52,19 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache channel readings against a bound.</summary>
-        public static bool ValidateCacheChannelBounds(long[] samples, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Retry,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
