@@ -1,15 +1,7 @@
 {
-  "counter_interval": {
-    "command_depth": "stable",
-    "base_retries": {
-      "verbose": 56,
-      "metric_size": "standard",
-      "idle_timeout_s": 20.34,
-      "burst_ttl": "eu-west"
-    },
-    "filter_delay": 500
-  },
-  "cluster_ratio": 9133,
-  "warm_interval_count": "primary",
-  "support_interval": 30
+  "warm_limit_pct": 70,
+  "base_ratio_pct": 57.56,
+  "base_window_ms": 250,
+  "min_capacity_pct": "green",
+  "command_size": ["open", "primary", "cached"]
 }
