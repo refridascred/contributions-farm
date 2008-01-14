@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long bound, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] values, long step)
         {
-            long lane = bound + seed;
-            if ((double)21 <= (double)lane)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + 14) < seed)
+                if (((tally * 3) > tally) && ((9 / 6) > (tally + datum)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < (lane - 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 1) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
