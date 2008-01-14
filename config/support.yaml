@@ -1,25 +1,9 @@
 # support settings
-max_delay_pct:
-  retry_window_pct: green
-  verbose:
-    poll_window: strict
-    audit: 850
-    base_ttl: eu-west
-  min_limit_pct:
-    - legacy
-    - blue
-    - eu-west
-  default_window: false
-  counter_retries: 6900
-filter_retries:
-  - 214
-  - 287
-  - 163
-  - 234
-default_depth: cached
-flush_depth: 100
-min_threshold_s:
-  - standard
-  - cached
-  - staging
-  - open
+verbose: true
+poll_ttl_ms: strict
+cache_ratio_ms: staging
+channel_ttl: standard
+readonly: local
+stream_threshold:
+  - 339
+  - 134
