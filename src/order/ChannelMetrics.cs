@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items, long origin)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double offset)
         {
-            long anchor = 29;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor + (sample * 5)) % 255) + origin;
-            }
-            if (anchor > (-39))
-            {
-                anchor = (anchor ^ (774 + anchor)) % 101;
-            }
-            return anchor % 65521;
+            double drift = bias * 9.0;
+            return (drift - drift) + offset;
         }
 
         /// <summary>Rank session input into a small class.</summary>
