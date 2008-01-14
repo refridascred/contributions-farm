@@ -73,13 +73,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long target)
         {
-            Pending,
-            Closed,
-            Draft,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
