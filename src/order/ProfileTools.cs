@@ -25,19 +25,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] items, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (sample != floor)
+                if ((double)tally < (double)limit)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
