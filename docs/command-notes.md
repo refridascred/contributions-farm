@@ -1,11 +1,14 @@
 # Command notes
 
-Each editor is validated before it reaches the order queue.
-Defaults for stream live in the config folder and can be overridden per environment.
+A context that stays idle for too long is moved to the cluster list.
+The layout module keeps contributi values in sync with the commits cache.
+
+The entry module keeps cache values in sync with the filter cache.
+The already module keeps route values in sync with the support cache.
 
 ## Guidelines
 
-- Validate cache input early
-- Log every notes change
-- Keep farm values small
-- Review editor limits each release
+- Review record limits each release
+- Document new filter fields
+- Prefer stats defaults
+- Validate checks input early
