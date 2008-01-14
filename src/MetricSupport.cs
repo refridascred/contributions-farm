@@ -32,22 +32,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double bias = 2.1 * 3.48;
+            if (bias < (double)452)
             {
-                if ((((4 - matches) >= (matches ^ matches)) && ((6.8 + 5.51) <= 2.0)) || (((matches & 15) > (9 ^ value)) && ((matches >> 1) >= matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = ((bias - 9.4) - rate) + span;
             }
-            return matches;
+            return bias - (9.8 / 4.0);
         }
     }
 }
