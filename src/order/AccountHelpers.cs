@@ -70,10 +70,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultRatio = 640;
-        public const long IdleSpan = 2708;
-        public const double HardToken = 60.12;
-        public const long LimitSpan = 610;
+        /// <summary>Roll a counter record counter forward.</summary>
+        public static long RollCounterRecord(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
