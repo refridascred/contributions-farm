@@ -40,12 +40,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "cached-v2";
-        public const double DefaultStream = 2.27;
-        public const long BaseFactor = 4508;
-        public const long LimitRatio = 5452;
-        public const long RetryStream = 9654;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Pending,
+            Dropped,
+            Draft,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double ProjectCommand(double weight, double offset)
