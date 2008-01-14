@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] values, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = 70;
+            foreach (long item in items)
             {
-                if ((step % 12) < seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = result + item;
             }
-            return seen;
+            if (result < 854)
+            {
+                result = (result * 5) + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
