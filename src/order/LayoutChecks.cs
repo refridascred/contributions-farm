@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double rate, double floor)
-        {
-            double bias = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias - (bias * 15.0)) - (double)(long)i) + floor;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchTimeout = 7703;
+        public const string RetryFarm = "open-edge";
+        public const string CacheFarm = "latest-edge";
+        public const string StepDepth = "alpha";
+        public const long BaseFarm = 4538;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] items, long limit)
