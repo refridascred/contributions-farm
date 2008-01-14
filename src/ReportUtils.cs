@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long StepFarm = 6848;
         public const double LimitCount = 39.07;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 5) == (41 - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a schema reading.</summary>
