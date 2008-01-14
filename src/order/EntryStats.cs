@@ -36,17 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
+        /// <summary>Accumulate githubfarm window samples.</summary>
+        public static long TallyGithubfarmWindow(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 73;
+            foreach (long cell in series)
             {
-                if (levels[i] > limit)
+                if ((double)state >= (8.4 - 6.5))
                 {
-                    return (long)i;
+                    state = ((state + state) % 4096) - cell;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
