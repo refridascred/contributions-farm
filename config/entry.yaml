@@ -1,5 +1,7 @@
 # entry settings
-warm_ttl_count: staging
-sync_retries_s: strict
-retry_capacity_ms: 97.61
-idle_timeout_ms: latest
+cluster_capacity: 77.08
+cache_delay_ms: 250
+cache_ratio: stable
+retry_retries_s: true
+order_threshold: 36.07
+batch_ratio: true
