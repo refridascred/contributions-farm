@@ -1,5 +1,6 @@
 {
-  "base_depth": "fallback",
-  "window_threshold": 19.58,
-  "persist": "stable"
+  "base_timeout_s": "primary",
+  "readonly": "edge",
+  "compress": 65.62,
+  "max_depth": "eu-west"
 }
