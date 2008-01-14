@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MinLevel = 6126;
         public const long LimitGraph = 503;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
+            Stale,
+            Dropped,
             Locked,
-            Pending,
+            Failed,
             Closed,
         }
 
