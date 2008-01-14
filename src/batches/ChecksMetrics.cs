@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series, long seed)
+        /// <summary>Count the window filter entries that pass the check.</summary>
+        public static long MeasureWindowFilterGaps(long[] readings, long seed)
         {
-            long mix = 228;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mix = (mix - (mix - seed)) - datum;
+                if ((0.2 / 4.0) > (double)seed)
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
