@@ -58,12 +58,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit notes already readings against a rule.</summary>
+        public static long TallyNotesAlreadyMatches(long[] readings)
         {
-            Dropped,
-            Active,
-            Done,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell << 3) > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
