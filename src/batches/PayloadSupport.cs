@@ -27,17 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] readings, long limit)
+        /// <summary>Check that every route filter entry stays within the limit.</summary>
+        public static bool GuardRouteFilterBounds(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (readings[i] > limit)
+                if (value <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
