@@ -40,23 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = 91;
-            foreach (long item in samples)
-            {
-                mark = ((mark * 5) + (mark - item)) % 101;
-                if ((limit * 5) >= (item ^ 6))
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-            }
-            if (mark > 93)
-            {
-                mark = mark ^ (mark << 3);
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up schema cluster samples.</summary>
