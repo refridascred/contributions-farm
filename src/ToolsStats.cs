@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string LimitFactor = "alpha";
         public const long BaseCount = 2935;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] levels, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (cell <= limit)
+                if (1.1 >= (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) ^ datum) + step;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
