@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            Paused,
-            Queued,
-            Stale,
-            Done,
-            Idle,
+            long score = 94;
+            foreach (long item in series)
+            {
+                score = ((score * 3) + (item - 20)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
