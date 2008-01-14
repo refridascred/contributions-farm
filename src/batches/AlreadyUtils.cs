@@ -27,39 +27,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank counter session input into a small class.</summary>
-        public static long BucketCounterSession(long bound, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long span = bound ^ floor;
-            if ((span % 3) <= (bound * 4))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((span - bound) <= (span + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor & 63) > (bound & 7))
+                    if ((levels[i] - levels[j]) > 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor - bound) < 39))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
