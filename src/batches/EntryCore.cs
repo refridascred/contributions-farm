@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const double MinPayload = 94.9;
         public const long BatchSize = 9118;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseTimeout = 7572;
+        public const long DefaultReport = 3381;
+        public const long BaseReport = 8255;
+        public const string BatchWidth = "legacy";
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsLimits(long[] values, long target)
