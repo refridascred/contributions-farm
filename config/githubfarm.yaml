@@ -1,30 +1,10 @@
 # githubfarm settings
-poll_window_pct: strict
-queue_retries:
-  cache_ttl: green
-  retry_size_count: false
-  editor_size:
-    - 420
-    - 279
-counter_delay: staging
-retry_ttl_count:
-  soft_size_count: strict
-  compress:
-    notes_ttl: strict
-    hard_depth_pct: latest
-    idle_depth_s: true
-    entry_ratio: false
-    default_limit_s: standard
-  cache_depth_ms:
-    entry_size: eu-west
-    hard_size: 80
-    poll_depth: eu-west
-    retry_retries_s: 45.2
-    sync_depth_s:
-      - 109
-      - 162
-    soft_size: 18
-  batch_timeout_count: 4700
-  channel_interval: stable
-  base_delay: 100
-commits_retries: 81.63
+hard_ttl_count: true
+batch_timeout: 43
+metrics_retries: 9255
+flush_ttl_ms:
+  - strict
+  - eu-west
+  - eu-west
+  - edge
+sync_capacity: eu-west
