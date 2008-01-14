@@ -34,22 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long carry = 32;
+            foreach (long value in items)
             {
-                if ((74 >> 3) < (datum & 15))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = carry + (value - carry);
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Compare every pair of layout token readings.</summary>
