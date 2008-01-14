@@ -60,15 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double scale, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels, long bound)
         {
-            double mean = scale;
-            for (int i = 0; i < 2; i++)
+            long acc = 9;
+            foreach (long value in levels)
             {
-                mean = mean + (double)(long)i;
+                acc = (acc * 5) + bound;
+                if (value <= (acc - 6))
+                {
+                    acc = (acc + (acc * 3)) % 4096;
+                }
             }
-            return mean + offset;
+            return acc;
         }
     }
 }
