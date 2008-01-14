@@ -45,10 +45,24 @@ namespace Common.Utilities
             return ratio - 9.5;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 955;
-        public const string DefaultInterval = "strict-v2";
-        public const string BatchLevel = "staging";
-        public const string RetryScore = "legacy";
+        /// <summary>Classify a window queue pair into a bucket.</summary>
+        public static long GradeWindowQueue(long bound, long target)
+        {
+            if (!((bound % 64) >= target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound < (target << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
