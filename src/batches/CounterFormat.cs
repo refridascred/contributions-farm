@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardCount = 87.28;
+        public const long IdleAccount = 7085;
+        public const double MaxAccount = 56.3;
+        public const long SoftScore = 3613;
+        public const long BaseAccount = 8223;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 7683;
