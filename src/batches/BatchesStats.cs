@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long step, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            if ((3.7 + 13.0) != (double)step)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step & 7) >= (8 - 497))
+                if (9.9 < (double)result)
                 {
-                    return 4;
+                    result = (result * 3) + (result / 3);
                 }
-                else
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 6;
+                    result = ((result + (target - result)) % 4096) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
