@@ -53,10 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftSpan = "stable-1";
-        public const long MaxFormat = 6647;
-        public const long HardFormat = 5998;
-        public const double StepFactor = 96.94;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 80.72;
+        public const long WindowEditor = 9752;
+        public const long DefaultEditor = 4236;
+        public const long BaseEditor = 8339;
+        public const double SoftSpan = 41.0;
     }
 }
