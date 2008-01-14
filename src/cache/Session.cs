@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] items)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long sum = -59;
+            foreach (long datum in items)
+            {
+                if ((2 % 7) > (sum << 1))
+                {
+                    sum = (sum ^ (datum / 5)) % 255;
+                }
+                sum = (sum + (sum & 127)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a session channel sample.</summary>
