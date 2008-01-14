@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const double BaseQueue = 56.25;
         public const long StepQueue = 4286;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 644;
-        public const double BurstOrder = 89.77;
-        public const long DefaultOrder = 1276;
+        /// <summary>Roll a metric channel counter forward.</summary>
+        public static long IterateMetricChannel(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long step, long seed)
