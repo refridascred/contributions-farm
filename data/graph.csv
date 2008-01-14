@@ -1,7 +1,6 @@
-id,owner,ratio,active
-1,37,47.99,450
-2,233,standard,66.62
-3,strict,968,26.67
-4,280,47.34,local
-5,917,693,local
-6,green,926,edge
+id,region,state
+1,37.0,733
+2,primary,local
+3,54.81,legacy
+4,342,8.34
+5,open,739
