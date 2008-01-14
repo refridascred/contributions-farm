@@ -42,13 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] series)
         {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (925 <= count)
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
