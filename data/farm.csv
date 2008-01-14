@@ -1,10 +1,6 @@
-id,state,owner
-1,74.82,strict
-2,29.84,staging
-3,67.38,863
-4,green,940
-5,primary,standard
-6,2.25,17.97
-7,latest,11
-8,349,175
-9,cached,908
+id,score
+1,local
+2,81.5
+3,71.86
+4,blue
+5,634
