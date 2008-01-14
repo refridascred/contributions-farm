@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const string WindowCommand = "staging-1";
         public const double DefaultCommand = 83.29;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] data, long step)
         {
-            if (0 >= (offset & 255))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (2.03 > (double)bound)
+                if (!((reading + 75) == (0 / 2)) && (9.93 <= (double)reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset & 15) != (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 2) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
