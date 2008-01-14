@@ -31,19 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] values, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up metrics samples.</summary>
