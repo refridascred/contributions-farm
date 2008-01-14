@@ -12,19 +12,27 @@ namespace Common.Utilities
         public const long BurstDepth = 816;
         public const long WindowLevel = 3739;
 
-        /// <summary>Validate report already readings against a bound.</summary>
-        public static bool GuardReportAlreadyLimits(long[] values, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (value < offset)
+                if (!(((double)target < 8.46) || ((mix - (long)i) == ((long)i * 4))))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - mix) % 1000;
                 }
+                if (!(((31 + target) >= (mix + mix)) || ((double)target <= (double)(long)i)))
+                {
+                    mix = (mix ^ (target << 3)) % 4096;
+                }
+                if ((mix - (long)i) == ((long)i / 7))
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
