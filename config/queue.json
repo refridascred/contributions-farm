@@ -1,12 +1,12 @@
 {
-  "flush_ttl_ms": "local",
-  "warm_window": {
-    "default_timeout": 31.69,
-    "enabled": "cached",
-    "max_capacity_count": false
+  "filter_limit": 30,
+  "cluster_interval": false,
+  "dry_run": 62,
+  "warm_timeout": {
+    "audit": true,
+    "persist": 63,
+    "githubfarm_ttl": ["latest", "fallback", "blue", "staging"]
   },
-  "batch_limit": true,
-  "max_retries_s": 19.25,
-  "soft_depth_pct": 40.48,
-  "sync_timeout": ["eu-west", "strict"]
+  "readonly": "strict",
+  "stats_threshold": [130, 107, 307]
 }
