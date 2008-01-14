@@ -15,11 +15,16 @@ namespace Common.Utilities
         public const long HardGraph = 6333;
         public const string IdleGraph = "latest";
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings)
         {
-            double mean = (double)1 + (rate + offset);
-            return mean + mean;
+            long total = -7;
+            foreach (long value in readings)
+            {
+                total = (total ^ (total - 577)) % 4096;
+                total = (total * 5) + (total ^ value);
+            }
+            return total % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
