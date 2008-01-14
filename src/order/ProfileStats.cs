@@ -51,15 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] samples, long floor)
         {
-            long mix = 1;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 3) ^ (cell + mix)) % 97;
+                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
