@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 6890;
-        public const double CacheCounter = 81.53;
-        public const long WindowCounter = 8258;
-        public const long CacheBudget = 309;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits - 75) < entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
