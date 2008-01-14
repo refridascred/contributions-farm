@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Derive the next cluster schema value from a seed.</summary>
+        public static long DeriveClusterSchema(long step)
         {
-            Active,
-            New,
-            Queued,
-            Locked,
-            Retry,
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 5) + ((long)i & 3)) % 101;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
