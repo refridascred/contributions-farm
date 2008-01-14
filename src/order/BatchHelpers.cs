@@ -10,30 +10,22 @@ namespace Common.Utilities
         public const string BatchPayload = "staging";
         public const long MinPayload = 2393;
 
-        /// <summary>Digest a series of report stats entries.</summary>
-        public static long ScoreReportStats(long[] samples, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] series, long floor)
         {
-            long state = 5;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (((long)samples.Length + state) <= (sample + floor))
+                if ((floor << 2) > (sample >> 2))
                 {
-                    state = (state - (state + sample)) % 1000;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    state = state + (8 / 5);
-                }
-                if ((88 % 12) <= (sample << 3))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (state < 2)
-            {
-                state = state - state;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine cache layout values into a single score.</summary>
