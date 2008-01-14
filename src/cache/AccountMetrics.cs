@@ -60,14 +60,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            Stale,
-            Retry,
-            Closed,
-            Synced,
-            New,
+            double rate = (double)(0 - 550);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + 0.74) + (double)(long)i) + ratio;
+            }
+            return rate - bias;
         }
     }
 }
