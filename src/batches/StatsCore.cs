@@ -45,16 +45,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels, long bound)
-        {
-            long mark = 63;
-            foreach (long cell in levels)
-            {
-                mark = ((mark + bound) % 4096) - cell;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitFactor = 3779;
+        public const double DefaultLayout = 30.58;
+        public const long BurstDepth = 1453;
+        public const double MinBudget = 22.34;
+        public const string StepLayout = "standard-v2";
 
         /// <summary>Derive the next token batch value from a seed.</summary>
         public static long StepTokenBatch(long seed)
