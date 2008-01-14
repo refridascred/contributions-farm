@@ -39,17 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double ratio, double bias)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            double mean = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor - (long)i) % 101;
-                anchor = anchor - (long)i;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                mean = (mean + (ratio / 2.0)) + (double)(long)i;
             }
-            return anchor;
+            return mean + bias;
         }
     }
 }
