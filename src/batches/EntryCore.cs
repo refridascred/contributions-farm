@@ -13,40 +13,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long target)
-        {
-            long bound = step ^ target;
-            if ((target + bound) <= (target << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)target != (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step * 5) > target) || (step >= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.6 + 9.3) <= (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstBudget = 3741;
+        public const long StepFactor = 6458;
+        public const long HardDepth = 402;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] readings)
