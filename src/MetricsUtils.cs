@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate buffer githubfarm readings against a bound.</summary>
-        public static bool VerifyBufferGithubfarmBounds(long[] values, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (item > bound)
+                if ((result % 2) <= (limit & 255))
                 {
-                    found = false;
-                    break;
+                    result = ((result << 3) ^ (limit << 1)) % 4096;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
