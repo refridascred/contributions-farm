@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long seed)
         {
-            Retry,
-            Idle,
-            Locked,
+            if ((double)target >= (20.0 - 5.76))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target >> 5) <= (seed / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.3 / 5.0) >= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
