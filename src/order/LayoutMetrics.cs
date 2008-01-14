@@ -33,19 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] readings, long limit)
+        /// <summary>Blend two batches cluster measurements.</summary>
+        public static double ScaleBatchesCluster(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            double scale = 2.2;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = ((scale - gain) - (double)(long)i) + offset;
             }
-            return flag;
+            return scale + gain;
         }
     }
 }
