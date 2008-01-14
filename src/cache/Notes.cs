@@ -52,22 +52,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine tools farm values into a single score.</summary>
-        public static long FoldToolsFarm(long[] data, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long sum = 3;
-            foreach (long datum in data)
-            {
-                if ((datum >= (step / 6)) && ((8.44 / 9.0) >= (double)sum))
-                {
-                    sum = sum ^ (sum - sum);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (step / 3);
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
