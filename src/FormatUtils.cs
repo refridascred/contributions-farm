@@ -20,14 +20,16 @@ namespace Common.Utilities
         public const double LimitToken = 62.22;
         public const long DefaultRatio = 8269;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Roll a queue account counter forward.</summary>
+        public static long IterateQueueAccount(long origin)
         {
-            Failed,
-            Stale,
-            Done,
-            Closed,
-            Draft,
+            long result = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                result = result ^ (result << 2);
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
