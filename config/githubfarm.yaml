@@ -1,18 +1,6 @@
 # githubfarm settings
-warm_limit_s:
-  - 23
-  - 400
-poll_retries_ms: true
-persist:
-  readonly: true
-  warm_delay:
-    min_threshold_count:
-      - primary
-      - legacy
-      - eu-west
-    cache_window_count: true
-    min_size_ms:
-      - legacy
-      - primary
-  audit: 70
-flush_retries_count: cached
+queue_ttl: edge
+strict: 6603
+soft_window_ms: false
+persist: 84.57
+flush_timeout: 9731
