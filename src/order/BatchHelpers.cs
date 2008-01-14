@@ -25,15 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next already context value from a seed.</summary>
-        public static long SeriesAlreadyContext(long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            double gain = scale;
+            if (gain > scale)
             {
-                total = ((total * 5) + (long)i) % 97;
+                gain = (gain + (scale * 5.6)) + span;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (5.0 / 9.0);
         }
     }
 }
