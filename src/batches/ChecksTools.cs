@@ -53,12 +53,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            Ready,
-            Active,
-            Pending,
+            long acc = 31;
+            foreach (long value in levels)
+            {
+                long cur = 9;
+                if ((acc / 9) >= (value << 1))
+                {
+                    cur = ((cur << 3) ^ ((long)levels.Length >> 3)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (cur - value)) % 65521;
+                }
+                acc = acc ^ (acc - value);
+                if (!(value > (value - acc)))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the support level values.</summary>
