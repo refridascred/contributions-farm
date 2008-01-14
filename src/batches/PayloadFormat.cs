@@ -55,21 +55,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up githubfarm cache samples.</summary>
-        public static long PairGithubfarmCacheCount(long[] samples)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
