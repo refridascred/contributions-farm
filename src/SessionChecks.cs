@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate contributi window readings against a bound.</summary>
-        public static bool CheckContributiWindowLimits(long[] items, long seed)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Locate a order metrics reading by value.</summary>
