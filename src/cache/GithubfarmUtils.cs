@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            double mean = bias;
-            if (mean < span)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - mean;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + bias;
+            return count;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
