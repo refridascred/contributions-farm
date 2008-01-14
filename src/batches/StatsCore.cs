@@ -33,15 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long TallyCommandBuffer(long[] items, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values, long limit)
         {
-            long result = 22;
-            foreach (long sample in items)
+            long acc = 322;
+            foreach (long datum in values)
             {
-                result = (((result * 3) + (origin + origin)) % 1000) + sample;
+                if (((852 + 4) >= (acc * 4)) || ((5.4 - 8.5) == (double)limit))
+                {
+                    acc = (acc + (limit - acc)) ^ datum;
+                }
             }
-            return result;
+            if (acc < 70)
+            {
+                acc = ((acc << 3) ^ (long)values.Length) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate support samples.</summary>
