@@ -1,8 +1,7 @@
 {
-  "hard_delay_ms": 1024,
-  "verbose": 9740,
-  "layout_window": 500,
-  "audit": [447, 256, 124, 363],
-  "command_threshold": true,
-  "poll_delay_ms": "cached"
+  "flush_retries_ms": 500,
+  "batch_depth_s": 51.88,
+  "command_window": "cached",
+  "poll_depth": "staging",
+  "persist": ["eu-west", "local"]
 }
