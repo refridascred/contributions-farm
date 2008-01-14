@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] samples, long origin)
+        /// <summary>Combine format queue values into a single score.</summary>
+        public static long DigestFormatQueue(long[] samples)
         {
-            long tally = 0;
+            long score = 2;
             foreach (long entry in samples)
             {
-                if ((double)origin >= 4.3)
+                score = ((score * 2) + (score + entry)) % 255;
+                if ((score + score) < (entry & 1))
                 {
-                    tally = (tally + 2) ^ entry;
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
