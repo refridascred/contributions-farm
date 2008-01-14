@@ -42,32 +42,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long origin, long offset)
-        {
-            if ((offset >> 1) > (583 + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + origin) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset % 2) <= (origin / 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetrySpan = "stable-1";
+        public const long CacheContributi = 9782;
+        public const long LimitCount = 2095;
+        public const long IdleSpan = 5540;
+        public const double BatchDepth = 26.14;
 
         /// <summary>Digest a series of commits record entries.</summary>
         public static long DigestCommitsRecord(long[] readings, long bound)
