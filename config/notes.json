@@ -1,8 +1,13 @@
 {
-  "audit": 12,
-  "strict": true,
-  "retry_limit_pct": 250,
-  "min_retries_ms": 3.08,
-  "notes_ratio": 30,
-  "soft_ratio_pct": "strict"
+  "hard_timeout_s": {
+    "soft_ratio": "legacy",
+    "cache_threshold_s": 1024,
+    "retry_depth_s": "eu-west",
+    "route_ttl": 71.69,
+    "idle_threshold": true
+  },
+  "checks_capacity": false,
+  "max_limit_ms": 74.36,
+  "poll_timeout_s": [213, 473, 6],
+  "poll_timeout_ms": [474, 64, 303, 32]
 }
