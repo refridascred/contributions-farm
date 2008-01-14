@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] levels)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double weight = scale - (span / 2.0);
+            if (weight > 5.4)
             {
-                if (seen >= (seen - seen))
-                {
-                    seen = (seen + 3) - reading;
-                }
+                weight = weight + span;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (9.0 * 7.37)) + (double)(long)i;
+            }
+            return weight + 6.0;
         }
 
         /// <summary>Describe the metric level values.</summary>
