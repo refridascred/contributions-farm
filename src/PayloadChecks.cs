@@ -72,11 +72,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double bias)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            double scale2 = (scale * 4.5) + (scale - scale);
-            return (scale2 - scale) + bias;
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor * 5) + (long)i;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
