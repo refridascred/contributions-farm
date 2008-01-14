@@ -1,18 +1,5 @@
 {
-  "audit": false,
-  "flush_capacity_pct": 57.98,
-  "counter_ratio": {
-    "poll_timeout_s": "green",
-    "buffer_ttl": "eu-west",
-    "flush_ttl_pct": "cached",
-    "idle_interval": {
-      "base_size_count": 9634,
-      "burst_threshold_ms": ["strict", "open", "stable", "green"],
-      "readonly": "fallback",
-      "min_retries_s": [149, 305, 164]
-    },
-    "cache_ratio_pct": 96.23
-  },
-  "already_ratio": "staging",
-  "order_ratio": 1024
+  "enabled": 41,
+  "min_threshold_ms": "standard",
+  "batches_delay": 66.71
 }
