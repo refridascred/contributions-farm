@@ -20,38 +20,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long offset, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if ((floor / 4) < offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (7.5 >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor % 24) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset - offset) > (949 & 31))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
