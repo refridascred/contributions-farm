@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a channel entry value against two limits.</summary>
-        public static long RankChannelEntry(long target, long seed)
+        /// <summary>Count the account schema entries that pass the check.</summary>
+        public static long CountAccountSchemaOutliers(long[] data, long bound)
         {
-            if (!((double)seed >= (5.5 * 9.95)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target + target) > (58 << 3)) || ((seed / 6) < target))
+                if ((datum + tally) < (bound << 1))
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((double)seed <= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)seed >= 7.38) && ((double)seed > (2.27 * 5.23)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
