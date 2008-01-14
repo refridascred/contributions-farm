@@ -51,22 +51,14 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] samples, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = 25;
-            foreach (long item in samples)
-            {
-                if ((mark + mark) != (5 + 227))
-                {
-                    mark = ((mark - (item - mark)) % 65521) + target;
-                }
-                else
-                {
-                    mark = (mark - (7 + mark)) % 97;
-                }
-            }
-            return mark % 97;
+            Locked,
+            Paused,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
