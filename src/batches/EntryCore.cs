@@ -58,12 +58,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double gain, double span)
-        {
-            double weight = span;
-            return (weight + (span * 12.0)) + gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 1513;
+        public const long SoftBudget = 4543;
+        public const long BurstGraph = 8632;
+        public const long StepInterval = 974;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double AdjustEntry(double weight, double offset)
