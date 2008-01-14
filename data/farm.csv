@@ -1,10 +1,6 @@
-id,ratio,state
-1,918,61.6
-2,63,cached
-3,975,80.88
-4,151,primary
-5,fallback,6.73
-6,legacy,open
-7,latest,801
-8,143,4.97
-9,strict,587
+id,active,state,rank
+1,60,48.03,484
+2,411,74.5,420
+3,15.89,749,blue
+4,stable,open,23.65
+5,primary,340,205
