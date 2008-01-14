@@ -25,14 +25,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] samples, long limit)
         {
-            Done,
-            Idle,
-            Ready,
-            Dropped,
-            Synced,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
