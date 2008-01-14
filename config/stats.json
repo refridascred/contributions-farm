@@ -1,7 +1,22 @@
 {
-  "max_depth": 7212,
-  "stats_limit": 74.41,
-  "compress": "local",
-  "layout_ttl": 60,
-  "retry_size": "local"
+  "batch_ttl": 3681,
+  "retry_ratio_pct": 10,
+  "min_threshold_count": {
+    "enabled": false,
+    "idle_capacity_s": 79.13,
+    "dry_run": true,
+    "compress": 2372
+  },
+  "layout_retries": 60,
+  "readonly": {
+    "burst_depth": {
+      "metric_interval": "stable",
+      "audit": "cached",
+      "cache_delay": true,
+      "buffer_ratio": 57
+    },
+    "channel_retries": ["latest", "green", "staging", "legacy"],
+    "soft_ttl_s": "edge"
+  },
+  "compress": 3489
 }
