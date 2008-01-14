@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long CombineRecordOrder(long[] levels, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] levels, long step)
         {
-            long mix = 820;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (((double)step != (6.49 - 5.81)) || ((step << 2) == (sample * 4)))
+                if (cell > step)
                 {
-                    mix = (mix + (sample - mix)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Blend two farm measurements.</summary>
