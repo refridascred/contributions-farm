@@ -14,19 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] data, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
