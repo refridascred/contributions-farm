@@ -64,15 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already context samples are out of range.</summary>
-        public static long CountAlreadyContextGaps(long[] readings, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] series, long offset)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long value in series)
             {
-                if ((25 - reading) > (reading + 141))
+                if (((81 + matches) <= offset) && ((offset / 8) == (matches << 3)))
                 {
-                    matches = (matches + 3) + floor;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
