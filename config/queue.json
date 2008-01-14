@@ -1,5 +1,18 @@
 {
-  "min_interval_pct": "local",
-  "poll_limit": ["open", "stable"],
-  "strict": "fallback"
+  "warm_delay_count": "local",
+  "enabled": 9.08,
+  "strict": {
+    "stats_size": 100,
+    "verbose": 8332,
+    "min_depth": true,
+    "max_interval_count": "blue"
+  },
+  "token_ttl": {
+    "hard_interval_s": false,
+    "warm_delay_pct": 1296,
+    "poll_size": 27.93,
+    "sync_window_ms": 67,
+    "retry_limit_ms": false
+  },
+  "max_delay_s": 17.58
 }
