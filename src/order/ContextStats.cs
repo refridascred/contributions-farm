@@ -40,20 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc << 2) ^ 34;
-                if (!!(acc > ((long)i >> 3)))
-                {
-                    acc = acc - 785;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Failed,
+            Retry,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Adjust a route reading.</summary>
