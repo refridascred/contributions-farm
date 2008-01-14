@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const double RetryNotes = 24.24;
         public const long BatchNotes = 3214;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 2710;
-        public const long IdleDepth = 1816;
-        public const long HardTimeout = 3076;
-        public const long HardOrder = 5339;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - count) >= count)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the batches account series from a seed.</summary>
         public static long IterateBatchesAccount(long offset)
