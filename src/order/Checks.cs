@@ -31,22 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of record cache readings.</summary>
-        public static long FoldRecordCache(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mark = 403;
-            foreach (long cell in items)
-            {
-                if (((double)mark < 2.6) && ((double)mark > 7.0))
-                {
-                    mark = ((mark ^ (512 + mark)) % 4096) - cell;
-                }
-            }
-            if (mark > 82)
-            {
-                mark = (mark ^ (mark + mark)) % 4096;
-            }
-            return mark % 97;
+            Retry,
+            New,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
