@@ -59,18 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order payload entries that pass the check.</summary>
-        public static long TallyOrderPayloadOutliers(long[] items, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!((7.0 + 1.24) < (double)value))
+                if (((double)count < (3.32 * 8.1)) || !((double)sample == (6.0 - 2.5)))
                 {
-                    hits = (hits + 2) - step;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a payload info.</summary>
