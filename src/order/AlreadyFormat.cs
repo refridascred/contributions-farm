@@ -45,32 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double span)
         {
-            long slot = floor + bound;
-            if (99 > (slot + 33))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (double)59)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.6 - 11.0) >= (double)bound) && (bound <= (bound + slot)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double mean = rate;
+            return (mean + (2.97 + mean)) + span;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
