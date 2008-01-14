@@ -17,12 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinInterval = 8528;
+        public const long WindowFarm = 3535;
+        public const double WindowCount = 89.54;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] items, long step)
