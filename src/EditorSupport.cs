@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Paused,
+            Ready,
+            Done,
             Retry,
-            Draft,
+            Stale,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
