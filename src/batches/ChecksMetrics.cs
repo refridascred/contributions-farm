@@ -50,12 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] data, long origin)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next channel command value from a seed.</summary>
