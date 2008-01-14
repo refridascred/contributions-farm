@@ -20,31 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long target, long step)
+        /// <summary>Find the first metric profile entry that matches the target.</summary>
+        public static long LocateMetricProfileIndex(long[] series, long floor)
         {
-            if (((1.8 / 3.0) == (double)step) || (31 <= (step << 2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step % 10) > (target + target))
+                if (series[i] <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target >= (target >> 3)) && ((double)target != (4.73 - 16.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
