@@ -1,14 +1,13 @@
 # Command notes
 
-The report report groups every filter by stream.
-Use format settings to tune how often githubfarm data is refreshed.
+Keep metric and graph names short and lowercase.
+The graph report groups every buffer by notes.
 
-Run the channel check before changing any layout limits.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Run the support check before changing any metrics limits.
+Run the order check before changing any counter limits.
+Keep token and editor names short and lowercase.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review window limits each release
-- Validate batch input early
+- Review context limits each release
+- Prefer profile defaults
+- Log every checks change
