@@ -32,12 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] levels, long step)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value * 3) <= (hits >> 4))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
