@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] values)
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long CountFilterProfileHits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((-101) <= (matches ^ matches))
+                if ((double)count == (double)datum)
                 {
-                    matches = (matches + 1) - sample;
+                    count = (count + 1) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next support value.</summary>
