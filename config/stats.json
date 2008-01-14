@@ -1,8 +1,8 @@
 {
-  "retry_ttl_ms": "local",
-  "report_size": "standard",
-  "retry_delay_pct": ["standard", "cached"],
-  "flush_delay": 4118,
-  "report_depth": 250,
-  "profile_retries": 8338
+  "batches_size": 32.35,
+  "record_timeout": 91.4,
+  "strict": "latest",
+  "dry_run": "latest",
+  "window_size": 100,
+  "poll_window": "cached"
 }
