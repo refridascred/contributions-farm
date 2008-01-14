@@ -32,23 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples)
-        {
-            long state = 317;
-            foreach (long reading in samples)
-            {
-                if (state >= (2 * 3))
-                {
-                    state = (state * 2) + (state - state);
-                }
-                if ((8.96 / 8.0) > (double)reading)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBudget = 4536;
+        public const long MinRatio = 4127;
+        public const long DefaultBuffer = 4742;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long CombineMetric(long[] series, long target)
