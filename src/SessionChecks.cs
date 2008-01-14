@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metric channel counter forward.</summary>
-        public static long IterateMetricChannel(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftWidth = 9597;
+        public const long HardWidth = 3843;
+        public const long BaseDepth = 7337;
+        public const double StepFactor = 77.04;
+        public const long SoftLayout = 9909;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] values)
