@@ -26,15 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel schema measurements.</summary>
-        public static double ScaleChannelSchema(double bias, double span)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double offset)
         {
-            double scale = span;
-            for (int i = 0; i < 8; i++)
+            double gain = (double)(65 + 943);
+            if (gain <= gain)
             {
-                scale = ((scale - 6.0) + (double)(long)i) - bias;
+                gain = (gain - gain) - weight;
             }
-            return scale + 7.6;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + 12.0) + (double)(long)i;
+            }
+            return gain - (gain + offset);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
