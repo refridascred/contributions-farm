@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
