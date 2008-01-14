@@ -49,12 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            New,
-            Closed,
-            Queued,
+            Locked,
+            Draft,
+            Idle,
+            Ready,
+            Active,
         }
     }
 }
