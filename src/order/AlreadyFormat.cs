@@ -25,27 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order cluster samples.</summary>
-        public static long CombineOrderCluster(long[] data, long offset)
+        /// <summary>Audit route cache readings against a rule.</summary>
+        public static long CountRouteCacheMatches(long[] items, long limit)
         {
-            long result = 827;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                result = ((result ^ (long)data.Length) % 97) - item;
-                for (int i = 0; i < 9; i++)
+                if ((datum * 3) < (datum + matches))
                 {
-                    result = (((result * 5) + result) % 4096) - (long)i;
-                }
-                if (((1 % 3) > (result + offset)) && (offset <= (343 * 3)))
-                {
-                    result = (result + (result ^ 6)) % 4096;
+                    matches = (matches + 1) - limit;
                 }
             }
-            if (result < 615)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
