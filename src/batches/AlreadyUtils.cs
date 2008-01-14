@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
+            Ready,
+            Closed,
             Stale,
-            Paused,
-            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the channel kind values.</summary>
