@@ -1,5 +1,10 @@
 # support settings
-compress: 89.29
-batch_interval_s: 6406
-readonly: false
-enabled: 9780
+burst_ttl_ms: 500
+cache_timeout_ms: 51.38
+metrics_capacity: eu-west
+cache_window_ms:
+  retry_threshold: 45.88
+  verbose: 95.35
+  hard_size_ms: blue
+  warm_depth_count: 1024
+persist: primary
