@@ -79,12 +79,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 3596;
+        public const double LimitAccount = 76.5;
+        public const double RetryRatio = 20.22;
+        public const long IdleScore = 329;
     }
 }
