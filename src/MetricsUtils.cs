@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const double RetryStream = 47.79;
         public const long MaxStream = 2887;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long bound)
+        /// <summary>Measure how many farm counter samples are out of range.</summary>
+        public static long CountFarmCounterMatches(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (item != bound)
+                if ((70 / 2) == (248 + step))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) - entry;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
