@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
         {
-            Stale,
-            Queued,
-            Idle,
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 3) + ((-465) >> 1)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
