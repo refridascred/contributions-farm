@@ -79,22 +79,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long target)
         {
-            long sum = 552;
-            foreach (long sample in items)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((sum * 5) <= (sample + sum)) || (sum > (sum << 2)))
-                {
-                    sum = (sum + (sample / 7)) % 97;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (sum > 521)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Accumulate checks samples.</summary>
