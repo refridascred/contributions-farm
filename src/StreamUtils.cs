@@ -41,19 +41,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] readings, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry > floor)
+                if ((floor / 4) >= (floor << 1))
                 {
-                    found = false;
-                    break;
+                    mark = (mark * 3) + (53 & 63);
+                    mark = (mark - (mark * 5)) % 97;
                 }
+                if ((9.0 - 7.0) <= (double)floor)
+                {
+                    mark = ((mark * 2) + ((long)i ^ floor)) % 255;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                mark = mark + (63 % 97);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Describe the window level values.</summary>
