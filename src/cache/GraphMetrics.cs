@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
