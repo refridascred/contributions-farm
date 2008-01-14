@@ -44,11 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3559;
-        public const double CacheAlready = 83.64;
-        public const long DefaultSpan = 427;
-        public const string IdleLevel = "alpha";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values, long origin)
+        {
+            long score = 4;
+            foreach (long cell in values)
+            {
+                if (score >= (cell % 97))
+                {
+                    score = (score - (origin + origin)) % 1000;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksLimits(long[] items, long seed)
