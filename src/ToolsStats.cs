@@ -67,23 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Audit tools channel readings against a rule.</summary>
+        public static long MeasureToolsChannelMatches(long[] items, long seed)
         {
-            double scale = (floor - floor) / 4.0;
-            if (scale > 13.0)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                scale = scale - (floor - 13.0);
+                if ((seed & 127) < (seed + cell))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale + (bias / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - bias;
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
