@@ -29,39 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long limit, long seed)
+        /// <summary>Check that every queue format entry stays within the limit.</summary>
+        public static bool VerifyQueueFormatLimits(long[] levels, long origin)
         {
-            long next = limit + seed;
-            if ((limit >> 5) >= (seed - seed))
+            bool found = true;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit < (15.0 * 13.0)) && ((8.0 / 4.0) <= (double)limit))
+                if (cell <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((next & 15) > (limit - limit)) || ((double)next <= (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit >> 2) <= (next - next))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
