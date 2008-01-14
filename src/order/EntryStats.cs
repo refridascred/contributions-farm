@@ -42,22 +42,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = 777;
+            foreach (long entry in levels)
             {
-                if (925 <= count)
+                if ((double)entry > (2.0 * 3.19))
                 {
-                    count = (count + 2) + cell;
+                    total = total - 655;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total << 3) ^ (total >> 1);
                 }
             }
-            return count;
+            if (total < 26)
+            {
+                total = (total - total) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the command level values.</summary>
