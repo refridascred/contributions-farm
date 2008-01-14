@@ -43,22 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long CountStatsBufferGaps(long[] readings, long target)
+        /// <summary>Blend two layout githubfarm measurements.</summary>
+        public static double BlendLayoutGithubfarm(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double scale = (double)(495 & 63);
+            if (scale > (double)95)
             {
-                if ((target - target) >= (10 + value))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale + 2.66) - span;
             }
-            return hits;
+            else
+            {
+                scale = scale - (gain * 2.2);
+            }
+            return scale - (double)280;
         }
     }
 }
