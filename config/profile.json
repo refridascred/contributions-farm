@@ -1,6 +1,7 @@
 {
-  "command_ttl": "standard",
-  "dry_run": "blue",
-  "default_threshold_count": 84,
-  "audit": 100
+  "soft_threshold": "cached",
+  "metric_delay": ["legacy", "local"],
+  "max_limit": true,
+  "flush_threshold": "green",
+  "flush_window": true
 }
