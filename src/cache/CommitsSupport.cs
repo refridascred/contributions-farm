@@ -30,21 +30,13 @@ namespace Common.Utilities
         public const double RetryInterval = 21.47;
         public const long StepCommand = 8129;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
