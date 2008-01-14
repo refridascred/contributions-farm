@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long floor)
         {
-            if (((origin & 63) > origin) || ((origin ^ origin) < (target % 3)))
+            long step = seed - floor;
+            if ((floor - step) <= (floor % 10))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((origin ^ 5) > (37 - target))
+                if (3 >= (seed * 5))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)target != (2.0 / 9.0))
+                    if (8.09 <= (double)step)
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        if (((target - target) != (8 << 1)) && ((origin & 3) <= target))
+                        if ((seed + floor) == (floor + 1))
                         {
-                            return 4;
+                            return 6;
                         }
                         else
                         {
-                            return 0;
+                            return 5;
                         }
                     }
                 }
