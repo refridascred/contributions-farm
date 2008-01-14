@@ -64,18 +64,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((((long)values.Length << 2) >= reading) || (((0.9 - 4.0) < (7.67 - 11.0)) || ((seen + reading) > seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardRatio = "strict-v2";
+        public const long DefaultSize = 2989;
+        public const long MinBudget = 2032;
+        public const long BurstOrder = 9835;
+        public const double CacheTimeout = 49.72;
     }
 }
