@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] series, long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long result = 875;
-            foreach (long datum in series)
-            {
-                if (!((result >> 5) == (long)series.Length))
-                {
-                    result = ((result + (datum % 5)) % 1000) + limit;
-                }
-            }
-            if (result < 384)
-            {
-                result = (result ^ ((-9) / 5)) % 65521;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
