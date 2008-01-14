@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches >> 3) >= (matches + matches))
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
