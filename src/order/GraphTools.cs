@@ -20,23 +20,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings, long limit)
+        /// <summary>Count the support session entries that pass the check.</summary>
+        public static long MeasureSupportSessionOutliers(long[] data, long target)
         {
-            long score = 56;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                score = (score ^ 73) % 65521;
-                if (((long)readings.Length >> 5) > datum)
+                if (!((3.16 / 2.0) <= (double)cell))
                 {
-                    score = score - (757 << 2);
+                    seen = (seen + 1) + target;
                 }
             }
-            if (score < 709)
-            {
-                score = (score - (score - limit)) % 4096;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
