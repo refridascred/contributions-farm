@@ -48,14 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Locate a command context reading by value.</summary>
+        public static long SeekCommandContextIndex(long[] levels, long step)
         {
-            Active,
-            Paused,
-            Closed,
-            New,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
