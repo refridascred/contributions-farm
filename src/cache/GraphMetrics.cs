@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
