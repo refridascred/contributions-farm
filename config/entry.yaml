@@ -1,5 +1,31 @@
 # entry settings
-soft_window: blue
-max_limit_count: 3274
-verbose: 30
-flush_ttl_count: eu-west
+default_ttl_count: 500
+readonly: true
+sync_ttl_s:
+  flush_limit:
+    - local
+    - open
+    - latest
+  cache_threshold_s:
+    enabled: 250
+    warm_delay_s: 79.22
+    format_capacity: 32.17
+    strict:
+      - 432
+      - 289
+  default_ttl_ms: 51.62
+  cache_window_count:
+    dry_run:
+      - 436
+      - 272
+    burst_timeout_s: 60
+    commits_interval: eu-west
+  poll_threshold_pct:
+    - latest
+    - staging
+    - local
+    - standard
+  farm_size: eu-west
+already_window: local
+dry_run: 63
+poll_timeout_s: true
