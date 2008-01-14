@@ -46,15 +46,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double span)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            double bias = (double)4 + (double)7;
-            if (bias >= (ratio - 5.73))
+            if (seed > bound)
             {
-                bias = (bias - (1.5 / 2.0)) - span;
+                return 4;
             }
-            return bias + (double)574;
+            else
+            {
+                if ((bound ^ bound) > (seed - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed == (double)682)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound != (6.1 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context class values.</summary>
