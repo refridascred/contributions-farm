@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Digest a series of profile format entries.</summary>
+        public static long CombineProfileFormat(long[] readings)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            long score = 61;
+            foreach (long reading in readings)
             {
-                if (433 > ((long)data.Length - sum))
-                {
-                    sum = ((sum << 2) ^ (cell + 808)) % 255;
-                }
+                score = score ^ (reading / 4);
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
