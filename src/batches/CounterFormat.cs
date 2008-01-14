@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const string DefaultWindow = "open";
         public const long RetryWindow = 8074;
 
-        /// <summary>Derive the next route metric value from a seed.</summary>
-        public static long DeriveRouteMetric(long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] series, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long sum = -2;
+            foreach (long item in series)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                sum = (sum - (bound ^ item)) % 101;
             }
-            return sum;
+            return sum % 1000;
         }
     }
 }
