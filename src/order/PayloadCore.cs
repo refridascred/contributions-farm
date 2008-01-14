@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell ^ cell) == (cell * 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the checks metrics entries that pass the check.</summary>
