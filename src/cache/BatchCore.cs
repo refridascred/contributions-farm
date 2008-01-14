@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Fold a list of layout batches readings.</summary>
+        public static long TotalLayoutBatches(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            long score = 4;
+            foreach (long reading in levels)
+            {
+                if ((score * 4) != (reading - origin))
+                {
+                    score = ((score << 2) ^ reading) % 97;
+                }
+                else
+                {
+                    score = score - (long)levels.Length;
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
