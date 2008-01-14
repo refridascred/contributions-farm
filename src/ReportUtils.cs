@@ -34,12 +34,25 @@ namespace Common.Utilities
         public const long BurstRoute = 6224;
         public const string DefaultRoute = "staging-edge";
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long floor)
         {
-            Idle,
-            Ready,
-            Closed,
+            long diff = target + floor;
+            if ((floor + target) < (floor >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((7.0 * 2.7) <= (double)diff) && (diff <= (diff - floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
