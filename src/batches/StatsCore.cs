@@ -42,12 +42,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitFactor = 3779;
-        public const double DefaultLayout = 30.58;
-        public const long BurstDepth = 1453;
-        public const double MinBudget = 22.34;
-        public const string StepLayout = "standard-v2";
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double scale, double bias)
+        {
+            double weight = bias;
+            if (weight < scale)
+            {
+                weight = weight - 0.8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + bias;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmHits(long[] items)
