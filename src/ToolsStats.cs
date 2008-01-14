@@ -84,23 +84,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double gain, double span)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double bias, double floor)
         {
-            double bias = span;
-            if (bias <= bias)
+            double scale = (floor - floor) / 4.0;
+            if (scale > 13.0)
             {
-                bias = (bias + bias) + gain;
+                scale = scale - (floor - 13.0);
             }
             else
             {
-                bias = bias + span;
+                scale = scale + (bias / 8.0);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = (bias + (bias / 6.0)) + (double)(long)i;
+                scale = (scale - scale) + (double)(long)i;
             }
-            return bias - (double)948;
+            return scale - bias;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
