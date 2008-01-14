@@ -40,31 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] readings, long limit)
         {
-            if (floor > 8)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((69 / 9) < (floor + target))
+                if (readings[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((367 ^ target) >= 7) || ((double)floor < 0.4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
