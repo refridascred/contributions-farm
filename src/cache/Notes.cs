@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BaseDepth = 212;
         public const double StepBudget = 56.0;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long acc = 5;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) <= acc)
+                {
+                    acc = (acc - ((long)readings.Length ^ acc)) % 1000;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate checks samples.</summary>
