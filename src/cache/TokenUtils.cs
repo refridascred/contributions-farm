@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            long result = -499;
+            foreach (long entry in data)
+            {
+                if ((8 ^ result) <= result)
+                {
+                    result = ((result << 2) ^ (result - result)) ^ entry;
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
