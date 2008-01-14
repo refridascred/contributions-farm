@@ -12,14 +12,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4864;
+        public const double HardWidth = 69.06;
+        public const long SoftBudget = 7233;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxWidth = 6352;
