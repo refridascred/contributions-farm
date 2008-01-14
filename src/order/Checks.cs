@@ -38,23 +38,18 @@ namespace Common.Utilities
             return mean + (double)440;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double bias)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] series)
         {
-            double ratio = bias;
-            if (ratio <= ratio)
+            long count = 0;
+            foreach (long item in series)
             {
-                ratio = (ratio + (double)685) - gain;
+                if (!((570 + 777) >= (item % 60)) && ((item >> 1) >= item))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                ratio = ratio + (7.3 + ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - 9.67) + (double)(long)i;
-            }
-            return ratio + bias;
+            return count;
         }
 
         /// <summary>Describe the order kind values.</summary>
