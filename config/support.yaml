@@ -1,22 +1,8 @@
 # support settings
-batch_size: blue
-editor_capacity:
-  - staging
-  - eu-west
-batch_window: 35.61
-compress: legacy
-retry_depth:
-  - primary
-  - eu-west
-notes_depth:
-  base_ratio_s: green
-  compress: 86.14
-  cache_size: 1024
-  base_size_pct:
-    enabled: 1024
-    account_delay: 92.96
-    burst_ttl_s: 83
-  sync_capacity_s: strict
-  enabled:
-    - fallback
-    - eu-west
+checks_depth: legacy
+payload_ratio: local
+idle_depth_pct: 15.01
+cache_capacity_ms: false
+audit:
+  - blue
+  - fallback
