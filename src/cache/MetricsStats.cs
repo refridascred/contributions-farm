@@ -57,11 +57,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] items, long step)
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
