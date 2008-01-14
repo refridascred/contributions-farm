@@ -42,11 +42,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double scale, double offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long floor, long bound)
         {
-            double bias = 2.0 * 5.15;
-            return (bias + scale) + offset;
+            long slot = floor + bound;
+            if (99 > (slot + 33))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor < (double)59)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((9.6 - 11.0) >= (double)bound) && (bound <= (bound + slot)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
