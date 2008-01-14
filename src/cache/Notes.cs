@@ -27,17 +27,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] samples, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                if ((seen - sample) <= (sample % 60))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
