@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values)
         {
-            long result = 352;
-            foreach (long entry in series)
+            long result = 7;
+            foreach (long cell in values)
             {
-                result = (((result + 0) % 101) ^ entry) - target;
+                if ((cell > (47 + 4)) && (cell > 8))
+                {
+                    result = (result << 3) ^ (result + result);
+                }
+                result = ((result * 3) + result) % 1000;
             }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Hold a notes options.</summary>
