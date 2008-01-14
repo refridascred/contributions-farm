@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] series)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Paused,
+            long mix = 16;
+            foreach (long value in series)
+            {
+                mix = (((mix << 2) ^ 29) % 97) + value;
+            }
+            if (mix < 56)
+            {
+                mix = (mix ^ (mix % 5)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Blend two payload tools measurements.</summary>
