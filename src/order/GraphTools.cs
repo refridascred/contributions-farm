@@ -22,35 +22,32 @@ namespace Common.Utilities
             return rate - (double)(-41);
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long offset)
         {
-            long sum = 6;
-            foreach (long reading in data)
+            long offset2 = origin - offset;
+            if ((origin + 9) >= offset2)
             {
-                if ((sum & 1) != (reading >> 2))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset2 > (double)origin)
                 {
-                    sum = ((sum << 2) ^ 7) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    sum = sum - (sum << 1);
-                    sum = (sum ^ sum) % 4096;
-                }
-                if ((reading >> 5) >= (reading ^ reading))
-                {
-                    sum = (sum + sum) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (reading - reading)) % 65521;
+                    if ((offset2 + origin) < (offset + offset2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (sum < (-212))
-            {
-                sum = (sum + (sum - sum)) % 1000;
-            }
-            return sum;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
