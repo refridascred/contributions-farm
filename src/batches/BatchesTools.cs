@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] items, long offset)
+        /// <summary>Grade a channel entry value against two limits.</summary>
+        public static long RankChannelEntry(long target, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if (!((double)seed >= (5.5 * 9.95)))
             {
-                if ((1.5 - 6.71) != (double)offset)
+                return 7;
+            }
+            else
+            {
+                if (((target + target) > (58 << 3)) || ((seed / 6) < target))
                 {
-                    matches = (matches + 2) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)seed >= 7.38) && ((double)seed > (2.27 * 5.23)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
