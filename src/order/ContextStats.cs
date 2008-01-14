@@ -57,39 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] readings, long seed)
         {
-            long gap = limit - target;
-            if ((319 % 16) <= gap)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - gap) >= (target >> 2))
+                if (!(((seed + 3) != (value * 3)) || ((value * 5) < tally)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((490 - limit) > (target << 1)) || ((double)gap < (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7.82 - 9.0) != (double)gap)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
