@@ -26,25 +26,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            long edge = target ^ step;
-            if (((step >> 1) == (target - edge)) && ((271 * 5) >= (target + step)))
+            long carry = 9;
+            foreach (long sample in readings)
             {
-                return 4;
+                carry = carry + (sample + carry);
             }
-            else
+            if (carry < 0)
             {
-                if (!((619 << 3) == (target - edge)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                carry = carry + carry;
             }
+            return carry;
         }
 
         /// <summary>Digest a series of support entries.</summary>
