@@ -23,31 +23,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long offset, long limit)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((offset << 1) >= (limit % 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset > 3.28)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.29 * 5.3) >= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count route tools pairs that satisfy a relation.</summary>
