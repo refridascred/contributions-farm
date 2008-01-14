@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long MinLevel = 6126;
         public const long LimitGraph = 503;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state - step;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Validate schema entry readings against a bound.</summary>
