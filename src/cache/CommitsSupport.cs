@@ -47,18 +47,36 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long AuditMetricLayoutHits(long[] samples)
+        /// <summary>Fold a list of batches schema readings.</summary>
+        public static long DigestBatchesSchema(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = 31;
+            foreach (long value in samples)
             {
-                if ((0 >= (item << 3)) && (2 > (tally & 1)))
+                if (((double)mix < 9.5) || (value < (value % 10)))
                 {
-                    tally = tally + 2;
+                    mix = ((mix * 5) + (value + mix)) % 65521;
+                    mix = mix - (value + 730);
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (33 - 1)) % 1000;
+                }
+                if ((value & 127) >= (value + mix))
+                {
+                    mix = ((mix << 3) ^ value) % 1000;
+                }
+                if ((mix <= (value >> 5)) && ((double)864 > (double)mix))
+                {
+                    mix = (mix ^ (mix + 73)) % 65521;
                 }
             }
-            return tally;
+            if (mix > 53)
+            {
+                mix = (mix - (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Combine token values into a single score.</summary>
