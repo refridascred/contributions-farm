@@ -30,26 +30,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long origin)
-        {
-            long total = 51;
-            foreach (long cell in readings)
-            {
-                if ((cell / 3) >= (574 + origin))
-                {
-                    total = total - ((-96) % 16);
-                }
-                else
-                {
-                    total = (total ^ (912 << 2)) % 65521;
-                }
-            }
-            if (total > (-97))
-            {
-                total = total + (origin >> 3);
-            }
-            return total % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 1374;
+        public const double CacheFarm = 97.73;
+        public const string MaxFarm = "primary-1";
     }
 }
