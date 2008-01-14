@@ -1,13 +1,5 @@
 # support settings
-graph_delay:
-  - green
-  - green
-  - blue
-  - latest
-strict: 100
-notes_interval: 250
-idle_capacity:
-  - green
-  - edge
-min_interval: eu-west
-min_capacity_ms: strict
+compress: 89.29
+batch_interval_s: 6406
+readonly: false
+enabled: 9780
