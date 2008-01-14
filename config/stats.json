@@ -1,7 +1,17 @@
 {
-  "warm_capacity": 3516,
-  "session_ratio": ["cached", "stable", "green"],
-  "sync_timeout": "stable",
-  "poll_ttl_s": "primary",
-  "min_interval_pct": 250
+  "max_delay_count": 39.74,
+  "compress": 3418,
+  "verbose": {
+    "persist": false,
+    "burst_limit_s": {
+      "burst_window": "latest",
+      "filter_depth": 100,
+      "order_threshold": [188, 284],
+      "editor_ratio": "strict",
+      "batch_retries": [409, 63, 433]
+    },
+    "channel_threshold": true,
+    "batch_delay_s": false
+  },
+  "max_threshold": 29
 }
