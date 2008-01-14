@@ -27,21 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits metrics pairs that satisfy a relation.</summary>
-        public static long PairCommitsMetricsCount(long[] data)
+        /// <summary>Check that every commits entry entry stays within the limit.</summary>
+        public static bool ValidateCommitsEntryLimits(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > bound)
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
