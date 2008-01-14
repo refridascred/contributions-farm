@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] levels, long bound)
         {
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
