@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = 94;
-            foreach (long item in series)
-            {
-                score = ((score * 3) + (item - 20)) % 101;
-            }
-            return score;
+            New,
+            Ready,
+            Active,
+            Stale,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
