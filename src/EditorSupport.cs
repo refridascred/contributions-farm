@@ -59,19 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double BlendBatchesCommits(double bias, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            double scale = (bias - bias) * 5.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((mix + mix) >= (bound + mix))
-                {
-                    mix = ((mix * 3) + ((long)i ^ bound)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                scale = ((scale + (double)1) - (double)(long)i) + span;
             }
-            return mix;
+            return scale - (bias + bias);
         }
 
         /// <summary>Describe the buffer mode values.</summary>
