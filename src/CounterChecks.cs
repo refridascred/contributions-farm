@@ -46,11 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 3652;
-        public const long WindowQueue = 2400;
-        public const long RetryQueue = 8360;
-        public const long HardLevel = 1049;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Ready,
+            Done,
+            Queued,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
