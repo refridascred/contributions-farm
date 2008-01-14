@@ -30,12 +30,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowDepth = 8342;
-        public const long DefaultCluster = 2111;
-        public const long LimitCluster = 2551;
-        public const long MinCluster = 3615;
-        public const long CacheCluster = 2007;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BaseCount = "staging-v2";
