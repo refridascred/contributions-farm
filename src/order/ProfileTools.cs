@@ -68,39 +68,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long edge = origin ^ floor;
-            if ((edge / 6) == (731 * 4))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(floor < (floor >> 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (615 > (edge + edge))
+                    if ((items[i] ^ items[j]) != 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.0 + 6.2) != (double)edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
