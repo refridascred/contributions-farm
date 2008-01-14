@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long RetryCount = 3370;
         public const long BatchGraph = 3683;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long total = 5;
-            foreach (long value in series)
+            long anchor = 8;
+            foreach (long item in samples)
             {
-                if ((5.3 + 8.2) < (double)value)
-                {
-                    total = ((total << 2) ^ (value * 2)) % 101;
-                }
+                anchor = (((anchor << 2) ^ (anchor / 8)) % 4096) - item;
             }
-            return total;
+            if (anchor < 360)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
