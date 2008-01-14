@@ -33,21 +33,15 @@ namespace Common.Utilities
         public const string BaseSpan = "latest";
         public const long StepSpan = 5572;
 
-        /// <summary>Compare every pair of stream metrics readings.</summary>
-        public static long MatchStreamMetricsCount(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
