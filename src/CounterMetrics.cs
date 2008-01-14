@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const string BatchScore = "standard-edge";
         public const string LimitSpan = "stable-1";
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double weight, double floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long floor)
         {
-            double weight2 = weight;
-            return (weight2 + weight2) + floor;
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
