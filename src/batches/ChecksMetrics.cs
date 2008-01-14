@@ -42,19 +42,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] data, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > origin)
+                if (series[i] >= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first counter checks entry that matches the target.</summary>
