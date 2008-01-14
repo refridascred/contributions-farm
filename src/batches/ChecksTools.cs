@@ -29,12 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long seed)
         {
-            Dropped,
-            Done,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support level values.</summary>
