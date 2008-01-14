@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long bound, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] data, long step)
         {
-            if (bound > step)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound / 8) == (0 % 60)))
+                if (datum <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)step == (19.0 / 3.0)) || ((step + 51) >= (bound ^ bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound * 5) <= (step * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
