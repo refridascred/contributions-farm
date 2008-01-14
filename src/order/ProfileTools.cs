@@ -54,18 +54,39 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the contributi entry entries that pass the check.</summary>
-        public static long AuditContributiEntryGaps(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long edge = origin ^ floor;
+            if ((edge / 6) == (731 * 4))
             {
-                if ((731 & 127) >= matches)
+                return 5;
+            }
+            else
+            {
+                if (!(floor < (floor >> 4)))
                 {
-                    matches = (matches + 1) - sample;
+                    return 7;
+                }
+                else
+                {
+                    if (615 > (edge + edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.0 + 6.2) != (double)edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
