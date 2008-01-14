@@ -52,16 +52,18 @@ namespace Common.Utilities
         public const double MinBudget = 22.34;
         public const string StepLayout = "standard-v2";
 
-        /// <summary>Derive the next token batch value from a seed.</summary>
-        public static long StepTokenBatch(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                total = (total + ((long)i << 3)) % 101;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((entry * 2) < (count << 2))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
