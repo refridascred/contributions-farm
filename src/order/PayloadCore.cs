@@ -39,25 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long floor, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] values, long floor)
         {
-            long cur = floor ^ bound;
-            if ((double)bound != (0.3 + 8.61))
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (399 < (floor + cur))
+                if (cell != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
