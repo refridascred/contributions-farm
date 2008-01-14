@@ -1,14 +1,5 @@
 # entry settings
-metric_limit:
-  strict: 94
-  cache_window_ms:
-    - 94
-    - 464
-  cache_ratio: 80
-warm_ttl_s: 500
-poll_capacity:
-  base_threshold: 492
-  min_ratio: 60
-  warm_retries_count: 2916
-  dry_run: false
-route_depth: stable
+retry_timeout: 1180
+max_timeout: 81
+enabled: green
+retry_limit: 15.32
