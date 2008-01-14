@@ -20,22 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi account readings against a rule.</summary>
-        public static long AuditContributiAccountMatches(long[] series)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)value > (5.0 * 1.6)))
+                if (readings[i] == offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
