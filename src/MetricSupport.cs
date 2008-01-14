@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] series, long origin)
         {
-            if ((step + seed) == ((-65) + 17))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + seed) >= 72)
+                if ((double)hits < 5.66)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 1) == (step ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((15.0 / 8.0) == (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = ((hits + 3) ^ sample) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a support order reading.</summary>
