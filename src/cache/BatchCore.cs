@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a schema channel counter forward.</summary>
-        public static long StepSchemaChannel(long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] data, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                total = (total + 344) % 1000;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (reading >= floor)
                 {
-                    total = (((total << 3) ^ (total * 3)) % 97) + (long)i2;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
