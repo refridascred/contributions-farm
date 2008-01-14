@@ -59,19 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (cell != offset)
+                if ((matches - value) <= matches)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
