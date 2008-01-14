@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] readings, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (readings[i] < seed)
+                if (sample != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a command summary.</summary>
