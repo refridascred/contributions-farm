@@ -1,33 +1,4 @@
 # githubfarm settings
-editor_ratio:
-  - 397
-  - 100
-order_retries:
-  base_limit_s: 250
-  audit:
-    idle_interval_count: latest
-    dry_run: cached
-    farm_interval: latest
-    tools_retries: false
-    soft_timeout_s:
-      - primary
-      - legacy
-      - legacy
-  cache_retries: true
-  flush_limit: stable
-  min_size_pct: 100
-cache_depth:
-  - 215
-  - 387
-  - 496
-  - 31
-base_size_s: 53.33
-tools_depth:
-  poll_interval_ms: strict
-  filter_interval: open
-  enabled:
-    - staging
-    - open
-  retry_size_pct: 98.35
-  burst_threshold_pct: blue
-  route_depth: 91.18
+flush_timeout_ms: 9040
+stream_ttl: 6294
+default_retries: 76.6
