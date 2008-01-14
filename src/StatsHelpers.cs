@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long StepSpan = 2072;
         public const long HardProfile = 349;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)datum >= 9.0)
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
