@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long floor)
         {
-            long state = 607;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state ^ state) % 65521) + cell;
-                state = state ^ ((long)readings.Length / 9);
-                state = state - (state - state);
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > (-2))
-            {
-                state = ((state << 2) ^ state) % 101;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Check that every counter checks entry stays within the limit.</summary>
