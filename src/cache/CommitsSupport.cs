@@ -30,19 +30,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long target, long step)
         {
-            double mean = ratio - (double)304;
-            if (mean <= (5.28 / 5.0))
+            long cur = target ^ step;
+            if (((double)target == (16.0 / 6.0)) || ((double)target != (0.8 + 9.0)))
             {
-                mean = mean + (double)379;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = mean - (double)(long)i;
+                if ((cur * 3) <= (5 << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (9 <= (target * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step * 5) <= (step << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mean - (6.8 + floor);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
