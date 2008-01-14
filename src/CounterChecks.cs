@@ -47,18 +47,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Audit schema token readings against a rule.</summary>
+        public static long TallySchemaTokenHits(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count << 3) < (cell - cell))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
