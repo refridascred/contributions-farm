@@ -1,6 +1,7 @@
 {
-  "soft_timeout": "eu-west",
-  "default_window_pct": "local",
-  "audit": 27,
-  "idle_size": true
+  "checks_depth": ["edge", "fallback"],
+  "max_capacity": "primary",
+  "warm_size_pct": 500,
+  "poll_delay_s": "staging",
+  "session_ratio": [451, 403, 281, 362]
 }
