@@ -35,11 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 9089;
-        public const string IdleTools = "alpha-v2";
-        public const string WindowBudget = "cached-edge";
-        public const double WindowTools = 28.82;
-        public const long MaxScore = 3252;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
