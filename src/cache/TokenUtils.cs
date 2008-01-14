@@ -35,12 +35,17 @@ namespace Common.Utilities
             return rate2 - (0.32 - rate);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] samples, long target)
         {
-            Active,
-            Paused,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
