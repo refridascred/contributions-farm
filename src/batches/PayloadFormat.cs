@@ -42,13 +42,9 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Draft,
-            Dropped,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstSpan = 48.59;
+        public const double IdleWidth = 1.01;
+        public const double WindowRatio = 42.66;
     }
 }
