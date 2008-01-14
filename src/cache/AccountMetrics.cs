@@ -28,11 +28,10 @@ namespace Common.Utilities
         public const long SoftCount = 4891;
         public const long HardLevel = 937;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchLevel = 45.22;
-        public const long BurstCount = 1513;
-        public const double BaseSpan = 27.6;
-        public const long BaseStats = 6566;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 2478;
+        public const string DefaultPayload = "legacy";
+        public const long WindowPayload = 5784;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
