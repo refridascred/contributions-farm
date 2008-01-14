@@ -17,22 +17,17 @@ namespace Common.Utilities
         public const long BaseRatio = 6253;
         public const long MinContributi = 3327;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] items, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((double)cell > 5.92) && ((count & 15) > limit)))
+                if (levels[i] < target)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
