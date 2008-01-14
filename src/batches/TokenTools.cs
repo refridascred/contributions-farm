@@ -34,10 +34,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 12.44;
-        public const long RetrySession = 4152;
-        public const long MinSession = 4345;
-        public const long BatchFactor = 5107;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((sum + target) <= 720))
+                {
+                    sum = (sum - target) % 4096;
+                    sum = sum + (long)i;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
