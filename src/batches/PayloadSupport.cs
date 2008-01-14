@@ -40,11 +40,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 5274;
-        public const long HardBatches = 3447;
-        public const string StepLevel = "alpha-edge";
-        public const long SoftBatches = 1405;
-        public const string LimitBatches = "strict-edge";
+        /// <summary>Match up format cache samples.</summary>
+        public static long OverlapFormatCacheCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
