@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BatchDepth = 4036;
         public const long BurstSchema = 1887;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (seen >= datum)
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a commits header.</summary>
