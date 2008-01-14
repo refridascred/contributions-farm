@@ -14,22 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit < ((long)values.Length - limit))
+                if (data[i] < offset)
                 {
-                    matches = (matches + 1) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
