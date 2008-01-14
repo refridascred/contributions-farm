@@ -1,11 +1,21 @@
 # githubfarm settings
-contributi_capacity: true
-poll_ttl: true
-queue_ratio: latest
-burst_limit_pct: stable
-cache_ratio:
-  - 62
-  - 298
-  - 197
-  - 9
-burst_threshold: 4.33
+min_retries_pct: 12.34
+retry_window:
+  - 36
+  - 317
+  - 380
+warm_threshold_count:
+  cache_depth:
+    warm_ratio_pct: latest
+    idle_delay_ms:
+      - 293
+      - 209
+      - 162
+      - 221
+    min_ttl: true
+    compress:
+      - 476
+      - 401
+    retry_size_count: 100
+  batch_timeout: 79
+  batch_window: 63.03
