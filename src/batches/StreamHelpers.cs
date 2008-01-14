@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] data, long offset)
+        /// <summary>Look up the position of a notes account sample.</summary>
+        public static long LocateNotesAccountIndex(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= offset)
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
