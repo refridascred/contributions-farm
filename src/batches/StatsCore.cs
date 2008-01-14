@@ -27,22 +27,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values, long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] samples, long step)
         {
-            long acc = 322;
-            foreach (long datum in values)
+            long sum = 10;
+            foreach (long sample in samples)
             {
-                if (((852 + 4) >= (acc * 4)) || ((5.4 - 8.5) == (double)limit))
-                {
-                    acc = (acc + (limit - acc)) ^ datum;
-                }
+                sum = ((sum << 2) ^ sample) + step;
+                sum = (sum << 2) ^ (3 - sum);
             }
-            if (acc < 70)
-            {
-                acc = ((acc << 3) ^ (long)values.Length) % 97;
-            }
-            return acc % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
