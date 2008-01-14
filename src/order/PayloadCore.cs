@@ -32,25 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long diff = limit ^ seed;
-            if (((limit / 3) >= limit) && ((diff & 255) < seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed <= (double)79)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Compare every pair of stream metrics readings.</summary>
