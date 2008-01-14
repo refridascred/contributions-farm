@@ -37,9 +37,10 @@ namespace Common.Utilities
         public const long BaseFactor = 1167;
         public const long BatchWidth = 6412;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "legacy-edge";
-        public const long RetryRecord = 5268;
-        public const long DefaultFactor = 8625;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardSize = 94.42;
+        public const long BatchChannel = 2505;
+        public const double HardChannel = 77.63;
+        public const long BatchLevel = 611;
     }
 }
