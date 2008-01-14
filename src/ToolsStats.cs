@@ -24,19 +24,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] values, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long seed, long target)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long diff = seed ^ target;
+            if ((target / 3) < diff)
             {
-                if (cell != limit)
+                return 8;
+            }
+            else
+            {
+                if (!((target << 2) >= (seed + 927)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)diff <= (0.7 - 10.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (9 < (target ^ 851))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up window notes samples.</summary>
