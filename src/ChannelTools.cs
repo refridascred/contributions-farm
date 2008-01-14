@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] data, long bound)
         {
-            long carry = 49;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry * 3)) % 255;
-                if ((sample + carry) < (carry / 5))
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    carry = ((carry << 3) ^ (carry & 15)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
