@@ -41,20 +41,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the payload order series from a seed.</summary>
-        public static long DerivePayloadOrder(long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark ^ ((long)i ^ floor);
-                if (((long)i ^ mark) <= mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 2) ^ ((long)i - 72)) % 255;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
     }
 }
