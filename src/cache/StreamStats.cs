@@ -27,23 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double bias)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double rate = bias;
-            if (rate > ratio)
-            {
-                rate = rate + 5.73;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (5.0 + rate)) + (double)(long)i;
-            }
-            return rate - ratio;
+            Done,
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Blend two metric measurements.</summary>
