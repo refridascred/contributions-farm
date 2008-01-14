@@ -46,15 +46,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a already metrics counter forward.</summary>
-        public static long DeriveAlreadyMetrics(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 12.44;
+        public const long RetrySession = 4152;
+        public const long MinSession = 4345;
+        public const long BatchFactor = 5107;
     }
 }
