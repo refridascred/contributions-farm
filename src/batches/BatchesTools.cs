@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the account schema entries that pass the check.</summary>
-        public static long CountAccountSchemaOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + tally) < (bound << 1))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "stable-v2";
+        public const string MinWidth = "fallback-edge";
+        public const long RetrySize = 4302;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] items, long target)
