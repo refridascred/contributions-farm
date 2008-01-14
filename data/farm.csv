@@ -1,6 +1,6 @@
-id,owner,weight
-1,eu-west,540
-2,470,staging
-3,latest,24.17
-4,39.82,legacy
-5,25.14,10.6
+id,count,owner
+1,907,643
+2,773,385
+3,fallback,staging
+4,19.43,93.55
+5,60.24,67
