@@ -1,6 +1,5 @@
 {
-  "base_timeout_s": "primary",
-  "readonly": "edge",
-  "compress": 65.62,
-  "max_depth": "eu-west"
+  "min_size": 8442,
+  "audit": "staging",
+  "batch_retries_ms": "standard"
 }
