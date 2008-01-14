@@ -58,19 +58,19 @@ namespace Common.Utilities
             return (ratio + (ratio * 0.13)) + floor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (datum <= seed)
+                if (sample <= limit)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
