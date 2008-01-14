@@ -41,12 +41,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            Synced,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
