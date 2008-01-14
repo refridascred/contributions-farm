@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = 3;
-            foreach (long reading in data)
-            {
-                if (((-4) - reading) == (total - bound))
-                {
-                    total = (total * 5) + (bound << 2);
-                }
-            }
-            if (total < 71)
-            {
-                total = (total * 2) + (total * 3);
-            }
-            return total % 65521;
+            Active,
+            New,
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
