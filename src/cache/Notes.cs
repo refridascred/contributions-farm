@@ -41,16 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items)
-        {
-            long result = 1;
-            foreach (long value in items)
-            {
-                result = (result - result) ^ value;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 739;
+        public const string RetrySchema = "legacy-1";
+        public const long BurstWidth = 1609;
+        public const double MinSchema = 6.33;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
