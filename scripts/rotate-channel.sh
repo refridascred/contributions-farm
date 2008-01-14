@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+CHANNEL_LIMIT=455
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    stable)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in green cached legacy; do
+for item in cached green; do
     log "checking ${item}"
 done
