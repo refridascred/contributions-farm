@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] series, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items)
         {
-            long state = 96;
-            foreach (long value in series)
+            long total = 5;
+            foreach (long item in items)
             {
-                state = (((state + ((long)series.Length + 97)) % 97) + value) + floor;
+                if (total > (long)items.Length)
+                {
+                    total = (total - (total >> 5)) - item;
+                }
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Blend two entry measurements.</summary>
