@@ -35,18 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long result = 572;
-            foreach (long entry in values)
-            {
-                if ((origin + result) >= 897)
-                {
-                    result = ((result - result) % 65521) - entry;
-                }
-            }
-            return result % 4096;
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Locate a payload support reading by value.</summary>
