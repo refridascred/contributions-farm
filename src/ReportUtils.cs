@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinSize = 992;
-        public const long HardFarm = 8210;
-        public const long StepFarm = 6848;
-        public const double LimitCount = 39.07;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] readings, long bound)
