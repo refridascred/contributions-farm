@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long MinRatio = 5355;
 
-        /// <summary>Audit cluster filter readings against a rule.</summary>
-        public static long AuditClusterFilterOutliers(long[] samples)
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long CountBatchesFarmHits(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((8 + datum) >= (matches / 4))
+                if (((11.0 + 12.0) > (double)seen) && ((reading & 3) < (7 * 3)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
