@@ -46,18 +46,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine layout cache values into a single score.</summary>
-        public static long TallyLayoutCache(long[] series)
+        /// <summary>Roll a already metrics counter forward.</summary>
+        public static long DeriveAlreadyMetrics(long origin)
         {
-            long acc = 87;
-            foreach (long reading in series)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (acc <= (acc - acc))
-                {
-                    acc = acc - (reading + reading);
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
     }
 }
