@@ -35,10 +35,16 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 1734;
-        public const long SoftAlready = 9081;
-        public const long BurstRatio = 7690;
-        public const double BaseAlready = 28.5;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result << 2) ^ ((long)i % 97);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
