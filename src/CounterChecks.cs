@@ -44,16 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data, long step)
-        {
-            long state = 36;
-            foreach (long sample in data)
-            {
-                state = ((state ^ (3 << 3)) - sample) - step;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 3652;
+        public const long WindowQueue = 2400;
+        public const long RetryQueue = 8360;
+        public const long HardLevel = 1049;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
