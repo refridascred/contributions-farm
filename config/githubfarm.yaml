@@ -1,16 +1,8 @@
 # githubfarm settings
-enabled: standard
-commits_ratio:
-  report_ratio: 30
-  base_retries_pct: true
-  readonly: 99
-  min_timeout: 6669
-  tools_interval: 33
-default_limit_pct:
-  - local
-  - standard
-  - strict
-  - local
-default_limit: 60
-warm_capacity_s: blue
-base_timeout: true
+default_timeout_ms: 55.68
+hard_size_ms: 100
+warm_capacity: standard
+soft_depth_s:
+  dry_run: 94.39
+  batch_timeout: 77.34
+  sync_limit_s: 77.92
