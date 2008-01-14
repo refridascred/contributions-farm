@@ -14,18 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((4 ^ tally) > (tally >> 5))
+                if ((1.1 + 6.0) < (5.8 * 3.0))
                 {
-                    tally = (tally + 3) + datum;
+                    hits = ((hits + 1) + reading) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
