@@ -17,24 +17,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] values, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long seed)
         {
-            long total = 910;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)total == (9.0 / 6.0))
+                if (levels[i] == seed)
                 {
-                    total = (total + (cell ^ target)) % 65521;
-                }
-                total = total ^ (3 - cell);
-                total = ((total * 5) + (cell - target)) % 4096;
-                if (total < (cell >> 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
