@@ -1,6 +1,8 @@
 {
-  "cache_threshold": true,
-  "dry_run": 9213,
-  "counter_capacity": "blue",
-  "default_ttl": false
+  "idle_ratio_ms": 972,
+  "audit": [360, 58, 212, 236],
+  "flush_interval_pct": ["strict", "edge"],
+  "retry_window_ms": 1024,
+  "warm_ttl_s": true,
+  "batch_threshold_s": true
 }
