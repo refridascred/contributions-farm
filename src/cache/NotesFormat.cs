@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate buffer account readings against a bound.</summary>
-        public static bool GuardBufferAccountBounds(long[] series, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
