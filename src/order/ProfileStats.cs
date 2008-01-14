@@ -20,15 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of already stats readings.</summary>
-        public static long FoldAlreadyStats(long[] series)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long total = 126;
-            foreach (long value in series)
-            {
-                total = (total - 2) + value;
-            }
-            return total;
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a format entry.</summary>
