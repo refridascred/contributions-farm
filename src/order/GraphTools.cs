@@ -33,25 +33,18 @@ namespace Common.Utilities
             return rate - (double)(-41);
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] levels, long offset)
         {
-            long carry = 173;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((7.0 + 1.0) <= (double)target) && ((double)carry <= (5.26 * 7.0)))
+                if (((item ^ seen) != (offset - item)) && ((item << 3) > (item * 2)))
                 {
-                    carry = ((carry * 3) + (carry / 9)) % 1000;
-                    carry = ((carry * 2) + (56 - (-36))) % 97;
+                    seen = seen + 1;
                 }
-                carry = (carry - ((-33) - target)) % 97;
-                carry = (carry - (value - 28)) % 4096;
             }
-            if (carry > 43)
-            {
-                carry = (carry - (66 - target)) % 65521;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
