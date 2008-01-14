@@ -66,32 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks buffer input into a small class.</summary>
-        public static long ClassifyChecksBuffer(long offset, long seed)
-        {
-            long slot = offset ^ seed;
-            if ((offset >= (slot - slot)) || ((1 - slot) <= slot))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.83 * 4.0) > (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed & 7) < slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "cached-edge";
+        public const long MinCache = 8107;
+        public const long BatchRatio = 2423;
+        public const long HardCache = 3408;
+        public const long LimitDepth = 7660;
     }
 }
