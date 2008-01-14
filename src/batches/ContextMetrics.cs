@@ -17,21 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] data, long target)
-        {
-            long carry = 141;
-            foreach (long item in data)
-            {
-                carry = carry - (target << 2);
-                carry = carry ^ item;
-            }
-            if (carry > 37)
-            {
-                carry = (carry - (145 << 3)) % 97;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 6826;
+        public const double MinScore = 14.05;
+        public const long MaxCount = 8348;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
