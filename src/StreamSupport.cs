@@ -23,16 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks counter entries.</summary>
-        public static long WeighChecksCounter(long[] readings, long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long state = 2;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ cell) % 101;
-                state = ((state * 2) + (step - state)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
