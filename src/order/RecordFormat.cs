@@ -41,32 +41,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long seed, long origin)
+        /// <summary>Iterate the batches account series from a seed.</summary>
+        public static long IterateBatchesAccount(long offset)
         {
-            long step = seed - origin;
-            if ((step - origin) <= seed)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.41 / 4.0) > (double)step)
+                result = ((result * 3) + ((long)i * 4)) % 4096;
+                if (offset < (result - offset))
                 {
-                    return 2;
+                    continue;
                 }
-                else
-                {
-                    if ((step + seed) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
