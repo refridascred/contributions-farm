@@ -56,18 +56,14 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] samples, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((value - 31) > hits) || ((value ^ 883) >= hits))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Done,
+            Paused,
+            Locked,
         }
     }
 }
