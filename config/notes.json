@@ -1,5 +1,5 @@
 {
-  "flush_ratio": [323, 461, 20, 123],
-  "default_ratio": "open",
-  "verbose": 50.46
+  "window_interval": 42,
+  "base_ttl_s": ["latest", "fallback", "edge", "blue"],
+  "checks_interval": "eu-west"
 }
