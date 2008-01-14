@@ -73,19 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftSpan = "stable-1";
+        public const long MaxFormat = 6647;
+        public const long HardFormat = 5998;
+        public const double StepFactor = 96.94;
     }
 }
