@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (!((reading - 4) > (reading ^ seen)) || ((seen - reading) > (reading % 5)))
+                if (5.0 < (double)hits)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
