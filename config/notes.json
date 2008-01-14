@@ -1,13 +1,18 @@
 {
-  "hard_timeout_s": {
-    "soft_ratio": "legacy",
-    "cache_threshold_s": 1024,
-    "retry_depth_s": "eu-west",
-    "route_ttl": 71.69,
-    "idle_threshold": true
+  "compress": 68,
+  "sync_interval": 5485,
+  "record_timeout": 7889,
+  "base_retries": {
+    "audit": {
+      "report_timeout": "edge",
+      "hard_timeout_ms": 7,
+      "retry_window_ms": "staging",
+      "readonly": "legacy",
+      "default_ttl_pct": false,
+      "hard_threshold": 27.86
+    },
+    "default_depth_count": "stable",
+    "warm_ratio_ms": "standard"
   },
-  "checks_capacity": false,
-  "max_limit_ms": 74.36,
-  "poll_timeout_s": [213, 473, 6],
-  "poll_timeout_ms": [474, 64, 303, 32]
+  "flush_retries_s": false
 }
