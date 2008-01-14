@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long SoftChecks = 9008;
         public const long DefaultCount = 2939;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "strict-edge";
-        public const long MaxScore = 7618;
-        public const long LimitFilter = 4437;
-        public const long MaxLevel = 4317;
-        public const double DefaultTimeout = 45.97;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
