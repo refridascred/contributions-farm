@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a report layout reading.</summary>
-        public static double BlendReportLayout(double scale, double floor)
-        {
-            double gain = (floor * 6.2) + (double)593;
-            if (gain < (double)347)
-            {
-                gain = gain - (double)4;
-            }
-            else
-            {
-                gain = gain + (scale * 16.0);
-            }
-            return gain - gain;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepInterval = 6028;
+        public const long LimitSpan = 810;
+        public const double RetryRecord = 21.24;
+        public const long StepRecord = 8095;
+        public const long SoftRecord = 3580;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] series)
