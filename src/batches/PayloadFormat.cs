@@ -42,9 +42,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstSpan = 48.59;
-        public const double IdleWidth = 1.01;
-        public const double WindowRatio = 42.66;
+        /// <summary>Locate a payload support reading by value.</summary>
+        public static long LocatePayloadSupportIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
