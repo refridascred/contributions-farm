@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long floor)
         {
-            Queued,
-            Active,
-            Paused,
-            Pending,
-            Idle,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two record measurements.</summary>
