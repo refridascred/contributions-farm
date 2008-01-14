@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] levels, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
