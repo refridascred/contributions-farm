@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of batches record readings.</summary>
-        public static long TallyBatchesRecord(long[] samples)
+        /// <summary>Digest a series of format stats entries.</summary>
+        public static long TallyFormatStats(long[] data, long floor)
         {
-            long score = 5;
-            foreach (long reading in samples)
+            long result = 94;
+            foreach (long value in data)
             {
-                if (((score - score) == (score % 16)) || ((7.5 - 8.53) == (double)score))
+                if ((double)floor < (4.5 + 0.6))
                 {
-                    score = (score * 3) + score;
-                }
-                if ((623 << 3) != (score ^ reading))
-                {
-                    score = ((score << 3) ^ 56) % 1000;
-                }
-                else
-                {
-                    score = ((score << 2) ^ reading) % 65521;
+                    result = ((result ^ result) % 4096) + value;
                 }
             }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
