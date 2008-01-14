@@ -31,22 +31,11 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((tally - tally) <= limit) && ((datum + tally) > (972 + (-381))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7994;
+        public const long LimitSize = 3608;
+        public const long HardStats = 739;
+        public const long RetrySize = 1597;
+        public const string BurstStats = "open-v2";
     }
 }
