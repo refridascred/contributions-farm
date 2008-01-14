@@ -52,11 +52,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Derive the next batches layout value from a seed.</summary>
+        public static long StepBatchesLayout(long target)
         {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum ^ (sum + 6)) ^ (long)i2;
+                }
+                sum = (sum - (283 + (long)i)) % 65521;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
