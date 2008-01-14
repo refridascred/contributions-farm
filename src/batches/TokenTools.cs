@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const double CacheTimeout = 89.07;
         public const long MinMetrics = 9104;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxSpan = 53.66;
+        public const long SoftEntry = 9864;
+        public const long MaxBudget = 5329;
+        public const long StepEntry = 5503;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricRange(long[] samples, long limit)
