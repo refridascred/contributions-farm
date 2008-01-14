@@ -1,5 +1,5 @@
 {
-  "default_window_s": 14,
-  "strict": [417, 412],
-  "compress": 60
+  "audit": "local",
+  "metrics_delay": 34,
+  "counter_size": ["stable", "cached", "eu-west"]
 }
