@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] readings, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long total = -52;
-            foreach (long reading in readings)
-            {
-                if (reading < (reading + 682))
-                {
-                    total = ((total << 2) ^ (reading ^ total)) + offset;
-                }
-            }
-            if (total < (-7))
-            {
-                total = (total ^ (1 * 3)) % 4096;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
