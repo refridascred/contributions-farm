@@ -74,16 +74,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                sum = ((sum << 3) ^ (79 << 2)) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (((seen - seen) > (8 & 31)) || (((seen - item) < (seen << 1)) || (seen > (item & 7))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
