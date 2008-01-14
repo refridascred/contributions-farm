@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count >= (step - value))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 39.29;
+        public const double WindowFactor = 40.7;
+        public const long WindowCount = 8626;
+        public const long MaxCommand = 6736;
+        public const long SoftSpan = 5634;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
