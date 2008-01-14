@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((origin & 63) > origin) || ((origin ^ origin) < (target % 3)))
             {
-                if (values[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ 5) > (37 - target))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target != (2.0 / 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target - target) != (8 << 1)) && ((origin & 3) <= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
