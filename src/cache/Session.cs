@@ -16,12 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 2185;
-        public const long BatchBudget = 5507;
-        public const long HardQueue = 4562;
-        public const string MaxBudget = "legacy-v2";
-        public const long MaxQueue = 7519;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "staging-v2";
+        public const string MinPayload = "fallback-v2";
+        public const string StepPayload = "stable";
 
         /// <summary>Compare every pair of buffer contributi readings.</summary>
         public static long CompareBufferContributiCount(long[] series)
