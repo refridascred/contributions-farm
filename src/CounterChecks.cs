@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                long offset2 = (sum ^ seed) / 9;
-                if ((((long)i + sum) >= (seed + offset2)) || ((double)sum <= 3.0))
-                {
-                    sum = sum ^ (sum & 7);
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Pending,
+            Done,
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
