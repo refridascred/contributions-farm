@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double scale, double offset)
-        {
-            double weight = offset / 2.0;
-            return (weight + 5.0) + scale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 4915;
+        public const double MaxCommand = 35.26;
+        public const long CacheSize = 2070;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] readings)
