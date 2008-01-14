@@ -41,18 +41,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session layout samples are out of range.</summary>
-        public static long CountSessionLayoutGaps(long[] items, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if ((double)floor != (6.26 + 4.7))
             {
-                if (2.69 < (double)origin)
+                return 2;
+            }
+            else
+            {
+                if (((limit / 4) == (88 >> 1)) && (((-28) + (-5)) != (floor << 2)))
                 {
-                    matches = (matches + 1) - entry;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
