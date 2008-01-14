@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double scale, double span)
         {
-            long slot = bound ^ step;
-            if ((12.0 - 9.0) <= (double)step)
+            double load = (span * 7.5) / 3.0;
+            if (load >= (load * 20.0))
             {
-                return 8;
+                load = load + (scale / 6.0);
             }
-            else
-            {
-                if (((-396) / 6) != (slot / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot / 4) <= (slot + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4 * 3) < (slot / 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return load - (span * 6.5);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
