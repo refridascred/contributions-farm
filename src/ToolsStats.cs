@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long offset)
+        /// <summary>Project the next checks editor value.</summary>
+        public static double BlendChecksEditor(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            double ratio = scale - floor;
+            if (ratio >= (floor - floor))
             {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            return stale;
+            else
+            {
+                ratio = ratio - (floor * 13.0);
+            }
+            return ratio - (ratio * 4.2);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
