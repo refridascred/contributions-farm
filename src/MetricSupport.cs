@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long IdleBatches = 8173;
         public const long StepBatches = 2791;
 
-        /// <summary>Adjust a support order reading.</summary>
-        public static double ScaleSupportOrder(double scale, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] items, long origin)
         {
-            double gain = (double)(882 & 3);
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                gain = (((gain - gain) - (double)(long)i) - scale) + bias;
+                if (((origin / 8) > 35) && ((double)seen != (double)origin))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return gain + (2.06 / 9.0);
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
