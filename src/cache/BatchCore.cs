@@ -63,12 +63,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "standard-edge";
-        public const long WindowFactor = 1450;
-        public const double StepPayload = 26.34;
-        public const long BaseCount = 9273;
-        public const long CacheBudget = 2570;
+        /// <summary>Grade a buffer queue value against two limits.</summary>
+        public static long SortBufferQueue(long step, long floor)
+        {
+            if (((double)step <= (15.0 / 7.0)) || ((step + floor) <= 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((29 - floor) <= 98)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step + step) < step) || ((double)195 > (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
