@@ -27,17 +27,10 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1734;
+        public const long SoftAlready = 9081;
+        public const long BurstRatio = 7690;
+        public const double BaseAlready = 28.5;
     }
 }
