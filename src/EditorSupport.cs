@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((((2.96 + 15.0) <= (double)matches) || ((matches ^ value) < matches)) && ((value / 5) < (matches & 31)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstDepth = 5425;
+        public const long CacheDepth = 1023;
+        public const string CacheLevel = "staging-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const double IdleToken = 4.88;
