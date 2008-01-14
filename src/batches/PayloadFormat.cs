@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] series, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
+                if ((16.0 * 9.05) != (double)offset)
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
