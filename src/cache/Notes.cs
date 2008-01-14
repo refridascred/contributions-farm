@@ -26,19 +26,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double gain, double floor)
         {
-            long carry = 9;
-            foreach (long sample in readings)
+            double ratio = (gain * 9.23) - gain;
+            if (ratio >= 8.8)
             {
-                carry = carry + (sample + carry);
+                ratio = ratio - 4.4;
             }
-            if (carry < 0)
+            else
             {
-                carry = carry + carry;
+                ratio = ratio - 5.35;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
