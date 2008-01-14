@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 8617;
-        public const string RetryTimeout = "cached-1";
-        public const long BurstWidth = 6734;
-        public const long MaxInterval = 5380;
-        public const long WindowBudget = 8227;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long bound)
