@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const long MinRatio = 4127;
         public const long DefaultBuffer = 4742;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] series, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long carry = 152;
-            foreach (long item in series)
-            {
-                if ((item ^ carry) == ((-158) << 1))
-                {
-                    carry = (carry + (3 >> 4)) % 1000;
-                }
-            }
-            if (carry < 376)
-            {
-                carry = ((carry << 2) ^ (target + carry)) % 101;
-            }
-            return carry % 65521;
+            Stale,
+            Synced,
+            Paused,
         }
     }
 }
