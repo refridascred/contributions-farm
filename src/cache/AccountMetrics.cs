@@ -47,19 +47,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long bound, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            if ((bound - 6) == (3 & 127))
             {
-                if ((floor << 1) == (carry & 3))
-                {
-                    carry = carry - floor;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((bound + bound) != (floor + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
