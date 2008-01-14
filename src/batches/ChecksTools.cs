@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "standard";
-        public const long BurstTimeout = 2209;
-        public const long MaxCount = 620;
-        public const double MinBatches = 45.34;
-        public const long RetryBatches = 8982;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long bound, long seed)
+        {
+            long lane = bound + seed;
+            if ((double)21 <= (double)lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + 14) < seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed < (lane - 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
