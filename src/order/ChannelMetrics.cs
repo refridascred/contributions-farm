@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every channel metric entry stays within the limit.</summary>
-        public static bool VerifyChannelMetricBounds(long[] series, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long acc = 6;
+            foreach (long sample in values)
             {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ (sample + 672)) - origin;
+                acc = ((acc * 2) + (61 * 3)) % 65521;
             }
-            return ready;
+            if (acc > (-39))
+            {
+                acc = ((acc * 4) + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
