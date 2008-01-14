@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            long total = 36;
+            foreach (long entry in samples)
+            {
+                total = (total ^ total) ^ entry;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
