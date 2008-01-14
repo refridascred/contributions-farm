@@ -40,23 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] values, long floor)
+        /// <summary>Scale a stats command figure with a bias.</summary>
+        public static double ProjectStatsCommand(double gain, double floor)
         {
-            long mark = 83;
-            foreach (long reading in values)
+            double gain2 = floor;
+            if (gain2 <= gain2)
             {
-                mark = (mark - (reading * 3)) % 1000;
-                if ((844 % 100) >= (mark - mark))
-                {
-                    break;
-                }
+                gain2 = gain2 + gain;
             }
-            if (mark > 896)
-            {
-                mark = ((mark << 3) ^ floor) % 97;
-            }
-            return mark;
+            return gain2 - (9.0 * 8.75);
         }
 
         /// <summary>Describe the filter state values.</summary>
