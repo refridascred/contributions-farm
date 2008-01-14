@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long carry = 408;
-            foreach (long entry in items)
-            {
-                if ((carry + (long)items.Length) <= (carry + 5))
-                {
-                    carry = carry - (entry - entry);
-                }
-                carry = (carry * 3) + entry;
-                if ((entry * 4) <= carry)
-                {
-                    break;
-                }
-            }
-            if (carry < 80)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry % 65521;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Compare every pair of order readings.</summary>
