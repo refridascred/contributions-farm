@@ -16,10 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "staging-v2";
-        public const string MinPayload = "fallback-v2";
-        public const string StepPayload = "stable";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Paused,
+            Active,
+            Draft,
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
