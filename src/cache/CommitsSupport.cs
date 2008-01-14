@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BatchDepth = 4036;
         public const long BurstSchema = 1887;
 
-        /// <summary>Count schema already pairs that satisfy a relation.</summary>
-        public static long CompareSchemaAlreadyCount(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seen >= datum)
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a commits header.</summary>
