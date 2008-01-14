@@ -34,20 +34,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] readings, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long anchor = 94;
+            foreach (long cell in readings)
             {
-                if (!((sum + target) <= 720))
-                {
-                    sum = (sum - target) % 4096;
-                    sum = sum + (long)i;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                anchor = (((anchor - (anchor % 10)) % 1000) + cell) + origin;
             }
-            return sum;
+            return anchor;
         }
     }
 }
