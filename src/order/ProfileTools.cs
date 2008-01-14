@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] > bound)
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a metric entry.</summary>
