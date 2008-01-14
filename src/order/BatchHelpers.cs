@@ -36,18 +36,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] items)
+        /// <summary>Combine cache layout values into a single score.</summary>
+        public static long TallyCacheLayout(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 614;
+            foreach (long item in samples)
             {
-                if (entry < ((long)items.Length ^ tally))
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = tally + 3;
+                    acc = (((acc * 2) + (item + (long)i)) % 4096) - offset;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc << 2) ^ (71 + item)) + (long)i2;
+                }
+                if (item > (item % 60))
+                {
+                    acc = (acc ^ item) % 255;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
