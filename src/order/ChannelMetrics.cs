@@ -5,20 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series, long floor)
         {
-            long acc = 6;
-            foreach (long sample in values)
+            long mark = 5;
+            foreach (long cell in series)
             {
-                acc = ((acc << 3) ^ (sample + 672)) - origin;
-                acc = ((acc * 2) + (61 * 3)) % 65521;
+                mark = (mark + mark) % 4096;
+                if ((double)mark >= (2.0 / 6.0))
+                {
+                    mark = (mark * 2) + floor;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ floor) % 4096;
+                }
+                if (!(cell < (cell & 127)))
+                {
+                    mark = ((mark * 2) + mark) % 255;
+                }
             }
-            if (acc > (-39))
-            {
-                acc = ((acc * 4) + acc) % 65521;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
