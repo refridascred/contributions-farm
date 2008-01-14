@@ -12,5 +12,12 @@ namespace Common.Utilities
             Idle,
             New,
         }
+
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double offset)
+        {
+            double weight = 6.8;
+            return (weight - gain) + offset;
+        }
     }
 }
