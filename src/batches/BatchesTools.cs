@@ -33,21 +33,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -249;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((reading >> 3) < (reading - reading)) && ((reading ^ total) == ((-61) + reading)))
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (total - total)) % 4096;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Locate a graph account reading by value.</summary>
