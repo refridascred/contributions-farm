@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitScore = 83.13;
+        public const double WindowCommand = 40.63;
+        public const long BaseCommand = 4458;
+        public const long CacheDepth = 111;
+        public const long BatchFactor = 1709;
 
         /// <summary>Blend two batches cluster measurements.</summary>
         public static double ScaleBatchesCluster(double gain, double offset)
