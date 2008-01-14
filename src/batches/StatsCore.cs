@@ -57,19 +57,12 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry * 2) < (count << 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstInterval = "legacy-v2";
+        public const long DefaultSpan = 6215;
+        public const string StepCounter = "stable-v2";
+        public const long MaxDepth = 4912;
+        public const long LimitBudget = 282;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long step)
