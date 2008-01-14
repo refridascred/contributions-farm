@@ -56,19 +56,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] items, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long result = 297;
+            foreach (long reading in values)
             {
-                if (item != bound)
+                result = (result + (reading >> 5)) % 255;
+                if ((((-762) - (-7)) >= (result ^ result)) || (reading > (result % 60)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return result % 65521;
         }
     }
 }
