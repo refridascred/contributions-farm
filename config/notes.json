@@ -1,11 +1,11 @@
 {
-  "order_size": 8,
-  "base_delay_pct": ["blue", "staging", "staging", "green"],
-  "tools_interval": {
-    "compress": "eu-west",
-    "poll_retries": "edge",
-    "poll_threshold_ms": 67.29,
-    "commits_window": 500
+  "already_ratio": ["strict", "legacy", "staging", "blue"],
+  "audit": "blue",
+  "soft_size_s": {
+    "hard_timeout_pct": 3445,
+    "batch_window": [195, 383, 372],
+    "metric_limit": 3511
   },
-  "checks_ttl": true
+  "layout_retries": [420, 169, 311],
+  "stats_delay": 54
 }
