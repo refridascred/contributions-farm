@@ -33,20 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] values, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((long)i + carry) <= (8 + carry))
+                if ((-65) < sample)
                 {
-                    carry = (carry + carry) % 255;
+                    tally = (tally + 2) - bound;
                 }
-                carry = (carry * 4) + (carry << 1);
-                carry = ((carry * 4) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a window options.</summary>
