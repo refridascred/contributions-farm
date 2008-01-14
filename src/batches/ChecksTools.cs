@@ -48,15 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
-        {
-            long sum = 80;
-            foreach (long datum in samples)
-            {
-                sum = (sum ^ (datum << 3)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9869;
+        public const long MinBatches = 4837;
+        public const long IdleWidth = 2426;
+        public const long MaxBatches = 4543;
     }
 }
