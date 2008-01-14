@@ -49,14 +49,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Locked,
-            Active,
-            Pending,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultInterval = "fallback";
+        public const double DefaultRatio = 87.7;
+        public const double MaxBudget = 23.45;
+        public const string DefaultBudget = "primary-1";
     }
 }
