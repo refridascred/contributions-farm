@@ -37,10 +37,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 7182;
-        public const string CacheSize = "strict-1";
-        public const long BaseQueue = 6821;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long seed)
+        {
+            if ((bound & 63) > (seed ^ seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound + bound) <= bound) && ((bound * 5) < (seed >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((1.0 - 5.27) >= (double)seed) && ((seed - bound) < (seed / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long target, long seed)
