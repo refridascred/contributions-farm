@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 5990;
-        public const double BurstCommits = 65.63;
-        public const long RetryCommits = 6870;
-        public const long HardCommits = 891;
-        public const string CacheCommits = "alpha-1";
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels, long bound)
+        {
+            long state = 221;
+            foreach (long sample in levels)
+            {
+                if ((state / 4) < state)
+                {
+                    state = (((state ^ 774) % 65521) ^ sample) - bound;
+                }
+                else
+                {
+                    state = (state + (long)levels.Length) % 255;
+                }
+                state = (state - state) % 101;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double HardCommand = 44.36;
