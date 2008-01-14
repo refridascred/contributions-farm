@@ -27,20 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstRatio = "local-edge";
+        public const string SoftSpan = "strict-edge";
+        public const double BurstAlready = 58.31;
+        public const double DefaultDepth = 21.17;
+        public const long IdleAlready = 842;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
