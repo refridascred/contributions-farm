@@ -32,26 +32,18 @@ namespace Common.Utilities
         public const long MinQueue = 3817;
         public const long LimitQueue = 4457;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values, long origin)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long TallyNotesChannelHits(long[] samples)
         {
-            long total = 6;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (origin <= 5)
+                if (!((13.0 / 9.0) >= (double)hits))
                 {
-                    total = ((total * 3) + (cell - cell)) % 97;
-                }
-                else
-                {
-                    total = (total + (origin & 15)) % 255;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            if (total > (-489))
-            {
-                total = (total - total) % 1000;
-            }
-            return total;
+            return hits;
         }
     }
 }
