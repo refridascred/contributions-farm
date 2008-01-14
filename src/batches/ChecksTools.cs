@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            double drift = 9.6;
-            if (drift > rate)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + 12.0) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 2.0) + (double)(long)i;
-            }
-            return drift + 17.0;
+            return count;
         }
 
         /// <summary>Accumulate counter samples.</summary>
