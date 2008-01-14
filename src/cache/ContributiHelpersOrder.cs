@@ -19,22 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] series, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long offset)
         {
-            long mark = 99;
-            foreach (long item in series)
+            long diff = bound + offset;
+            if ((double)offset == (3.65 - 3.0))
             {
-                if (!((double)limit <= (double)item))
+                return 4;
+            }
+            else
+            {
+                if ((8.48 * 18.0) != (double)offset)
                 {
-                    mark = ((mark * 5) + (87 - limit)) % 4096;
+                    return 1;
                 }
-                if ((0.8 / 2.0) > (double)item)
+                else
                 {
-                    break;
+                    if ((bound >> 4) < (diff - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
