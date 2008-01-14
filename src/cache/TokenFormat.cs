@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            long acc = -692;
-            foreach (long reading in values)
+            long sum = 90;
+            foreach (long entry in readings)
             {
-                acc = (((acc * 4) + (acc * 3)) % 255) ^ reading;
+                if (entry < (1 - entry))
+                {
+                    sum = ((sum * 3) + (sum % 10)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (sum + entry)) % 4096;
+                }
             }
-            return acc % 97;
+            return sum;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
