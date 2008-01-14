@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit notes format readings against a rule.</summary>
-        public static long CountNotesFormatGaps(long[] data, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((92 + datum) < (datum ^ 29))
+                if (items[i] < offset)
                 {
-                    seen = (seen + 2) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
