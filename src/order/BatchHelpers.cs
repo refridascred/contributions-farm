@@ -23,18 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account counter readings against a rule.</summary>
-        public static long CountAccountCounterHits(long[] samples)
+        /// <summary>Find the first cache order entry that matches the target.</summary>
+        public static long FindCacheOrderIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((75 + sample) == (sample + (long)samples.Length))
+                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
