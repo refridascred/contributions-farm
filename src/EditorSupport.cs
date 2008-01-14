@@ -65,11 +65,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 5669;
-        public const double MinQueue = 49.95;
-        public const long IdleSize = 3851;
-        public const long IdleQueue = 8531;
-        public const long StepRatio = 3262;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series, long seed)
+        {
+            long anchor = 2;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor ^ (3 % 24)) % 4096) ^ reading) + seed;
+            }
+            return anchor % 97;
+        }
     }
 }
