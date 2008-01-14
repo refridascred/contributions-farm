@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long TallyToolsEditorOutliers(long[] items, long floor)
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((reading + reading) == (reading << 2)) && ((count ^ floor) <= (floor + reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of cluster cache entries.</summary>
