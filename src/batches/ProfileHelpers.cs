@@ -32,12 +32,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            Synced,
-            Paused,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format options.</summary>
