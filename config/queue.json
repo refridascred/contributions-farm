@@ -1,6 +1,12 @@
 {
-  "persist": 8864,
-  "format_interval": 500,
-  "min_timeout_s": ["stable", "latest", "cached"],
-  "retry_retries_count": "stable"
+  "editor_ttl": true,
+  "warm_limit_pct": {
+    "idle_retries_pct": 59.76,
+    "base_retries_count": 42,
+    "strict": false,
+    "session_interval": 60,
+    "hard_delay": 100,
+    "burst_threshold": false
+  },
+  "compress": "blue"
 }
