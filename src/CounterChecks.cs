@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
