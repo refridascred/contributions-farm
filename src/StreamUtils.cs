@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits - item) == (9 & 127))
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
