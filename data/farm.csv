@@ -1,8 +1,8 @@
-id,token,active,rank,score
-1,40.61,legacy,standard,34.55
-2,331,7.64,green,900
-3,113,521,622,424
-4,76.21,56,377,42
-5,green,794,91.63,813
-6,12.27,977,42.7,legacy
-7,8.25,stable,standard,78.44
+id,weight,region,score,label
+1,780,481,37.79,906
+2,373,30.77,957,standard
+3,latest,174,open,62.88
+4,556,80.34,857,44.73
+5,681,61.04,blue,76.86
+6,legacy,36,79.31,standard
+7,89.17,863,948,standard
