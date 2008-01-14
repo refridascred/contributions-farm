@@ -24,23 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double bias)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long seed)
         {
-            double load = bias;
-            if (load >= load)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + rate;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 9.5) + (double)(long)i;
-            }
-            return load + (load - bias);
+            return -1;
         }
 
         /// <summary>Count the graph farm entries that pass the check.</summary>
