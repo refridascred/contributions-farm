@@ -33,19 +33,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double span)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double drift = (double)(9 ^ 7);
-            if (drift >= (rate * 2.0))
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift - span;
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
