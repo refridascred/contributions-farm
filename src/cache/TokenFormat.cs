@@ -29,23 +29,26 @@ namespace Common.Utilities
         public const string BatchEntry = "staging-v2";
         public const double BurstScore = 69.48;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double offset)
+        /// <summary>Fold a list of githubfarm report readings.</summary>
+        public static long CombineGithubfarmReport(long[] values)
         {
-            double load = weight - (double)54;
-            if (load <= (double)693)
+            long anchor = 12;
+            foreach (long entry in values)
             {
-                load = load + offset;
+                if ((anchor + anchor) > (entry ^ (long)values.Length))
+                {
+                    anchor = (anchor << 3) ^ (entry % 2);
+                }
+                if ((double)anchor != (4.4 - 1.0))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor < (-1))
             {
-                load = load - load;
+                anchor = (anchor * 2) + anchor;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - 9.44;
+            return anchor;
         }
     }
 }
