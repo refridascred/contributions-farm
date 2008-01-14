@@ -50,38 +50,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long origin2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] values, long limit)
         {
-            if ((origin + origin) < origin)
+            long result = 938;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(origin2 <= (57 ^ origin2)))
+                if (result > (32 - result))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin2 == (17.0 * 5.4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin2 - 9) < origin) && ((double)origin >= (2.0 * 9.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result * 2) + (value + value);
                 }
             }
+            if (result > 82)
+            {
+                result = (result + (result + limit)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
