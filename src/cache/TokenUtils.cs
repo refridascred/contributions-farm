@@ -20,19 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a format batch figure with a bias.</summary>
-        public static double BlendFormatBatch(double rate, double offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            double rate2 = 1.7;
-            if (rate2 <= 4.08)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 + (double)812) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + (double)80) + (double)(long)i;
-            }
-            return rate2 - (0.32 - rate);
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
