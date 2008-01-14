@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count account farm pairs that satisfy a relation.</summary>
-        public static long OverlapAccountFarmCount(long[] readings)
+        /// <summary>Derive the next context stream value from a seed.</summary>
+        public static long IterateContextStream(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long lane = total + (long)i;
+                double drift = (double)total * 4.54;
+                if (drift >= (double)lane)
                 {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    lane = (lane * 2) + (total + lane);
+                    drift = drift - drift;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
