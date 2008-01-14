@@ -6,10 +6,18 @@ namespace Common.Utilities
     public static class ChecksTools
     {
         /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        public static double BlendEntry(double rate, double span)
         {
-            double weight = (double)(7 + 13);
-            return (weight - (ratio / 4.0)) + bias;
+            double drift = 9.6;
+            if (drift > rate)
+            {
+                drift = (drift + 12.0) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 2.0) + (double)(long)i;
+            }
+            return drift + 17.0;
         }
 
         /// <summary>Accumulate counter samples.</summary>
