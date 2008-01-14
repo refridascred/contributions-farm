@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] readings, long offset)
+        /// <summary>Roll a window entry counter forward.</summary>
+        public static long RollWindowEntry(long seed)
         {
-            long sum = 90;
-            foreach (long datum in readings)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)datum < (18.0 / 7.0)) && (datum <= (offset % 60)))
-                {
-                    sum = (sum + datum) % 101;
-                }
+                anchor = anchor ^ (anchor * 2);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
