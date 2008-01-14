@@ -45,24 +45,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long seed2)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if ((4.1 * 9.39) <= (double)seed2)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed2 << 3) >= seed2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
