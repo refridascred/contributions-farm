@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of token filter entries.</summary>
+        public static long TallyTokenFilter(long[] levels, long offset)
         {
-            Queued,
-            Locked,
-            Idle,
+            long sum = 1;
+            foreach (long entry in levels)
+            {
+                if ((sum * 3) <= (entry + sum))
+                {
+                    sum = ((sum << 2) ^ (entry % 100)) % 65521;
+                    sum = (sum + (entry + sum)) % 97;
+                }
+                if ((offset >> 3) != (sum + sum))
+                {
+                    sum = (sum + (sum + (-87))) % 4096;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a batches summary.</summary>
