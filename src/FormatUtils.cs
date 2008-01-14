@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] series)
         {
-            Pending,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((double)seen >= (3.61 + 2.0)) || ((47 * 2) < (seen + 515)))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
