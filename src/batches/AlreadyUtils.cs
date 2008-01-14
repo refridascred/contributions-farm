@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (seed < (seed + (-2)))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseScore = 5104;
+        public const long MaxLevel = 6317;
+        public const long MaxSupport = 534;
+        public const string WindowLevel = "legacy";
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
