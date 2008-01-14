@@ -67,19 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double bias, double span)
-        {
-            double bias2 = (double)(4 ^ 9);
-            if (bias2 < bias)
-            {
-                bias2 = bias2 + 9.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + span) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseCount = "staging-v2";
+        public const long IdleCount = 6237;
+        public const string IdleStream = "staging-v2";
+        public const string BatchSize = "stable-edge";
+        public const long MinBudget = 3950;
     }
 }
