@@ -21,17 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] items, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix - mix) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
