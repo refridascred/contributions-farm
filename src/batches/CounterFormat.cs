@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] levels)
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long AuditFormatPayloadOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (5.0 < (double)hits)
+                if ((double)tally >= 6.84)
                 {
-                    hits = (hits + 2) + entry;
+                    tally = (tally + 2) - sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
