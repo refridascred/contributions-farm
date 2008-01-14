@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
