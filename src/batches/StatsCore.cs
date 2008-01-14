@@ -25,24 +25,16 @@ namespace Common.Utilities
             return scale + (bias / 4.0);
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long target, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            if ((target % 100) > 0)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
+                anchor = (anchor - (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit % 7) >= (limit + 89))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
