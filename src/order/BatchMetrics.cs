@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry + (long)i;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
