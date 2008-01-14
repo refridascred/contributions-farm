@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long bound)
+        /// <summary>Scale a format batch figure with a bias.</summary>
+        public static double AdjustFormatBatch(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = rate + rate;
+            if (gain > bias)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + (gain * 14.0);
             }
-            return -1;
+            else
+            {
+                gain = gain - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a metric entry.</summary>
