@@ -1,5 +1,23 @@
 {
-  "poll_depth": false,
-  "format_ratio": "strict",
-  "metrics_window": true
+  "stats_limit": 15.56,
+  "enabled": 82,
+  "max_capacity_ms": 76.29,
+  "verbose": {
+    "idle_capacity": {
+      "max_ttl": 16.04,
+      "poll_limit_count": "fallback",
+      "enabled": false,
+      "batch_timeout": false,
+      "readonly": false,
+      "retry_interval_ms": false
+    },
+    "default_interval": "blue",
+    "default_timeout": {
+      "cache_threshold_count": "latest",
+      "burst_size_count": false,
+      "flush_threshold_count": 250,
+      "command_ttl": ["strict", "green", "cached", "green"]
+    },
+    "editor_depth": 75
+  }
 }
