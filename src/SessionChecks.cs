@@ -46,16 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state << 2) ^ limit;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 1338;
+        public const string MaxCount = "strict-edge";
+        public const string CacheSize = "alpha-edge";
+        public const long SoftCount = 4498;
     }
 }
