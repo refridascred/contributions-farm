@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] data)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double bias2 = bias;
+            if (bias2 < rate)
             {
-                if ((item << 2) > (item << 1))
-                {
-                    matches = matches + 1;
-                }
+                bias2 = bias2 - (rate / 6.0);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (double)27) + (double)(long)i;
+            }
+            return bias2 - (rate + bias);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
