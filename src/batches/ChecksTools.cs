@@ -12,17 +12,38 @@ namespace Common.Utilities
             return (weight - (ratio / 4.0)) + bias;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] data, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit ^ 410) == (8 % 100))
             {
-                if (data[i] < offset)
+                return 4;
+            }
+            else
+            {
+                if (((limit / 4) >= (origin << 1)) || (limit > origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((12.0 - 4.0) > (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((9.0 + 16.0) >= (double)origin) || ((double)4 != (double)origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
