@@ -27,19 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry entry stays within the limit.</summary>
-        public static bool ValidateCommitsEntryLimits(long[] data, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double mean = (bias - bias) - offset;
+            if (mean < (9.3 / 5.0))
             {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (mean * 9.1);
             }
-            return found;
+            return mean - (bias - 7.1);
         }
     }
 }
