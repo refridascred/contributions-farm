@@ -45,11 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double gain, double span)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            double weight = span;
+            return (weight + (span * 12.0)) + gain;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
