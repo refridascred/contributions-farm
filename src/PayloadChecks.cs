@@ -75,18 +75,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] levels, long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen != (1.2 * 3.28))
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
-                    seen = ((seen + 2) + item) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
