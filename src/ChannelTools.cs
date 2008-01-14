@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "open";
-        public const double SoftBudget = 21.99;
-        public const long StepSize = 8785;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] data, long floor)
