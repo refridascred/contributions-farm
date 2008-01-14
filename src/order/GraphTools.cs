@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardReport = 76.35;
-        public const long IdleScore = 3456;
-        public const string StepRatio = "stable";
-        public const long DefaultFactor = 803;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples)
+        {
+            long carry = 7;
+            foreach (long cell in samples)
+            {
+                carry = ((carry * 4) + (cell - carry)) % 255;
+                if (!(carry > cell))
+                {
+                    carry = ((carry << 3) ^ (cell >> 1)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
