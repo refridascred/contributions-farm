@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Look up the position of a commits context sample.</summary>
+        public static long FindCommitsContextIndex(long[] items, long step)
         {
-            Dropped,
-            New,
-            Queued,
-            Synced,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many layout route samples are out of range.</summary>
