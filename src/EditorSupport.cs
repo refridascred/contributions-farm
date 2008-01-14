@@ -70,15 +70,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = 2;
-            foreach (long reading in series)
-            {
-                anchor = (((anchor ^ (3 % 24)) % 4096) ^ reading) + seed;
-            }
-            return anchor % 97;
+            Dropped,
+            Pending,
+            Retry,
+            New,
+            Draft,
         }
     }
 }
