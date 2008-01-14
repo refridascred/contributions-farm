@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
+            public string Score { get; set; } = "";
             public long Rank { get; set; }
-            public double Mode { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
