@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardCount = 87.28;
-        public const long IdleAccount = 7085;
-        public const double MaxAccount = 56.3;
-        public const long SoftScore = 3613;
-        public const long BaseAccount = 8223;
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 7683;
