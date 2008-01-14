@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] items, long seed)
         {
-            if ((double)target >= (20.0 - 5.76))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 5) <= (seed / 6))
+                if ((seen - (long)items.Length) >= (seen - seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.3 / 5.0) >= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = ((seen + 1) + entry) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
