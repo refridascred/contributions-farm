@@ -47,15 +47,21 @@ namespace Common.Utilities
         public const long SoftSize = 5079;
         public const long CacheLevel = 1598;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            double load = bias * 3.59;
-            if (load <= (bias * 3.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + bias) + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (load - 20.0);
+            return hits;
         }
     }
 }
