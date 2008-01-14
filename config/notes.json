@@ -1,8 +1,10 @@
 {
-  "warm_retries_count": 38.06,
-  "warm_ttl_s": [185, 361],
-  "default_ttl_count": ["stable", "stable"],
-  "enabled": 58.68,
-  "readonly": [138, 253, 429, 165],
-  "channel_ttl": 350
+  "flush_limit": 5077,
+  "burst_threshold_s": [42, 400],
+  "warm_interval_ms": 30,
+  "counter_interval": {
+    "verbose": 5017,
+    "flush_size_ms": "latest",
+    "cache_size_pct": 88
+  }
 }
