@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long seed)
-        {
-            long bound = step + seed;
-            if (bound < (bound / 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-65) % 12) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheLevel = 3368;
+        public const string StepDepth = "local-1";
+        public const string RetrySpan = "local-edge";
+        public const double MinPayload = 94.9;
+        public const long BatchSize = 9118;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
