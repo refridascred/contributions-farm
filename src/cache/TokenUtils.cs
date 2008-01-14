@@ -20,14 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            Ready,
-            Dropped,
-            Retry,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum / 2) > (-1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
