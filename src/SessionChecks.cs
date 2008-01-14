@@ -20,12 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftWidth = 9597;
-        public const long HardWidth = 3843;
-        public const long BaseDepth = 7337;
-        public const double StepFactor = 77.04;
-        public const long SoftLayout = 9909;
+        /// <summary>Classify a layout farm pair into a bucket.</summary>
+        public static long SortLayoutFarm(long offset, long origin)
+        {
+            if (offset > (offset - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((588 + offset) < (offset + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 5) <= (offset << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] values)
