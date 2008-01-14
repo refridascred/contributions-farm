@@ -56,17 +56,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first counter checks entry that matches the target.</summary>
