@@ -33,12 +33,21 @@ namespace Common.Utilities
         public const long MinContext = 2473;
         public const double MinSpan = 44.84;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Match up metrics contributi samples.</summary>
+        public static long PairMetricsContributiCount(long[] data)
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
