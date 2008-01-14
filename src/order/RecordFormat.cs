@@ -56,11 +56,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 80.72;
-        public const long WindowEditor = 9752;
-        public const long DefaultEditor = 4236;
-        public const long BaseEditor = 8339;
-        public const double SoftSpan = 41.0;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Dropped,
+            Idle,
+            Retry,
+        }
     }
 }
