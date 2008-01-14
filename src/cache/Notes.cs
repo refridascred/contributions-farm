@@ -47,13 +47,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long target)
         {
-            Retry,
-            Ready,
-            Idle,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
