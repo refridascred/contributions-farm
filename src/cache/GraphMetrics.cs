@@ -53,15 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account route samples.</summary>
-        public static long TallyAccountRoute(long[] readings, long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long state = 9;
-            foreach (long cell in readings)
-            {
-                state = (((state << 2) ^ (bound << 3)) % 65521) - cell;
-            }
-            return state;
+            Draft,
+            New,
+            Dropped,
+            Active,
         }
     }
 }
