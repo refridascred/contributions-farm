@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] series)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Retry,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((7.3 - 14.0) == (double)entry) && ((entry <= (entry << 3)) && ((count >> 4) <= (count & 31))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
