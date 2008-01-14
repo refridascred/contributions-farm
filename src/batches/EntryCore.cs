@@ -20,10 +20,40 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 4915;
-        public const double MaxCommand = 35.26;
-        public const long CacheSize = 2070;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long target)
+        {
+            long bound = step ^ target;
+            if ((target + bound) <= (target << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)target != (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step * 5) > target) || (step >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.6 + 9.3) <= (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] readings)
