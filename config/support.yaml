@@ -1,40 +1,15 @@
 # support settings
-record_limit:
-  batch_capacity: 87.4
-  max_capacity_pct:
-    persist:
-      - open
-      - latest
-    retry_timeout_ms: legacy
-    audit: 30
-    batch_limit_count: 30
-  filter_ratio: false
-  batch_size:
-    - 89
-    - 11
-    - 422
-  cache_capacity_pct:
-    audit: legacy
-    default_delay_s: false
-    commits_delay: 7.97
-    warm_window_count: 250
-  cache_timeout:
-    - 40
-    - 246
-    - 32
-    - 115
-channel_interval: open
-default_timeout_count: eu-west
-persist: true
-format_interval:
-  route_retries: 8
-  cache_ttl_count: true
-  compress: 500
-  dry_run: stable
-  min_capacity_s:
-    - 87
-    - 223
-    - 258
-    - 387
-  default_depth_ms: primary
-idle_interval_count: true
+sync_ratio_ms:
+  - legacy
+  - cached
+  - green
+batch_limit:
+  cache_size_s: false
+  cache_depth_count: 213
+  sync_limit: true
+  notes_retries: local
+  enabled: 93.11
+metrics_threshold:
+  - latest
+  - legacy
+  - green
