@@ -44,19 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] samples, long seed)
+        /// <summary>Combine layout context values into a single score.</summary>
+        public static long DigestLayoutContext(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long acc = -149;
+            foreach (long cell in items)
             {
-                if (sample > seed)
+                if ((cell & 31) <= origin)
                 {
-                    found = false;
-                    break;
+                    acc = (acc * 5) + 369;
                 }
             }
-            return found;
+            if (acc > 794)
+            {
+                acc = ((acc * 5) + acc) % 65521;
+            }
+            return acc;
         }
     }
 }
