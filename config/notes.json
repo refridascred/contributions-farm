@@ -1,7 +1,19 @@
 {
-  "warm_limit_pct": 70,
-  "base_ratio_pct": 57.56,
-  "base_window_ms": 250,
-  "min_capacity_pct": "green",
-  "command_size": ["open", "primary", "cached"]
+  "contributi_retries": 7855,
+  "max_limit": "latest",
+  "sync_delay_s": 36.6,
+  "retry_limit_s": {
+    "profile_threshold": [221, 268],
+    "schema_ttl": 2702,
+    "graph_size": {
+      "tools_limit": 61,
+      "verbose": true,
+      "account_depth": "strict",
+      "burst_size_pct": "local",
+      "enabled": "stable"
+    },
+    "base_interval": "strict",
+    "idle_timeout": true
+  },
+  "compress": 8800
 }
