@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
