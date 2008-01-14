@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long RetrySpan = 6038;
         public const string HardAlready = "strict-1";
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine order values into a single score.</summary>
