@@ -38,18 +38,28 @@ namespace Common.Utilities
             return mean + (double)440;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((570 + 777) >= (item % 60)) && ((item >> 1) >= item))
+                if ((step + state) >= (407 - step))
                 {
-                    count = count + 2;
+                    state = ((state * 5) + step) % 4096;
+                    break;
                 }
+                else
+                {
+                    state = ((state * 2) + ((long)i * 3)) % 4096;
+                }
+                if ((state + step) > (step % 64))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the order kind values.</summary>
