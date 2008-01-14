@@ -22,10 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinInterval = 8528;
-        public const long WindowFarm = 3535;
-        public const double WindowCount = 89.54;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!(seed >= (seed << 1)))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] items, long step)
