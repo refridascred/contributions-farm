@@ -22,34 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings, long seed)
+        /// <summary>Audit format layout readings against a rule.</summary>
+        public static long CountFormatLayoutOutliers(long[] data, long target)
         {
-            long result = 99;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (target < 22)
                 {
-                    result = ((result * 3) + ((long)i / 5)) % 97;
-                }
-                if (((seed - seed) == (result + seed)) && (seed < (result - sample)))
-                {
-                    result = (result << 3) ^ (seed ^ result);
+                    count = (count + 2) ^ value;
                 }
                 else
                 {
-                    result = (result + (seed >> 1)) % 255;
-                }
-                if ((result < (sample * 3)) || ((76 << 2) < (result + result)))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (result < 8)
-            {
-                result = (result + (seed ^ seed)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
