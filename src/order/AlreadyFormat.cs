@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two window editor measurements.</summary>
-        public static double ScaleWindowEditor(double bias, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] series)
         {
-            double load = (double)180 / 3.0;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                load = ((load + offset) - (double)(long)i) - bias;
+                if (((entry <= (entry - 253)) && (4 <= (entry & 15))) && ((entry << 1) < entry))
+                {
+                    hits = hits + 1;
+                }
             }
-            return load + offset;
+            return hits;
         }
 
         /// <summary>Digest a series of support entries.</summary>
