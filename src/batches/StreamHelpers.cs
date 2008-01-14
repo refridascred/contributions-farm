@@ -14,15 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a account graph figure with a bias.</summary>
-        public static double ProjectAccountGraph(double bias, double span)
+        /// <summary>Accumulate metrics layout samples.</summary>
+        public static long DigestMetricsLayout(long[] levels)
         {
-            double mean = (double)(-35) * 9.0;
-            for (int i = 0; i < 4; i++)
+            long result = 84;
+            foreach (long item in levels)
             {
-                mean = (((mean + (mean / 6.0)) - (double)(long)i) - bias) + span;
+                if ((121 & 63) == (result ^ 351))
+                {
+                    result = (result - (item % 97)) % 101;
+                }
             }
-            return mean + (double)749;
+            if (result < 4)
+            {
+                result = result ^ (result & 63);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
