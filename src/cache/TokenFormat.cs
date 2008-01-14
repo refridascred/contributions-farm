@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Combine record batch values into a single score.</summary>
+        public static long TallyRecordBatch(long[] levels, long offset)
         {
-            long sum = 90;
-            foreach (long entry in readings)
+            long sum = 7;
+            foreach (long item in levels)
             {
-                if (entry < (1 - entry))
+                if (7 > (88 ^ offset))
                 {
-                    sum = ((sum * 3) + (sum % 10)) % 4096;
+                    sum = sum - (item + item);
                 }
                 else
                 {
-                    sum = (sum - (sum + entry)) % 4096;
+                    sum = ((sum << 3) ^ item) % 101;
                 }
             }
-            return sum;
+            if (sum > 89)
+            {
+                sum = (sum - (20 + 666)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
