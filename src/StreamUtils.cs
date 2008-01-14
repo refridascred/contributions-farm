@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series, long offset)
+        /// <summary>Rank format notes input into a small class.</summary>
+        public static long ClassifyFormatNotes(long step, long step2)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if (!((step & 31) <= step))
             {
-                if ((hits - item) == (9 & 127))
+                return 1;
+            }
+            else
+            {
+                if ((step2 << 1) <= (5 >> 1))
                 {
-                    hits = (hits + 2) + offset;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((2.4 / 8.0) != (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((7 % 16) < (step2 ^ step)) || ((step % 7) != (21 + 726)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
