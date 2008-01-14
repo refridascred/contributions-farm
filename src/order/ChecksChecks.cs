@@ -36,15 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] items, long seed)
         {
-            double load = 0.21 + (7.7 / 4.0);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                load = (((load - load) + (double)(long)i) - rate) - offset;
+                if ((155 % 3) > (27 ^ cell))
+                {
+                    hits = (hits + 2) - seed;
+                }
             }
-            return load - 10.0;
+            return hits;
         }
     }
 }
