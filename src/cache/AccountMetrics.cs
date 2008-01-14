@@ -71,14 +71,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] values, long step)
         {
-            Dropped,
-            Locked,
-            Paused,
-            New,
-            Active,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (9.86 > (double)count)
+                {
+                    count = ((count + 2) ^ reading) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
