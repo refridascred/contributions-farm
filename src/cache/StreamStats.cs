@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((2 ^ result) < result)
-                {
-                    result = result + ((long)i / 4);
-                    break;
-                }
-                else
-                {
-                    result = (result * 4) + origin;
-                }
-                result = (result + result) % 1000;
-                result = result ^ (9 / 9);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "primary";
+        public const long WindowPayload = 2958;
+        public const double CachePayload = 6.6;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long ScoreChecks(long[] series)
