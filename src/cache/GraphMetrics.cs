@@ -25,24 +25,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples, long floor)
         {
-            long total = 6;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                total = total + total;
-                total = ((total * 5) + (reading + reading)) % 101;
-                if ((double)total >= 1.88)
+                if ((double)cell != (7.74 - 0.5))
                 {
-                    total = (total * 5) + total;
+                    tally = (tally + 2) + floor;
                 }
             }
-            if (total > 1)
-            {
-                total = total + 2;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
