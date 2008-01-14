@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items)
         {
-            Ready,
-            Locked,
-            Failed,
-            Dropped,
+            long anchor = 3;
+            foreach (long reading in items)
+            {
+                if ((7 - anchor) <= reading)
+                {
+                    anchor = (anchor - (anchor + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (reading + anchor);
+                }
+                if ((73 < anchor) || ((anchor % 60) >= (reading >> 4)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the filter level values.</summary>
