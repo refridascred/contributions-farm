@@ -1,7 +1,6 @@
-id,owner,token
-1,32.4,571
-2,34.87,639
-3,cached,legacy
-4,81,449
-5,green,608
-6,35.1,54.09
+id,count,ratio,level
+1,staging,green,518
+2,latest,57.41,189
+3,333,585,96.71
+4,993,standard,137
+5,75.59,491,fallback
