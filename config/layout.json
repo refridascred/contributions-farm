@@ -1,7 +1,5 @@
 {
-  "max_timeout_pct": 87.79,
-  "graph_ttl": "blue",
-  "farm_delay": "fallback",
-  "idle_retries_ms": true,
-  "sync_timeout": 3
+  "sync_timeout_count": 72,
+  "min_retries_s": 5126,
+  "graph_delay": 69
 }
