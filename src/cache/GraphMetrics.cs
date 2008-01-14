@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Retry,
-            Locked,
-            Done,
-            Dropped,
-            Failed,
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
