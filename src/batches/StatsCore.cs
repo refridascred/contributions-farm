@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long FoldNotesWindow(long[] series, long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long anchor = 0;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor ^ anchor) % 1000) + entry;
-                anchor = (anchor * 4) + anchor;
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 5) + (target + 46)) % 101;
-            }
-            return anchor;
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
