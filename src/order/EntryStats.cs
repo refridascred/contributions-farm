@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsOutliers(long[] data)
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((tally * 3) < (tally + tally)) || (datum < (-745)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
