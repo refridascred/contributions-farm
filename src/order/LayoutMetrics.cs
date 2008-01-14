@@ -33,17 +33,19 @@ namespace Common.Utilities
             return gain + (span / 4.0);
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] levels, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias;
+            if (mean < (bias2 * 8.59))
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - 6.44;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (2.27 / 2.0);
         }
     }
 }
