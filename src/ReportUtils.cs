@@ -32,21 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
