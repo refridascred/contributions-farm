@@ -36,12 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items)
         {
-            Locked,
-            Paused,
-            Synced,
+            long total = 95;
+            foreach (long value in items)
+            {
+                total = (total - total) ^ value;
+            }
+            return total;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
