@@ -23,18 +23,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell != (7.74 - 0.5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + floor;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
