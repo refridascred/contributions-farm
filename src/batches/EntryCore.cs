@@ -35,21 +35,21 @@ namespace Common.Utilities
             return mean - (16.0 / 5.0);
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 6)
+                    if ((readings[i] ^ readings[j]) != 16)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a session stats.</summary>
