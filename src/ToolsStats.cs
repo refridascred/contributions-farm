@@ -69,21 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window notes samples.</summary>
-        public static long MatchWindowNotesCount(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry <= target)
                 {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Count the already token entries that pass the check.</summary>
