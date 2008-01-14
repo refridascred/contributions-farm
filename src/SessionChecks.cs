@@ -12,17 +12,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a order metrics reading by value.</summary>
-        public static long LocateOrderMetricsIndex(long[] series, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
