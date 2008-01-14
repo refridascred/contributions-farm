@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "standard";
+        public const long BurstTimeout = 2209;
+        public const long MaxCount = 620;
+        public const double MinBatches = 45.34;
+        public const long RetryBatches = 8982;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
