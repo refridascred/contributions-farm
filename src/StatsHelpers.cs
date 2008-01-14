@@ -14,21 +14,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long CombineRecordOrder(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 820;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)step != (6.49 - 5.81)) || ((step << 2) == (sample * 4)))
                 {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (sample - mix)) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Blend two farm measurements.</summary>
