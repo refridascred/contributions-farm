@@ -55,18 +55,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] levels, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((double)seen >= (4.2 - 2.0)) && (0 > item))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            Stale,
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the cluster class values.</summary>
