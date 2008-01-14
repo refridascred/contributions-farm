@@ -1,5 +1,8 @@
 {
-  "window_interval": 42,
-  "base_ttl_s": ["latest", "fallback", "edge", "blue"],
-  "checks_interval": "eu-west"
+  "flush_depth_pct": "open",
+  "default_limit_count": ["blue", "strict", "cached"],
+  "soft_threshold": 284,
+  "format_interval": 8048,
+  "persist": 7728,
+  "retry_ratio_pct": true
 }
