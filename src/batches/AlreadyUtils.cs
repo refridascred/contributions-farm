@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long sum = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 2) + (entry / 9)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum < 85)
-            {
-                sum = (sum - (sum + sum)) % 101;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the cluster status values.</summary>
