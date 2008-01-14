@@ -38,11 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepLevel = "strict-v2";
-        public const long DefaultContributi = 2009;
-        public const long BaseContributi = 7354;
-        public const long SoftContributi = 9824;
-        public const long BurstContributi = 1925;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 15) < (datum ^ 4))
+                {
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
