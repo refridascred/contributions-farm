@@ -34,15 +34,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a channel order figure with a bias.</summary>
-        public static double SmoothChannelOrder(double rate, double bias)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long limit)
         {
-            double ratio = (double)(154 - 794);
-            for (int i = 0; i < 2; i++)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                ratio = ((ratio - (rate - rate)) - (double)(long)i) - bias;
+                if (!((20.0 * 2.41) > (double)anchor))
+                {
+                    anchor = (anchor * 2) + (limit + limit);
+                }
+                else
+                {
+                    anchor = anchor - limit;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return ratio - 9.5;
+            return anchor;
         }
 
         /// <summary>Classify a window queue pair into a bucket.</summary>
