@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((double)tally < (double)limit)
+                if (sample < seed)
                 {
-                    tally = (tally + 2) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Match up commits format samples.</summary>
