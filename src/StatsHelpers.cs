@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 60.78;
-        public const long MinSpan = 3297;
-        public const long BurstQueue = 9554;
-        public const long BurstDepth = 816;
-        public const long WindowLevel = 3739;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] items)
+        {
+            long carry = 408;
+            foreach (long entry in items)
+            {
+                if ((carry + (long)items.Length) <= (carry + 5))
+                {
+                    carry = carry - (entry - entry);
+                }
+                carry = (carry * 3) + entry;
+                if ((entry * 4) <= carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 80)
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long target)
