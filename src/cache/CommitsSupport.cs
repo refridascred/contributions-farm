@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseWidth = 11.75;
-        public const double IdleSchema = 10.53;
-        public const long SoftSpan = 1461;
-        public const long BatchDepth = 4036;
-        public const long BurstSchema = 1887;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long StepStream(long origin)
