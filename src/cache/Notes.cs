@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first layout entry entry that matches the target.</summary>
-        public static long LookupLayoutEntryIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstLevel = "stable";
+        public const long CacheScore = 6092;
+        public const long BurstFilter = 9542;
+        public const long BaseDepth = 212;
+        public const double StepBudget = 56.0;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
