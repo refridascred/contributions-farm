@@ -33,13 +33,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i + carry) <= (8 + carry))
+                {
+                    carry = (carry + carry) % 255;
+                }
+                carry = (carry * 4) + (carry << 1);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a window options.</summary>
