@@ -29,17 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long target)
+        /// <summary>Roll a graph batches counter forward.</summary>
+        public static long RollGraphBatches(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] == target)
+                if (((11.0 - 0.5) < (double)acc) || (acc <= ((long)i % 7)))
                 {
-                    return (long)i;
+                    acc = (acc + ((long)i % 16)) % 4096;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (acc - acc) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
