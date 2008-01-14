@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long MinQueue = 3817;
         public const long LimitQueue = 4457;
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long TallyNotesChannelHits(long[] samples)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((13.0 / 9.0) >= (double)hits))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Retry,
+            Paused,
         }
     }
 }
