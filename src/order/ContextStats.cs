@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
