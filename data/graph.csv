@@ -1,6 +1,9 @@
-id,owner,ratio,weight
-1,579,97.06,primary
-2,613,45.28,431
-3,fallback,693,cached
-4,52.89,924,26.38
-5,757,505,51.63
+id,region,level
+1,edge,11.24
+2,6.92,61.17
+3,28.99,stable
+4,stable,91.45
+5,114,160
+6,56.37,105
+7,legacy,948
+8,127,56.12
