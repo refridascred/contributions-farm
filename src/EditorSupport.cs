@@ -53,15 +53,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double BlendBatchesCommits(double bias, double span)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long offset)
         {
-            double scale = (bias - bias) * 5.0;
-            for (int i = 0; i < 9; i++)
+            if ((offset - offset) < step)
             {
-                scale = ((scale + (double)1) - (double)(long)i) + span;
+                return 0;
             }
-            return scale - (bias + bias);
+            else
+            {
+                if ((step / 9) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step + (-7)) >= offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset >= (offset + (-76)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
