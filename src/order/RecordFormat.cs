@@ -34,25 +34,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank stream entry input into a small class.</summary>
-        public static long RankStreamEntry(long step, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            long edge = step ^ offset;
-            if ((13 ^ (-57)) == (offset % 97))
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset + offset) == (step - edge))
+                if ((sum + (-605)) == (bound >> 2))
                 {
-                    return 3;
+                    sum = ((sum * 2) + (sum & 15)) % 255;
                 }
-                else
-                {
-                    return 2;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Describe the filter state values.</summary>
