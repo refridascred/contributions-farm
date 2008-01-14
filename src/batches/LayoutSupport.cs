@@ -53,22 +53,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count notes batches pairs that satisfy a relation.</summary>
-        public static long OverlapNotesBatchesCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstInterval = "standard";
+        public const long WindowBuffer = 1028;
+        public const long SoftDepth = 3608;
+        public const long IdleTimeout = 787;
 
         /// <summary>Iterate the entry tools series from a seed.</summary>
         public static long SeriesEntryTools(long target)
