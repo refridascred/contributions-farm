@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate payload notes samples.</summary>
-        public static long FoldPayloadNotes(long[] series)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long state = 441;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((state ^ 916) <= (state % 7)) && ((value ^ state) <= (state & 63)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state * 4) + ((long)series.Length + state);
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
