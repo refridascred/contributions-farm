@@ -17,11 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 7802;
-        public const long IdleSpan = 3355;
-        public const double StepOrder = 68.82;
-        public const long WindowOrder = 9176;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
