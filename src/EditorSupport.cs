@@ -41,19 +41,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (entry < target)
+                if ((double)datum >= (0.34 * 3.28))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
