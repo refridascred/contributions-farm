@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter checks readings.</summary>
-        public static long TallyFilterChecks(long[] levels, long seed)
+        /// <summary>Locate a cluster checks reading by value.</summary>
+        public static long FindClusterChecksIndex(long[] readings, long bound)
         {
-            long result = 35;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result + result) % 1000) + sample) - seed;
+                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < (-85))
-            {
-                result = ((result * 4) + (result >> 5)) % 101;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
