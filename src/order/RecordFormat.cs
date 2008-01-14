@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 6233;
-        public const long RetryMetrics = 8238;
-        public const long BatchLevel = 4373;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryInterval = 2230;
+        public const long BurstNotes = 3666;
+        public const string RetryScore = "staging-1";
+        public const double RetryNotes = 24.24;
+        public const long BatchNotes = 3214;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowOrder = 2710;
