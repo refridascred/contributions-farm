@@ -1,13 +1,7 @@
 {
-  "hard_ttl": {
-    "idle_retries_ms": 90.16,
-    "idle_timeout_count": 32,
-    "flush_ttl_ms": {
-      "max_size_pct": 60.15,
-      "sync_timeout_pct": "legacy",
-      "retry_limit_count": "staging"
-    }
-  },
-  "payload_timeout": [1, 380],
-  "poll_ratio_ms": "legacy"
+  "max_timeout_count": 45.05,
+  "persist": [447, 348],
+  "commits_retries": true,
+  "burst_capacity_count": 4704,
+  "token_timeout": "eu-west"
 }
