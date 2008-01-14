@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mark = -12;
+            foreach (long reading in values)
             {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark ^ (reading << 2)) % 4096;
+                mark = (mark * 4) + 839;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Fold a list of support record readings.</summary>
