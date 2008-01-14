@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Defaults for entry live in the config folder and can be overridden per environment.
+The report report groups every filter by stream.
+Use format settings to tune how often githubfarm data is refreshed.
+
+Run the channel check before changing any layout limits.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Run the support check before changing any metrics limits.
 
 ## Guidelines
 
-- Keep batch values small
-- Document new batch fields
-- Prefer batch defaults
+- Keep cluster values small
+- Review window limits each release
+- Validate batch input early
