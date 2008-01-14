@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long seed)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
