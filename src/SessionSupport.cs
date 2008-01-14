@@ -29,13 +29,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "stable-edge";
+        public const string IdleCluster = "open-1";
+        public const long RetryCluster = 8912;
+        public const long BaseScore = 6567;
     }
 }
