@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowRatio = "cached";
-        public const long MaxCounter = 5729;
-        public const long HardCounter = 7729;
+        /// <summary>Measure how many schema session samples are out of range.</summary>
+        public static long CountSchemaSessionOutliers(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)hits <= (20.0 * 7.0))
+                {
+                    hits = ((hits + 3) - item) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] data, long offset)
