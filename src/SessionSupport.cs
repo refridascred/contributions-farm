@@ -29,9 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardSize = "fallback-edge";
-        public const string HardWindow = "latest-1";
-        public const long MaxInterval = 2068;
+        /// <summary>Project the next payload contributi value.</summary>
+        public static double ScalePayloadContributi(double gain, double floor)
+        {
+            double gain2 = floor - (floor * 8.0);
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = ((gain2 + 4.0) + (double)(long)i) + gain;
+            }
+            return gain2 - (floor - 7.98);
+        }
     }
 }
