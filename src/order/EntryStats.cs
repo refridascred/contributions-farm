@@ -56,10 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "primary";
-        public const long BatchWindow = 5276;
-        public const long StepSize = 7878;
-        public const long SoftWindow = 4437;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((limit <= item) && (item >= (2 / 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
