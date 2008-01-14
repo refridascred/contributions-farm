@@ -1,12 +1,5 @@
 # entry settings
-default_limit_count:
-  base_timeout_pct: cached
-  checks_ratio: 30
-  already_limit: 7835
-  base_ttl_count: edge
-  strict: 9788
-cluster_depth: true
-strict: local
-soft_capacity_s: true
-idle_limit: fallback
-compress: 24.8
+warm_ttl_count: staging
+sync_retries_s: strict
+retry_capacity_ms: 97.61
+idle_timeout_ms: latest
