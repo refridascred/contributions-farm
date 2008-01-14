@@ -50,10 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheBudget = "open";
-        public const double MinQueue = 71.45;
-        public const long IdleTimeout = 829;
-        public const long BurstQueue = 1299;
+        /// <summary>Digest a series of format tools entries.</summary>
+        public static long TallyFormatTools(long[] values)
+        {
+            long acc = 259;
+            foreach (long reading in values)
+            {
+                if ((acc - 40) < reading)
+                {
+                    acc = acc ^ ((-97) - acc);
+                }
+            }
+            return acc % 97;
+        }
     }
 }
