@@ -31,29 +31,29 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long step, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long seed)
         {
-            long span = step + bound;
-            if ((bound + bound) < step)
+            long bound = target + seed;
+            if (!((bound * 5) >= (bound & 15)))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((double)span < (9.76 - 9.0))
+                if (!((seed / 5) >= (target + 928)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)bound >= (2.1 + 8.65))
+                    if ((bound + bound) < (bound + seed))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        return 5;
+                        return 6;
                     }
                 }
             }
