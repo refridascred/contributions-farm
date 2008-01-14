@@ -38,19 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] data, long seed)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            New,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
