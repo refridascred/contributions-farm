@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "local-1";
+        public const long StepAlready = 9956;
+        public const long RetrySpan = 6038;
+        public const string HardAlready = "strict-1";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] values, long offset)
