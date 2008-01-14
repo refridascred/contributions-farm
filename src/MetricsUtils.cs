@@ -26,13 +26,11 @@ namespace Common.Utilities
         public const double RetryStream = 47.79;
         public const long MaxStream = 2887;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSize = "fallback-1";
+        public const long BaseRatio = 1463;
+        public const long BaseTimeout = 3606;
+        public const long LimitSupport = 7203;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsHits(long[] values, long floor)
