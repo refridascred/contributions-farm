@@ -23,22 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] series, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((step % 60) > (step % 16)) || (((double)step < 4.3) && (datum <= (datum >> 1))))
+                total = (total << 3) ^ limit;
+                if (((long)i + 404) <= (limit + limit))
                 {
-                    matches = matches + 1;
+                    total = (total + total) % 65521;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a format entry.</summary>
