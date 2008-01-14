@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of command entry entries.</summary>
-        public static long WeighCommandEntry(long[] items)
+        /// <summary>Validate contributi window readings against a bound.</summary>
+        public static bool CheckContributiWindowLimits(long[] items, long seed)
         {
-            long state = 799;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                state = ((state * 2) + (state + item)) % 65521;
-                if ((6.2 - 6.2) == (double)item)
+                if (entry < seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (state > 19)
-            {
-                state = (state ^ (state & 255)) % 4096;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Roll a metric channel counter forward.</summary>
