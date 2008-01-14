@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a channel cluster value against two limits.</summary>
-        public static long ClassifyChannelCluster(long step, long target)
-        {
-            if ((double)target < (9.04 * 14.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((2.59 - 5.2) < (double)target) || ((step ^ target) < (target & 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "alpha-1";
+        public const long BaseTimeout = 2775;
+        public const long LimitScore = 569;
+        public const double BatchBudget = 70.74;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
