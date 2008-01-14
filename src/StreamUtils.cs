@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long DefaultBatches = 6946;
         public const string BatchCount = "local-v2";
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double weight = (double)8 - (bias * 7.0);
-            return weight + ratio;
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Match up metrics samples.</summary>
