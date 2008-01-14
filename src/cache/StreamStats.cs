@@ -60,21 +60,22 @@ namespace Common.Utilities
             return load + (load - bias);
         }
 
-        /// <summary>Compare every pair of editor support readings.</summary>
-        public static long OverlapEditorSupportCount(long[] readings)
+        /// <summary>Count the graph farm entries that pass the check.</summary>
+        public static long MeasureGraphFarmOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((count >> 1) > (item * 5)) && (item > ((-44) >> 3))) && !((count >> 3) != (71 >> 2)))
                 {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
