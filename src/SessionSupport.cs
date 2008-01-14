@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = sum ^ origin;
+                sum = sum ^ ((long)i / 7);
+                sum = (sum + (sum << 2)) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the window mode values.</summary>
