@@ -38,12 +38,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long origin)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            if ((origin - offset) < origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset & 127) == (origin + (-7))))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= (876 + (-534)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a support counter forward.</summary>
