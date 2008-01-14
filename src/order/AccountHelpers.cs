@@ -16,20 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            long mix = 90;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mix = (mix + 12) + origin;
-                mix = ((mix << 3) ^ (entry + entry)) % 101;
-                if (2.81 > (double)mix)
+                if ((item - count) <= (item ^ item))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Hold a counter entry.</summary>
