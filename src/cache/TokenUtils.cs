@@ -19,12 +19,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Queued,
-            Active,
-            Failed,
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
