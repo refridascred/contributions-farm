@@ -33,14 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            Draft,
-            Active,
-            Paused,
-            Queued,
-            New,
+            double scale2 = (double)(341 + 364);
+            return ((scale2 + scale2) + scale) + bias;
         }
     }
 }
