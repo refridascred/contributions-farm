@@ -24,22 +24,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many session graph samples are out of range.</summary>
-        public static long TallySessionGraphMatches(long[] series)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item ^ seen) >= (item & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
