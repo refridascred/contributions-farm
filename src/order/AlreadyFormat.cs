@@ -65,22 +65,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] readings, long seed)
         {
-            long acc = 540;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (value < target)
+                if ((seen & 3) <= (seed + cell))
                 {
-                    acc = acc ^ value;
-                }
-                if ((38 + 66) >= (acc / 2))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
