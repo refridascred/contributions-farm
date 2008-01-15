@@ -53,14 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate entry account readings against a bound.</summary>
+        public static bool ValidateEntryAccountBounds(long[] levels, long origin)
         {
-            Stale,
-            Active,
-            Idle,
-            Retry,
-            Locked,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
