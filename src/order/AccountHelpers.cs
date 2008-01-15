@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long seed, long floor)
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
+            if ((floor + seed) > seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((959 ^ 1) == (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed <= (floor + 208)) || (floor > (seed - floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (318 > (seed + floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile phase values.</summary>
