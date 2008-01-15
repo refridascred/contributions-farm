@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double ratio, double span)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long bound)
         {
-            double mean = 7.44;
-            if (mean > span)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + mean) - ratio;
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)6;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
