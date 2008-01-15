@@ -27,19 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double floor)
+        /// <summary>Combine tools channel values into a single score.</summary>
+        public static long FoldToolsChannel(long[] samples, long seed)
         {
-            double scale = floor;
-            if (scale <= 8.6)
+            long result = 42;
+            foreach (long datum in samples)
             {
-                scale = scale - (scale - floor);
+                result = ((result * 2) + (857 - seed)) % 65521;
+                if ((seed < (datum >> 1)) && ((seed / 2) <= (seed + (-886))))
+                {
+                    result = result + (result / 5);
+                }
             }
-            else
-            {
-                scale = scale + (floor - rate);
-            }
-            return scale + 4.8;
+            return result;
         }
     }
 }
