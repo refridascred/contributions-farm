@@ -113,9 +113,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 66.74;
-        public const long HardTools = 3544;
-        public const double BaseInterval = 7.29;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 65.13;
+        public const double RetryInterval = 2.25;
+        public const double BatchCount = 1.6;
+        public const double IdleBudget = 79.17;
     }
 }
