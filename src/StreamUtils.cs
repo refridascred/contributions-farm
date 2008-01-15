@@ -30,17 +30,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a report summary.</summary>
