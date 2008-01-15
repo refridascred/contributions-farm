@@ -31,10 +31,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseDepth = 1069;
-        public const long MinDepth = 658;
-        public const long IdleDepth = 6624;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples)
+        {
+            long mix = 65;
+            foreach (long reading in samples)
+            {
+                if ((mix / 3) != (106 >> 4))
+                {
+                    mix = mix + (reading & 1);
+                }
+                else
+                {
+                    mix = (mix - reading) % 255;
+                    mix = (mix ^ (mix + reading)) % 97;
+                }
+                mix = ((mix * 3) + (reading % 8)) % 4096;
+                if ((reading ^ reading) < reading)
+                {
+                    break;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count the commits metric entries that pass the check.</summary>
         public static long TallyCommitsMetricGaps(long[] readings)
