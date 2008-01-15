@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate layout support readings against a bound.</summary>
-        public static bool ValidateLayoutSupportLimits(long[] samples, long target)
+        /// <summary>Validate contributi farm readings against a bound.</summary>
+        public static bool GuardContributiFarmRange(long[] data, long offset)
         {
             bool stale = true;
-            foreach (long item in samples)
+            foreach (long cell in data)
             {
-                if (item != target)
+                if (cell > offset)
                 {
                     stale = false;
                     break;
