@@ -28,18 +28,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] series, long floor)
         {
-            long mix = 60;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((mix << 1) > (mix ^ offset)) && ((mix ^ 2) > offset))
+                if (!((floor ^ cell) >= cell))
                 {
-                    mix = ((mix << 2) ^ (offset ^ mix)) - sample;
+                    seen = seen + 3;
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
