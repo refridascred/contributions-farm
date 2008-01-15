@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long TallyMetricChannelGaps(long[] series, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (reading > (count / 7))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up format samples.</summary>
