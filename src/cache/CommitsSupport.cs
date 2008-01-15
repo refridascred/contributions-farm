@@ -25,14 +25,11 @@ namespace Common.Utilities
         public const double RetryInterval = 21.47;
         public const long StepCommand = 8129;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepDepth = "alpha-edge";
+        public const string LimitScore = "alpha-edge";
+        public const double MinScore = 56.62;
+        public const long StepWindow = 3607;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long target, long step)
