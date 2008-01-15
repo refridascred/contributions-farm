@@ -18,19 +18,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] levels, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (cell != target)
+                if ((double)cell <= (double)hits)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine route checks values into a single score.</summary>
