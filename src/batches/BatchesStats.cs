@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long offset, long bound)
-        {
-            long next = offset ^ bound;
-            if ((bound + 458) <= (next + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)next < (2.0 - 2.2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset & 63) <= 93)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((bound + next) == (offset * 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstRatio = 7984;
+        public const double HardTimeout = 40.54;
+        public const long StepCount = 7944;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordOutliers(long[] items)
