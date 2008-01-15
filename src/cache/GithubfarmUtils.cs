@@ -35,18 +35,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the metrics context entries that pass the check.</summary>
-        public static long TallyMetricsContextGaps(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (!((entry - 118) != (count >> 5)) && ((count - count) < count))
+                if (value <= target)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
