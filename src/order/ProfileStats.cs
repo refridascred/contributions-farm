@@ -27,19 +27,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every report profile entry stays within the limit.</summary>
-        public static bool CheckReportProfileRange(long[] series, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (reading < offset)
+                if (sample < origin)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Measure how many order metric samples are out of range.</summary>
