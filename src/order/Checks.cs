@@ -35,10 +35,14 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "latest";
-        public const long MinProfile = 5340;
-        public const long CacheProfile = 5306;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
