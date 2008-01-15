@@ -22,24 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long target)
         {
-            long anchor = 766;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell + cell) >= 8) || ((double)anchor <= (6.62 - 2.5)))
+                if (series[i] > target)
                 {
-                    anchor = (anchor * 3) + (offset - cell);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor % 100);
-                    anchor = (anchor - (91 + anchor)) % 101;
-                }
-                anchor = (anchor ^ cell) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
