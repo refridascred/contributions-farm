@@ -16,18 +16,12 @@ namespace Common.Utilities
             return weight - (weight / 6.0);
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] levels, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches << 3) < matches)
-                {
-                    matches = ((matches + 1) ^ entry) + origin;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the buffer cache entries that pass the check.</summary>
