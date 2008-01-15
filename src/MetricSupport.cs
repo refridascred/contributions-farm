@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool ValidateToolsBatchesRange(long[] levels, long floor)
+        /// <summary>Audit farm record readings against a rule.</summary>
+        public static long CountFarmRecordHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (entry >= floor)
+                if (!((706 - reading) >= reading))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
