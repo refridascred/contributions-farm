@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 8588;
-        public const double LimitCommand = 19.03;
-        public const string WindowRatio = "latest-edge";
-        public const long RetryCommand = 8909;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] items)
