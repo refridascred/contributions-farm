@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            Stale,
+            Ready,
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
