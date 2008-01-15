@@ -19,31 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Count the tools profile entries that pass the check.</summary>
+        public static long CountToolsProfileOutliers(long[] samples, long step)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((matches + reading) == (matches - step))
                 {
-                    score = ((score + (target >> 5)) % 65521) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                if ((double)score <= (6.11 + 16.0))
-                {
-                    score = (score ^ ((long)i + target)) % 101;
-                }
-                if (((long)i - target) <= ((long)i << 1))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score << 3) ^ (target << 1);
-                }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
