@@ -1,17 +1,13 @@
 {
-  "enabled": {
-    "hard_interval_s": {
-      "burst_ratio_s": [1, 316],
-      "retry_delay_s": [145, 354],
-      "token_window": [398, 252],
-      "idle_size": 69.73,
-      "graph_threshold": 53
-    },
-    "dry_run": "edge",
-    "base_delay_count": "edge",
-    "flush_limit_s": "staging",
-    "enabled": true
+  "batch_timeout": "fallback",
+  "strict": "strict",
+  "retry_ttl": {
+    "payload_delay": 73.51,
+    "cache_ttl": true,
+    "context_capacity": "primary",
+    "persist": 1024
   },
-  "strict": ["local", "edge", "strict", "green"],
-  "githubfarm_retries": 30
+  "soft_size_ms": "strict",
+  "stream_threshold": 8,
+  "cache_ratio": true
 }
