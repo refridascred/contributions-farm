@@ -1,13 +1,30 @@
 # githubfarm settings
-max_depth_count: 500
-cache_window_pct: edge
-hard_timeout_s:
-  - 345
-  - 252
-  - 384
-  - 169
-idle_timeout:
-  - cached
-  - cached
-  - fallback
-  - edge
+retry_ttl:
+  soft_timeout_s: standard
+  dry_run:
+    - 28
+    - 202
+  batch_window:
+    - primary
+    - legacy
+    - latest
+    - fallback
+  readonly: 70.46
+  poll_ttl:
+    - local
+    - standard
+    - fallback
+    - strict
+command_ttl: 250
+buffer_delay:
+  idle_capacity_ms:
+    entry_limit: legacy
+    soft_ttl: cached
+    idle_limit: staging
+    batch_limit: 250
+  queue_ttl: legacy
+  retry_interval_ms: open
+  poll_capacity_pct: standard
+  batch_threshold_pct: 66.26
+  soft_ttl_pct: 88
+retry_capacity_pct: false
