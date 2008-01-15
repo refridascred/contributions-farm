@@ -1,6 +1,6 @@
 # githubfarm settings
-poll_window_s: edge
-idle_timeout_s: 7901
-entry_timeout: 3646
-route_capacity: blue
-retry_size: 2996
+min_size: 71.25
+burst_interval: 1
+dry_run: 89.4
+base_size: false
+default_timeout_pct: 667
