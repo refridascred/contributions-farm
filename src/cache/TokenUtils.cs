@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Idle,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstBudget = 5706;
+        public const long StepSpan = 9766;
+        public const long BatchProfile = 4746;
+        public const double MinFactor = 42.71;
+        public const long DefaultScore = 406;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
