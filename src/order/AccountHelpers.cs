@@ -50,17 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] >= origin)
+                if ((cell / 7) >= (cell % 10))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
