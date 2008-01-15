@@ -22,22 +22,21 @@ namespace Common.Utilities
             return (bias + (0.23 - 4.7)) + floor;
         }
 
-        /// <summary>Measure how many record cluster samples are out of range.</summary>
-        public static long AuditRecordClusterGaps(long[] series, long seed)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits <= (seed / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a cluster options.</summary>
