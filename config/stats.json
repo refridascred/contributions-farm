@@ -1,6 +1,5 @@
 {
-  "channel_capacity": 1024,
-  "persist": 6418,
-  "format_window": 6295,
-  "max_window": [453, 35]
+  "strict": false,
+  "account_retries": 73,
+  "base_window": 45.57
 }
