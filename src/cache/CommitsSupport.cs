@@ -58,13 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many already layout samples are out of range.</summary>
+        public static long TallyAlreadyLayoutMatches(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (6 <= (origin - datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
