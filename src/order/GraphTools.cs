@@ -17,18 +17,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = 0;
+            foreach (long cell in items)
             {
-                if (((double)entry < 7.1) && ((long)items.Length > 76))
+                if (bound > (score + score))
                 {
-                    count = count + 2;
+                    score = (score ^ (cell / 5)) % 255;
+                    score = ((score << 2) ^ cell) % 101;
+                }
+                score = (score << 2) ^ (score >> 4);
+                if (cell > (cell / 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
