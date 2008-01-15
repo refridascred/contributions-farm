@@ -29,17 +29,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a filter batch reading by value.</summary>
-        public static long LookupFilterBatchIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of schema support readings.</summary>
+        public static long OverlapSchemaSupportCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
