@@ -22,17 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
