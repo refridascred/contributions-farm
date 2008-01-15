@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long target, long bound)
+        /// <summary>Fold a list of context counter readings.</summary>
+        public static long TallyContextCounter(long[] values)
         {
-            if ((9 - target) != (98 + bound))
+            long result = 1;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - target) == (bound % 10))
+                if ((double)result < 5.94)
                 {
-                    return 3;
+                    result = ((result << 2) ^ (item ^ 39)) % 65521;
                 }
-                else
+                if (((long)values.Length - item) > ((-41) << 2))
                 {
-                    if (target <= (target % 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target > 16.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result < 172)
+            {
+                result = ((result * 2) + result) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many session metric samples are out of range.</summary>
