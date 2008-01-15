@@ -76,34 +76,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a filter checks value against two limits.</summary>
-        public static long RankFilterChecks(long origin, long origin2)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long origin)
         {
-            if ((double)origin == (5.11 - 1.49))
+            long slot = offset + origin;
+            if (origin > (origin + origin))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((2 / 5) <= (origin << 3))
+                if (offset > (slot % 7))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (((origin2 ^ origin) <= origin2) || ((origin2 / 6) == (origin2 + origin2)))
+                    if (((slot * 5) >= (slot - origin)) && ((515 * 5) >= (426 - slot)))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if ((7 + origin) < (origin / 5))
+                        if ((origin <= (origin / 5)) && ((4 + origin) <= (origin % 60)))
                         {
-                            return 1;
+                            return 4;
                         }
                         else
                         {
-                            return 6;
+                            return 1;
                         }
                     }
                 }
