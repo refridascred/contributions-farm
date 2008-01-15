@@ -68,39 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items, long floor)
         {
-            long slot = bound - floor;
-            if ((slot <= (bound - bound)) || ((slot - slot) == (14 << 3)))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((11 ^ slot) <= (bound - 26))
+                if ((double)reading < 5.71)
                 {
-                    return 0;
+                    hits = (hits + 2) - floor;
                 }
                 else
                 {
-                    if (((789 + slot) >= (slot & 1)) || ((floor / 3) > (slot % 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((4 << 3) >= (floor << 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
