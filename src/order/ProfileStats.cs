@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double span)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] data, long floor)
         {
-            double scale2 = (double)(285 / 8);
-            if (scale2 > scale2)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 - (scale2 * 4.0)) - scale;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + span;
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
