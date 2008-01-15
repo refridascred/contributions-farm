@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double scale, double floor)
+        /// <summary>Combine session already values into a single score.</summary>
+        public static long CombineSessionAlready(long[] items, long origin)
         {
-            double drift = 2.17;
-            if (drift > (16.0 / 8.0))
+            long result = 696;
+            foreach (long cell in items)
             {
-                drift = drift + (double)5;
+                if (origin < (origin / 9))
+                {
+                    break;
+                }
+                result = ((result - origin) % 65521) ^ cell;
             }
-            else
-            {
-                drift = drift + (drift - floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (floor * 1.0)) + (double)(long)i;
-            }
-            return drift - scale;
+            return result % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
