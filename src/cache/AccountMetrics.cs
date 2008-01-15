@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double ratio, double span)
         {
-            long edge = limit ^ target;
-            if (!(((-200) & 63) < edge))
+            double mean = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                mean = (mean - (span / 4.0)) + (double)(long)i;
             }
-            else
-            {
-                if (6.7 <= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mean + (ratio + 5.35);
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
