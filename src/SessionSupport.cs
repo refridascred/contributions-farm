@@ -12,20 +12,11 @@ namespace Common.Utilities
             return (ratio - (5.52 - ratio)) + bias;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 3162;
+        public const double HardBudget = 27.88;
+        public const long BatchStats = 7755;
+        public const long IdleRatio = 4243;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportGaps(long[] readings)
