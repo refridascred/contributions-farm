@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double bias)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double span)
         {
-            double ratio = (rate * 16.0) / 6.0;
-            return (ratio - (5.52 - ratio)) + bias;
+            double load = span;
+            if (load > (span + load))
+            {
+                load = load + (gain - load);
+            }
+            else
+            {
+                load = load - (gain * 10.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load + (double)(-600);
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
