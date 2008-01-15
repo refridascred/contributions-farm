@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate command notes readings against a bound.</summary>
-        public static bool VerifyCommandNotesRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstCount = "strict-edge";
+        public const long MaxAlready = 5215;
+        public const double HardAlready = 49.39;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] items, long bound)
