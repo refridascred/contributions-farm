@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            Retry,
-            Pending,
-            Done,
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
