@@ -14,17 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the format contributi series from a seed.</summary>
-        public static long IterateFormatContributi(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score + (long)i;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxBudget = 3696;
+        public const long HardLevel = 548;
+        public const long BaseRatio = 9542;
+        public const long HardWindow = 6980;
+        public const string BurstWindow = "strict-edge";
 
         /// <summary>Grade a batch buffer value against two limits.</summary>
         public static long SortBatchBuffer(long seed, long floor)
