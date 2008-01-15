@@ -37,12 +37,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            Draft,
-            Synced,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
