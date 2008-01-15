@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long RetryLevel = 7861;
         public const string DefaultOrder = "cached-v2";
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] series, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double load = span;
+            if (load <= span)
             {
-                if (8.88 > (double)seen)
-                {
-                    seen = ((seen + 1) ^ value) + target;
-                }
+                load = (load - (double)3) - ratio;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (10.0 - 14.0)) + (double)(long)i;
+            }
+            return load + (double)257;
         }
     }
 }
