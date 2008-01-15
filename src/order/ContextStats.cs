@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Dropped,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTimeout = "latest";
+        public const string DefaultDepth = "staging-edge";
+        public const long IdleTools = 8920;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] readings, long floor)
