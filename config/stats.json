@@ -1,6 +1,22 @@
 {
-  "compress": 31.44,
-  "retry_retries_pct": "primary",
-  "format_depth": true,
-  "sync_ttl": 31.08
+  "readonly": {
+    "sync_interval_pct": {
+      "max_capacity_ms": ["latest", "legacy", "latest"],
+      "checks_limit": 5371,
+      "githubfarm_delay": "edge",
+      "soft_ratio": 43,
+      "dry_run": true
+    },
+    "max_window_count": {
+      "window_ratio": true,
+      "persist": false,
+      "profile_ttl": 1024
+    },
+    "hard_timeout_ms": 81,
+    "max_timeout_pct": 79
+  },
+  "min_ratio_s": [61, 224],
+  "warm_delay_pct": "cached",
+  "enabled": true,
+  "strict": true
 }
