@@ -38,31 +38,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double span)
         {
-            if ((origin - offset) < origin)
+            double weight = ratio / 8.0;
+            if (weight > ratio)
             {
-                return 4;
+                weight = weight + (weight - span);
             }
-            else
-            {
-                if (!((offset & 127) == (origin + (-7))))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= (876 + (-534)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight + (double)91;
         }
 
         /// <summary>Adjust a entry reading.</summary>
