@@ -21,23 +21,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] series, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] samples, long target)
         {
-            long mark = 848;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (2.14 <= (double)entry)
+                if (target < (value + seen))
                 {
-                    mark = (mark * 3) + (step >> 4);
+                    seen = seen + 2;
                 }
-                mark = ((mark * 2) + (step % 7)) % 255;
             }
-            if (mark < (-193))
-            {
-                mark = (mark << 3) ^ 95;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
