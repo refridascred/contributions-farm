@@ -1,7 +1,5 @@
 {
-  "max_window": 81.7,
-  "compress": 30,
-  "burst_retries": 20,
-  "max_limit_ms": 905,
-  "cache_ratio_pct": "latest"
+  "max_interval_count": 53.23,
+  "default_depth_s": false,
+  "poll_size": 66
 }
