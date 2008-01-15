@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen << 1) >= (seen * 2))
-                {
-                    seen = ((seen + 2) + sample) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetrySpan = 5063;
+        public const double SoftReport = 98.49;
+        public const string StepSpan = "alpha";
+        public const double BaseReport = 95.07;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
