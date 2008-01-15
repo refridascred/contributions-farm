@@ -1,8 +1,7 @@
 {
-  "warm_retries": 500,
-  "burst_retries_ms": "latest",
-  "retry_window_count": [428, 169, 187],
-  "soft_ratio_pct": "stable",
-  "dry_run": 97,
-  "base_timeout": ["stable", "primary", "cached", "open"]
+  "route_ttl": ["eu-west", "blue"],
+  "warm_ttl_s": [199, 327, 210, 34],
+  "sync_ratio_s": 2926,
+  "githubfarm_retries": 96.27,
+  "batch_threshold": "latest"
 }
