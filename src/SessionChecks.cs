@@ -52,24 +52,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Iterate the already account series from a seed.</summary>
-        public static long RollAlreadyAccount(long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] readings, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((total / 4) < (total >> 4))
+                if (((matches / 5) != (sample % 97)) && (((matches - sample) >= (sample ^ sample)) || (sample <= (sample + target))))
                 {
-                    total = total - (14 / 6);
+                    matches = matches + 3;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total + (total << 3)) % 97) ^ (long)i2;
-                    total = (total - (long)i) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
     }
 }
