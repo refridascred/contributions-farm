@@ -61,18 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout token entry that matches the target.</summary>
-        public static long FindLayoutTokenIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinDepth = 7096;
+        public const long MaxCluster = 2944;
+        public const string BatchCluster = "strict-edge";
+        public const double CacheCluster = 86.33;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long floor)
