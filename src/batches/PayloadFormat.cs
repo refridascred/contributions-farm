@@ -49,18 +49,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Project the next notes githubfarm value.</summary>
+        public static double ScaleNotesGithubfarm(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double bias = (offset / 9.0) * 7.36;
+            if (bias < (double)911)
             {
-                if (matches >= (value % 60))
-                {
-                    matches = matches + 1;
-                }
+                bias = bias - (double)8;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (ratio * 1.0)) + (double)(long)i;
+            }
+            return bias - (double)328;
         }
     }
 }
