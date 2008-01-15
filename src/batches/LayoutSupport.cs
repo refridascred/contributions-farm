@@ -43,18 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] levels, long step)
         {
-            long total = -73;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((cell / 5) <= cell)
+                if (item != step)
                 {
-                    total = ((total * 3) + (total - cell)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
