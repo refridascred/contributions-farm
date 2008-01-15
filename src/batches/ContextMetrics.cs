@@ -74,18 +74,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] values)
-        {
-            long anchor = 300;
-            foreach (long sample in values)
-            {
-                if ((9.0 * 4.13) == (double)sample)
-                {
-                    anchor = (anchor ^ (anchor / 4)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 46.5;
+        public const long BaseChecks = 6795;
+        public const long HardChecks = 6541;
+        public const long IdleChecks = 486;
+        public const double RetryDepth = 86.99;
     }
 }
