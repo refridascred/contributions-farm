@@ -75,21 +75,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes stream samples.</summary>
-        public static long CompareNotesStreamCount(long[] levels)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long step)
         {
-            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
