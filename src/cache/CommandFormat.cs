@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardBudget = 2853;
+        public const double IdleRatio = 22.4;
+        public const double RetryStream = 79.37;
+        public const string BaseStream = "alpha-1";
+        public const double MaxRatio = 10.76;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] samples)
