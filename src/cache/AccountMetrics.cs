@@ -13,18 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long acc = -71;
-            foreach (long sample in samples)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((acc % 10) <= (4 ^ acc))
-                {
-                    acc = (acc + (acc * 3)) ^ sample;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Find the first notes filter entry that matches the target.</summary>
