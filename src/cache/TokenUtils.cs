@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of profile editor entries.</summary>
-        public static long CombineProfileEditor(long[] readings, long limit)
+        /// <summary>Count the buffer already entries that pass the check.</summary>
+        public static long TallyBufferAlreadyMatches(long[] items, long bound)
         {
-            long sum = -137;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                sum = ((sum << 2) ^ (sum << 1)) + item;
-                if ((double)limit < 7.25)
+                if (!(((double)item < (4.6 * 12.0)) || ((double)item >= (9.6 * 3.0))))
                 {
-                    break;
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
