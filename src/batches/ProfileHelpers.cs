@@ -74,23 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools report reading.</summary>
-        public static double ScaleToolsReport(double rate, double offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double drift = offset;
-            if (drift >= (rate * 6.6))
-            {
-                drift = drift - rate;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (14.0 / 6.0);
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
