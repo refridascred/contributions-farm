@@ -49,19 +49,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next notes githubfarm value.</summary>
-        public static double ScaleNotesGithubfarm(double ratio, double offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] items, long seed)
         {
-            double bias = (offset / 9.0) * 7.36;
-            if (bias < (double)911)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (double)8;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (ratio * 1.0)) + (double)(long)i;
-            }
-            return bias - (double)328;
+            return -1;
         }
     }
 }
