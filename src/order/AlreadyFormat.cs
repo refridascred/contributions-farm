@@ -18,11 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
+            Paused,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
