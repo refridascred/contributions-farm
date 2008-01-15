@@ -1,6 +1,14 @@
 # githubfarm settings
-dry_run: fallback
-persist:
+hard_size:
   - primary
-  - cached
-burst_interval: true
+  - strict
+queue_interval: 30
+compress: true
+sync_ttl_count:
+  idle_size_s: 97.82
+  idle_threshold: 69
+  retry_delay: 25
+  cluster_ttl: 16
+hard_threshold_pct:
+  - eu-west
+  - latest
