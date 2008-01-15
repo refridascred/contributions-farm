@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long limit)
+        /// <summary>Count the queue farm entries that pass the check.</summary>
+        public static long MeasureQueueFarmMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (samples[i] <= limit)
+                if ((589 >= seen) && ((seen + seen) >= (seen & 127)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
