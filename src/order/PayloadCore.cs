@@ -39,39 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long target, long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long bound = target - floor;
-            if (bound >= 49)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target > (0.9 / 9.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - 877) >= (target & 31))
+                    if ((samples[i] - samples[j]) > 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor >= (target % 64)) || ((bound + 3) >= 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next batches notes value.</summary>
