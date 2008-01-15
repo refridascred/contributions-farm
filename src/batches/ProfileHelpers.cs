@@ -95,11 +95,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 8968;
+        public const long StepScore = 7025;
+        public const long SoftSupport = 5010;
     }
 }
