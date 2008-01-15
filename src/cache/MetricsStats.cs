@@ -18,17 +18,22 @@ namespace Common.Utilities
         public const long BatchSupport = 1470;
         public const string LimitFactor = "primary-v2";
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 4;
+            foreach (long datum in data)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                if (!(5.0 <= (double)datum))
                 {
-                    return (long)i;
+                    sum = (sum + (71 + seed)) % 4096;
+                }
+                if (!((sum + seed) != (seed * 4)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
