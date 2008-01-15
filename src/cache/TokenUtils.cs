@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] levels, long origin)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((9.0 + 18.0) > (double)origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + reading;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
