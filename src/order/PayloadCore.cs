@@ -57,15 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two cluster checks measurements.</summary>
-        public static double AdjustClusterChecks(double rate, double floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double ratio = floor;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - 5.3;
-            }
-            return ratio - rate;
+            Dropped,
+            Paused,
+            Ready,
+            New,
+            Idle,
         }
     }
 }
