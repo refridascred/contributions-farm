@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            Idle,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)hits <= (2.26 / 3.0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
