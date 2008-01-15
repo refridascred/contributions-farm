@@ -32,11 +32,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultWidth = 28.94;
-        public const long StepTimeout = 4322;
-        public const long BurstContext = 2383;
-        public const double WindowBudget = 39.78;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((floor >= seen) || ((double)(-7) != (double)item)) && (item >= (seen / 2)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] readings, long origin)
