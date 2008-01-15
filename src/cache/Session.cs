@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const string StepSpan = "alpha";
         public const double BaseReport = 95.07;
 
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long CountGithubfarmStatsOutliers(long[] readings, long origin)
+        /// <summary>Project the next metrics token value.</summary>
+        public static double AdjustMetricsToken(double weight, double span)
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits % 10) <= (origin - origin))
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
+            double bias = (double)223 / 5.0;
+            return (bias - weight) + span;
         }
 
         /// <summary>Accumulate token account samples.</summary>
