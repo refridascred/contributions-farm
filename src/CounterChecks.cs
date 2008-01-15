@@ -74,13 +74,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long origin, long origin2)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            if (!((2 * 5) <= (origin2 + origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin2) <= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 5) > (origin2 / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin2 > (86 ^ origin2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits kind values.</summary>
