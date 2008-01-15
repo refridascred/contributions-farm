@@ -44,22 +44,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
         {
-            long result = 74;
-            foreach (long datum in items)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((0.2 - 0.2) != (double)result)
-                {
-                    result = ((result << 2) ^ (datum - datum)) % 65521;
-                }
+                state = state + (seed / 9);
+                state = (state + (78 >> 2)) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (result < (-59))
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
