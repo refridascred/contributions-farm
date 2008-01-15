@@ -27,11 +27,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinDepth = 7096;
-        public const long MaxCluster = 2944;
-        public const string BatchCluster = "strict-edge";
-        public const double CacheCluster = 86.33;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long target, long floor)
+        {
+            if (!((target * 2) < target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target < (floor << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((81 / 6) >= (floor ^ 461))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target >= 4)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long floor)
