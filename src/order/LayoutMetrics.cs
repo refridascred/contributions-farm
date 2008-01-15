@@ -16,17 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] samples, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                if (cell < limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
