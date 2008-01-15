@@ -46,11 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
