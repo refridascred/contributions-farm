@@ -48,13 +48,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Retry,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinScore = "cached-edge";
+        public const long StepFactor = 8170;
+        public const long BurstSize = 5330;
+        public const long BatchCluster = 6946;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
