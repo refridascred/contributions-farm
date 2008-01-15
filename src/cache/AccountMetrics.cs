@@ -25,11 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSize = 7452;
-        public const long IdleCount = 2586;
-        public const long SoftLevel = 8475;
-        public const string SoftPayload = "alpha";
+        /// <summary>Find the first notes filter entry that matches the target.</summary>
+        public static long FindNotesFilterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstMetrics = "alpha";
