@@ -61,19 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double ratio, double offset)
-        {
-            double mean = (double)5 / 9.0;
-            if (mean > (double)883)
-            {
-                mean = mean + 7.29;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + (ratio - offset);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "primary";
+        public const long WindowWidth = 3200;
+        public const long MinBatch = 9222;
+        public const long HardBatch = 8830;
+        public const double BatchBudget = 63.33;
     }
 }
