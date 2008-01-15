@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] values, long limit)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up window samples.</summary>
