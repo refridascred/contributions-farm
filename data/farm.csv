@@ -1,8 +1,8 @@
-id,state,score,token
-1,499,72.18,open
-2,1.81,996,24
-3,22.97,505,95
-4,951,885,legacy
-5,461,staging,strict
-6,staging,47.59,legacy
-7,stable,77.02,green
+id,active,rank
+1,82.97,85.92
+2,latest,272
+3,primary,30.93
+4,standard,577
+5,76.33,97.83
+6,56.9,135
+7,blue,564
