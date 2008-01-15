@@ -27,12 +27,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            Ready,
-            Synced,
-            Active,
+            double mean = (gain - 1.12) + 4.0;
+            return mean + (span * 0.7);
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
