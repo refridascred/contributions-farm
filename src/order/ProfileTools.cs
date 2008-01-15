@@ -30,18 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
-        public static long AuditFilterGithubfarmGaps(long[] values, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((limit ^ limit) > datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
