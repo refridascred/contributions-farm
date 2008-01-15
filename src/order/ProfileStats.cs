@@ -44,11 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Total { get; set; }
-            public bool Score { get; set; }
+            New,
+            Ready,
+            Idle,
         }
     }
 }
