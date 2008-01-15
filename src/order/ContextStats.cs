@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values, long limit)
+        /// <summary>Combine farm window values into a single score.</summary>
+        public static long WeighFarmWindow(long[] levels, long step)
         {
-            long anchor = 0;
-            foreach (long cell in values)
+            long mark = 912;
+            foreach (long item in levels)
             {
-                if (17.0 <= (double)limit)
+                if ((84 % 64) > mark)
                 {
-                    anchor = (((anchor * 3) + (90 + anchor)) % 1000) - cell;
+                    mark = (mark - item) - step;
                 }
             }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
