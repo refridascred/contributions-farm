@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 4;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry % 16) >= (23 * 4))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 4) + (entry % 16)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ entry) % 1000;
                 }
             }
-            return hits;
+            if (result > 55)
+            {
+                result = result + (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Hold a channel options.</summary>
