@@ -37,22 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (sample < count)
+                if ((seen >> 3) >= origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + value;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the report kind values.</summary>
