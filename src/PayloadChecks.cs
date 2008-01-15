@@ -56,17 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] levels, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the token level values.</summary>
