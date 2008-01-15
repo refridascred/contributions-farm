@@ -64,20 +64,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] levels, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (((long)i - (long)i) >= floor)
+                if (item < target)
                 {
-                    anchor = anchor + ((long)i ^ anchor);
+                    ready = false;
+                    break;
                 }
-                anchor = anchor - (floor ^ floor);
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
