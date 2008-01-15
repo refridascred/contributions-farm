@@ -51,19 +51,18 @@ namespace Common.Utilities
         public const string DefaultCount = "cached-edge";
         public const string CacheTimeout = "alpha-1";
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] series, long seed)
         {
-            double gain = (double)429 - bias;
-            if (gain > 6.51)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                gain = gain - bias;
+                if ((seed + 731) < (62 % 2))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (offset * 3.66)) - (double)(long)i;
-            }
-            return gain + (double)885;
+            return tally;
         }
     }
 }
