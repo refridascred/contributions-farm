@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 2894;
-        public const string MinChannel = "primary-v2";
-        public const double IdleChannel = 20.01;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string DefaultCluster = "open-1";
