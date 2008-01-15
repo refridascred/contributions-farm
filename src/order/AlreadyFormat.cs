@@ -55,17 +55,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long floor)
+        /// <summary>Blend two graph buffer measurements.</summary>
+        public static double ProjectGraphBuffer(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(-78) * 5.0;
+            return ((gain + (gain / 7.0)) + scale) + floor;
         }
     }
 }
