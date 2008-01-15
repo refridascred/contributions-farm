@@ -42,21 +42,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Closed,
+            Paused,
+            Queued,
         }
     }
 }
