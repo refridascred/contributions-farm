@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftInterval = "legacy-v2";
-        public const double CacheFilter = 1.99;
-        public const long HardFilter = 3734;
-        public const long BatchSpan = 3248;
-        public const string WindowSpan = "local-edge";
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double ratio, double span)
+        {
+            double mean = 7.44;
+            if (mean > span)
+            {
+                mean = (mean + mean) - ratio;
+            }
+            return mean - (double)6;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double ProjectEditor(double weight, double span)
