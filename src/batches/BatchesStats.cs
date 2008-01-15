@@ -38,16 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "fallback";
+        public const long DefaultBuffer = 7773;
+        public const string BaseBuffer = "alpha-edge";
+        public const long HardScore = 8370;
 
         /// <summary>Count the notes channel entries that pass the check.</summary>
         public static long CountNotesChannelOutliers(long[] samples, long seed)
