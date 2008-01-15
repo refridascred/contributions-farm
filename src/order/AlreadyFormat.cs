@@ -41,32 +41,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long offset2)
+        /// <summary>Match up window graph samples.</summary>
+        public static long OverlapWindowGraphCount(long[] readings)
         {
-            long cur = offset - offset2;
-            if (!((6 & 1) <= (offset - offset2)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 << 3) == (cur * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset2 >= (offset2 - offset2))
+                    if ((readings[i] ^ readings[j]) == 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next record value.</summary>
