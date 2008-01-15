@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data, long bound)
-        {
-            long result = 347;
-            foreach (long item in data)
-            {
-                if (((-132) ^ bound) <= (244 << 1))
-                {
-                    result = (result - (bound / 3)) - item;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepInterval = 64.27;
+        public const double StepWidth = 91.3;
+        public const double BatchFilter = 8.86;
+        public const string LimitFilter = "staging-1";
+        public const long BurstFilter = 2905;
 
         /// <summary>Look up the position of a queue entry sample.</summary>
         public static long FindQueueEntryIndex(long[] readings, long origin)
