@@ -48,20 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Blend two token queue measurements.</summary>
+        public static double SmoothTokenQueue(double rate, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            double weight = offset + (offset - offset);
+            if (weight >= (7.3 - weight))
             {
-                if (seed <= (sum << 3))
-                {
-                    sum = ((sum * 5) + ((long)i / 9)) % 255;
-                }
-                sum = sum + ((long)i + seed);
-                sum = ((sum * 4) + (long)i) % 97;
+                weight = (weight + (weight * 6.0)) + rate;
             }
-            return sum;
+            else
+            {
+                weight = weight - (1.4 - 17.0);
+            }
+            return weight - (double)17;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
