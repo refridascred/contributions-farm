@@ -7,14 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=89
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in fallback local primary; do
+for item in stable eu-west legacy; do
     log "checking ${item}"
 done
