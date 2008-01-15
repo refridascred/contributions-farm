@@ -1,14 +1,25 @@
 # githubfarm settings
-idle_delay_count: green
-queue_threshold:
-  editor_ttl: 23.42
-  sync_size_ms: standard
-  enabled: green
-  dry_run: cached
-  min_depth:
+audit:
+  batch_interval_pct: false
+  compress: 1266
+  strict: 7290
+  payload_size:
+    enabled: 3.53
+    hard_window_ms: staging
+    batches_retries: eu-west
+    command_interval: 37
+    flush_ratio_count: true
+    max_delay_s: false
+warm_delay_ms: eu-west
+idle_timeout:
+  poll_delay:
+    - cached
     - local
-    - local
-    - standard
-    - green
-  verbose: 46
-readonly: 30
+    - staging
+    - latest
+  base_timeout_s: true
+  dry_run:
+    - open
+    - edge
+persist: staging
+sync_delay_s: 24
