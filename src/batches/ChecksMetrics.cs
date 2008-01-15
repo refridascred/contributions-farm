@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Find the first context entry entry that matches the target.</summary>
+        public static long LookupContextEntryIndex(long[] readings, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of channel command entries.</summary>
