@@ -51,31 +51,19 @@ namespace Common.Utilities
         public const string DefaultCount = "cached-edge";
         public const string CacheTimeout = "alpha-1";
 
-        /// <summary>Rank session checks input into a small class.</summary>
-        public static long BucketSessionChecks(long limit, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            if (origin >= (limit + origin))
+            double gain = (double)429 - bias;
+            if (gain > 6.51)
             {
-                return 4;
+                gain = gain - bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)limit <= (20.0 / 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit < (origin - origin)) || ((0.66 + 8.6) < (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain = (gain - (offset * 3.66)) - (double)(long)i;
             }
+            return gain + (double)885;
         }
     }
 }
