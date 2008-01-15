@@ -27,18 +27,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long MeasureProfileMetricHits(long[] readings, long target)
+        /// <summary>Rank order token input into a small class.</summary>
+        public static long ClassifyOrderToken(long bound, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if ((bound + target) <= (target + 6))
             {
-                if (!((tally % 97) != (tally & 15)) && ((7 - 7) < (long)readings.Length))
+                return 8;
+            }
+            else
+            {
+                if (!((double)target <= (9.2 / 2.0)))
                 {
-                    tally = ((tally + 1) - cell) + target;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
