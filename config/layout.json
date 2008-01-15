@@ -1,7 +1,11 @@
 {
-  "min_ttl_count": false,
-  "report_limit": 100,
-  "max_ttl_ms": true,
-  "base_delay_pct": 75.55,
-  "audit": [27, 7]
+  "hard_delay_ms": "legacy",
+  "cache_delay": {
+    "batch_interval_s": [354, 145, 254],
+    "batch_ttl_pct": [170, 78, 132, 199],
+    "readonly": 62,
+    "idle_threshold_s": "green"
+  },
+  "poll_threshold": false,
+  "poll_capacity_pct": 60
 }
