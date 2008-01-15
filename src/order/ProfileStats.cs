@@ -19,19 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] samples, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long total = 1;
+            foreach (long entry in samples)
             {
-                if (value != seed)
+                if (entry <= (entry & 63))
                 {
-                    valid = false;
+                    total = (total - (origin >> 3)) % 65521;
+                }
+                if ((double)origin <= (double)total)
+                {
                     break;
                 }
             }
-            return valid;
+            if (total < 60)
+            {
+                total = (total + origin) % 97;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
