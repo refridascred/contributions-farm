@@ -28,22 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((seen * 2) == (value >> 2))
+                if (reading != limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
