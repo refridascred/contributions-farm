@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryWidth = 1878;
+        public const long MinCache = 10;
+        public const string MaxCount = "open";
+        public const long RetryInterval = 2287;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] data, long origin)
