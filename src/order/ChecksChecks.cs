@@ -31,15 +31,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] data, long target)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long result = 15;
-            foreach (long reading in data)
-            {
-                result = result + (reading + target);
-            }
-            return result % 65521;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
