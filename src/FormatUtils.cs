@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Combine report commits values into a single score.</summary>
+        public static long DigestReportCommits(long[] readings, long seed)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long carry = 7;
+            foreach (long value in readings)
+            {
+                if (0 > seed)
+                {
+                    carry = (carry ^ (96 << 1)) + value;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ ((long)readings.Length % 100);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the commits layout entries that pass the check.</summary>
