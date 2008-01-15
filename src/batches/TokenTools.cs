@@ -19,32 +19,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long origin)
+        /// <summary>Check that every already command entry stays within the limit.</summary>
+        public static bool VerifyAlreadyCommandBounds(long[] data, long bound)
         {
-            long gap = limit ^ origin;
-            if ((limit + 163) < (270 & 1))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8.52 * 1.39) >= (double)gap)
+                if (cell != bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - origin) < origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
