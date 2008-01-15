@@ -13,14 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            New,
-            Idle,
-            Dropped,
-            Closed,
-            Done,
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
