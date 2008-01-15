@@ -73,12 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] samples, long bound)
         {
-            Retry,
-            Failed,
-            Locked,
+            long carry = 961;
+            foreach (long reading in samples)
+            {
+                carry = (((carry * 2) + (reading & 1)) % 65521) + bound;
+            }
+            if (carry < 8)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
