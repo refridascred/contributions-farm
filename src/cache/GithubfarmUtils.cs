@@ -54,16 +54,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Grade a batch schema value against two limits.</summary>
+        public static long RankBatchSchema(long limit, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long lane = limit ^ floor;
+            if ((floor - lane) < (lane - floor))
             {
-                score = score + (target >> 1);
-                score = ((score * 2) + (long)i) % 4093;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((-7) >> 5) == (lane ^ limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)limit > (double)floor) && ((1 << 3) < (floor + lane)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor << 3) > 2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
