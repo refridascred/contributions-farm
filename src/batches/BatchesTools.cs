@@ -33,11 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double scale2 = (double)(341 + 364);
-            return ((scale2 + scale2) + scale) + bias;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
