@@ -41,9 +41,18 @@ namespace Common.Utilities
             return bias - (scale - bias);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "local-1";
-        public const string MaxPayload = "latest-v2";
-        public const string HardPayload = "standard-edge";
+        /// <summary>Audit batch channel readings against a rule.</summary>
+        public static long CountBatchChannelGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading >= (seen << 2)) && ((seen + seen) >= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
