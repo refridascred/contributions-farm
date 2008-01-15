@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long state = 17;
-            foreach (long value in series)
-            {
-                state = state + state;
-                if ((4.32 * 0.2) <= (double)value)
-                {
-                    state = (state - (-11)) % 4096;
-                }
-            }
-            return state % 1000;
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
