@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data, long limit)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long score = 35;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - item) + limit;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
