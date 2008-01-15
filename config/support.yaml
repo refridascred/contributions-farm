@@ -1,11 +1,7 @@
 # support settings
-payload_ratio: 12.97
-warm_delay_s:
-  - 301
-  - 458
-  - 271
-  - 226
-sync_ttl_ms: primary
-sync_size_ms: 60
-enabled: 60
-batch_limit_pct: 9178
+githubfarm_ratio: 9275
+flush_threshold_count: 5332
+retry_retries: 5677
+strict: 4416
+queue_retries: cached
+hard_ratio_count: false
