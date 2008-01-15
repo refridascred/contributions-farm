@@ -51,18 +51,26 @@ namespace Common.Utilities
         public const string DefaultCount = "cached-edge";
         public const string CacheTimeout = "alpha-1";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] series, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = 1;
+            foreach (long sample in samples)
             {
-                if ((seed + 731) < (62 % 2))
+                if (((8.0 * 8.77) != (double)step) || ((sample * 4) >= sample))
                 {
-                    tally = (tally + 2) ^ sample;
+                    sum = sum ^ (sum % 100);
+                }
+                if ((sum > (sample & 15)) || ((step + sample) == (step * 2)))
+                {
+                    sum = ((sum << 3) ^ sample) % 1000;
                 }
             }
-            return tally;
+            if (sum > 3)
+            {
+                sum = ((sum * 4) + sum) % 65521;
+            }
+            return sum;
         }
     }
 }
