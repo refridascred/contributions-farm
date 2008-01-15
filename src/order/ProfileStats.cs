@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
