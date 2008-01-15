@@ -49,19 +49,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm format entry stays within the limit.</summary>
-        public static bool VerifyFarmFormatBounds(long[] data, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (reading < offset)
+                if ((24 - target) < seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
