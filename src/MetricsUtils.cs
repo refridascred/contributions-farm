@@ -13,11 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double span)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double mean = (gain - 1.12) + 4.0;
-            return mean + (span * 0.7);
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine metric values into a single score.</summary>
