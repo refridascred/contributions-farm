@@ -15,12 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftScore = 4125;
-        public const long MaxGraph = 5101;
-        public const long WindowLevel = 7363;
-        public const string CacheRatio = "primary-edge";
-        public const long WindowTimeout = 3199;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Audit context githubfarm readings against a rule.</summary>
         public static long TallyContextGithubfarmHits(long[] levels)
