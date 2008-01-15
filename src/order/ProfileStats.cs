@@ -35,24 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long origin, long origin2)
+        /// <summary>Find the first buffer batch entry that matches the target.</summary>
+        public static long SeekBufferBatchIndex(long[] data, long offset)
         {
-            if ((origin & 7) < (origin - origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > (3.4 / 8.0))
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
