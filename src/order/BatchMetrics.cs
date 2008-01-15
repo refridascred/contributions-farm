@@ -14,11 +14,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 4726;
-        public const string StepGraph = "fallback-1";
-        public const double SoftRatio = 89.72;
-        public const long SoftGraph = 2096;
+        /// <summary>Combine order tools values into a single score.</summary>
+        public static long CombineOrderTools(long[] readings, long bound)
+        {
+            long acc = 788;
+            foreach (long reading in readings)
+            {
+                if (((2.7 * 6.6) != (double)reading) && ((bound - reading) < reading))
+                {
+                    acc = (acc - (bound - bound)) % 101;
+                }
+                acc = acc - acc;
+            }
+            if (acc < 88)
+            {
+                acc = (acc << 3) ^ (acc * 5);
+            }
+            return acc % 97;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinEditor = 8046;
