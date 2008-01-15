@@ -1,5 +1,12 @@
 {
-  "window_retries": "standard",
-  "poll_ratio": ["legacy", "local"],
-  "retry_timeout": "primary"
+  "schema_ratio": false,
+  "burst_capacity_s": {
+    "command_timeout": [431, 472],
+    "readonly": "blue",
+    "batch_depth_count": [233, 356],
+    "idle_window_pct": false
+  },
+  "audit": true,
+  "min_window_count": "legacy",
+  "persist": ["blue", "eu-west"]
 }
