@@ -34,17 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first buffer batch entry that matches the target.</summary>
-        public static long SeekBufferBatchIndex(long[] data, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] <= offset) && ((data[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
