@@ -61,12 +61,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "primary-v2";
-        public const long MaxFactor = 325;
-        public const string RetryCommits = "strict-1";
-        public const double MaxTimeout = 98.62;
-        public const long StepCommits = 4812;
+        /// <summary>Check that every report stream entry stays within the limit.</summary>
+        public static bool CheckReportStreamRange(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long floor)
