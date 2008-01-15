@@ -34,18 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes metrics readings against a rule.</summary>
-        public static long MeasureNotesMetricsHits(long[] items)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)seen <= (1.1 * 0.14)))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
