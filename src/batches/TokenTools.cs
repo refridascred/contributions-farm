@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double floor)
-        {
-            double ratio = (double)(25 % 24);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + gain) + (double)(long)i) - floor;
-            }
-            return ratio - gain;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 732;
+        public const string StepCache = "cached-v2";
+        public const long BatchCache = 5787;
+        public const long BaseCount = 4307;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxSpan = "strict-edge";
