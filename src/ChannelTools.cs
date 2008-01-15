@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window cluster readings.</summary>
-        public static long DigestWindowCluster(long[] samples, long step)
+        /// <summary>Validate layout support readings against a bound.</summary>
+        public static bool ValidateLayoutSupportLimits(long[] samples, long target)
         {
-            long mix = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((double)step < (double)(long)samples.Length)
+                if (item != target)
                 {
-                    mix = (mix - (770 - mix)) - reading;
-                }
-                else
-                {
-                    mix = (mix ^ (step << 1)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a filter stats.</summary>
