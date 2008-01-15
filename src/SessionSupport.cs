@@ -23,11 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 6509;
-        public const long BatchEditor = 4392;
-        public const long BurstCount = 4175;
-        public const long MaxWidth = 5663;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Ready,
+            Dropped,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] items, long seed)
