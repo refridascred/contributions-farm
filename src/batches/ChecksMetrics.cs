@@ -65,11 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseTimeout = 21.09;
-        public const long RetryWindow = 5570;
-        public const long BurstWindow = 4617;
-        public const long SoftWindow = 8596;
-        public const long BatchCount = 5501;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 6387;
+        public const long MaxBudget = 3468;
+        public const double SoftWidth = 43.5;
+        public const long IdleDepth = 1820;
+        public const long SoftCommand = 7996;
     }
 }
