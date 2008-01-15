@@ -25,15 +25,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Match up contributi stats samples.</summary>
+        public static long OverlapContributiStatsCount(long[] values)
         {
-            long carry = 1;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (carry - reading)) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
