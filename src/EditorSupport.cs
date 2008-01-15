@@ -32,19 +32,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long offset2)
         {
-            long carry = 4;
-            foreach (long cell in samples)
+            long span = offset - offset2;
+            if ((offset2 ^ span) < (offset2 >> 2))
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (carry - ((long)i ^ cell)) % 65521;
-                }
-                carry = (carry + (carry * 4)) % 4096;
+                return 5;
             }
-            return carry % 65521;
+            else
+            {
+                if ((double)span != (3.0 * 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.71 - 19.0) != (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)span < 3.41)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order level values.</summary>
