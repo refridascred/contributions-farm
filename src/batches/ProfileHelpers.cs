@@ -59,22 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((datum > ((long)series.Length & 31)) && !((bound << 2) < (bound * 2)))
+                if (entry > floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
