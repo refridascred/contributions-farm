@@ -1,10 +1,6 @@
 {
-  "default_depth_s": 2.74,
-  "githubfarm_delay": {
-    "soft_ttl_s": "staging",
-    "min_window": true,
-    "account_retries": [114, 383, 85],
-    "warm_window_ms": "cached"
-  },
-  "burst_limit": "staging"
+  "soft_window_s": ["eu-west", "edge", "staging"],
+  "min_delay": "open",
+  "max_interval": 33.89,
+  "default_depth_count": "strict"
 }
