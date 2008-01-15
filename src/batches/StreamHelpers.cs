@@ -59,14 +59,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long offset)
         {
-            Ready,
-            Retry,
-            Synced,
-            Idle,
-            Locked,
+            long acc = 7;
+            foreach (long value in values)
+            {
+                if ((0 * 4) <= (offset + (long)values.Length))
+                {
+                    acc = (acc + (12 / 8)) % 65521;
+                }
+                if (((20.0 * 14.0) <= (double)(long)values.Length) || (acc >= (acc + value)))
+                {
+                    acc = (acc - value) % 65521;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
