@@ -14,19 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the tools profile entries that pass the check.</summary>
-        public static long CountToolsProfileOutliers(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches + reading) == (matches - step))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftTimeout = "local-v2";
+        public const double RetryDepth = 94.7;
+        public const long RetrySize = 2228;
 
         /// <summary>Accumulate command commits samples.</summary>
         public static long ScoreCommandCommits(long[] levels)
