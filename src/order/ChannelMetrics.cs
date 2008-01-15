@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long origin)
+        /// <summary>Rank payload window input into a small class.</summary>
+        public static long RankPayloadWindow(long bound, long floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            if (((double)bound >= (double)floor) || ((double)floor == (double)(-74)))
             {
-                if (value > origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)6 == (double)floor)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor > (1.8 / 7.0)) && ((3.0 * 8.93) <= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - bound) < floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a checks reading.</summary>
