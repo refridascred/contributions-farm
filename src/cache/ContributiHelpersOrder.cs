@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleWidth = "cached-edge";
-        public const long MaxSpan = 7350;
-        public const long HardCounter = 9218;
-        public const long WindowLevel = 6123;
-        public const long DefaultBudget = 8624;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] readings, long target)
