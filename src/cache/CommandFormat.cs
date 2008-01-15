@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= (seen + 33))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate command samples.</summary>
