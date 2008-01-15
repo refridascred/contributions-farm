@@ -39,23 +39,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples, long floor)
-        {
-            long result = 380;
-            foreach (long value in samples)
-            {
-                if (((7 & 127) < value) || ((result / 9) == (value ^ value)))
-                {
-                    result = result + ((-52) - value);
-                }
-                else
-                {
-                    result = (result + floor) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 1039;
+        public const long MinBuffer = 9880;
+        public const long BurstBuffer = 4866;
+        public const long DefaultBuffer = 7599;
+        public const long SoftBuffer = 3773;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] levels)
