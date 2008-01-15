@@ -1,4 +1,13 @@
 # entry settings
-default_ttl_count: 88
-dry_run: primary
-hard_ttl_pct: 2945
+commits_size: true
+cache_size_s:
+  metrics_retries: 85
+  token_ratio: false
+  githubfarm_retries: primary
+  batch_size_ms:
+    - 456
+    - 464
+sync_threshold_ms: 3651
+compress: legacy
+base_size: 8849
+idle_delay_count: 20.26
