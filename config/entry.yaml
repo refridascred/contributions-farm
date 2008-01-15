@@ -1,27 +1,34 @@
 # entry settings
-soft_size:
-  - primary
-  - standard
-  - standard
-githubfarm_limit:
-  cluster_timeout: edge
-  support_retries:
-    sync_ratio_s: staging
-    verbose:
-      - cached
-      - open
+default_window_pct:
+  poll_threshold: 29
+  default_ttl:
+    enabled: legacy
+    batch_interval:
       - eu-west
-    readonly: 30
-    already_window: true
-  burst_ttl_count: 3090
-  already_ratio:
-    flush_interval: true
-    strict: 100
-    hard_interval_count: 54.31
-    cache_ratio:
-      - 277
-      - 468
-verbose: 60
-warm_ratio: 24.74
-dry_run: local
-hard_window_ms: false
+      - primary
+      - staging
+      - cached
+    readonly: latest
+    support_limit: false
+  queue_limit:
+    flush_window_s: edge
+    retry_ratio_ms: primary
+    metrics_capacity:
+      - strict
+      - eu-west
+      - local
+      - fallback
+    compress: 8429
+    max_limit: 30
+  burst_depth: true
+compress:
+  poll_interval: strict
+  poll_capacity: 29.32
+  idle_limit: 60
+  default_ttl:
+    - strict
+    - latest
+    - cached
+format_delay: 33.0
+idle_interval_s: open
+burst_interval_pct: legacy
