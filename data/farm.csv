@@ -1,9 +1,8 @@
-id,state,rank
-1,782,733
-2,59.81,green
-3,75,408
-4,747,716
-5,24.74,strict
-6,legacy,762
-7,eu-west,fallback
-8,980,cached
+id,state,score,token
+1,499,72.18,open
+2,1.81,996,24
+3,22.97,505,95
+4,951,885,legacy
+5,461,staging,strict
+6,staging,47.59,legacy
+7,stable,77.02,green
