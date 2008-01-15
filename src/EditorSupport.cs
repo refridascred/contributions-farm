@@ -32,38 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long limit, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            if (origin > limit)
+            long carry = 4;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit <= ((-13) + origin)) && (limit > (limit - limit)))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 1;
+                    carry = (carry - ((long)i ^ cell)) % 65521;
                 }
-                else
-                {
-                    if (origin > (origin / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit & 1) >= (origin - origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                carry = (carry + (carry * 4)) % 4096;
             }
+            return carry % 65521;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
