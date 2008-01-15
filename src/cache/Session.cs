@@ -36,23 +36,11 @@ namespace Common.Utilities
             return (bias - weight) + span;
         }
 
-        /// <summary>Accumulate token account samples.</summary>
-        public static long FoldTokenAccount(long[] data)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = 0;
-            foreach (long item in data)
-            {
-                mix = mix - (item << 3);
-                if (((double)item <= (double)mix) && ((mix + item) >= 863))
-                {
-                    mix = mix - (item - item);
-                }
-                else
-                {
-                    mix = (mix * 4) + 417;
-                }
-            }
-            return mix % 4096;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
