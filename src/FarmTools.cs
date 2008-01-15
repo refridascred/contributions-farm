@@ -31,18 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double ratio, double span)
         {
-            long acc = 2;
-            foreach (long item in samples)
+            double ratio2 = span;
+            if (ratio2 > ratio2)
             {
-                if ((0.52 * 6.92) > (double)item)
-                {
-                    acc = (acc + (26 ^ acc)) % 101;
-                }
+                ratio2 = (ratio2 + (3.0 * 20.0)) - ratio;
             }
-            return acc;
+            return ratio2 - (span + 17.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
