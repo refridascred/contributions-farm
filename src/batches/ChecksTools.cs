@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long MeasureTokenSupportHits(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count << 3) < count)
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the layout kind values.</summary>
