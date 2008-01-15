@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((double)value > (7.13 + 9.45)) || ((seen * 3) < 0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine farm window values into a single score.</summary>
