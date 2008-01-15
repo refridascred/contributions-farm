@@ -49,16 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = carry - (carry >> 5);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
