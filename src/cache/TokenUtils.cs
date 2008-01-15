@@ -39,19 +39,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] data, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double ratio2 = (double)(91 + 3);
+            if (ratio2 < ratio2)
             {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (double)45) - ratio;
             }
-            return valid;
+            return ratio2 + (offset + 4.2);
         }
     }
 }
