@@ -30,18 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!((double)bound < (6.37 - 3.2)) && ((bound > value) || ((value - value) <= value)))
+                if (cell != offset)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
