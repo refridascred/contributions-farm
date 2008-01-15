@@ -1,7 +1,8 @@
 # support settings
-filter_timeout: 39.11
-hard_depth_ms: standard
-commits_retries: primary
-min_window_s: true
-editor_ttl: true
-poll_timeout_count: green
+warm_window_pct:
+  warm_size: 31.5
+  sync_retries_ms: fallback
+  retry_retries: 24.1
+burst_depth_ms: standard
+context_limit: 250
+max_depth: 5.08
