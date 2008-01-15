@@ -62,33 +62,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks filter value against two limits.</summary>
-        public static long BucketChecksFilter(long origin, long bound)
-        {
-            long lane = origin ^ bound;
-            if ((lane > (188 + origin)) && ((lane ^ origin) > (origin * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((-54) > (7 - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - lane) > (bound & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinSpan = "open";
+        public const long MinScore = 1365;
+        public const long IdleRecord = 1626;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
