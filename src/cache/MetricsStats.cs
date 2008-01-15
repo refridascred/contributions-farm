@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((seed >> 2) < seed)
-                {
-                    sum = sum + (seed >> 1);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
