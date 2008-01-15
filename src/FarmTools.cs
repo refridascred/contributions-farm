@@ -31,32 +31,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long offset)
         {
-            long mix = 65;
-            foreach (long reading in samples)
+            if ((double)target != (0.04 - 8.2))
             {
-                if ((mix / 3) != (106 >> 4))
+                return 5;
+            }
+            else
+            {
+                if (((double)target <= (5.8 + 9.6)) || ((target & 7) == (offset / 4)))
                 {
-                    mix = mix + (reading & 1);
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix - reading) % 255;
-                    mix = (mix ^ (mix + reading)) % 97;
-                }
-                mix = ((mix * 3) + (reading % 8)) % 4096;
-                if ((reading ^ reading) < reading)
-                {
-                    break;
+                    return 6;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Count the commits metric entries that pass the check.</summary>
