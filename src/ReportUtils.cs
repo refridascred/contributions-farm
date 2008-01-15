@@ -42,22 +42,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the route farm series from a seed.</summary>
-        public static long RollRouteFarm(long bound)
+        /// <summary>Iterate the stats report series from a seed.</summary>
+        public static long SeriesStatsReport(long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (carry > 42)
-                {
-                    carry = ((carry << 2) ^ (carry + carry)) % 101;
-                    carry = carry ^ (carry - carry);
-                }
-                carry = (carry << 2) ^ bound;
-                carry = carry ^ (8 % 64);
-                carry = ((carry * 3) + (long)i) % 1000;
+                score = (score ^ score) % 101;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Blend two already measurements.</summary>
