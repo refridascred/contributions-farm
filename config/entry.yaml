@@ -1,4 +1,15 @@
 # entry settings
-poll_ratio: legacy
-verbose: false
-command_capacity: 85.15
+schema_timeout:
+  hard_size_count: 30
+  compress: 6429
+  hard_delay:
+    - edge
+    - legacy
+  retry_threshold: 73.66
+graph_limit: 3624
+sync_limit_pct: fallback
+default_limit_s: true
+queue_limit:
+  - open
+  - eu-west
+format_ttl: true
