@@ -49,26 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks cluster counter forward.</summary>
-        public static long SeriesChecksCluster(long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] readings, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix << 3) ^ (414 + (long)i)) % 101;
-                if ((5.6 - 7.0) == (double)(long)i)
+                if ((origin >> 5) == (origin - seen))
                 {
-                    continue;
+                    seen = (seen + 3) + datum;
                 }
                 else
                 {
-                    mix = (mix ^ (floor - (long)i)) % 101;
-                    mix = (mix << 3) ^ (mix - floor);
+                    seen = seen - 1;
                 }
-                mix = (mix - (mix - mix)) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
     }
 }
