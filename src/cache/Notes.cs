@@ -47,26 +47,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long origin)
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long TallyEditorProfileHits(long[] series, long bound)
         {
-            long mark = 68;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample < ((-34) - sample))
+                if ((bound - bound) <= (entry ^ bound))
                 {
-                    mark = ((mark * 3) + origin) % 4096;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    mark = (mark * 4) + (mark + origin);
+                    matches = matches - 1;
                 }
             }
-            if (mark < 6)
-            {
-                mark = mark ^ (origin % 100);
-            }
-            return mark;
+            return matches;
         }
     }
 }
