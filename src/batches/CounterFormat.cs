@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 79.79;
-        public const long SoftChecks = 4509;
-        public const string DefaultSpan = "stable-v2";
-        public const long BurstChecks = 7532;
-        public const long StepBudget = 1510;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Ready,
+            Idle,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
