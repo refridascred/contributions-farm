@@ -55,15 +55,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data)
-        {
-            long mark = 647;
-            foreach (long cell in data)
-            {
-                mark = (mark ^ 40) ^ cell;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "standard-edge";
+        public const long StepStream = 8552;
+        public const string IdleBudget = "cached-1";
     }
 }
