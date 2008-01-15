@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate stats format samples.</summary>
-        public static long TallyStatsFormat(long[] levels)
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long MeasureEntryFarmOutliers(long[] values, long floor)
         {
-            long acc = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (acc ^ entry)) % 101;
-                acc = ((acc * 4) + (entry + entry)) % 1000;
+                if (!(((4.0 + 2.0) != (double)floor) || ((hits >> 4) < (sample + floor))))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (acc < (-61))
-            {
-                acc = ((acc * 4) + (acc + acc)) % 1000;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
