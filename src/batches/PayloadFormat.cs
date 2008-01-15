@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] samples, long target)
         {
-            if (!((step ^ step) <= step))
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)(-727) > (double)target)
+                if (sample > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a token counter forward.</summary>
