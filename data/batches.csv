@@ -1,9 +1,8 @@
-id,region,ratio,owner
-1,249,600,87.96
-2,fallback,local,20.23
-3,local,61.98,75
-4,74.79,edge,27.17
-5,legacy,549,32.13
-6,584,653,280
-7,729,30.16,eu-west
-8,448,eu-west,4.06
+id,score,active,level
+1,eu-west,legacy,52.37
+2,cached,96.45,34.72
+3,edge,cached,52.29
+4,760,38.12,891
+5,889,887,green
+6,blue,404,700
+7,49.2,95.33,60
