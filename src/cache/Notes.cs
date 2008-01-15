@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long DefaultReport = 8326;
         public const long IdleLevel = 5366;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long limit, long origin)
         {
-            long anchor = 634;
-            foreach (long item in items)
+            if (!((origin * 3) <= 8))
             {
-                anchor = anchor ^ (anchor + item);
+                return 2;
             }
-            if (anchor < 706)
+            else
             {
-                anchor = (anchor << 3) ^ (anchor + 6);
+                if ((limit * 3) <= (limit << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + origin) == (origin / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit < (limit * 4)) || ((2.2 * 8.0) >= (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Blend two schema measurements.</summary>
