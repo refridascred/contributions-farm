@@ -51,13 +51,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((1.65 + 8.27) == (double)entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a tools report reading.</summary>
