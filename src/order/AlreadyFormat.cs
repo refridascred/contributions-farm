@@ -56,11 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double ratio = offset;
-            return ratio - weight;
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank window token input into a small class.</summary>
