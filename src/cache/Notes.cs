@@ -38,17 +38,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long target)
+        /// <summary>Validate order counter readings against a bound.</summary>
+        public static bool VerifyOrderCounterBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (series[i] == target)
+                if (cell < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
