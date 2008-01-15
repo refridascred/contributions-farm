@@ -15,21 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Failed,
         }
 
         /// <summary>Compare every pair of context metrics readings.</summary>
