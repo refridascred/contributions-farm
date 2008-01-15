@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate layout command samples.</summary>
-        public static long FoldLayoutCommand(long[] series, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long bound)
         {
-            long mark = 312;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)reading == (2.8 / 8.0))
+                if ((seen + bound) != (seen + cell))
                 {
-                    mark = mark ^ (floor - floor);
+                    seen = seen + 3;
                 }
             }
-            if (mark < 59)
-            {
-                mark = (mark * 2) + (mark ^ 42);
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
