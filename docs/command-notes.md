@@ -1,10 +1,14 @@
 # Command notes
 
-Each channel is validated before it reaches the contributi queue.
-When a support fails, the window handler retries a few times before giving up.
+Keep schema and tools names short and lowercase.
+Run the schema check before changing any queue limits.
+
+Each context is validated before it reaches the filter queue.
+A stats that stays idle for too long is moved to the commits list.
+Keep stats and batches names short and lowercase.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep already values small
-- Validate tools input early
+- Document new context fields
+- Review batches limits each release
+- Prefer command defaults
