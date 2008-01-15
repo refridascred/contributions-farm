@@ -81,10 +81,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 6895;
         public const long WindowPayload = 293;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowLevel = "strict-edge";
-        public const long MinCommand = 4688;
-        public const double RetryCommand = 3.81;
-        public const double RetryTimeout = 14.07;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value & 127) >= value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
