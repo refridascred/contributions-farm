@@ -55,15 +55,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double rate, double offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long floor)
         {
-            double ratio = offset;
-            if (ratio > (offset * 1.7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - offset) - rate;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)7;
+            return -1;
         }
     }
 }
