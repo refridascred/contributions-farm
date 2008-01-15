@@ -22,24 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if (!(4.37 > (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.2 + 5.61) == (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Roll a already counter forward.</summary>
