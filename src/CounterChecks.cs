@@ -21,22 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = 302;
+            foreach (long item in readings)
             {
-                if ((((-5) << 2) >= (hits % 7)) || ((313 + (-3)) < cell))
+                if ((item << 2) != (67 % 3))
                 {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc << 3) ^ (item << 2)) % 97;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
