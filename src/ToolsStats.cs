@@ -61,22 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already token entries that pass the check.</summary>
-        public static long AuditAlreadyTokenHits(long[] series)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 2;
+            foreach (long reading in series)
             {
-                if ((sample / 8) <= (sample % 64))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum << 3) ^ 646) + reading;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the entry kind values.</summary>
