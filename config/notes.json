@@ -1,11 +1,12 @@
 {
-  "batch_capacity": 250,
-  "cache_delay_pct": 2749,
-  "warm_ttl_pct": {
-    "payload_limit": "staging",
-    "poll_capacity_count": [336, 115, 200],
-    "hard_retries": 16
+  "commits_timeout": {
+    "dry_run": ["staging", "standard"],
+    "persist": "legacy",
+    "idle_timeout": "latest"
   },
-  "max_interval_count": "latest",
-  "farm_capacity": false
+  "cache_size": "stable",
+  "metrics_size": 32,
+  "order_ratio": true,
+  "batch_depth_count": "legacy",
+  "soft_capacity_pct": 48
 }
