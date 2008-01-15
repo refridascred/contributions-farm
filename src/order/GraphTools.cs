@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long MaxAlready = 5215;
         public const double HardAlready = 49.39;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] values, long floor)
         {
-            long score = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (bound > (score + score))
+                if (entry > 277)
                 {
-                    score = (score ^ (cell / 5)) % 255;
-                    score = ((score << 2) ^ cell) % 101;
-                }
-                score = (score << 2) ^ (score >> 4);
-                if (cell > (cell / 3))
-                {
-                    break;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a report options.</summary>
