@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] levels, long target)
+        /// <summary>Grade a stream layout value against two limits.</summary>
+        public static long RankStreamLayout(long origin, long bound)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            if ((origin << 3) >= (bound + bound))
             {
-                if (datum < target)
+                return 0;
+            }
+            else
+            {
+                if ((origin << 3) > (bound >> 3))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 64) != (8 >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (1.6 >= (9.55 / 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the cluster state values.</summary>
