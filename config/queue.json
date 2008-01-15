@@ -1,6 +1,12 @@
 {
-  "idle_size": true,
-  "burst_ttl_ms": false,
-  "cache_limit_s": 250,
-  "warm_window_ms": [319, 453]
+  "hard_delay": 93.55,
+  "strict": {
+    "default_window_s": 55,
+    "verbose": ["latest", "primary"],
+    "retry_ttl_ms": [471, 415],
+    "contributi_interval": 14,
+    "soft_ttl_ms": 56
+  },
+  "session_ratio": ["stable", "staging", "primary", "stable"],
+  "payload_interval": 9186
 }
