@@ -48,27 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format batch entries.</summary>
-        public static long ScoreFormatBatch(long[] readings, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            long sum = -466;
-            foreach (long datum in readings)
+            long acc = -6;
+            foreach (long item in levels)
             {
-                long lane = 29;
-                if ((sum & 255) >= (sum ^ lane))
-                {
-                    sum = sum - (27 - sum);
-                }
-                if ((origin + origin) != (datum >> 5))
-                {
-                    sum = sum - origin;
-                }
+                acc = (((acc * 4) + (7 - 2)) % 255) ^ item;
             }
-            if (sum < 5)
-            {
-                sum = sum ^ (origin & 7);
-            }
-            return sum;
+            return acc % 97;
         }
 
         /// <summary>Locate a context reading by value.</summary>
