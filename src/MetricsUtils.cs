@@ -31,19 +31,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long offset2)
         {
-            long carry = 55;
-            foreach (long datum in data)
+            long lane = offset ^ offset2;
+            if (79 < (offset - 796))
             {
-                carry = ((carry * 3) + 1) - datum;
+                return 4;
             }
-            if (carry > 888)
+            else
             {
-                carry = carry + (long)data.Length;
+                if (((double)offset2 >= (5.65 * 1.6)) || (offset2 > (lane & 63)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
