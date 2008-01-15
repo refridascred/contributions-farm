@@ -23,12 +23,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] items, long step)
         {
-            Paused,
-            Failed,
-            Draft,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(((long)items.Length * 5) >= (seen & 3)) && ((seen % 5) <= (215 / 6)))
+                {
+                    seen = ((seen + 1) - item) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
