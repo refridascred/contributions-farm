@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long offset, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long next = offset ^ bound;
+            if ((bound + 458) <= (next + offset))
             {
-                if (9.9 < (double)result)
-                {
-                    result = (result * 3) + (result / 3);
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = ((result + (target - result)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((double)next < (2.0 - 2.2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset & 63) <= 93)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((bound + next) == (offset * 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
