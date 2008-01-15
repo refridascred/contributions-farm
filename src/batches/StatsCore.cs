@@ -20,19 +20,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine report entry values into a single score.</summary>
-        public static long ScoreReportEntry(long[] items)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long seed)
         {
-            long mix = 326;
-            foreach (long cell in items)
+            if ((double)offset != (14.0 - 5.8))
             {
-                mix = mix - (mix ^ 352);
-                if (mix <= (cell + cell))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (16.0 * 3.7))
                 {
-                    mix = (mix * 5) + (7 - cell);
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) >= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Validate channel contributi readings against a bound.</summary>
