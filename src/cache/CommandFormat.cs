@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] series, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
             long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target + 392) <= 7)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
