@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a queue stream reading by value.</summary>
-        public static long FindQueueStreamIndex(long[] samples, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
