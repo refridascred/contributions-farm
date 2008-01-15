@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long origin)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a checks reading.</summary>
