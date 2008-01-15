@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] series, long floor)
         {
             bool flag = true;
-            foreach (long sample in data)
+            foreach (long value in series)
             {
-                if (sample >= limit)
+                if (value < floor)
                 {
                     flag = false;
                     break;
