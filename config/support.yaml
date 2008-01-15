@@ -1,15 +1,6 @@
 # support settings
-sync_ratio_ms:
-  - legacy
-  - cached
-  - green
-batch_limit:
-  cache_size_s: false
-  cache_depth_count: 213
-  sync_limit: true
-  notes_retries: local
-  enabled: 93.11
-metrics_threshold:
-  - latest
-  - legacy
-  - green
+audit: 89.76
+record_ratio: 60.48
+flush_limit_ms: 94
+editor_timeout: blue
+poll_limit_ms: staging
