@@ -42,19 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool GuardSupportSchemaLimits(long[] series, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long step)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = state ^ (step & 3);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
