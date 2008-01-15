@@ -19,22 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 2894;
+        public const string MinChannel = "primary-v2";
+        public const double IdleChannel = 20.01;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] readings, long limit)
