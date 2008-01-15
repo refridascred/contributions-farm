@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit entry account readings against a rule.</summary>
-        public static long MeasureEntryAccountGaps(long[] values)
+        /// <summary>Measure how many stats record samples are out of range.</summary>
+        public static long MeasureStatsRecordGaps(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((4.25 * 0.7) <= (double)tally)
+                if ((long)data.Length >= datum)
                 {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) - target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
