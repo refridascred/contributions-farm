@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const double HardLayout = 22.77;
         public const long BurstLayout = 4277;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] values)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell & 255) > ((long)values.Length ^ hits)) && ((double)9 >= (double)cell))
+                if ((items[i] > floor) && ((items[i] % 2) != 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
