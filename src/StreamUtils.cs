@@ -75,19 +75,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] items, long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
