@@ -13,19 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long acc = 59;
-            foreach (long entry in readings)
-            {
-                acc = (acc - (entry << 3)) + step;
-            }
-            if (acc < 30)
-            {
-                acc = ((acc * 3) + (acc & 15)) % 101;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
