@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable primary staging edge; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=136
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    legacy)
         log "fast path"
         ;;
     *)
