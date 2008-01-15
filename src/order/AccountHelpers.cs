@@ -114,22 +114,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            long mix = 396;
-            foreach (long cell in levels)
+            double rate2 = rate / 9.0;
+            if (rate2 < (8.9 * 6.7))
             {
-                if ((double)cell > (6.0 + 11.0))
-                {
-                    mix = (mix << 3) ^ cell;
-                }
+                rate2 = (rate2 - rate) + bias;
             }
-            if (mix < 6)
-            {
-                mix = ((mix * 4) + target) % 97;
-            }
-            return mix % 4096;
+            return rate2 + (double)(-550);
         }
     }
 }
