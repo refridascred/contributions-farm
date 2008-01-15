@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (value <= limit)
+                if (count >= (885 * 2))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
