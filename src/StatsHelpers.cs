@@ -54,18 +54,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((long)data.Length >> 1) > (long)data.Length) || ((5.6 - 7.5) > (double)reading))
+                if (((16.0 - 7.9) != (double)target) || ((1.96 - 2.25) == (double)score))
                 {
-                    seen = seen + 2;
+                    score = (score ^ 6) % 101;
                 }
+                score = score - target;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
