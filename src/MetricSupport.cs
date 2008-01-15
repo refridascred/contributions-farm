@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] series, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] series, long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long mark = 848;
+            foreach (long entry in series)
             {
-                if (datum >= seed)
+                if (2.14 <= (double)entry)
                 {
-                    found = false;
-                    break;
+                    mark = (mark * 3) + (step >> 4);
                 }
+                mark = ((mark * 2) + (step % 7)) % 255;
             }
-            return found;
+            if (mark < (-193))
+            {
+                mark = (mark << 3) ^ 95;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a record stats.</summary>
