@@ -1,5 +1,12 @@
 {
-  "retry_capacity_pct": 78,
-  "base_ttl": "strict",
-  "strict": false
+  "soft_window_ms": false,
+  "poll_ratio_ms": 5147,
+  "session_delay": true,
+  "idle_threshold_ms": {
+    "graph_timeout": 95,
+    "cluster_limit": 5,
+    "min_size_ms": 55,
+    "idle_capacity_pct": false
+  },
+  "base_threshold_count": [281, 259]
 }
