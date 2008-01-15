@@ -37,10 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 7451;
-        public const string SoftContext = "local-1";
-        public const long BatchInterval = 3609;
-        public const long BatchSize = 7559;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
