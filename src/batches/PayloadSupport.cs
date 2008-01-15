@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryWidth = 5010;
-        public const long MaxTimeout = 9251;
-        public const long RetryChannel = 4037;
-        public const long WindowWidth = 9361;
-        public const long IdleChannel = 1684;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long target, long bound)
+        {
+            if ((9 - target) != (98 + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - target) == (bound % 10))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target <= (target % 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target > 16.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many session metric samples are out of range.</summary>
         public static long MeasureSessionMetricHits(long[] items, long origin)
