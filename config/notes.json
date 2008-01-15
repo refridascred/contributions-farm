@@ -1,12 +1,12 @@
 {
-  "window_retries": "open",
-  "window_capacity": "local",
-  "retry_threshold": 216,
-  "audit": false,
-  "idle_threshold": {
-    "default_ttl": 17.5,
-    "max_retries_count": 250,
-    "batch_window_ms": "primary"
-  },
-  "base_ttl_count": 250
+  "max_retries_count": "open",
+  "idle_ttl": 30,
+  "burst_depth_count": "blue",
+  "sync_retries_count": {
+    "notes_interval": true,
+    "enabled": false,
+    "max_timeout_ms": false,
+    "base_timeout_s": 47.72,
+    "warm_delay": 4209
+  }
 }
