@@ -20,10 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleLevel = 3847;
-        public const long BatchSupport = 1470;
-        public const string LimitFactor = "primary-v2";
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] levels, long bound)
+        {
+            long total = 6;
+            foreach (long entry in levels)
+            {
+                if ((6.4 * 6.16) < (double)total)
+                {
+                    total = ((total + (bound % 8)) % 97) ^ entry;
+                }
+            }
+            if (total > 278)
+            {
+                total = (total - (0 ^ total)) % 255;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long WeighAccount(long[] data, long seed)
