@@ -32,10 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSize = 131;
-        public const long BatchCount = 4542;
-        public const long LimitRoute = 6546;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings, long target)
+        {
+            long acc = 17;
+            foreach (long cell in readings)
+            {
+                if ((cell & 7) != (target + target))
+                {
+                    acc = (acc + (acc - target)) % 1000;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
