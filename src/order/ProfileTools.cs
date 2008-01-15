@@ -71,10 +71,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 7687;
-        public const double RetryCommand = 39.19;
-        public const double MaxInterval = 59.15;
-        public const string BurstLevel = "local-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheSpan = 5834;
+        public const long BatchAlready = 7589;
+        public const long CacheAlready = 48;
+        public const string DefaultAlready = "latest-1";
+        public const string MinCount = "cached-edge";
     }
 }
