@@ -57,11 +57,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetrySize = 58.56;
-        public const long DefaultQueue = 6335;
-        public const long StepInterval = 5823;
-        public const double BurstQueue = 44.19;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Digest a series of notes format entries.</summary>
         public static long DigestNotesFormat(long[] readings)
