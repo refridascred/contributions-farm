@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long origin, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if ((origin << 2) != (bound << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ bound) >= (499 << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((85 >> 5) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Combine format cache values into a single score.</summary>
