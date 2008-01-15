@@ -92,9 +92,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchStream = "standard-edge";
-        public const long StepStream = 8552;
-        public const string IdleBudget = "cached-1";
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Active,
+            Done,
+            Queued,
+            Dropped,
+            Pending,
+        }
     }
 }
