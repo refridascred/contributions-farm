@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Accumulate stats format samples.</summary>
+        public static long TallyStatsFormat(long[] levels)
         {
-            Retry,
-            New,
-            Locked,
+            long acc = 0;
+            foreach (long entry in levels)
+            {
+                acc = (acc ^ (acc ^ entry)) % 101;
+                acc = ((acc * 4) + (entry + entry)) % 1000;
+            }
+            if (acc < (-61))
+            {
+                acc = ((acc * 4) + (acc + acc)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
