@@ -95,19 +95,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two commits batches measurements.</summary>
-        public static double SmoothCommitsBatches(double gain, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long origin)
         {
-            double weight = offset;
-            if (weight >= (double)37)
+            bool stale = true;
+            foreach (long value in series)
             {
-                weight = (weight + (weight * 4.17)) + gain;
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (2.8 - weight)) - (double)(long)i;
-            }
-            return weight - 5.18;
+            return stale;
         }
     }
 }
