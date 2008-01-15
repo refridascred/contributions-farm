@@ -50,22 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session stream values into a single score.</summary>
-        public static long FoldSessionStream(long[] series, long limit)
+        /// <summary>Iterate the commits token series from a seed.</summary>
+        public static long IterateCommitsToken(long seed)
         {
-            long mark = 28;
-            foreach (long value in series)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((limit & 31) == (value * 4)))
-                {
-                    mark = (mark * 5) + (limit << 1);
-                    mark = mark + (626 >> 5);
-                }
-                mark = (mark + limit) % 97;
-            }
-            if (mark > 54)
-            {
-                mark = ((mark * 5) + (mark * 5)) % 101;
+                mark = ((mark * 4) + (long)i) % 97;
             }
             return mark;
         }
