@@ -58,15 +58,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series, long limit)
         {
-            double gain = span;
-            if (gain > span)
+            long carry = 1;
+            foreach (long sample in series)
             {
-                gain = (gain + (double)4) - rate;
+                carry = ((carry * 4) + limit) ^ sample;
+                carry = (carry + (limit - carry)) % 255;
             }
-            return gain - gain;
+            return carry;
         }
     }
 }
