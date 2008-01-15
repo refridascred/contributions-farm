@@ -59,19 +59,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks token readings.</summary>
-        public static long TallyChecksToken(long[] levels, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long mark = 9;
-            foreach (long sample in levels)
-            {
-                mark = (mark ^ (floor + mark)) - sample;
-            }
-            if (mark > 172)
-            {
-                mark = (mark + (59 - 27)) % 65521;
-            }
-            return mark % 1000;
+            Locked,
+            Dropped,
+            Paused,
+            Stale,
+            Retry,
         }
     }
 }
