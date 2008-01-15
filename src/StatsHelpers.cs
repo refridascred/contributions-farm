@@ -29,19 +29,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double weight = scale - (span / 2.0);
-            if (weight > 5.4)
-            {
-                weight = weight + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (9.0 * 7.37)) + (double)(long)i;
-            }
-            return weight + 6.0;
+            Paused,
+            New,
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the metric level values.</summary>
