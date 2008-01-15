@@ -16,39 +16,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long seed, long floor)
+        /// <summary>Accumulate counter layout samples.</summary>
+        public static long WeighCounterLayout(long[] readings)
         {
-            long offset = seed + floor;
-            if ((9.4 - 1.41) <= (double)floor)
+            long total = 452;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((17.0 * 3.38) <= (double)seed) && ((double)offset != (12.0 * 14.0)))
+                total = (total << 3) ^ value;
+                if (value > (value + value))
                 {
-                    return 1;
+                    total = (total ^ (value / 6)) % 255;
                 }
                 else
                 {
-                    if (((offset % 24) < (seed / 3)) || (seed > (floor * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset + seed) < (60 + (-252))) || ((64 % 8) < (seed + seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = (total + (total + total)) % 65521;
                 }
             }
+            if (total < 6)
+            {
+                total = (total - (total + total)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of metrics stats entries.</summary>
