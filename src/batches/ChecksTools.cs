@@ -22,22 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 857;
+        public const long CacheFarm = 7985;
+        public const long IdleFarm = 2716;
+        public const double StepInterval = 55.29;
+        public const long BaseFarm = 2293;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterHits(long[] readings, long origin)
