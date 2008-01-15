@@ -77,13 +77,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
