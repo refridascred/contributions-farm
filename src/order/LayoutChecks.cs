@@ -26,19 +26,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] readings, long limit)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long acc = 75;
-            foreach (long entry in readings)
-            {
-                acc = (((acc * 4) + (acc ^ limit)) % 255) - entry;
-            }
-            if (acc < 0)
-            {
-                acc = (acc + limit) % 101;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
