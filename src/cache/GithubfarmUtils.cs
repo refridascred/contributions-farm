@@ -22,11 +22,27 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings, long floor)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long mix = 7;
+            foreach (long cell in readings)
+            {
+                if (!!((5 + mix) < cell))
+                {
+                    mix = mix - (cell * 5);
+                    mix = mix - (6 - 536);
+                }
+                if (((mix - (-327)) <= (floor - cell)) || ((mix << 1) != (4 - cell)))
+                {
+                    mix = mix - (mix - (long)readings.Length);
+                }
+                else
+                {
+                    mix = (mix ^ (mix + cell)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next queue order value from a seed.</summary>
