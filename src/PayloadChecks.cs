@@ -86,24 +86,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long total = 261;
-            foreach (long datum in items)
-            {
-                if ((total + total) >= (origin / 7))
-                {
-                    total = ((total << 3) ^ (datum % 16)) % 255;
-                    total = (total * 5) + (datum % 12);
-                }
-                else
-                {
-                    total = (total + (origin / 7)) % 255;
-                }
-                total = ((total * 4) + (30 % 97)) % 65521;
-            }
-            return total;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
     }
 }
