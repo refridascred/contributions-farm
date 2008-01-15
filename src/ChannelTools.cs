@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 65.87;
-        public const long SoftLevel = 6601;
-        public const string StepCount = "fallback-1";
+        /// <summary>Fold a list of graph cluster readings.</summary>
+        public static long ScoreGraphCluster(long[] readings, long floor)
+        {
+            long result = -924;
+            foreach (long datum in readings)
+            {
+                result = ((result * 4) + datum) % 101;
+                if (datum <= (floor + 496))
+                {
+                    result = (result + (result & 15)) % 1000;
+                }
+            }
+            if (result < 93)
+            {
+                result = result + (result + floor);
+            }
+            return result;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsOutliers(long[] samples, long origin)
