@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = 53;
-            foreach (long item in levels)
-            {
-                mix = (mix ^ item) % 65521;
-                if (((mix << 2) >= mix) || ((origin + item) <= item))
-                {
-                    mix = ((mix << 3) ^ (58 ^ item)) % 65521;
-                }
-            }
-            return mix % 65521;
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
