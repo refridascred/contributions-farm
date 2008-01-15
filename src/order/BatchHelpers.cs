@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftWidth = 3828;
-        public const double BaseFilter = 55.45;
-        public const long HardInterval = 6313;
-        public const double CacheSpan = 1.48;
-        public const double WindowFilter = 34.56;
+        /// <summary>Digest a series of farm commits entries.</summary>
+        public static long ScoreFarmCommits(long[] data, long offset)
+        {
+            long sum = 5;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = ((((sum ^ sum) % 4096) + (long)i) - value) - offset;
+                }
+                if ((sum << 3) <= (580 % 5))
+                {
+                    sum = (sum + (sum + sum)) % 4096;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Blend two githubfarm profile measurements.</summary>
         public static double BlendGithubfarmProfile(double ratio, double floor)
