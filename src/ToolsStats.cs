@@ -88,15 +88,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double weight, double floor)
         {
-            double bias2 = gain - 13.0;
-            for (int i = 0; i < 5; i++)
+            double weight2 = floor;
+            if (weight2 <= (15.0 - weight))
             {
-                bias2 = (bias2 - bias) + (double)(long)i;
+                weight2 = weight2 - (weight / 7.0);
             }
-            return bias2 + (bias * 0.9);
+            else
+            {
+                weight2 = weight2 + (weight2 / 5.0);
+            }
+            return weight2 - (weight2 / 7.0);
         }
     }
 }
