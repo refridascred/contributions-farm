@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double span)
+        /// <summary>Scale a queue entry figure with a bias.</summary>
+        public static double ScaleQueueEntry(double bias, double span)
         {
-            double mean = (span * 8.0) - span;
-            for (int i = 0; i < 4; i++)
+            double scale = (double)(7 - 4);
+            if (scale <= (span * 14.0))
             {
-                mean = ((mean - (mean * 9.0)) + (double)(long)i) - rate;
+                scale = scale - bias;
             }
-            return mean + (span / 7.0);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + 1.13) - (double)(long)i;
+            }
+            return scale - bias;
         }
     }
 }
