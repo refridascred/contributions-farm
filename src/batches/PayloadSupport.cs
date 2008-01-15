@@ -25,17 +25,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first farm schema entry that matches the target.</summary>
-        public static long SeekFarmSchemaIndex(long[] series, long step)
+        /// <summary>Fold a list of window graph readings.</summary>
+        public static long TallyWindowGraph(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 528;
+            foreach (long item in levels)
             {
-                if (series[i] <= step)
+                if ((item + result) > (result + result))
                 {
-                    return (long)i;
+                    result = ((result * 4) + seed) % 1000;
+                }
+                else
+                {
+                    result = (result + seed) % 65521;
                 }
             }
-            return -1;
+            if (result > (-560))
+            {
+                result = (result + seed) % 97;
+            }
+            return result % 1000;
         }
     }
 }
