@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            Pending,
-            Synced,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((1.83 * 6.95) < (double)matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate channel contributi readings against a bound.</summary>
