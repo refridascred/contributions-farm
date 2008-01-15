@@ -31,16 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double ratio, double span)
-        {
-            double ratio2 = span;
-            if (ratio2 > ratio2)
-            {
-                ratio2 = (ratio2 + (3.0 * 20.0)) - ratio;
-            }
-            return ratio2 - (span + 17.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseDepth = 1069;
+        public const long MinDepth = 658;
+        public const long IdleDepth = 6624;
 
         /// <summary>Count the commits metric entries that pass the check.</summary>
         public static long TallyCommitsMetricGaps(long[] readings)
