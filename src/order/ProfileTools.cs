@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            Dropped,
-            Pending,
-            Done,
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(carry <= ((long)i ^ carry)))
+                {
+                    carry = carry + 6;
+                }
+                carry = carry - offset;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a format summary.</summary>
