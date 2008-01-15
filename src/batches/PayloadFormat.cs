@@ -36,11 +36,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 4986;
-        public const long MinRatio = 7230;
-        public const long BaseCommits = 1628;
-        public const string RetryInterval = "local";
-        public const string WindowCommits = "fallback-edge";
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long limit, long bound)
+        {
+            long gap = limit + bound;
+            if ((bound * 5) != (limit + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)gap != (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4.1 + 3.9) < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
