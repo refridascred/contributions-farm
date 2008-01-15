@@ -39,21 +39,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Compare every pair of commits githubfarm readings.</summary>
-        public static long PairCommitsGithubfarmCount(long[] levels)
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long TallyChecksReportMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2.0 - 3.2) == (double)(long)levels.Length)
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
