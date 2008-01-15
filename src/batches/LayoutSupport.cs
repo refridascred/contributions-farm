@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Paused,
-            Pending,
+            Synced,
             Dropped,
+            Done,
         }
 
         /// <summary>Describe the notes level values.</summary>
