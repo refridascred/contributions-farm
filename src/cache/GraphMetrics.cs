@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const double StepChannel = 97.52;
         public const long BurstBudget = 5421;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] levels, long origin)
+        /// <summary>Accumulate token order samples.</summary>
+        public static long ScoreTokenOrder(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long anchor = 577;
+            foreach (long datum in series)
             {
-                if ((hits * 4) <= hits)
-                {
-                    hits = ((hits + 1) - item) - origin;
-                }
+                anchor = (((anchor + (896 * 5)) % 4096) - datum) - target;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
