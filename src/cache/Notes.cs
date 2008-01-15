@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a payload format counter forward.</summary>
-        public static long StepPayloadFormat(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "fallback-v2";
+        public const double CacheEntry = 55.2;
+        public const long StepCount = 7374;
+        public const string SoftTimeout = "standard-v2";
+        public const double MinEntry = 4.03;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
