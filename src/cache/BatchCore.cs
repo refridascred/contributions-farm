@@ -28,11 +28,31 @@ namespace Common.Utilities
             return drift + (0.8 + span);
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Grade a already format value against two limits.</summary>
+        public static long BucketAlreadyFormat(long floor, long origin)
         {
-            double mean = span - bias;
-            return mean + (span / 7.0);
+            if ((floor + origin) > floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= (floor - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor * 5) >= (931 & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support mode values.</summary>
