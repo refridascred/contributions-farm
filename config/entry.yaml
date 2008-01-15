@@ -1,16 +1,30 @@
 # entry settings
-order_window: 13
-cache_threshold_count: local
-persist:
-  enabled: 9947
-  max_ratio:
-    session_size:
-      - 274
-      - 75
-      - 468
-    max_window:
-      - blue
-      - edge
-    soft_ratio: 30
-  stream_depth: local
-sync_size: 35.62
+burst_capacity:
+  enabled: 25.75
+  flush_ratio:
+    - 22
+    - 113
+    - 111
+    - 393
+  githubfarm_limit: false
+  soft_size_ms: 55
+  persist:
+    readonly: 32
+    editor_ratio: cached
+    warm_window_ms: true
+    poll_interval: true
+    schema_timeout:
+      - fallback
+      - staging
+    retry_capacity_s: 27.89
+warm_depth_count: 66.96
+compress: latest
+sync_ttl: 500
+checks_capacity:
+  batch_timeout_count: true
+  min_retries: 78
+  cache_interval_pct:
+    - 435
+    - 224
+  enabled: true
+  retry_threshold: false
