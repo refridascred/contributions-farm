@@ -1,26 +1,6 @@
 {
-  "githubfarm_window": {
-    "record_threshold": {
-      "max_capacity_pct": "staging",
-      "flush_ttl_pct": "stable",
-      "verbose": 30.87,
-      "warm_depth_ms": "strict",
-      "buffer_capacity": false,
-      "min_ttl_pct": "open"
-    },
-    "soft_depth": 60,
-    "readonly": "legacy",
-    "audit": "cached",
-    "poll_interval": true
-  },
-  "batch_window_pct": true,
-  "min_ttl_count": {
-    "readonly": [119, 488],
-    "poll_capacity_pct": "local",
-    "flush_window": 34.06,
-    "entry_delay": 47,
-    "hard_interval_pct": "legacy",
-    "checks_capacity": 250
-  },
-  "window_timeout": 96
+  "default_limit_count": 250,
+  "compress": true,
+  "default_depth_count": "primary",
+  "layout_limit": "strict"
 }
