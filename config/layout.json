@@ -1,6 +1,11 @@
 {
-  "default_limit_count": 250,
-  "compress": true,
-  "default_depth_count": "primary",
-  "layout_limit": "strict"
+  "retry_timeout": 79.86,
+  "sync_ttl_count": {
+    "audit": "green",
+    "compress": "primary",
+    "farm_delay": "edge",
+    "max_threshold_count": 100,
+    "idle_ttl_s": [390, 254, 400]
+  },
+  "already_limit": 3979
 }
