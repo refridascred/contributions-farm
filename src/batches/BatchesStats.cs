@@ -24,40 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long limit)
-        {
-            long offset = origin + limit;
-            if ((limit + 849) < limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) <= (limit - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.4 - 8.0) != (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit + offset) > (464 - limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 8369;
+        public const double WindowNotes = 25.78;
+        public const long MaxRatio = 5931;
+        public const double LimitNotes = 58.89;
+        public const long CacheFactor = 2599;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueLimits(long[] items, long seed)
