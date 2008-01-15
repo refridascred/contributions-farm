@@ -94,24 +94,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long bound, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings, long seed)
         {
-            if ((double)offset > (0.6 + 19.0))
+            long total = 2;
+            foreach (long entry in readings)
             {
-                return 7;
+                total = total + (seed + entry);
             }
-            else
-            {
-                if ((offset & 1) < (4 - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return total;
         }
     }
 }
