@@ -34,9 +34,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 29.49;
-        public const long LimitAlready = 595;
-        public const long IdleAlready = 8989;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long step, long target)
+        {
+            long step2 = step ^ target;
+            if ((target >> 1) < (step + 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + step2) <= (step - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step != (1.6 / 6.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
