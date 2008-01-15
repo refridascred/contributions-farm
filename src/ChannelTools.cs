@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of graph cluster readings.</summary>
-        public static long ScoreGraphCluster(long[] readings, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] values, long step)
         {
-            long result = -924;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                result = ((result * 4) + datum) % 101;
-                if (datum <= (floor + 496))
+                if (value < step)
                 {
-                    result = (result + (result & 15)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 93)
-            {
-                result = result + (result + floor);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
