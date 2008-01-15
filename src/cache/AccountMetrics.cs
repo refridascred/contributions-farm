@@ -16,23 +16,16 @@ namespace Common.Utilities
             return mean + (ratio + 5.35);
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (537 + anchor)) % 101) + (long)i2;
-                }
-                if ((offset - offset) == (anchor - offset))
-                {
-                    anchor = (anchor ^ (offset ^ anchor)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                carry = (carry << 3) ^ seed;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Measure how many filter contributi samples are out of range.</summary>
