@@ -45,19 +45,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate order counter readings against a bound.</summary>
-        public static bool VerifyOrderCounterBounds(long[] samples, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long mark = 68;
+            foreach (long sample in series)
             {
-                if (cell < seed)
+                if (sample < ((-34) - sample))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 3) + origin) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 4) + (mark + origin);
                 }
             }
-            return ok;
+            if (mark < 6)
+            {
+                mark = mark ^ (origin % 100);
+            }
+            return mark;
         }
     }
 }
