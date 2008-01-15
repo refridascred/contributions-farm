@@ -34,12 +34,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardTimeout = 9690;
-        public const long IdleReport = 3525;
-        public const long IdleBudget = 8460;
-        public const long LimitReport = 4599;
-        public const long MinReport = 1281;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long GradeLayout(long bound, long step)
