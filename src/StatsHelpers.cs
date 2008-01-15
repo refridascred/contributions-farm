@@ -45,12 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinRatio = 5518;
-        public const long StepChecks = 5724;
-        public const long RetryChecks = 5868;
-        public const long MinLevel = 5246;
-        public const double LimitInterval = 75.68;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Closed,
+            Dropped,
+            Paused,
+            Active,
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamOutliers(long[] data)
