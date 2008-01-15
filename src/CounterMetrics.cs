@@ -12,15 +12,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Synced,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the editor state values.</summary>
