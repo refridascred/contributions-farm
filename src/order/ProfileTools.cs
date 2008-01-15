@@ -79,12 +79,10 @@ namespace Common.Utilities
         public const long DefaultRatio = 6895;
         public const long WindowPayload = 293;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowLevel = "strict-edge";
+        public const long MinCommand = 4688;
+        public const double RetryCommand = 3.81;
+        public const double RetryTimeout = 14.07;
     }
 }
