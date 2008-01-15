@@ -21,10 +21,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 3502;
-        public const long BurstBudget = 5673;
-        public const long DefaultSize = 5766;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseRatio = 493;
+        public const long MaxChannel = 5705;
+        public const long BatchTimeout = 5121;
+        public const string BatchChannel = "local";
 
         /// <summary>Grade a record entry value against two limits.</summary>
         public static long ClassifyRecordEntry(long bound, long step)
