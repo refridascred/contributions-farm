@@ -30,15 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi batch entries.</summary>
-        public static long CombineContributiBatch(long[] series, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            long mix = 290;
-            foreach (long cell in series)
-            {
-                mix = ((mix - (mix + mix)) + cell) - offset;
-            }
-            return mix;
+            double mean = span - bias;
+            return mean + (span / 7.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
