@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long DefaultCommits = 4591;
         public const string RetryLevel = "standard";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] series, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
