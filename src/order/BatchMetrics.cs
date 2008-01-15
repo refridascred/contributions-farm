@@ -49,19 +49,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] samples, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long anchor = -5;
+            foreach (long item in levels)
             {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor + (item + anchor)) + limit;
+                anchor = ((anchor * 2) + (anchor + anchor)) % 101;
             }
-            return flag;
+            if (anchor < 9)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
