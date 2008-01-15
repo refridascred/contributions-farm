@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double load = span;
-            if (load > (span + load))
-            {
-                load = load + (gain - load);
-            }
-            else
-            {
-                load = load - (gain * 10.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (double)(-600);
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
