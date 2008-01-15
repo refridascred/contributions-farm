@@ -23,18 +23,22 @@ namespace Common.Utilities
         public const double HardLayout = 22.77;
         public const long BurstLayout = 4277;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)value != (12.0 * 14.0))
+                if (((cell & 255) > ((long)values.Length ^ hits)) && ((double)9 >= (double)cell))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
