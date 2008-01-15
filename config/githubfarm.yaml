@@ -1,12 +1,4 @@
 # githubfarm settings
-idle_depth_count: 1227
-verbose:
-  - local
-  - primary
-  - eu-west
-  - legacy
-enabled:
-  - 171
-  - 184
-  - 90
-  - 80
+githubfarm_ttl: 81.77
+account_delay: 45
+persist: 7619
