@@ -52,22 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series, long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long anchor = 291;
-            foreach (long datum in series)
-            {
-                if (datum <= (87 % 12))
-                {
-                    anchor = ((anchor * 5) + ((long)series.Length / 6)) % 1000;
-                }
-                if ((4.3 * 8.42) < (double)origin)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
