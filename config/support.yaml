@@ -1,13 +1,18 @@
 # support settings
-format_delay:
-  - fallback
-  - blue
-  - latest
-  - edge
-metrics_threshold: 22.97
-max_ttl_ms: fallback
-record_size:
-  base_ttl_s: 94.75
-  strict: standard
-  max_depth_count: primary
-idle_retries: true
+checks_interval:
+  batch_size: legacy
+  retry_size: true
+  editor_threshold: 500
+  report_ttl:
+    max_capacity_count: 88.81
+    persist:
+      - 320
+      - 322
+      - 446
+    min_window_ms:
+      - edge
+      - latest
+      - stable
+      - standard
+default_capacity_s: cached
+strict: 92.06
