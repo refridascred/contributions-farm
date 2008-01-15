@@ -1,12 +1,6 @@
 # entry settings
-account_timeout:
-  - green
-  - legacy
-flush_size_s: eu-west
-strict: edge
-cache_ratio_count: eu-west
-min_delay_count:
-  - 174
-  - 242
-  - 276
-  - 94
+base_size_count: 1024
+buffer_capacity: 60
+base_interval_count:
+  - 231
+  - 451
