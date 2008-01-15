@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels, long floor)
         {
-            Queued,
-            Locked,
-            Retry,
-            Draft,
+            long mix = 48;
+            foreach (long sample in levels)
+            {
+                mix = (((mix << 2) ^ sample) % 255) + floor;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
