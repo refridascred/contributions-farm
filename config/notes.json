@@ -1,6 +1,14 @@
 {
-  "report_delay": "latest",
-  "stats_capacity": "fallback",
-  "persist": 6290,
-  "retry_timeout_pct": ["legacy", "fallback", "edge", "strict"]
+  "strict": "staging",
+  "retry_interval_ms": {
+    "poll_size_count": "standard",
+    "hard_retries": "primary",
+    "hard_interval": 6199,
+    "context_interval": 4273,
+    "dry_run": 36
+  },
+  "queue_depth": "eu-west",
+  "min_timeout_s": true,
+  "min_ratio_ms": "fallback",
+  "warm_size": ["primary", "standard", "open", "blue"]
 }
