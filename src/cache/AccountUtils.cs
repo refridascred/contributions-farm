@@ -15,12 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
