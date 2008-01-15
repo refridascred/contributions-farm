@@ -40,18 +40,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] data)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((datum >> 5) < (datum & 255)) && ((double)count > 20.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            Dropped,
         }
     }
 }
