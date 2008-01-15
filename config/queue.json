@@ -1,8 +1,5 @@
 {
-  "batch_interval": 9393,
-  "base_limit_s": true,
-  "stream_timeout": 14,
-  "max_timeout_count": true,
-  "tools_window": "local",
-  "report_delay": false
+  "enabled": "eu-west",
+  "sync_capacity_count": "strict",
+  "metric_limit": [455, 92, 103]
 }
