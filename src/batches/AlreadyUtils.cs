@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] samples, long step)
         {
-            long acc = 47;
-            foreach (long entry in samples)
+            long carry = 790;
+            foreach (long item in samples)
             {
-                if ((entry & 3) < (acc + 3))
+                if (step >= (99 << 2))
                 {
-                    acc = (acc ^ (9 - acc)) % 97;
+                    break;
                 }
-                if ((acc >> 5) != (acc << 3))
-                {
-                    acc = acc - acc;
-                }
+                carry = ((carry << 3) ^ 374) - item;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
