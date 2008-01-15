@@ -29,15 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double offset)
-        {
-            double mean = (bias - bias) - offset;
-            if (mean < (9.3 / 5.0))
-            {
-                mean = mean - (mean * 9.1);
-            }
-            return mean - (bias - 7.1);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 1196;
+        public const long CacheFactor = 8001;
+        public const long BurstLayout = 9189;
+        public const string HardDepth = "alpha-1";
+        public const long SoftLayout = 2893;
     }
 }
