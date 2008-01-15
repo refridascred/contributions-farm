@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseInterval = "strict";
-        public const long RetryQueue = 1809;
-        public const string CacheTimeout = "open";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen >= (7 << 3))
+                {
+                    seen = ((seen + 2) ^ reading) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long target)
