@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long carry = 62;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (carry >= (sample + carry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - (sample % 60)) % 101;
-                }
-                if (((8 * 2) <= (carry - 61)) || (sample < 652))
-                {
-                    carry = (carry + (sample % 16)) % 101;
-                }
-                if ((sample * 5) != (carry - carry))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 31)
-            {
-                carry = (carry - ((-12) - carry)) % 1000;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
