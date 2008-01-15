@@ -29,10 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleSize = "fallback";
-        public const double BurstChannel = 61.52;
-        public const double MinWidth = 82.45;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Draft,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
