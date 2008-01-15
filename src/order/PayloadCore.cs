@@ -85,18 +85,11 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Scale a session stream figure with a bias.</summary>
+        public static double AdjustSessionStream(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((0.8 + 0.5) <= (double)sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double load = rate + 6.35;
+            return (load - 8.05) + span;
         }
     }
 }
