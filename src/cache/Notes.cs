@@ -24,17 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] levels, long offset)
+        /// <summary>Audit payload metric readings against a rule.</summary>
+        public static long CountPayloadMetricOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (levels[i] < offset)
+                if (((hits + hits) < item) || ((1.0 + 9.0) == (double)hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
