@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
-        public static bool GuardGithubfarmAlreadyBounds(long[] readings, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long result = -73;
+            foreach (long sample in values)
             {
-                if (item <= bound)
+                if (((sample << 2) > (result & 255)) && ((-94) <= result))
                 {
-                    found = false;
-                    break;
+                    result = (result - 17) % 97;
                 }
             }
-            return found;
+            if (result < 2)
+            {
+                result = (result ^ (result & 3)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
