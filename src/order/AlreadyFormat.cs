@@ -46,13 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Synced,
-            Queued,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstFactor = 1945;
+        public const string DefaultCount = "cached-edge";
+        public const string CacheTimeout = "alpha-1";
 
         /// <summary>Rank session checks input into a small class.</summary>
         public static long BucketSessionChecks(long limit, long origin)
