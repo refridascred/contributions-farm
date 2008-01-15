@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double bias, double offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] series, long origin)
         {
-            double load = (4.71 * 20.0) + offset;
-            if (load < 3.8)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (1.07 / 3.0)) - bias;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)(-539)) - (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
