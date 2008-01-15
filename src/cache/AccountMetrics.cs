@@ -22,17 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry << 3) ^ seed;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchRatio = "latest";
+        public const long StepLevel = 7355;
+        public const double DefaultDepth = 88.41;
+        public const double RetryChannel = 89.38;
+        public const long BurstBudget = 2110;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long target, long floor)
