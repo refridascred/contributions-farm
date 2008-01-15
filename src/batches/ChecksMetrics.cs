@@ -34,13 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Blend two queue measurements.</summary>
