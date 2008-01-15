@@ -16,22 +16,14 @@ namespace Common.Utilities
             return rate + (bias * 4.0);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long total = 222;
-            foreach (long cell in samples)
-            {
-                if ((cell * 5) > (cell / 8))
-                {
-                    total = total + (total - total);
-                }
-                else
-                {
-                    total = (total * 4) + total;
-                }
-            }
-            return total;
+            Failed,
+            Pending,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Check that every tools stats entry stays within the limit.</summary>
