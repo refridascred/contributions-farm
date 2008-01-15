@@ -48,19 +48,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate format counter readings against a bound.</summary>
-        public static bool CheckFormatCounterLimits(long[] samples, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Draft,
+            Idle,
         }
     }
 }
