@@ -14,12 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 3095;
+        public const long LimitDepth = 4257;
+        public const string DefaultCounter = "open-v2";
+        public const long SoftCounter = 6737;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
