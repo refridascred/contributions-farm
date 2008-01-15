@@ -47,20 +47,19 @@ namespace Common.Utilities
         public const long IdleBudget = 8627;
         public const long BatchSpan = 3079;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] series, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                result = (result + ((long)i & 15)) % 4096;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (cell > bound)
                 {
-                    result = ((result << 3) ^ (offset + offset)) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Describe the report level values.</summary>
