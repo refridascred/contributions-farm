@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            long total = 954;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!(((-2) - total) <= (4 << 1)))
+                if ((101 + tally) > (tally % 12))
                 {
-                    total = ((((total << 2) ^ (total + total)) % 65521) - datum) - limit;
-                }
-                else
-                {
-                    total = (total + total) % 4096;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
