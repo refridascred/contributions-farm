@@ -1,22 +1,11 @@
 {
-  "strict": {
-    "base_threshold": {
-      "soft_ratio_ms": 1024,
-      "batch_ratio_pct": "legacy",
-      "default_limit": 23.61
-    },
-    "verbose": ["legacy", "blue"],
-    "soft_ratio": {
-      "notes_retries": 52.62,
-      "readonly": "strict",
-      "soft_window": false,
-      "compress": 30,
-      "notes_threshold": "staging",
-      "hard_depth_pct": 1024
-    },
-    "queue_limit": ["strict", "cached", "fallback"]
+  "tools_ttl": false,
+  "commits_depth": 51,
+  "metrics_ttl": {
+    "already_retries": 9,
+    "format_delay": 30,
+    "notes_threshold": 43,
+    "default_threshold_pct": false
   },
-  "enabled": "cached",
-  "base_ttl": 500,
-  "commits_ratio": "stable"
+  "strict": false
 }
