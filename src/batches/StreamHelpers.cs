@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6760;
-        public const long LimitMetric = 529;
-        public const long BaseMetric = 3522;
-        public const string CacheBudget = "staging-v2";
-        public const long RetrySize = 1486;
+        /// <summary>Compare every pair of batches tools readings.</summary>
+        public static long OverlapBatchesToolsCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long StepCluster = 2329;
