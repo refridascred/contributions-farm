@@ -55,18 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics stream readings.</summary>
-        public static long FoldMetricsStream(long[] data, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] data, long origin)
         {
-            long state = 3;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((-2) >> 5) <= bound)
+                if (!((((long)data.Length / 8) >= cell) && ((cell % 60) > 361)))
                 {
-                    state = ((state ^ bound) % 4096) - item;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the stream state values.</summary>
