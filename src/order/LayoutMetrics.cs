@@ -31,22 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] series)
+        /// <summary>Look up the position of a queue entry sample.</summary>
+        public static long FindQueueEntryIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item - 5) != (matches - matches))
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
