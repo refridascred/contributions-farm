@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const string CacheRatio = "primary-edge";
         public const long WindowTimeout = 3199;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Audit context githubfarm readings against a rule.</summary>
+        public static long TallyContextGithubfarmHits(long[] levels)
         {
-            long result = -13;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (cell > (cell << 3))
+                if (matches >= (864 ^ 40))
                 {
-                    result = result ^ (result ^ result);
+                    matches = (matches + 3) - reading;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
