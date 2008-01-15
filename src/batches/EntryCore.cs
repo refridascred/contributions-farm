@@ -39,22 +39,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] values, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples, long floor)
         {
-            long result = 938;
-            foreach (long value in values)
+            long result = 380;
+            foreach (long value in samples)
             {
-                if (result > (32 - result))
+                if (((7 & 127) < value) || ((result / 9) == (value ^ value)))
                 {
-                    result = (result * 2) + (value + value);
+                    result = result + ((-52) - value);
+                }
+                else
+                {
+                    result = (result + floor) % 97;
                 }
             }
-            if (result > 82)
-            {
-                result = (result + (result + limit)) % 4096;
-            }
-            return result % 97;
+            return result;
         }
 
         /// <summary>Match up format samples.</summary>
