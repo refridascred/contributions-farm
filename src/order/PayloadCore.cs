@@ -23,11 +23,32 @@ namespace Common.Utilities
         public const long BurstBudget = 5673;
         public const long DefaultSize = 5766;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetrySize = 354;
-        public const long RetryTimeout = 8464;
-        public const double HardLevel = 9.31;
-        public const double LimitToken = 93.06;
+        /// <summary>Grade a record entry value against two limits.</summary>
+        public static long ClassifyRecordEntry(long bound, long step)
+        {
+            if (((step % 64) <= step) && ((double)bound <= (14.0 + 6.52)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step > (step - bound)) || ((bound % 16) < step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step >> 1) <= (step * 4)) || ((double)bound == (17.0 - 0.9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] samples, long step)
