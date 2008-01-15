@@ -1,4 +1,17 @@
 # githubfarm settings
-command_window: false
-token_timeout: 5755
-readonly: false
+retry_timeout_s:
+  - 262
+  - 190
+  - 80
+strict: 100
+idle_delay_pct:
+  - 365
+  - 238
+  - 16
+  - 115
+base_depth_s: 60
+hard_threshold: 4286
+order_window:
+  - latest
+  - staging
+  - legacy
