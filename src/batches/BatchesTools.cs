@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
             public double Limit { get; set; }
-            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
