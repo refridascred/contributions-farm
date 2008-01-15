@@ -1,6 +1,6 @@
 {
-  "poll_size_pct": 10.59,
-  "checks_depth": false,
-  "poll_size_count": true,
-  "audit": "eu-west"
+  "session_window": "eu-west",
+  "readonly": [363, 289, 494],
+  "persist": true,
+  "compress": ["blue", "latest", "staging"]
 }
