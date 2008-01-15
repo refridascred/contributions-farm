@@ -80,11 +80,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 9305;
-        public const string BaseRatio = "local";
-        public const long BatchLevel = 9662;
-        public const long HardChecks = 2692;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values)
+        {
+            long acc = 227;
+            foreach (long item in values)
+            {
+                acc = (acc + acc) - item;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenRange(long[] samples, long bound)
