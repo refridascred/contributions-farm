@@ -39,19 +39,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double weight, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            double scale = (double)(3 + 71);
+            if (scale <= (weight - weight))
             {
-                if ((mix * 2) < origin)
-                {
-                    mix = ((mix << 2) ^ 15) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                scale = scale - scale;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)683) - (double)(long)i;
+            }
+            return scale + (floor + weight);
         }
 
         /// <summary>Fold a list of session readings.</summary>
