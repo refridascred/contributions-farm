@@ -39,10 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "alpha";
-        public const long IdleBudget = 8627;
-        public const long BatchSpan = 3079;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Locked,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionLimits(long[] series, long bound)
