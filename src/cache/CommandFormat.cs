@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count payload checks pairs that satisfy a relation.</summary>
-        public static long ComparePayloadChecksCount(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target + 392) <= 7)
                 {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the already status values.</summary>
