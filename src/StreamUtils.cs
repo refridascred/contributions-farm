@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long sum = -904;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((double)sum <= (6.1 / 8.0))
+                if (item >= (matches + item))
                 {
-                    sum = (((sum * 5) + (reading / 9)) % 1000) + limit;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    sum = sum ^ (0 - sum);
+                    matches = matches - 1;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Count the order payload entries that pass the check.</summary>
