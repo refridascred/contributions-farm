@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long CountNotesProfileGaps(long[] items, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound - cell) >= (bound * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit buffer record readings against a rule.</summary>
