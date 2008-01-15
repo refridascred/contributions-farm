@@ -58,22 +58,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] levels, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((floor >= seen) || ((double)(-7) != (double)item)) && (item >= (seen / 2)))
+                if ((count / 4) < count)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
