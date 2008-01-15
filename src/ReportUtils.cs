@@ -42,16 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats report series from a seed.</summary>
-        public static long SeriesStatsReport(long step)
+        /// <summary>Check that every cache entry entry stays within the limit.</summary>
+        public static bool ValidateCacheEntryBounds(long[] series, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                score = (score ^ score) % 101;
-                score = ((score * 3) + (long)i) % 4093;
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Blend two already measurements.</summary>
