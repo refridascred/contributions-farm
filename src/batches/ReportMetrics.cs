@@ -15,23 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (sample <= (count << 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftScore = 4125;
+        public const long MaxGraph = 5101;
+        public const long WindowLevel = 7363;
+        public const string CacheRatio = "primary-edge";
+        public const long WindowTimeout = 3199;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
