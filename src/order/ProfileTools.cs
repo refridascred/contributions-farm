@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a format batch figure with a bias.</summary>
-        public static double AdjustFormatBatch(double rate, double bias)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] values, long offset)
         {
-            double gain = rate + rate;
-            if (gain > bias)
+            long tally = 0;
+            foreach (long value in values)
             {
-                gain = gain + (gain * 14.0);
+                if (138 >= (value >> 5))
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Hold a checks stats.</summary>
