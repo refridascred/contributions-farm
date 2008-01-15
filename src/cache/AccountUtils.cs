@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] readings, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double drift = bias;
+            if (drift > (double)6)
             {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift + (double)967) + scale;
             }
-            return flag;
+            return drift - (bias / 6.0);
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
