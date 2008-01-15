@@ -48,13 +48,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Validate notes schema readings against a bound.</summary>
-        public static bool CheckNotesSchemaBounds(long[] readings, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] levels, long limit)
         {
             bool flag = true;
-            foreach (long reading in readings)
+            foreach (long item in levels)
             {
-                if (reading > bound)
+                if (item < limit)
                 {
                     flag = false;
                     break;
