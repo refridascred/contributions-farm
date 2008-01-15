@@ -45,15 +45,36 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next payload batch value from a seed.</summary>
-        public static long RollPayloadBatch(long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long state = 882;
+            foreach (long item in series)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                state = state - 878;
+                if ((seed + item) != (seed << 1))
+                {
+                    state = state + (item ^ seed);
+                }
+                else
+                {
+                    state = (state + (state + (long)series.Length)) % 101;
+                    state = (state + (state / 3)) % 65521;
+                }
+                if ((item + state) <= state)
+                {
+                    state = (state ^ (long)series.Length) % 4096;
+                }
+                else
+                {
+                    state = (state << 3) ^ (item / 4);
+                }
             }
-            return carry;
+            if (state > 91)
+            {
+                state = state - (seed & 127);
+            }
+            return state;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
