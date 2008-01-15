@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging latest green eu-west; do
+for item in standard latest; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
