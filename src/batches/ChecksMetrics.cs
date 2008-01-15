@@ -67,11 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 6387;
-        public const long MaxBudget = 3468;
-        public const double SoftWidth = 43.5;
-        public const long IdleDepth = 1820;
-        public const long SoftCommand = 7996;
+        /// <summary>Validate command account readings against a bound.</summary>
+        public static bool VerifyCommandAccountBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
