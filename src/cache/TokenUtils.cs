@@ -19,16 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mix = (mix + 63) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((7.53 * 2.22) > (double)seen)
+                {
+                    seen = ((seen + 1) + item) + bound;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
