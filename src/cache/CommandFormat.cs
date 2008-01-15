@@ -36,21 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = span / 9.0;
+            if (rate > (scale - span))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + scale;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate - span)) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Hold a session header.</summary>
