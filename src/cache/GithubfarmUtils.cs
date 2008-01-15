@@ -37,12 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
             Pending,
-            Active,
-            Done,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define command limits and defaults.</summary>
