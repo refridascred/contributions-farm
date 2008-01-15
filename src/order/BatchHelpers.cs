@@ -13,18 +13,32 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Grade a counter farm value against two limits.</summary>
+        public static long ClassifyCounterFarm(long target, long limit)
         {
-            long mix = 2;
-            foreach (long reading in readings)
+            long next = target ^ limit;
+            if ((target - limit) >= (target & 31))
             {
-                if ((mix / 8) >= reading)
+                return 5;
+            }
+            else
+            {
+                if (target >= next)
                 {
-                    mix = (mix + (299 ^ 770)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    if (!((target + limit) <= target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Describe the report phase values.</summary>
