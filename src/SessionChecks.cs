@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitSpan = "latest-edge";
-        public const long IdleCommand = 4542;
-        public const double CacheSpan = 16.86;
-        public const long RetryRatio = 8905;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] data)
