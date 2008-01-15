@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepDepth = 4599;
-        public const long MaxGithubfarm = 5936;
-        public const double HardGithubfarm = 87.32;
-        public const long SoftGithubfarm = 1550;
-        public const long DefaultInterval = 3990;
+        /// <summary>Count stats layout pairs that satisfy a relation.</summary>
+        public static long CompareStatsLayoutCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] levels)
