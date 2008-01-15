@@ -42,13 +42,38 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long step)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            if (step <= (step + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step > (5.7 + 1.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed >= (4.4 + 18.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (7.4 <= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
