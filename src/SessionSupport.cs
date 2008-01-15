@@ -18,22 +18,10 @@ namespace Common.Utilities
         public const long BatchStats = 7755;
         public const long IdleRatio = 4243;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((78 >= (matches & 7)) || ((sample + matches) <= (96 ^ matches))) || (((63 ^ sample) <= (matches << 1)) && ((matches >> 5) <= 120)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheLevel = "local-v2";
+        public const long IdleSchema = 2806;
+        public const string DefaultTimeout = "latest";
+        public const double StepBudget = 56.27;
     }
 }
