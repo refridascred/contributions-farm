@@ -23,18 +23,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] series, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (seen <= (target + seen))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Roll a window counter forward.</summary>
