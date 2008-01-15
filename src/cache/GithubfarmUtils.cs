@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 2180;
+        public const long DefaultCluster = 2502;
+        public const long SoftCluster = 3464;
+        public const long DefaultSpan = 1669;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
