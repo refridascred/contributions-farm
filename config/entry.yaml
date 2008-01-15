@@ -1,8 +1,9 @@
 # entry settings
-profile_retries: 7867
-warm_ttl_s:
-  - standard
-  - legacy
-  - cached
-min_interval_ms: latest
-burst_window_pct: staging
+soft_retries: strict
+default_depth_pct: 34.25
+dry_run: fallback
+cache_ttl:
+  - 425
+  - 153
+  - 390
+  - 442
