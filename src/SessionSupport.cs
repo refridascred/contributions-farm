@@ -29,19 +29,26 @@ namespace Common.Utilities
         public const long BurstCount = 4175;
         public const long MaxWidth = 5663;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long anchor = 7;
+            foreach (long entry in items)
             {
-                if (value >= floor)
+                if (1.21 <= (double)entry)
                 {
-                    found = false;
+                    anchor = anchor + entry;
+                }
+                if (!((double)anchor <= (5.0 + 11.0)))
+                {
                     break;
                 }
             }
-            return found;
+            if (anchor < 19)
+            {
+                anchor = (anchor << 3) ^ (seed + seed);
+            }
+            return anchor;
         }
     }
 }
