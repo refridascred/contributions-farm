@@ -1,23 +1,6 @@
 {
-  "stream_limit": {
-    "metrics_retries": {
-      "readonly": false,
-      "enabled": false,
-      "editor_capacity": false,
-      "batch_ratio": "legacy"
-    },
-    "command_size": 9237,
-    "audit": false,
-    "max_limit": {
-      "strict": 6819,
-      "batch_interval_pct": 49.07,
-      "verbose": false,
-      "metrics_timeout": true,
-      "command_window": 7.72
-    },
-    "burst_timeout_s": 33.14,
-    "base_limit_count": true
-  },
-  "buffer_capacity": false,
-  "sync_depth_count": 7959
+  "dry_run": false,
+  "support_ttl": "local",
+  "soft_ratio_s": false,
+  "base_depth": "eu-west"
 }
