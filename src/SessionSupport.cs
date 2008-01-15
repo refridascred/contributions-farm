@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxBudget = 3393;
-        public const long SoftContext = 5631;
-        public const long BaseSize = 2812;
-        public const long RetryContext = 631;
-        public const string CacheFactor = "fallback";
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] values, long target)
