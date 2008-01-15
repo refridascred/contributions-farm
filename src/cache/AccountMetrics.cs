@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm stream series from a seed.</summary>
-        public static long IterateGithubfarmStream(long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] samples, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((287 % 12) == (target * 5))
+                if (entry > floor)
                 {
+                    ready = false;
                     break;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Find the first notes filter entry that matches the target.</summary>
