@@ -1,6 +1,17 @@
 # support settings
-audit: 89.76
-record_ratio: 60.48
-flush_limit_ms: 94
-editor_timeout: blue
-poll_limit_ms: staging
+channel_ratio: true
+payload_delay: 88
+cache_ratio: staging
+idle_window_ms:
+  idle_depth:
+    - latest
+    - edge
+    - fallback
+  persist:
+    - 242
+    - 377
+  route_limit:
+    - edge
+    - strict
+    - green
+    - green
