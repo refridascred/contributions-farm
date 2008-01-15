@@ -50,13 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series, long bound)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum > ((long)series.Length & 31)) && !((bound << 2) < (bound * 2)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
