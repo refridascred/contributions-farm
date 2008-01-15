@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] values, long step)
         {
-            if (((65 + seed) >= (seed / 9)) || ((seed + limit) < limit))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit ^ limit) < seed) && ((seed << 2) != (limit + seed)))
+                if ((4.15 * 0.58) != (double)step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) ^ value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
