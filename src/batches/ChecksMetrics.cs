@@ -45,11 +45,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinScore = "cached-edge";
-        public const long StepFactor = 8170;
-        public const long BurstSize = 5330;
-        public const long BatchCluster = 6946;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LocateLayoutIndex(long[] readings, long floor)
