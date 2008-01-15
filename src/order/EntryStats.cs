@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long LimitQueue = 3512;
         public const long BurstQueue = 3669;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] items, long target)
         {
-            Retry,
-            Pending,
-            Queued,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
