@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 0.46;
-        public const long BaseLayout = 709;
-        public const string StepLayout = "strict-v2";
-        public const long WindowCount = 4684;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] items, long offset)
+        {
+            long sum = 9;
+            foreach (long cell in items)
+            {
+                if ((offset + cell) > (309 + sum))
+                {
+                    sum = sum - sum;
+                }
+                else
+                {
+                    sum = sum + (offset << 3);
+                }
+            }
+            if (sum < 115)
+            {
+                sum = sum - sum;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
