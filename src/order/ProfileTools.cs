@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] data, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((origin * 4) <= (floor + origin))
             {
-                if ((origin & 255) == (cell + seen))
+                return 2;
+            }
+            else
+            {
+                if (!((origin + origin) < origin))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + 77) > floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit queue commits readings against a rule.</summary>
