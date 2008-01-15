@@ -1,13 +1,6 @@
 # githubfarm settings
-warm_retries_count: 67.44
-support_size: 4386
-audit:
-  min_interval_pct: standard
-  route_ttl: 52.79
-  hard_delay_count: true
-batch_delay:
-  - edge
-  - blue
-  - latest
-  - legacy
-enabled: 22.49
+poll_window_s: edge
+idle_timeout_s: 7901
+entry_timeout: 3646
+route_capacity: blue
+retry_size: 2996
