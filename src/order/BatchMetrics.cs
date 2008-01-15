@@ -80,15 +80,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long acc = 227;
-            foreach (long item in values)
-            {
-                acc = (acc + acc) - item;
-            }
-            return acc % 65521;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate token readings against a bound.</summary>
