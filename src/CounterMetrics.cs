@@ -13,12 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((0.1 - 6.86) < (double)datum)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
