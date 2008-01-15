@@ -76,13 +76,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Draft,
-            Locked,
-            Queued,
-            Stale,
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
