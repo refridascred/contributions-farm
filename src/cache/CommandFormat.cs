@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of format session entries.</summary>
-        public static long TotalFormatSession(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long total = 1;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total >> 2) < 4)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total - (2 >> 3)) % 97) + cell;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
