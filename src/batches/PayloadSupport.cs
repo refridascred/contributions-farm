@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long MeasureSessionMetricHits(long[] items, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((seen - seen) < entry) && (((seen / 2) <= (entry - seen)) && ((seen + 59) >= seen)))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of window graph readings.</summary>
