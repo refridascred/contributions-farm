@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the queue channel entries that pass the check.</summary>
-        public static long CountQueueChannelOutliers(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading << 2) > (hits - reading))
-                {
-                    hits = (hits + 1) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinSpan = 6256;
+        public const double IdleBatches = 63.54;
+        public const string RetryDepth = "stable-v2";
+        public const long StepBatches = 6168;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenBounds(long[] levels, long limit)
