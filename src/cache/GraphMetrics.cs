@@ -39,25 +39,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double span)
         {
-            long cur = limit ^ offset;
-            if ((122 << 2) >= (limit / 8))
+            double ratio = span;
+            if (ratio > bias)
             {
-                return 4;
+                ratio = ratio + ratio;
             }
-            else
-            {
-                if (cur > (cur & 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return ratio + (13.0 * 7.8);
         }
     }
 }
