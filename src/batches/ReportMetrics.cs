@@ -26,18 +26,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value % 24) == (value + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
