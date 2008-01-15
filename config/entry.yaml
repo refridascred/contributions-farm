@@ -1,50 +1,7 @@
 # entry settings
-stats_depth: fallback
-max_ratio_ms: 8
-sync_delay_s:
-  support_ratio:
-    warm_limit_count: 25
-    poll_size_s: 87.59
-    warm_ratio_pct: 9688
-    enabled: 100
-    dry_run:
-      - strict
-      - primary
-    stats_size: green
-  warm_depth:
-    already_threshold:
-      - 376
-      - 103
-      - 11
-      - 43
-    githubfarm_retries: cached
-    dry_run:
-      - 296
-      - 344
-    idle_ttl_count: 100
-  default_capacity_pct: local
-  sync_delay_count:
-    context_window:
-      - primary
-      - strict
-    compress: true
-    profile_size: 29
-  audit:
-    counter_timeout: cached
-    min_ratio_s:
-      - 317
-      - 93
-      - 301
-      - 250
-    readonly: 81
-    audit: 1024
-    retry_ratio_s: 36.85
-retry_ttl:
-  - 336
-  - 204
-  - 499
-already_limit:
-  - 234
-  - 317
-  - 286
-  - 346
+poll_depth: 64
+dry_run:
+  - standard
+  - primary
+tools_threshold: 1.74
+poll_depth_count: 57.28
