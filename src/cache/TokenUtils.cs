@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                acc = acc ^ offset;
-                acc = ((acc << 3) ^ (offset - (long)i)) % 97;
-                acc = (acc + (offset << 1)) % 4096;
-                acc = ((acc * 3) + (long)i) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
