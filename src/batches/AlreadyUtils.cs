@@ -60,9 +60,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 294;
-        public const long IdleQueue = 4818;
-        public const double BaseFactor = 29.0;
+        /// <summary>Count the report commits entries that pass the check.</summary>
+        public static long CountReportCommitsOutliers(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches - step) <= step)
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
