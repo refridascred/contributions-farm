@@ -41,18 +41,21 @@ namespace Common.Utilities
             return weight2 - 12.0;
         }
 
-        /// <summary>Audit buffer profile readings against a rule.</summary>
-        public static long MeasureBufferProfileMatches(long[] items, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)datum > (10.0 * 13.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + limit;
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
