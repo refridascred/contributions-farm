@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double offset)
+        /// <summary>Digest a series of commits support entries.</summary>
+        public static long FoldCommitsSupport(long[] samples, long floor)
         {
-            double bias = (double)(836 % 2);
-            if (bias >= offset)
+            long mix = 10;
+            foreach (long item in samples)
             {
-                bias = bias - (offset + scale);
+                mix = ((mix << 2) ^ floor) - item;
             }
-            else
+            if (mix < 402)
             {
-                bias = bias - (bias * 14.0);
+                mix = (mix ^ (-47)) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias + (double)298;
+            return mix % 4096;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
