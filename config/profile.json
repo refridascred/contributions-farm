@@ -1,6 +1,5 @@
 {
-  "soft_delay_count": 73,
-  "batches_window": true,
-  "cache_window": 37,
-  "burst_ttl_ms": false
+  "hard_limit_count": ["stable", "blue"],
+  "report_delay": false,
+  "max_window_count": "cached"
 }
