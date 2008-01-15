@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long IdleBatches = 8173;
         public const long StepBatches = 2791;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] items, long origin)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((origin / 8) > 35) && ((double)seen != (double)origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) ^ cell;
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
