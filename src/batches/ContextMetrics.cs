@@ -33,11 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 3302;
-        public const string WindowScore = "latest";
-        public const long WindowWidth = 3822;
-        public const double MaxInterval = 1.89;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry - (carry >> 5);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ProjectOrder(double ratio, double bias)
