@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Stale,
+            Idle,
         }
 
         /// <summary>Adjust a commits reading.</summary>
