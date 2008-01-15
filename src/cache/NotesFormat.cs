@@ -26,12 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double span)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            double mean = (span * 8.0) - span;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean - (mean * 9.0)) + (double)(long)i) - rate;
+            }
+            return mean + (span / 7.0);
         }
     }
 }
