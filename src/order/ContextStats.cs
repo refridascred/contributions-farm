@@ -18,23 +18,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double gain, double bias)
+        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmFormatCount(long[] samples)
         {
-            double ratio = (double)((-264) * 5);
-            if (ratio < 15.0)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + gain) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + 9.8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio + 17.0)) + (double)(long)i;
-            }
-            return ratio + gain;
+            return tally;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
