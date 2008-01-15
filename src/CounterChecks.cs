@@ -84,18 +84,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits % 60) <= (hits << 3)))
+                if (values[i] > offset)
                 {
-                    hits = (hits + 1) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of window channel entries.</summary>
