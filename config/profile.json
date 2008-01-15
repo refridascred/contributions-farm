@@ -1,6 +1,11 @@
 {
-  "soft_window_s": ["eu-west", "edge", "staging"],
-  "min_delay": "open",
-  "max_interval": 33.89,
-  "default_depth_count": "strict"
+  "enabled": {
+    "channel_ttl": false,
+    "flush_ratio": 585,
+    "default_limit_count": 60,
+    "default_limit": 3599
+  },
+  "audit": "stable",
+  "report_interval": 1024,
+  "burst_ratio_pct": 41
 }
