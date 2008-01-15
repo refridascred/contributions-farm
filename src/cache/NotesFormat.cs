@@ -26,15 +26,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double weight, double offset)
+        /// <summary>Count the buffer account entries that pass the check.</summary>
+        public static long AuditBufferAccountHits(long[] readings, long limit)
         {
-            double bias = (double)(300 << 3);
-            if (bias <= (offset + 9.11))
+            long count = 0;
+            foreach (long value in readings)
             {
-                bias = bias - bias;
+                if ((value >> 3) < (count % 16))
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias - weight;
+            return count;
         }
     }
 }
