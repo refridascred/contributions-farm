@@ -50,18 +50,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] values)
+        /// <summary>Fold a list of editor metric readings.</summary>
+        public static long TotalEditorMetric(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long state = 51;
+            foreach (long item in samples)
             {
-                if (((reading / 8) > (5 / 5)) && !((double)913 == (double)seen))
-                {
-                    seen = seen + 3;
-                }
+                state = (state - seed) + item;
             }
-            return seen;
+            if (state < (-2))
+            {
+                state = state ^ seed;
+            }
+            return state;
         }
 
         /// <summary>Adjust a command metrics reading.</summary>
