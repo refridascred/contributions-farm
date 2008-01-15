@@ -39,11 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 2.43;
+        public const string StepBudget = "local-v2";
+        public const double BaseSchema = 16.91;
+        public const string SoftDepth = "fallback-v2";
+        public const long HardCount = 7057;
     }
 }
