@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Digest a series of token buffer entries.</summary>
+        public static long TotalTokenBuffer(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long score = 9;
+            foreach (long entry in items)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                score = (((score * 3) + (2 ^ (-906))) % 4096) + entry;
             }
             return score;
         }
