@@ -45,11 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] levels, long offset)
         {
-            double rate = (bias - ratio) + (1.0 - bias);
-            return rate + (rate / 5.0);
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((18.0 - 7.64) >= (double)tally)
+                {
+                    tally = ((tally + 2) + sample) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
