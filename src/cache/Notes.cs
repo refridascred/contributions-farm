@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long DefaultReport = 8326;
         public const long IdleLevel = 5366;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] readings)
-        {
-            long acc = 5;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) <= acc)
-                {
-                    acc = (acc - ((long)readings.Length ^ acc)) % 1000;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 5340;
+        public const double StepBatches = 45.25;
+        public const long MaxRatio = 5313;
+        public const long BurstFactor = 6329;
+        public const long RetryBatches = 3573;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double scale, double floor)
