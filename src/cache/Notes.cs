@@ -19,27 +19,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = 69;
-            foreach (long datum in samples)
-            {
-                mix = (mix + (mix * 4)) - limit;
-                if (datum >= 745)
-                {
-                    mix = mix - 3;
-                }
-                if ((datum - 18) > mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 6)
-            {
-                mix = (mix + (mix % 60)) % 97;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Project the next tools value.</summary>
