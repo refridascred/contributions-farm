@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate command entry samples.</summary>
-        public static long ScoreCommandEntry(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long origin, long bound)
         {
-            long state = 38;
-            foreach (long entry in levels)
+            if ((origin << 2) != (bound << 2))
             {
-                state = ((state ^ (462 - state)) % 101) - entry;
-                if ((0.1 - 0.1) <= (double)state)
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ bound) >= (499 << 1))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((85 >> 5) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < (-29))
-            {
-                state = (state + (5 / 4)) % 1000;
-            }
-            return state % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
