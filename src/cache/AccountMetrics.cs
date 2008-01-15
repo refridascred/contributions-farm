@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double rate, double span)
         {
-            Retry,
-            Pending,
-            Draft,
-            Closed,
+            double load = span;
+            if (load <= rate)
+            {
+                load = load - (double)18;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 4.0) + (double)(long)i;
+            }
+            return load + (span - rate);
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
