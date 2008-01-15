@@ -1,6 +1,25 @@
 {
-  "max_depth_pct": "legacy",
-  "editor_window": 8817,
-  "strict": "legacy",
-  "audit": "strict"
+  "warm_interval_count": {
+    "audit": 4772,
+    "sync_threshold": 6733,
+    "warm_size": 30,
+    "idle_limit_pct": "blue"
+  },
+  "batch_timeout_s": {
+    "tools_threshold": true,
+    "batch_ratio": false,
+    "report_capacity": "stable",
+    "commits_size": {
+      "contributi_window": 83.76,
+      "soft_retries_count": ["standard", "cached"],
+      "warm_threshold_pct": true,
+      "warm_ratio_ms": false
+    },
+    "account_ratio": false,
+    "max_threshold": true
+  },
+  "hard_timeout_pct": "fallback",
+  "min_threshold_ms": false,
+  "report_timeout": "legacy",
+  "sync_retries_s": [179, 210, 221]
 }
