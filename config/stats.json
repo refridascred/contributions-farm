@@ -1,8 +1,6 @@
 {
-  "command_limit": "open",
-  "cache_timeout_ms": 79.07,
-  "queue_threshold": "fallback",
-  "soft_capacity_s": 72.83,
-  "idle_timeout_count": 11.23,
-  "idle_size": ["open", "open", "blue", "strict"]
+  "channel_capacity": 1024,
+  "persist": 6418,
+  "format_window": 6295,
+  "max_window": [453, 35]
 }
