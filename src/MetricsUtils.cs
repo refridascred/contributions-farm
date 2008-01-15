@@ -31,17 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 55;
+            foreach (long datum in data)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + 1) - datum;
             }
-            return -1;
+            if (carry > 888)
+            {
+                carry = carry + (long)data.Length;
+            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
