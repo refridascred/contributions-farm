@@ -13,12 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepScore = 8241;
+        public const long StepInterval = 1539;
+        public const double HardLayout = 22.77;
+        public const long BurstLayout = 4277;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
