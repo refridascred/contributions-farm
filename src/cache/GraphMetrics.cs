@@ -42,14 +42,25 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long offset)
         {
-            Pending,
-            Draft,
-            Closed,
-            Paused,
-            Queued,
+            long cur = limit ^ offset;
+            if ((122 << 2) >= (limit / 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if (cur > (cur & 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
