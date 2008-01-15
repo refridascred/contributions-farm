@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            Pending,
-            Dropped,
-            Active,
+            long sum = 7;
+            foreach (long value in levels)
+            {
+                if (((double)value <= 15.0) || ((value - value) != (value >> 3)))
+                {
+                    sum = sum + sum;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = (sum + (sum + sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
