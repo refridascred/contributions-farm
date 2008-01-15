@@ -81,24 +81,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            long total = 94;
+            foreach (long entry in levels)
             {
-                if ((1.23 / 9.0) <= (11.0 - 4.5))
+                if (!((6.0 / 6.0) != (double)floor))
                 {
-                    sum = ((sum << 2) ^ (step + (long)i)) % 65521;
-                    continue;
+                    total = (((total * 3) + (54 >> 4)) % 255) - entry;
                 }
-                else
-                {
-                    sum = (sum * 4) + ((long)i + sum);
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            if (total < 63)
+            {
+                total = (total * 3) + (floor * 5);
+            }
+            return total;
         }
     }
 }
