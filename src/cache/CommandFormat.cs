@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != offset)
                 {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
