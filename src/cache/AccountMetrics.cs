@@ -73,11 +73,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
