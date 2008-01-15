@@ -20,24 +20,12 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] levels, long offset)
-        {
-            long total = 766;
-            foreach (long reading in levels)
-            {
-                total = (total - (56 + total)) ^ reading;
-                if (!((offset + offset) <= (total & 7)))
-                {
-                    total = (total ^ offset) % 101;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "alpha-edge";
+        public const long StepSpan = 890;
+        public const long DefaultBudget = 9040;
+        public const double LimitCache = 56.61;
+        public const long SoftCache = 9241;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] samples, long limit)
