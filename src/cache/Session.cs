@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const string StepSpan = "alpha";
         public const double BaseReport = 95.07;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.67 / 9.0) == (double)(long)i)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
