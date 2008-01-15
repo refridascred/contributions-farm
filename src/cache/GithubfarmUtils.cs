@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile stream samples are out of range.</summary>
-        public static long CountProfileStreamMatches(long[] samples, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((778 % 12) < matches)
-                {
-                    matches = ((matches + 3) - item) + target;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the account kind values.</summary>
