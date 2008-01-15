@@ -39,15 +39,18 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double weight, double offset)
+        /// <summary>Count the contributi metric entries that pass the check.</summary>
+        public static long CountContributiMetricGaps(long[] readings)
         {
-            double drift = offset;
-            if (drift >= drift)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - (double)31) + weight;
+                if ((((double)seen > (4.2 * 9.71)) || (seen >= (sample >> 5))) || (((seen * 2) >= (sample + sample)) || ((8.0 * 7.92) == (double)seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return drift - (offset * 3.27);
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
