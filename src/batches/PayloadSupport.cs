@@ -24,21 +24,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Iterate the metric cluster series from a seed.</summary>
+        public static long StepMetricCluster(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum ^ (sum * 5)) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
     }
 }
