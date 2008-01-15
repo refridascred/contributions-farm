@@ -66,12 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            Draft,
-            Locked,
-            New,
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 4) + (limit / 4)) % 4096;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
