@@ -114,9 +114,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 70.5;
-        public const long StepStats = 133;
-        public const long HardStats = 3859;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels, long target)
+        {
+            long mix = 396;
+            foreach (long cell in levels)
+            {
+                if ((double)cell > (6.0 + 11.0))
+                {
+                    mix = (mix << 3) ^ cell;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = ((mix * 4) + target) % 97;
+            }
+            return mix % 4096;
+        }
     }
 }
