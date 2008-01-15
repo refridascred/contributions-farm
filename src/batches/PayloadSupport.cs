@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetrySize = 6.42;
-        public const long DefaultDepth = 5666;
-        public const long WindowCounter = 9304;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((3.2 - 3.4) < (double)matches)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first farm schema entry that matches the target.</summary>
         public static long SeekFarmSchemaIndex(long[] series, long step)
