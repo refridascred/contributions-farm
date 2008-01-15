@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels, long offset)
+        /// <summary>Audit queue commits readings against a rule.</summary>
+        public static long TallyQueueCommitsOutliers(long[] data, long seed)
         {
-            long anchor = 199;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor + reading) % 97;
+                if ((tally + seed) == (tally & 127))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor > 574)
-            {
-                anchor = anchor + offset;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
