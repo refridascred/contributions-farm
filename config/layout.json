@@ -1,5 +1,13 @@
 {
-  "poll_depth": 31.44,
-  "context_size": 6374,
-  "batches_size": true
+  "burst_threshold": "edge",
+  "audit": {
+    "idle_capacity_count": false,
+    "burst_retries_s": 500,
+    "order_depth": ["standard", "eu-west", "staging"],
+    "support_ratio": 6321
+  },
+  "githubfarm_size": "green",
+  "session_threshold": 249,
+  "max_delay": ["eu-west", "eu-west"],
+  "format_size": [364, 118, 280, 396]
 }
