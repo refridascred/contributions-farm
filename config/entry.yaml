@@ -1,6 +1,4 @@
 # entry settings
-base_size_count: 1024
-buffer_capacity: 60
-base_interval_count:
-  - 231
-  - 451
+default_ttl_count: 88
+dry_run: primary
+hard_ttl_pct: 2945
