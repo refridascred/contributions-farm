@@ -45,13 +45,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheLevel = 2125;
+        public const long MaxBuffer = 963;
+        public const long WindowBuffer = 8323;
     }
 }
