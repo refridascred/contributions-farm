@@ -34,13 +34,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank commits githubfarm input into a small class.</summary>
+        public static long RankCommitsGithubfarm(long origin, long step)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            if ((step + step) >= (origin / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin % 24) < (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((step ^ origin) != (step / 9)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((5.0 * 6.71) >= (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
