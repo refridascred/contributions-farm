@@ -35,16 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Validate channel contributi readings against a bound.</summary>
+        public static bool CheckChannelContributiBounds(long[] data, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                anchor = (anchor - (long)i) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
