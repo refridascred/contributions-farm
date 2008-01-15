@@ -1,5 +1,11 @@
 {
-  "hard_limit_count": ["stable", "blue"],
-  "report_delay": false,
-  "max_window_count": "cached"
+  "batches_retries": 97,
+  "poll_timeout_ms": {
+    "sync_threshold_pct": 96,
+    "soft_window": ["primary", "edge", "open"],
+    "counter_interval": "edge"
+  },
+  "poll_delay_count": 1.96,
+  "burst_delay_s": 250,
+  "warm_depth_ms": "staging"
 }
