@@ -42,15 +42,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] series, long seed)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long value in series)
             {
-                if ((((matches * 4) >= (entry & 7)) || ((9.32 * 7.0) <= 3.26)) || !((entry % 3) >= 426))
+                if ((value - 76) > (seed * 4))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
             }
             return matches;
