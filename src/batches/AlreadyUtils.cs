@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many stats record samples are out of range.</summary>
-        public static long MeasureStatsRecordGaps(long[] data, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long total = 954;
+            foreach (long datum in levels)
             {
-                if ((long)data.Length >= datum)
+                if (!(((-2) - total) <= (4 << 1)))
                 {
-                    matches = (matches + 1) - target;
+                    total = ((((total << 2) ^ (total + total)) % 65521) - datum) - limit;
+                }
+                else
+                {
+                    total = (total + total) % 4096;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
