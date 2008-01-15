@@ -35,22 +35,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] items, long limit)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((19 > (matches + 397)) && ((20.0 - 3.8) < (double)limit))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
