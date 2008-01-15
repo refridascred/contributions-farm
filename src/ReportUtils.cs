@@ -42,19 +42,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry entry stays within the limit.</summary>
-        public static bool ValidateCacheEntryBounds(long[] series, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > offset)
+                if (samples[i] > seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
