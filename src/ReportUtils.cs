@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias;
+            if (rate <= 1.76)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate - (bias + rate)) + offset;
             }
-            return seen;
+            return rate + bias;
         }
 
         /// <summary>Rank window input into a small class.</summary>
