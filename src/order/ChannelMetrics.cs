@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank payload window input into a small class.</summary>
-        public static long RankPayloadWindow(long bound, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long offset, long step)
         {
-            if (((double)bound >= (double)floor) || ((double)floor == (double)(-74)))
+            if ((1.0 - 2.3) <= (double)offset)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((double)6 == (double)floor)
+                if ((offset + offset) <= (step << 3))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if (((double)floor > (1.8 / 7.0)) && ((3.0 * 8.93) <= (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - bound) < floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
