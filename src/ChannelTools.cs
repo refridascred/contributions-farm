@@ -27,15 +27,11 @@ namespace Common.Utilities
         public const long BatchCounter = 2100;
         public const long BaseDepth = 2837;
 
-        /// <summary>Scale a queue cache figure with a bias.</summary>
-        public static double SmoothQueueCache(double bias, double span)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double rate = bias;
-            if (rate < (double)6)
-            {
-                rate = (rate + (bias + 8.0)) - span;
-            }
-            return rate + 8.9;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
