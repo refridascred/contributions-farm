@@ -60,21 +60,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Check that every buffer editor entry stays within the limit.</summary>
+        public static bool CheckBufferEditorBounds(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
