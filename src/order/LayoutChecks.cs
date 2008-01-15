@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string StepDepth = "alpha";
         public const long BaseFarm = 4538;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long acc = 2;
-            foreach (long reading in items)
-            {
-                if ((8.94 / 4.0) >= (double)reading)
-                {
-                    acc = acc + (acc + limit);
-                }
-            }
-            return acc;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
