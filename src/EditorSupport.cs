@@ -32,39 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long offset2)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long span = offset - offset2;
-            if ((offset2 ^ span) < (offset2 >> 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)span != (3.0 * 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.71 - 19.0) != (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)span < 3.41)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
