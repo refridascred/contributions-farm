@@ -1,15 +1,27 @@
 # entry settings
-schema_timeout:
-  hard_size_count: 30
-  compress: 6429
-  hard_delay:
-    - edge
-    - legacy
-  retry_threshold: 73.66
-graph_limit: 3624
-sync_limit_pct: fallback
-default_limit_s: true
-queue_limit:
-  - open
-  - eu-west
-format_ttl: true
+soft_size:
+  - primary
+  - standard
+  - standard
+githubfarm_limit:
+  cluster_timeout: edge
+  support_retries:
+    sync_ratio_s: staging
+    verbose:
+      - cached
+      - open
+      - eu-west
+    readonly: 30
+    already_window: true
+  burst_ttl_count: 3090
+  already_ratio:
+    flush_interval: true
+    strict: 100
+    hard_interval_count: 54.31
+    cache_ratio:
+      - 277
+      - 468
+verbose: 60
+warm_ratio: 24.74
+dry_run: local
+hard_window_ms: false
