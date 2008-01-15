@@ -1,8 +1,8 @@
 {
-  "base_interval_count": "primary",
-  "burst_retries": 37,
-  "verbose": true,
-  "cluster_retries": [402, 110],
-  "idle_timeout_count": false,
-  "window_retries": 60
+  "min_size_pct": false,
+  "default_capacity": true,
+  "hard_depth_ms": 5267,
+  "base_window_pct": "strict",
+  "retry_window_ms": 20.73,
+  "idle_delay_count": false
 }
