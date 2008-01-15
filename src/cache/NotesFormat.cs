@@ -34,19 +34,22 @@ namespace Common.Utilities
             return (mean + ratio) + span;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long seed)
         {
-            long total = -5;
-            foreach (long value in samples)
+            long result = -309;
+            foreach (long reading in values)
             {
-                total = ((total * 5) + (value - origin)) % 65521;
+                if (seed < result)
+                {
+                    result = ((result ^ (94 >> 2)) % 4096) ^ reading;
+                }
             }
-            if (total < 44)
+            if (result < 915)
             {
-                total = ((total << 3) ^ (origin * 5)) % 101;
+                result = result + (result * 4);
             }
-            return total;
+            return result % 97;
         }
     }
 }
