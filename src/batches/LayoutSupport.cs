@@ -58,19 +58,15 @@ namespace Common.Utilities
         public const string MaxTimeout = "alpha";
         public const long WindowLevel = 1523;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long sample in levels)
             {
-                if ((double)entry > (6.0 / 4.0))
+                if (((39 & 1) < sample) || ((4.9 / 4.0) != (double)matches))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
