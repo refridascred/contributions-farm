@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long BatchSpan = 3248;
         public const string WindowSpan = "local-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 7179;
-        public const long MaxCache = 3588;
-        public const double MinDepth = 21.6;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((floor >> 4) == (reading + reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string StepDepth = "alpha-edge";
