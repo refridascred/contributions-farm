@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstCount = "strict-edge";
-        public const long MaxAlready = 5215;
-        public const double HardAlready = 49.39;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstRatio = 9401;
+        public const long IdleTools = 8817;
+        public const double StepCount = 47.1;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountMatches(long[] values, long floor)
