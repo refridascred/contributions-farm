@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const double MinFactor = 42.71;
         public const long DefaultScore = 406;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Active,
-            Ready,
-            Locked,
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
