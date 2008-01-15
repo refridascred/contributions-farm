@@ -66,19 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry schema reading.</summary>
-        public static double ScaleEntrySchema(double weight, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings, long bound)
         {
-            double gain = 6.65 + (double)28;
-            if (gain < gain)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                gain = gain - (weight - floor);
+                if ((matches ^ bound) < bound)
+                {
+                    matches = (matches + 1) - entry;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (double)50) + (double)(long)i;
-            }
-            return gain + weight;
+            return matches;
         }
     }
 }
