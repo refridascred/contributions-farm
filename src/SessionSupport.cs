@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const long RetryLevel = 7861;
         public const string DefaultOrder = "cached-v2";
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] samples, long seed)
         {
-            double load = span;
-            if (load <= span)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                load = (load - (double)3) - ratio;
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (10.0 - 14.0)) + (double)(long)i;
-            }
-            return load + (double)257;
+            return ready;
         }
     }
 }
