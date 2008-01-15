@@ -87,18 +87,18 @@ namespace Common.Utilities
             return drift - (12.0 + bias);
         }
 
-        /// <summary>Audit report command readings against a rule.</summary>
-        public static long CountReportCommandHits(long[] items, long seed)
+        /// <summary>Count the editor metric entries that pass the check.</summary>
+        public static long CountEditorMetricGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!!((3 * 3) >= (hits % 16)))
+                if ((15 + cell) <= matches)
                 {
-                    hits = ((hits + 1) - datum) - seed;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate route samples.</summary>
