@@ -26,11 +26,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 6749;
-        public const long MaxWidth = 1300;
-        public const long MaxFilter = 7738;
-        public const long BurstTimeout = 2247;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
+        {
+            double scale = (double)99 + ratio;
+            if (scale <= (scale * 5.91))
+            {
+                scale = scale + (double)582;
+            }
+            else
+            {
+                scale = scale + ratio;
+            }
+            return scale - (bias - ratio);
+        }
 
         /// <summary>Find the first metrics order entry that matches the target.</summary>
         public static long LookupMetricsOrderIndex(long[] series, long origin)
