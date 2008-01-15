@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a profile channel figure with a bias.</summary>
-        public static double BlendProfileChannel(double bias, double bias2)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double rate = bias2;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (5.19 + bias)) - (double)(long)i;
-            }
-            return rate + (bias * 4.0);
+            New,
+            Queued,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the order status values.</summary>
