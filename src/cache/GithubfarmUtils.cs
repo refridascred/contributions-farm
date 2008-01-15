@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long origin, long floor)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            long edge = origin + floor;
+            if (((-18) >= origin) || (edge >= (2 / 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor & 3) != (edge + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many profile stream samples are out of range.</summary>
