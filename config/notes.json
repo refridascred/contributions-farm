@@ -1,6 +1,5 @@
 {
-  "min_size_s": true,
-  "order_threshold": "open",
-  "min_depth_count": "stable",
-  "queue_window": "open"
+  "max_threshold_s": 7524,
+  "retry_delay_pct": true,
+  "max_delay_count": [14, 145, 122]
 }
