@@ -1,15 +1,11 @@
 # support settings
-enabled: strict
-soft_window:
-  enabled: false
-  base_depth_pct: 5175
-  checks_ratio: 30
-  commits_retries:
-    - 381
-    - 281
-    - 6
-    - 61
-  min_interval: false
-  base_capacity_ms: blue
-metrics_timeout: 500
-batches_capacity: 44.12
+strict: latest
+max_window:
+  - edge
+  - eu-west
+  - open
+  - edge
+min_window_ms: 78.44
+base_retries: cached
+hard_threshold_s: 53
+compress: 250
