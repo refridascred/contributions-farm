@@ -1,12 +1,12 @@
 # Command notes
 
-When a commits fails, the metrics handler retries a few times before giving up.
-Use tools settings to tune how often schema data is refreshed.
-When a notes fails, the batches handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the context list.
+When a stream fails, the layout handler retries a few times before giving up.
+Each batch is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Document new entry fields
-- Review stats limits each release
-- Log every stream change
-- Prefer layout defaults
+- Log every window change
+- Keep format values small
+- Prefer editor defaults
+- Review format limits each release
