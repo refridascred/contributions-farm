@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long result = 4;
-            foreach (long entry in data)
-            {
-                if ((entry % 16) >= (23 * 4))
-                {
-                    result = ((result * 4) + (entry % 16)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ entry) % 1000;
-                }
-            }
-            if (result > 55)
-            {
-                result = result + (result ^ result);
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
