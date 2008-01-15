@@ -24,14 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long step)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Idle,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
