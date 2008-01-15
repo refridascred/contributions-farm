@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] series, long offset)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (5.8 - 1.0))
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order snapshot.</summary>
