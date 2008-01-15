@@ -14,19 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a checks order reading.</summary>
-        public static double ProjectChecksOrder(double scale, double bias)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double gain = (double)(264 + (-938));
-            if (gain <= (bias - 3.6))
-            {
-                gain = (gain + bias) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + bias;
+            Paused,
+            New,
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
