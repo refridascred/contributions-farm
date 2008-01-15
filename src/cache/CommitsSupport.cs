@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] series, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (item != bound)
+                if (sample >= limit)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Audit profile account readings against a rule.</summary>
