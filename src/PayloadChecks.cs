@@ -53,12 +53,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] series, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > step)
+                if (readings[i] < offset)
                 {
                     return (long)i;
                 }
