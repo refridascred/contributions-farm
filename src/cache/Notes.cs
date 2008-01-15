@@ -19,11 +19,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings, long target)
         {
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + count) >= datum)
+                {
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next tools value.</summary>
