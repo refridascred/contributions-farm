@@ -37,22 +37,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] readings, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double weight = 2.0;
+            if (weight > weight)
             {
-                if ((origin >> 5) == (origin - seen))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight - 6.0) + offset;
             }
-            return seen;
+            else
+            {
+                weight = weight + (double)(-425);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - (gain * 7.0);
         }
     }
 }
