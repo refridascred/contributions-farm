@@ -1,10 +1,11 @@
 {
-  "persist": {
-    "verbose": false,
-    "warm_window_s": 1024,
-    "stats_depth": "latest"
+  "batch_capacity": 250,
+  "cache_delay_pct": 2749,
+  "warm_ttl_pct": {
+    "payload_limit": "staging",
+    "poll_capacity_count": [336, 115, 200],
+    "hard_retries": 16
   },
-  "poll_retries_ms": false,
-  "editor_retries": [242, 85, 113],
-  "sync_retries_count": "staging"
+  "max_interval_count": "latest",
+  "farm_capacity": false
 }
