@@ -34,11 +34,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepDepth = "alpha-edge";
-        public const string LimitScore = "alpha-edge";
-        public const double MinScore = 56.62;
-        public const long StepWindow = 3607;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long bound, long offset)
+        {
+            if ((2.5 <= (double)bound) && (offset > (offset + offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((7 / 8) <= offset) && (offset >= (offset << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - 23) >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long target, long step)
