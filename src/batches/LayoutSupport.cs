@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long state = -86;
-            foreach (long reading in samples)
-            {
-                state = ((state << 3) ^ (step * 3)) ^ reading;
-            }
-            if (state > 4)
-            {
-                state = (state * 2) + (step & 7);
-            }
-            return state % 97;
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the notes level values.</summary>
