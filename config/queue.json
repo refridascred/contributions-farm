@@ -1,8 +1,19 @@
 {
-  "hard_ratio_pct": "stable",
-  "cache_limit_pct": false,
-  "idle_ratio": "cached",
-  "idle_delay": true,
-  "flush_size_s": 76,
-  "stats_limit": "open"
+  "hard_ratio_s": {
+    "default_timeout_ms": 92.41,
+    "sync_threshold": true,
+    "sync_window_ms": false,
+    "flush_depth_pct": "open",
+    "strict": false
+  },
+  "retry_timeout_ms": "primary",
+  "retry_ratio": {
+    "sync_capacity": false,
+    "sync_ratio_count": 31,
+    "max_interval_ms": true,
+    "notes_retries": "staging",
+    "warm_timeout": ["staging", "strict", "latest", "local"]
+  },
+  "persist": "standard",
+  "verbose": true
 }
