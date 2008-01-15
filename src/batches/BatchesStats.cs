@@ -46,14 +46,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings, long floor)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Failed,
-            Draft,
+            long anchor = 890;
+            foreach (long reading in readings)
+            {
+                if (((reading & 7) != (811 & 63)) || ((reading + 45) >= ((long)readings.Length % 16)))
+                {
+                    anchor = (anchor * 2) + (anchor - anchor);
+                }
+                else
+                {
+                    anchor = anchor + (reading - floor);
+                }
+            }
+            if (anchor > 653)
+            {
+                anchor = ((anchor * 5) + (floor + anchor)) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
