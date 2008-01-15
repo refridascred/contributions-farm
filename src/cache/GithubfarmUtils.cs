@@ -28,13 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 4329;
+        public const double IdleScore = 32.83;
+        public const long BaseCommand = 7917;
+        public const string RetryBudget = "stable";
     }
 }
