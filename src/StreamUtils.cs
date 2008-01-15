@@ -27,23 +27,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mix < (step / 2))
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                if (mix <= (mix + 3))
-                {
-                    mix = mix ^ step;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a report summary.</summary>
