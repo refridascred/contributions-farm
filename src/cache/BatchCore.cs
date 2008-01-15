@@ -39,28 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long floor)
         {
-            long mark = 934;
-            foreach (long datum in data)
+            long mark = 50;
+            foreach (long value in data)
             {
-                if (limit >= mark)
+                if ((value / 5) >= ((-37) % 64))
                 {
-                    mark = mark + (datum + 593);
-                    break;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = mark ^ (mark ^ (long)i);
-                    mark = ((mark * 5) + mark) % 101;
-                }
-                if (limit <= (limit << 3))
-                {
-                    mark = (mark + mark) % 4096;
+                    mark = (mark + (floor * 5)) % 65521;
                 }
             }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of contributi batch entries.</summary>
