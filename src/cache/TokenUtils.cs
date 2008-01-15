@@ -37,11 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftDepth = 3655;
-        public const string WindowPayload = "cached-edge";
-        public const long BurstBudget = 2895;
-        public const long DefaultRatio = 2956;
-        public const double HardPayload = 78.61;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double span)
+        {
+            double weight = span;
+            if (weight <= (double)14)
+            {
+                weight = weight + (double)1;
+            }
+            return weight - rate;
+        }
     }
 }
