@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Derive the next schema cache value from a seed.</summary>
+        public static long StepSchemaCache(long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum % 12) >= matches)
+                if (floor < (score << 2))
                 {
-                    matches = matches + 3;
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
