@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a stream layout value against two limits.</summary>
-        public static long RankStreamLayout(long origin, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long origin)
         {
-            if ((origin << 3) >= (bound + bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 3) > (bound >> 3))
+                if ((series[i] > origin) && ((series[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 64) != (8 >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (1.6 >= (9.55 / 2.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
