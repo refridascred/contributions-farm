@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 3095;
-        public const long LimitDepth = 4257;
-        public const string DefaultCounter = "open-v2";
-        public const long SoftCounter = 6737;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double bias)
+        {
+            double drift = (double)(954 + 993);
+            if (drift > 5.0)
+            {
+                drift = (drift - drift) + scale;
+            }
+            else
+            {
+                drift = drift - (3.9 + 0.01);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Compare every pair of commits githubfarm readings.</summary>
         public static long PairCommitsGithubfarmCount(long[] levels)
