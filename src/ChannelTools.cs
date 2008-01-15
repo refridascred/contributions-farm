@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (((mark << 3) ^ (mark + 97)) % 101) - (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "stable-1";
+        public const long BatchScore = 7498;
+        public const long SoftRoute = 628;
+        public const double StepBudget = 3.4;
+        public const string BatchLevel = "fallback-v2";
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] samples)
