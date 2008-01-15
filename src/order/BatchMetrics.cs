@@ -42,12 +42,23 @@ namespace Common.Utilities
         public const double LimitRatio = 32.92;
         public const double BurstEditor = 33.06;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitSpan = 43.18;
-        public const string BaseMetrics = "alpha-v2";
-        public const long MinTimeout = 7453;
-        public const string StepMetrics = "primary";
-        public const long IdleMetrics = 7234;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] values, long bound)
+        {
+            long total = 60;
+            foreach (long reading in values)
+            {
+                if (total >= (bound & 1))
+                {
+                    total = ((total << 3) ^ bound) % 4096;
+                }
+                else
+                {
+                    total = (total ^ reading) % 255;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] series, long bound)
