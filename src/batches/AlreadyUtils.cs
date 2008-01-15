@@ -63,21 +63,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] == bound)
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
