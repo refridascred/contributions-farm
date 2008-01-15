@@ -50,18 +50,9 @@ namespace Common.Utilities
             return bias + (9.0 - bias);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally >> 4) != (datum >> 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "local-1";
+        public const string MaxPayload = "latest-v2";
+        public const string HardPayload = "standard-edge";
     }
 }
