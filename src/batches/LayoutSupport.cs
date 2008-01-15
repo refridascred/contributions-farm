@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const double StepWidth = 8.91;
         public const long CacheCount = 2399;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)count < (5.0 * 4.28))
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
