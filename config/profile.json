@@ -1,8 +1,7 @@
 {
-  "sync_retries_ms": 100,
-  "idle_ttl_ms": "blue",
-  "batch_window": "green",
-  "burst_timeout": "eu-west",
-  "audit": "strict",
-  "soft_threshold_count": 57.42
+  "verbose": true,
+  "flush_depth_ms": "strict",
+  "readonly": 55.56,
+  "compress": 82.05,
+  "contributi_delay": true
 }
