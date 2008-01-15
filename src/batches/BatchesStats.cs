@@ -54,20 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryScore = "standard-v2";
+        public const long DefaultScore = 3456;
+        public const long BatchSpan = 7481;
+        public const double BurstFactor = 14.66;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] readings, long floor)
