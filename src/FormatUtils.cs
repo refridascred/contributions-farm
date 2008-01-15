@@ -77,21 +77,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = floor - offset;
+            if (offset > (21 + lane))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((9.29 * 7.0) == (double)lane)
                 {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
