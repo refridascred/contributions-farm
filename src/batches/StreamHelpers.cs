@@ -26,12 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 5073;
-        public const long BurstCluster = 8411;
-        public const double MinCluster = 39.78;
-        public const string StepWidth = "legacy-1";
-        public const long HardCluster = 9265;
+        /// <summary>Audit payload batches readings against a rule.</summary>
+        public static long AuditPayloadBatchesMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((tally * 5) != (tally + (long)values.Length)) || ((datum % 5) <= (datum & 15)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long DeriveRecord(long limit)
