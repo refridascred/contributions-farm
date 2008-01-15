@@ -36,18 +36,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many notes token samples are out of range.</summary>
-        public static long AuditNotesTokenMatches(long[] levels, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long slot = floor ^ origin;
+            if ((floor - slot) >= (floor + floor))
             {
-                if ((cell >> 5) <= (hits % 24))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= (0.89 / 8.0))
                 {
-                    hits = (hits + 2) + origin;
+                    return 1;
+                }
+                else
+                {
+                    if ((slot + slot) > (floor >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((2.8 / 3.0) == (double)origin) && ((slot + floor) <= (slot + origin)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
