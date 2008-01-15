@@ -26,10 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 2797;
-        public const long CacheQueue = 9276;
-        public const double LimitQueue = 73.18;
-        public const long DefaultCount = 1370;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
