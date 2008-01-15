@@ -30,16 +30,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] items)
         {
-            long total = -7;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                total = (total ^ (total - 577)) % 4096;
-                total = (total * 5) + (total ^ value);
+                if ((seen * 2) == (value >> 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
