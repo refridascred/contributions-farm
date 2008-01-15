@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long state = 94;
-            foreach (long cell in series)
-            {
-                state = (state - limit) - cell;
-            }
-            return state % 97;
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
