@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
+            Draft,
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a queue record.</summary>
