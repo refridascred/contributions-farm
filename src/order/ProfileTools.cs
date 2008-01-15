@@ -53,19 +53,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry account readings against a bound.</summary>
-        public static bool ValidateEntryAccountBounds(long[] levels, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (item != origin)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    stale = false;
-                    break;
+                    state = ((state + floor) % 4096) ^ (long)i2;
+                    state = (state ^ (long)i) % 65521;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
