@@ -1,10 +1,9 @@
 # support settings
-sync_capacity_count: eu-west
-record_interval: false
-soft_size_ms: edge
 dry_run:
-  - 63
-  - 217
-  - 153
-  - 427
-verbose: primary
+  - local
+  - blue
+  - edge
+min_size_s: open
+tools_threshold:
+  - strict
+  - staging
