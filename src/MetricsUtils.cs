@@ -20,12 +20,32 @@ namespace Common.Utilities
             return mean + (span * 0.7);
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank format buffer input into a small class.</summary>
+        public static long GradeFormatBuffer(long origin, long target)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            long edge = origin + target;
+            if ((origin & 1) >= 488)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)edge > (9.58 * 1.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin + 714) >= (edge >> 1)) && ((origin + edge) >= (target - 251)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of tools context entries.</summary>
