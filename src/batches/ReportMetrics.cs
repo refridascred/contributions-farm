@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 1550;
         public const long DefaultInterval = 3990;
 
-        /// <summary>Count record counter pairs that satisfy a relation.</summary>
-        public static long MatchRecordCounterCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + seen) < (cell & 31))
                 {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
