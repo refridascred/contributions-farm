@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = -904;
+            foreach (long reading in samples)
             {
-                if (((-630) - step) <= ((-6) % 5))
+                if ((double)sum <= (6.1 / 8.0))
                 {
-                    tally = (tally + 1) ^ sample;
+                    sum = (((sum * 5) + (reading / 9)) % 1000) + limit;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum ^ (0 - sum);
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
