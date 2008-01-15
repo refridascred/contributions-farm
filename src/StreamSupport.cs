@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstLevel = 1645;
-        public const string IdleAlready = "alpha";
-        public const double BatchAlready = 59.23;
-        public const double MaxAlready = 86.1;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] readings, long step)
