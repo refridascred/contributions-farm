@@ -43,15 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long total = -73;
+            foreach (long cell in series)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((cell / 5) <= cell)
+                {
+                    total = ((total * 3) + (total - cell)) % 101;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
