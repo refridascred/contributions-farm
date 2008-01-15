@@ -30,15 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double scale, double span)
         {
-            double bias = 7.9;
-            if (bias > offset)
+            double bias = scale;
+            if (bias > (double)147)
             {
-                bias = (bias + offset) - rate;
+                bias = (bias - (bias / 6.0)) + span;
             }
-            return bias + (9.0 - bias);
+            return bias - (scale - bias);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
