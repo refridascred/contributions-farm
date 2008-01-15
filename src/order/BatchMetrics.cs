@@ -77,18 +77,31 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] items, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if (offset <= (limit << 3))
             {
-                if (limit >= (reading ^ limit))
+                return 5;
+            }
+            else
+            {
+                if (!(0.4 < (double)limit))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((9 + offset) > (offset / 6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
