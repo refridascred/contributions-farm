@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue commits samples.</summary>
-        public static long CompareQueueCommitsCount(long[] series)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value > step)
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
