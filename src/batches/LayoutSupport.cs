@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double StepCommits = 32.77;
         public const string MinTimeout = "primary-1";
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 29;
+        public const double WindowDepth = 31.45;
+        public const double StepWidth = 8.91;
+        public const long CacheCount = 2399;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenMatches(long[] levels)
