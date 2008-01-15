@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] values, long step)
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long MeasureTokenSupportHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((tally * 3) > tally) && ((9 / 6) > (tally + datum)))
+                if ((count << 3) < count)
                 {
-                    tally = (tally + 1) - step;
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count metric batch pairs that satisfy a relation.</summary>
