@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the cluster contributi entries that pass the check.</summary>
-        public static long AuditClusterContributiMatches(long[] series, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (577 > (step >> 1))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
