@@ -37,17 +37,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 4986;
+        public const long MinRatio = 7230;
+        public const long BaseCommits = 1628;
+        public const string RetryInterval = "local";
+        public const string WindowCommits = "fallback-edge";
     }
 }
