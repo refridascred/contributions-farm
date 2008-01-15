@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long floor, long origin)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            if ((origin * 4) <= (floor + origin))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin + origin) < origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + 77) > floor)
+                    if ((readings[i] + readings[j]) < 19)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
