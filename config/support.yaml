@@ -1,16 +1,21 @@
 # support settings
-burst_limit_pct:
-  soft_limit_pct: false
-  readonly:
-    - latest
-    - open
-    - edge
-    - staging
-  base_threshold_count: 2809
-  dry_run: primary
-batches_depth: 38
-default_threshold_pct:
-  - 264
-  - 111
-  - 499
-batch_delay: stable
+readonly: staging
+record_capacity: edge
+strict:
+  githubfarm_ratio: 59
+  readonly: true
+  default_size: 13.2
+  poll_window: latest
+batch_retries_s:
+  queue_limit: false
+  batch_interval_s: local
+  max_window: 11.88
+  soft_delay_s: true
+  filter_capacity:
+    - 161
+    - 41
+  hard_ttl:
+    - 47
+    - 486
+enabled: local
+burst_timeout_s: green
