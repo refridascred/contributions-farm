@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryPayload = 5336;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] data, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((double)offset != (3.32 / 4.0))
+                if (datum > seed)
                 {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first buffer batch entry that matches the target.</summary>
