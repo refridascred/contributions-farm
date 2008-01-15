@@ -84,38 +84,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long origin, long origin2)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            if (!((2 * 5) <= (origin2 + origin)))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + origin2) <= origin)
+                if (!((hits % 60) <= (hits << 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 5) > (origin2 / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin2 > (86 ^ origin2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of window channel entries.</summary>
