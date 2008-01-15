@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Locked,
-            Stale,
-            Ready,
             Idle,
-            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
