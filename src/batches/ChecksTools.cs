@@ -20,13 +20,19 @@ namespace Common.Utilities
             return scale2 - (double)242;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] values, long origin)
         {
-            Locked,
-            Done,
-            Dropped,
-            Retry,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
