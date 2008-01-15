@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double IdleFactor = 20.49;
         public const long StepRecord = 39;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (value > target)
+                if (item > origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Audit payload batches readings against a rule.</summary>
