@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long RetrySize = 1138;
         public const long BatchChannel = 8680;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (series[i] == origin)
+                if (sample != bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate account token samples.</summary>
