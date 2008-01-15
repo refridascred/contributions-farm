@@ -62,12 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 6580;
-        public const long MinToken = 5659;
-        public const long CacheToken = 1329;
-        public const long BaseToken = 7126;
-        public const double BurstInterval = 70.2;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every commits support entry stays within the limit.</summary>
         public static bool CheckCommitsSupportRange(long[] samples, long offset)
