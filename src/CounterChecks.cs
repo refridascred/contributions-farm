@@ -16,14 +16,22 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items, long seed)
         {
-            Locked,
-            Pending,
-            Queued,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((((-5) << 2) >= (hits % 7)) || ((313 + (-3)) < cell))
+                {
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank already input into a small class.</summary>
