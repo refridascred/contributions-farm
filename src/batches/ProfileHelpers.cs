@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank githubfarm metrics input into a small class.</summary>
-        public static long ClassifyGithubfarmMetrics(long floor, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            if ((floor % 5) <= (bound % 24))
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound * 5) <= (floor >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
