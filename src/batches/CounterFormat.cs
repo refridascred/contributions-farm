@@ -14,10 +14,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftTimeout = "local-v2";
-        public const double RetryDepth = 94.7;
-        public const long RetrySize = 2228;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate command commits samples.</summary>
         public static long ScoreCommandCommits(long[] levels)
