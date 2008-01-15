@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] series, long floor)
+        /// <summary>Scale a layout schema figure with a bias.</summary>
+        public static double ScaleLayoutSchema(double scale, double span)
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale2 = scale;
+            return (scale2 - (scale2 * 8.0)) + span;
         }
 
         /// <summary>Digest a series of route entries.</summary>
