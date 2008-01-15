@@ -23,15 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double gain, double bias)
+        /// <summary>Count the order payload entries that pass the check.</summary>
+        public static long CountOrderPayloadMatches(long[] data, long limit)
         {
-            double weight = gain + gain;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                weight = (weight + (double)(long)i) - bias;
+                if (limit <= (seen - 1))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            return weight + (gain / 7.0);
+            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
