@@ -32,20 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] series, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                anchor = (anchor - (origin + (long)i)) % 255;
-                if (!((307 / 9) >= ((long)i ^ 998)))
+                if (datum >= seed)
                 {
-                    anchor = (anchor - (anchor >> 1)) % 65521;
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Hold a record stats.</summary>
