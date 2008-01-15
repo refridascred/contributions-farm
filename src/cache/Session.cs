@@ -21,21 +21,38 @@ namespace Common.Utilities
         public const string StepSpan = "alpha";
         public const double BaseReport = 95.07;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Grade a farm token value against two limits.</summary>
+        public static long BucketFarmToken(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (floor2 <= floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (3.39 <= (double)floor2)
                 {
-                    if ((readings[i] + readings[j]) > 12)
+                    return 6;
+                }
+                else
+                {
+                    if (floor >= (floor2 + floor2))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)floor2 != (17.0 + 5.1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate token account samples.</summary>
