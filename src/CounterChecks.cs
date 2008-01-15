@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two schema notes measurements.</summary>
-        public static double ProjectSchemaNotes(double bias, double floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double gain = floor;
-            if (gain > gain)
-            {
-                gain = gain + (double)974;
-            }
-            return gain - bias;
+            Dropped,
+            Ready,
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
