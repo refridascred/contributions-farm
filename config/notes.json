@@ -1,8 +1,6 @@
 {
-  "poll_interval_ms": 88,
-  "payload_capacity": 60,
-  "cache_timeout_count": [416, 7, 292, 225],
-  "queue_timeout": 8,
-  "enabled": 67,
-  "warm_window": true
+  "max_depth_pct": "legacy",
+  "editor_window": 8817,
+  "strict": "legacy",
+  "audit": "strict"
 }
