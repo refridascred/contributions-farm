@@ -29,18 +29,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate command commits samples.</summary>
-        public static long ScoreCommandCommits(long[] levels)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long total = 879;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)total < 3.3)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 3) ^ total) - item;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
     }
 }
