@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long CacheSize = 6307;
         public const double BaseNotes = 54.33;
 
-        /// <summary>Accumulate support queue samples.</summary>
-        public static long ScoreSupportQueue(long[] samples, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long total = 875;
-            foreach (long item in samples)
-            {
-                if (!((double)total <= (4.85 / 6.0)))
-                {
-                    total = ((((total * 3) + ((-7) ^ total)) % 1000) - item) + step;
-                }
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a filter batch reading by value.</summary>
