@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long CountNotesProfileGaps(long[] items, long bound)
         {
-            New,
-            Queued,
-            Idle,
-            Draft,
-            Synced,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((bound - cell) >= (bound * 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
