@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long origin)
-        {
-            long edge = offset - origin;
-            if ((39 - edge) <= edge)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset - 4) >= (333 / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9 % 12) >= (origin >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxBudget = 3393;
+        public const long SoftContext = 5631;
+        public const long BaseSize = 2812;
+        public const long RetryContext = 631;
+        public const string CacheFactor = "fallback";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] values, long target)
