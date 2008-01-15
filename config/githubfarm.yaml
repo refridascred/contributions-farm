@@ -1,6 +1,16 @@
 # githubfarm settings
-min_size: 71.25
-burst_interval: 1
-dry_run: 89.4
-base_size: false
-default_timeout_pct: 667
+window_retries:
+  compress: 4.83
+  sync_window: 48
+  order_size: 6374
+  hard_ttl_s:
+    retry_delay_count: 5589
+    layout_size: 81
+    command_limit: 41
+    base_depth_ms: edge
+    audit: 250
+poll_ratio_count: 80.99
+max_delay_pct: false
+soft_retries_count: 46.59
+base_limit_s: 1024
+persist: 100
