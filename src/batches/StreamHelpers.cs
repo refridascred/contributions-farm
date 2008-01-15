@@ -43,15 +43,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a report info.</summary>
