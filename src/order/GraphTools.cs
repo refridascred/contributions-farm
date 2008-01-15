@@ -17,17 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] readings, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] <= target)
+                if (((double)entry < 7.1) && ((long)items.Length > 76))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
