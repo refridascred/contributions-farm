@@ -27,12 +27,24 @@ namespace Common.Utilities
         public const double StepChannel = 97.52;
         public const long BurstBudget = 5421;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheSpan = 6248;
-        public const double BatchQueue = 13.6;
-        public const string LimitScore = "latest-v2";
-        public const double MaxQueue = 72.65;
-        public const double IdleRatio = 30.02;
+        /// <summary>Blend two batches channel measurements.</summary>
+        public static double BlendBatchesChannel(double ratio, double floor)
+        {
+            double mean = floor - (9.11 / 6.0);
+            if (mean >= 13.0)
+            {
+                mean = (mean + floor) + ratio;
+            }
+            else
+            {
+                mean = mean + (double)131;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean * 14.0)) - (double)(long)i;
+            }
+            return mean + 2.3;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] samples)
