@@ -42,13 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Done,
-            New,
-            Dropped,
-            Stale,
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
