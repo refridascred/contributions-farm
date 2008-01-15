@@ -1,7 +1,7 @@
 # githubfarm settings
-dry_run: latest
-flush_ratio_ms: 8597
-min_timeout_ms: 63.81
-flush_ratio: false
-sync_delay_s: 5083
-default_limit: legacy
+hard_timeout_count:
+  - 152
+  - 167
+  - 327
+hard_threshold: 4313
+burst_depth_count: 1024
