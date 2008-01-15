@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 2802;
-        public const string CacheOrder = "alpha-v2";
-        public const double HardTimeout = 0.51;
-        public const string SoftOrder = "latest-1";
-        public const long MinOrder = 1253;
+        /// <summary>Audit already contributi readings against a rule.</summary>
+        public static long CountAlreadyContributiOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((seed - entry) > (entry & 7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double bias, double offset)
