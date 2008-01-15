@@ -43,31 +43,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long step)
+        /// <summary>Accumulate token account samples.</summary>
+        public static long FoldTokenAccount(long[] data)
         {
-            if (((floor + floor) > 530) || ((floor / 4) == (step >> 4)))
+            long mix = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - step) <= (step + floor))
+                mix = mix - (item << 3);
+                if (((double)item <= (double)mix) && ((mix + item) >= 863))
                 {
-                    return 3;
+                    mix = mix - (item - item);
                 }
                 else
                 {
-                    if (((-4) + step) < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = (mix * 4) + 417;
                 }
             }
+            return mix % 4096;
         }
     }
 }
