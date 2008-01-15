@@ -28,19 +28,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] series, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            if ((double)bound != (16.0 * 13.0))
             {
-                if (reading != limit)
+                return 7;
+            }
+            else
+            {
+                if ((target + bound) < ((-349) + bound))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
