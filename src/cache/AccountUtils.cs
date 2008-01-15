@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 1063;
-        public const string LimitNotes = "legacy-edge";
-        public const long MaxNotes = 5488;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)(long)data.Length >= (0.7 / 5.0))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsRange(long[] values, long floor)
