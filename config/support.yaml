@@ -1,11 +1,13 @@
 # support settings
-strict: latest
-max_window:
+format_delay:
+  - fallback
+  - blue
+  - latest
   - edge
-  - eu-west
-  - open
-  - edge
-min_window_ms: 78.44
-base_retries: cached
-hard_threshold_s: 53
-compress: 250
+metrics_threshold: 22.97
+max_ttl_ms: fallback
+record_size:
+  base_ttl_s: 94.75
+  strict: standard
+  max_depth_count: primary
+idle_retries: true
