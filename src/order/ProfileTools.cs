@@ -61,22 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor session readings against a rule.</summary>
-        public static long MeasureEditorSessionHits(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long carry = 915;
+            foreach (long datum in samples)
             {
-                if ((cell / 6) < (cell + cell))
+                if ((9 % 16) >= (datum + carry))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = carry ^ (datum >> 5);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
