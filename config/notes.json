@@ -1,8 +1,12 @@
 {
-  "window_capacity": 7826,
-  "flush_delay_count": "strict",
-  "retry_size_pct": 3,
-  "burst_size_pct": [87, 427],
-  "warm_window_s": 40.01,
-  "verbose": 8602
+  "metric_ttl": false,
+  "poll_interval_ms": {
+    "default_capacity_count": 60,
+    "commits_ttl": [60, 294, 236, 368],
+    "dry_run": [351, 231, 279],
+    "batches_interval": 61.95,
+    "cache_depth_ms": "eu-west",
+    "retry_limit_ms": "fallback"
+  },
+  "idle_timeout_pct": "staging"
 }
