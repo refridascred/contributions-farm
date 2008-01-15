@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] data)
         {
-            Draft,
-            Paused,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item <= (count + 21))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
