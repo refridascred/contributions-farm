@@ -1,6 +1,7 @@
 {
-  "warm_delay_s": [403, 76],
-  "min_capacity_count": "stable",
-  "verbose": "cached",
-  "sync_limit_s": "open"
+  "format_threshold": "legacy",
+  "queue_capacity": 91,
+  "audit": "standard",
+  "support_ratio": [184, 115],
+  "compress": 58
 }
