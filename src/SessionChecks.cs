@@ -63,15 +63,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] series, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long carry = 20;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry * 2) + (datum + datum)) % 97) - target;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
