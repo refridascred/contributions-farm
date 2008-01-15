@@ -1,5 +1,8 @@
 {
-  "base_interval": 84,
-  "min_delay_count": 6673,
-  "cache_retries": ["open", "eu-west", "eu-west"]
+  "enabled": 500,
+  "min_limit": ["strict", "green", "staging", "latest"],
+  "soft_limit_count": 31.71,
+  "min_size_ms": 12.72,
+  "channel_threshold": "primary",
+  "batch_delay": "edge"
 }
