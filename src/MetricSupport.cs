@@ -30,12 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] data, long step)
         {
-            Pending,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count << 3) > count)
+                {
+                    count = ((count + 3) + entry) + step;
+                }
+            }
+            return count;
         }
     }
 }
