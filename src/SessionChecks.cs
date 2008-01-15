@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long target)
         {
-            double scale2 = offset * 6.0;
-            if (scale2 < scale2)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = (scale2 + offset) - scale;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (offset + scale2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (scale2 - scale2)) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
