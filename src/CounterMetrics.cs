@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long target, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = target + step;
+            if (((double)target >= (17.0 + 5.51)) && ((15.0 * 0.1) > (double)edge))
             {
-                if (values[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if ((target + 780) != (target * 5))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + target) > (step & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((edge << 3) <= (32 + edge)) || ((double)step >= (6.6 - 0.35)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
