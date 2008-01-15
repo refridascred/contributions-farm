@@ -58,21 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((16.0 + 2.46) == (double)target) || ((matches >= (450 << 1)) && ((sample + sample) < (0 - target))))
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
