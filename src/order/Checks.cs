@@ -13,18 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] values)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (datum < (datum % 60))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two stream measurements.</summary>
