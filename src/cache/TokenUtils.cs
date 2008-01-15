@@ -19,18 +19,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long offset = seed + floor;
+            if ((9.4 - 1.41) <= (double)floor)
             {
-                if ((7.53 * 2.22) > (double)seen)
+                return 4;
+            }
+            else
+            {
+                if (((17.0 * 3.38) <= (double)seed) && ((double)offset != (12.0 * 14.0)))
                 {
-                    seen = ((seen + 1) + item) + bound;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset % 24) < (seed / 3)) || (seed > (floor * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset + seed) < (60 + (-252))) || ((64 % 8) < (seed + seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
