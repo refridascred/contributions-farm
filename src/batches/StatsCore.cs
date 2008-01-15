@@ -67,18 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels, long step)
+        /// <summary>Locate a order report reading by value.</summary>
+        public static long LocateOrderReportIndex(long[] samples, long step)
         {
-            long total = 845;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5.4 - 0.44) > (double)total) && ((total % 60) != (item + step)))
+                if (samples[i] < step)
                 {
-                    total = total ^ (-589);
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
