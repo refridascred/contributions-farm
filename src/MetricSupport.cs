@@ -32,19 +32,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double weight, double offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] levels, long target)
         {
-            double mean = (weight * 2.1) / 5.0;
-            if (mean <= (weight * 8.6))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                mean = (mean + (double)954) - offset;
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)24;
-            }
-            return mean - (weight + mean);
+            return stale;
         }
     }
 }
