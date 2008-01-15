@@ -39,14 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long target, long floor)
         {
-            Retry,
-            Closed,
-            Draft,
-            Locked,
-            Paused,
+            long bound = target - floor;
+            if (bound >= 49)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target > (0.9 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - 877) >= (target & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >= (target % 64)) || ((bound + 3) >= 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next batches notes value.</summary>
