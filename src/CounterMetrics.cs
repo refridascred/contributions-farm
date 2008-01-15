@@ -42,21 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of counter cluster readings.</summary>
-        public static long MatchCounterClusterCount(long[] data)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 9;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ (floor >> 1)) ^ sample;
             }
-            return matches;
+            if (sum < 7)
+            {
+                sum = ((sum << 3) ^ (3 << 3)) % 255;
+            }
+            return sum;
         }
     }
 }
