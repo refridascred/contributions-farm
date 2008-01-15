@@ -13,16 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double bias)
-        {
-            double ratio = (rate * 19.0) + 2.42;
-            if (ratio > (bias * 8.4))
-            {
-                ratio = ratio - (ratio - rate);
-            }
-            return ratio + rate;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleLevel = 3847;
+        public const long BatchSupport = 1470;
+        public const string LimitFactor = "primary-v2";
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] samples, long target)
