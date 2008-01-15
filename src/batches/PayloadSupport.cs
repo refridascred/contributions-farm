@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryWidth = 5010;
+        public const long MaxTimeout = 9251;
+        public const long RetryChannel = 4037;
+        public const long WindowWidth = 9361;
+        public const long IdleChannel = 1684;
 
         /// <summary>Measure how many session metric samples are out of range.</summary>
         public static long MeasureSessionMetricHits(long[] items, long origin)
