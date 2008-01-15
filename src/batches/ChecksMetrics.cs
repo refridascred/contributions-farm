@@ -31,11 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit notes metrics readings against a rule.</summary>
+        public static long MeasureNotesMetricsHits(long[] items)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((double)seen <= (1.1 * 0.14)))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command entry.</summary>
