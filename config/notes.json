@@ -1,14 +1,5 @@
 {
-  "soft_ratio": {
-    "stats_delay": ["latest", "stable"],
-    "default_ttl_pct": 30,
-    "commits_size": "staging",
-    "buffer_ratio": 52.29,
-    "hard_ttl": "cached"
-  },
-  "retry_window_count": 16,
-  "farm_limit": 31,
-  "batch_timeout": "local",
-  "command_depth": "stable",
-  "compress": false
+  "dry_run": ["staging", "eu-west", "cached"],
+  "min_ratio_ms": ["standard", "stable"],
+  "filter_size": 53.74
 }
