@@ -89,10 +89,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 3671;
-        public const string CacheQueue = "staging-v2";
-        public const long IdleCount = 4557;
-        public const long MinRatio = 8933;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
