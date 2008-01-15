@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine record layout values into a single score.</summary>
+        public static long TotalRecordLayout(long[] items, long limit)
         {
-            Stale,
-            Pending,
-            Synced,
+            long total = 866;
+            foreach (long reading in items)
+            {
+                if (((reading - limit) > (limit + (-574))) && ((limit & 3) >= total))
+                {
+                    total = ((total << 3) ^ (reading + limit)) % 255;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
