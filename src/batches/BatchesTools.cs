@@ -36,11 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "alpha-1";
-        public const long DefaultCount = 869;
-        public const double MinFactor = 2.58;
-        public const string DefaultFactor = "primary-1";
-        public const double HardCommits = 53.06;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values)
+        {
+            long state = 195;
+            foreach (long item in values)
+            {
+                if (((state << 1) == (state + state)) || ((state - state) >= (9 / 4)))
+                {
+                    state = ((state * 4) + state) % 65521;
+                }
+                if (!(state >= item))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
