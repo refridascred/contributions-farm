@@ -1,15 +1,9 @@
 # githubfarm settings
-retry_capacity_ms:
-  - local
-  - stable
-  - local
-  - latest
-verbose: 75.36
-batches_window:
-  - 34
-  - 197
-  - 149
-  - 87
-checks_delay: 74
-default_ratio: 81.3
-max_delay_count: standard
+soft_retries_s:
+  - 431
+  - 116
+  - 348
+  - 66
+commits_limit: staging
+enabled: eu-west
+soft_interval: open
