@@ -25,24 +25,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            if ((double)bound != (16.0 * 13.0))
+            long carry = 1;
+            foreach (long reading in series)
             {
-                return 7;
+                carry = (carry ^ (carry - reading)) % 255;
             }
-            else
-            {
-                if ((target + bound) < ((-349) + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
