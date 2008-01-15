@@ -50,14 +50,18 @@ namespace Common.Utilities
         public const long DefaultBuffer = 7599;
         public const long SoftBuffer = 3773;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long CountClusterCounterGaps(long[] samples, long bound)
         {
-            Active,
-            Queued,
-            Done,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry << 3) > entry)
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
     }
 }
