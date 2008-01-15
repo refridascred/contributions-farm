@@ -1,8 +1,6 @@
 {
-  "profile_interval": "fallback",
-  "warm_capacity": 1.78,
-  "audit": 151,
-  "readonly": 52,
-  "cache_delay": false,
-  "sync_window_pct": [83, 82]
+  "flush_threshold": "open",
+  "report_timeout": true,
+  "batch_size_count": 47.97,
+  "persist": 250
 }
