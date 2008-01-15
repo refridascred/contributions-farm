@@ -66,19 +66,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardCount = 2379;
+        public const string BatchInterval = "primary";
+        public const long BaseStream = 8882;
     }
 }
