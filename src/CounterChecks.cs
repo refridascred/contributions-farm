@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepInterval = 6028;
-        public const long LimitSpan = 810;
-        public const double RetryRecord = 21.24;
-        public const long StepRecord = 8095;
-        public const long SoftRecord = 3580;
+        /// <summary>Blend two schema notes measurements.</summary>
+        public static double ProjectSchemaNotes(double bias, double floor)
+        {
+            double gain = floor;
+            if (gain > gain)
+            {
+                gain = gain + (double)974;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
