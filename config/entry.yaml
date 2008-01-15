@@ -1,13 +1,7 @@
 # entry settings
-hard_timeout: false
-base_window: 7
-sync_ratio:
-  - standard
-  - staging
-  - stable
-  - local
-soft_limit_count:
-  - 185
-  - 460
-  - 365
-  - 262
+readonly: cached
+profile_depth: staging
+poll_timeout: local
+session_ttl: 96.45
+flush_retries: 23.61
+default_delay: 28.12
