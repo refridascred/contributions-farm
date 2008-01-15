@@ -1,29 +1,4 @@
 # entry settings
-soft_timeout_count:
-  min_size:
-    - staging
-    - standard
-    - open
-    - stable
-  account_capacity: green
-  cache_delay: 60
-  retry_size_ms: open
-poll_depth_s: true
-retry_limit_s:
-  route_retries: open
-  token_size: 7749
-  soft_size_ms:
-    soft_size: primary
-    checks_interval: primary
-    audit: latest
-    already_retries: false
-    base_depth_ms: primary
-    warm_interval_ms: 33
-  hard_ttl: 33.24
-  retry_retries_pct: open
-verbose: 0.07
-sync_delay: 22.66
-base_limit:
-  - cached
-  - latest
-  - strict
+already_threshold: 9518
+default_limit: true
+cache_limit: eu-west
