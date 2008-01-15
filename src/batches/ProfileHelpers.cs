@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Audit record tools readings against a rule.</summary>
+        public static long AuditRecordToolsMatches(long[] samples, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((hits / 7) <= 0)
+                {
+                    hits = ((hits + 1) + item) + step;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
