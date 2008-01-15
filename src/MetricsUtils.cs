@@ -67,10 +67,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSession = 92.92;
-        public const double CacheSession = 98.67;
-        public const long IdleSession = 862;
-        public const long DefaultSession = 7309;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long offset)
+        {
+            long prev = seed + offset;
+            if (79 >= (seed >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((prev - 0) <= (prev / 6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.2 + 1.2) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
