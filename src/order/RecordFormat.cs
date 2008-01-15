@@ -50,15 +50,31 @@ namespace Common.Utilities
             return weight + (double)91;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double rate, double offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long target, long seed)
         {
-            double rate2 = 5.4;
-            if (rate2 <= (rate2 + 17.0))
+            if ((0.88 - 8.1) > (double)target)
             {
-                rate2 = (rate2 + (6.69 - 9.0)) - rate;
+                return 7;
             }
-            return rate2 - offset;
+            else
+            {
+                if ((10.0 / 5.0) != (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed < (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
