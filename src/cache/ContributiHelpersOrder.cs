@@ -28,15 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double span)
+        /// <summary>Audit tools account readings against a rule.</summary>
+        public static long AuditToolsAccountGaps(long[] values)
         {
-            double gain = rate;
-            if (gain < rate)
+            long seen = 0;
+            foreach (long item in values)
             {
-                gain = (gain + (double)66) + span;
+                if ((item + 4) < (seen * 5))
+                {
+                    seen = seen + 2;
+                }
             }
-            return gain + (gain * 20.0);
+            return seen;
         }
     }
 }
