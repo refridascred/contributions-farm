@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheRatio = 3595;
-        public const double DefaultBudget = 30.25;
-        public const string WindowSpan = "cached";
-        public const long MaxCluster = 1981;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Combine farm window values into a single score.</summary>
         public static long WeighFarmWindow(long[] levels, long step)
