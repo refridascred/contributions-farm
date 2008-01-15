@@ -58,23 +58,18 @@ namespace Common.Utilities
             return ratio + 7.2;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] items)
         {
-            long result = 35;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                result = (result - (result << 3)) % 101;
-                if ((datum - result) < (result / 3))
+                if ((8.9 + 5.39) == (double)item)
                 {
-                    result = (result * 5) + (982 ^ datum);
+                    seen = seen + 1;
                 }
             }
-            if (result > 332)
-            {
-                result = (result ^ (148 + result)) % 97;
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Grade a route format value against two limits.</summary>
