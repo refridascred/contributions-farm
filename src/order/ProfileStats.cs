@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long seed)
-        {
-            if ((3.4 + 7.0) < 9.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + seed) <= (floor - 313))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.7 + 1.0) <= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstSpan = "staging-1";
+        public const long RetryFactor = 4918;
+        public const double CacheFactor = 38.56;
+        public const long SoftInterval = 938;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftFactor = 7773;
