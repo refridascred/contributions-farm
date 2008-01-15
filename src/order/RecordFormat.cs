@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
