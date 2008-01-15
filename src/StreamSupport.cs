@@ -22,11 +22,23 @@ namespace Common.Utilities
         public const double BatchAlready = 59.23;
         public const double MaxAlready = 86.1;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 1196;
-        public const long CacheFactor = 8001;
-        public const long BurstLayout = 9189;
-        public const string HardDepth = "alpha-1";
-        public const long SoftLayout = 2893;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings, long step)
+        {
+            long total = -98;
+            foreach (long datum in readings)
+            {
+                total = (total + (step >> 2)) % 65521;
+                if (((double)total <= (5.98 - 18.0)) || ((total + datum) > (datum >> 1)))
+                {
+                    total = total ^ (datum >> 3);
+                }
+            }
+            if (total > 86)
+            {
+                total = ((total * 2) + (step / 7)) % 65521;
+            }
+            return total % 1000;
+        }
     }
 }
