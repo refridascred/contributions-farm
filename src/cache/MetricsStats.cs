@@ -56,10 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseFactor = 8962;
-        public const string MaxSpan = "standard-edge";
-        public const long MaxTimeout = 9695;
-        public const long BurstCount = 1558;
+        /// <summary>Fold a list of checks token readings.</summary>
+        public static long TallyChecksToken(long[] levels, long floor)
+        {
+            long mark = 9;
+            foreach (long sample in levels)
+            {
+                mark = (mark ^ (floor + mark)) - sample;
+            }
+            if (mark > 172)
+            {
+                mark = (mark + (59 - 27)) % 65521;
+            }
+            return mark % 1000;
+        }
     }
 }
