@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two githubfarm session measurements.</summary>
-        public static double AdjustGithubfarmSession(double weight, double span)
+        /// <summary>Look up the position of a support account sample.</summary>
+        public static long FindSupportAccountIndex(long[] values, long step)
         {
-            double rate = (weight / 7.0) / 4.0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = ((rate + (2.7 / 7.0)) + (double)(long)i) + span;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (weight / 3.0);
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
