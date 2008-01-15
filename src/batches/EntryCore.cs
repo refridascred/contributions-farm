@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFactor = "standard-v2";
-        public const long MinLevel = 4646;
-        public const string MaxFormat = "primary-edge";
-        public const long WindowBudget = 4842;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Synced,
+            Locked,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MaxChannel = 3399;
