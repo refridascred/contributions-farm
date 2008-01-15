@@ -1,6 +1,6 @@
 {
-  "cache_depth_s": true,
-  "cache_window_pct": true,
-  "burst_ratio": ["edge", "blue", "legacy"],
-  "session_timeout": "legacy"
+  "cache_window_ms": 24,
+  "default_retries_ms": "primary",
+  "retry_timeout_pct": "open",
+  "warm_window_pct": "legacy"
 }
