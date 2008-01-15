@@ -1,20 +1,7 @@
 {
-  "farm_threshold": 100,
-  "soft_depth_count": "staging",
-  "warm_interval_count": "open",
-  "idle_capacity_count": false,
-  "support_window": {
-    "default_interval_pct": 100,
-    "persist": "stable",
-    "verbose": [225, 241, 89, 431],
-    "audit": {
-      "persist": "open",
-      "retry_ratio_ms": 93,
-      "dry_run": "fallback",
-      "warm_size_s": ["latest", "standard", "local", "legacy"],
-      "hard_delay": "blue",
-      "batch_timeout": ["stable", "primary"]
-    }
-  },
-  "burst_timeout_count": 49.64
+  "strict": 30,
+  "commits_depth": "fallback",
+  "default_ratio_pct": 5622,
+  "cache_depth_pct": 60,
+  "batch_delay": 64.96
 }
