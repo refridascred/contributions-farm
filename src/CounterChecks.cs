@@ -60,17 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics order entry that matches the target.</summary>
-        public static long LookupMetricsOrderIndex(long[] series, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(71 / 7);
+            if (weight <= floor)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (weight + floor)) - gain;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (7.57 + weight)) + (double)(long)i;
+            }
+            return weight - 0.93;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
