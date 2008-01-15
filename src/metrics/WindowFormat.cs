@@ -18,5 +18,27 @@ namespace Common.Utilities
             }
             return score;
         }
+
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] data, long bound)
+        {
+            long state = 6;
+            foreach (long cell in data)
+            {
+                if ((state + 4) != (state + 68))
+                {
+                    state = ((state * 3) + (cell - cell)) - bound;
+                }
+                else
+                {
+                    state = (state - (19 << 1)) % 65521;
+                }
+            }
+            if (state > 765)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
+        }
     }
 }
