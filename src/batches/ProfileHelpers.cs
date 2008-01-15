@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] samples, long seed)
         {
-            long acc = -3;
-            foreach (long sample in data)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                acc = ((acc + (70 >> 3)) % 255) ^ sample;
-                acc = (acc << 3) ^ 52;
+                anchor = ((anchor - (anchor - seed)) % 1000) + value;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Match up payload samples.</summary>
