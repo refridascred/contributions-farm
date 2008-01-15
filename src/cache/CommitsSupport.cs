@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] items, long seed)
         {
-            long state = 221;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((state / 4) < state)
+                if (!((seed <= (value + 55)) && ((2.0 - 4.0) >= (double)value)))
                 {
-                    state = (((state ^ 774) % 65521) ^ sample) - bound;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    state = (state + (long)levels.Length) % 255;
-                }
-                state = (state - state) % 101;
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
