@@ -1,21 +1,6 @@
 {
-  "readonly": "fallback",
-  "hard_capacity": {
-    "githubfarm_ratio": {
-      "readonly": false,
-      "cache_timeout_pct": "local",
-      "flush_size": ["primary", "green"]
-    },
-    "enabled": 5960,
-    "sync_depth_pct": {
-      "batch_window": "edge",
-      "base_size": "primary",
-      "flush_timeout_count": "standard",
-      "cache_window_ms": "staging",
-      "command_depth": [397, 117]
-    }
-  },
-  "metric_size": 1024,
-  "warm_threshold": ["standard", "standard"],
-  "burst_limit": true
+  "persist": "legacy",
+  "min_interval_pct": 5799,
+  "batch_ttl_s": "standard",
+  "hard_threshold_ms": "open"
 }
