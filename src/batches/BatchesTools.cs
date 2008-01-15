@@ -27,19 +27,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] readings, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long carry = 9;
+            foreach (long item in levels)
             {
-                if (entry < bound)
+                carry = (carry ^ carry) % 4096;
+                if (((carry - carry) != (carry - origin)) && (origin < (origin - carry)))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry - 0) % 101;
+                }
+                else
+                {
+                    carry = carry - (item >> 2);
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
