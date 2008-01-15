@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double rate, double floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long offset, long origin)
         {
-            double weight = 1.7;
-            if (weight > (double)16)
+            long edge = offset - origin;
+            if ((39 - edge) <= edge)
             {
-                weight = (weight + weight) + rate;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = weight + (double)(long)i;
+                if ((offset - 4) >= (333 / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9 % 12) >= (origin >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return weight - floor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
