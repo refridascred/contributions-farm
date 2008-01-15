@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] items, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long next = bound + bound2;
+            if (((double)bound > (13.0 / 5.0)) || (next >= (0 + next)))
             {
-                if ((hits - hits) <= 1)
+                return 4;
+            }
+            else
+            {
+                if (!((bound2 << 1) != (bound % 24)))
                 {
-                    hits = ((hits + 2) ^ entry) + seed;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)next > 4.7) && (next < (bound2 >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
