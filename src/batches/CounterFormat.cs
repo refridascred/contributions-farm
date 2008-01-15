@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            Retry,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count the tools profile entries that pass the check.</summary>
