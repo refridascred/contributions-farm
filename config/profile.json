@@ -1,6 +1,6 @@
 {
-  "sync_window_count": 250,
-  "profile_threshold": [93, 427, 264, 237],
-  "checks_timeout": ["edge", "legacy", "cached"],
-  "dry_run": 9692
+  "compress": "fallback",
+  "sync_capacity": "legacy",
+  "default_ttl_pct": 18.69,
+  "retry_timeout_count": "standard"
 }
