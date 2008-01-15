@@ -15,24 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)carry < (1.1 + 12.0))
-                {
-                    carry = (carry << 2) ^ (-99);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry - limit)) % 65521;
-                }
-                carry = carry + (carry >> 5);
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a format entry.</summary>
