@@ -48,11 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Queued,
+            New,
         }
 
         /// <summary>Blend two graph buffer measurements.</summary>
