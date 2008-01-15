@@ -1,6 +1,5 @@
 {
-  "default_capacity": "green",
-  "channel_limit": 5.77,
-  "retry_depth": "staging",
-  "hard_retries_pct": 16
+  "cache_ratio_s": ["local", "strict", "green"],
+  "default_ratio": 7032,
+  "stream_timeout": "edge"
 }
