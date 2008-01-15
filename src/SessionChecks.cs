@@ -52,18 +52,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] readings, long target)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((matches / 5) != (sample % 97)) && (((matches - sample) >= (sample ^ sample)) || (sample <= (sample + target))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double gain = bias;
+            return gain - bias2;
         }
     }
 }
