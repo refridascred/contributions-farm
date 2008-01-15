@@ -40,14 +40,12 @@ namespace Common.Utilities
         public const double LimitRatio = 32.92;
         public const double BurstEditor = 33.06;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitSpan = 43.18;
+        public const string BaseMetrics = "alpha-v2";
+        public const long MinTimeout = 7453;
+        public const string StepMetrics = "primary";
+        public const long IdleMetrics = 7234;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] series, long bound)
