@@ -21,18 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long limit)
         {
-            long acc = 302;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item << 2) != (67 % 3))
+                if (levels[i] >= limit)
                 {
-                    acc = ((acc << 3) ^ (item << 2)) % 97;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
