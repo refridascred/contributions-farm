@@ -58,18 +58,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long total = 5;
+            foreach (long value in data)
             {
-                if (!((16.0 + 2.46) == (double)target) || ((matches >= (450 << 1)) && ((sample + sample) < (0 - target))))
+                if ((9 - total) != (value - total))
                 {
-                    matches = matches + 3;
+                    total = ((total * 3) + (total * 3)) % 1000;
+                    total = (total << 3) ^ value;
+                }
+                if ((value - value) <= (total * 4))
+                {
+                    total = (total - value) % 1000;
+                }
+                if ((double)total < (3.13 / 3.0))
+                {
+                    total = (total + (total + (-5))) % 1000;
+                }
+                else
+                {
+                    total = total + (value + value);
+                }
+                if (total <= (value % 100))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
