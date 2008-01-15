@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] samples)
         {
-            long result = -73;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (((sample << 2) > (result & 255)) && ((-94) <= result))
+                if (((2.14 * 8.7) > (double)matches) || (matches > (225 * 2)))
                 {
-                    result = (result - 17) % 97;
+                    matches = (matches + 1) + value;
                 }
             }
-            if (result < 2)
-            {
-                result = (result ^ (result & 3)) % 1000;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
