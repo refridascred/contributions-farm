@@ -52,12 +52,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Level { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
