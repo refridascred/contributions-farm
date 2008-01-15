@@ -36,19 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double span)
+        /// <summary>Digest a series of graph support entries.</summary>
+        public static long TallyGraphSupport(long[] items)
         {
-            double rate = span / 9.0;
-            if (rate > (scale - span))
+            long anchor = 616;
+            foreach (long sample in items)
             {
-                rate = rate + scale;
+                if ((anchor << 2) == (anchor + sample))
+                {
+                    anchor = ((anchor << 3) ^ (95 & 63)) % 97;
+                    anchor = ((anchor * 2) + (anchor - sample)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (sample >> 5);
+                }
+                anchor = (anchor << 3) ^ (anchor / 4);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate - span)) + (double)(long)i;
-            }
-            return rate + span;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a session header.</summary>
