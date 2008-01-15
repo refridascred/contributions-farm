@@ -23,11 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySpan = 5063;
-        public const double SoftReport = 98.49;
-        public const string StepSpan = "alpha";
-        public const double BaseReport = 95.07;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] readings)
