@@ -82,14 +82,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Queued,
-            Locked,
-            New,
             Ready,
-            Idle,
+            Draft,
+            New,
+            Pending,
         }
     }
 }
