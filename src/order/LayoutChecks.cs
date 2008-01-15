@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string StepDepth = "alpha";
         public const long BaseFarm = 4538;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            long result = 66;
+            foreach (long sample in samples)
+            {
+                result = ((((result << 3) ^ (result & 3)) % 255) + sample) - limit;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a buffer stats.</summary>
