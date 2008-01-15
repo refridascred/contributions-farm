@@ -71,18 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already layout samples are out of range.</summary>
-        public static long TallyAlreadyLayoutMatches(long[] items, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long anchor = 5;
+            foreach (long reading in data)
             {
-                if (6 <= (origin - datum))
+                anchor = (anchor << 3) ^ reading;
+                if (((anchor + anchor) <= (anchor - anchor)) && (((long)data.Length << 1) < ((-8) / 8)))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            if (anchor < (-910))
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
