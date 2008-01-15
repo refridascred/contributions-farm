@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] values)
         {
-            New,
-            Done,
-            Pending,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 12) >= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
