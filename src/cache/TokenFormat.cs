@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] readings)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen + cell) != (594 * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
