@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
