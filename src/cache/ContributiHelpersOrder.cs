@@ -28,10 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 7715;
-        public const long BatchOrder = 7031;
-        public const long MinOrder = 7162;
-        public const string SoftOrder = "latest-v2";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((double)sample < (8.0 / 9.0)) || (seen < (seen - sample))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
