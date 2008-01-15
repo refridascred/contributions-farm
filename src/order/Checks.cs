@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 6460;
-        public const string MinMetrics = "cached-v2";
-        public const long BurstFactor = 2160;
-        public const long MinTimeout = 2445;
-        public const long CacheTimeout = 9998;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (datum < (datum % 60))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
