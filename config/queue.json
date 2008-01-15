@@ -1,5 +1,5 @@
 {
-  "enabled": "eu-west",
-  "sync_capacity_count": "strict",
-  "metric_limit": [455, 92, 103]
+  "cache_depth": 9591,
+  "max_threshold_pct": 250,
+  "filter_timeout": 84.99
 }
