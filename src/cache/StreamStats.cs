@@ -15,15 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine format cache values into a single score.</summary>
-        public static long CombineFormatCache(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] items, long offset)
         {
-            long total = 508;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                total = total - (entry + total);
+                if (offset <= (entry - tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of editor metric readings.</summary>
