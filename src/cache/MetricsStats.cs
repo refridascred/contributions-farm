@@ -59,17 +59,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (bias / 6.0) / 6.0;
+            if (gain > gain)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (double)871) - offset;
             }
-            return -1;
+            return gain + gain;
         }
 
         /// <summary>Describe the tools phase values.</summary>
