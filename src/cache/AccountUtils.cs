@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowWidth = 5819;
+        public const string CacheQueue = "legacy";
+        public const double IdleQueue = 75.32;
+        public const long IdleRatio = 5750;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long step, long step2)
