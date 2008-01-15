@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = acc ^ offset;
+                acc = ((acc << 3) ^ (offset - (long)i)) % 97;
+                acc = (acc + (offset << 1)) % 4096;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
