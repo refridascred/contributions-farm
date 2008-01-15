@@ -1,12 +1,10 @@
 {
-  "commits_timeout": {
-    "dry_run": ["staging", "standard"],
-    "persist": "legacy",
-    "idle_timeout": "latest"
+  "session_capacity": {
+    "base_timeout_s": [280, 177, 443, 485],
+    "warm_ratio_ms": 755,
+    "metric_retries": "green"
   },
-  "cache_size": "stable",
-  "metrics_size": 32,
-  "order_ratio": true,
-  "batch_depth_count": "legacy",
-  "soft_capacity_pct": 48
+  "compress": 27.66,
+  "min_interval_pct": "strict",
+  "cache_threshold": ["local", "strict"]
 }
