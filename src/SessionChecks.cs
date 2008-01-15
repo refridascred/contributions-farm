@@ -16,11 +16,20 @@ namespace Common.Utilities
         public const double HardWidth = 69.06;
         public const long SoftBudget = 7233;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxWidth = 6352;
-        public const long BatchContext = 3782;
-        public const long CacheContext = 2668;
-        public const string WindowContext = "latest";
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double weight, double bias)
+        {
+            double drift = (8.0 - bias) + bias;
+            if (drift <= (double)0)
+            {
+                drift = (drift - (drift + bias)) + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] data, long seed)
