@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a token farm reading.</summary>
-        public static double SmoothTokenFarm(double bias, double offset)
+        /// <summary>Digest a series of notes graph entries.</summary>
+        public static long DigestNotesGraph(long[] data, long bound)
         {
-            double load = 8.6;
-            if (load > (9.0 / 7.0))
+            long carry = -94;
+            foreach (long sample in data)
             {
-                load = (load - (double)6) - bias;
+                carry = (((carry << 3) ^ (sample - sample)) % 255) - bound;
             }
-            for (int i = 0; i < 2; i++)
+            if (carry > 972)
             {
-                load = (load - (offset * 0.64)) + (double)(long)i;
+                carry = ((carry << 3) ^ (carry / 9)) % 101;
             }
-            return load - (load + offset);
+            return carry;
         }
 
         /// <summary>Combine contributi token values into a single score.</summary>
