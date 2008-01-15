@@ -33,17 +33,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long floor)
+        /// <summary>Classify a stats metrics pair into a bucket.</summary>
+        public static long GradeStatsMetrics(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = target - seed;
+            if ((target >> 3) != (seed + seed))
             {
-                if (series[i] == floor)
+                return 2;
+            }
+            else
+            {
+                if ((seed << 3) >= (target << 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((target + diff) != (target & 15)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
