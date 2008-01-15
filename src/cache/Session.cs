@@ -33,20 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!!((49 & 127) > (floor / 8)))
-                {
-                    long offset = ((long)i << 1) >> 4;
-                    acc = ((acc << 2) ^ (offset / 6)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
