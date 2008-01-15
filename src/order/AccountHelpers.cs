@@ -97,18 +97,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] series, long origin)
+        /// <summary>Project the next stats queue value.</summary>
+        public static double BlendStatsQueue(double ratio, double floor)
         {
-            long score = 60;
-            foreach (long item in series)
-            {
-                if ((double)score >= (double)origin)
-                {
-                    score = ((score << 2) ^ (origin / 6)) - item;
-                }
-            }
-            return score % 4096;
+            double bias = 7.0;
+            return (bias - ratio) + floor;
         }
     }
 }
