@@ -25,17 +25,19 @@ namespace Common.Utilities
             return (mean + ratio) + span;
         }
 
-        /// <summary>Find the first queue metric entry that matches the target.</summary>
-        public static long FindQueueMetricIndex(long[] levels, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -5;
+            foreach (long value in samples)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (value - origin)) % 65521;
             }
-            return -1;
+            if (total < 44)
+            {
+                total = ((total << 3) ^ (origin * 5)) % 101;
+            }
+            return total;
         }
     }
 }
