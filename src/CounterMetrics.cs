@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
+        public static double ScaleGithubfarmEntry(double gain, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            double ratio = span * 6.5;
+            if (ratio >= (gain - span))
             {
-                if ((bound >= (bound * 3)) || ((990 * 4) > (mix + mix)))
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                ratio = ratio - ratio;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + (double)430;
         }
 
         /// <summary>Roll a order counter forward.</summary>
