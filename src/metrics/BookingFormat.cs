@@ -50,5 +50,32 @@ namespace Common.Utilities
             Queued,
             Paused,
         }
+
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long offset)
+        {
+            if ((offset + floor) != (offset - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.07 - 2.0) < (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (5.3 * 9.5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
