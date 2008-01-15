@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] levels, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((double)cell < 1.6)
+                if (sample >= bound)
                 {
-                    count = (count + 3) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
