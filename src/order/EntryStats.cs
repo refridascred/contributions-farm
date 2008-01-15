@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long bound)
         {
-            Draft,
-            Done,
-            Idle,
-            Synced,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the notes status values.</summary>
