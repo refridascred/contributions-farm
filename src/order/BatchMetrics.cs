@@ -71,31 +71,19 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] samples, long bound)
         {
-            if (offset <= (limit << 3))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(0.4 < (double)limit))
+                if (datum < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 + offset) > (offset / 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
