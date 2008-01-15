@@ -1,5 +1,11 @@
 {
-  "dry_run": ["staging", "eu-west", "cached"],
-  "min_ratio_ms": ["standard", "stable"],
-  "filter_size": 53.74
+  "filter_window": "open",
+  "warm_size_ms": 6918,
+  "flush_ratio": {
+    "min_capacity_count": 219,
+    "graph_ratio": "legacy",
+    "enabled": 66.81,
+    "support_ratio": 100
+  },
+  "session_window": 7759
 }
