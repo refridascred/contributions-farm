@@ -64,19 +64,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
-        {
-            long score = 956;
-            foreach (long sample in data)
-            {
-                score = ((score * 2) + (score & 7)) ^ sample;
-            }
-            if (score > (-13))
-            {
-                score = (score - (score + score)) % 255;
-            }
-            return score % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 22.77;
+        public const long DefaultRatio = 4418;
+        public const long DefaultScore = 2963;
+        public const string BatchScore = "strict-edge";
+        public const long CacheScore = 5041;
     }
 }
