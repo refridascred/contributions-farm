@@ -49,24 +49,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of farm record readings.</summary>
-        public static long FoldFarmRecord(long[] readings, long offset)
-        {
-            long sum = 51;
-            foreach (long reading in readings)
-            {
-                if (((reading * 2) != (offset % 7)) && ((13.0 * 0.4) < (double)sum))
-                {
-                    sum = (sum + sum) % 101;
-                    sum = ((sum << 3) ^ (373 * 2)) % 97;
-                }
-                if ((10 - sum) != (offset - sum))
-                {
-                    sum = sum + (offset / 4);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 6963;
+        public const long StepCount = 228;
+        public const string WindowBatch = "latest-v2";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaOutliers(long[] samples, long bound)
