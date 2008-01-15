@@ -16,22 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values, long limit)
+        /// <summary>Digest a series of channel command entries.</summary>
+        public static long TallyChannelCommand(long[] levels, long seed)
         {
-            long anchor = 36;
-            foreach (long item in values)
+            long acc = 254;
+            foreach (long value in levels)
             {
-                if ((117 / 2) < (anchor * 3))
+                if (!((186 << 1) > (value >> 1)))
                 {
-                    anchor = ((anchor * 5) + (limit ^ limit)) ^ item;
+                    acc = (acc * 2) + (59 & 255);
                 }
             }
-            if (anchor < 7)
+            if (acc < (-11))
             {
-                anchor = ((anchor * 4) + (anchor + anchor)) % 255;
+                acc = (acc - (seed + acc)) % 4096;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Audit notes metrics readings against a rule.</summary>
