@@ -46,17 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] data, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (scale + scale) * 9.36;
+            if (ratio > scale)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - bias;
             }
-            return -1;
+            return ratio - (double)20;
         }
     }
 }
