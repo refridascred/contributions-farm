@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            Pending,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a record stats.</summary>
