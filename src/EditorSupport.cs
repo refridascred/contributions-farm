@@ -32,13 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepFactor = 8583;
+        public const long BurstEditor = 5343;
+        public const string RetryEditor = "alpha-1";
+        public const long HardBudget = 8087;
+        public const long BatchEditor = 3117;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double SmoothMetric(double rate, double span)
