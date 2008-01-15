@@ -26,26 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window graph readings.</summary>
-        public static long TallyWindowGraph(long[] levels, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] items, long step)
         {
-            long result = 528;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((item + result) > (result + result))
+                if (entry < step)
                 {
-                    result = ((result * 4) + seed) % 1000;
-                }
-                else
-                {
-                    result = (result + seed) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > (-560))
-            {
-                result = (result + seed) % 97;
-            }
-            return result % 1000;
+            return ok;
         }
     }
 }
