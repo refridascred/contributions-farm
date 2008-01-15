@@ -23,19 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] series, long target)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long item in series)
             {
-                if (seen < datum)
+                if (seen <= (target + seen))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) ^ item;
                 }
             }
             return seen;
