@@ -1,12 +1,6 @@
 {
-  "batch_threshold_ms": "blue",
-  "burst_threshold_s": {
-    "filter_threshold": [173, 30, 352, 169],
-    "enabled": "green",
-    "schema_ratio": false,
-    "idle_interval_count": 2282,
-    "account_limit": false,
-    "max_interval_s": "eu-west"
-  },
-  "poll_window_ms": "latest"
+  "strict": "blue",
+  "buffer_delay": 16,
+  "persist": [339, 194, 192],
+  "cache_depth_s": 53
 }
