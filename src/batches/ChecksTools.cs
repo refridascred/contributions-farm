@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale2 - (double)242;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
