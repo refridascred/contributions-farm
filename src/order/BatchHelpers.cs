@@ -38,15 +38,19 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio2);
         }
 
-        /// <summary>Blend two support command measurements.</summary>
-        public static double BlendSupportCommand(double bias, double span)
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool ValidateReportSessionRange(long[] data, long step)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                ratio = ((ratio - (bias + ratio)) - (double)(long)i) + span;
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio + ratio;
+            return ok;
         }
     }
 }
