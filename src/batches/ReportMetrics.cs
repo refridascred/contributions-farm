@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((cell + seen) < (cell & 31))
+                if (sample <= (count << 2))
                 {
-                    seen = seen + 2;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the entry status values.</summary>
