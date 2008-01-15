@@ -13,18 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (7.0 - 17.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a token record.</summary>
