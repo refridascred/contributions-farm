@@ -27,18 +27,9 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio2);
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((matches + matches) == (matches - matches)))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 29.49;
+        public const long LimitAlready = 595;
+        public const long IdleAlready = 8989;
     }
 }
