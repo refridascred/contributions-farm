@@ -43,22 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long limit)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((684 + carry) != (sample & 255))
+                if (items[i] < limit)
                 {
-                    carry = carry - (734 - 0);
-                }
-                else
-                {
-                    carry = carry + (102 - sample);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first session graph entry that matches the target.</summary>
