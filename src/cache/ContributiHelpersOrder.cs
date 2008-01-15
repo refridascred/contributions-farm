@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] series, long target)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Idle,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up filter samples.</summary>
