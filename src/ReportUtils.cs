@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftScore = 3299;
-        public const double HardLayout = 80.99;
-        public const long BurstLayout = 305;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] series, long bound)
