@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long BurstCount = 4175;
         public const long MaxWidth = 5663;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] samples, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (reading > seed)
+                if (value >= floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
