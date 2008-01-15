@@ -101,31 +101,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] values, long floor)
-        {
-            long score = 45;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= (double)score)
-                {
-                    score = (score + 50) % 65521;
-                    continue;
-                }
-                if ((1.0 / 5.0) >= (double)entry)
-                {
-                    score = (score * 5) + (score >> 5);
-                }
-                if (entry >= (score ^ score))
-                {
-                    break;
-                }
-            }
-            if (score > 8)
-            {
-                score = score ^ (score + floor);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 66.74;
+        public const long HardTools = 3544;
+        public const double BaseInterval = 7.29;
     }
 }
