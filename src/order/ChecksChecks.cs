@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7772;
-        public const double RetryTimeout = 33.46;
-        public const string MinMetrics = "alpha-1";
-        public const string StepMetrics = "primary-edge";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long bound, long step)
