@@ -50,17 +50,26 @@ namespace Common.Utilities
             return drift - (offset * 3.27);
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 23;
+            foreach (long cell in readings)
             {
-                if (items[i] < origin)
+                if ((sum >= (2 - cell)) && (cell >= (8 - sum)))
                 {
-                    return (long)i;
+                    sum = (sum + ((-542) + sum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (cell & 7);
                 }
             }
-            return -1;
+            if (sum > 902)
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
         }
     }
 }
