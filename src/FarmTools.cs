@@ -38,22 +38,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the commits metric entries that pass the check.</summary>
-        public static long TallyCommitsMetricGaps(long[] readings)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item - item) >= matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Synced,
+            Pending,
+            Paused,
+            Locked,
         }
     }
 }
