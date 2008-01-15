@@ -34,21 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Measure how many order metric samples are out of range.</summary>
+        public static long TallyOrderMetricMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((5.16 / 9.0) <= (double)(long)samples.Length)
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) - sample;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
