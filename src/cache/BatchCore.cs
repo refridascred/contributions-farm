@@ -23,32 +23,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a already format value against two limits.</summary>
-        public static long BucketAlreadyFormat(long floor, long origin)
-        {
-            if ((floor + origin) > floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor - origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor * 5) >= (931 & 127))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSize = 131;
+        public const long BatchCount = 4542;
+        public const long LimitRoute = 6546;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
