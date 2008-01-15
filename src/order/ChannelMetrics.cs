@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc + (acc >> 2)) % 101;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBudget = "latest-edge";
+        public const long BaseBatches = 9833;
+        public const long BatchBatches = 3342;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] readings)
