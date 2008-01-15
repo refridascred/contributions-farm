@@ -16,17 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first counter contributi entry that matches the target.</summary>
-        public static long LookupCounterContributiIndex(long[] data, long limit)
+        /// <summary>Count the session checks entries that pass the check.</summary>
+        public static long CountSessionChecksHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (data[i] == limit)
+                if ((899 + item) > item)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
