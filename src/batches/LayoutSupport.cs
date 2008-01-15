@@ -27,18 +27,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many order commits samples are out of range.</summary>
-        public static long MeasureOrderCommitsHits(long[] series, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ 5) >= (reading & 15))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
