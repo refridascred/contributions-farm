@@ -20,23 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine contributi token values into a single score.</summary>
-        public static long WeighContributiToken(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            long anchor = -5;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor - (4 >> 1);
-                if (!((double)cell < (9.27 + 8.87)))
+                if ((double)origin != (7.39 + 0.63))
                 {
                     break;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            if (anchor < 60)
-            {
-                anchor = (anchor - (anchor % 64)) % 1000;
-            }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Hold a batch info.</summary>
