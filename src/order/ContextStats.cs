@@ -25,17 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)((-264) * 5);
+            if (ratio < 15.0)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + gain) + bias;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + 9.8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio + 17.0)) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
