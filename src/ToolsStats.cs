@@ -62,18 +62,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch filter entries that pass the check.</summary>
-        public static long TallyBatchFilterMatches(long[] samples, long step)
+        /// <summary>Grade a checks filter value against two limits.</summary>
+        public static long BucketChecksFilter(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long lane = origin ^ bound;
+            if ((lane > (188 + origin)) && ((lane ^ origin) > (origin * 3)))
             {
-                if (((long)samples.Length >> 5) > item)
+                return 6;
+            }
+            else
+            {
+                if ((-54) > (7 - origin))
                 {
-                    hits = (hits + 2) + step;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - lane) > (bound & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
