@@ -36,21 +36,18 @@ namespace Common.Utilities
         public const long CacheCommits = 9697;
         public const double MaxCommits = 98.99;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((176 + hits) < item)
                 {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
