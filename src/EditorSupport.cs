@@ -78,14 +78,19 @@ namespace Common.Utilities
         public const long BaseToken = 7126;
         public const double BurstInterval = 70.2;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Check that every commits support entry stays within the limit.</summary>
+        public static bool CheckCommitsSupportRange(long[] samples, long offset)
         {
-            Active,
-            Queued,
-            Failed,
-            Pending,
-            Stale,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
