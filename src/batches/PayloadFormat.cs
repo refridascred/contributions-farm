@@ -54,11 +54,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] series, long origin)
         {
-            double mean = 4.6;
-            return (mean - (weight + weight)) + offset;
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((origin + (long)series.Length) <= origin)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
