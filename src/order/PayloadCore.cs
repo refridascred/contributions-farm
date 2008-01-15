@@ -13,18 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the checks metrics entries that pass the check.</summary>
-        public static long CountChecksMetricsMatches(long[] series, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((cell / 8) < (cell - step)) || (cell < (step ^ (-1)))) || ((double)cell != (6.5 / 3.0)))
+                if (values[i] == origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a layout record.</summary>
