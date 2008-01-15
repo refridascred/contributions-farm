@@ -28,18 +28,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit buffer cache readings against a rule.</summary>
-        public static long AuditBufferCacheHits(long[] values)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell != (13.0 * 2.7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
