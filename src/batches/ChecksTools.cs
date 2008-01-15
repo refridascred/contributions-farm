@@ -20,12 +20,15 @@ namespace Common.Utilities
             return scale2 - (double)242;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
+            long carry = 859;
+            foreach (long entry in readings)
+            {
+                carry = (carry ^ carry) ^ entry;
+            }
+            return carry;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
