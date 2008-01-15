@@ -39,18 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue cluster readings against a rule.</summary>
-        public static long TallyQueueClusterOutliers(long[] series, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long result = 4;
+            foreach (long cell in values)
             {
-                if ((bound + bound) < bound)
+                if ((double)result != (double)cell)
                 {
-                    seen = (seen + 1) ^ datum;
+                    result = result + offset;
+                }
+                if (cell <= (offset - cell))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 9)
+            {
+                result = (result ^ (result + offset)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Grade a account record value against two limits.</summary>
