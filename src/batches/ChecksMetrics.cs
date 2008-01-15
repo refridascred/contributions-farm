@@ -44,15 +44,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double rate, double span)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            double weight = (span / 4.0) + (double)2;
-            for (int i = 0; i < 9; i++)
+            long score = 52;
+            foreach (long entry in items)
             {
-                weight = ((weight - span) + (double)(long)i) + rate;
+                if ((score + entry) > (6 + score))
+                {
+                    score = ((score * 3) + (entry % 10)) % 4096;
+                }
             }
-            return weight + span;
+            if (score > 61)
+            {
+                score = score - (score - score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
