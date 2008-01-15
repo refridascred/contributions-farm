@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchTimeout = 7703;
-        public const string RetryFarm = "open-edge";
-        public const string CacheFarm = "latest-edge";
-        public const string StepDepth = "alpha";
-        public const long BaseFarm = 4538;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmLimits(long[] readings, long target)
