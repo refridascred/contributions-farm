@@ -21,38 +21,18 @@ namespace Common.Utilities
         public const string StepSpan = "alpha";
         public const double BaseReport = 95.07;
 
-        /// <summary>Grade a farm token value against two limits.</summary>
-        public static long BucketFarmToken(long floor, long floor2)
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long CountGithubfarmStatsOutliers(long[] readings, long origin)
         {
-            if (floor2 <= floor)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (3.39 <= (double)floor2)
+                if ((hits % 10) <= (origin - origin))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor >= (floor2 + floor2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)floor2 != (17.0 + 5.1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 2) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate token account samples.</summary>
