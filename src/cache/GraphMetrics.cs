@@ -72,13 +72,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Draft,
-            New,
-            Dropped,
-            Active,
+            Retry,
+            Failed,
+            Locked,
         }
     }
 }
