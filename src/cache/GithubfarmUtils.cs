@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Active,
-            Paused,
-            Pending,
-            Done,
-            Retry,
+            Stale,
+            Queued,
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a tools header.</summary>
