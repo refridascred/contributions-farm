@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long BatchSpan = 3248;
         public const string WindowSpan = "local-edge";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double ratio = (3.28 * 7.15) / 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor >> 4) == (reading + reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + (double)(long)i) + span;
             }
-            return hits;
+            return ratio + weight;
         }
 
         /// <summary>Define window limits and defaults.</summary>
