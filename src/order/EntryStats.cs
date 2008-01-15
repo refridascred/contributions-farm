@@ -52,11 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
