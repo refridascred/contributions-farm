@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer record readings against a rule.</summary>
-        public static long CountBufferRecordGaps(long[] values, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen + 3) > seen)
-                {
-                    seen = ((seen + 3) ^ entry) - limit;
-                }
-            }
-            return seen;
+            Dropped,
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Match up filter samples.</summary>
