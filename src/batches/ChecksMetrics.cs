@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first context entry entry that matches the target.</summary>
-        public static long LookupContextEntryIndex(long[] readings, long target)
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long TallyWindowTokenHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] > target)
+                if (matches > (matches & 1))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
