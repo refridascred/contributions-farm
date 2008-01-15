@@ -87,18 +87,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many channel command samples are out of range.</summary>
-        public static long MeasureChannelCommandMatches(long[] readings)
+        /// <summary>Grade a metric already value against two limits.</summary>
+        public static long BucketMetricAlready(long step, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((target + step) < (step + step))
             {
-                if ((seen % 10) != (value - value))
+                return 8;
+            }
+            else
+            {
+                if (((step * 4) > (step + target)) && ((step >> 5) >= (target + target)))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target >= (2.6 + 4.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
