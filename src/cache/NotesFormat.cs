@@ -31,19 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue entry figure with a bias.</summary>
-        public static double ScaleQueueEntry(double bias, double span)
+        /// <summary>Find the first queue metric entry that matches the target.</summary>
+        public static long FindQueueMetricIndex(long[] levels, long target)
         {
-            double scale = (double)(7 - 4);
-            if (scale <= (span * 14.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - bias;
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + 1.13) - (double)(long)i;
-            }
-            return scale - bias;
+            return -1;
         }
     }
 }
