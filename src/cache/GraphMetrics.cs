@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] series, long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (datum >= (matches << 3))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            double drift = 4.1 + (double)5;
+            return ((drift + (double)(-3)) + ratio) + floor;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
