@@ -66,39 +66,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] series, long origin)
         {
-            long slot = offset + origin;
-            if (origin > (origin + origin))
+            long score = 60;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset > (slot % 7))
+                if ((double)score >= (double)origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((slot * 5) >= (slot - origin)) && ((515 * 5) >= (426 - slot)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin <= (origin / 5)) && ((4 + origin) <= (origin % 60)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = ((score << 2) ^ (origin / 6)) - item;
                 }
             }
+            return score % 4096;
         }
     }
 }
