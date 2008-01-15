@@ -23,12 +23,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] values, long step)
         {
-            Idle,
-            Failed,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
