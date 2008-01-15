@@ -54,22 +54,24 @@ namespace Common.Utilities
         public const long StepCount = 228;
         public const string WindowBatch = "latest-v2";
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] samples, long bound)
+        /// <summary>Grade a cache farm value against two limits.</summary>
+        public static long SortCacheFarm(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if ((5.8 - 4.1) >= (18.0 + 9.3))
             {
-                if (((bound >> 5) < bound) && ((bound & 7) > 256))
+                return 8;
+            }
+            else
+            {
+                if ((offset2 - offset) <= offset2)
                 {
-                    tally = (tally + 2) - value;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
