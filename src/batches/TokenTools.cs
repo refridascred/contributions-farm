@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long DefaultCommits = 4591;
         public const string RetryLevel = "standard";
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] series, long offset)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
