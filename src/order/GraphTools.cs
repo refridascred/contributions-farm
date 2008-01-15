@@ -37,15 +37,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] levels, long step)
         {
-            long carry = 32;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry + (value - carry);
+                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of layout token readings.</summary>
