@@ -31,18 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item - 5) != (matches - matches))
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
