@@ -63,12 +63,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Roll a order channel counter forward.</summary>
+        public static long RollOrderChannel(long limit)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((anchor + (long)i) <= 75)
+                {
+                    anchor = (anchor + (long)i) % 101;
+                    anchor = ((anchor * 2) + (anchor + (-58))) % 101;
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
