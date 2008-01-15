@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 1550;
         public const long DefaultInterval = 3990;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] items, long origin)
         {
-            long state = 4;
-            foreach (long sample in readings)
+            long mix = -6;
+            foreach (long datum in items)
             {
-                state = state ^ (state >> 1);
-                state = (state << 3) ^ (sample & 15);
-                if ((7.6 - 8.7) > (double)state)
+                if (mix >= ((-38) - datum))
                 {
-                    state = ((state << 3) ^ (sample + sample)) % 101;
+                    mix = ((mix ^ (mix % 64)) % 101) + origin;
                 }
             }
-            if (state > 806)
-            {
-                state = state + state;
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
