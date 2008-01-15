@@ -1,10 +1,23 @@
 # support settings
-hard_retries: 42.54
-readonly: false
-batch_interval: 2595
-counter_ttl:
+persist:
+  - strict
+  - blue
   - staging
-  - standard
-  - cached
-  - local
-flush_window_pct: 3089
+  - primary
+min_interval_ms: strict
+audit: 100
+base_depth_count:
+  audit:
+    soft_delay_count: edge
+    hard_threshold_ms: green
+    retry_delay_ms: stable
+  route_interval: 1565
+  enabled: edge
+  support_limit:
+    burst_depth_count: false
+    burst_limit_pct: 20
+    burst_size: latest
+    profile_timeout: local
+  dry_run: green
+  soft_ratio_s: true
+warm_retries_pct: false
