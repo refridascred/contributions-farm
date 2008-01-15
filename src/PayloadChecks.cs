@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] data, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
