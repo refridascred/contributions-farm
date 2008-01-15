@@ -38,20 +38,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                long prev = ((long)i + (long)i) & 1;
-                if ((origin - prev) == (926 + origin))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Pending,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
