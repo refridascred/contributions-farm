@@ -21,17 +21,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] values, long step)
+        /// <summary>Rank profile farm input into a small class.</summary>
+        public static long BucketProfileFarm(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = offset - limit;
+            if ((2 * 4) <= (offset % 8))
             {
-                if (values[i] == step)
+                return 6;
+            }
+            else
+            {
+                if ((offset <= (prev / 3)) && ((offset + prev) != (offset ^ 434)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
