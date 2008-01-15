@@ -27,17 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first filter report entry that matches the target.</summary>
-        public static long SeekFilterReportIndex(long[] series, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (series[i] <= offset)
+                if (((11.0 + 6.9) == (double)reading) || ((seed + reading) < ((long)data.Length - (-22))))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
