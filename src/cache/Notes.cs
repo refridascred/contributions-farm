@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstLevel = "stable";
-        public const long CacheScore = 6092;
-        public const long BurstFilter = 9542;
-        public const long BaseDepth = 212;
-        public const double StepBudget = 56.0;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 76.01;
+        public const long DefaultReport = 8326;
+        public const long IdleLevel = 5366;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] readings)
