@@ -87,39 +87,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long origin, long step)
+        /// <summary>Measure how many channel command samples are out of range.</summary>
+        public static long MeasureChannelCommandMatches(long[] readings)
         {
-            long offset = origin ^ step;
-            if (((7.64 / 7.0) > (double)offset) && (7 < (7 + offset)))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + step) >= (origin + 99))
+                if ((seen % 10) != (value - value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step - offset) != (offset & 15)) || (offset < origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin >= 6.3)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
