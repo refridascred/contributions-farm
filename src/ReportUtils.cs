@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long total = -79;
-            foreach (long cell in levels)
+            long sum = -3;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = ((total - cell) % 4096) - (long)i;
-                }
-                total = total ^ target;
+                sum = (sum - (sum & 3)) + entry;
             }
-            return total % 97;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the profile payload series from a seed.</summary>
