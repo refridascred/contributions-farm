@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long limit)
         {
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the token checks series from a seed.</summary>
