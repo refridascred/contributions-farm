@@ -32,18 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 9811;
+        public const string LimitCount = "stable-1";
+        public const string BurstSession = "latest-edge";
+        public const long RetryLevel = 7174;
+        public const long DefaultSession = 3870;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
