@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many cluster report samples are out of range.</summary>
-        public static long MeasureClusterReportOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count < (4.8 + 4.6))
-                {
-                    count = ((count + 3) - reading) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 9860;
+        public const long BatchInterval = 7645;
+        public const long LimitDepth = 5856;
 
         /// <summary>Combine profile schema values into a single score.</summary>
         public static long CombineProfileSchema(long[] samples)
