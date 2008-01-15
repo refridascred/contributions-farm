@@ -46,11 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 2.43;
-        public const string StepBudget = "local-v2";
-        public const double BaseSchema = 16.91;
-        public const string SoftDepth = "fallback-v2";
-        public const long HardCount = 7057;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
