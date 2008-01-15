@@ -75,21 +75,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Audit githubfarm command readings against a rule.</summary>
+        public static long AuditGithubfarmCommandHits(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value + value) > ((-961) & 3))
                 {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + target;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
