@@ -38,11 +38,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "fallback";
-        public const long DefaultBuffer = 7773;
-        public const string BaseBuffer = "alpha-edge";
-        public const long HardScore = 8370;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
