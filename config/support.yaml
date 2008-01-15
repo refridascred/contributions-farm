@@ -1,7 +1,10 @@
 # support settings
-retry_retries: 3.5
-soft_ttl_count: 55
-strict: fallback
-schema_delay: 30
-order_window: 8256
-soft_timeout: 82.56
+sync_capacity_count: eu-west
+record_interval: false
+soft_size_ms: edge
+dry_run:
+  - 63
+  - 217
+  - 153
+  - 427
+verbose: primary
