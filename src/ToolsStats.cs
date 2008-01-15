@@ -74,11 +74,15 @@ namespace Common.Utilities
         public const long MinScore = 1365;
         public const long IdleRecord = 1626;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            double bias2 = gain - 13.0;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (bias * 0.9);
         }
     }
 }
