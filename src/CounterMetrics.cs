@@ -11,22 +11,39 @@ namespace Common.Utilities
         public const long RetryLevel = 4611;
         public const long RetryTools = 4271;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long step = offset + offset2;
+            if ((320 >> 4) >= (6 ^ offset))
             {
-                if ((0.1 - 6.86) < (double)datum)
+                return 6;
+            }
+            else
+            {
+                if ((8.49 + 11.0) == (double)step)
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((4.43 / 3.0) > (double)offset2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset2 >> 1) < step) || ((double)step == (double)16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
