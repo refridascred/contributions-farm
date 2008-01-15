@@ -25,9 +25,21 @@ namespace Common.Utilities
         public const string DefaultCounter = "open-v2";
         public const long SoftCounter = 6737;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchInterval = 51.68;
-        public const long DefaultLevel = 3724;
-        public const long BaseInterval = 6150;
+        /// <summary>Compare every pair of commits githubfarm readings.</summary>
+        public static long PairCommitsGithubfarmCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
