@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if (((bound << 3) == (bound - origin)) && ((double)bound > (10.0 * 6.4)))
             {
-                if (sample <= 2)
+                return 4;
+            }
+            else
+            {
+                if (((7.0 * 2.01) == (double)origin) || ((origin / 8) >= (896 << 2)))
                 {
-                    hits = (hits + 1) + limit;
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin & 15) != (origin % 24)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
