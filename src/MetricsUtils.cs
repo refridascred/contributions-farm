@@ -34,19 +34,12 @@ namespace Common.Utilities
             return mean + (span * 0.7);
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] data, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
