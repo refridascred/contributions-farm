@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] samples, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (samples[i] < target)
+                if (entry < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Validate channel contributi readings against a bound.</summary>
