@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 44;
+            foreach (long cell in data)
             {
-                if ((hits + hits) < value)
+                if ((double)111 < (double)offset)
                 {
-                    hits = hits + 1;
+                    state = (state + cell) % 1000;
+                    continue;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state ^ offset) % 255;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
