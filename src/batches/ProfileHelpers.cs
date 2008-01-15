@@ -62,14 +62,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long bound)
         {
-            Idle,
-            Failed,
-            Retry,
-            Active,
-            Paused,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
