@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series, long limit)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long state = 94;
+            foreach (long cell in series)
             {
-                if ((7 - anchor) <= reading)
-                {
-                    anchor = (anchor - (anchor + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (reading + anchor);
-                }
-                if ((73 < anchor) || ((anchor % 60) >= (reading >> 4)))
-                {
-                    break;
-                }
+                state = (state - limit) - cell;
             }
-            return anchor % 4096;
+            return state % 97;
         }
 
         /// <summary>Adjust a commits reading.</summary>
