@@ -19,14 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double weight, double floor)
         {
-            Paused,
-            Active,
-            Draft,
-            Closed,
-            Done,
+            double load = (double)8 - (weight - weight);
+            if (load > (8.69 * 9.03))
+            {
+                load = load - (3.0 + floor);
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load + weight;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
