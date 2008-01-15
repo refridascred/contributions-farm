@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue commits readings against a rule.</summary>
-        public static long TallyQueueCommitsOutliers(long[] data, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally + seed) == (tally & 127))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
