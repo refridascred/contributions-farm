@@ -1,5 +1,12 @@
 {
-  "max_interval_count": 53.23,
-  "default_depth_s": false,
-  "poll_size": 66
+  "default_timeout": 17.76,
+  "default_limit_pct": {
+    "audit": true,
+    "checks_capacity": "cached",
+    "persist": 2
+  },
+  "readonly": true,
+  "idle_depth_ms": 42.73,
+  "persist": false,
+  "audit": ["open", "green"]
 }
