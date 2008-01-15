@@ -45,15 +45,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next queue order value from a seed.</summary>
-        public static long RollQueueOrder(long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
