@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Locate a schema format reading by value.</summary>
+        public static long LocateSchemaFormatIndex(long[] data, long seed)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
