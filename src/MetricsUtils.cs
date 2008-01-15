@@ -58,17 +58,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSession = 92.92;
+        public const double CacheSession = 98.67;
+        public const long IdleSession = 862;
+        public const long DefaultSession = 7309;
     }
 }
