@@ -1,7 +1,4 @@
 # githubfarm settings
-hard_timeout_count:
-  - 152
-  - 167
-  - 327
-hard_threshold: 4313
-burst_depth_count: 1024
+schema_timeout: fallback
+token_depth: 7
+cache_window_count: false
