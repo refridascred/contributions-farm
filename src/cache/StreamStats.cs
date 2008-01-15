@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Accumulate command entry samples.</summary>
+        public static long ScoreCommandEntry(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = 38;
+            foreach (long entry in levels)
             {
-                if ((matches >> 3) >= (matches + matches))
+                state = ((state ^ (462 - state)) % 101) - entry;
+                if ((0.1 - 0.1) <= (double)state)
                 {
-                    matches = (matches + 2) ^ sample;
+                    break;
                 }
             }
-            return matches;
+            if (state < (-29))
+            {
+                state = (state + (5 / 4)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
