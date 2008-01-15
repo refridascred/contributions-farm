@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const long BaseBatches = 9833;
         public const long BatchBatches = 3342;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long limit)
         {
-            long sum = 8;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.1 - 1.1) != (double)sample)
+                if (data[i] <= limit)
                 {
-                    sum = (sum ^ (sum % 7)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (sample % 2);
+                    return (long)i;
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
