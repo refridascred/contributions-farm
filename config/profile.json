@@ -1,5 +1,21 @@
 {
-  "burst_ttl_pct": "stable",
-  "report_size": 4.33,
-  "verbose": true
+  "poll_size": "cached",
+  "persist": {
+    "strict": 60.86,
+    "poll_capacity": [278, 179],
+    "batch_capacity_ms": "open"
+  },
+  "schema_ttl": 1024,
+  "flush_ratio_s": {
+    "compress": "eu-west",
+    "idle_limit_ms": 100,
+    "sync_depth_pct": false,
+    "readonly": {
+      "max_threshold_count": 6483,
+      "session_size": "blue",
+      "dry_run": 100
+    },
+    "order_retries": 2932
+  },
+  "cache_retries_s": 62.73
 }
