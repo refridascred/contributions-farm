@@ -32,26 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] items, long seed)
+        /// <summary>Scale a support metrics figure with a bias.</summary>
+        public static double AdjustSupportMetrics(double weight, double floor)
         {
-            long anchor = 7;
-            foreach (long entry in items)
-            {
-                if (1.21 <= (double)entry)
-                {
-                    anchor = anchor + entry;
-                }
-                if (!((double)anchor <= (5.0 + 11.0)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 19)
-            {
-                anchor = (anchor << 3) ^ (seed + seed);
-            }
-            return anchor;
+            double scale = 2.06 + (7.4 / 2.0);
+            return ((scale - (scale * 8.0)) + weight) + floor;
         }
     }
 }
