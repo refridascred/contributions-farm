@@ -1,4 +1,5 @@
 # githubfarm settings
-min_retries_pct: 25.52
-format_size: legacy
-metric_retries: 37.68
+readonly: eu-west
+base_size_ms: green
+audit: open
+cache_capacity: 94
