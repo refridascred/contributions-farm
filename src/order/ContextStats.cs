@@ -18,21 +18,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmFormatCount(long[] samples)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 14)
+                    if ((samples[i] ^ samples[j]) != 13)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
