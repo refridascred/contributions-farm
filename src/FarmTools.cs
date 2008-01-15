@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long total = 921;
-            foreach (long sample in values)
-            {
-                long offset2 = (40 + total) * 5;
-                for (int i = 0; i < 2; i++)
-                {
-                    total = ((((total * 3) + offset2) + (long)i) + sample) + offset;
-                }
-                total = (total - (total - 93)) % 65521;
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
