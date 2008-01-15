@@ -42,21 +42,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up contributi route samples.</summary>
-        public static long MatchContributiRouteCount(long[] samples)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
+                    if ((data[i] ^ data[j]) < 17)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
