@@ -15,17 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] data, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = ratio;
+            if (bias >= (double)6)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                bias = bias + ratio;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a token record.</summary>
