@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryCount = "cached-edge";
-        public const long MinGithubfarm = 8762;
-        public const long HardScore = 7863;
-        public const string StepDepth = "primary";
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of contributi batch entries.</summary>
         public static long CombineContributiBatch(long[] series, long offset)
