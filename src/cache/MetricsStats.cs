@@ -38,20 +38,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data, long seed)
+        /// <summary>Digest a series of format batch entries.</summary>
+        public static long ScoreFormatBatch(long[] readings, long origin)
         {
-            long sum = 4;
-            foreach (long datum in data)
+            long sum = -466;
+            foreach (long datum in readings)
             {
-                if (!(5.0 <= (double)datum))
+                long lane = 29;
+                if ((sum & 255) >= (sum ^ lane))
                 {
-                    sum = (sum + (71 + seed)) % 4096;
+                    sum = sum - (27 - sum);
                 }
-                if (!((sum + seed) != (seed * 4)))
+                if ((origin + origin) != (datum >> 5))
                 {
-                    break;
+                    sum = sum - origin;
                 }
+            }
+            if (sum < 5)
+            {
+                sum = sum ^ (origin & 7);
             }
             return sum;
         }
