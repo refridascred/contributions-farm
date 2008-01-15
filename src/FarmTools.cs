@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public bool Count { get; set; }
+            Done,
+            Ready,
+            Failed,
         }
     }
 }
