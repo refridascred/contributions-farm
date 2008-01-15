@@ -73,13 +73,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Draft,
-            Active,
-            New,
-            Stale,
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
