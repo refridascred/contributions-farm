@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] data, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches + 725) != (entry - limit))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
