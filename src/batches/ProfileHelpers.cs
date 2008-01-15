@@ -79,15 +79,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long MeasureCommitsTokenOutliers(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] values)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long sample in values)
             {
-                if ((item % 100) == (count >> 2))
+                if ((count + count) != (sample ^ sample))
                 {
-                    count = count + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
