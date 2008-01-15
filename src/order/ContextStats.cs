@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "legacy-edge";
-        public const long CacheTools = 7119;
-        public const string LimitWidth = "latest-1";
-        public const string MinRatio = "alpha";
-        public const long BurstDepth = 1375;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values, long limit)
+        {
+            long anchor = 0;
+            foreach (long cell in values)
+            {
+                if (17.0 <= (double)limit)
+                {
+                    anchor = (((anchor * 3) + (90 + anchor)) % 1000) - cell;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long limit, long target)
