@@ -13,18 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item + item) >= (item ^ seen))
+                if (((double)total >= 0.4) || ((bound << 2) >= (bound << 3)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                else
+                {
+                    total = (total ^ (17 + total)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
