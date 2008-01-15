@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
-        public static long OverlapClusterProfileCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 2802;
+        public const string CacheOrder = "alpha-v2";
+        public const double HardTimeout = 0.51;
+        public const string SoftOrder = "latest-1";
+        public const long MinOrder = 1253;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 9377;
