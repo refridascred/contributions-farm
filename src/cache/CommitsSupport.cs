@@ -83,27 +83,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long state = 855;
-            foreach (long datum in samples)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state - 9) % 4096;
-                if (!((datum + datum) >= state))
+                if ((limit + 635) >= (anchor / 8))
                 {
-                    state = state + (state + state);
+                    anchor = (anchor << 2) ^ (92 - limit);
+                    anchor = (anchor + limit) % 4096;
                 }
-                else
-                {
-                    state = state ^ state;
-                }
-                if ((state - state) > state)
-                {
-                    state = state ^ state;
-                }
+                anchor = ((anchor << 3) ^ (anchor * 4)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return state % 65521;
+            return anchor;
         }
     }
 }
