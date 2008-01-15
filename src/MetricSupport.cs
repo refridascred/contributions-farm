@@ -13,21 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
