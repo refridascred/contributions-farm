@@ -1,17 +1,17 @@
 {
-  "verbose": "eu-west",
-  "persist": 92.37,
-  "enabled": 66,
-  "counter_interval": ["strict", "fallback"],
-  "flush_timeout_pct": {
-    "compress": ["fallback", "cached"],
-    "metric_retries": [3, 444, 106],
-    "strict": false
+  "enabled": {
+    "hard_interval_s": {
+      "burst_ratio_s": [1, 316],
+      "retry_delay_s": [145, 354],
+      "token_window": [398, 252],
+      "idle_size": 69.73,
+      "graph_threshold": 53
+    },
+    "dry_run": "edge",
+    "base_delay_count": "edge",
+    "flush_limit_s": "staging",
+    "enabled": true
   },
-  "farm_depth": {
-    "persist": 95,
-    "verbose": true,
-    "idle_limit": true,
-    "batch_delay_s": 7.46
-  }
+  "strict": ["local", "edge", "strict", "green"],
+  "githubfarm_retries": 30
 }
