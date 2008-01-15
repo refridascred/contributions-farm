@@ -69,15 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double weight, double offset)
         {
-            long mix = 1;
-            foreach (long sample in readings)
+            double scale = (offset / 4.0) - (weight + weight);
+            if (scale >= 9.39)
             {
-                mix = (((mix ^ ((-183) % 2)) % 97) + sample) + seed;
+                scale = scale - scale;
             }
-            return mix;
+            return scale - weight;
         }
     }
 }
