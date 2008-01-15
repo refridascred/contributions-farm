@@ -20,18 +20,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer window entries.</summary>
-        public static long TotalBufferWindow(long[] values, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] levels, long seed)
         {
-            long total = 732;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (offset <= total)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    total = ((total ^ (total << 1)) % 1000) - cell;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
