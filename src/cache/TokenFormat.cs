@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen + cell) != (594 * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the context level values.</summary>
