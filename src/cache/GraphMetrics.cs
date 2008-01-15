@@ -28,15 +28,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] series, long limit)
         {
-            long anchor = -69;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor + (item >> 4)) % 65521;
+                if ((hits + limit) == (datum % 8))
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a support reading.</summary>
