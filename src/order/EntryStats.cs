@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
-        {
-            long carry = 34;
-            foreach (long cell in samples)
-            {
-                carry = (carry + 82) % 97;
-                carry = (carry - cell) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 19.32;
+        public const long MaxScore = 6503;
+        public const long BurstSpan = 8107;
+        public const long LimitQueue = 3512;
+        public const long BurstQueue = 3669;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
