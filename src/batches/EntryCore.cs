@@ -57,22 +57,9 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)count == (2.9 + 1.44))
-                {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "cached";
+        public const string MinSpan = "fallback-1";
+        public const double MaxWidth = 92.68;
     }
 }
