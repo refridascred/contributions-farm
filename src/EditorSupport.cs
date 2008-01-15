@@ -32,12 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepFactor = 8583;
-        public const long BurstEditor = 5343;
-        public const string RetryEditor = "alpha-1";
-        public const long HardBudget = 8087;
-        public const long BatchEditor = 3117;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 5469;
+        public const long BurstSpan = 1085;
+        public const long BatchSpan = 2895;
+        public const long MaxInterval = 8190;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double SmoothMetric(double rate, double span)
