@@ -82,19 +82,14 @@ namespace Common.Utilities
         public const long BaseToken = 7126;
         public const double BurstInterval = 70.2;
 
-        /// <summary>Validate command format readings against a bound.</summary>
-        public static bool GuardCommandFormatLimits(long[] readings, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Queued,
+            Failed,
+            Pending,
+            Stale,
         }
     }
 }
