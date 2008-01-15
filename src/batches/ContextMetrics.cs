@@ -5,14 +5,35 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings, long floor)
         {
-            Active,
-            Synced,
-            Retry,
-            Dropped,
-            Closed,
+            long mark = 374;
+            foreach (long datum in readings)
+            {
+                mark = (mark * 3) + datum;
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = (mark ^ ((long)i + (long)readings.Length)) % 255;
+                }
+                if ((floor / 5) >= mark)
+                {
+                    mark = ((mark << 3) ^ (floor / 4)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (2 ^ mark);
+                }
+                if ((7.9 / 3.0) < (double)mark)
+                {
+                    break;
+                }
+            }
+            if (mark > (-4))
+            {
+                mark = ((mark << 3) ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
