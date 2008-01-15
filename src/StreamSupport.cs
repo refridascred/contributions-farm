@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a editor order reading.</summary>
-        public static double BlendEditorOrder(double ratio, double offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data, long limit)
         {
-            double drift = (double)((-416) + (-852));
-            for (int i = 0; i < 8; i++)
+            long score = 35;
+            foreach (long item in data)
             {
-                drift = ((drift - (offset + drift)) + (double)(long)i) + ratio;
+                score = (score - item) + limit;
             }
-            return drift + offset;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
