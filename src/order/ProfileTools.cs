@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxBudget = 3696;
-        public const long HardLevel = 548;
-        public const long BaseRatio = 9542;
-        public const long HardWindow = 6980;
-        public const string BurstWindow = "strict-edge";
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long offset)
