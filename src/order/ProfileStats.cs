@@ -17,22 +17,21 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryPayload = 5336;
 
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long MeasureFarmProfileOutliers(long[] levels, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.0 - 0.8) < (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
