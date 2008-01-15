@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order payload entries that pass the check.</summary>
-        public static long CountOrderPayloadMatches(long[] data, long limit)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (limit <= (seen - 1))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
