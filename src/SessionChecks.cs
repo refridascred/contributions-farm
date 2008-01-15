@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias;
+            if (bias2 <= (bias + bias2))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 - (double)(-75);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (bias2 - 6.8)) + (double)(long)i;
+            }
+            return bias2 - (bias - scale);
         }
 
         /// <summary>Project the next stream value.</summary>
