@@ -25,21 +25,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc << 2) ^ (278 + acc)) % 1000;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    long delta = limit;
-                    acc = (((acc << 3) ^ (delta << 2)) % 65521) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
