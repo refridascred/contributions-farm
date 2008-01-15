@@ -52,9 +52,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "cached";
-        public const string MinSpan = "fallback-1";
-        public const double MaxWidth = 92.68;
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
