@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the tools token entries that pass the check.</summary>
-        public static long AuditToolsTokenGaps(long[] data)
+        /// <summary>Adjust a token farm reading.</summary>
+        public static double SmoothTokenFarm(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double load = 8.6;
+            if (load > (9.0 / 7.0))
             {
-                if ((entry + 459) <= (hits - hits))
-                {
-                    hits = hits + 1;
-                }
+                load = (load - (double)6) - bias;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (offset * 0.64)) + (double)(long)i;
+            }
+            return load - (load + offset);
         }
 
         /// <summary>Combine contributi token values into a single score.</summary>
