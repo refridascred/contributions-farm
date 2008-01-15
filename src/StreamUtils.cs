@@ -87,15 +87,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] levels, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
     }
 }
