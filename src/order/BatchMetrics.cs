@@ -44,25 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long floor, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long step = floor + bound;
-            if ((step ^ step) < floor)
+            long total = 780;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + step) == (floor << 3))
+                total = ((total * 3) + total) % 65521;
+                if ((sample / 3) > sample)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a metric info.</summary>
