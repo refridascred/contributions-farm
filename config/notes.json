@@ -1,12 +1,16 @@
 {
-  "metric_ttl": false,
-  "poll_interval_ms": {
-    "default_capacity_count": 60,
-    "commits_ttl": [60, 294, 236, 368],
-    "dry_run": [351, 231, 279],
-    "batches_interval": 61.95,
-    "cache_depth_ms": "eu-west",
-    "retry_limit_ms": "fallback"
+  "notes_threshold": "green",
+  "retry_threshold_s": [21, 219],
+  "flush_window": {
+    "persist": {
+      "route_interval": false,
+      "payload_size": [474, 384],
+      "poll_depth_ms": [351, 443, 355]
+    },
+    "retry_threshold_count": "local",
+    "poll_timeout_s": true,
+    "enabled": "fallback",
+    "readonly": 9937
   },
-  "idle_timeout_pct": "staging"
+  "soft_timeout_ms": 44.1
 }
