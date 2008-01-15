@@ -14,12 +14,33 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 74.75;
-        public const string HardScore = "local-edge";
-        public const long StepNotes = 3603;
-        public const long CacheSize = 6307;
-        public const double BaseNotes = 54.33;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long step, long floor)
+        {
+            long step2 = step ^ floor;
+            if (!((double)step2 < 7.08))
+            {
+                return 1;
+            }
+            else
+            {
+                if (8.13 < (double)step2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor % 7) != (207 * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] series, long target)
