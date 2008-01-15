@@ -50,25 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double bias, double span)
         {
-            long lane = floor - offset;
-            if (offset > (21 + lane))
+            double scale = span;
+            if (scale > 7.0)
             {
-                return 3;
+                scale = scale + scale;
             }
             else
             {
-                if ((9.29 * 7.0) == (double)lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                scale = scale + 2.02;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - (scale - scale);
         }
 
         /// <summary>Combine channel values into a single score.</summary>
