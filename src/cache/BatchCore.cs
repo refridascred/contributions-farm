@@ -13,15 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            long mix = 6;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mix = mix + sample;
+                if (!(5 > (1 - (long)readings.Length)) || (entry < (count - entry)))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Grade a already format value against two limits.</summary>
