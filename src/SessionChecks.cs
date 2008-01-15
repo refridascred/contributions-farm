@@ -42,15 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Match up contributi route samples.</summary>
+        public static long MatchContributiRouteCount(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally <= (tally >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
