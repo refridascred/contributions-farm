@@ -1,7 +1,6 @@
 {
-  "notes_capacity": "edge",
-  "dry_run": 65,
-  "max_threshold_ms": "stable",
-  "buffer_size": 42.1,
-  "idle_timeout_pct": 8241
+  "warm_retries_s": 86,
+  "min_delay": true,
+  "sync_depth": ["strict", "fallback"],
+  "poll_window_count": 66.05
 }
