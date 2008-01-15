@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ ((long)i / 4)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a stream info.</summary>
