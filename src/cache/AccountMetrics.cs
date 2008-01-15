@@ -51,12 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 8280;
-        public const long BatchCommits = 5809;
-        public const long SoftCommits = 915;
-        public const double WindowCommits = 92.25;
-        public const string RetrySpan = "fallback-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "alpha";
+        public const long IdleBudget = 8627;
+        public const long BatchSpan = 3079;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmCount(long[] series)
