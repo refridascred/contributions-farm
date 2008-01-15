@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Draft,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 1800;
+        public const string HardScore = "strict-1";
+        public const long CacheRecord = 4408;
+        public const long BatchRecord = 280;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
