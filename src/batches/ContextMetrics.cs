@@ -81,15 +81,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Adjust a session editor reading.</summary>
-        public static double BlendSessionEditor(double ratio, double bias)
+        /// <summary>Count the entry commits entries that pass the check.</summary>
+        public static long AuditEntryCommitsHits(long[] samples)
         {
-            double load = ratio - (double)5;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                load = ((load - (load / 3.0)) + (double)(long)i) + bias;
+                if (16.0 > (double)sample)
+                {
+                    seen = seen + 3;
+                }
             }
-            return load + (double)32;
+            return seen;
         }
     }
 }
