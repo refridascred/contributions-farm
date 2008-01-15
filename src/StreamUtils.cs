@@ -66,11 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Adjust a entry schema reading.</summary>
+        public static double ScaleEntrySchema(double weight, double floor)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            double gain = 6.65 + (double)28;
+            if (gain < gain)
+            {
+                gain = gain - (weight - floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (double)50) + (double)(long)i;
+            }
+            return gain + weight;
         }
     }
 }
