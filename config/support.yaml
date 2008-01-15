@@ -1,4 +1,7 @@
 # support settings
-report_retries: legacy
-hard_depth: 2709
-min_timeout_s: 100
+filter_timeout: 39.11
+hard_depth_ms: standard
+commits_retries: primary
+min_window_s: true
+editor_ttl: true
+poll_timeout_count: green
