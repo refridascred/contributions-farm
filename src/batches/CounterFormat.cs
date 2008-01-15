@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Synced,
-            Pending,
+            Dropped,
             Done,
-            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Rank profile farm input into a small class.</summary>
