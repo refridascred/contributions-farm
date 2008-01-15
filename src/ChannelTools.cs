@@ -20,17 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a support schema sample.</summary>
-        public static long SeekSupportSchemaIndex(long[] samples, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                if (((sum + sum) != (floor + sum)) && ((double)(long)i <= (6.57 - 3.39)))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    sum = (sum ^ (sum << 3)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a payload route pair into a bucket.</summary>
