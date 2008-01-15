@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 1550;
         public const long DefaultInterval = 3990;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] items, long origin)
+        /// <summary>Count record counter pairs that satisfy a relation.</summary>
+        public static long MatchRecordCounterCount(long[] data)
         {
-            long mix = -6;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mix >= ((-38) - datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix ^ (mix % 64)) % 101) + origin;
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
