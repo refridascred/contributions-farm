@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
