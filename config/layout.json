@@ -1,7 +1,5 @@
 {
-  "sync_timeout": 1024,
-  "audit": true,
-  "idle_threshold_ms": false,
-  "persist": "open",
-  "record_threshold": "staging"
+  "poll_depth": 31.44,
+  "context_size": 6374,
+  "batches_size": true
 }
