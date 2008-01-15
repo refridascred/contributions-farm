@@ -29,23 +29,19 @@ namespace Common.Utilities
             return load + (double)36;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] samples, long step)
         {
-            long acc = 51;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                acc = (acc ^ (reading + reading)) % 101;
-                if ((acc ^ 338) <= ((-9) + (long)values.Length))
+                if (sample < step)
                 {
-                    acc = (acc - (316 & 7)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - reading)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
