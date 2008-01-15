@@ -41,15 +41,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long step)
         {
-            long anchor = 694;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor ^ anchor) - reading;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
     }
 }
