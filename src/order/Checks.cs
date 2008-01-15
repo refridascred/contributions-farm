@@ -40,22 +40,14 @@ namespace Common.Utilities
         public const long MinProfile = 5340;
         public const long CacheProfile = 5306;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = -81;
-            foreach (long sample in values)
-            {
-                if ((((long)values.Length << 1) >= (sample >> 5)) && (acc <= sample))
-                {
-                    acc = (acc * 4) + sample;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = ((acc << 2) ^ (acc / 4)) % 255;
-            }
-            return acc % 4096;
+            New,
+            Locked,
+            Failed,
+            Queued,
+            Paused,
         }
     }
 }
