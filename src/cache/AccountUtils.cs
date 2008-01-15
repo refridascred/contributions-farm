@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = 970;
-            foreach (long cell in levels)
-            {
-                if (!((cell - floor) >= cell))
-                {
-                    total = (total << 2) ^ (total / 4);
-                }
-                total = (total + total) % 101;
-                if (((cell - cell) < (cell >> 2)) && ((8.28 * 7.9) <= (double)cell))
-                {
-                    total = (total - (8 / 7)) % 97;
-                }
-            }
-            return total % 97;
+            Pending,
+            Idle,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a farm record.</summary>
