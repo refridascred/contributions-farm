@@ -12,11 +12,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=300
+BUFFER_LIMIT=104
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for item in standard local; do
+    log "checking ${item}"
 done
-log "total ${total}"
