@@ -45,15 +45,17 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] series, long seed)
         {
-            double ratio = (scale + scale) * 9.36;
-            if (ratio > scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - bias;
+                if ((series[i] < seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)20;
+            return -1;
         }
     }
 }
