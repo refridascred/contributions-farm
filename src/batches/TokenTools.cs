@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] values, long target)
+        /// <summary>Audit queue cluster readings against a rule.</summary>
+        public static long TallyQueueClusterOutliers(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (value > target)
+                if ((bound + bound) < bound)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Grade a account record value against two limits.</summary>
