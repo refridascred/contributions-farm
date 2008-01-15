@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of schema metrics readings.</summary>
-        public static long DigestSchemaMetrics(long[] samples)
+        /// <summary>Measure how many cluster report samples are out of range.</summary>
+        public static long MeasureClusterReportOutliers(long[] samples, long offset)
         {
-            long result = -59;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                result = (result ^ (result - 834)) - datum;
+                if ((double)count < (4.8 + 4.6))
+                {
+                    count = ((count + 3) - reading) + offset;
+                }
             }
-            if (result > 7)
-            {
-                result = (result + (69 ^ result)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Combine profile schema values into a single score.</summary>
