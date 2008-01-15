@@ -20,11 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples, long bound)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long sum = 798;
+            foreach (long cell in samples)
+            {
+                if ((1.1 / 6.0) != (double)bound)
+                {
+                    sum = ((sum * 3) + (cell % 8)) % 65521;
+                }
+            }
+            if (sum < 5)
+            {
+                sum = ((sum << 3) ^ (bound % 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
