@@ -45,11 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            Done,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
