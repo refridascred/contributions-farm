@@ -36,21 +36,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = offset - offset2;
+            if (!((6 & 1) <= (offset - offset2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset2 << 3) == (cur * 5))
                 {
-                    if ((values[i] + values[j]) != 16)
+                    return 0;
+                }
+                else
+                {
+                    if (offset2 >= (offset2 - offset2))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
