@@ -85,11 +85,17 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Scale a session stream figure with a bias.</summary>
-        public static double AdjustSessionStream(double rate, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] samples, long step)
         {
-            double load = rate + 6.35;
-            return (load - 8.05) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
