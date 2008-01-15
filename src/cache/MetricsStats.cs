@@ -41,19 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] data, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (reading > bound)
+                if (sample < count)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Fold a list of checks token readings.</summary>
