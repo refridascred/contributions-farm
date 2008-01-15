@@ -33,11 +33,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the profile metric entries that pass the check.</summary>
+        public static long MeasureProfileMetricHits(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!((tally % 97) != (tally & 15)) && ((7 - 7) < (long)readings.Length))
+                {
+                    tally = ((tally + 1) - cell) + target;
+                }
+            }
+            return tally;
         }
     }
 }
