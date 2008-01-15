@@ -20,22 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] items, long bound)
+        /// <summary>Look up the position of a support schema sample.</summary>
+        public static long SeekSupportSchemaIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value + value) < (bound + 49)) || ((6.36 + 3.58) == (double)value))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a payload route pair into a bucket.</summary>
