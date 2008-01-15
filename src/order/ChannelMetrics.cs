@@ -17,13 +17,16 @@ namespace Common.Utilities
         public const long HardSize = 5791;
         public const double StepDepth = 52.93;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long acc = 495;
+            foreach (long item in series)
+            {
+                acc = ((acc << 3) ^ (acc + 80)) % 65521;
+                acc = (acc * 4) + (item & 1);
+            }
+            return acc;
         }
     }
 }
