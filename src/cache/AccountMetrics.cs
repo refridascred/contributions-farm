@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double rate, double span)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            double load = span;
-            if (load <= rate)
+            double scale = (offset / 3.0) / 9.0;
+            if (scale >= offset)
             {
-                load = load - (double)18;
+                scale = (scale + (double)783) - rate;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load - 4.0) + (double)(long)i;
+                scale = scale - (scale - offset);
             }
-            return load + (span - rate);
+            return scale - (offset / 5.0);
         }
 
         /// <summary>Measure how many filter contributi samples are out of range.</summary>
