@@ -1,13 +1,14 @@
 {
-  "batch_timeout": "fallback",
-  "strict": "strict",
-  "retry_ttl": {
-    "payload_delay": 73.51,
-    "cache_ttl": true,
-    "context_capacity": "primary",
-    "persist": 1024
+  "soft_ratio": {
+    "stats_delay": ["latest", "stable"],
+    "default_ttl_pct": 30,
+    "commits_size": "staging",
+    "buffer_ratio": 52.29,
+    "hard_ttl": "cached"
   },
-  "soft_size_ms": "strict",
-  "stream_threshold": 8,
-  "cache_ratio": true
+  "retry_window_count": 16,
+  "farm_limit": 31,
+  "batch_timeout": "local",
+  "command_depth": "stable",
+  "compress": false
 }
