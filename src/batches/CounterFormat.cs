@@ -19,19 +19,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double weight, double floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            double load = (double)8 - (weight - weight);
-            if (load > (8.69 * 9.03))
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                load = load - (3.0 + floor);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score + (target >> 5)) % 65521) ^ (long)i2;
+                }
+                if ((double)score <= (6.11 + 16.0))
+                {
+                    score = (score ^ ((long)i + target)) % 101;
+                }
+                if (((long)i - target) <= ((long)i << 1))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score << 3) ^ (target << 1);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + weight;
+            return score;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
