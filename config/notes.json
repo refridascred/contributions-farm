@@ -1,12 +1,5 @@
 {
-  "warm_retries_count": true,
-  "compress": "staging",
-  "counter_timeout": false,
-  "hard_depth_ms": 28,
-  "entry_depth": {
-    "report_size": "green",
-    "order_size": 30,
-    "enabled": 21,
-    "farm_threshold": true
-  }
+  "record_depth": 1024,
+  "batch_limit_ms": 66,
+  "burst_timeout_s": "stable"
 }
