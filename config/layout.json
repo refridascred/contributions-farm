@@ -1,7 +1,17 @@
 {
-  "max_size": "local",
-  "idle_window_ms": true,
-  "strict": "blue",
-  "account_size": 58.03,
-  "payload_limit": 56
+  "default_capacity_pct": {
+    "min_window": "stable",
+    "warm_depth_ms": 9.99,
+    "base_window_count": "cached",
+    "retry_depth_ms": "green"
+  },
+  "idle_interval_count": {
+    "idle_limit_ms": "primary",
+    "enabled": [436, 372, 39],
+    "max_timeout_pct": 67,
+    "batch_ratio": ["edge", "legacy"],
+    "default_timeout_s": 91.09,
+    "audit": 100
+  },
+  "hard_size_pct": "latest"
 }
