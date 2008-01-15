@@ -51,11 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "staging-1";
-        public const long BatchCommand = 2883;
-        public const double MinInterval = 89.68;
-        public const double StepCommand = 0.88;
-        public const string BurstSize = "staging-1";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Queued,
+            Failed,
+            Dropped,
+            Paused,
+            Done,
+        }
     }
 }
