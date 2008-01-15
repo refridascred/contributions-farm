@@ -37,11 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSize = 5666;
-        public const string HardFormat = "local-1";
-        public const string MinFormat = "fallback";
-        public const long StepSize = 9174;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples)
+        {
+            long acc = 47;
+            foreach (long entry in samples)
+            {
+                if ((entry & 3) < (acc + 3))
+                {
+                    acc = (acc ^ (9 - acc)) % 97;
+                }
+                if ((acc >> 5) != (acc << 3))
+                {
+                    acc = acc - acc;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] series, long origin)
