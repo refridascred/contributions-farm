@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string IdleDepth = "staging-1";
         public const long RetryCount = 163;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] levels, long origin)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches << 3) < matches)
+                {
+                    matches = ((matches + 1) ^ entry) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the buffer cache entries that pass the check.</summary>
