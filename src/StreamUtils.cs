@@ -88,18 +88,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = 248;
+            foreach (long reading in levels)
             {
-                if ((89 + hits) <= (hits / 3))
+                if ((carry / 9) > (reading & 3))
                 {
-                    hits = (hits + 1) ^ item;
+                    carry = (carry - (carry + reading)) % 255;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
