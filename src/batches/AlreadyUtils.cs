@@ -15,31 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long origin, long seed)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            if ((origin - origin) > seed)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((seed << 3) <= seed) && ((17.0 / 4.0) >= (double)seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed < (origin & 63)) || ((6 / 2) <= (seed >> 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
