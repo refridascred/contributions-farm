@@ -24,22 +24,12 @@ namespace Common.Utilities
             return load + (double)(-600);
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowSpan = 9167;
+        public const double MaxOrder = 76.04;
+        public const long WindowSize = 7591;
+        public const long RetryLevel = 7861;
+        public const string DefaultOrder = "cached-v2";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmOutliers(long[] series, long target)
