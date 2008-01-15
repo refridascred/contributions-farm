@@ -30,18 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 8502;
+        public const double StepSpan = 76.68;
+        public const long BaseSchema = 9243;
 
         /// <summary>Combine session stream values into a single score.</summary>
         public static long FoldSessionStream(long[] series, long limit)
