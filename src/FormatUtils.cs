@@ -23,18 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits layout entries that pass the check.</summary>
-        public static long TallyCommitsLayoutHits(long[] samples, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((hits << 2) < hits))
+                if (data[i] >= origin)
                 {
-                    hits = ((hits + 1) - cell) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
