@@ -42,12 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 1039;
-        public const long MinBuffer = 9880;
-        public const long BurstBuffer = 4866;
-        public const long DefaultBuffer = 7599;
-        public const long SoftBuffer = 3773;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphGaps(long[] values)
