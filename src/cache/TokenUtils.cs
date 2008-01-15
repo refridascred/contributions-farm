@@ -39,18 +39,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of metrics stats entries.</summary>
-        public static long CombineMetricsStats(long[] samples, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] data, long step)
         {
-            long carry = 16;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (reading >= (928 + 848))
+                if (reading <= step)
                 {
-                    carry = (carry ^ (reading << 3)) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
     }
 }
