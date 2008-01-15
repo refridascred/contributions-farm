@@ -27,19 +27,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] values, long target)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mark = 59;
-            foreach (long datum in values)
-            {
-                mark = ((mark + (target & 31)) % 255) ^ datum;
-            }
-            if (mark > 918)
-            {
-                mark = mark - (mark + target);
-            }
-            return mark % 4096;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
