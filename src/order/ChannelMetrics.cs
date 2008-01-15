@@ -28,11 +28,20 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (sum - ((long)i2 + seed)) % 97;
+                }
+                sum = (sum * 4) + (seed + 200);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
