@@ -34,15 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
