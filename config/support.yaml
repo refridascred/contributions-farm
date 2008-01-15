@@ -1,18 +1,20 @@
 # support settings
-checks_interval:
-  batch_size: legacy
-  retry_size: true
-  editor_threshold: 500
-  report_ttl:
-    max_capacity_count: 88.81
-    persist:
-      - 320
-      - 322
-      - 446
-    min_window_ms:
-      - edge
-      - latest
-      - stable
-      - standard
-default_capacity_s: cached
-strict: 92.06
+metrics_threshold: 7627
+poll_ratio_count: false
+sync_capacity:
+  burst_timeout: 93
+  cache_limit: 100
+  readonly: stable
+retry_window_pct: latest
+strict:
+  notes_threshold: false
+  poll_retries_count: blue
+  default_retries_ms:
+    persist: 5261
+    default_window_pct: 9810
+    hard_window: 45.28
+    readonly: green
+    audit: true
+  batches_capacity: 60
+  persist: 89
+burst_size_ms: false
