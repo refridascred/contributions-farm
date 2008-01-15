@@ -1,7 +1,11 @@
 # entry settings
-poll_depth: 64
-dry_run:
-  - standard
-  - primary
-tools_threshold: 1.74
-poll_depth_count: 57.28
+soft_capacity:
+  - 324
+  - 213
+  - 127
+  - 460
+verbose: edge
+flush_interval_ms: false
+context_retries: 6.55
+sync_depth_pct: 8434
+commits_threshold: stable
