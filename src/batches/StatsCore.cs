@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleWidth = "open-edge";
+        public const double BatchBudget = 26.18;
+        public const long LimitReport = 1434;
+        public const long CacheInterval = 700;
 
         /// <summary>Validate channel contributi readings against a bound.</summary>
         public static bool CheckChannelContributiBounds(long[] data, long offset)
