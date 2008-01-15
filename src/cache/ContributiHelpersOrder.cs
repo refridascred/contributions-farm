@@ -32,22 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] samples)
+        /// <summary>Compare every pair of context metrics readings.</summary>
+        public static long PairContextMetricsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)sample < (8.0 / 9.0)) || (seen < (seen - sample))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
