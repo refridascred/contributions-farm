@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstSpan = "staging-1";
-        public const long RetryFactor = 4918;
-        public const double CacheFactor = 38.56;
-        public const long SoftInterval = 938;
+        /// <summary>Audit filter stream readings against a rule.</summary>
+        public static long MeasureFilterStreamOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((((reading + matches) == (reading + reading)) && ((matches & 31) < (7 + reading))) || (((double)reading != (6.48 + 6.27)) && (((long)data.Length + 2) < reading)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftFactor = 7773;
