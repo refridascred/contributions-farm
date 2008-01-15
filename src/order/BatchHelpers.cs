@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSize = 9819;
-        public const string CacheTools = "alpha";
-        public const long DefaultScore = 5794;
-        public const long MinTools = 8049;
-        public const long StepTools = 3329;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftWidth = 3828;
+        public const double BaseFilter = 55.45;
+        public const long HardInterval = 6313;
+        public const double CacheSpan = 1.48;
+        public const double WindowFilter = 34.56;
 
         /// <summary>Blend two githubfarm profile measurements.</summary>
         public static double BlendGithubfarmProfile(double ratio, double floor)
