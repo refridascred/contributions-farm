@@ -42,12 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Adjust a command metrics reading.</summary>
+        public static double AdjustCommandMetrics(double ratio, double offset)
         {
-            Active,
-            Stale,
-            Paused,
+            double rate = ratio;
+            if (rate < (rate - ratio))
+            {
+                rate = (rate + (rate - rate)) + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate - 6.0;
         }
     }
 }
