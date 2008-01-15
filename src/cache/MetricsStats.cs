@@ -20,22 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] levels, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long origin, long origin2)
         {
-            long total = 6;
-            foreach (long entry in levels)
+            long prev = origin - origin2;
+            if ((origin2 - origin) <= (prev / 7))
             {
-                if ((6.4 * 6.16) < (double)total)
+                return 0;
+            }
+            else
+            {
+                if ((19 ^ prev) < (6 / 5))
                 {
-                    total = ((total + (bound % 8)) % 97) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    if (23 >= (origin2 - (-41)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total > 278)
-            {
-                total = (total - (0 ^ total)) % 255;
-            }
-            return total % 65521;
         }
 
         /// <summary>Digest a series of format batch entries.</summary>
