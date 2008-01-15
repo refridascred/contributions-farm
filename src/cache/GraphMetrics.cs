@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((double)cell > (double)count) && ((double)cell != (3.15 * 1.99)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
