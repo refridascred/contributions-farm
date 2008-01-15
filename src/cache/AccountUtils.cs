@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the queue farm entries that pass the check.</summary>
-        public static long MeasureQueueFarmMatches(long[] series)
+        /// <summary>Grade a metric checks value against two limits.</summary>
+        public static long RankMetricChecks(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if (bound < (bound + seed))
             {
-                if ((589 >= seen) && ((seen + seen) >= (seen & 127)))
+                return 6;
+            }
+            else
+            {
+                if ((3.38 >= (double)seed) && ((seed / 3) == (172 + bound)))
                 {
-                    seen = (seen + 1) - entry;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
