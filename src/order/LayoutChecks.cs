@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string StepDepth = "alpha";
         public const long BaseFarm = 4538;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
