@@ -15,17 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "legacy-edge";
+        public const long CacheTools = 7119;
+        public const string LimitWidth = "latest-1";
+        public const string MinRatio = "alpha";
+        public const long BurstDepth = 1375;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long limit, long target)
