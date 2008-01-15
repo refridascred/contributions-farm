@@ -54,22 +54,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + count) >= (count << 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSize = 5063;
+        public const string BurstSize = "primary-1";
+        public const string MinLevel = "latest-1";
+        public const long HardScore = 4285;
     }
 }
