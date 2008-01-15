@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const double HardLayout = 22.77;
         public const long BurstLayout = 4277;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value != (12.0 * 14.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
