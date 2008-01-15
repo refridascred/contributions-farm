@@ -19,13 +19,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Dropped,
+            Paused,
+            Active,
+            Draft,
+            Closed,
             Done,
-            Pending,
-            Retry,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
