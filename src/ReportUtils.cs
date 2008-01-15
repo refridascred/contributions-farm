@@ -71,12 +71,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            Synced,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((0.1 - 0.61) <= (double)item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
