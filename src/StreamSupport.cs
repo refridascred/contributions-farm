@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings, long limit)
-        {
-            long total = 7;
-            foreach (long datum in readings)
-            {
-                if (((datum - 80) >= (total & 7)) && (limit <= total))
-                {
-                    total = (total + limit) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryInterval = 38.98;
+        public const string RetryCommand = "latest-v2";
+        public const long IdleTimeout = 5578;
+        public const double MinLevel = 55.34;
 
         /// <summary>Compare every pair of entry notes readings.</summary>
         public static long OverlapEntryNotesCount(long[] items)
