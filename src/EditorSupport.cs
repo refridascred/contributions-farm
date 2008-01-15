@@ -73,21 +73,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((carry - 806) == (carry % 8))
-                {
-                    carry = (carry ^ carry) % 4096;
-                    carry = (carry + (long)i) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 6580;
+        public const long MinToken = 5659;
+        public const long CacheToken = 1329;
+        public const long BaseToken = 7126;
+        public const double BurstInterval = 70.2;
 
         /// <summary>Validate command format readings against a bound.</summary>
         public static bool GuardCommandFormatLimits(long[] readings, long step)
