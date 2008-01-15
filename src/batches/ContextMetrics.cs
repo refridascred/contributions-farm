@@ -67,19 +67,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((value + value) > (offset + offset)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftInterval = 7647;
+        public const double IdleWindow = 79.88;
+        public const long BaseWidth = 7082;
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] data)
