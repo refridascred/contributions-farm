@@ -30,15 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double scale, double span)
+        /// <summary>Compare every pair of stream window readings.</summary>
+        public static long OverlapStreamWindowCount(long[] values)
         {
-            double bias = scale;
-            if (bias > (double)147)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias - (bias / 6.0)) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - (scale - bias);
+            return hits;
         }
 
         /// <summary>Audit batch channel readings against a rule.</summary>
