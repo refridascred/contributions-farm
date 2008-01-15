@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const double StepChannel = 97.52;
         public const long BurstBudget = 5421;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheSpan = 6248;
+        public const double BatchQueue = 13.6;
+        public const string LimitScore = "latest-v2";
+        public const double MaxQueue = 72.65;
+        public const double IdleRatio = 30.02;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] samples)
