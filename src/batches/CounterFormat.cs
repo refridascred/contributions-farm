@@ -31,25 +31,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank profile farm input into a small class.</summary>
-        public static long BucketProfileFarm(long offset, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples, long seed)
         {
-            long prev = offset - limit;
-            if ((2 * 4) <= (offset % 8))
+            long carry = 828;
+            foreach (long cell in samples)
             {
-                return 6;
+                carry = (((carry * 3) + (carry - seed)) % 97) - cell;
             }
-            else
-            {
-                if ((offset <= (prev / 3)) && ((offset + prev) != (offset ^ 434)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
     }
 }
