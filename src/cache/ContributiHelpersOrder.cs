@@ -12,20 +12,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((6.1 * 0.32) > (double)carry) || ((double)origin != (8.03 / 3.0)))
+                long hits = mix;
+                if (!(((hits & 7) < (hits << 3)) || ((mix - hits) <= (origin << 2))))
                 {
-                    carry = (carry + (long)i) % 97;
-                    continue;
+                    hits = (hits + ((long)i & 3)) % 4096;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Match up filter samples.</summary>
