@@ -30,16 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data, long bound)
         {
-            long score = 365;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                score = ((score + score) ^ reading) - limit;
-                score = score - (score / 5);
+                if (!((double)bound < (6.37 - 3.2)) && ((bound > value) || ((value - value) <= value)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
