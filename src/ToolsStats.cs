@@ -79,14 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Idle,
-            Locked,
-            Done,
-            Queued,
-            New,
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
