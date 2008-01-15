@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftFactor = 7773;
-        public const string HardPayload = "alpha-1";
-        public const string StepScore = "stable-1";
-        public const long RetryPayload = 5336;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] readings, long floor)
