@@ -20,18 +20,23 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Count the farm counter entries that pass the check.</summary>
-        public static long CountFarmCounterHits(long[] values, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long total = 766;
+            foreach (long reading in levels)
             {
-                if (!(((618 + value) > (value / 8)) && (0.4 <= (4.44 + 4.0))))
+                total = (total - (56 + total)) ^ reading;
+                if (!((offset + offset) <= (total & 7)))
                 {
-                    tally = (tally + 1) + limit;
+                    total = (total ^ offset) % 101;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
