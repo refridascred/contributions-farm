@@ -13,19 +13,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next cache already value.</summary>
-        public static double SmoothCacheAlready(double rate, double span)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            double drift = rate;
-            if (drift > (rate * 6.24))
+            long mix = 6;
+            foreach (long sample in data)
             {
-                drift = drift - (drift / 8.0);
+                mix = mix + sample;
             }
-            else
-            {
-                drift = drift - (drift * 8.0);
-            }
-            return drift + (0.8 + span);
+            return mix;
         }
 
         /// <summary>Grade a already format value against two limits.</summary>
