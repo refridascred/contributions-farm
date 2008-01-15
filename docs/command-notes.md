@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-The filter module keeps tools values in sync with the editor cache.
-Defaults for stats live in the config folder and can be overridden per environment.
+A payload that stays idle for too long is moved to the channel list.
+A cache that stays idle for too long is moved to the order list.
+
+When a account fails, the editor handler retries a few times before giving up.
+The stream module keeps profile values in sync with the metric cache.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate already input early
-- Log every notes change
+- Keep entry values small
+- Review filter limits each release
+- Document new record fields
