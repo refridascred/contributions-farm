@@ -71,16 +71,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long carry = 1;
-            foreach (long sample in series)
-            {
-                carry = ((carry * 4) + limit) ^ sample;
-                carry = (carry + (limit - carry)) % 255;
-            }
-            return carry;
+            Synced,
+            Draft,
+            Idle,
         }
     }
 }
