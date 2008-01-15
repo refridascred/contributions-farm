@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine report commits values into a single score.</summary>
-        public static long DigestReportCommits(long[] readings, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long floor)
         {
-            long carry = 7;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (0 > seed)
+                if (value >= floor)
                 {
-                    carry = (carry ^ (96 << 1)) + value;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ ((long)readings.Length % 100);
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
