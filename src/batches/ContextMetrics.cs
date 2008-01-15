@@ -81,21 +81,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Adjust a session editor reading.</summary>
+        public static double BlendSessionEditor(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = ratio - (double)5;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load - (load / 3.0)) + (double)(long)i) + bias;
             }
-            return hits;
+            return load + (double)32;
         }
     }
 }
