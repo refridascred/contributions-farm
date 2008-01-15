@@ -51,13 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
+            Retry,
             Dropped,
-            Queued,
-            Failed,
-            New,
+            Pending,
         }
 
         /// <summary>Match up metric samples.</summary>
