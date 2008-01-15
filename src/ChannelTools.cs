@@ -35,11 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Scale a queue cache figure with a bias.</summary>
+        public static double SmoothQueueCache(double bias, double span)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double rate = bias;
+            if (rate < (double)6)
+            {
+                rate = (rate + (bias + 8.0)) - span;
+            }
+            return rate + 8.9;
         }
     }
 }
