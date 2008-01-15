@@ -58,14 +58,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Dropped,
-            Draft,
-            New,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 7669;
+        public const long SoftBudget = 3474;
+        public const string HardAlready = "primary";
+        public const long SoftAlready = 9462;
     }
 }
