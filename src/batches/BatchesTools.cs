@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit context command readings against a rule.</summary>
-        public static long AuditContextCommandMatches(long[] items)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (8 < (reading / 8))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double gain = weight * 13.0;
+            return (gain - (double)7) + offset;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
