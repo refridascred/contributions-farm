@@ -1,11 +1,5 @@
 {
-  "retry_timeout": 79.86,
-  "sync_ttl_count": {
-    "audit": "green",
-    "compress": "primary",
-    "farm_delay": "edge",
-    "max_threshold_count": 100,
-    "idle_ttl_s": [390, 254, 400]
-  },
-  "already_limit": 3979
+  "window_retries": "standard",
+  "poll_ratio": ["legacy", "local"],
+  "retry_timeout": "primary"
 }
