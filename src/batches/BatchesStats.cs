@@ -44,22 +44,14 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha-edge";
         public const long HardScore = 8370;
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long CountNotesChannelOutliers(long[] samples, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((6.89 * 7.55) != (double)matches)
-                {
-                    matches = ((matches + 2) ^ entry) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Dropped,
+            Failed,
+            Draft,
         }
     }
 }
