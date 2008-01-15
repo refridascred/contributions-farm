@@ -52,13 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Pending,
+            Dropped,
+            Failed,
+            Paused,
             Queued,
-            Draft,
-            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
