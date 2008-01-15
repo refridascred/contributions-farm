@@ -34,23 +34,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long origin)
         {
-            double ratio = (double)(1 % 64);
-            if (ratio > (double)1)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                ratio = ratio + weight;
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (weight + span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - weight;
+            return flag;
         }
 
         /// <summary>Check that every report stream entry stays within the limit.</summary>
