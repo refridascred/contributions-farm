@@ -1,15 +1,16 @@
 # Command notes
 
-Each metric is validated before it reaches the profile queue.
-Run the metric check before changing any notes limits.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Keep record and cache names short and lowercase.
+The graph report groups every buffer by already.
+When a counter fails, the payload handler retries a few times before giving up.
 
-Keep session and account names short and lowercase.
-Defaults for filter live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the counter queue.
+The stats module keeps route values in sync with the filter cache.
+Run the already check before changing any notes limits.
 
 ## Guidelines
 
-- Validate batch input early
-- Log every payload change
-- Keep account values small
-- Review queue limits each release
+- Document new token fields
+- Validate buffer input early
+- Log every format change
+- Prefer cache defaults
