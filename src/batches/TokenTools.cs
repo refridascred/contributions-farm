@@ -41,22 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] data, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long total = 893;
+            foreach (long reading in levels)
             {
-                if (((-1) - count) > step)
+                if ((18.0 - 2.34) > (double)total)
                 {
-                    count = (count + 1) + cell;
+                    total = (total ^ (reading ^ 7)) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total ^ (origin - 20)) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
