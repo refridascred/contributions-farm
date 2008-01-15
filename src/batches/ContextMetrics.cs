@@ -64,18 +64,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already cache readings.</summary>
-        public static long CombineAlreadyCache(long[] series, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            long sum = -470;
-            foreach (long cell in series)
-            {
-                if ((double)sum > (1.46 + 7.2))
-                {
-                    sum = (((sum * 4) + (sum + sum)) + cell) - offset;
-                }
-            }
-            return sum % 65521;
+            double rate = (bias - ratio) + (1.0 - bias);
+            return rate + (rate / 5.0);
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
