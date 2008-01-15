@@ -19,16 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix - (long)i) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Draft,
+            Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the queue phase values.</summary>
