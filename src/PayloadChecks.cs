@@ -35,13 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Locate a filter batch reading by value.</summary>
+        public static long LookupFilterBatchIndex(long[] readings, long bound)
         {
-            Synced,
-            Retry,
-            Failed,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
