@@ -48,17 +48,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((offset + offset2) <= (offset2 / 6)) || ((3.6 * 13.0) != (double)offset2))
             {
-                if (levels[i] > target)
+                return 6;
+            }
+            else
+            {
+                if (741 < (offset2 * 4))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
