@@ -23,17 +23,19 @@ namespace Common.Utilities
         public const string LimitFilter = "staging-1";
         public const long BurstFilter = 2905;
 
-        /// <summary>Look up the position of a queue entry sample.</summary>
-        public static long FindQueueEntryIndex(long[] readings, long origin)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool CheckContributiSupportBounds(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                if (sample < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
