@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long bound, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples, long target)
         {
-            long offset = bound - limit;
-            if (bound > (limit % 64))
+            long result = 50;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((19.0 + 3.17) != (double)bound))
+                result = ((result + (target / 8)) % 101) ^ item;
+                if (((result * 2) >= (target + result)) || (target <= (target + result)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset == (5.37 - 3.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((7.63 + 0.5) < (double)offset) || (limit > (limit << 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result < 8)
+            {
+                result = ((result * 4) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
