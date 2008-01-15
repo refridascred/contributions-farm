@@ -1,12 +1,8 @@
 {
-  "graph_window": false,
-  "cache_ratio": "open",
-  "commits_threshold": {
-    "warm_ratio_ms": "blue",
-    "soft_limit_s": 30,
-    "default_retries": ["cached", "latest", "cached", "open"],
-    "verbose": 26,
-    "cache_size": 33.12,
-    "warm_depth_pct": 8.73
-  }
+  "sync_retries_ms": 100,
+  "idle_ttl_ms": "blue",
+  "batch_window": "green",
+  "burst_timeout": "eu-west",
+  "audit": "strict",
+  "soft_threshold_count": 57.42
 }
