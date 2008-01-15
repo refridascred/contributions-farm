@@ -1,15 +1,6 @@
 {
-  "default_ratio_count": "eu-west",
-  "idle_ttl_ms": {
-    "soft_depth_ms": "primary",
-    "githubfarm_limit": true,
-    "base_limit": "latest",
-    "warm_depth": 100,
-    "warm_ttl_ms": "edge",
-    "cache_depth_ms": false
-  },
-  "enabled": "staging",
-  "poll_threshold": 13.52,
-  "retry_ttl_ms": [230, 356, 151],
-  "support_window": [344, 213, 49]
+  "soft_delay_count": 73,
+  "batches_window": true,
+  "cache_window": 37,
+  "burst_ttl_ms": false
 }
