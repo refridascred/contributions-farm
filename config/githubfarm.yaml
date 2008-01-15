@@ -1,9 +1,7 @@
 # githubfarm settings
-commits_ratio: 60
-batch_capacity_count:
-  - 296
-  - 312
-  - 363
-  - 420
-audit: true
-order_capacity: 34
+dry_run: latest
+flush_ratio_ms: 8597
+min_timeout_ms: 63.81
+flush_ratio: false
+sync_delay_s: 5083
+default_limit: legacy
