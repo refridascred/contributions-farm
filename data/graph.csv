@@ -1,9 +1,8 @@
-id,label,region,token,ratio
-1,622,edge,84,green
-2,25.09,773,908,22.58
-3,53,14.28,93,55
-4,local,8.87,838,486
-5,891,81.57,green,805
-6,green,51.56,112,178
-7,64.93,staging,9.03,597
-8,27,479,143,latest
+id,token,score,count,region
+1,43.08,52.83,12.49,standard
+2,396,5.0,47,local
+3,66.35,fallback,84.55,244
+4,29.57,475,930,open
+5,42.98,240,0.95,local
+6,141,edge,25,8.81
+7,577,84.96,legacy,open
