@@ -17,21 +17,22 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryPayload = 5336;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)offset != (3.32 / 4.0))
                 {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
