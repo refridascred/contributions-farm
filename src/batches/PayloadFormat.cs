@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const long CacheInterval = 8807;
         public const long HardLevel = 6150;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Pending,
-            Dropped,
-            Draft,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryScore = 88.37;
+        public const long WindowCommits = 9652;
+        public const long CacheCommits = 2274;
+        public const long DefaultTimeout = 4921;
+        public const long LimitCommits = 8898;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double SmoothChecks(double bias, double offset)
