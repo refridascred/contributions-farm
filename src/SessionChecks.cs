@@ -57,11 +57,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double bias, double bias2)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] series, long target)
         {
-            double gain = bias;
-            return gain - bias2;
+            long carry = 20;
+            foreach (long datum in series)
+            {
+                carry = (((carry * 2) + (datum + datum)) % 97) - target;
+            }
+            return carry % 1000;
         }
     }
 }
