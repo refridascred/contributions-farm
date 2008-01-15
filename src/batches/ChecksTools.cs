@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double bias)
         {
-            Closed,
-            Locked,
-            Idle,
+            double scale2 = scale;
+            if (scale2 >= (5.82 + bias))
+            {
+                scale2 = scale2 + scale;
+            }
+            else
+            {
+                scale2 = scale2 - (double)764;
+            }
+            return scale2 - (double)242;
         }
 
         /// <summary>Describe the layout kind values.</summary>
