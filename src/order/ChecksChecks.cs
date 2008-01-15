@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7772;
+        public const double RetryTimeout = 33.46;
+        public const string MinMetrics = "alpha-1";
+        public const string StepMetrics = "primary-edge";
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long bound, long step)
