@@ -1,6 +1,8 @@
 {
-  "cache_window_ms": 24,
-  "default_retries_ms": "primary",
-  "retry_timeout_pct": "open",
-  "warm_window_pct": "legacy"
+  "flush_interval_count": [169, 53],
+  "persist": 6.06,
+  "dry_run": [248, 433],
+  "strict": [500, 282, 139],
+  "report_window": "blue",
+  "base_size_ms": "primary"
 }
