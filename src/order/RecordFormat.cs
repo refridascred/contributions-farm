@@ -37,18 +37,18 @@ namespace Common.Utilities
         public const string BatchSize = "staging-edge";
         public const long BurstScore = 4695;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] series, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((value - 76) > (seed * 4))
+                if (entry <= step)
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
