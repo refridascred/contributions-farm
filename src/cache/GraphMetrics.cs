@@ -42,15 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double span)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            double ratio = span;
-            if (ratio > bias)
+            double mean = (double)5 / 9.0;
+            if (mean > (double)883)
             {
-                ratio = ratio + ratio;
+                mean = mean + 7.29;
             }
-            return ratio + (13.0 * 7.8);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + (ratio - offset);
         }
     }
 }
