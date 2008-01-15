@@ -29,11 +29,23 @@ namespace Common.Utilities
         public const string StepSpan = "alpha";
         public const double BaseReport = 95.07;
 
-        /// <summary>Project the next metrics token value.</summary>
-        public static double AdjustMetricsToken(double weight, double span)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            double bias = (double)223 / 5.0;
-            return (bias - weight) + span;
+            long mix = 403;
+            foreach (long reading in readings)
+            {
+                mix = (mix ^ 2) % 97;
+                if ((double)reading == (9.8 - 10.0))
+                {
+                    mix = ((mix << 2) ^ (reading % 2)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (reading - reading)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a schema record.</summary>
