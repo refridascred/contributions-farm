@@ -26,39 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long step, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] readings, long limit)
         {
-            long gap = step + bound;
-            if (((double)gap < (double)15) || ((bound ^ step) < step))
+            long acc = 75;
+            foreach (long entry in readings)
             {
-                return 4;
+                acc = (((acc * 4) + (acc ^ limit)) % 255) - entry;
             }
-            else
+            if (acc < 0)
             {
-                if (!((gap >> 1) == (step - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - gap) >= 710)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((gap - bound) == (gap % 12))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                acc = (acc + limit) % 101;
             }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
