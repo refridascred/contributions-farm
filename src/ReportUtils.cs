@@ -58,17 +58,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long seed)
+        /// <summary>Roll a payload metric counter forward.</summary>
+        public static long RollPayloadMetric(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] > seed)
+                if (!(3 < ((long)i - sum)))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (sum + sum)) % 101;
+                    sum = (sum + (sum * 3)) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the contributi class values.</summary>
