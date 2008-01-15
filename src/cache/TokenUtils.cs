@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] readings, long offset)
+        /// <summary>Count the route filter entries that pass the check.</summary>
+        public static long TallyRouteFilterOutliers(long[] values, long bound)
         {
-            long total = 4;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((4 + offset) == (total & 3))
+                if ((tally - bound) >= (tally - datum))
                 {
-                    total = (total ^ (42 - offset)) + entry;
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
