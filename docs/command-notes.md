@@ -1,11 +1,15 @@
 # Command notes
 
-Keep context and cluster names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
-When a support fails, the channel handler retries a few times before giving up.
+Each metric is validated before it reaches the profile queue.
+Run the metric check before changing any notes limits.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+Keep session and account names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every command change
-- Prefer stream defaults
-- Document new counter fields
+- Validate batch input early
+- Log every payload change
+- Keep account values small
+- Review queue limits each release
