@@ -32,11 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state + state) % 1000;
+                state = (state * 4) + (state - (long)i);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
