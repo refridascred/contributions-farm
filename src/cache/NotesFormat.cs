@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a order metrics sample.</summary>
-        public static long LocateOrderMetricsIndex(long[] series, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                if (series[i] >= target)
+                if ((anchor > cell) && (cell <= 99))
                 {
-                    return (long)i;
+                    anchor = (anchor - cell) % 97;
+                }
+                if (((cell - anchor) < (anchor * 2)) || (cell < anchor))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 24)
+            {
+                anchor = anchor ^ (27 & 1);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next session value.</summary>
