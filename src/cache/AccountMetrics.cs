@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long limit, long floor)
+        /// <summary>Measure how many format metric samples are out of range.</summary>
+        public static long MeasureFormatMetricHits(long[] series, long bound)
         {
-            long bound = limit - floor;
-            if ((limit <= (floor + limit)) || ((limit + (-923)) > (limit % 12)))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound > (double)floor) && (floor <= (bound & 1)))
+                if (!((bound ^ (-9)) <= (163 + 110)) && ((bound << 2) > datum))
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
