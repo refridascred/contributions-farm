@@ -66,15 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] data, long bound)
         {
-            long sum = 2;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                sum = ((sum << 3) ^ 646) + reading;
+                if (cell > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the entry kind values.</summary>
