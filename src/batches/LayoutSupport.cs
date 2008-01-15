@@ -19,11 +19,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleCount = 5968;
-        public const long BurstEditor = 8495;
-        public const double BurstLevel = 6.53;
-        public const double CacheSize = 28.49;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count < (5.0 * 4.28))
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long DeriveBatch(long limit)
