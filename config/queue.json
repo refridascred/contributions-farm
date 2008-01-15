@@ -1,6 +1,13 @@
 {
-  "dry_run": false,
-  "support_ttl": "local",
-  "soft_ratio_s": false,
-  "base_depth": "eu-west"
+  "support_ratio": [238, 76, 330],
+  "sync_interval": "primary",
+  "readonly": "standard",
+  "flush_ratio_s": {
+    "batch_window_count": 500,
+    "sync_interval": 30,
+    "profile_size": 500,
+    "batch_window": false,
+    "persist": true,
+    "idle_delay": "primary"
+  }
 }
