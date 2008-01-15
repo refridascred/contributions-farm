@@ -35,19 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] samples, long step)
+        /// <summary>Locate a format stats reading by value.</summary>
+        public static long FindFormatStatsIndex(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < step)
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
