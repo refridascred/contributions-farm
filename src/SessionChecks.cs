@@ -60,21 +60,23 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (6.44 - offset) + (6.0 * 2.5);
+            if (weight <= weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight - weight) - scale;
             }
-            return matches;
+            else
+            {
+                weight = weight - (weight / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (double)28;
         }
     }
 }
