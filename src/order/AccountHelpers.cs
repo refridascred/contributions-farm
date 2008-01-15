@@ -55,17 +55,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next profile metrics value from a seed.</summary>
-        public static long StepProfileMetrics(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score + (879 << 2)) % 65521;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchDepth = "legacy-v2";
+        public const long WindowLevel = 4546;
+        public const double IdleFormat = 76.19;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] series, long origin)
