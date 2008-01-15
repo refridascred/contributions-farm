@@ -1,5 +1,7 @@
 {
-  "cache_depth": 9591,
-  "max_threshold_pct": 250,
-  "filter_timeout": 84.99
+  "notes_capacity": "edge",
+  "dry_run": 65,
+  "max_threshold_ms": "stable",
+  "buffer_size": 42.1,
+  "idle_timeout_pct": 8241
 }
