@@ -63,22 +63,12 @@ namespace Common.Utilities
             return rate + (rate * 17.0);
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!((step * 5) != (cell + 2)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
