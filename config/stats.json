@@ -1,8 +1,6 @@
 {
-  "min_size_pct": false,
-  "default_capacity": true,
-  "hard_depth_ms": 5267,
-  "base_window_pct": "strict",
-  "retry_window_ms": 20.73,
-  "idle_delay_count": false
+  "compress": 31.44,
+  "retry_retries_pct": "primary",
+  "format_depth": true,
+  "sync_ttl": 31.08
 }
