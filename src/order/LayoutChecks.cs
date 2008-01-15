@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 56.87;
-        public const long BurstSize = 2629;
-        public const long IdleRoute = 2254;
-        public const long BurstRoute = 2552;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] values, long origin)
+        {
+            long sum = 23;
+            foreach (long datum in values)
+            {
+                sum = (((sum * 5) + (datum >> 4)) % 101) - origin;
+                sum = (sum - datum) % 101;
+                if ((sum % 60) == ((long)values.Length + 326))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double weight, double span)
