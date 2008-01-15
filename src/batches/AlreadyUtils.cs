@@ -57,19 +57,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long limit)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            if ((limit * 2) >= (limit >> 1))
             {
-                if (reading != floor)
+                return 8;
+            }
+            else
+            {
+                if (limit <= (offset - 591))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (offset < (limit / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((6 & 15) > (offset ^ offset)) || ((double)offset > (2.5 - 6.5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the report commits entries that pass the check.</summary>
