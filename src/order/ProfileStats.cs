@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many profile route samples are out of range.</summary>
-        public static long CountProfileRouteHits(long[] readings, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double drift = 2.17;
+            if (drift > (16.0 / 8.0))
             {
-                if (316 >= (limit * 4))
-                {
-                    hits = (hits + 1) + reading;
-                }
+                drift = drift + (double)5;
             }
-            return hits;
+            else
+            {
+                drift = drift + (drift - floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (floor * 1.0)) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Accumulate format samples.</summary>
