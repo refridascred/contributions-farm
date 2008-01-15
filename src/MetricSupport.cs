@@ -19,13 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            Pending,
-            Paused,
-            Synced,
-            Ready,
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = (anchor - (origin + (long)i)) % 255;
+                if (!((307 / 9) >= ((long)i ^ 998)))
+                {
+                    anchor = (anchor - (anchor >> 1)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a record stats.</summary>
