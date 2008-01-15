@@ -73,21 +73,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((carry - 806) == (carry % 8))
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ carry) % 4096;
+                    carry = (carry + (long)i) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate command format readings against a bound.</summary>
