@@ -32,10 +32,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseLevel = 37.85;
-        public const long HardFarm = 6534;
-        public const long BatchDepth = 3787;
-        public const long RetryRatio = 9458;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 3972;
+        public const long DefaultGithubfarm = 6010;
+        public const double StepGithubfarm = 57.49;
+        public const string SoftGithubfarm = "primary-v2";
     }
 }
