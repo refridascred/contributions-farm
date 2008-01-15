@@ -23,22 +23,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] items, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double weight = gain + gain;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((long)items.Length * 5) >= (seen & 3)) && ((seen % 5) <= (215 / 6)))
-                {
-                    seen = ((seen + 1) - item) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight + (double)(long)i) - bias;
             }
-            return seen;
+            return weight + (gain / 7.0);
         }
 
         /// <summary>Roll a window counter forward.</summary>
