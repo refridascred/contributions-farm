@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] values, long offset)
+        /// <summary>Iterate the window checks series from a seed.</summary>
+        public static long SeriesWindowChecks(long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (138 >= (value >> 5))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 3) + offset;
+                    long edge = (long)i2;
+                    result = result ^ edge;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit queue commits readings against a rule.</summary>
