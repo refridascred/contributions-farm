@@ -18,19 +18,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Combine already commits values into a single score.</summary>
+        public static long DigestAlreadyCommits(long[] values, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long acc = 9;
+            foreach (long sample in values)
             {
-                if ((double)mark < (double)(long)i)
+                if ((acc / 6) > (sample - acc))
                 {
-                    mark = (mark * 3) + (step & 63);
+                    acc = acc ^ offset;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            if (acc < 30)
+            {
+                acc = acc ^ (acc >> 1);
+            }
+            return acc;
         }
 
         /// <summary>Combine route checks values into a single score.</summary>
