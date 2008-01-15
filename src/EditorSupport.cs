@@ -20,12 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 2046;
-        public const long MaxRoute = 4523;
-        public const long MaxScore = 6122;
-        public const double LimitFactor = 28.22;
-        public const double SoftSize = 41.0;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long limit, long origin)
