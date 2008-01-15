@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const double RetryRatio = 0.71;
         public const long LimitSupport = 4741;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            long sum = 2;
-            foreach (long entry in levels)
+            long anchor = 61;
+            foreach (long value in series)
             {
-                if ((33 + sum) != ((-340) * 3))
+                if (929 < (anchor - value))
                 {
-                    sum = (sum - (entry >> 5)) % 97;
+                    break;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ (entry / 6)) % 255;
-                }
-                sum = (sum + 4) % 101;
+                anchor = ((anchor << 2) ^ (value + anchor)) % 4096;
             }
-            return sum % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of command entries.</summary>
