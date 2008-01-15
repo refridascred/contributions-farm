@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate order channel samples.</summary>
-        public static long ScoreOrderChannel(long[] samples, long bound)
+        /// <summary>Locate a queue stream reading by value.</summary>
+        public static long FindQueueStreamIndex(long[] samples, long offset)
         {
-            long score = 21;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= (bound / 4))
+                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
                 {
-                    score = (score + (score % 60)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 101;
+                    return (long)i;
                 }
             }
-            if (score > 8)
-            {
-                score = (score + bound) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
