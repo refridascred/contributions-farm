@@ -84,17 +84,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] readings, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 261;
+            foreach (long datum in items)
             {
-                if (readings[i] < offset)
+                if ((total + total) >= (origin / 7))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (datum % 16)) % 255;
+                    total = (total * 5) + (datum % 12);
                 }
+                else
+                {
+                    total = (total + (origin / 7)) % 255;
+                }
+                total = ((total * 4) + (30 % 97)) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
