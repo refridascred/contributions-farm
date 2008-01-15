@@ -1,12 +1,9 @@
 # githubfarm settings
-burst_timeout_pct: true
-readonly:
-  entry_ttl: staging
-  idle_limit_pct: primary
-  default_retries:
-    - stable
-    - stable
-    - open
-    - blue
-  cluster_threshold: staging
-min_depth_s: local
+commits_ratio: 60
+batch_capacity_count:
+  - 296
+  - 312
+  - 363
+  - 420
+audit: true
+order_capacity: 34
