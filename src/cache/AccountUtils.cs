@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools channel values into a single score.</summary>
-        public static long FoldToolsChannel(long[] samples, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            long result = 42;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                result = ((result * 2) + (857 - seed)) % 65521;
-                if ((seed < (datum >> 1)) && ((seed / 2) <= (seed + (-886))))
+                if (((sample + sample) <= (seen - sample)) && ((double)seen >= (9.5 - 8.8)))
                 {
-                    result = result + (result / 5);
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
