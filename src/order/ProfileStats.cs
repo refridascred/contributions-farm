@@ -38,23 +38,22 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryPayload = 5336;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] levels, long offset)
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long MeasureFarmProfileOutliers(long[] levels, long offset)
         {
-            long mix = 4;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((double)0 <= 0.6)
+                if ((5.0 - 0.8) < (double)offset)
                 {
-                    mix = ((mix << 3) ^ (mix << 3)) + cell;
+                    seen = (seen + 3) - entry;
                 }
-                mix = (mix + mix) % 1000;
-                if ((offset > (offset / 7)) && (offset < (mix / 4)))
+                else
                 {
-                    mix = (mix - (-76)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
