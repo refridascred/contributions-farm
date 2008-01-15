@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Validate command notes readings against a bound.</summary>
+        public static bool VerifyCommandNotesRange(long[] samples, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                score = score - step;
-                score = ((score * 4) + (long)i) % 1000;
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
