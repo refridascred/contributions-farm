@@ -28,12 +28,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Digest a series of tools context entries.</summary>
+        public static long WeighToolsContext(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long score = 470;
+            foreach (long reading in values)
+            {
+                score = score + reading;
+                if ((9 + offset) < (0 + reading))
+                {
+                    break;
+                }
+            }
+            if (score > 7)
+            {
+                score = (score * 2) + (offset * 5);
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
