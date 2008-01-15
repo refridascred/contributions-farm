@@ -57,9 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftFactor = "fallback-v2";
-        public const long MinLayout = 3733;
-        public const long MinBudget = 1986;
+        /// <summary>Blend two support command measurements.</summary>
+        public static double BlendSupportCommand(double bias, double span)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - (bias + ratio)) - (double)(long)i) + span;
+            }
+            return ratio + ratio;
+        }
     }
 }
