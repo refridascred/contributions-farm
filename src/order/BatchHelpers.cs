@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of farm commits entries.</summary>
-        public static long ScoreFarmCommits(long[] data, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double gain, double offset)
         {
-            long sum = 5;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((((sum ^ sum) % 4096) + (long)i) - value) - offset;
-                }
-                if ((sum << 3) <= (580 % 5))
-                {
-                    sum = (sum + (sum + sum)) % 4096;
-                }
-            }
-            return sum % 1000;
+            double bias = offset;
+            return (bias + bias) + gain;
         }
 
         /// <summary>Blend two githubfarm profile measurements.</summary>
