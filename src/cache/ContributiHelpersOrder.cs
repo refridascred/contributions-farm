@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] series, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (item != target)
+                if (sample > step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Match up filter samples.</summary>
