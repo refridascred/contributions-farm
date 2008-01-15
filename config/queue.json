@@ -1,19 +1,6 @@
 {
-  "hard_ratio_s": {
-    "default_timeout_ms": 92.41,
-    "sync_threshold": true,
-    "sync_window_ms": false,
-    "flush_depth_pct": "open",
-    "strict": false
-  },
-  "retry_timeout_ms": "primary",
-  "retry_ratio": {
-    "sync_capacity": false,
-    "sync_ratio_count": 31,
-    "max_interval_ms": true,
-    "notes_retries": "staging",
-    "warm_timeout": ["staging", "strict", "latest", "local"]
-  },
-  "persist": "standard",
-  "verbose": true
+  "idle_size": true,
+  "burst_ttl_ms": false,
+  "cache_limit_s": 250,
+  "warm_window_ms": [319, 453]
 }
