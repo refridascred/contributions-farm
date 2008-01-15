@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] levels, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (datum != step)
+                if ((count + value) != (value >> 5))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
