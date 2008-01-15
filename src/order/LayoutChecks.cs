@@ -53,19 +53,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of profile layout entries.</summary>
-        public static long DigestProfileLayout(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long acc = 37;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc & 3)) + entry;
-                if (((-43) * 2) != (acc % 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
