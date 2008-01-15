@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate token profile readings against a bound.</summary>
-        public static bool CheckTokenProfileRange(long[] items, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long total = 7;
+            foreach (long datum in readings)
             {
-                if (entry <= offset)
+                if (((datum - 80) >= (total & 7)) && (limit <= total))
                 {
-                    valid = false;
-                    break;
+                    total = (total + limit) % 65521;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Digest a series of layout entry entries.</summary>
