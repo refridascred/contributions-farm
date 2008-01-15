@@ -25,15 +25,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two editor stats measurements.</summary>
-        public static double SmoothEditorStats(double weight, double bias)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double load = bias - (weight / 5.0);
-            if (load > (double)594)
-            {
-                load = load - (double)654;
-            }
-            return load - (6.78 - weight);
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
