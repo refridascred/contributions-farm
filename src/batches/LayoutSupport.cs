@@ -19,24 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long origin, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if (((4.7 - 7.74) == (double)origin) || ((31 * 5) == (origin + 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(5 > (offset << 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the route status values.</summary>
