@@ -61,19 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples)
-        {
-            long carry = 915;
-            foreach (long datum in samples)
-            {
-                if ((9 % 16) >= (datum + carry))
-                {
-                    carry = carry ^ (datum >> 5);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinDepth = "alpha-edge";
+        public const double BatchSpan = 51.82;
+        public const string MinFactor = "strict-v2";
+        public const string SoftRatio = "latest-1";
+        public const string BatchSize = "standard-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowCommand = 7687;
