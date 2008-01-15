@@ -76,19 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] samples, long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
