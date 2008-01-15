@@ -27,15 +27,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Accumulate token order samples.</summary>
-        public static long ScoreTokenOrder(long[] series, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long bound)
         {
-            long anchor = 577;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor + (896 * 5)) % 4096) - datum) - target;
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
