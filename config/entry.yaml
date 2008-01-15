@@ -1,8 +1,7 @@
 # entry settings
-editor_depth: open
-sync_limit_ms: 49.82
-batch_size:
-  - 286
-  - 250
-  - 158
-  - 98
+enabled: green
+sync_retries_ms:
+  - blue
+  - edge
+  - standard
+retry_window_count: 61.61
