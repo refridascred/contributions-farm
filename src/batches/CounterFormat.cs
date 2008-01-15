@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long seed)
+        /// <summary>Audit window payload readings against a rule.</summary>
+        public static long CountWindowPayloadGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (value > seed)
+                if ((count - cell) >= (count & 15))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the layout class values.</summary>
