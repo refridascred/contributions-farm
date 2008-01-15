@@ -40,18 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order metric samples are out of range.</summary>
-        public static long TallyOrderMetricMatches(long[] samples)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((5.16 / 9.0) <= (double)(long)samples.Length)
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
