@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] series)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((101 + tally) > (tally % 12))
+                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a command stats.</summary>
