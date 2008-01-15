@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a record buffer reading.</summary>
-        public static double ScaleRecordBuffer(double gain, double bias)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] series)
         {
-            double weight = (double)(584 / 7);
-            if (weight < (5.89 / 2.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (double)128) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight + gain;
+            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
