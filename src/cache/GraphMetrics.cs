@@ -42,19 +42,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] samples, long bound)
-        {
-            long carry = 961;
-            foreach (long reading in samples)
-            {
-                carry = (((carry * 2) + (reading & 1)) % 65521) + bound;
-            }
-            if (carry < 8)
-            {
-                carry = carry - carry;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleCount = 1825;
+        public const long BaseRatio = 8633;
+        public const long BurstSpan = 9860;
+        public const double DefaultFactor = 96.1;
+        public const string MaxEditor = "alpha-edge";
     }
 }
