@@ -1,23 +1,7 @@
 # support settings
-persist:
-  - strict
-  - blue
-  - staging
-  - primary
-min_interval_ms: strict
-audit: 100
-base_depth_count:
-  audit:
-    soft_delay_count: edge
-    hard_threshold_ms: green
-    retry_delay_ms: stable
-  route_interval: 1565
-  enabled: edge
-  support_limit:
-    burst_depth_count: false
-    burst_limit_pct: 20
-    burst_size: latest
-    profile_timeout: local
-  dry_run: green
-  soft_ratio_s: true
-warm_retries_pct: false
+retry_retries: 3.5
+soft_ttl_count: 55
+strict: fallback
+schema_delay: 30
+order_window: 8256
+soft_timeout: 82.56
