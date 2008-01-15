@@ -1,4 +1,4 @@
 # githubfarm settings
-schema_timeout: fallback
-token_depth: 7
-cache_window_count: false
+command_window: false
+token_timeout: 5755
+readonly: false
