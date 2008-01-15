@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] levels, long origin)
         {
-            long sum = 731;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)sum != (double)step)
+                if (!!((9.0 + 18.0) > (double)origin))
                 {
-                    sum = (sum ^ (sum * 4)) + datum;
+                    count = (count + 3) + reading;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
