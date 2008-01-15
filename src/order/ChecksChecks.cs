@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
