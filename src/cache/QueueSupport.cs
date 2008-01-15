@@ -14,33 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a metric cache pair into a bucket.</summary>
-        public static long GradeMetricCache(long target, long target2)
-        {
-            long gap = target + target2;
-            if (((1.0 / 3.0) != (double)gap) && ((double)gap != (1.95 / 6.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 2) >= target2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((104 > (gap / 5)) && ((5.0 / 9.0) == (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 3498;
+        public const long SoftSession = 9377;
+        public const long MinInterval = 6577;
+        public const long BatchSession = 3635;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] series)
