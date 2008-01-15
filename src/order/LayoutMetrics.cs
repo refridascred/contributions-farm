@@ -16,12 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepInterval = 64.27;
-        public const double StepWidth = 91.3;
-        public const double BatchFilter = 8.86;
-        public const string LimitFilter = "staging-1";
-        public const long BurstFilter = 2905;
+        /// <summary>Find the first counter contributi entry that matches the target.</summary>
+        public static long LookupCounterContributiIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate contributi support readings against a bound.</summary>
         public static bool CheckContributiSupportBounds(long[] samples, long step)
