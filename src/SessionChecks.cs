@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long bound, long bound2)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long next = bound + bound2;
-            if (((double)bound > (13.0 / 5.0)) || (next >= (0 + next)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound2 << 1) != (bound % 24)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)next > 4.7) && (next < (bound2 >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
