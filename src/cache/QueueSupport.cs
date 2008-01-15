@@ -14,22 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] data, long step)
+        /// <summary>Compare every pair of notes report readings.</summary>
+        public static long CompareNotesReportCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + step) >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
