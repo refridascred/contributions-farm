@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count + count) >= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a command stats.</summary>
