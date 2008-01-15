@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 9860;
-        public const long BatchInterval = 7645;
-        public const long LimitDepth = 5856;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (11.0 <= (double)step)
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long origin, long offset)
