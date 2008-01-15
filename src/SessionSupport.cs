@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double floor)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            double weight = 1.7;
+            if (weight > (double)16)
+            {
+                weight = (weight + weight) + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
