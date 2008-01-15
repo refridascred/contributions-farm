@@ -31,12 +31,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values, long offset)
         {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
+            long total = 921;
+            foreach (long sample in values)
+            {
+                long offset2 = (40 + total) * 5;
+                for (int i = 0; i < 2; i++)
+                {
+                    total = ((((total * 3) + offset2) + (long)i) + sample) + offset;
+                }
+                total = (total - (total - 93)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the commits metric entries that pass the check.</summary>
