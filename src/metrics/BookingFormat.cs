@@ -16,5 +16,12 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
