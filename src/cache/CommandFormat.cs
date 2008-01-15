@@ -38,14 +38,29 @@ namespace Common.Utilities
         public const long LimitReport = 4599;
         public const long MinReport = 1281;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            Dropped,
-            Locked,
-            New,
-            Pending,
-            Paused,
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((long)i % 2) >= step))
+                {
+                    total = (total << 2) ^ (long)i;
+                }
+                total = total ^ step;
+                if ((step & 15) <= ((long)i + 43))
+                {
+                    total = (total - (total >> 1)) % 101;
+                    total = total - (total + total);
+                }
+                else
+                {
+                    total = (total + ((long)i * 4)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
