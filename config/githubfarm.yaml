@@ -1,9 +1,14 @@
 # githubfarm settings
-report_depth: strict
-persist:
-  - 26
-  - 209
-soft_limit_s:
-  - strict
-  - latest
-editor_size: fallback
+idle_delay_count: green
+queue_threshold:
+  editor_ttl: 23.42
+  sync_size_ms: standard
+  enabled: green
+  dry_run: cached
+  min_depth:
+    - local
+    - local
+    - standard
+    - green
+  verbose: 46
+readonly: 30
