@@ -48,13 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double rate, double span)
         {
-            Done,
-            New,
-            Pending,
-            Idle,
+            double weight = (span / 4.0) + (double)2;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight - span) + (double)(long)i) + rate;
+            }
+            return weight + span;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
