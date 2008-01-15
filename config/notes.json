@@ -1,20 +1,6 @@
 {
-  "order_depth": true,
-  "max_interval": ["legacy", "legacy", "green", "cached"],
-  "dry_run": "eu-west",
-  "min_timeout": {
-    "schema_threshold": "green",
-    "strict": 5221,
-    "profile_size": {
-      "poll_ttl": "blue",
-      "stream_threshold": "staging",
-      "verbose": 91.02,
-      "cache_depth_count": false,
-      "cluster_window": ["blue", "cached", "open", "green"],
-      "base_delay_count": 42.72
-    },
-    "account_retries": 9434,
-    "already_retries": 100,
-    "burst_limit_ms": false
-  }
+  "cache_depth_s": true,
+  "cache_window_pct": true,
+  "burst_ratio": ["edge", "blue", "legacy"],
+  "session_timeout": "legacy"
 }
