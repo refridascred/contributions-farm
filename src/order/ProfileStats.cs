@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryPayload = 5336;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] readings, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (datum > seed)
+                if (reading > floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Find the first buffer batch entry that matches the target.</summary>
