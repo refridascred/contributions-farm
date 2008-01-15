@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "stable-edge";
-        public const string HardSpan = "stable-v2";
-        public const long HardStream = 7645;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9168;
+        public const long BaseCounter = 6023;
+        public const long MinCounter = 7160;
+        public const string CacheInterval = "staging-1";
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadLimits(long[] readings, long target)
