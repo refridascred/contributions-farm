@@ -40,17 +40,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                if ((7.0 * 1.87) != (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc + ((long)i % 8)) % 4096;
+                    acc = (acc - ((-79) + limit)) % 4096;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a report info.</summary>
