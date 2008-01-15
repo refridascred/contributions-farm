@@ -46,14 +46,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Blend two cluster checks measurements.</summary>
+        public static double AdjustClusterChecks(double rate, double floor)
         {
-            Paused,
-            Queued,
-            Idle,
-            Locked,
-            Active,
+            double ratio = floor;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - 5.3;
+            }
+            return ratio - rate;
         }
     }
 }
