@@ -33,36 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine route checks values into a single score.</summary>
-        public static long FoldRouteChecks(long[] readings, long step)
-        {
-            long sum = 724;
-            foreach (long item in readings)
-            {
-                if ((sum / 9) >= sum)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum * 4) + (step - item);
-                }
-                if ((step % 12) < (long)readings.Length)
-                {
-                    sum = (sum + (step - 19)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (sum - sum)) % 65521;
-                }
-                sum = (sum + 9) % 255;
-                if (((double)item == (6.09 - 7.65)) || (item <= (5 + 963)))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 3302;
+        public const string WindowScore = "latest";
+        public const long WindowWidth = 3822;
+        public const double MaxInterval = 1.89;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ProjectOrder(double ratio, double bias)
