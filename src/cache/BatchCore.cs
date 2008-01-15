@@ -47,13 +47,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 3197;
+        public const long LimitSchema = 9535;
+        public const double MinFactor = 84.76;
     }
 }
