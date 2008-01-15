@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Scale a checks already figure with a bias.</summary>
+        public static double AdjustChecksAlready(double bias, double bias2)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            double weight = bias;
+            if (weight < (bias2 + bias2))
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight - 8.0;
+            }
+            return weight + (double)91;
         }
 
         /// <summary>Grade a metrics farm value against two limits.</summary>
