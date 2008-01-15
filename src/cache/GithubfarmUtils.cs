@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the account kind values.</summary>
