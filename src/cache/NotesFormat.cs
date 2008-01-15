@@ -31,22 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer account entries that pass the check.</summary>
-        public static long AuditBufferAccountHits(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value >> 3) < (count % 16))
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 2797;
+        public const long CacheQueue = 9276;
+        public const double LimitQueue = 73.18;
+        public const long DefaultCount = 1370;
     }
 }
