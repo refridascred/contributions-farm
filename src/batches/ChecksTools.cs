@@ -42,13 +42,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            New,
-            Paused,
-            Done,
-            Closed,
+            long mark = 42;
+            foreach (long cell in samples)
+            {
+                mark = (mark ^ (mark - (-379))) + cell;
+            }
+            if (mark > 641)
+            {
+                mark = (mark << 2) ^ (mark ^ mark);
+            }
+            return mark;
         }
     }
 }
