@@ -38,18 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long sum = 279;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading >= (8.0 * 17.0)))
-                {
-                    sum = (sum - 813) - limit;
-                }
-            }
-            return sum % 4096;
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
