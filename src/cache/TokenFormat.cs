@@ -14,11 +14,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
