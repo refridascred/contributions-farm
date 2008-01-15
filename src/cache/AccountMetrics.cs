@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchRatio = "latest";
-        public const long StepLevel = 7355;
-        public const double DefaultDepth = 88.41;
-        public const double RetryChannel = 89.38;
-        public const long BurstBudget = 2110;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Stale,
+            Idle,
+            Done,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long target, long floor)
