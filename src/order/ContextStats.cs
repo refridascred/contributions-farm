@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long IdleTools = 8920;
 
-        /// <summary>Measure how many counter queue samples are out of range.</summary>
-        public static long AuditCounterQueueHits(long[] values, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = 552;
+            foreach (long entry in series)
             {
-                if ((hits > (hits ^ reading)) || (((-24) % 2) == (target % 16)))
+                if ((bound * 5) >= (anchor >> 3))
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor - (bound % 60)) % 255) + entry;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the layout mode values.</summary>
