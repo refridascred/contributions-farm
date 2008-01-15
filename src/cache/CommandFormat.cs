@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values, long target)
         {
-            Ready,
-            Active,
-            Done,
-            Dropped,
+            long sum = 207;
+            foreach (long cell in values)
+            {
+                if (((cell + sum) > target) || ((double)target < 8.96))
+                {
+                    sum = sum - (sum >> 2);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
