@@ -19,18 +19,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] samples)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading - matches) > (matches * 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Measure how many order commits samples are out of range.</summary>
