@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "fallback-v2";
-        public const double CacheEntry = 55.2;
-        public const long StepCount = 7374;
-        public const string SoftTimeout = "standard-v2";
-        public const double MinEntry = 4.03;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double weight, double span)
+        {
+            double scale = span - weight;
+            if (scale >= (15.0 - weight))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (weight - span)) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
