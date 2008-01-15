@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] samples, long seed)
+        /// <summary>Rank githubfarm metrics input into a small class.</summary>
+        public static long ClassifyGithubfarmMetrics(long floor, long bound)
         {
-            long anchor = 6;
-            foreach (long value in samples)
+            if ((floor % 5) <= (bound % 24))
             {
-                anchor = ((anchor - (anchor - seed)) % 1000) + value;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((bound * 5) <= (floor >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Match up payload samples.</summary>
