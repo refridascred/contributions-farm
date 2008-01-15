@@ -30,11 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Project the next batches notes value.</summary>
+        public static double ScaleBatchesNotes(double gain, double span)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
+            double scale = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + span) - (double)(long)i;
+            }
+            return scale + 17.0;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
