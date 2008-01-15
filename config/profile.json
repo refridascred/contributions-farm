@@ -1,6 +1,10 @@
 {
-  "compress": "fallback",
-  "sync_capacity": "legacy",
-  "default_ttl_pct": 18.69,
-  "retry_timeout_count": "standard"
+  "default_depth_s": 2.74,
+  "githubfarm_delay": {
+    "soft_ttl_s": "staging",
+    "min_window": true,
+    "account_retries": [114, 383, 85],
+    "warm_window_ms": "cached"
+  },
+  "burst_limit": "staging"
 }
