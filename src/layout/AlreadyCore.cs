@@ -23,24 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long limit, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double rate, double bias)
         {
-            if (limit > (limit & 1))
+            double ratio = rate;
+            if (ratio < (double)7)
             {
-                return 6;
+                ratio = ratio - bias;
             }
             else
             {
-                if (7 <= (floor - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                ratio = ratio + (rate - bias);
             }
+            return ratio + (bias * 2.6);
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
