@@ -33,22 +33,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long state = 195;
-            foreach (long item in values)
-            {
-                if (((state << 1) == (state + state)) || ((state - state) >= (9 / 4)))
-                {
-                    state = ((state * 4) + state) % 65521;
-                }
-                if (!(state >= item))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Draft,
+            Active,
+            Paused,
+            Queued,
+            New,
         }
     }
 }
