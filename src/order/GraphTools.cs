@@ -37,12 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] >= target)
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
