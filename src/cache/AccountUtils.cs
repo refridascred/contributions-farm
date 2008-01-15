@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitFactor = 722;
-        public const string MaxInterval = "strict-1";
-        public const long HardLayout = 9396;
-        public const long IdleTimeout = 2203;
-        public const string MinLayout = "standard-1";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)count == (6.9 + 19.0))
+                {
+                    count = ((count + 3) ^ value) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsRange(long[] values, long floor)
