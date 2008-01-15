@@ -1,12 +1,33 @@
 # githubfarm settings
-audit: standard
-verbose: 27.51
-base_retries: 36
-cache_ttl_count:
-  max_window:
-    - staging
-    - staging
-  cache_capacity: primary
-  batch_timeout_pct: latest
-  compress: true
-base_timeout_ms: 31
+githubfarm_interval: 84
+compress: 26.16
+poll_ratio:
+  poll_ttl_count: 82.56
+  idle_ttl_ms: 9365
+  readonly: stable
+  compress:
+    default_limit_count:
+      - 32
+      - 307
+    already_window: 65.39
+    soft_capacity_pct:
+      - 216
+      - 328
+      - 376
+      - 154
+    audit: 58.5
+    min_depth_count: 6272
+    max_limit_s: 9794
+  burst_limit_s:
+    flush_capacity_s: green
+    context_ttl: staging
+    poll_depth_s:
+      - 54
+      - 1
+    cache_capacity_ms: 6.54
+    idle_size:
+      - 350
+      - 254
+      - 92
+      - 85
+  layout_interval: standard
