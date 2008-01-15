@@ -49,18 +49,10 @@ namespace Common.Utilities
         public const string BatchBudget = "open";
         public const long StepWidth = 4525;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!!(tally > (datum + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 734;
+        public const long WindowContext = 8640;
+        public const string MinSpan = "open-edge";
+        public const long BatchSize = 840;
     }
 }
