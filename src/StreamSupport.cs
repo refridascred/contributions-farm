@@ -19,18 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stats session samples.</summary>
-        public static long CombineStatsSession(long[] items, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            long score = -184;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell >= origin) && ((origin & 63) >= cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score + cell) % 101;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
