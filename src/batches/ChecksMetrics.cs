@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] data, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
