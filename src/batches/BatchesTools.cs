@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinFactor = 5025;
-        public const long StepMetric = 7629;
-        public const long SoftDepth = 6112;
-        public const string CacheWidth = "alpha-v2";
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Synced,
+            Closed,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
