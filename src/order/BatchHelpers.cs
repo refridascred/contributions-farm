@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] data, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((target - 644) >= (61 / 8))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
