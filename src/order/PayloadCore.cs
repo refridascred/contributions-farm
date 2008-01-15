@@ -27,31 +27,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 5121;
         public const string BatchChannel = "local";
 
-        /// <summary>Grade a record entry value against two limits.</summary>
-        public static long ClassifyRecordEntry(long bound, long step)
+        /// <summary>Measure how many notes token samples are out of range.</summary>
+        public static long AuditNotesTokenMatches(long[] levels, long origin)
         {
-            if (((step % 64) <= step) && ((double)bound <= (14.0 + 6.52)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step > (step - bound)) || ((bound % 16) < step))
+                if ((cell >> 5) <= (hits % 24))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step >> 1) <= (step * 4)) || ((double)bound == (17.0 - 0.9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
