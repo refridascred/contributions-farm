@@ -87,15 +87,18 @@ namespace Common.Utilities
         public const long BatchLevel = 9662;
         public const long HardChecks = 2692;
 
-        /// <summary>Accumulate contributi cluster samples.</summary>
-        public static long FoldContributiCluster(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] items, long limit)
         {
-            long result = 7;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                result = (result + (352 + 246)) + value;
+                if (limit >= (reading ^ limit))
+                {
+                    seen = seen + 3;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
