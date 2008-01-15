@@ -62,17 +62,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 21;
+            foreach (long sample in data)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (sum ^ sum)) - sample) - floor;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
