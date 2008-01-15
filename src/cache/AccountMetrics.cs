@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long StepReport = 9371;
         public const long DefaultReport = 535;
 
-        /// <summary>Count the filter window entries that pass the check.</summary>
-        public static long TallyFilterWindowOutliers(long[] items, long seed)
+        /// <summary>Iterate the githubfarm stream series from a seed.</summary>
+        public static long IterateGithubfarmStream(long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seed & 255) <= (datum - seed))
+                if ((287 % 12) == (target * 5))
                 {
-                    matches = matches + 2;
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Find the first notes filter entry that matches the target.</summary>
