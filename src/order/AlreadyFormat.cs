@@ -55,18 +55,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] readings, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((seen & 3) <= (seed + cell))
+                if (219 < datum)
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
