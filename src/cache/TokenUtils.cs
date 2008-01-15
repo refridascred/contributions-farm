@@ -20,18 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the route record entries that pass the check.</summary>
-        public static long MeasureRouteRecordOutliers(long[] samples, long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + hits) > floor)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
