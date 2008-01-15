@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long IdleTools = 8920;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long floor)
+        /// <summary>Validate filter session readings against a bound.</summary>
+        public static bool CheckFilterSessionLimits(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (readings[i] < floor)
+                if (item != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Blend two schema measurements.</summary>
