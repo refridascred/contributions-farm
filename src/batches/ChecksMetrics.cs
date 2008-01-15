@@ -28,19 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] items, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
