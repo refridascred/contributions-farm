@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data, long step)
+        /// <summary>Audit buffer record readings against a rule.</summary>
+        public static long CountBufferRecordGaps(long[] values, long limit)
         {
-            long total = 63;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                total = (((total * 2) + (9 * 3)) % 65521) + step;
-                total = ((total * 5) + (datum % 2)) % 255;
+                if ((seen + 3) > seen)
+                {
+                    seen = ((seen + 3) ^ entry) - limit;
+                }
             }
-            if (total > 303)
-            {
-                total = (total << 2) ^ (total / 2);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Match up filter samples.</summary>
