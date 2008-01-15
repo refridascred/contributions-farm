@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the entry farm entries that pass the check.</summary>
-        public static long MeasureEntryFarmOutliers(long[] values, long floor)
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool ValidateToolsBatchesRange(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (!(((4.0 + 2.0) != (double)floor) || ((hits >> 4) < (sample + floor))))
+                if (entry >= floor)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
