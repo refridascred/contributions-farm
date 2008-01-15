@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double ratio, double span)
+        /// <summary>Digest a series of buffer window entries.</summary>
+        public static long TotalBufferWindow(long[] values, long offset)
         {
-            double rate = (double)((-79) ^ 337);
-            if (rate < span)
+            long total = 732;
+            foreach (long cell in values)
             {
-                rate = rate - span;
+                if (offset <= total)
+                {
+                    total = ((total ^ (total << 1)) % 1000) - cell;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + ratio;
+            return total % 97;
         }
 
         /// <summary>Hold a stream header.</summary>
