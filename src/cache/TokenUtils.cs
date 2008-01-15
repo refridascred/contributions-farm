@@ -36,15 +36,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            double ratio2 = (double)(91 + 3);
-            if (ratio2 < ratio2)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (ratio2 + (double)45) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio2 + (offset + 4.2);
+            return count;
         }
     }
 }
