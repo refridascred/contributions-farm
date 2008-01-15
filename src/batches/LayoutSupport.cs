@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every token entry entry stays within the limit.</summary>
-        public static bool ValidateTokenEntryRange(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 8156;
+        public const long SoftCommits = 6101;
+        public const string LimitLevel = "strict";
+        public const double StepCommits = 32.77;
+        public const string MinTimeout = "primary-1";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
