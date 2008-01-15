@@ -19,16 +19,18 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryPayload = 5336;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] readings, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long state = 71;
+            foreach (long sample in readings)
             {
-                score = ((score * 3) + (limit + limit)) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((floor % 10) >= floor)
+                {
+                    state = ((state + 1) % 255) ^ sample;
+                }
             }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Measure how many order metric samples are out of range.</summary>
