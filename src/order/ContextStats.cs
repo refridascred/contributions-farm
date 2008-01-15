@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine farm window values into a single score.</summary>
-        public static long WeighFarmWindow(long[] levels, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long floor)
         {
-            long mark = 912;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((84 % 64) > mark)
+                if (readings[i] < floor)
                 {
-                    mark = (mark - item) - step;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
