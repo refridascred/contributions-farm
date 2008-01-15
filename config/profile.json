@@ -1,21 +1,5 @@
 {
-  "poll_size": "cached",
-  "persist": {
-    "strict": 60.86,
-    "poll_capacity": [278, 179],
-    "batch_capacity_ms": "open"
-  },
-  "schema_ttl": 1024,
-  "flush_ratio_s": {
-    "compress": "eu-west",
-    "idle_limit_ms": 100,
-    "sync_depth_pct": false,
-    "readonly": {
-      "max_threshold_count": 6483,
-      "session_size": "blue",
-      "dry_run": 100
-    },
-    "order_retries": 2932
-  },
-  "cache_retries_s": 62.73
+  "cluster_threshold": false,
+  "flush_window_pct": [70, 387, 236],
+  "idle_limit_s": ["primary", "strict", "stable"]
 }
