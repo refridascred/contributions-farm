@@ -74,22 +74,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long carry = 9;
-            foreach (long datum in items)
-            {
-                if ((carry & 1) >= (target / 2))
-                {
-                    carry = (carry + (20 - carry)) % 101;
-                }
-                if ((target >> 2) < datum)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
