@@ -1,6 +1,9 @@
-id,count,weight,score
-1,fallback,edge,open
-2,latest,81.01,primary
-3,open,open,40.91
-4,open,967,30.43
-5,165,stable,eu-west
+id,region,ratio,owner
+1,249,600,87.96
+2,fallback,local,20.23
+3,local,61.98,75
+4,74.79,edge,27.17
+5,legacy,549,32.13
+6,584,653,280
+7,729,30.16,eu-west
+8,448,eu-west,4.06
