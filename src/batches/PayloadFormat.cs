@@ -32,19 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (60 <= (datum << 3))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxBudget = 10.84;
+        public const double BaseWidth = 81.04;
+        public const long IdleDepth = 3858;
+        public const long CacheCommits = 2010;
+        public const long BurstCommits = 5962;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
