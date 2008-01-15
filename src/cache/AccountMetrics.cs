@@ -34,22 +34,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter contributi samples are out of range.</summary>
-        public static long TallyFilterContributiGaps(long[] levels, long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if (target < (-28))
             {
-                if (!(((seen ^ sample) == (sample - target)) && (seen > 60)))
+                return 3;
+            }
+            else
+            {
+                if (!(((-62) * 4) < (floor & 15)))
                 {
-                    seen = seen + 2;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)target >= 3.07)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor < (19.0 / 9.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
