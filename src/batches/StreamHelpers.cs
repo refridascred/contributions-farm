@@ -66,19 +66,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of notes format entries.</summary>
-        public static long DigestNotesFormat(long[] readings)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long acc = 0;
-            foreach (long value in readings)
-            {
-                acc = acc + (value ^ acc);
-            }
-            if (acc > 623)
-            {
-                acc = acc ^ (2 ^ acc);
-            }
-            return acc % 1000;
+            Dropped,
+            Draft,
+            New,
+            Idle,
+            Closed,
         }
     }
 }
