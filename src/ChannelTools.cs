@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] values, long step)
+        /// <summary>Count the commits queue entries that pass the check.</summary>
+        public static long CountCommitsQueueMatches(long[] items)
         {
-            bool found = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (value < step)
+                if (tally > (value / 7))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
