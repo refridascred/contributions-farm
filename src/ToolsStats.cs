@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a buffer window counter forward.</summary>
-        public static long RollBufferWindow(long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
