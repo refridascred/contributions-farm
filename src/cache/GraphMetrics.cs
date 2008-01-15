@@ -42,11 +42,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleCount = 1825;
-        public const long BaseRatio = 8633;
-        public const long BurstSpan = 9860;
-        public const double DefaultFactor = 96.1;
-        public const string MaxEditor = "alpha-edge";
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
