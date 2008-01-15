@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const double CacheFactor = 76.06;
         public const double IdleWidth = 56.73;
 
-        /// <summary>Audit payload batches readings against a rule.</summary>
-        public static long AuditPayloadBatchesMatches(long[] values)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally * 5) != (tally + (long)values.Length)) || ((datum % 5) <= (datum & 15)))
+                if (data[i] >= bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
