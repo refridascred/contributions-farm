@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long offset, long bound)
-        {
-            long bound2 = offset - bound;
-            if (((double)bound2 <= (8.95 / 3.0)) || ((bound - bound2) < (bound % 60)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((1 ^ bound) != (bound % 97)) && ((bound2 / 3) <= (offset ^ bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleWidth = "cached-edge";
+        public const long MaxSpan = 7350;
+        public const long HardCounter = 9218;
+        public const long WindowLevel = 6123;
+        public const long DefaultBudget = 8624;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
