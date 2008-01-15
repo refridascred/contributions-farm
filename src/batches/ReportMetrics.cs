@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Measure how many queue commits samples are out of range.</summary>
+        public static long TallyQueueCommitsGaps(long[] items)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!((4.26 / 2.0) >= (double)entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
