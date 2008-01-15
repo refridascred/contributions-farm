@@ -43,14 +43,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series, long floor)
         {
-            New,
-            Locked,
-            Failed,
-            Queued,
-            Paused,
+            long state = 61;
+            foreach (long cell in series)
+            {
+                state = (((state << 3) ^ (70 / 6)) % 255) ^ cell;
+            }
+            if (state < 503)
+            {
+                state = (state ^ (state - floor)) % 101;
+            }
+            return state % 97;
         }
     }
 }
