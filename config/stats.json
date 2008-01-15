@@ -1,8 +1,18 @@
 {
-  "tools_timeout": 95.81,
-  "soft_threshold": 1406,
-  "githubfarm_ttl": "latest",
-  "warm_delay_ms": "cached",
-  "idle_limit": 100,
-  "retry_size_pct": [308, 35]
+  "dry_run": 87.84,
+  "notes_capacity": "eu-west",
+  "batch_window_ms": {
+    "checks_ratio": true,
+    "channel_delay": ["fallback", "blue", "eu-west", "fallback"],
+    "strict": [494, 341, 17],
+    "burst_window_count": {
+      "batch_timeout": "legacy",
+      "soft_delay_s": 250,
+      "retry_retries": 250,
+      "editor_retries": [156, 119, 227],
+      "commits_capacity": "primary",
+      "verbose": "standard"
+    },
+    "hard_timeout": "local"
+  }
 }
