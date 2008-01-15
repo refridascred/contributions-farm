@@ -20,24 +20,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next githubfarm token value from a seed.</summary>
-        public static long IterateGithubfarmToken(long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long origin2)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long diff = origin - origin2;
+            if (!((diff ^ diff) < (diff - origin2)))
             {
-                if ((8.25 * 4.0) < (double)sum)
+                return 1;
+            }
+            else
+            {
+                if ((0.9 / 7.0) != (double)origin)
                 {
-                    sum = ((sum << 2) ^ (offset << 2)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    sum = sum - (143 >> 5);
-                    sum = sum + ((long)i ^ 0);
+                    return 6;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
