@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long IdleTools = 8920;
 
-        /// <summary>Validate filter session readings against a bound.</summary>
-        public static bool CheckFilterSessionLimits(long[] series, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Blend two schema measurements.</summary>
