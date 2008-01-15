@@ -16,14 +16,14 @@ namespace Common.Utilities
             return rate + (bias * 4.0);
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Failed,
-            Pending,
-            Dropped,
             New,
-            Queued,
+            Paused,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Check that every tools stats entry stays within the limit.</summary>
