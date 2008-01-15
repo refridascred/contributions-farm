@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] items)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally != (12.0 + 2.26))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank window input into a small class.</summary>
