@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Digest a series of profile editor entries.</summary>
+        public static long CombineProfileEditor(long[] readings, long limit)
         {
-            Locked,
-            Dropped,
-            Paused,
+            long sum = -137;
+            foreach (long item in readings)
+            {
+                sum = ((sum << 2) ^ (sum << 1)) + item;
+                if ((double)limit < 7.25)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Accumulate counter layout samples.</summary>
