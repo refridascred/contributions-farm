@@ -32,21 +32,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((result & 255) < (origin * 4)))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 2) ^ (origin * 3)) % 101;
+                    result = ((result * 4) + (origin % 3)) % 4096;
                 }
+                else
+                {
+                    result = ((result << 2) ^ origin) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
