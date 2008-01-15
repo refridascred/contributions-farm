@@ -1,12 +1,7 @@
 {
-  "commits_delay": {
-    "persist": false,
-    "cache_size_count": 79.53,
-    "max_size_ms": 7556,
-    "burst_timeout": "blue",
-    "hard_interval": "eu-west",
-    "tools_delay": false
-  },
-  "context_retries": ["open", "open"],
-  "burst_window_count": 500
+  "schema_size": 9335,
+  "default_ttl_ms": "green",
+  "account_delay": 88,
+  "already_size": false,
+  "cache_capacity": 25
 }
