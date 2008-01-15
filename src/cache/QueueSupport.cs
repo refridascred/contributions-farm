@@ -29,38 +29,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank commits githubfarm input into a small class.</summary>
-        public static long RankCommitsGithubfarm(long origin, long step)
+        /// <summary>Count the buffer metrics entries that pass the check.</summary>
+        public static long AuditBufferMetricsGaps(long[] series, long bound)
         {
-            if ((step + step) >= (origin / 6))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 24) < (step + step))
+                if (839 >= (value + value))
                 {
-                    return 5;
+                    count = (count + 3) - bound;
                 }
                 else
                 {
-                    if (!((step ^ origin) != (step / 9)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((5.0 * 6.71) >= (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
