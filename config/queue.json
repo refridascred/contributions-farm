@@ -1,6 +1,19 @@
 {
-  "flush_threshold": "open",
-  "report_timeout": true,
-  "batch_size_count": 47.97,
-  "persist": 250
+  "soft_interval_ms": ["open", "standard", "standard", "cached"],
+  "idle_interval_ms": "green",
+  "max_timeout_s": {
+    "default_timeout_count": "edge",
+    "poll_threshold_ms": ["local", "legacy", "legacy"],
+    "soft_threshold_ms": {
+      "readonly": "open",
+      "min_ratio": "edge",
+      "min_retries": "latest",
+      "hard_retries": ["latest", "eu-west", "legacy"],
+      "strict": [225, 226],
+      "soft_size_ms": 9149
+    },
+    "cache_ttl_pct": 55.58
+  },
+  "sync_limit_s": 86.35,
+  "base_window_pct": 500
 }
