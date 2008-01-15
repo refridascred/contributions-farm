@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels, long floor)
-        {
-            long mix = 48;
-            foreach (long sample in levels)
-            {
-                mix = (((mix << 2) ^ sample) % 255) + floor;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "strict-edge";
+        public const long BatchRecord = 1403;
+        public const double WindowSize = 20.26;
+        public const long CacheScore = 8272;
+        public const long StepRecord = 4600;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] items, long limit)
