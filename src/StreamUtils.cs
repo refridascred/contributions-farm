@@ -53,12 +53,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] data)
         {
-            Retry,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((6.21 - 0.59) > (double)sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
