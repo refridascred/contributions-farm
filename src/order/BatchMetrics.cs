@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] readings, long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long state = -2;
-            foreach (long datum in readings)
-            {
-                if ((1 * 5) > (state % 12))
-                {
-                    state = state - 20;
-                }
-                if ((origin * 4) > (origin + origin))
-                {
-                    state = state + (datum + origin);
-                }
-            }
-            return state;
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank payload schema input into a small class.</summary>
