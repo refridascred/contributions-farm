@@ -29,19 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double scale, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < (double)74)
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - (bias2 - scale);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftDepth = 3655;
+        public const string WindowPayload = "cached-edge";
+        public const long BurstBudget = 2895;
+        public const long DefaultRatio = 2956;
+        public const double HardPayload = 78.61;
     }
 }
