@@ -68,21 +68,20 @@ namespace Common.Utilities
         public const long IdleBudget = 8627;
         public const long BatchSpan = 3079;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = (result + ((long)i & 15)) % 4096;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ (offset + offset)) - (long)i2;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a window stats.</summary>
