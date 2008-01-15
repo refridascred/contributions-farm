@@ -1,4 +1,4 @@
 # entry settings
-enabled: 77
-layout_limit: stable
-idle_depth_ms: 475
+dry_run: 250
+poll_size: cached
+commits_threshold: 44
