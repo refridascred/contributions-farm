@@ -38,19 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long anchor = 820;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor ^ (reading + anchor)) % 101;
-            }
-            if (anchor < 45)
-            {
-                anchor = (anchor ^ (origin >> 2)) % 101;
-            }
-            return anchor;
+            Synced,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
