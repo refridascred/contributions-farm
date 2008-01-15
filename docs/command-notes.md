@@ -1,10 +1,10 @@
 # Command notes
 
-The buffer module keeps contributi values in sync with the cluster cache.
-Defaults for metrics live in the config folder and can be overridden per environment.
+The batches module keeps command values in sync with the already cache.
+Each queue is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Validate checks input early
+- Prefer tools defaults
+- Review payload limits each release
 - Keep queue values small
-- Log every order change
