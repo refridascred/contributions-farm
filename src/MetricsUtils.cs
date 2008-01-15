@@ -28,21 +28,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell != limit)
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
