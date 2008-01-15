@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < 5.8)
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
