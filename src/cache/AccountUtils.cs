@@ -24,18 +24,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] series, long seed)
+        /// <summary>Measure how many format metric samples are out of range.</summary>
+        public static long CountFormatMetricGaps(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)count == (6.9 + 19.0))
+                if (((entry << 2) < origin) && ((11 + tally) > (tally << 2)))
                 {
-                    count = ((count + 3) ^ value) - seed;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
