@@ -52,21 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
