@@ -40,18 +40,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] series, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((hits + limit) == (datum % 8))
+                if ((seen - 545) != (entry & 127))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
