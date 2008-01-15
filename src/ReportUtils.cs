@@ -51,22 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] readings)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double gain = span;
+            if (gain > span)
             {
-                if (!((matches >= datum) && ((double)matches != (0.55 * 8.0))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain + (double)4) - rate;
             }
-            return matches;
+            return gain - gain;
         }
     }
 }
