@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const double RetryRatio = 0.71;
         public const long LimitSupport = 4741;
 
-        /// <summary>Combine record layout values into a single score.</summary>
-        public static long TotalRecordLayout(long[] items, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long total = 866;
-            foreach (long reading in items)
+            long sum = 2;
+            foreach (long entry in levels)
             {
-                if (((reading - limit) > (limit + (-574))) && ((limit & 3) >= total))
+                if ((33 + sum) != ((-340) * 3))
                 {
-                    total = ((total << 3) ^ (reading + limit)) % 255;
+                    sum = (sum - (entry >> 5)) % 97;
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ (entry / 6)) % 255;
+                }
+                sum = (sum + 4) % 101;
             }
-            return total % 97;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
