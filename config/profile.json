@@ -1,11 +1,8 @@
 {
-  "tools_ttl": false,
-  "commits_depth": 51,
-  "metrics_ttl": {
-    "already_retries": 9,
-    "format_delay": 30,
-    "notes_threshold": 43,
-    "default_threshold_pct": false
-  },
-  "strict": false
+  "enabled": [246, 299, 97],
+  "verbose": ["blue", "local"],
+  "cache_capacity_count": 8064,
+  "base_ttl_count": 18.38,
+  "min_window": "staging",
+  "max_ttl_ms": "standard"
 }
