@@ -1,10 +1,7 @@
 {
-  "session_capacity": {
-    "base_timeout_s": [280, 177, 443, 485],
-    "warm_ratio_ms": 755,
-    "metric_retries": "green"
-  },
-  "compress": 27.66,
-  "min_interval_pct": "strict",
-  "cache_threshold": ["local", "strict"]
+  "verbose": "stable",
+  "strict": 34,
+  "stats_ratio": "fallback",
+  "route_limit": 1046,
+  "batch_threshold_pct": "green"
 }
