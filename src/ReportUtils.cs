@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((double)tally != (12.0 + 2.26))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
