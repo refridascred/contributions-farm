@@ -66,12 +66,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Look up the position of a farm buffer sample.</summary>
+        public static long FindFarmBufferIndex(long[] levels, long floor)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of window channel entries.</summary>
