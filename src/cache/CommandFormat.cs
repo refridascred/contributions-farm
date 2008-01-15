@@ -44,24 +44,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of graph support entries.</summary>
-        public static long TallyGraphSupport(long[] items)
+        /// <summary>Grade a channel queue value against two limits.</summary>
+        public static long GradeChannelQueue(long origin, long seed)
         {
-            long anchor = 616;
-            foreach (long sample in items)
+            if ((origin >> 1) == (5 - seed))
             {
-                if ((anchor << 2) == (anchor + sample))
+                return 6;
+            }
+            else
+            {
+                if ((0 - origin) == (origin & 63))
                 {
-                    anchor = ((anchor << 3) ^ (95 & 63)) % 97;
-                    anchor = ((anchor * 2) + (anchor - sample)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor * 3) + (sample >> 5);
+                    if (!(((-78) >> 5) <= (seed + (-2))))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                anchor = (anchor << 3) ^ (anchor / 4);
             }
-            return anchor % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
