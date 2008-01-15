@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many profile route samples are out of range.</summary>
+        public static long CountProfileRouteHits(long[] readings, long limit)
         {
-            Pending,
-            Stale,
-            Closed,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (316 >= (limit * 4))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
