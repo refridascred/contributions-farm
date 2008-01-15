@@ -1,6 +1,11 @@
-id,weight,level,region
-1,blue,4,999
-2,957,945,776
-3,20.48,standard,491
-4,131,616,93.69
-5,green,13.65,strict
+id,score,rank
+1,45.93,legacy
+2,18.45,eu-west
+3,815,426
+4,8.01,702
+5,627,open
+6,35.36,32
+7,349,primary
+8,blue,416
+9,518,64
+10,89,15.92
