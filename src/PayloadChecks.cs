@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next contributi tools value from a seed.</summary>
-        public static long RollContributiTools(long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] samples, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                carry = carry + (24 + floor);
-                carry = (carry ^ (8 * 4)) % 101;
-                if (!(((long)i + carry) > (floor & 63)))
+                if (((double)floor >= (4.0 - 4.1)) || (2 > (matches + 947)))
                 {
-                    carry = (carry + floor) % 1000;
+                    matches = (matches + 3) - reading;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
