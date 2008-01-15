@@ -55,22 +55,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if ((double)seed < 1.4)
             {
-                if (219 < datum)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (2.82 + 1.83))
                 {
-                    matches = matches + 2;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (15 <= (seed * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
