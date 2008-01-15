@@ -64,20 +64,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data, long seed)
+        /// <summary>Derive the next profile metrics value from a seed.</summary>
+        public static long StepProfileMetrics(long step)
         {
-            long score = 3;
-            foreach (long reading in data)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading % 8) >= (0 & 127))
-                {
-                    score = ((score + (972 << 2)) % 101) - seed;
-                }
-                else
-                {
-                    score = (score * 2) + ((long)data.Length - 56);
-                }
+                score = (score + (879 << 2)) % 65521;
+                score = ((score * 2) + (long)i) % 65521;
             }
             return score;
         }
