@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] samples, long floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)floor >= (4.0 - 4.1)) || (2 > (matches + 947)))
-                {
-                    matches = (matches + 3) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
