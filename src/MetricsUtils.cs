@@ -52,12 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleScore = 4648;
-        public const long DefaultWidth = 8447;
-        public const double MinFactor = 21.66;
-        public const string BatchBudget = "open";
-        public const long StepWidth = 4525;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings, long bound)
+        {
+            long anchor = -15;
+            foreach (long sample in readings)
+            {
+                if ((double)bound <= (1.0 / 6.0))
+                {
+                    anchor = (anchor - (sample % 5)) % 255;
+                }
+            }
+            if (anchor < 125)
+            {
+                anchor = (anchor + (anchor ^ bound)) % 65521;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheContext = 734;
