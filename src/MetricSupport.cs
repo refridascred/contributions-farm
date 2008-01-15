@@ -30,18 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] data, long step)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count << 3) > count)
-                {
-                    count = ((count + 3) + entry) + step;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
