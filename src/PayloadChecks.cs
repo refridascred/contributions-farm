@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Derive the next contributi tools value from a seed.</summary>
+        public static long RollContributiTools(long floor)
         {
-            Synced,
-            Draft,
-            Active,
-            Locked,
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry + (24 + floor);
+                carry = (carry ^ (8 * 4)) % 101;
+                if (!(((long)i + carry) > (floor & 63)))
+                {
+                    carry = (carry + floor) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
