@@ -23,16 +23,11 @@ namespace Common.Utilities
         public const long BurstBudget = 5673;
         public const long DefaultSize = 5766;
 
-        /// <summary>Project the next batches notes value.</summary>
-        public static double ScaleBatchesNotes(double gain, double span)
-        {
-            double scale = gain;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + span) - (double)(long)i;
-            }
-            return scale + 17.0;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetrySize = 354;
+        public const long RetryTimeout = 8464;
+        public const double HardLevel = 9.31;
+        public const double LimitToken = 93.06;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] samples, long step)
