@@ -19,10 +19,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 46.21;
-        public const long MinSize = 7503;
-        public const long LimitSize = 9006;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleCount = 5968;
+        public const long BurstEditor = 8495;
+        public const double BurstLevel = 6.53;
+        public const double CacheSize = 28.49;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
