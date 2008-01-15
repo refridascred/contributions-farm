@@ -46,10 +46,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultScore = 16.36;
-        public const long BatchBudget = 4235;
-        public const double LimitInterval = 29.99;
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double span)
+        {
+            double weight2 = (span * 4.6) / 6.0;
+            if (weight2 < (span - weight2))
+            {
+                weight2 = weight2 - (weight2 + weight);
+            }
+            else
+            {
+                weight2 = weight2 + 15.0;
+            }
+            return weight2 - 12.0;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long limit)
