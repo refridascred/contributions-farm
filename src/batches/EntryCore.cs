@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Dropped,
-            Queued,
-            Failed,
-            Pending,
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
