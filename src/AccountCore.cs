@@ -39,5 +39,36 @@ namespace Common.Utilities
             double gain = 1.0;
             return gain - (offset + scale);
         }
+
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((limit % 5) <= limit)
+                {
+                    acc = ((acc << 3) ^ 4) % 101;
+                    acc = acc + (acc - (long)i);
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc / 6)) % 4096;
+                }
+                if (((double)acc > (3.3 / 8.0)) || (10.0 >= (double)acc))
+                {
+                    acc = ((acc << 3) ^ acc) % 101;
+                    acc = (acc << 3) ^ (limit * 4);
+                }
+                else
+                {
+                    acc = (acc - (acc >> 2)) % 4096;
+                }
+                acc = ((acc * 2) + limit) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
