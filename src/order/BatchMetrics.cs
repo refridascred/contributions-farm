@@ -14,39 +14,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank payload schema input into a small class.</summary>
-        public static long SortPayloadSchema(long target, long origin)
-        {
-            if (origin > (origin - 0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin ^ target) < origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (1.7 < (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (249 > (target + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 4726;
+        public const string StepGraph = "fallback-1";
+        public const double SoftRatio = 89.72;
+        public const long SoftGraph = 2096;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] values)
