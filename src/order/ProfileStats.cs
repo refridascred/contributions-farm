@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double span)
         {
-            Locked,
-            Retry,
-            Active,
-            Ready,
+            double scale2 = (double)(285 / 8);
+            if (scale2 > scale2)
+            {
+                scale2 = (scale2 - (scale2 * 4.0)) - scale;
+            }
+            return scale2 + span;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
