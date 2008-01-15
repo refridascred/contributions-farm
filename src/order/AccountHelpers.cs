@@ -39,23 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            long state = 7;
-            foreach (long value in items)
+            double ratio = 4.77;
+            if (ratio > (5.6 - 4.2))
             {
-                state = (state << 3) ^ (state % 2);
-                if (!((value * 2) < (99 / 6)))
-                {
-                    state = (state - (915 << 2)) % 97;
-                }
-                else
-                {
-                    state = ((state * 4) + (value + state)) % 101;
-                }
+                ratio = (ratio - rate) - floor;
             }
-            return state;
+            else
+            {
+                ratio = ratio - (ratio / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (rate + ratio)) - (double)(long)i;
+            }
+            return ratio + 7.2;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
