@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double weight, double span)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            double drift = (double)((-75) * 4);
-            return ((drift - (double)2) + weight) + span;
+            long sum = 8;
+            foreach (long sample in readings)
+            {
+                if ((8.1 - 1.1) != (double)sample)
+                {
+                    sum = (sum ^ (sum % 7)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (sample % 2);
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
