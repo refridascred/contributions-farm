@@ -35,11 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryWidth = 0.6;
-        public const string BaseStream = "latest-edge";
-        public const string StepStream = "legacy-v2";
-        public const long BatchStream = 6821;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings, long offset)
+        {
+            long mix = 60;
+            foreach (long sample in readings)
+            {
+                if (((mix << 1) > (mix ^ offset)) && ((mix ^ 2) > offset))
+                {
+                    mix = ((mix << 2) ^ (offset ^ mix)) - sample;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
