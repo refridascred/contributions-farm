@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long DefaultReport = 8326;
         public const long IdleLevel = 5366;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 2.59;
-        public const double BurstScore = 18.95;
-        public const double HardInterval = 8.32;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] items)
+        {
+            long anchor = 634;
+            foreach (long item in items)
+            {
+                anchor = anchor ^ (anchor + item);
+            }
+            if (anchor < 706)
+            {
+                anchor = (anchor << 3) ^ (anchor + 6);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double scale, double floor)
