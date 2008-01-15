@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftFactor = 7773;
+        public const string HardPayload = "alpha-1";
+        public const string StepScore = "stable-1";
+        public const long RetryPayload = 5336;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] levels, long offset)
