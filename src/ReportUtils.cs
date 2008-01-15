@@ -47,25 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long limit, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long lane = limit ^ origin;
-            if ((double)lane >= (7.0 - 3.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin % 60) <= (origin - lane)) && ((origin + lane) > ((-260) % 12)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Roll a payload metric counter forward.</summary>
