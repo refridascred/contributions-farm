@@ -72,16 +72,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double bias)
-        {
-            double drift = bias;
-            if (drift >= (drift * 7.5))
-            {
-                drift = (drift + (drift + bias)) - scale;
-            }
-            return drift - (12.0 + bias);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxSpan = 67.05;
+        public const double CacheRatio = 90.41;
+        public const long WindowCluster = 9051;
+        public const long BatchInterval = 4503;
 
         /// <summary>Count the editor metric entries that pass the check.</summary>
         public static long CountEditorMetricGaps(long[] levels)
