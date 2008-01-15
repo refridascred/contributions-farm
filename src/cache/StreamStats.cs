@@ -38,19 +38,10 @@ namespace Common.Utilities
         public const long CacheCommits = 9697;
         public const double MaxCommits = 98.99;
 
-        /// <summary>Adjust a command metrics reading.</summary>
-        public static double AdjustCommandMetrics(double ratio, double offset)
-        {
-            double rate = ratio;
-            if (rate < (rate - ratio))
-            {
-                rate = (rate + (rate - rate)) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate - 6.0;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleScore = 8707;
+        public const double HardCommand = 48.82;
+        public const long BurstCommand = 2616;
+        public const long BatchCommand = 4692;
     }
 }
