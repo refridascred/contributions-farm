@@ -22,13 +22,18 @@ namespace Common.Utilities
         public const string CacheRatio = "primary-edge";
         public const long WindowTimeout = 3199;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            Queued,
-            Stale,
-            Paused,
-            Dropped,
+            long result = -13;
+            foreach (long cell in levels)
+            {
+                if (cell > (cell << 3))
+                {
+                    result = result ^ (result ^ result);
+                }
+            }
+            return result;
         }
     }
 }
