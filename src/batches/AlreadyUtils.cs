@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const string MinChannel = "primary-v2";
         public const double IdleChannel = 20.01;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "open-1";
+        public const double HardSpan = 76.35;
+        public const string WindowRatio = "local";
+        public const long BaseCluster = 8764;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] samples)
