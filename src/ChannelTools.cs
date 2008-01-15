@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits ^ 429) <= (14 / 2))
-                {
-                    hits = ((hits + 3) + sample) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 65.87;
+        public const long SoftLevel = 6601;
+        public const string StepCount = "fallback-1";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsOutliers(long[] samples, long origin)
