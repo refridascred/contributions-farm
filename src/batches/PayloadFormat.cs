@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const string MinInterval = "alpha";
         public const long DefaultTimeout = 5760;
 
-        /// <summary>Derive the next notes record value from a seed.</summary>
-        public static long StepNotesRecord(long origin)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Synced,
+            Ready,
+            Done,
         }
     }
 }
