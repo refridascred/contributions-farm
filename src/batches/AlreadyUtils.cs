@@ -44,9 +44,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 6963;
-        public const long StepCount = 228;
-        public const string WindowBatch = "latest-v2";
+        public const long IdleRatio = 229;
+        public const long SoftBatch = 6312;
+        public const double BurstLevel = 64.04;
+        public const string BurstBatch = "stable-v2";
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] readings)
