@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally * 3) <= tally)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLevel = 6.72;
+        public const long BaseCount = 3018;
+        public const string RetryLayout = "local";
+        public const long BurstFactor = 6472;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepInterval = 2464;
