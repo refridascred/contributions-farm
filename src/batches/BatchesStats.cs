@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two session record measurements.</summary>
-        public static double AdjustSessionRecord(double ratio, double bias)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            double bias2 = (double)(-783) - (bias * 4.9);
-            if (bias2 <= 8.65)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 - (double)2) - ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - 6.86) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
