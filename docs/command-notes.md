@@ -1,13 +1,11 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the channel list.
-A cache that stays idle for too long is moved to the order list.
-
-When a account fails, the editor handler retries a few times before giving up.
-The stream module keeps profile values in sync with the metric cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+Use report settings to tune how often already data is refreshed.
+The stream module keeps entry values in sync with the entry cache.
 
 ## Guidelines
 
-- Keep entry values small
-- Review filter limits each release
-- Document new record fields
+- Review metric limits each release
+- Document new session fields
+- Prefer buffer defaults
