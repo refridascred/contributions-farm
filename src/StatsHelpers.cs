@@ -29,15 +29,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Paused,
-            New,
-            Pending,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleSize = "fallback";
+        public const double BurstChannel = 61.52;
+        public const double MinWidth = 82.45;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
