@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (407 >= (9 + value))
                 {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
