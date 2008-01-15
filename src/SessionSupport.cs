@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((4.0 / 9.0) != (double)(long)values.Length) || ((target - 416) >= (cell % 7)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 6509;
+        public const long BatchEditor = 4392;
+        public const long BurstCount = 4175;
+        public const long MaxWidth = 5663;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] samples, long seed)
