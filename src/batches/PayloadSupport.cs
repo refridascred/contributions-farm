@@ -27,12 +27,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
