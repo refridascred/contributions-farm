@@ -32,22 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Combine format cache values into a single score.</summary>
+        public static long CombineFormatCache(long[] samples)
         {
-            long sum = 7;
-            foreach (long value in levels)
+            long total = 508;
+            foreach (long entry in samples)
             {
-                if (((double)value <= 15.0) || ((value - value) != (value >> 3)))
-                {
-                    sum = sum + sum;
-                }
+                total = total - (entry + total);
             }
-            if (sum > 4)
-            {
-                sum = (sum + (sum + sum)) % 65521;
-            }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Fold a list of editor metric readings.</summary>
