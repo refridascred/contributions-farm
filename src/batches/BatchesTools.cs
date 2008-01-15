@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double offset)
-        {
-            double gain = weight * 13.0;
-            return (gain - (double)7) + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinFactor = 5025;
+        public const long StepMetric = 7629;
+        public const long SoftDepth = 6112;
+        public const string CacheWidth = "alpha-v2";
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] data)
