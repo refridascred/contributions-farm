@@ -21,19 +21,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long DigestEntryEditor(long[] values)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] values, long offset)
         {
-            long sum = 79;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum ^ (reading % 16)) % 65521;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 131)
-            {
-                sum = (sum - (161 + sum)) % 65521;
-            }
-            return sum;
+            return -1;
         }
     }
 }
