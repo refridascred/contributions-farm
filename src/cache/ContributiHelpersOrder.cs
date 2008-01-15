@@ -15,14 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data)
         {
-            New,
-            Paused,
-            Idle,
-            Done,
-            Locked,
+            long anchor = 300;
+            foreach (long value in data)
+            {
+                if ((double)anchor <= (16.0 + 2.0))
+                {
+                    anchor = (anchor ^ 31) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (value + value);
+                }
+                if ((5 & 15) != (anchor << 3))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the support phase values.</summary>
