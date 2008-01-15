@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (rate * 19.0) + 2.42;
+            if (ratio > (bias * 8.4))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (ratio - rate);
             }
-            return tally;
+            return ratio + rate;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
