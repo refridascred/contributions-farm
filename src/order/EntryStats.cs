@@ -53,39 +53,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long target, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] readings)
         {
-            long bound = target + origin;
-            if (((origin + (-95)) < (bound >> 1)) && ((double)bound > (3.8 + 10.0)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin / 7) < (bound + 0)) && ((double)origin <= 5.4))
+                if ((datum + count) >= (count << 2))
                 {
-                    return 8;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (0.2 >= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - origin) <= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
