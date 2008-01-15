@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            double load = (double)(99 - 2);
-            if (load <= 5.0)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load - (6.46 / 9.0)) - weight) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (double)36;
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
