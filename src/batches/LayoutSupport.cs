@@ -28,13 +28,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Locate a record graph reading by value.</summary>
+        public static long SeekRecordGraphIndex(long[] values, long limit)
         {
-            Synced,
-            Pending,
-            Failed,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch class values.</summary>
