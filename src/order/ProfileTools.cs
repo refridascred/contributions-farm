@@ -38,13 +38,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Grade a batch buffer value against two limits.</summary>
+        public static long SortBatchBuffer(long seed, long floor)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((1.0 - 14.0) >= (double)seed) && (seed > floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 15) <= (seed ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed / 6) == (863 ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((8.61 / 5.0) <= (double)seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
