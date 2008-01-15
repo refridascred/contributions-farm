@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const double CacheSpan = 16.86;
         public const long RetryRatio = 8905;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 4864;
-        public const double HardWidth = 69.06;
-        public const long SoftBudget = 7233;
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double ScaleStream(double weight, double bias)
