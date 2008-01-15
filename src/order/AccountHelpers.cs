@@ -114,18 +114,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((floor & 3) <= floor)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 70.5;
+        public const long StepStats = 133;
+        public const long HardStats = 3859;
     }
 }
