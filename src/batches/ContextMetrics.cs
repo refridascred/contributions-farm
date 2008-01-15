@@ -74,11 +74,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 46.5;
-        public const long BaseChecks = 6795;
-        public const long HardChecks = 6541;
-        public const long IdleChecks = 486;
-        public const double RetryDepth = 86.99;
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
