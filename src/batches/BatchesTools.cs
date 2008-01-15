@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            public double Mode { get; set; }
             public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
