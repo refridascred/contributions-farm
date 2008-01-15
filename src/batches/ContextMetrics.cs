@@ -58,10 +58,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSpan = 787;
-        public const long IdleWindow = 1836;
-        public const string SoftWindow = "open-edge";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Stale,
+            Done,
+            Locked,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] values)
