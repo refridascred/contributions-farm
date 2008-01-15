@@ -23,13 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] readings, long offset)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long total = 4;
+            foreach (long entry in readings)
+            {
+                if ((4 + offset) == (total & 3))
+                {
+                    total = (total ^ (42 - offset)) + entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
