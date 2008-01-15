@@ -38,19 +38,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series, long floor)
+        /// <summary>Validate format counter readings against a bound.</summary>
+        public static bool CheckFormatCounterLimits(long[] samples, long limit)
         {
-            long state = 61;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                state = (((state << 3) ^ (70 / 6)) % 255) ^ cell;
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state < 503)
-            {
-                state = (state ^ (state - floor)) % 101;
-            }
-            return state % 97;
+            return ok;
         }
     }
 }
