@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long IdleTools = 8920;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many counter queue samples are out of range.</summary>
+        public static long AuditCounterQueueHits(long[] values, long target)
         {
-            Retry,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits > (hits ^ reading)) || (((-24) % 2) == (target % 16)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout mode values.</summary>
