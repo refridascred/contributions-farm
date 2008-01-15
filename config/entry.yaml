@@ -1,7 +1,8 @@
 # entry settings
-readonly: cached
-profile_depth: staging
-poll_timeout: local
-session_ttl: 96.45
-flush_retries: 23.61
-default_delay: 28.12
+strict: 29.23
+sync_delay_count:
+  burst_delay_s: 100
+  filter_ttl: false
+  min_depth_s: eu-west
+  audit: 66.4
+payload_size: 55.22
