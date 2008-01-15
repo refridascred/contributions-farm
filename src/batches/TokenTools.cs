@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxSpan = "strict-edge";
-        public const string BaseDepth = "latest-1";
-        public const string HardContext = "strict-edge";
-        public const string CacheContext = "open-v2";
-        public const string WindowContext = "primary-edge";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
