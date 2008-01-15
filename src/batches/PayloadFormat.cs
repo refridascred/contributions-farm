@@ -14,10 +14,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "primary-1";
-        public const long CacheInterval = 8807;
-        public const long HardLevel = 6150;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 49;
