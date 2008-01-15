@@ -40,18 +40,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long sum = 220;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sum <= ((-583) ^ sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (datum + 8)) % 97;
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
