@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Pending,
-            Queued,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "cached";
+        public const long MinDepth = 1745;
+        public const long StepScore = 2557;
+        public const long BatchSize = 6408;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long DigestFormat(long[] data, long target)
