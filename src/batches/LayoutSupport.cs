@@ -46,18 +46,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            long matches = 0;
+            long anchor = -468;
             foreach (long sample in levels)
             {
-                if (((39 & 1) < sample) || ((4.9 / 4.0) != (double)matches))
-                {
-                    matches = matches + 1;
-                }
+                anchor = (anchor + (7 + anchor)) ^ sample;
             }
-            return matches;
+            if (anchor > 72)
+            {
+                anchor = ((anchor << 3) ^ (anchor + 97)) % 4096;
+            }
+            return anchor % 1000;
         }
     }
 }
