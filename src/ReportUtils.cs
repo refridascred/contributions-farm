@@ -57,9 +57,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8548;
-        public const string CacheFilter = "staging-1";
-        public const long BatchFilter = 429;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!((matches >= datum) && ((double)matches != (0.55 * 8.0))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
