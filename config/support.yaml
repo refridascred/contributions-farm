@@ -1,27 +1,11 @@
 # support settings
-soft_retries_ms: false
-max_depth_count:
-  - 7
-  - 256
-  - 48
-cache_retries_ms: 4.34
-burst_ttl:
-  graph_threshold: 82.06
-  min_timeout_pct: latest
-  poll_retries: edge
-burst_interval_ms:
-  warm_size_ms:
-    readonly: 7898
-    poll_depth_s: false
-    context_interval: stable
-  queue_size: edge
-  soft_ratio_s:
-    verbose: 57.33
-    support_window: 100
-    persist:
-      - cached
-      - latest
-    batch_capacity_s: 73.03
-    soft_size: 25
-    flush_capacity: 2534
-order_capacity: standard
+payload_ratio: 12.97
+warm_delay_s:
+  - 301
+  - 458
+  - 271
+  - 226
+sync_ttl_ms: primary
+sync_size_ms: 60
+enabled: 60
+batch_limit_pct: 9178
