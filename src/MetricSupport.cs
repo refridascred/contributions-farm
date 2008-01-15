@@ -27,11 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstCount = 8039;
-        public const long RetryFarm = 3540;
-        public const long CacheSpan = 3676;
-        public const string HardInterval = "latest";
-        public const string IdleFarm = "staging-1";
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Pending,
+            Active,
+            Closed,
+        }
     }
 }
