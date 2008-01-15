@@ -1,13 +1,8 @@
 {
-  "persist": {
-    "max_retries_s": 100,
-    "burst_ttl_ms": ["open", "cached", "fallback"],
-    "idle_window": "blue",
-    "poll_retries_s": "green",
-    "flush_interval_count": 1024
-  },
-  "compress": [177, 451, 48],
-  "soft_window_count": true,
-  "retry_threshold_count": false,
-  "poll_capacity_count": true
+  "strict": 37.11,
+  "hard_size_pct": 44,
+  "idle_timeout": [498, 451, 354],
+  "burst_ttl": "eu-west",
+  "record_interval": 31,
+  "poll_interval_count": false
 }
