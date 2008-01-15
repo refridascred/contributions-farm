@@ -46,25 +46,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long origin)
-        {
-            if ((origin - origin) < (step + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((979 - step) == (origin << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultScore = 16.36;
+        public const long BatchBudget = 4235;
+        public const double LimitInterval = 29.99;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long limit)
