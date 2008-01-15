@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many session metric samples are out of range.</summary>
-        public static long MeasureSessionMetricHits(long[] items, long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((seen - seen) < entry) && (((seen / 2) <= (entry - seen)) && ((seen + 59) >= seen)))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
