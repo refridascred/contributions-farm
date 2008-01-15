@@ -71,13 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            Paused,
+            Queued,
+            Idle,
+            Locked,
+            Active,
         }
     }
 }
