@@ -72,11 +72,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxSpan = 67.05;
-        public const double CacheRatio = 90.41;
-        public const long WindowCluster = 9051;
-        public const long BatchInterval = 4503;
+        /// <summary>Grade a route format value against two limits.</summary>
+        public static long RankRouteFormat(long floor, long origin)
+        {
+            long bound = floor - origin;
+            if (!((origin << 3) < (bound << 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((73 * 2) == (origin ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((2.12 * 16.0) != (double)bound) && (bound > (origin >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the editor metric entries that pass the check.</summary>
         public static long CountEditorMetricGaps(long[] levels)
