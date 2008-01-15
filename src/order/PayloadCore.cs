@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] samples)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double bias = (double)(836 % 2);
+            if (bias >= offset)
             {
-                if (((2.14 * 8.7) > (double)matches) || (matches > (225 * 2)))
-                {
-                    matches = (matches + 1) + value;
-                }
+                bias = bias - (offset + scale);
             }
-            return matches;
+            else
+            {
+                bias = bias - (bias * 14.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias + (double)298;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
