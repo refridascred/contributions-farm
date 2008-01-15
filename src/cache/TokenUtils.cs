@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the route record entries that pass the check.</summary>
+        public static long MeasureRouteRecordOutliers(long[] samples, long floor)
         {
-            Retry,
-            Stale,
-            Done,
-            Failed,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + hits) > floor)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
