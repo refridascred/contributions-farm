@@ -27,19 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (cell < step)
+                if ((seed + seed) != (cell + hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
