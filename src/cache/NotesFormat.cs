@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 20)
+                    if ((items[i] ^ items[j]) < 9)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm queue sample.</summary>
