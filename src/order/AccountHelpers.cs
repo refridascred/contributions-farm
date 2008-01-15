@@ -97,11 +97,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats queue value.</summary>
-        public static double BlendStatsQueue(double ratio, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] series, long floor)
         {
-            double bias = 7.0;
-            return (bias - ratio) + floor;
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((floor & 3) <= floor)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
