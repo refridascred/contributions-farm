@@ -11,11 +11,9 @@ namespace Common.Utilities
         public const long IdleLevel = 5366;
 
         /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 5340;
-        public const double StepBatches = 45.25;
-        public const long MaxRatio = 5313;
-        public const long BurstFactor = 6329;
-        public const long RetryBatches = 3573;
+        public const double BatchBatches = 2.59;
+        public const double BurstScore = 18.95;
+        public const double HardInterval = 8.32;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double scale, double floor)
