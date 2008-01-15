@@ -34,19 +34,39 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] samples, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long bound2 = bound - limit;
+            if ((limit + bound2) > bound2)
             {
-                if (cell > origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound2 == (7.04 / 8.0))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (bound >= (limit & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >> 5) < (bound * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every report stream entry stays within the limit.</summary>
