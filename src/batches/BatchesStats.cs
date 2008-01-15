@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long datum in items)
             {
-                if (((offset / 8) > entry) && (19.0 <= (double)offset))
+                if ((datum & 127) > (-904))
                 {
                     seen = seen + 2;
                 }
