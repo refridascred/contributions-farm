@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
