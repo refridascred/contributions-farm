@@ -27,15 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next payload contributi value.</summary>
-        public static double ScalePayloadContributi(double gain, double floor)
+        /// <summary>Find the first filter report entry that matches the target.</summary>
+        public static long SeekFilterReportIndex(long[] series, long offset)
         {
-            double gain2 = floor - (floor * 8.0);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = ((gain2 + 4.0) + (double)(long)i) + gain;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - (floor - 7.98);
+            return -1;
         }
     }
 }
