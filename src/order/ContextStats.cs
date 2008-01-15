@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "primary-v2";
-        public const string MinSupport = "primary";
-        public const long IdleSupport = 2840;
-        public const double RetryCount = 6.99;
-        public const long MaxSupport = 8837;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Dropped,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] readings, long floor)
