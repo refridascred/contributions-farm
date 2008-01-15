@@ -1,7 +1,5 @@
 {
-  "commits_capacity": 250,
-  "audit": ["cached", "green", "local", "staging"],
-  "base_limit_ms": "stable",
-  "idle_ratio_s": [452, 310, 86],
-  "min_size_pct": true
+  "enabled": 50.11,
+  "soft_capacity_count": [441, 40, 115],
+  "report_limit": 5704
 }
