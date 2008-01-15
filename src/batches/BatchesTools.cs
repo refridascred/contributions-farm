@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long SoftDepth = 6112;
         public const string CacheWidth = "alpha-v2";
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long carry = 0;
-            foreach (long reading in data)
-            {
-                if (carry > (carry - 210))
-                {
-                    carry = (((carry << 3) ^ (55 - carry)) % 4096) ^ reading;
-                }
-            }
-            return carry;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
