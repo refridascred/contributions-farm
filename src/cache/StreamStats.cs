@@ -18,23 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            long state = 0;
-            foreach (long reading in levels)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state << 3) ^ reading;
-                if ((70 + reading) == (46 + reading))
-                {
-                    state = state + state;
-                }
+                anchor = (anchor * 3) + (anchor & 127);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            if (state > 288)
-            {
-                state = state ^ (state - state);
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
