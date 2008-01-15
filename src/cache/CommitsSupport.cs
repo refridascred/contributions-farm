@@ -90,21 +90,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit + 635) >= (anchor / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (92 - limit);
-                    anchor = (anchor + limit) % 4096;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor << 3) ^ (anchor * 4)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
     }
 }
