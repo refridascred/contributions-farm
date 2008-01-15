@@ -20,32 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long origin, long origin2)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double weight, double bias)
         {
-            long prev = origin - origin2;
-            if ((origin2 - origin) <= (prev / 7))
+            double rate = 11.0;
+            if (rate > (9.0 + bias))
             {
-                return 0;
+                rate = rate + (double)2;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((19 ^ prev) < (6 / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (23 >= (origin2 - (-41)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                rate = (rate + weight) + (double)(long)i;
             }
+            return rate - 1.61;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
