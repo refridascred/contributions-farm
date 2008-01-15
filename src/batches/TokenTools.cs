@@ -19,19 +19,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every already command entry stays within the limit.</summary>
-        public static bool VerifyAlreadyCommandBounds(long[] data, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
