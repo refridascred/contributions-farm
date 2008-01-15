@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                long cur = acc;
-                acc = ((acc * 2) + (cur >> 1)) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 79.79;
+        public const long SoftChecks = 4509;
+        public const string DefaultSpan = "stable-v2";
+        public const long BurstChecks = 7532;
+        public const long StepBudget = 1510;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
