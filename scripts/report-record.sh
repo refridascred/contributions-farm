@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging legacy standard; do
+RECORD_LIMIT=299
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy open stable strict; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
