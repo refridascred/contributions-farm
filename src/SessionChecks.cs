@@ -60,19 +60,22 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] samples)
         {
-            long total = 437;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                total = (total ^ (0 - total)) + value;
+                if (!((reading + seen) > (seen + reading)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 366)
-            {
-                total = (total + (bound & 15)) % 65521;
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
