@@ -46,21 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue checks readings.</summary>
-        public static long CompareQueueChecksCount(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
