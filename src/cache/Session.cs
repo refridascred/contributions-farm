@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] data, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (datum > target)
+                if ((seen << 1) >= (seen * 2))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 2) + sample) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a metric options.</summary>
