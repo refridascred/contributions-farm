@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const string MaxCount = "open";
         public const long RetryInterval = 2287;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (data[i] >= origin)
+                if (value < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Roll a order counter forward.</summary>
