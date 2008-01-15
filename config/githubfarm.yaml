@@ -1,30 +1,13 @@
 # githubfarm settings
-hard_threshold_ms:
-  poll_window_s: false
-  report_limit:
-    batch_limit: local
-    burst_depth_pct: 7725
-    default_window_count:
-      - 179
-      - 432
-      - 21
-  readonly: 1024
-  dry_run: 100
-retry_delay_ms: 60
-sync_threshold_pct:
-  min_limit_ms:
-    - staging
-    - eu-west
-    - open
-    - staging
-  dry_run: true
-  flush_window_ms: true
-  retry_limit_s:
-    - 187
-    - 238
-batch_delay_ms:
-  strict: stable
-  account_ratio: cached
-  graph_interval: green
-  burst_size_s: 87.71
-  record_delay: 8234
+warm_retries_count: 67.44
+support_size: 4386
+audit:
+  min_interval_pct: standard
+  route_ttl: 52.79
+  hard_delay_count: true
+batch_delay:
+  - edge
+  - blue
+  - latest
+  - legacy
+enabled: 22.49
