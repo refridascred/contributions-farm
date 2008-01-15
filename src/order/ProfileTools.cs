@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many order batch samples are out of range.</summary>
