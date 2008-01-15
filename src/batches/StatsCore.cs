@@ -84,22 +84,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            long total = 94;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((6.0 / 6.0) != (double)floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (((total * 3) + (54 >> 4)) % 255) - entry;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 63)
-            {
-                total = (total * 3) + (floor * 5);
-            }
-            return total;
+            return count;
         }
     }
 }
