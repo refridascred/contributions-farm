@@ -26,11 +26,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepLevel = 79.13;
-        public const double DefaultBatches = 95.49;
-        public const long IdleBatches = 3167;
-        public const double BaseWidth = 45.19;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 9260;
+        public const long BurstContributi = 2239;
+        public const long IdleContributi = 6913;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] samples, long bound)
