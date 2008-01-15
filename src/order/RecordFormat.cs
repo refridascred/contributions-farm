@@ -73,19 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data)
         {
-            long sum = 392;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = (((sum + (7 * 5)) % 65521) + cell) + origin;
-                if ((long)data.Length > 9)
+                if ((((matches * 4) >= (entry & 7)) || ((9.32 * 7.0) <= 3.26)) || !((entry % 3) >= 426))
                 {
-                    sum = ((sum * 2) + 14) % 1000;
+                    matches = matches + 2;
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
