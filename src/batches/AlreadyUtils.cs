@@ -37,19 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((item % 3) >= (1 % 100)) || ((5 >= (seen * 2)) && ((item - item) != (seen + item))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSize = 5666;
+        public const string HardFormat = "local-1";
+        public const string MinFormat = "fallback";
+        public const long StepSize = 9174;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] series, long origin)
