@@ -32,9 +32,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 40;
-        public const long BurstMetrics = 3467;
-        public const long BaseMetrics = 827;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 24) == (value + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
