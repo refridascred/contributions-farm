@@ -20,22 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] samples, long origin)
+        /// <summary>Fold a list of window cluster readings.</summary>
+        public static long DigestWindowCluster(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mix = 0;
+            foreach (long reading in samples)
             {
-                if ((double)tally == (5.0 + 6.5))
+                if ((double)step < (double)(long)samples.Length)
                 {
-                    tally = ((tally + 2) + sample) - origin;
+                    mix = (mix - (770 - mix)) - reading;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix ^ (step << 1)) % 255;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a filter stats.</summary>
