@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a token profile figure with a bias.</summary>
-        public static double BlendTokenProfile(double gain, double offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            double mean = (double)(24 - 44);
-            if (mean < (offset / 4.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (7.0 / 8.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + gain;
+            return tally;
         }
 
         /// <summary>Hold a stream record.</summary>
