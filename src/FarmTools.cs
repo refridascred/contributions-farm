@@ -31,24 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if ((double)target != (0.04 - 8.2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)target <= (5.8 + 9.6)) || ((target & 7) == (offset / 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the commits metric entries that pass the check.</summary>
