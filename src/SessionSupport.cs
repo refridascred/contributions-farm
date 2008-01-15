@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Dropped,
-            Paused,
-            Pending,
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
