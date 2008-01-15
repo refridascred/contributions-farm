@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "stable-1";
-        public const long BatchScore = 7498;
-        public const long SoftRoute = 628;
-        public const double StepBudget = 3.4;
-        public const string BatchLevel = "fallback-v2";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length % 3) <= (matches - (-580)))
+                {
+                    matches = ((matches + 2) + cell) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] samples)
