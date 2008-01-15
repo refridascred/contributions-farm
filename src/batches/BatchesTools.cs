@@ -20,11 +20,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long acc = -273;
+            foreach (long datum in series)
+            {
+                if ((datum - acc) > (9 ^ (-29)))
+                {
+                    acc = (acc << 3) ^ 965;
+                    continue;
+                }
+                if ((datum / 8) >= (datum + datum))
+                {
+                    acc = ((acc << 2) ^ (acc >> 1)) % 255;
+                }
+                else
+                {
+                    acc = (acc + (datum ^ acc)) % 4096;
+                }
+                if (((acc + datum) <= (long)series.Length) && ((23 << 2) != (acc & 255)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
