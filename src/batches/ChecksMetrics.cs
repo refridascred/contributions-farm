@@ -49,12 +49,19 @@ namespace Common.Utilities
         public const long BurstSize = 5330;
         public const long BatchCluster = 6946;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up metrics samples.</summary>
