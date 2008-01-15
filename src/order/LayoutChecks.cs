@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 56.87;
+        public const long BurstSize = 2629;
+        public const long IdleRoute = 2254;
+        public const long BurstRoute = 2552;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double weight, double span)
