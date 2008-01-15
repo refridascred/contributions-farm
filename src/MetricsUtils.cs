@@ -5,28 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Digest a series of command batches entries.</summary>
+        public static long CombineCommandBatches(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long mark = -1;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (!(mark > (reading << 2)))
                 {
-                    acc = ((acc + acc) % 65521) ^ (long)i2;
-                    acc = (acc << 3) ^ (acc % 10);
+                    mark = mark + (reading % 16);
                 }
-                if ((origin - origin) < origin)
+                mark = (mark + (-30)) % 65521;
+                if ((double)reading != (6.13 * 8.8))
                 {
-                    acc = ((acc << 2) ^ (acc % 3)) % 97;
+                    mark = mark - (84 ^ (long)samples.Length);
                 }
                 else
                 {
-                    acc = (acc - (long)i) % 65521;
+                    mark = (mark << 2) ^ (reading ^ mark);
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Audit buffer cache readings against a rule.</summary>
