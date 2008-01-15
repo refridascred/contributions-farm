@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the commits queue entries that pass the check.</summary>
-        public static long CountCommitsQueueMatches(long[] items)
+        /// <summary>Look up the position of a schema checks sample.</summary>
+        public static long SeekSchemaChecksIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally > (value / 7))
+                if ((levels[i] > target) && ((levels[i] % 2) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
