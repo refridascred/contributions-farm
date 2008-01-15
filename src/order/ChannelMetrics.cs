@@ -35,13 +35,10 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchTimeout = 7341;
+        public const string MaxFarm = "cached-v2";
+        public const string IdleFactor = "standard";
+        public const long DefaultFarm = 2576;
     }
 }
