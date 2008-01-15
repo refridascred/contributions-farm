@@ -40,18 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((cell / 7) >= (cell % 10))
+                if (entry >= bound)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Derive the next profile metrics value from a seed.</summary>
