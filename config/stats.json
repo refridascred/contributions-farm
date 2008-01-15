@@ -1,5 +1,8 @@
 {
-  "contributi_limit": false,
-  "audit": "green",
-  "flush_timeout_pct": "cached"
+  "base_interval_count": "primary",
+  "burst_retries": 37,
+  "verbose": true,
+  "cluster_retries": [402, 110],
+  "idle_timeout_count": false,
+  "window_retries": 60
 }
