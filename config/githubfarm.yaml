@@ -1,11 +1,9 @@
 # githubfarm settings
-window_ratio: 63
-verbose:
-  - staging
-  - standard
-  - primary
-audit:
-  session_limit: green
-  base_window_s: staging
-  idle_retries: 9534
-  persist: 41
+report_depth: strict
+persist:
+  - 26
+  - 209
+soft_limit_s:
+  - strict
+  - latest
+editor_size: fallback
