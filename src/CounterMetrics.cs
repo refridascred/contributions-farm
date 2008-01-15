@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
-        public static double ScaleGithubfarmEntry(double gain, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values)
         {
-            double ratio = span * 6.5;
-            if (ratio >= (gain - span))
+            long acc = 392;
+            foreach (long reading in values)
             {
-                ratio = ratio - ratio;
+                acc = acc - (reading >> 3);
+                acc = (acc ^ reading) % 255;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio + (double)430;
+            return acc;
         }
 
         /// <summary>Roll a order counter forward.</summary>
