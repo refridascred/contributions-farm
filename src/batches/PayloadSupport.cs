@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            double weight = offset;
-            if (weight > (offset * 2.2))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - 5.0) + scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - (weight / 6.0);
+            return hits;
         }
 
         /// <summary>Hold a support options.</summary>
