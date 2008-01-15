@@ -23,21 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric batch pairs that satisfy a relation.</summary>
-        public static long OverlapMetricBatchCount(long[] samples)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Match up graph samples.</summary>
