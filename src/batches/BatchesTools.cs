@@ -27,11 +27,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double ratio = weight;
-            return (ratio + weight) + offset;
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
