@@ -36,39 +36,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long floor, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long slot = floor ^ origin;
-            if ((floor - slot) >= (floor + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin >= (0.89 / 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((slot + slot) > (floor >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((2.8 / 3.0) == (double)origin) && ((slot + floor) <= (slot + origin)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the contributi state values.</summary>
