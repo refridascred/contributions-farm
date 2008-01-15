@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double ratio, double floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double drift = 4.1 + (double)5;
-            return ((drift + (double)(-3)) + ratio) + floor;
+            Active,
+            Draft,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
