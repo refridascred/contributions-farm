@@ -26,19 +26,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long offset, long origin)
         {
-            double scale = (double)99 + ratio;
-            if (scale <= (scale * 5.91))
+            if ((origin + offset) <= (origin * 5))
             {
-                scale = scale + (double)582;
+                return 5;
             }
             else
             {
-                scale = scale + ratio;
+                if ((offset + 9) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6 >> 4) != (origin % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return scale - (bias - ratio);
         }
 
         /// <summary>Find the first metrics order entry that matches the target.</summary>
