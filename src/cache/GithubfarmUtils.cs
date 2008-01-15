@@ -48,39 +48,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch schema value against two limits.</summary>
-        public static long RankBatchSchema(long limit, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values, long limit)
         {
-            long lane = limit ^ floor;
-            if ((floor - lane) < (lane - floor))
+            long anchor = 430;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-7) >> 5) == (lane ^ limit))
+                if (!((anchor / 3) == (anchor * 4)))
                 {
-                    return 2;
+                    anchor = (anchor << 3) ^ (value + value);
+                }
+                anchor = anchor - (limit >> 2);
+                if (((anchor % 3) != (662 << 3)) && ((anchor >> 4) != (anchor - limit)))
+                {
+                    anchor = (anchor * 3) + (limit * 2);
                 }
                 else
                 {
-                    if (((double)limit > (double)floor) && ((1 << 3) < (floor + lane)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor << 3) > 2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor * 5) + (long)values.Length;
                 }
             }
+            return anchor;
         }
     }
 }
