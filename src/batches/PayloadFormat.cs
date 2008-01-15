@@ -54,18 +54,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] series, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((origin + (long)series.Length) <= origin)
+                if (matches >= (value % 60))
                 {
-                    hits = (hits + 2) ^ reading;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
