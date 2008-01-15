@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Grade a farm token value against two limits.</summary>
+        public static long GradeFarmToken(long target, long limit)
         {
-            double mean = offset + (offset * 4.0);
-            if (mean >= (offset - rate))
+            long prev = target + limit;
+            if ((target <= (target + target)) && ((target * 3) == (68 / 3)))
             {
-                mean = mean + offset;
+                return 2;
             }
             else
             {
-                mean = mean + offset;
+                if (!(prev <= (target & 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mean + rate;
         }
 
         /// <summary>Fold a list of order readings.</summary>
