@@ -37,18 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record cluster readings against a rule.</summary>
-        public static long CountRecordClusterMatches(long[] readings, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long total = 90;
+            foreach (long entry in items)
             {
-                if (tally <= (reading & 31))
+                if (!((offset + offset) < (total ^ entry)))
                 {
-                    tally = (tally + 2) + bound;
+                    total = total + (entry + total);
+                    break;
+                }
+                if (((6.0 * 9.0) > (double)total) && (9 > (entry << 1)))
+                {
+                    total = (total - (total / 3)) % 101;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the batches phase values.</summary>
