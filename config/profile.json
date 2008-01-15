@@ -1,7 +1,8 @@
 {
-  "strict": 30,
-  "commits_depth": "fallback",
-  "default_ratio_pct": 5622,
-  "cache_depth_pct": 60,
-  "batch_delay": 64.96
+  "warm_retries": 500,
+  "burst_retries_ms": "latest",
+  "retry_window_count": [428, 169, 187],
+  "soft_ratio_pct": "stable",
+  "dry_run": 97,
+  "base_timeout": ["stable", "primary", "cached", "open"]
 }
