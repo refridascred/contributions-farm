@@ -55,22 +55,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up commits format samples.</summary>
-        public static long PairCommitsFormatCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitWidth = "strict";
+        public const string MinSize = "local";
+        public const double StepPayload = 5.54;
+        public const long DefaultRatio = 6895;
+        public const long WindowPayload = 293;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
