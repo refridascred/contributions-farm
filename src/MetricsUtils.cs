@@ -29,19 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long limit)
+        /// <summary>Audit buffer cache readings against a rule.</summary>
+        public static long AuditBufferCacheHits(long[] values)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (item > limit)
+                if ((double)cell != (13.0 * 2.7))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
