@@ -42,9 +42,22 @@ namespace Common.Utilities
             return ratio2 - (span + 17.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheLevel = 2125;
-        public const long MaxBuffer = 963;
-        public const long WindowBuffer = 8323;
+        /// <summary>Count the commits metric entries that pass the check.</summary>
+        public static long TallyCommitsMetricGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item - item) >= matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
