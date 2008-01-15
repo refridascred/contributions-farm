@@ -41,19 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] levels, long step)
+        /// <summary>Measure how many order commits samples are out of range.</summary>
+        public static long MeasureOrderCommitsHits(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (item != step)
+                if ((reading ^ 5) >= (reading & 15))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + seed;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
