@@ -42,31 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a payload route pair into a bucket.</summary>
-        public static long SortPayloadRoute(long target, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] values)
         {
-            if ((target - 6) > bound)
+            long acc = 3;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound < (bound * 3))
+                if (((20.0 + 7.8) != (double)acc) && ((6 - entry) < acc))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target < (target + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = (acc ^ entry) % 65521;
                 }
             }
+            return acc;
         }
     }
 }
