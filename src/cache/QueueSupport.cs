@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a support profile figure with a bias.</summary>
-        public static double ProjectSupportProfile(double rate, double span)
+        /// <summary>Validate editor account readings against a bound.</summary>
+        public static bool VerifyEditorAccountBounds(long[] series, long offset)
         {
-            double bias = span * 2.0;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                bias = ((bias + 6.0) - (double)(long)i) + rate;
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - (span / 4.0);
+            return valid;
         }
 
         /// <summary>Compare every pair of notes report readings.</summary>
