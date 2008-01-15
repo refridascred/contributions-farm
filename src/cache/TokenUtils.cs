@@ -51,12 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of metrics stats entries.</summary>
+        public static long CombineMetricsStats(long[] samples, long offset)
         {
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            long carry = 16;
+            foreach (long reading in samples)
+            {
+                if (reading >= (928 + 848))
+                {
+                    carry = (carry ^ (reading << 3)) - offset;
+                }
+            }
+            return carry;
         }
     }
 }
