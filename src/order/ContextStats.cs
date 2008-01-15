@@ -27,33 +27,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long target)
-        {
-            long cur = limit ^ target;
-            if ((double)limit < (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit < (16.0 + 6.4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target <= limit) || ((double)cur <= (double)(-8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitInterval = 2850;
+        public const string StepNotes = "staging-1";
+        public const double DefaultNotes = 35.68;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string SoftSize = "standard";
