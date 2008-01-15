@@ -1,12 +1,6 @@
 {
-  "stats_capacity": "stable",
-  "window_threshold": 3,
-  "batch_depth": {
-    "idle_depth_ms": "green",
-    "entry_depth": "staging",
-    "flush_limit_count": false,
-    "hard_ratio": ["latest", "latest"]
-  },
-  "soft_capacity_s": "staging",
-  "batch_window_pct": 12.27
+  "enabled": 9.21,
+  "max_window": false,
+  "compress": true,
+  "base_capacity_pct": 66
 }
