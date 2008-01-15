@@ -76,20 +76,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((16.0 / 8.0) < (double)count) && (reading < (9 + count)))
                 {
-                    carry = (carry + (seed % 5)) - (long)i2;
+                    count = count + 3;
                 }
-                carry = (carry - (carry << 1)) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
