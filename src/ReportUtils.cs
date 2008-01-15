@@ -50,14 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Closed,
-            Idle,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitTimeout = 8573;
+        public const double RetryBatches = 81.23;
+        public const string MaxCount = "local";
 
         /// <summary>Roll a payload metric counter forward.</summary>
         public static long RollPayloadMetric(long seed)
