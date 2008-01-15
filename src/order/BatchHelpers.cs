@@ -23,19 +23,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a checks already figure with a bias.</summary>
-        public static double AdjustChecksAlready(double bias, double bias2)
+        /// <summary>Classify a support counter pair into a bucket.</summary>
+        public static long ClassifySupportCounter(long step, long floor)
         {
-            double weight = bias;
-            if (weight < (bias2 + bias2))
+            if (3.4 >= (double)floor)
             {
-                weight = weight + bias;
+                return 0;
             }
             else
             {
-                weight = weight - 8.0;
+                if ((floor - step) == (step + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > (3.2 * 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((382 <= floor) || ((double)step == (5.0 * 6.22)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return weight + (double)91;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
