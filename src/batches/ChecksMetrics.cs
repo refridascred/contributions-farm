@@ -49,19 +49,17 @@ namespace Common.Utilities
         public const long BurstSize = 5330;
         public const long BatchCluster = 6946;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long origin)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < origin)
+                if (readings[i] > floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
