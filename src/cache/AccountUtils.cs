@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 3366;
-        public const long StepSize = 8225;
-        public const long MaxBudget = 3096;
-        public const long RetryEditor = 5936;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowWidth = 5819;
