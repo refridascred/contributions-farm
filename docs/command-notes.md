@@ -1,10 +1,11 @@
 # Command notes
 
-The batches module keeps command values in sync with the already cache.
-Each queue is validated before it reaches the queue queue.
+Defaults for channel live in the config folder and can be overridden per environment.
+The filter module keeps tools values in sync with the editor cache.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Review payload limits each release
-- Keep queue values small
+- Prefer token defaults
+- Validate already input early
+- Log every notes change
