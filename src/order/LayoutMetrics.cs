@@ -16,12 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] samples, long bound)
         {
-            Pending,
-            Dropped,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
