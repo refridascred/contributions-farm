@@ -1,15 +1,5 @@
 {
-  "warm_delay_count": {
-    "burst_timeout": 1943,
-    "verbose": "open",
-    "min_threshold_count": [331, 326, 403, 130],
-    "base_timeout_ms": 250
-  },
-  "base_ratio_count": {
-    "tools_capacity": ["staging", "fallback", "green"],
-    "warm_window": false,
-    "warm_interval": false
-  },
-  "batch_timeout_s": 43.61,
-  "max_capacity_pct": 45
+  "dry_run": "strict",
+  "enabled": 42.18,
+  "default_capacity_pct": 3346
 }
