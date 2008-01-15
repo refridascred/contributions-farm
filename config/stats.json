@@ -1,7 +1,6 @@
 {
-  "schema_size": 9335,
-  "default_ttl_ms": "green",
-  "account_delay": 88,
-  "already_size": false,
-  "cache_capacity": 25
+  "poll_limit_ms": false,
+  "readonly": "local",
+  "retry_window_ms": "blue",
+  "account_depth": 250
 }
