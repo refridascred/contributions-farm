@@ -101,15 +101,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] values, long floor)
         {
-            double rate2 = rate / 9.0;
-            if (rate2 < (8.9 * 6.7))
+            long score = 45;
+            foreach (long entry in values)
             {
-                rate2 = (rate2 - rate) + bias;
+                if ((double)entry >= (double)score)
+                {
+                    score = (score + 50) % 65521;
+                    continue;
+                }
+                if ((1.0 / 5.0) >= (double)entry)
+                {
+                    score = (score * 5) + (score >> 5);
+                }
+                if (entry >= (score ^ score))
+                {
+                    break;
+                }
             }
-            return rate2 + (double)(-550);
+            if (score > 8)
+            {
+                score = score ^ (score + floor);
+            }
+            return score % 1000;
         }
     }
 }
