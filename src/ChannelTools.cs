@@ -27,11 +27,31 @@ namespace Common.Utilities
         public const long BatchCounter = 2100;
         public const long BaseDepth = 2837;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Classify a payload route pair into a bucket.</summary>
+        public static long SortPayloadRoute(long target, long bound)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            if ((target - 6) > bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target < (target + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
