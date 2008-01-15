@@ -12,19 +12,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > target)
+                if (((6.1 * 0.32) > (double)carry) || ((double)origin != (8.03 / 3.0)))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry + (long)i) % 97;
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Match up filter samples.</summary>
