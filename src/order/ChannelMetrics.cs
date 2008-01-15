@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a support account sample.</summary>
-        public static long FindSupportAccountIndex(long[] values, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] < step)
+                if ((items[i] == bound) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
