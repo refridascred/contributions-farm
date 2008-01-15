@@ -64,21 +64,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 956;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (score & 7)) ^ sample;
             }
-            return matches;
+            if (score > (-13))
+            {
+                score = (score - (score + score)) % 255;
+            }
+            return score % 97;
         }
     }
 }
