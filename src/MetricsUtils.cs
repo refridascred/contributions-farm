@@ -39,13 +39,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Find the first session graph entry that matches the target.</summary>
+        public static long LocateSessionGraphIndex(long[] series, long target)
         {
-            Pending,
-            Failed,
-            Idle,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
