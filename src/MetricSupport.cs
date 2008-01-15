@@ -51,12 +51,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double weight, double offset)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
+            double mean = (weight * 2.1) / 5.0;
+            if (mean <= (weight * 8.6))
+            {
+                mean = (mean + (double)954) - offset;
+            }
+            else
+            {
+                mean = mean - (double)24;
+            }
+            return mean - (weight + mean);
         }
     }
 }
