@@ -30,16 +30,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = 59;
-            foreach (long item in series)
-            {
-                total = ((total << 3) ^ (item >> 3)) % 255;
-                total = (total ^ (3 << 2)) % 65521;
-            }
-            return total;
+            Active,
+            Ready,
+            Locked,
         }
     }
 }
