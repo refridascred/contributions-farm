@@ -13,11 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer window entries.</summary>
