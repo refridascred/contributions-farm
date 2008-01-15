@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a farm token value against two limits.</summary>
-        public static long GradeFarmToken(long target, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long origin)
         {
-            long prev = target + limit;
-            if ((target <= (target + target)) && ((target * 3) == (68 / 3)))
+            if ((origin > (1 << 1)) && (bound >= (bound % 100)))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (!(prev <= (target & 7)))
+                if (!((2.0 + 4.89) == (double)bound))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 1;
+                    if (((696 - bound) != (origin - origin)) && ((bound * 2) < bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound <= (bound + bound)) && ((origin << 1) > (598 ^ bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
