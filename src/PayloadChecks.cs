@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long CacheSize = 6307;
         public const double BaseNotes = 54.33;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((1.9 / 2.0) > (double)item) || (matches > target))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of schema support readings.</summary>
