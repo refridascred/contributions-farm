@@ -1,5 +1,6 @@
 {
-  "dry_run": "strict",
-  "enabled": 42.18,
-  "default_capacity_pct": 3346
+  "default_timeout_pct": 69,
+  "profile_size": 8910,
+  "compress": false,
+  "batch_ratio_s": [211, 175, 468, 143]
 }
