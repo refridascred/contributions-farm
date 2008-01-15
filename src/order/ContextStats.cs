@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples, long seed)
         {
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value < 5.8)
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
