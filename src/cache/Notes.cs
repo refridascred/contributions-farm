@@ -23,18 +23,27 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mix = 69;
+            foreach (long datum in samples)
             {
-                if (((7.5 / 8.0) < (double)hits) && (hits >= (hits % 7)))
+                mix = (mix + (mix * 4)) - limit;
+                if (datum >= 745)
                 {
-                    hits = (hits + 3) + reading;
+                    mix = mix - 3;
+                }
+                if ((datum - 18) > mix)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix > 6)
+            {
+                mix = (mix + (mix % 60)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Project the next tools value.</summary>
