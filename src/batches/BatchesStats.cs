@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 8369;
-        public const double WindowNotes = 25.78;
-        public const long MaxRatio = 5931;
-        public const double LimitNotes = 58.89;
-        public const long CacheFactor = 2599;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((offset / 8) > entry) && (19.0 <= (double)offset))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueLimits(long[] items, long seed)
