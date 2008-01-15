@@ -75,15 +75,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long bound)
         {
-            double scale = (double)(3 * 5);
-            if (scale <= (scale / 8.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale + (scale * 4.3)) - rate) - floor;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale - scale;
+            return -1;
         }
     }
 }
