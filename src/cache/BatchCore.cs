@@ -22,14 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up queue commits samples.</summary>
+        public static long CompareQueueCommitsCount(long[] series)
         {
-            Ready,
-            Stale,
-            Locked,
-            Retry,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
