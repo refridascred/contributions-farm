@@ -18,39 +18,22 @@ namespace Common.Utilities
         public const double IdleQueue = 75.32;
         public const long IdleRatio = 5750;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long step2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            long offset = step + step2;
-            if (((step2 + step) != (offset << 1)) || ((offset & 1) >= offset))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((698 + step) != (4 >> 3))
+                if ((value >= (tally / 7)) && ((5 >> 1) != (tally >> 5)))
                 {
-                    return 6;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((step + offset) > (951 ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (6 >= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
