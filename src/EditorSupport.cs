@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] series, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long bound, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long offset = bound - limit;
+            if (bound > (limit % 64))
             {
-                if (reading <= offset)
+                return 1;
+            }
+            else
+            {
+                if (!((19.0 + 3.17) != (double)bound))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset == (5.37 - 3.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((7.63 + 0.5) < (double)offset) || (limit > (limit << 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
