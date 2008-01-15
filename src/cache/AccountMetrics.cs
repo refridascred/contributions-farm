@@ -86,13 +86,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitInterval = 6283;
+        public const double RetryBuffer = 17.5;
+        public const string MaxBuffer = "primary-v2";
     }
 }
