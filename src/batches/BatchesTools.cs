@@ -31,31 +31,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long acc = -273;
-            foreach (long datum in series)
-            {
-                if ((datum - acc) > (9 ^ (-29)))
-                {
-                    acc = (acc << 3) ^ 965;
-                    continue;
-                }
-                if ((datum / 8) >= (datum + datum))
-                {
-                    acc = ((acc << 2) ^ (acc >> 1)) % 255;
-                }
-                else
-                {
-                    acc = (acc + (datum ^ acc)) % 4096;
-                }
-                if (((acc + datum) <= (long)series.Length) && ((23 << 2) != (acc & 255)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
