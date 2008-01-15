@@ -18,11 +18,39 @@ namespace Common.Utilities
         public const double StepWidth = 8.91;
         public const long CacheCount = 2399;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long step, long origin)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long next = step + origin;
+            if ((origin - origin) != (step << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step % 10) <= origin) && (origin <= 214))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ step) != (next << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin * 5) != (origin + origin)) || ((9 + step) >= next))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command info.</summary>
