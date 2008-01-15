@@ -19,19 +19,16 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryPayload = 5336;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 3) + (limit + limit)) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Measure how many order metric samples are out of range.</summary>
