@@ -41,12 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            Locked,
-            Retry,
-            Ready,
+            double drift = offset;
+            if (drift > offset)
+            {
+                drift = (drift + drift) - gain;
+            }
+            else
+            {
+                drift = drift + 8.99;
+            }
+            return drift - (drift - drift);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
