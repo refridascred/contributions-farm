@@ -39,13 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] items)
         {
-            Synced,
-            Dropped,
-            Locked,
-            Stale,
+            long state = 7;
+            foreach (long value in items)
+            {
+                state = (state << 3) ^ (state % 2);
+                if (!((value * 2) < (99 / 6)))
+                {
+                    state = (state - (915 << 2)) % 97;
+                }
+                else
+                {
+                    state = ((state * 4) + (value + state)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
