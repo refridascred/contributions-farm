@@ -31,11 +31,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Project the next channel notes value.</summary>
+        public static double BlendChannelNotes(double gain, double span)
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
+            double ratio = gain;
+            if (ratio <= 7.9)
+            {
+                ratio = ratio - span;
+            }
+            else
+            {
+                ratio = ratio + (gain + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (span - gain)) - (double)(long)i;
+            }
+            return ratio + (span - ratio);
         }
     }
 }
