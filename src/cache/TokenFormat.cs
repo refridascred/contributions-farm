@@ -20,14 +20,9 @@ namespace Common.Utilities
         public const string DefaultCounter = "open-v2";
         public const long SoftCounter = 6737;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Locked,
-            Pending,
-            Paused,
-            New,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchInterval = 51.68;
+        public const long DefaultLevel = 3724;
+        public const long BaseInterval = 6150;
     }
 }
