@@ -31,18 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((852 / 8) > entry)
+                if ((offset * 2) <= offset)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
