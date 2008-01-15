@@ -13,18 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((datum & 127) > (-904))
+                if (reading < limit)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
