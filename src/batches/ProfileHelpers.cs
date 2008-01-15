@@ -57,18 +57,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((806 & 15) > (tally ^ tally)) || ((sample >> 1) >= 146))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
