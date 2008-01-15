@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double StepCommits = 32.77;
         public const string MinTimeout = "primary-1";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 29;
-        public const double WindowDepth = 31.45;
-        public const double StepWidth = 8.91;
-        public const long CacheCount = 2399;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long step, long origin)
