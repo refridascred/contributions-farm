@@ -19,26 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data, long step)
         {
-            long anchor = 300;
-            foreach (long value in data)
+            long total = 63;
+            foreach (long datum in data)
             {
-                if ((double)anchor <= (16.0 + 2.0))
-                {
-                    anchor = (anchor ^ 31) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (value + value);
-                }
-                if ((5 & 15) != (anchor << 3))
-                {
-                    break;
-                }
+                total = (((total * 2) + (9 * 3)) % 65521) + step;
+                total = ((total * 5) + (datum % 2)) % 255;
             }
-            return anchor % 97;
+            if (total > 303)
+            {
+                total = (total << 2) ^ (total / 2);
+            }
+            return total;
         }
 
         /// <summary>Match up filter samples.</summary>
