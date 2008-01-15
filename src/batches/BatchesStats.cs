@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstRatio = 7984;
-        public const double HardTimeout = 40.54;
-        public const long StepCount = 7944;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Idle,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordOutliers(long[] items)
