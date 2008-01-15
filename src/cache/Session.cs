@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "cached";
-        public const long MinDepth = 1745;
-        public const long StepScore = 2557;
-        public const long BatchSize = 6408;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 8607;
+        public const string BurstToken = "stable-v2";
+        public const string MaxRatio = "stable-1";
+        public const long RetryToken = 61;
+        public const long BaseDepth = 3941;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long floor)
