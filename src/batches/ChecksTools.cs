@@ -49,18 +49,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] readings)
+        /// <summary>Roll a checks cluster counter forward.</summary>
+        public static long SeriesChecksCluster(long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((32 % 64) >= reading)
+                mix = ((mix << 3) ^ (414 + (long)i)) % 101;
+                if ((5.6 - 7.0) == (double)(long)i)
                 {
-                    count = count + 3;
+                    continue;
                 }
+                else
+                {
+                    mix = (mix ^ (floor - (long)i)) % 101;
+                    mix = (mix << 3) ^ (mix - floor);
+                }
+                mix = (mix - (mix - mix)) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
     }
 }
