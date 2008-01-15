@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double bias2)
-        {
-            double load = bias2;
-            if (load < (double)2)
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - (double)34;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 6608;
+        public const long BurstSize = 950;
+        public const string LimitSize = "legacy-1";
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
