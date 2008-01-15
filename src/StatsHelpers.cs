@@ -34,12 +34,17 @@ namespace Common.Utilities
         public const double BurstChannel = 61.52;
         public const double MinWidth = 82.45;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Locate a context batch reading by value.</summary>
+        public static long FindContextBatchIndex(long[] levels, long limit)
         {
-            Idle,
-            Queued,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
