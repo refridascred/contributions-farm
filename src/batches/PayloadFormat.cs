@@ -26,11 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 49;
-        public const long HardStats = 4111;
-        public const string MinInterval = "alpha";
-        public const long DefaultTimeout = 5760;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (60 <= (datum << 3))
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
