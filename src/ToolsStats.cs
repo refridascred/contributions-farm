@@ -66,19 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] data, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (cell > bound)
+                if ((0 & 15) != (origin + origin))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - sample;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the entry kind values.</summary>
