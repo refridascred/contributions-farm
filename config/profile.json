@@ -1,10 +1,13 @@
 {
-  "verbose": "latest",
-  "idle_interval_pct": {
-    "support_capacity": 500,
-    "compress": "local",
-    "soft_timeout_s": 8174,
-    "hard_size_ms": "standard"
+  "stream_depth": [362, 7, 83, 57],
+  "warm_retries_s": 10.4,
+  "contributi_ttl": true,
+  "soft_interval_pct": {
+    "payload_ratio": 2210,
+    "cache_interval": "fallback",
+    "token_delay": false,
+    "record_ttl": 62.98
   },
-  "audit": 5059
+  "schema_ratio": 66.0,
+  "payload_depth": false
 }
