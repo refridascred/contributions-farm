@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (item >= (matches + item))
+                if (sample >= limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a command snapshot.</summary>
