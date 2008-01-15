@@ -36,25 +36,38 @@ namespace Common.Utilities
         public const double LimitFactor = 28.22;
         public const double SoftSize = 41.0;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] items, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long limit, long origin)
         {
-            long total = 0;
-            foreach (long item in items)
+            if (origin > limit)
             {
-                if (((origin ^ total) < 537) && ((origin ^ total) < origin))
+                return 6;
+            }
+            else
+            {
+                if ((limit <= ((-13) + origin)) && (limit > (limit - limit)))
                 {
-                    total = total ^ (total << 3);
-                    continue;
+                    return 1;
                 }
-                total = (total << 3) ^ total;
-                total = ((total * 2) + (item + origin)) % 255;
+                else
+                {
+                    if (origin > (origin / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit & 1) >= (origin - origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            if (total > 421)
-            {
-                total = (total - (origin * 2)) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
