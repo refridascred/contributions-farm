@@ -16,10 +16,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleSpan = "cached-1";
-        public const string LimitRecord = "open-v2";
-        public const long IdleRecord = 8732;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long floor)
+        {
+            long offset = limit - floor;
+            if ((limit << 1) > (offset ^ floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit - 839) <= (limit + floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(offset >= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountOutliers(long[] values)
