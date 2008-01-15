@@ -40,19 +40,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long seed)
+        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
+        public static long AuditFilterGithubfarmGaps(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (sample < seed)
+                if ((limit ^ limit) > datum)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
