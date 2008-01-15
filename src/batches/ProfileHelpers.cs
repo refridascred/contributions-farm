@@ -51,18 +51,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((1.65 + 8.27) == (double)entry)
+                if ((double)reading >= (9.92 + 8.0))
                 {
-                    tally = tally + 2;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Adjust a tools report reading.</summary>
