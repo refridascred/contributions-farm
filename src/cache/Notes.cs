@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 76.01;
-        public const long DefaultReport = 8326;
-        public const long IdleLevel = 5366;
+        /// <summary>Check that every order already entry stays within the limit.</summary>
+        public static bool ValidateOrderAlreadyRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsGaps(long[] levels)
