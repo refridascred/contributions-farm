@@ -30,18 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] series, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen >= (double)target)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Idle,
+            Ready,
+            Paused,
         }
     }
 }
