@@ -1,30 +1,11 @@
 # entry settings
-burst_capacity:
-  enabled: 25.75
-  flush_ratio:
-    - 22
-    - 113
-    - 111
-    - 393
-  githubfarm_limit: false
-  soft_size_ms: 55
-  persist:
-    readonly: 32
-    editor_ratio: cached
-    warm_window_ms: true
-    poll_interval: true
-    schema_timeout:
-      - fallback
-      - staging
-    retry_capacity_s: 27.89
-warm_depth_count: 66.96
-compress: latest
-sync_ttl: 500
-checks_capacity:
-  batch_timeout_count: true
-  min_retries: 78
-  cache_interval_pct:
-    - 435
-    - 224
-  enabled: true
-  retry_threshold: false
+hard_size_ms: 4920
+sync_delay_count:
+  sync_interval_s: latest
+  cache_capacity_count: edge
+  idle_retries_s: 75.5
+  sync_delay_count: true
+  burst_delay_ms: local
+  burst_limit_count: fallback
+format_depth: false
+default_delay_s: true
