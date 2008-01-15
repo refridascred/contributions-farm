@@ -30,19 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] samples, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > limit)
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
