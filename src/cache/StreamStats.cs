@@ -29,11 +29,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardScore = 5968;
-        public const long StepRatio = 8292;
-        public const long CacheCommits = 9697;
-        public const double MaxCommits = 98.99;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitBudget = 7855;
+        public const long BatchStats = 879;
+        public const long WindowInterval = 7356;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] levels)
