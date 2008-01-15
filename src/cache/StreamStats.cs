@@ -50,18 +50,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] items, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((8 >> 2) > (matches % 5))
+                if (((double)bound != (20.0 / 3.0)) && (970 < (bound & 63)))
                 {
-                    matches = ((matches + 2) + cell) + bound;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Adjust a command metrics reading.</summary>
