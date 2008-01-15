@@ -56,13 +56,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            Ready,
+            Retry,
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the metrics level values.</summary>
