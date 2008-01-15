@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                long cur = acc;
+                acc = ((acc * 2) + (cur >> 1)) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
