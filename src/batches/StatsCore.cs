@@ -50,24 +50,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long bound)
+        /// <summary>Check that every farm format entry stays within the limit.</summary>
+        public static bool VerifyFarmFormatBounds(long[] data, long offset)
         {
-            if ((2.92 - 4.4) < (double)bound)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin & 3) <= (origin + bound)) && ((92 & 15) > (origin - origin)))
+                if (reading < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Locate a order report reading by value.</summary>
