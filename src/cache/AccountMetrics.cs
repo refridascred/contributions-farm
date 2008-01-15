@@ -65,14 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 8280;
+        public const long BatchCommits = 5809;
+        public const long SoftCommits = 915;
+        public const double WindowCommits = 92.25;
+        public const string RetrySpan = "fallback-v2";
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmCount(long[] series)
