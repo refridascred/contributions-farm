@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long offset)
         {
-            long total = 6;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (((total + 986) > (value + value)) || (total > (total & 127)))
+                if (item > offset)
                 {
-                    total = (total - (total >> 4)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count the tools profile entries that pass the check.</summary>
