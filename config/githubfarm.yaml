@@ -1,25 +1,11 @@
 # githubfarm settings
-cache_timeout_ms: false
-entry_size:
-  enabled: 78
-  graph_delay:
-    warm_capacity: false
-    dry_run: 66
-    readonly: primary
-    flush_interval: 586
-  retry_interval_ms: eu-west
-  retry_window:
-    - 184
-    - 93
-    - 184
-    - 494
-default_window_count:
-  - local
-  - strict
-  - fallback
-  - latest
-burst_ratio_count: staging
-compress:
-  - edge
-  - local
-  - edge
+window_ratio: 63
+verbose:
+  - staging
+  - standard
+  - primary
+audit:
+  session_limit: green
+  base_window_s: staging
+  idle_retries: 9534
+  persist: 41
