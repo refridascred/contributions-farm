@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] samples, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)7;
+            return (mean + ratio) + span;
         }
 
         /// <summary>Find the first queue metric entry that matches the target.</summary>
