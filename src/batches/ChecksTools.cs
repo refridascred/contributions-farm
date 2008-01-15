@@ -41,21 +41,13 @@ namespace Common.Utilities
         public const string StepStream = "legacy-v2";
         public const long BatchStream = 6821;
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Done,
+            Closed,
         }
     }
 }
