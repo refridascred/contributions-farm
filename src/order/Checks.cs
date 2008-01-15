@@ -44,18 +44,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] values)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((1 ^ count) > (long)values.Length)
+                if (item < floor)
                 {
-                    count = (count + 3) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
