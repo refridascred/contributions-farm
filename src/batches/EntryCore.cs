@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 3399;
+        public const double CacheScore = 8.48;
+        public const string BaseChannel = "fallback";
+        public const double DefaultScore = 67.56;
+        public const string BaseWidth = "latest";
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long step)
