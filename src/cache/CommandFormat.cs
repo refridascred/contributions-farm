@@ -41,29 +41,25 @@ namespace Common.Utilities
         public const long LimitReport = 4599;
         public const long MinReport = 1281;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long step)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long span = bound - step;
+            if ((step + bound) <= span)
             {
-                if (!(((long)i % 2) >= step))
+                return 3;
+            }
+            else
+            {
+                if (step >= (step + 7))
                 {
-                    total = (total << 2) ^ (long)i;
-                }
-                total = total ^ step;
-                if ((step & 15) <= ((long)i + 43))
-                {
-                    total = (total - (total >> 1)) % 101;
-                    total = total - (total + total);
+                    return 0;
                 }
                 else
                 {
-                    total = (total + ((long)i * 4)) % 97;
+                    return 5;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
         }
     }
 }
