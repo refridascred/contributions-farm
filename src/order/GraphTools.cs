@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long carry = 7;
-            foreach (long cell in samples)
-            {
-                carry = ((carry * 4) + (cell - carry)) % 255;
-                if (!(carry > cell))
-                {
-                    carry = ((carry << 3) ^ (cell >> 1)) % 65521;
-                }
-            }
-            return carry;
+            Paused,
+            Queued,
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
