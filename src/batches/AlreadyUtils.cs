@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Active,
-            Closed,
-            Queued,
-            Done,
-            Pending,
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
