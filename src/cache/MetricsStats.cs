@@ -36,27 +36,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long offset)
         {
-            long anchor = 5;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry - entry) != (entry % 97))
+                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
                 {
-                    anchor = ((anchor * 4) + (floor & 1)) % 65521;
-                    anchor = (anchor - floor) % 101;
-                }
-                if ((anchor << 1) > ((-984) >> 3))
-                {
-                    anchor = anchor - (6 % 7);
-                }
-                if ((1.0 * 8.33) != (double)entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
