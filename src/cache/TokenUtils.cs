@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 8621;
-        public const long BaseWidth = 8546;
-        public const double WindowEditor = 6.87;
-        public const long BurstEditor = 9109;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Locked,
+            Stale,
+            Ready,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 7043;
