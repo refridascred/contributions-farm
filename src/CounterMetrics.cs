@@ -35,17 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format stats reading by value.</summary>
-        public static long FindFormatStatsIndex(long[] readings, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Synced,
+            Queued,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
