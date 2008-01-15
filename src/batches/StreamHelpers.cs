@@ -26,21 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up contributi stats samples.</summary>
-        public static long OverlapContributiStatsCount(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 29;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (offset > (value & 31))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - offset) % 255;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
