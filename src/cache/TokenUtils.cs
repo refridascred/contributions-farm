@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Accumulate counter layout samples.</summary>
