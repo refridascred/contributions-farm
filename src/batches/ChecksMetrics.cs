@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long TallyWindowTokenHits(long[] samples)
+        /// <summary>Validate checks account readings against a bound.</summary>
+        public static bool CheckChecksAccountRange(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (matches > (matches & 1))
+                if (sample <= limit)
                 {
-                    matches = (matches + 2) - entry;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
