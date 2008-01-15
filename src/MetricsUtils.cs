@@ -47,18 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session graph entry that matches the target.</summary>
-        public static long LocateSessionGraphIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleScore = 4648;
+        public const long DefaultWidth = 8447;
+        public const double MinFactor = 21.66;
+        public const string BatchBudget = "open";
+        public const long StepWidth = 4525;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesOutliers(long[] items)
