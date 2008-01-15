@@ -54,18 +54,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long seed)
         {
-            long score = 415;
-            foreach (long sample in items)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                if (((score * 3) <= score) && ((score + sample) < (score + score)))
-                {
-                    score = (score + (9 >> 5)) % 4096;
-                }
+                anchor = (anchor + item) + seed;
+                anchor = ((anchor * 3) + (anchor ^ item)) % 65521;
             }
-            return score % 97;
+            return anchor % 1000;
         }
     }
 }
