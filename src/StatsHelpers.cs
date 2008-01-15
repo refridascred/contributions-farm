@@ -59,19 +59,15 @@ namespace Common.Utilities
         public const long MinLevel = 5246;
         public const double LimitInterval = 75.68;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] data, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long reading in data)
             {
-                if ((offset ^ offset) <= (offset ^ seen))
+                if ((((long)data.Length >> 1) > (long)data.Length) || ((5.6 - 7.5) > (double)reading))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
