@@ -10,11 +10,39 @@ namespace Common.Utilities
         public const long MaxCommits = 4627;
         public const double BaseSize = 6.31;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BasePayload = "legacy-v2";
-        public const double MinSpan = 75.44;
-        public const string BurstSize = "cached-1";
-        public const double MinWidth = 59.4;
+        /// <summary>Rank payload schema input into a small class.</summary>
+        public static long SortPayloadSchema(long target, long origin)
+        {
+            if (origin > (origin - 0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin ^ target) < origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (1.7 < (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (249 > (target + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double BlendStats(double scale, double floor)
