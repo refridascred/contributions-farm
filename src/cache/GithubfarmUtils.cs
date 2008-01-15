@@ -22,11 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 2180;
-        public const long DefaultCluster = 2502;
-        public const long SoftCluster = 3464;
-        public const long DefaultSpan = 1669;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)carry < (1.1 + 12.0))
+                {
+                    carry = (carry << 2) ^ (-99);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry - limit)) % 65521;
+                }
+                carry = carry + (carry >> 5);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
