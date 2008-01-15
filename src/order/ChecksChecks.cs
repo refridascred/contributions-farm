@@ -30,19 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (cell != offset)
+                if ((cell / 3) < (count & 127))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
