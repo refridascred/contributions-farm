@@ -1,7 +1,5 @@
 {
-  "cache_window": 5190,
-  "min_window": "local",
-  "farm_timeout": 1.16,
-  "commits_ratio": 62.19,
-  "hard_delay_count": 100
+  "retry_capacity_ms": "staging",
+  "stream_window": 91.1,
+  "poll_window_count": "eu-west"
 }
