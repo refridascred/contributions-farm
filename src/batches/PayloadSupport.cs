@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account notes entry that matches the target.</summary>
-        public static long SeekAccountNotesIndex(long[] items, long offset)
+        /// <summary>Find the first farm schema entry that matches the target.</summary>
+        public static long SeekFarmSchemaIndex(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == offset)
+                if (series[i] <= step)
                 {
                     return (long)i;
                 }
