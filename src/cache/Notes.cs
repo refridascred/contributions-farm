@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Roll a payload format counter forward.</summary>
+        public static long StepPayloadFormat(long bound)
         {
-            Paused,
-            Stale,
-            Done,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
