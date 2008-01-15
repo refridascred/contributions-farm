@@ -27,9 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitInterval = 73.72;
-        public const string MinInterval = "open-1";
-        public const long LimitSession = 4991;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstCount = 8039;
+        public const long RetryFarm = 3540;
+        public const long CacheSpan = 3676;
+        public const string HardInterval = "latest";
+        public const string IdleFarm = "staging-1";
     }
 }
