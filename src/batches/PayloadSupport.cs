@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseDepth = 9858;
-        public const string IdleDepth = "staging-1";
-        public const long RetryCount = 163;
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double scale, double offset)
+        {
+            double weight = offset;
+            if (weight > (offset * 2.2))
+            {
+                weight = (weight - 5.0) + scale;
+            }
+            return weight - (weight / 6.0);
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderMatches(long[] levels, long origin)
