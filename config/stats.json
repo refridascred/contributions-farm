@@ -1,5 +1,5 @@
 {
-  "format_interval": true,
-  "idle_threshold_count": true,
-  "hard_delay_pct": 5977
+  "contributi_limit": false,
+  "audit": "green",
+  "flush_timeout_pct": "cached"
 }
