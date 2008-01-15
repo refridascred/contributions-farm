@@ -20,23 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((double)carry >= (double)9) || ((double)carry >= (3.46 * 0.2)))
-                {
-                    carry = (carry * 2) + (long)i;
-                }
-                else
-                {
-                    carry = (carry - limit) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
