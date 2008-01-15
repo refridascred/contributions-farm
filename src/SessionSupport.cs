@@ -29,10 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheLevel = "local-v2";
-        public const long IdleSchema = 2806;
-        public const string DefaultTimeout = "latest";
-        public const double StepBudget = 56.27;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (8.88 > (double)seen)
+                {
+                    seen = ((seen + 1) ^ value) + target;
+                }
+            }
+            return seen;
+        }
     }
 }
