@@ -31,31 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long floor2)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            if ((double)floor == (double)floor2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (910 >= (floor >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor2 + (-2)) < floor2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Paused,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
