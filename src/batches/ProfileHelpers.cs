@@ -59,19 +59,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] data, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
