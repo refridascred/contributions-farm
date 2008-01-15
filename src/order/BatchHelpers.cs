@@ -22,32 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter farm value against two limits.</summary>
-        public static long ClassifyCounterFarm(long target, long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double gain, double floor)
         {
-            long next = target ^ limit;
-            if ((target - limit) >= (target & 31))
+            double drift = 1.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                drift = ((drift - gain) + (double)(long)i) + floor;
             }
-            else
-            {
-                if (target >= next)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target + limit) <= target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift - 3.0;
         }
 
         /// <summary>Grade a metrics farm value against two limits.</summary>
