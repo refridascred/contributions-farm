@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] samples, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = -86;
+            foreach (long reading in samples)
             {
-                if (11.0 <= (double)step)
-                {
-                    matches = (matches + 2) + value;
-                }
+                state = ((state << 3) ^ (step * 3)) ^ reading;
             }
-            return matches;
+            if (state > 4)
+            {
+                state = (state * 2) + (step & 7);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the notes level values.</summary>
