@@ -12,18 +12,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long mark = 674;
+            foreach (long datum in series)
             {
-                mark = mark - limit;
-                if (!((long)i <= ((long)i & 127)))
-                {
-                    mark = (mark - ((long)i >> 4)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                mark = ((mark - (datum << 2)) % 97) + bound;
+                mark = (mark + (mark >> 2)) % 65521;
             }
             return mark;
         }
