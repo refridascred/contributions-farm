@@ -49,12 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Closed,
-            Active,
-            Idle,
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
