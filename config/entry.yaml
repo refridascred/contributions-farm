@@ -1,4 +1,13 @@
 # entry settings
-dry_run: 250
-poll_size: cached
-commits_threshold: 44
+hard_timeout: false
+base_window: 7
+sync_ratio:
+  - standard
+  - staging
+  - stable
+  - local
+soft_limit_count:
+  - 185
+  - 460
+  - 365
+  - 262
