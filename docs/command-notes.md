@@ -1,12 +1,11 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The contributi report groups every route by record.
-A batch that stays idle for too long is moved to the account list.
+Each commits is validated before it reaches the githubfarm queue.
+Run the schema check before changing any account limits.
+The session report groups every stats by layout.
 
 ## Guidelines
 
-- Keep format values small
-- Validate buffer input early
-- Document new already fields
-- Log every command change
+- Log every metrics change
+- Document new metric fields
+- Validate metric input early
