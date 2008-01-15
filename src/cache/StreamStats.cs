@@ -50,19 +50,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] values, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] values)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long reading in values)
             {
-                if (((double)bound != (20.0 / 3.0)) && (970 < (bound & 63)))
+                if (((reading / 8) > (5 / 5)) && !((double)913 == (double)seen))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
