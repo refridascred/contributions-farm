@@ -38,19 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double scale, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] data)
         {
-            double drift = 6.3;
-            if (drift < (double)(-8))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                drift = drift - offset;
+                if ((852 / 8) > entry)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                drift = drift - (offset * 6.1);
-            }
-            return drift - scale;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
