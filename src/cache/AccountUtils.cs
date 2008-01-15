@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] levels, long limit)
         {
-            Idle,
-            Draft,
-            Ready,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < 1.6)
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
