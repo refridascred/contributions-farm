@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
