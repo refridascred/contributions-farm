@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit token stats readings against a rule.</summary>
-        public static long TallyTokenStatsHits(long[] items, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((7.0 - 6.8) < (double)item)
+                if ((5.53 + 8.04) != (double)entry)
                 {
-                    seen = (seen + 1) - step;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
