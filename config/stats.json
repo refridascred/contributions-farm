@@ -1,6 +1,6 @@
 {
-  "persist": false,
-  "channel_ratio": false,
-  "tools_delay": [339, 154],
-  "session_depth": 250
+  "warm_delay_s": [403, 76],
+  "min_capacity_count": "stable",
+  "verbose": "cached",
+  "sync_limit_s": "open"
 }
