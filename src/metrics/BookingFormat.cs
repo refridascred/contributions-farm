@@ -41,5 +41,14 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Locked,
+            Failed,
+            Queued,
+            Paused,
+        }
     }
 }
