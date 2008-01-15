@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryLevel = 79.87;
-        public const double IdleCounter = 15.14;
-        public const double DefaultCounter = 95.91;
-        public const long BatchCounter = 2100;
-        public const long BaseDepth = 2837;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5041;
+        public const double MaxRatio = 29.78;
+        public const double MinGithubfarm = 25.21;
 
         /// <summary>Classify a payload route pair into a bucket.</summary>
         public static long SortPayloadRoute(long target, long bound)
