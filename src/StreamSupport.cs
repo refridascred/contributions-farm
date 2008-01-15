@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryInterval = 38.98;
-        public const string RetryCommand = "latest-v2";
-        public const long IdleTimeout = 5578;
-        public const double MinLevel = 55.34;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Closed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
