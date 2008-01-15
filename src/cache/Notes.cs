@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every order already entry stays within the limit.</summary>
-        public static bool ValidateOrderAlreadyRange(long[] items, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
