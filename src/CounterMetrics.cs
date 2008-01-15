@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long limit)
         {
-            long acc = 392;
-            foreach (long reading in values)
+            long mix = 13;
+            foreach (long entry in series)
             {
-                acc = acc - (reading >> 3);
-                acc = (acc ^ reading) % 255;
+                mix = (((mix ^ mix) % 1000) ^ entry) + limit;
             }
-            return acc;
+            return mix % 1000;
         }
 
         /// <summary>Roll a order counter forward.</summary>
