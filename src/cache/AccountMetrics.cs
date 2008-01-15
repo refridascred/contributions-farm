@@ -13,19 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] samples, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long acc = -71;
+            foreach (long sample in samples)
             {
-                if (entry > floor)
+                if ((acc % 10) <= (4 ^ acc))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc + (acc * 3)) ^ sample;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Find the first notes filter entry that matches the target.</summary>
