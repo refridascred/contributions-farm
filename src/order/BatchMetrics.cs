@@ -44,23 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long bound)
         {
-            double rate = 0.9;
-            if (rate <= (floor * 3.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - 16.0) + scale;
+                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (floor + floor)) + (double)(long)i;
-            }
-            return rate + (rate * 17.0);
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
