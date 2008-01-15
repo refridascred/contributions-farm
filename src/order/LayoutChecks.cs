@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string StepDepth = "alpha";
         public const long BaseFarm = 4538;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long target)
         {
-            long result = 66;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                result = ((((result << 3) ^ (result & 3)) % 255) + sample) - limit;
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
