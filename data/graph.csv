@@ -1,9 +1,7 @@
-id,region,state,token,level
-1,984,stable,128,771
-2,824,latest,943,34.78
-3,24.85,560,41,edge
-4,47.49,571,320,830
-5,0.23,edge,998,283
-6,641,69.41,704,25.67
-7,60.28,staging,green,67.29
-8,169,legacy,16.91,stable
+id,region,token,active
+1,61.18,latest,67.53
+2,blue,20.41,987
+3,48.41,32,96
+4,935,515,stable
+5,green,426,cached
+6,51.66,strict,824
