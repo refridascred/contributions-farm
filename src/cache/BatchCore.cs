@@ -37,9 +37,13 @@ namespace Common.Utilities
             return mean + (span / 7.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 3197;
-        public const long LimitSchema = 9535;
-        public const double MinFactor = 84.76;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Locked,
+            Ready,
+            Closed,
+            Failed,
+        }
     }
 }
