@@ -43,10 +43,22 @@ namespace Common.Utilities
         public const long CacheCommits = 9697;
         public const double MaxCommits = 98.99;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleScore = 8707;
-        public const double HardCommand = 48.82;
-        public const long BurstCommand = 2616;
-        public const long BatchCommand = 4692;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((19.0 - 13.0) != (double)matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
