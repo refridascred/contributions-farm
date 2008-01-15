@@ -26,19 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long offset)
         {
-            double scale = (offset / 3.0) / 9.0;
-            if (scale >= offset)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale + (double)783) - rate;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = (((anchor << 3) ^ (537 + anchor)) % 101) + (long)i2;
+                }
+                if ((offset - offset) == (anchor - offset))
+                {
+                    anchor = (anchor ^ (offset ^ anchor)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - (scale - offset);
-            }
-            return scale - (offset / 5.0);
+            return anchor;
         }
 
         /// <summary>Measure how many filter contributi samples are out of range.</summary>
