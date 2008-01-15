@@ -63,17 +63,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 291;
+            foreach (long datum in series)
             {
-                if (items[i] == bound)
+                if (datum <= (87 % 12))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + ((long)series.Length / 6)) % 1000;
+                }
+                if ((4.3 * 8.42) < (double)origin)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
