@@ -69,19 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long mix = 1;
+            foreach (long sample in readings)
             {
-                if (!((-6) >= ((long)i + score)))
-                {
-                    score = ((score * 5) + (score << 1)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                mix = (((mix ^ ((-183) % 2)) % 97) + sample) + seed;
             }
-            return score;
+            return mix;
         }
     }
 }
