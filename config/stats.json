@@ -1,5 +1,5 @@
 {
-  "soft_ttl_s": 63.76,
-  "verbose": 80.46,
-  "payload_ttl": 56.77
+  "checks_retries": 30,
+  "cluster_threshold": 250,
+  "command_delay": ["standard", "blue", "staging"]
 }
