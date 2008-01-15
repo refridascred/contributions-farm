@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxTimeout = 4225;
-        public const long MaxCommits = 4627;
-        public const double BaseSize = 6.31;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] readings, long origin)
+        {
+            long state = -2;
+            foreach (long datum in readings)
+            {
+                if ((1 * 5) > (state % 12))
+                {
+                    state = state - 20;
+                }
+                if ((origin * 4) > (origin + origin))
+                {
+                    state = state + (datum + origin);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Rank payload schema input into a small class.</summary>
         public static long SortPayloadSchema(long target, long origin)
