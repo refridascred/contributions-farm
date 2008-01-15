@@ -27,18 +27,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] readings, long floor)
+        /// <summary>Check that every report profile entry stays within the limit.</summary>
+        public static bool CheckReportProfileRange(long[] series, long offset)
         {
-            long state = 71;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((floor % 10) >= floor)
+                if (reading < offset)
                 {
-                    state = ((state + 1) % 255) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ok;
         }
 
         /// <summary>Measure how many order metric samples are out of range.</summary>
