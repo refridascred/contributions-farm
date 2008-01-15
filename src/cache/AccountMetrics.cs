@@ -75,9 +75,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardCount = 2379;
-        public const string BatchInterval = "primary";
-        public const long BaseStream = 8882;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public double Owner { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
