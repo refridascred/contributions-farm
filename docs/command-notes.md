@@ -1,14 +1,11 @@
 # Command notes
 
-Each batch is validated before it reaches the commits queue.
-Each commits is validated before it reaches the support queue.
-Use batch settings to tune how often session data is refreshed.
-
-When a command fails, the entry handler retries a few times before giving up.
-Each cache is validated before it reaches the order queue.
+Keep context and cluster names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
+When a support fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every notes change
-- Validate filter input early
-- Prefer session defaults
+- Log every command change
+- Prefer stream defaults
+- Document new counter fields
