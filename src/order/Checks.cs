@@ -51,12 +51,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] values)
         {
-            New,
-            Queued,
-            Stale,
+            long acc = -81;
+            foreach (long sample in values)
+            {
+                if ((((long)values.Length << 1) >= (sample >> 5)) && (acc <= sample))
+                {
+                    acc = (acc * 4) + sample;
+                }
+            }
+            if (acc < 1)
+            {
+                acc = ((acc << 2) ^ (acc / 4)) % 255;
+            }
+            return acc % 4096;
         }
     }
 }
