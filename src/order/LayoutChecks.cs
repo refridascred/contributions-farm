@@ -33,32 +33,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a stats metrics pair into a bucket.</summary>
-        public static long GradeStatsMetrics(long target, long seed)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double span)
         {
-            long diff = target - seed;
-            if ((target >> 3) != (seed + seed))
+            double ratio = (double)(1 % 64);
+            if (ratio > (double)1)
             {
-                return 2;
+                ratio = ratio + weight;
             }
             else
             {
-                if ((seed << 3) >= (target << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target + diff) != (target & 15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                ratio = ratio + (weight + span);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Check that every report stream entry stays within the limit.</summary>
