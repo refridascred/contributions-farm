@@ -1,6 +1,17 @@
 {
-  "warm_retries_s": 86,
-  "min_delay": true,
-  "sync_depth": ["strict", "fallback"],
-  "poll_window_count": 66.05
+  "cache_interval_s": {
+    "hard_capacity_ms": "legacy",
+    "editor_capacity": true,
+    "soft_window": 5565,
+    "burst_ttl_count": {
+      "sync_window_s": "cached",
+      "cache_size": 14,
+      "profile_threshold": "eu-west",
+      "verbose": [443, 429, 183]
+    },
+    "commits_depth": false,
+    "audit": false
+  },
+  "verbose": 39.89,
+  "max_ratio": "blue"
 }
