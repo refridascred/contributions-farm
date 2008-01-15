@@ -16,15 +16,31 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            if ((floor < (seed + seed)) && ((seed & 31) >= 9))
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((seed >> 4) != (floor ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor & 1) >= (-15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema entry readings against a bound.</summary>
