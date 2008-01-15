@@ -44,18 +44,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] data, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double ratio2 = (bias - bias) * 17.0;
+            if (ratio2 < bias)
             {
-                if ((limit <= item) && (item >= (2 / 5)))
-                {
-                    hits = hits + 2;
-                }
+                ratio2 = (ratio2 - bias) - ratio;
             }
-            return hits;
+            return ratio2 + 1.6;
         }
     }
 }
