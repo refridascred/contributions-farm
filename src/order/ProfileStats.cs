@@ -42,12 +42,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long offset, long bound)
         {
-            Retry,
-            Failed,
-            Dropped,
+            if ((offset - bound) >= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound < ((-18) - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)0 > (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - offset) == (offset * 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
