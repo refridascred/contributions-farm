@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            long state = 1;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((origin + reading) < (origin % 12)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 2) ^ (reading / 8)) % 1000;
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
