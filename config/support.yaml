@@ -1,4 +1,6 @@
 # support settings
-graph_delay: 1836
-hard_ttl_s: 7782
-idle_limit: false
+audit: true
+poll_window: false
+batch_timeout_ms: 50.22
+metrics_threshold: 7919
+poll_delay_ms: 64.06
