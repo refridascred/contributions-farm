@@ -19,17 +19,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 544;
+            foreach (long reading in items)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor << 2) ^ (reading % 2);
             }
-            return -1;
+            if (anchor < 775)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
