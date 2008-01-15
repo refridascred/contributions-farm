@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (total ^ (long)i)) % 65521;
-                total = total + (total - (long)i);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Active,
+            Synced,
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Combine already commits values into a single score.</summary>
