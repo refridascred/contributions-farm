@@ -25,16 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long result = 2;
+            foreach (long reading in data)
             {
-                anchor = (anchor * 2) + ((long)i - anchor);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                result = (result ^ (reading << 1)) % 4096;
+                if (((reading + reading) > (result % 60)) || (reading > ((-273) << 1)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (result > 17)
+            {
+                result = (result ^ (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Combine account values into a single score.</summary>
