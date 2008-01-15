@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLevel = 6.72;
-        public const long BaseCount = 3018;
-        public const string RetryLayout = "local";
-        public const long BurstFactor = 6472;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Queued,
+            Active,
+            Paused,
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long step, long step2)
