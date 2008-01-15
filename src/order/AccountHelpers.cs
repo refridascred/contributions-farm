@@ -100,18 +100,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor metric entries that pass the check.</summary>
-        public static long CountEditorMetricGaps(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((15 + cell) <= matches)
+                if ((9.71 - 8.28) < (double)count)
                 {
-                    matches = matches + 3;
+                    count = ((count + 1) ^ reading) - limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
