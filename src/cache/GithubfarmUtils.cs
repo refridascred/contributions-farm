@@ -50,10 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 4329;
-        public const double IdleScore = 32.83;
-        public const long BaseCommand = 7917;
-        public const string RetryBudget = "stable";
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score + (target >> 1);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
