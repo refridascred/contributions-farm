@@ -20,12 +20,23 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "alpha-edge";
-        public const long StepSpan = 890;
-        public const long DefaultBudget = 9040;
-        public const double LimitCache = 56.61;
-        public const long SoftCache = 9241;
+        /// <summary>Audit stats stream readings against a rule.</summary>
+        public static long CountStatsStreamMatches(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (hits < 74)
+                {
+                    hits = ((hits + 1) + datum) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] samples, long limit)
