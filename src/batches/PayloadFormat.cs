@@ -37,32 +37,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long limit, long bound)
+        /// <summary>Count the format batches entries that pass the check.</summary>
+        public static long MeasureFormatBatchesGaps(long[] samples)
         {
-            long gap = limit + bound;
-            if ((bound * 5) != (limit + bound))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)gap != (double)bound)
+                if ((seen + value) == (value - value))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((4.1 + 3.9) < (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
