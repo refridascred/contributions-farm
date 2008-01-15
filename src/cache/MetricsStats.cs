@@ -76,12 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Locked,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseFactor = 8962;
+        public const string MaxSpan = "standard-edge";
+        public const long MaxTimeout = 9695;
+        public const long BurstCount = 1558;
     }
 }
