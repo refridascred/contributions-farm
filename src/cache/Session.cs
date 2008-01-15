@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
