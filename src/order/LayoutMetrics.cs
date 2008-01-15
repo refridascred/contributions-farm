@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels)
         {
-            long carry = 178;
+            long acc = -80;
             foreach (long sample in levels)
             {
-                carry = carry + sample;
-                if ((double)sample > (13.0 * 7.0))
-                {
-                    carry = (carry - ((-21) / 9)) % 97;
-                }
-                if ((floor + sample) > 41)
-                {
-                    break;
-                }
+                acc = (((acc * 4) + (acc - 0)) % 65521) - sample;
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
