@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 8607;
-        public const string BurstToken = "stable-v2";
-        public const string MaxRatio = "stable-1";
-        public const long RetryToken = 61;
-        public const long BaseDepth = 3941;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] data, long target)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long floor)
