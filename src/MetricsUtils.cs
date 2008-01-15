@@ -54,32 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long prev = seed + offset;
-            if (79 >= (seed >> 2))
+            long score = 415;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((prev - 0) <= (prev / 6)))
+                if (((score * 3) <= score) && ((score + sample) < (score + score)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.2 + 1.2) >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = (score + (9 >> 5)) % 4096;
                 }
             }
+            return score % 97;
         }
     }
 }
