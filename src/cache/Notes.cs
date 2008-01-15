@@ -48,14 +48,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            Queued,
-            Synced,
-            Paused,
-            Retry,
-            Draft,
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (seed <= (sum << 3))
+                {
+                    sum = ((sum * 5) + ((long)i / 9)) % 255;
+                }
+                sum = sum + ((long)i + seed);
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
