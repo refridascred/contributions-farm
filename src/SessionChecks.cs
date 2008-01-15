@@ -59,22 +59,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] samples)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading + seen) > (seen + reading)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Draft,
+            Synced,
+            Pending,
+            New,
         }
     }
 }
