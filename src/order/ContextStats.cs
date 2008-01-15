@@ -32,9 +32,17 @@ namespace Common.Utilities
         public const string StepNotes = "staging-1";
         public const double DefaultNotes = 35.68;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftSize = "standard";
-        public const string StepMetric = "legacy-1";
-        public const long MinWidth = 368;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
