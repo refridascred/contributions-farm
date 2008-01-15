@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many schema session samples are out of range.</summary>
-        public static long CountSchemaSessionOutliers(long[] samples, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)hits <= (20.0 * 7.0))
-                {
-                    hits = ((hits + 3) - item) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
