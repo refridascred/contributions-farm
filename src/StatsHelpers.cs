@@ -45,13 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            Closed,
-            Dropped,
-            Paused,
-            Active,
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Roll a order counter forward.</summary>
