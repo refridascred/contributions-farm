@@ -1,19 +1,7 @@
 {
-  "soft_limit": {
-    "strict": false,
-    "hard_retries": 84,
-    "warm_limit_count": {
-      "token_depth": false,
-      "min_capacity": 5682,
-      "cache_interval": 1164,
-      "dry_run": [345, 27, 444],
-      "batch_size": 71,
-      "soft_limit": 34.61
-    },
-    "route_ttl": true,
-    "context_interval": ["legacy", "cached", "green", "local"],
-    "poll_interval": "strict"
-  },
-  "default_interval": "eu-west",
-  "channel_ttl": 88.64
+  "min_ttl_count": false,
+  "report_limit": 100,
+  "max_ttl_ms": true,
+  "base_delay_pct": 75.55,
+  "audit": [27, 7]
 }
