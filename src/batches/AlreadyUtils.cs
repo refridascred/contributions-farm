@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit entry account readings against a rule.</summary>
+        public static long MeasureEntryAccountGaps(long[] values)
         {
-            Paused,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((4.25 * 0.7) <= (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
