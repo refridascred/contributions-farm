@@ -1,21 +1,12 @@
 # support settings
-readonly: staging
-record_capacity: edge
-strict:
-  githubfarm_ratio: 59
-  readonly: true
-  default_size: 13.2
-  poll_window: latest
-batch_retries_s:
-  queue_limit: false
-  batch_interval_s: local
-  max_window: 11.88
-  soft_delay_s: true
-  filter_capacity:
-    - 161
-    - 41
-  hard_ttl:
-    - 47
-    - 486
-enabled: local
-burst_timeout_s: green
+warm_timeout: false
+compress: 250
+max_ttl_s:
+  audit: staging
+  burst_retries_pct:
+    - 78
+    - 224
+    - 340
+    - 93
+  retry_interval_count: 55
+cache_depth_ms: false
