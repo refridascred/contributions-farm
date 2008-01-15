@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] levels, long seed)
+        /// <summary>Iterate the order cluster series from a seed.</summary>
+        public static long IterateOrderCluster(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                score = (score << 2) ^ (floor % 64);
+                score = ((score * 4) + (floor + 1)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
