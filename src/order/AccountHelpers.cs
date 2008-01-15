@@ -58,18 +58,19 @@ namespace Common.Utilities
             return ratio + 7.2;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 89;
+            foreach (long reading in series)
             {
-                if ((8.9 + 5.39) == (double)item)
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum ^ 0) + reading) + seed;
             }
-            return seen;
+            if (sum < 177)
+            {
+                sum = (sum * 5) + (sum ^ sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a route format value against two limits.</summary>
