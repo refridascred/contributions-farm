@@ -37,18 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count >= (885 * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) ^ sample;
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
