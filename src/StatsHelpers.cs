@@ -51,14 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] data, long offset)
         {
-            Queued,
-            Failed,
-            Dropped,
-            Paused,
-            Done,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((offset ^ offset) <= (offset ^ seen))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
