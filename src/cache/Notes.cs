@@ -45,19 +45,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two token queue measurements.</summary>
-        public static double SmoothTokenQueue(double rate, double offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double weight = offset + (offset - offset);
-            if (weight >= (7.3 - weight))
-            {
-                weight = (weight + (weight * 6.0)) + rate;
-            }
-            else
-            {
-                weight = weight - (1.4 - 17.0);
-            }
-            return weight - (double)17;
+            Active,
+            Locked,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
