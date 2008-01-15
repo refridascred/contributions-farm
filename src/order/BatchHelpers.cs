@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data)
-        {
-            long sum = 4;
-            foreach (long value in data)
-            {
-                if ((1 / 5) > (sum - sum))
-                {
-                    sum = (sum - sum) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (value / 8);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 2150;
+        public const long IdleWindow = 869;
+        public const double StepCount = 83.66;
 
         /// <summary>Blend two githubfarm profile measurements.</summary>
         public static double BlendGithubfarmProfile(double ratio, double floor)
