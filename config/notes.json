@@ -1,7 +1,5 @@
 {
-  "burst_size_s": "fallback",
-  "githubfarm_depth": 311,
-  "flush_size_ms": 1193,
-  "max_size_pct": "blue",
-  "default_delay": 3.48
+  "compress": 100,
+  "cache_size_ms": false,
+  "max_ratio_pct": 1024
 }
