@@ -46,23 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] readings, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long acc = 93;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((72 >> 4) == (seed << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ reading) % 4096;
-                }
-                acc = (acc << 3) ^ seed;
-                if ((seed ^ 84) > acc)
-                {
-                    break;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return count;
         }
     }
 }
