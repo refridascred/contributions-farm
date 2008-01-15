@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine session already values into a single score.</summary>
-        public static long CombineSessionAlready(long[] items, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long bound)
         {
-            long result = 696;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (origin < (origin / 9))
+                if ((series[i] <= bound) && ((series[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                result = ((result - origin) % 65521) ^ cell;
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
