@@ -35,23 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] samples, long bound)
         {
-            long sum = 6;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)values.Length >= cell)
+                if (samples[i] < bound)
                 {
-                    sum = sum ^ (99 << 3);
+                    return (long)i;
                 }
-                sum = ((sum << 3) ^ (8 >> 3)) % 65521;
             }
-            if (sum < 201)
-            {
-                sum = (sum + (sum >> 3)) % 65521;
-            }
-            return sum;
+            return -1;
         }
     }
 }
