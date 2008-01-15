@@ -41,32 +41,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a channel queue value against two limits.</summary>
-        public static long GradeChannelQueue(long origin, long seed)
-        {
-            if ((origin >> 1) == (5 - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0 - origin) == (origin & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(((-78) >> 5) <= (seed + (-2))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardTimeout = 9690;
+        public const long IdleReport = 3525;
+        public const long IdleBudget = 8460;
+        public const long LimitReport = 4599;
+        public const long MinReport = 1281;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleStats = 5984;
