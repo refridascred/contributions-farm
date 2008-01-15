@@ -61,12 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinDepth = "alpha-edge";
-        public const double BatchSpan = 51.82;
-        public const string MinFactor = "strict-v2";
-        public const string SoftRatio = "latest-1";
-        public const string BatchSize = "standard-v2";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Stale,
+            Active,
+            Idle,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowCommand = 7687;
