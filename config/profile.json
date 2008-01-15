@@ -1,5 +1,10 @@
 {
-  "cluster_threshold": false,
-  "flush_window_pct": [70, 387, 236],
-  "idle_limit_s": ["primary", "strict", "stable"]
+  "verbose": "latest",
+  "idle_interval_pct": {
+    "support_capacity": 500,
+    "compress": "local",
+    "soft_timeout_s": 8174,
+    "hard_size_ms": "standard"
+  },
+  "audit": 5059
 }
