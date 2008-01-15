@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Closed,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 3366;
+        public const long StepSize = 8225;
+        public const long MaxBudget = 3096;
+        public const long RetryEditor = 5936;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowWidth = 5819;
