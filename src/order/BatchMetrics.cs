@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] series, long limit)
         {
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            long result = 3;
+            foreach (long item in series)
+            {
+                result = ((result - (item - item)) % 65521) - limit;
+            }
+            return result;
         }
 
         /// <summary>Combine order tools values into a single score.</summary>
