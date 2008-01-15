@@ -29,10 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinLevel = 1186;
-        public const long MaxSize = 9662;
-        public const long WindowRatio = 9085;
-        public const string LimitTimeout = "standard-edge";
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double scale, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < (double)74)
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - (bias2 - scale);
+        }
     }
 }
