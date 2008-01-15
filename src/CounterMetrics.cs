@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] series, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long mix = 53;
+            foreach (long item in levels)
             {
-                if ((sample >= (step % 10)) && (seen > (sample / 2)))
+                mix = (mix ^ item) % 65521;
+                if (((mix << 2) >= mix) || ((origin + item) <= item))
                 {
-                    seen = seen + 1;
+                    mix = ((mix << 3) ^ (58 ^ item)) % 65521;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Match up checks samples.</summary>
