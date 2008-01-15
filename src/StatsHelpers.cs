@@ -46,11 +46,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Fold a list of token support readings.</summary>
+        public static long DigestTokenSupport(long[] items, long limit)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            long mark = 38;
+            foreach (long datum in items)
+            {
+                long diff = limit * 4;
+                if ((datum ^ limit) == (diff ^ 9))
+                {
+                    diff = ((diff << 2) ^ 0) % 4096;
+                }
+                else
+                {
+                    diff = ((diff << 3) ^ (diff * 3)) % 255;
+                }
+                mark = ((mark * 2) + (limit - mark)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
