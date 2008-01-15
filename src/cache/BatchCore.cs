@@ -47,15 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long acc = 3;
-            foreach (long reading in readings)
-            {
-                acc = (((acc * 2) + (acc - 7)) ^ reading) - target;
-            }
-            return acc;
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
