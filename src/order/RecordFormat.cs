@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const string LimitRecord = "open-v2";
         public const long IdleRecord = 8732;
 
-        /// <summary>Project the next order channel value.</summary>
-        public static double SmoothOrderChannel(double bias, double bias2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] values)
         {
-            double gain = bias - (bias2 - bias);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                gain = (gain - (bias2 - bias2)) - (double)(long)i;
+                if (!((tally - 0) <= tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            return gain + bias2;
+            return tally;
         }
 
         /// <summary>Project the next queue value.</summary>
