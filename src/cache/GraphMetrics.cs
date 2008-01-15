@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Active,
-            Draft,
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 4216;
+        public const long DefaultChannel = 6424;
+        public const long RetrySize = 1138;
+        public const long BatchChannel = 8680;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] series, long origin)
