@@ -1,11 +1,8 @@
 {
-  "batches_retries": 97,
-  "poll_timeout_ms": {
-    "sync_threshold_pct": 96,
-    "soft_window": ["primary", "edge", "open"],
-    "counter_interval": "edge"
-  },
-  "poll_delay_count": 1.96,
-  "burst_delay_s": 250,
-  "warm_depth_ms": "staging"
+  "poll_ttl_s": true,
+  "compress": 250,
+  "retry_ttl_ms": 15.4,
+  "burst_threshold_s": "local",
+  "base_interval_s": false,
+  "idle_ratio_ms": "open"
 }
