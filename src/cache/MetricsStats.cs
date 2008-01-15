@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Failed,
-            Active,
-            New,
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
