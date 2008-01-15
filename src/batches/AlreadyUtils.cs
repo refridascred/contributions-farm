@@ -23,11 +23,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "open-1";
-        public const double HardSpan = 76.35;
-        public const string WindowRatio = "local";
-        public const long BaseCluster = 8764;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!(((datum + bound) != (datum - count)) && ((double)count < (7.14 + 1.4))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] samples)
