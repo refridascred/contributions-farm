@@ -1,4 +1,13 @@
 # githubfarm settings
-githubfarm_ttl: 81.77
-account_delay: 45
-persist: 7619
+max_depth_count: 500
+cache_window_pct: edge
+hard_timeout_s:
+  - 345
+  - 252
+  - 384
+  - 169
+idle_timeout:
+  - cached
+  - cached
+  - fallback
+  - edge
