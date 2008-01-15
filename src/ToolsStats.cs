@@ -82,19 +82,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            double weight2 = floor;
-            if (weight2 <= (15.0 - weight))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 - (weight / 7.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight2 / 5.0);
-            }
-            return weight2 - (weight2 / 7.0);
+            return count;
         }
     }
 }
