@@ -29,19 +29,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] values, long target)
+        /// <summary>Derive the next queue order value from a seed.</summary>
+        public static long RollQueueOrder(long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
     }
 }
