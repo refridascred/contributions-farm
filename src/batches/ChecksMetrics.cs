@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel command entries.</summary>
-        public static long TallyChannelCommand(long[] levels, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] data, long origin)
         {
-            long acc = 254;
-            foreach (long value in levels)
+            long result = 357;
+            foreach (long reading in data)
             {
-                if (!((186 << 1) > (value >> 1)))
+                if ((reading << 3) > reading)
                 {
-                    acc = (acc * 2) + (59 & 255);
+                    result = (((result << 2) ^ (reading >> 5)) % 101) - origin;
                 }
             }
-            if (acc < (-11))
-            {
-                acc = (acc - (seed + acc)) % 4096;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a counter record.</summary>
