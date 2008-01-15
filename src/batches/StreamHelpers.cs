@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetrySpan = "primary-v2";
-        public const double IdleFactor = 20.49;
-        public const long StepRecord = 39;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 6760;
+        public const long LimitMetric = 529;
+        public const long BaseMetric = 3522;
+        public const string CacheBudget = "staging-v2";
+        public const long RetrySize = 1486;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandLimits(long[] readings, long origin)
