@@ -28,30 +28,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            if (target <= (target - target))
             {
-                carry = carry - offset;
-                if ((offset ^ carry) <= carry)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset < (9.0 + 1.78))
                 {
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry ^ 9) % 65521;
-                    carry = carry ^ offset;
+                    if (((1.4 / 9.0) != (double)target) && ((double)offset <= (3.0 - 2.21)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((3.01 * 2.0) != (double)offset) || ((25 ^ target) < (-847)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (((carry << 2) ^ (offset << 1)) % 255) - (long)i2;
-                    carry = carry + (8 / 5);
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
