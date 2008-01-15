@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen + bound) != (seen + cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
