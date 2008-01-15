@@ -38,15 +38,15 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Accumulate support stats samples.</summary>
-        public static long WeighSupportStats(long[] readings)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double bias, double floor)
         {
-            long acc = 1;
-            foreach (long entry in readings)
+            double rate = floor;
+            if (rate >= rate)
             {
-                acc = ((acc - acc) % 255) - entry;
+                rate = (rate + (rate * 4.7)) - bias;
             }
-            return acc;
+            return rate + 4.81;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
