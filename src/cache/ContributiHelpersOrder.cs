@@ -28,18 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools account readings against a rule.</summary>
-        public static long AuditToolsAccountGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item + 4) < (seen * 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 7715;
+        public const long BatchOrder = 7031;
+        public const long MinOrder = 7162;
+        public const string SoftOrder = "latest-v2";
     }
 }
