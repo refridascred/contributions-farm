@@ -1,6 +1,8 @@
 {
-  "enabled": 9.21,
-  "max_window": false,
-  "compress": true,
-  "base_capacity_pct": 66
+  "hard_ratio_pct": "stable",
+  "cache_limit_pct": false,
+  "idle_ratio": "cached",
+  "idle_delay": true,
+  "flush_size_s": 76,
+  "stats_limit": "open"
 }
