@@ -33,18 +33,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            long acc = 3;
-            foreach (long entry in values)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((20.0 + 7.8) != (double)acc) && ((6 - entry) < acc))
-                {
-                    acc = (acc ^ entry) % 65521;
-                }
+                anchor = ((anchor << 3) ^ bound) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
     }
 }
