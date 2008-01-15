@@ -1,11 +1,14 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the account list.
-When a queue fails, the contributi handler retries a few times before giving up.
-Use batch settings to tune how often cache data is refreshed.
+A payload that stays idle for too long is moved to the metrics list.
+Each stream is validated before it reaches the command queue.
+
+Use buffer settings to tune how often already data is refreshed.
+Run the route check before changing any commits limits.
 
 ## Guidelines
 
-- Validate filter input early
-- Review notes limits each release
-- Document new batches fields
+- Review checks limits each release
+- Keep filter values small
+- Document new commits fields
+- Prefer route defaults
