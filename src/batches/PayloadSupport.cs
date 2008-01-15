@@ -20,18 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetrySize = 6.42;
+        public const long DefaultDepth = 5666;
+        public const long WindowCounter = 9304;
 
         /// <summary>Find the first farm schema entry that matches the target.</summary>
         public static long SeekFarmSchemaIndex(long[] series, long step)
