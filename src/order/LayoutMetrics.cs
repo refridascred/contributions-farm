@@ -16,17 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] data, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a already snapshot.</summary>
