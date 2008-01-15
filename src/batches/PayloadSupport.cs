@@ -24,18 +24,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the buffer cache entries that pass the check.</summary>
-        public static long TallyBufferCacheOutliers(long[] values, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-21) / 6) < (19 + limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - reading;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
