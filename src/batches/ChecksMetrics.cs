@@ -10,32 +10,22 @@ namespace Common.Utilities
         public const double SoftSize = 40.9;
         public const long LimitSupport = 539;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long limit)
         {
-            long sum = 826;
-            foreach (long datum in values)
+            long anchor = 36;
+            foreach (long item in values)
             {
-                if ((sum & 3) >= (datum >> 4))
+                if ((117 / 2) < (anchor * 3))
                 {
-                    sum = ((sum << 2) ^ (datum + sum)) % 101;
-                    sum = sum + ((-749) ^ datum);
-                }
-                if (!((long)values.Length == (sum >> 4)))
-                {
-                    sum = (sum + (77 >> 2)) % 4096;
-                }
-                sum = (sum - bound) % 101;
-                if (sum >= datum)
-                {
-                    break;
+                    anchor = ((anchor * 5) + (limit ^ limit)) ^ item;
                 }
             }
-            if (sum > 11)
+            if (anchor < 7)
             {
-                sum = (sum * 4) + (9 - (long)values.Length);
+                anchor = ((anchor * 4) + (anchor + anchor)) % 255;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
