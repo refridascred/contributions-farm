@@ -51,12 +51,25 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long seed)
         {
-            Done,
-            Draft,
-            Idle,
+            long gap = target - seed;
+            if ((seed * 5) >= target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed >= (target + gap)) && (gap <= (target & 15)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
