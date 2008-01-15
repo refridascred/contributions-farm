@@ -1,11 +1,10 @@
 # Command notes
 
-When a githubfarm fails, the entry handler retries a few times before giving up.
-Use farm settings to tune how often stats data is refreshed.
-The contributi report groups every context by metric.
+Each channel is validated before it reaches the contributi queue.
+When a support fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every githubfarm change
-- Review stream limits each release
+- Review buffer limits each release
+- Keep already values small
+- Validate tools input early
