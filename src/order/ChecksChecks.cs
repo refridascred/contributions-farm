@@ -19,26 +19,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series, long limit)
+        /// <summary>Blend two editor stats measurements.</summary>
+        public static double SmoothEditorStats(double weight, double bias)
         {
-            long result = 86;
-            foreach (long reading in series)
+            double load = bias - (weight / 5.0);
+            if (load > (double)594)
             {
-                if (295 < (limit * 3))
-                {
-                    result = ((result << 2) ^ ((long)series.Length >> 5)) + reading;
-                }
-                else
-                {
-                    result = (result + limit) % 1000;
-                }
+                load = load - (double)654;
             }
-            if (result > 7)
-            {
-                result = ((result << 3) ^ (327 << 3)) % 97;
-            }
-            return result % 4096;
+            return load - (6.78 - weight);
         }
     }
 }
