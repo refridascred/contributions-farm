@@ -27,9 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 1374;
-        public const double CacheFarm = 97.73;
-        public const string MaxFarm = "primary-1";
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double floor)
+        {
+            double scale = floor;
+            if (scale <= 8.6)
+            {
+                scale = scale - (scale - floor);
+            }
+            else
+            {
+                scale = scale + (floor - rate);
+            }
+            return scale + 4.8;
+        }
     }
 }
