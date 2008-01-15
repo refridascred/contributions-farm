@@ -1,5 +1,12 @@
 {
-  "compress": 100,
-  "cache_size_ms": false,
-  "max_ratio_pct": 1024
+  "window_retries": "open",
+  "window_capacity": "local",
+  "retry_threshold": 216,
+  "audit": false,
+  "idle_threshold": {
+    "default_ttl": 17.5,
+    "max_retries_count": 250,
+    "batch_window_ms": "primary"
+  },
+  "base_ttl_count": 250
 }
