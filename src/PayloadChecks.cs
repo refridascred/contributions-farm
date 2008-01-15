@@ -82,13 +82,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Dropped,
-            Draft,
-            Closed,
-            Paused,
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
