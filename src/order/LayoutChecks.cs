@@ -49,19 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate window support readings against a bound.</summary>
-        public static bool VerifyWindowSupportRange(long[] readings, long bound)
+        /// <summary>Digest a series of profile layout entries.</summary>
+        public static long DigestProfileLayout(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long acc = 37;
+            foreach (long entry in items)
             {
-                if (cell >= bound)
+                acc = ((acc << 3) ^ (acc & 3)) + entry;
+                if (((-43) * 2) != (acc % 60))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return acc % 65521;
         }
     }
 }
