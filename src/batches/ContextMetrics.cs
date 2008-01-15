@@ -5,35 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long offset)
         {
-            long mark = 374;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark * 3) + datum;
-                for (int i = 0; i < 8; i++)
+                if (levels[i] == offset)
                 {
-                    mark = (mark ^ ((long)i + (long)readings.Length)) % 255;
-                }
-                if ((floor / 5) >= mark)
-                {
-                    mark = ((mark << 3) ^ (floor / 4)) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (2 ^ mark);
-                }
-                if ((7.9 / 3.0) < (double)mark)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > (-4))
-            {
-                mark = ((mark << 3) ^ mark) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
