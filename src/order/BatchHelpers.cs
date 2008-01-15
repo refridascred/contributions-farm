@@ -20,22 +20,22 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Audit stats stream readings against a rule.</summary>
-        public static long CountStatsStreamMatches(long[] values, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = -139;
+            foreach (long value in data)
             {
-                if (hits < 74)
+                if (((value / 6) != (bound << 3)) || ((1.1 + 5.3) != (double)bound))
                 {
-                    hits = ((hits + 1) + datum) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total << 3) ^ (9 + 7);
                 }
             }
-            return hits;
+            if (total > (-9))
+            {
+                total = (total + (bound << 1)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a order header.</summary>
