@@ -24,18 +24,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] samples, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((((double)floor >= 9.4) && (sample >= (floor - tally))) && ((3 * 5) >= (tally + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Define route limits and defaults.</summary>
