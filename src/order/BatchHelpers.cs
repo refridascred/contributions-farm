@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double gain, double floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double drift = 1.0;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - gain) + (double)(long)i) + floor;
-            }
-            return drift - 3.0;
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a metrics farm value against two limits.</summary>
