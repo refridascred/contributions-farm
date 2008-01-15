@@ -36,12 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Active,
-            Paused,
-            Draft,
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
