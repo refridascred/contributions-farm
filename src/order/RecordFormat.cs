@@ -38,10 +38,12 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowInterval = 50;
-        public const string BatchSize = "staging-edge";
-        public const long BurstScore = 4695;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
