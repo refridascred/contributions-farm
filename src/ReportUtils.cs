@@ -47,15 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile payload series from a seed.</summary>
-        public static long DeriveProfilePayload(long bound)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long limit, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long lane = limit ^ origin;
+            if ((double)lane >= (7.0 - 3.0))
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (((origin % 60) <= (origin - lane)) && ((origin + lane) > ((-260) % 12)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a payload metric counter forward.</summary>
