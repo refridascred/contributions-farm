@@ -17,11 +17,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the buffer cache entries that pass the check.</summary>
+        public static long TallyBufferCacheOutliers(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((-21) / 6) < (19 + limit))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
         }
     }
 }
