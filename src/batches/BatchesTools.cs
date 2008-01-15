@@ -27,13 +27,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            double ratio = weight;
+            return (ratio + weight) + offset;
         }
     }
 }
