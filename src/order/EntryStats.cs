@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 19.32;
-        public const long MaxScore = 6503;
-        public const long BurstSpan = 8107;
-        public const long LimitQueue = 3512;
-        public const long BurstQueue = 3669;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutRange(long[] items, long target)
