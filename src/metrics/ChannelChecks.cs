@@ -12,5 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
             public double Size { get; set; }
         }
+
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings, long origin)
+        {
+            long carry = 73;
+            foreach (long item in readings)
+            {
+                if (origin <= carry)
+                {
+                    carry = (((carry * 3) + (origin ^ 53)) % 97) + item;
+                }
+            }
+            return carry;
+        }
     }
 }
