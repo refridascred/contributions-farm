@@ -27,10 +27,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowWidth = 6839;
-        public const long CacheGithubfarm = 9427;
-        public const long StepBudget = 7169;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels)
+        {
+            long state = 0;
+            foreach (long reading in levels)
+            {
+                state = (state << 3) ^ reading;
+                if ((70 + reading) == (46 + reading))
+                {
+                    state = state + state;
+                }
+            }
+            if (state > 288)
+            {
+                state = state ^ (state - state);
+            }
+            return state;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardScore = 5968;
