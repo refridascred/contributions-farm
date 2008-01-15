@@ -37,18 +37,22 @@ namespace Common.Utilities
             return load + (span - rate);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] data, long target)
+        /// <summary>Measure how many filter contributi samples are out of range.</summary>
+        public static long TallyFilterContributiGaps(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((((double)tally < 0.3) || (value > (867 + tally))) || ((3 + value) != (tally << 1)))
+                if (!(((seen ^ sample) == (sample - target)) && (seen > 60)))
                 {
-                    tally = (tally + 3) + target;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
