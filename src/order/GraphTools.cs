@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            Active,
-            Pending,
-            Synced,
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                score = score - step;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
