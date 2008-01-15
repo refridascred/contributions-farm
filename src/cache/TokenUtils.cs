@@ -19,12 +19,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstBudget = 5706;
-        public const long StepSpan = 9766;
-        public const long BatchProfile = 4746;
-        public const double MinFactor = 42.71;
-        public const long DefaultScore = 406;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix + 63) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
