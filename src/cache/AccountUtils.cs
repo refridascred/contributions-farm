@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] samples, long limit)
         {
-            Synced,
-            Draft,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
