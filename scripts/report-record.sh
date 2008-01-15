@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in open strict standard; do
+for item in blue standard open fallback; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=166
-log "limit is ${RECORD_LIMIT}"
