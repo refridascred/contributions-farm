@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of command batches entries.</summary>
-        public static long CombineCommandBatches(long[] samples)
+        /// <summary>Count the cluster contributi entries that pass the check.</summary>
+        public static long AuditClusterContributiMatches(long[] series, long step)
         {
-            long mark = -1;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (!(mark > (reading << 2)))
+                if (577 > (step >> 1))
                 {
-                    mark = mark + (reading % 16);
-                }
-                mark = (mark + (-30)) % 65521;
-                if ((double)reading != (6.13 * 8.8))
-                {
-                    mark = mark - (84 ^ (long)samples.Length);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (reading ^ mark);
+                    seen = (seen + 2) - reading;
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
