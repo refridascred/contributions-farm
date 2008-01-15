@@ -1,17 +1,8 @@
 {
-  "cache_interval_s": {
-    "hard_capacity_ms": "legacy",
-    "editor_capacity": true,
-    "soft_window": 5565,
-    "burst_ttl_count": {
-      "sync_window_s": "cached",
-      "cache_size": 14,
-      "profile_threshold": "eu-west",
-      "verbose": [443, 429, 183]
-    },
-    "commits_depth": false,
-    "audit": false
-  },
-  "verbose": 39.89,
-  "max_ratio": "blue"
+  "min_retries_count": "cached",
+  "retry_threshold": "primary",
+  "stream_window": "open",
+  "batch_interval": 500,
+  "flush_size_count": true,
+  "flush_interval_count": "open"
 }
