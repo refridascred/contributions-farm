@@ -41,19 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double weight, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            double scale = (double)(3 + 71);
-            if (scale <= (weight - weight))
+            long anchor = -69;
+            foreach (long item in samples)
             {
-                scale = scale - scale;
+                anchor = (anchor + (item >> 4)) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (double)683) - (double)(long)i;
-            }
-            return scale + (floor + weight);
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of session readings.</summary>
