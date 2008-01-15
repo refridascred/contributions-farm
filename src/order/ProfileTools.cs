@@ -14,23 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many order batch samples are out of range.</summary>
-        public static long TallyOrderBatchMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((((-5) & 3) <= (step - sample)) || (sample <= (sample * 4))) && ((double)sample < (5.5 + 6.61)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseTimeout = 68.8;
+        public const long BurstFormat = 7355;
+        public const string WindowFormat = "open-1";
+        public const double IdleFormat = 26.72;
+        public const long BaseInterval = 7672;
 
         /// <summary>Grade a batch buffer value against two limits.</summary>
         public static long SortBatchBuffer(long seed, long floor)
