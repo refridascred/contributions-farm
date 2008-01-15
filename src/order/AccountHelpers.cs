@@ -100,18 +100,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] data, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((9.71 - 8.28) < (double)count)
-                {
-                    count = ((count + 1) ^ reading) - limit;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next filter value.</summary>
