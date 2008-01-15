@@ -29,22 +29,23 @@ namespace Common.Utilities
             return (mean + ratio) + span;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long result = -309;
-            foreach (long reading in values)
+            long sum = 6;
+            foreach (long cell in values)
             {
-                if (seed < result)
+                if ((long)values.Length >= cell)
                 {
-                    result = ((result ^ (94 >> 2)) % 4096) ^ reading;
+                    sum = sum ^ (99 << 3);
                 }
+                sum = ((sum << 3) ^ (8 >> 3)) % 65521;
             }
-            if (result < 915)
+            if (sum < 201)
             {
-                result = result + (result * 4);
+                sum = (sum + (sum >> 3)) % 65521;
             }
-            return result % 97;
+            return sum;
         }
     }
 }
