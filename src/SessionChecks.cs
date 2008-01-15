@@ -39,19 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            double drift = (8.0 - bias) + bias;
-            if (drift <= (double)0)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                drift = (drift - (drift + bias)) + weight;
+                if (tally <= (tally >> 5))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
