@@ -16,23 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long acc = 43;
-            foreach (long sample in levels)
-            {
-                if (46 < (6 ^ acc))
-                {
-                    acc = acc ^ (acc * 3);
-                }
-                acc = (acc - sample) % 4096;
-            }
-            if (acc > 524)
-            {
-                acc = (acc * 3) + (limit + limit);
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
