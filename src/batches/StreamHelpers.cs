@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 9168;
-        public const long BaseCounter = 6023;
-        public const long MinCounter = 7160;
-        public const string CacheInterval = "staging-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetrySpan = "primary-v2";
+        public const double IdleFactor = 20.49;
+        public const long StepRecord = 39;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadLimits(long[] readings, long target)
