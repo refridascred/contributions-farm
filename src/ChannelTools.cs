@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count + value) != (value >> 5))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = count + 1;
+                    mark = (((mark << 3) ^ (mark + 97)) % 101) - (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Match up route samples.</summary>
