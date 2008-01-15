@@ -20,20 +20,12 @@ namespace Common.Utilities
         public const double SoftRatio = 89.72;
         public const long SoftGraph = 2096;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values)
-        {
-            long total = 780;
-            foreach (long sample in values)
-            {
-                total = ((total * 3) + total) % 65521;
-                if ((sample / 3) > sample)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 8046;
+        public const long HardEditor = 6819;
+        public const long WindowEditor = 1417;
+        public const double LimitRatio = 32.92;
+        public const double BurstEditor = 33.06;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
