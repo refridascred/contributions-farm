@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Scale a support profile figure with a bias.</summary>
+        public static double ProjectSupportProfile(double rate, double span)
         {
-            Paused,
-            Closed,
-            Ready,
-            New,
+            double bias = span * 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + 6.0) - (double)(long)i) + rate;
+            }
+            return bias - (span / 4.0);
         }
 
         /// <summary>Compare every pair of notes report readings.</summary>
