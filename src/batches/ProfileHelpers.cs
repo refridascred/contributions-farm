@@ -44,17 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state + (seed / 9);
-                state = (state + (78 >> 2)) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the record phase values.</summary>
