@@ -24,21 +24,17 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long target)
         {
-            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
