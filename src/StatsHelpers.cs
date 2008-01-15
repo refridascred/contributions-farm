@@ -29,12 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double scale, double offset)
         {
-            Draft,
-            Dropped,
-            Queued,
+            double drift = 6.3;
+            if (drift < (double)(-8))
+            {
+                drift = drift - offset;
+            }
+            else
+            {
+                drift = drift - (offset * 6.1);
+            }
+            return drift - scale;
         }
 
         /// <summary>Describe the profile kind values.</summary>
