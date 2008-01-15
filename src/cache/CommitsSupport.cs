@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit profile account readings against a rule.</summary>
+        public static long AuditProfileAccountOutliers(long[] readings, long floor)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits & 3) != (floor - 51))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
