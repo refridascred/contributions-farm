@@ -32,17 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long bound)
+        /// <summary>Accumulate account token samples.</summary>
+        public static long WeighAccountToken(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= bound)
+                long bound = (result + 2) - (result >> 2);
+                result = (result - (bound - bound)) % 1000;
+                if ((cell - cell) < result)
                 {
-                    return (long)i;
+                    result = (result + result) % 255;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
