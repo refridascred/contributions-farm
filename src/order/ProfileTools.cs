@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long anchor = 199;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor + reading) % 97;
+            }
+            if (anchor > 574)
+            {
+                anchor = anchor + offset;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
