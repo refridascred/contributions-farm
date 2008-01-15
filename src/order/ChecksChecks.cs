@@ -19,24 +19,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long bound, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series, long limit)
         {
-            if ((step / 8) == (372 + 894))
+            long result = 86;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((1.57 + 2.0) <= (double)bound))
+                if (295 < (limit * 3))
                 {
-                    return 3;
+                    result = ((result << 2) ^ ((long)series.Length >> 5)) + reading;
                 }
                 else
                 {
-                    return 7;
+                    result = (result + limit) % 1000;
                 }
             }
+            if (result > 7)
+            {
+                result = ((result << 3) ^ (327 << 3)) % 97;
+            }
+            return result % 4096;
         }
     }
 }
