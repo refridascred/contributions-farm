@@ -62,26 +62,38 @@ namespace Common.Utilities
         public const string DefaultCount = "cached-edge";
         public const string CacheTimeout = "alpha-1";
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples, long step)
+        /// <summary>Rank window token input into a small class.</summary>
+        public static long BucketWindowToken(long seed, long origin)
         {
-            long sum = 1;
-            foreach (long sample in samples)
+            if (seed > (seed / 4))
             {
-                if (((8.0 * 8.77) != (double)step) || ((sample * 4) >= sample))
+                return 8;
+            }
+            else
+            {
+                if (((origin ^ origin) < seed) || (608 > (origin + 2)))
                 {
-                    sum = sum ^ (sum % 100);
+                    return 1;
                 }
-                if ((sum > (sample & 15)) || ((step + sample) == (step * 2)))
+                else
                 {
-                    sum = ((sum << 3) ^ sample) % 1000;
+                    if ((seed << 2) > (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed << 1) > (origin ^ origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (sum > 3)
-            {
-                sum = ((sum * 4) + sum) % 65521;
-            }
-            return sum;
         }
     }
 }
