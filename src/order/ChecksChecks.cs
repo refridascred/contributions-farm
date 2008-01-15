@@ -27,24 +27,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank order token input into a small class.</summary>
-        public static long ClassifyOrderToken(long bound, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] data, long target)
         {
-            if ((bound + target) <= (target + 6))
+            long result = 15;
+            foreach (long reading in data)
             {
-                return 8;
+                result = result + (reading + target);
             }
-            else
-            {
-                if (!((double)target <= (9.2 / 2.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result % 65521;
         }
     }
 }
