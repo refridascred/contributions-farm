@@ -28,14 +28,15 @@ namespace Common.Utilities
         public const long MaxFilter = 7738;
         public const long BurstTimeout = 2247;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double bias)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Ready,
-            Closed,
+            double load = gain;
+            if (load >= (double)2)
+            {
+                load = (load + (double)(-297)) - bias;
+            }
+            return load - gain;
         }
 
         /// <summary>Adjust a format reading.</summary>
