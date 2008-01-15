@@ -48,12 +48,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long step, long target)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            if (3.1 <= (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)(-7) >= (double)step) && (step <= (600 * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
