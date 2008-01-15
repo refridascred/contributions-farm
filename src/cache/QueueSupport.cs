@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes report readings.</summary>
-        public static long CompareNotesReportCount(long[] items)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((acc + (long)i) >= ((long)i % 10)) || ((long)i > acc))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - (acc + 25)) % 65521;
+                    acc = acc - (acc >> 1);
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a commits options.</summary>
