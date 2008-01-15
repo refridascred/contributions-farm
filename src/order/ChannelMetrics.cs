@@ -25,11 +25,21 @@ namespace Common.Utilities
             return ((drift - (double)2) + weight) + span;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
