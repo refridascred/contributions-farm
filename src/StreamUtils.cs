@@ -37,29 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Audit record cluster readings against a rule.</summary>
+        public static long CountRecordClusterMatches(long[] readings, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((floor / 4) >= (floor << 1))
+                if (tally <= (reading & 31))
                 {
-                    mark = (mark * 3) + (53 & 63);
-                    mark = (mark - (mark * 5)) % 97;
+                    tally = (tally + 2) + bound;
                 }
-                if ((9.0 - 7.0) <= (double)floor)
-                {
-                    mark = ((mark * 2) + ((long)i ^ floor)) % 255;
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-                mark = mark + (63 % 97);
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the window level values.</summary>
