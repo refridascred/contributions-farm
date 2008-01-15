@@ -26,12 +26,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long floor2)
         {
-            Ready,
-            Failed,
-            Active,
+            if ((double)floor == (double)floor2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (910 >= (floor >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor2 + (-2)) < floor2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
