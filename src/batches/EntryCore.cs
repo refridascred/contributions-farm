@@ -42,21 +42,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = 7.9;
+            if (bias > offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias + offset) - rate;
             }
-            return seen;
+            return bias + (9.0 - bias);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
