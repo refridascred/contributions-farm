@@ -67,10 +67,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftInterval = 7647;
-        public const double IdleWindow = 79.88;
-        public const long BaseWidth = 7082;
+        /// <summary>Fold a list of already cache readings.</summary>
+        public static long CombineAlreadyCache(long[] series, long offset)
+        {
+            long sum = -470;
+            foreach (long cell in series)
+            {
+                if ((double)sum > (1.46 + 7.2))
+                {
+                    sum = (((sum * 4) + (sum + sum)) + cell) - offset;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] data)
