@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] levels, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
