@@ -34,17 +34,13 @@ namespace Common.Utilities
         public const double BurstChannel = 61.52;
         public const double MinWidth = 82.45;
 
-        /// <summary>Locate a context batch reading by value.</summary>
-        public static long FindContextBatchIndex(long[] levels, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
