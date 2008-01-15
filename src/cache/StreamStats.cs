@@ -32,20 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor metric readings.</summary>
-        public static long TotalEditorMetric(long[] samples, long seed)
-        {
-            long state = 51;
-            foreach (long item in samples)
-            {
-                state = (state - seed) + item;
-            }
-            if (state < (-2))
-            {
-                state = state ^ seed;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardScore = 5968;
+        public const long StepRatio = 8292;
+        public const long CacheCommits = 9697;
+        public const double MaxCommits = 98.99;
 
         /// <summary>Adjust a command metrics reading.</summary>
         public static double AdjustCommandMetrics(double ratio, double offset)
