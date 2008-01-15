@@ -1,7 +1,9 @@
-id,active,weight,token
-1,429,115,203
-2,strict,274,staging
-3,79.27,11.91,584
-4,92.15,39.66,641
-5,542,7.12,673
-6,232,520,2.78
+id,rank
+1,open
+2,eu-west
+3,49.26
+4,26
+5,open
+6,76.32
+7,green
+8,stable
