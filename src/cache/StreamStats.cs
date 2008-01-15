@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const long BatchStats = 879;
         public const long WindowInterval = 7356;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Derive the next format already value from a seed.</summary>
+        public static long IterateFormatAlready(long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((176 + hits) < item)
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
