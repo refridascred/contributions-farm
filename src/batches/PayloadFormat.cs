@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Iterate the token checks series from a seed.</summary>
+        public static long DeriveTokenChecks(long limit)
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry + ((long)i ^ carry)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
