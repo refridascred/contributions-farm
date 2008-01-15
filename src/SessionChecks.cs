@@ -27,19 +27,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double scale, double bias)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias + bias2))
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                bias2 = bias2 - (double)(-75);
+                if (!(2.0 < (7.0 / 2.0)))
+                {
+                    acc = (acc << 3) ^ (seed % 97);
+                    break;
+                }
+                acc = (acc ^ acc) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc - (long)i) % 255) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - (bias2 - 6.8)) + (double)(long)i;
-            }
-            return bias2 - (bias - scale);
+            return acc;
         }
 
         /// <summary>Project the next stream value.</summary>
