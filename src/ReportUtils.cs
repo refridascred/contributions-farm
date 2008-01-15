@@ -16,18 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long total = -79;
+            foreach (long cell in levels)
             {
-                if ((0 - offset) <= item)
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = hits + 3;
+                    total = ((total - cell) % 4096) - (long)i;
                 }
+                total = total ^ target;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Iterate the profile payload series from a seed.</summary>
