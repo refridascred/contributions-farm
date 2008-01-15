@@ -48,22 +48,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long TallyEditorProfileHits(long[] series, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((bound - bound) <= (entry ^ bound))
+                if (!((sample * 2) > sample))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) + bound;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
