@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] levels, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long limit)
         {
-            long result = -226;
-            foreach (long value in levels)
+            if (((65 + seed) >= (seed / 9)) || ((seed + limit) < limit))
             {
-                result = (((result * 3) + value) % 4096) - target;
+                return 2;
             }
-            return result % 65521;
+            else
+            {
+                if (((limit ^ limit) < seed) && ((seed << 2) != (limit + seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
