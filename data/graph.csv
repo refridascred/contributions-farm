@@ -1,8 +1,6 @@
-id,active,count,ratio
-1,551,10.6,836
-2,433,10.1,21.88
-3,569,stable,34.3
-4,912,48.31,fallback
-5,staging,809,13.69
-6,872,1.51,40.17
-7,fallback,fallback,12.34
+id,level,label
+1,250,cached
+2,950,26
+3,706,legacy
+4,staging,456
+5,460,803
