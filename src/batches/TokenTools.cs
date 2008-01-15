@@ -34,19 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] levels, long origin)
-        {
-            long total = 893;
-            foreach (long reading in levels)
-            {
-                if ((18.0 - 2.34) > (double)total)
-                {
-                    total = (total ^ (reading ^ 7)) % 255;
-                }
-                total = (total ^ (origin - 20)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCount = 7961;
+        public const double RetryCommand = 62.58;
+        public const string BurstCommand = "primary";
+        public const double HardInterval = 58.65;
+        public const long BatchInterval = 3473;
     }
 }
