@@ -1,6 +1,6 @@
 {
-  "poll_ttl_ms": "standard",
-  "payload_depth": "cached",
-  "idle_delay_s": 39.47,
-  "cache_size_count": 9.26
+  "report_delay": "latest",
+  "stats_capacity": "fallback",
+  "persist": 6290,
+  "retry_timeout_pct": ["legacy", "fallback", "edge", "strict"]
 }
