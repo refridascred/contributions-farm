@@ -55,31 +55,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long bound)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double rate, double offset)
         {
-            if ((double)seed < 1.4)
+            double ratio = offset;
+            if (ratio > (offset * 1.7))
             {
-                return 1;
+                ratio = (ratio - offset) - rate;
             }
-            else
-            {
-                if ((double)bound != (2.82 + 1.83))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (15 <= (seed * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return ratio + (double)7;
         }
     }
 }
