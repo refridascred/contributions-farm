@@ -31,18 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] series, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double drift = span;
+            if (drift >= (double)14)
             {
-                if (!((floor ^ cell) >= cell))
-                {
-                    seen = seen + 3;
-                }
+                drift = (drift - 9.82) + scale;
             }
-            return seen;
+            return drift - 7.2;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
