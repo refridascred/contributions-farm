@@ -46,21 +46,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry + (8 + 93)) % 4096;
+                carry = carry + (origin >> 5);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
