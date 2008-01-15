@@ -19,15 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long seed, long limit)
         {
-            long sum = -3;
-            foreach (long entry in levels)
+            long span = seed + limit;
+            if (seed <= (span + span))
             {
-                sum = (sum - (sum & 3)) + entry;
+                return 6;
             }
-            return sum % 65521;
+            else
+            {
+                if (!((double)limit == (5.96 + 19.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-380) & 127) > (span & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the profile payload series from a seed.</summary>
