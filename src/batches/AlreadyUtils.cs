@@ -14,23 +14,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings)
         {
-            double load = bias - bias;
-            if (load < bias)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                load = load + (double)(-33);
+                if (4 <= (seen - 61))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            else
-            {
-                load = load + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (load - rate);
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
