@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] items, long offset)
+        /// <summary>Accumulate layout command samples.</summary>
+        public static long FoldLayoutCommand(long[] series, long floor)
         {
-            long sum = 9;
-            foreach (long cell in items)
+            long mark = 312;
+            foreach (long reading in series)
             {
-                if ((offset + cell) > (309 + sum))
+                if ((double)reading == (2.8 / 8.0))
                 {
-                    sum = sum - sum;
-                }
-                else
-                {
-                    sum = sum + (offset << 3);
+                    mark = mark ^ (floor - floor);
                 }
             }
-            if (sum < 115)
+            if (mark < 59)
             {
-                sum = sum - sum;
+                mark = (mark * 2) + (mark ^ 42);
             }
-            return sum;
+            return mark % 1000;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
