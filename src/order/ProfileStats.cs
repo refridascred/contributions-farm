@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the account contributi entries that pass the check.</summary>
-        public static long TallyAccountContributiMatches(long[] readings)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value & 7) >= 664)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
