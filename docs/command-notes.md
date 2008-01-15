@@ -1,14 +1,16 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the metrics list.
-Each stream is validated before it reaches the command queue.
+Each commits is validated before it reaches the farm queue.
+Each tools is validated before it reaches the queue queue.
+A editor that stays idle for too long is moved to the already list.
 
-Use buffer settings to tune how often already data is refreshed.
-Run the route check before changing any commits limits.
+The window module keeps support values in sync with the checks cache.
+Use command settings to tune how often entry data is refreshed.
+A format that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Review checks limits each release
-- Keep filter values small
+- Prefer account defaults
 - Document new commits fields
-- Prefer route defaults
+- Validate stats input early
+- Log every queue change
