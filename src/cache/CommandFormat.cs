@@ -22,26 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Audit account order readings against a rule.</summary>
+        public static long AuditAccountOrderGaps(long[] data, long limit)
         {
-            long sum = 434;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((87 - 228) < (cell ^ sum))
+                if ((hits - 54) < ((-15) >> 5))
                 {
-                    sum = ((sum << 3) ^ (cell + sum)) % 1000;
+                    hits = ((hits + 3) ^ reading) - limit;
                 }
-                if ((sum + sum) == (cell << 3))
+                else
                 {
-                    sum = ((sum << 2) ^ (cell ^ cell)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (sum > 9)
-            {
-                sum = ((sum << 3) ^ (sum * 4)) % 97;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
