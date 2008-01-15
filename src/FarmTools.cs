@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value < (13.0 - 0.3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor record.</summary>
