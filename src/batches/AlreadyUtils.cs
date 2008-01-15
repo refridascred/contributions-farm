@@ -49,18 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric layout samples are out of range.</summary>
-        public static long MeasureMetricLayoutOutliers(long[] items, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (!((double)tally < (7.99 - 1.0)))
+                if (((item % 3) >= (1 % 100)) || ((5 >= (seen * 2)) && ((item - item) != (seen + item))))
                 {
-                    tally = ((tally + 1) + datum) + bound;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up stream samples.</summary>
