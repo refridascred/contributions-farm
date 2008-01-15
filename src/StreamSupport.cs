@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long IdleTimeout = 5578;
         public const double MinLevel = 55.34;
 
-        /// <summary>Compare every pair of entry notes readings.</summary>
-        public static long OverlapEntryNotesCount(long[] items)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
