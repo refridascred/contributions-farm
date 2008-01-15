@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next checks editor value.</summary>
-        public static double BlendChecksEditor(double scale, double floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            double ratio = scale - floor;
-            if (ratio >= (floor - floor))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (floor * 13.0);
-            }
-            return ratio - (ratio * 4.2);
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
