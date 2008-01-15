@@ -27,19 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (offset <= (entry - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowWidth = 6839;
+        public const long CacheGithubfarm = 9427;
+        public const long StepBudget = 7169;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardScore = 5968;
