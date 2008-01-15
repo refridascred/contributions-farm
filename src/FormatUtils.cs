@@ -52,23 +52,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double bias, double span)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            double scale = span;
-            if (scale > 7.0)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + 2.02;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (scale - scale);
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
