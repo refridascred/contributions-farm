@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double bias, double bias2)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long seed)
         {
-            double ratio = 2.8;
-            return ((ratio + ratio) + bias) + bias2;
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
