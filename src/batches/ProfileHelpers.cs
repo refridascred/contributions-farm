@@ -42,21 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 74;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0.2 - 0.2) != (double)result)
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 2) ^ (datum - datum)) % 65521;
                 }
             }
-            return matches;
+            if (result < (-59))
+            {
+                result = (result * 5) + (result - result);
+            }
+            return result;
         }
 
         /// <summary>Match up context samples.</summary>
