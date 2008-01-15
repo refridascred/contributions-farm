@@ -1,16 +1,4 @@
 # support settings
-burst_retries_ms: open
-payload_depth:
-  - edge
-  - latest
-  - standard
-  - cached
-flush_timeout_pct:
-  warm_timeout_count: false
-  already_capacity:
-    verbose: 98.86
-    tools_delay: 2.04
-    entry_depth: 84.63
-    cache_capacity: 1640
-  payload_capacity: false
-  burst_retries_pct: 87.48
+default_ttl: true
+enabled: 87
+audit: 86.14
