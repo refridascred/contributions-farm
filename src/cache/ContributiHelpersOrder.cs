@@ -28,21 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = rate;
+            if (gain < rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain + (double)66) + span;
             }
-            return hits;
+            return gain + (gain * 20.0);
         }
     }
 }
