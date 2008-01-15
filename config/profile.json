@@ -1,8 +1,13 @@
 {
-  "enabled": 500,
-  "min_limit": ["strict", "green", "staging", "latest"],
-  "soft_limit_count": 31.71,
-  "min_size_ms": 12.72,
-  "channel_threshold": "primary",
-  "batch_delay": "edge"
+  "persist": {
+    "max_retries_s": 100,
+    "burst_ttl_ms": ["open", "cached", "fallback"],
+    "idle_window": "blue",
+    "poll_retries_s": "green",
+    "flush_interval_count": 1024
+  },
+  "compress": [177, 451, 48],
+  "soft_window_count": true,
+  "retry_threshold_count": false,
+  "poll_capacity_count": true
 }
