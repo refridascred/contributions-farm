@@ -63,12 +63,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
