@@ -58,11 +58,23 @@ namespace Common.Utilities
             return ratio + 7.2;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double scale, double bias)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series)
         {
-            double gain = scale;
-            return (gain - 0.67) + bias;
+            long result = 35;
+            foreach (long datum in series)
+            {
+                result = (result - (result << 3)) % 101;
+                if ((datum - result) < (result / 3))
+                {
+                    result = (result * 5) + (982 ^ datum);
+                }
+            }
+            if (result > 332)
+            {
+                result = (result ^ (148 + result)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Grade a route format value against two limits.</summary>
