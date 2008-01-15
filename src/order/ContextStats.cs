@@ -50,19 +50,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels, long bound)
-        {
-            long acc = 9;
-            foreach (long value in levels)
-            {
-                acc = (acc * 5) + bound;
-                if (value <= (acc - 6))
-                {
-                    acc = (acc + (acc * 3)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftSize = "standard";
+        public const string StepMetric = "legacy-1";
+        public const long MinWidth = 368;
     }
 }
