@@ -27,18 +27,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many queue commits samples are out of range.</summary>
-        public static long TallyQueueCommitsGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((4.26 / 2.0) >= (double)entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 6288;
+        public const string BaseTimeout = "strict-edge";
+        public const string BurstBudget = "staging";
+        public const long BatchBuffer = 4141;
     }
 }
