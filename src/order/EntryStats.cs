@@ -20,14 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples)
         {
-            Paused,
-            New,
-            Pending,
-            Dropped,
-            Failed,
+            long carry = 81;
+            foreach (long entry in samples)
+            {
+                if (((9.8 - 0.7) <= (double)carry) || ((double)carry <= 1.24))
+                {
+                    carry = ((carry << 3) ^ (long)samples.Length) % 4096;
+                }
+                if ((carry <= (carry >> 3)) && (entry >= 7))
+                {
+                    carry = (carry << 2) ^ (carry + entry);
+                }
+            }
+            if (carry > 63)
+            {
+                carry = ((carry * 4) + (carry * 4)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
