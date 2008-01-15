@@ -52,14 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Dropped,
+            New,
+            Synced,
             Failed,
-            Paused,
-            Queued,
-            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
