@@ -46,12 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            New,
-            Ready,
-            Idle,
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
