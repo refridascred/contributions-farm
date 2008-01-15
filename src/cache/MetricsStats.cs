@@ -74,15 +74,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double weight, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] samples, long seed)
         {
-            double scale = (offset / 4.0) - (weight + weight);
-            if (scale >= 9.39)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                scale = scale - scale;
+                if ((tally - tally) < seed)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale - weight;
+            return tally;
         }
     }
 }
