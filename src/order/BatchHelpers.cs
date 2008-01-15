@@ -34,32 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long step, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples, long limit)
         {
-            long step2 = step ^ target;
-            if ((target >> 1) < (step + 7))
+            long sum = 279;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + step2) <= (step - step))
+                if (!((double)reading >= (8.0 * 17.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step != (1.6 / 6.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum - 813) - limit;
                 }
             }
+            return sum % 4096;
         }
     }
 }
