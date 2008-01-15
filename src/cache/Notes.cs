@@ -32,12 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 9811;
-        public const string LimitCount = "stable-1";
-        public const string BurstSession = "latest-edge";
-        public const long RetryLevel = 7174;
-        public const long DefaultSession = 3870;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((7.5 / 8.0) < (double)hits) && (hits >= (hits % 7)))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long step, long origin)
