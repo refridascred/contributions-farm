@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long bound)
+        /// <summary>Blend two commits batch measurements.</summary>
+        public static double AdjustCommitsBatch(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(8 + 1);
+            if (weight > (double)0)
             {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - weight) - scale) - offset;
             }
-            return -1;
+            else
+            {
+                weight = weight - (9.0 - weight);
+            }
+            return weight - weight;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
