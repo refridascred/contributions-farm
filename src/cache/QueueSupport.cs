@@ -14,11 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 3498;
-        public const long SoftSession = 9377;
-        public const long MinInterval = 6577;
-        public const long BatchSession = 3635;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + step) >= step)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] series)
