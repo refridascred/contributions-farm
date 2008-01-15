@@ -65,17 +65,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a order report reading by value.</summary>
-        public static long LocateOrderReportIndex(long[] samples, long step)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
