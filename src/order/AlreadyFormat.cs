@@ -18,13 +18,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Accumulate account filter samples.</summary>
+        public static long DigestAccountFilter(long[] series, long floor)
         {
-            Paused,
-            Ready,
-            Done,
-            Draft,
+            long mix = 341;
+            foreach (long cell in series)
+            {
+                if (((double)cell <= (6.69 * 1.5)) || (cell > (floor + cell)))
+                {
+                    mix = mix ^ (cell + floor);
+                    mix = mix - (cell % 100);
+                }
+                if (((32 / 9) <= floor) || ((floor + floor) < (cell + mix)))
+                {
+                    mix = mix ^ (7 * 5);
+                }
+                else
+                {
+                    mix = (mix ^ (floor + cell)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
