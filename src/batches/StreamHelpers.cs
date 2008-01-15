@@ -26,19 +26,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] levels, long offset)
-        {
-            long mark = 29;
-            foreach (long value in levels)
-            {
-                if (offset > (value & 31))
-                {
-                    mark = (mark - offset) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 5073;
+        public const long BurstCluster = 8411;
+        public const double MinCluster = 39.78;
+        public const string StepWidth = "legacy-1";
+        public const long HardCluster = 9265;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long DeriveRecord(long limit)
