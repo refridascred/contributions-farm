@@ -32,32 +32,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long limit, long bound)
-        {
-            long next = limit + bound;
-            if (limit <= (next - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((bound - limit) <= next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((520 ^ 13) < (311 + next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseLevel = 37.85;
+        public const long HardFarm = 6534;
+        public const long BatchDepth = 3787;
+        public const long RetryRatio = 9458;
     }
 }
