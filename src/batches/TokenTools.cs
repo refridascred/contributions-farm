@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowSpan = "cached-1";
-        public const double BaseCommits = 75.56;
-        public const string WindowCount = "cached-v2";
-        public const long DefaultCommits = 4591;
-        public const string RetryLevel = "standard";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 777;
+        public const string CacheFactor = "alpha";
+        public const string HardCount = "stable-edge";
+        public const long WindowNotes = 1982;
+        public const long BurstRatio = 5579;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
