@@ -87,18 +87,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long carry = 248;
-            foreach (long reading in levels)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((carry / 9) > (reading & 3))
-                {
-                    carry = (carry - (carry + reading)) % 255;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
     }
 }
