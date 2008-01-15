@@ -22,19 +22,22 @@ namespace Common.Utilities
             return (bias + (0.23 - 4.7)) + floor;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] values, long origin)
+        /// <summary>Measure how many record cluster samples are out of range.</summary>
+        public static long AuditRecordClusterGaps(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (sample < origin)
+                if (hits <= (seed / 5))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many order metric samples are out of range.</summary>
