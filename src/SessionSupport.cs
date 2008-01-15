@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowSpan = 9167;
-        public const double MaxOrder = 76.04;
-        public const long WindowSize = 7591;
-        public const long RetryLevel = 7861;
-        public const string DefaultOrder = "cached-v2";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((4.0 / 9.0) != (double)(long)values.Length) || ((target - 416) >= (cell % 7)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] samples, long seed)
