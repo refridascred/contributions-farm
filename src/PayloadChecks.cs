@@ -22,29 +22,36 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long step, long floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long limit, long origin)
         {
-            long step2 = step ^ floor;
-            if (!((double)step2 < 7.08))
+            long span = limit ^ origin;
+            if ((limit - origin) == (origin << 2))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (8.13 < (double)step2)
+                if (((double)span > (2.47 - 9.3)) && ((span * 3) == (span + span)))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((floor % 7) != (207 * 5))
+                    if ((origin + limit) != (origin + span))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 6;
+                        if (((limit + limit) >= (limit >> 5)) && ((origin + 5) >= limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
