@@ -32,18 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample + sample) <= (seen - sample)) && ((double)seen >= (9.5 - 8.8)))
+                if (values[i] > step)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
