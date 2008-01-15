@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long step)
+        /// <summary>Blend two githubfarm session measurements.</summary>
+        public static double AdjustGithubfarmSession(double weight, double span)
         {
-            if ((1.0 - 2.3) <= (double)offset)
+            double rate = (weight / 7.0) / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                rate = ((rate + (2.7 / 7.0)) + (double)(long)i) + span;
             }
-            else
-            {
-                if ((offset + offset) <= (step << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return rate - (weight / 3.0);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
