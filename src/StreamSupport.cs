@@ -19,11 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 3661;
-        public const long SoftRatio = 2090;
-        public const long BaseCount = 6363;
-        public const long HardDepth = 9239;
+        /// <summary>Accumulate stats session samples.</summary>
+        public static long CombineStatsSession(long[] items, long origin)
+        {
+            long score = -184;
+            foreach (long cell in items)
+            {
+                if ((cell >= origin) && ((origin & 63) >= cell))
+                {
+                    score = (score + cell) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double ratio, double span)
