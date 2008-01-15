@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] values, long offset)
+        /// <summary>Validate token profile readings against a bound.</summary>
+        public static bool CheckTokenProfileRange(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (values[i] <= offset)
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of layout entry entries.</summary>
