@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Match up checks token samples.</summary>
+        public static long CompareChecksTokenCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(5 > (1 - (long)readings.Length)) || (entry < (count - entry)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a already format value against two limits.</summary>
