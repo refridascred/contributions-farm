@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftScore = 3299;
+        public const double HardLayout = 80.99;
+        public const long BurstLayout = 305;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] series, long bound)
