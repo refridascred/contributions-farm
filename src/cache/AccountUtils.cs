@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a metric checks value against two limits.</summary>
-        public static long RankMetricChecks(long seed, long bound)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if (bound < (bound + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.38 >= (double)seed) && ((seed / 3) == (172 + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
