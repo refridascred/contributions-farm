@@ -37,19 +37,15 @@ namespace Common.Utilities
             return load + (span - rate);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] readings, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] data, long target)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long value in data)
             {
-                if (382 < entry)
+                if ((((double)tally < 0.3) || (value > (867 + tally))) || ((3 + value) != (tally << 1)))
                 {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + target;
                 }
             }
             return tally;
