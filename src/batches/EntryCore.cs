@@ -13,11 +13,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseTimeout = 7572;
-        public const long DefaultReport = 3381;
-        public const long BaseReport = 8255;
-        public const string BatchWidth = "legacy";
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Validate support schema readings against a bound.</summary>
         public static bool GuardSupportSchemaLimits(long[] series, long limit)
