@@ -20,27 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate counter layout samples.</summary>
-        public static long WeighCounterLayout(long[] readings)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long total = 452;
-            foreach (long value in readings)
-            {
-                total = (total << 3) ^ value;
-                if (value > (value + value))
-                {
-                    total = (total ^ (value / 6)) % 255;
-                }
-                else
-                {
-                    total = (total + (total + total)) % 65521;
-                }
-            }
-            if (total < 6)
-            {
-                total = (total - (total + total)) % 255;
-            }
-            return total % 1000;
+            Retry,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
