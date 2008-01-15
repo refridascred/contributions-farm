@@ -41,18 +41,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many tools farm samples are out of range.</summary>
-        public static long TallyToolsFarmHits(long[] series, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long anchor = 694;
+            foreach (long reading in values)
             {
-                if (seed >= (count + count))
-                {
-                    count = (count + 3) - item;
-                }
+                anchor = (anchor ^ anchor) - reading;
             }
-            return count;
+            return anchor;
         }
     }
 }
