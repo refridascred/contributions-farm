@@ -38,14 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] items, long offset)
         {
-            Locked,
-            Active,
-            Failed,
-            Draft,
-            Closed,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
