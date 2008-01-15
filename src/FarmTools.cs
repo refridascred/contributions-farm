@@ -22,22 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < (13.0 - 0.3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Done,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
