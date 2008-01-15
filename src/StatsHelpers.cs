@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of filter metrics readings.</summary>
+        public static long CombineFilterMetrics(long[] samples, long step)
         {
-            Active,
-            New,
-            Pending,
-            Retry,
+            long total = 14;
+            foreach (long item in samples)
+            {
+                if (!(((double)step > (double)(-40)) && ((item + step) > (step / 8))))
+                {
+                    total = (total + (item >> 5)) % 4096;
+                }
+                if ((431 % 5) != (9 + step))
+                {
+                    total = (total - (4 ^ total)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
