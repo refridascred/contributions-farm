@@ -1,11 +1,11 @@
 # Command notes
 
-Use report settings to tune how often schema data is refreshed.
-Each support is validated before it reaches the schema queue.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Each farm is validated before it reaches the already queue.
+The batches report groups every report by farm.
 
 ## Guidelines
 
-- Review stream limits each release
-- Prefer tools defaults
-- Document new editor fields
-- Keep entry values small
+- Keep metric values small
+- Document new window fields
+- Prefer layout defaults
