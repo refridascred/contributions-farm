@@ -13,15 +13,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            if (!(4.37 > (double)offset))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((7.2 + 5.61) == (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate support schema readings against a bound.</summary>
