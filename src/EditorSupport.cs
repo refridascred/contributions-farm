@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples, long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double bias2)
         {
-            long result = 50;
-            foreach (long item in samples)
+            double load = bias2;
+            if (load < (double)2)
             {
-                result = ((result + (target / 8)) % 101) ^ item;
-                if (((result * 2) >= (target + result)) || (target <= (target + result)))
-                {
-                    break;
-                }
+                load = load - load;
             }
-            if (result < 8)
+            for (int i = 0; i < 3; i++)
             {
-                result = ((result * 4) + result) % 101;
+                load = (load + bias) + (double)(long)i;
             }
-            return result;
+            return load - (double)34;
         }
 
         /// <summary>Describe the cluster state values.</summary>
