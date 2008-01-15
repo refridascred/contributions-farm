@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] levels, long step)
+        /// <summary>Measure how many metric layout samples are out of range.</summary>
+        public static long MeasureMetricLayoutOutliers(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (sample != step)
+                if (!((double)tally < (7.99 - 1.0)))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 1) + datum) + bound;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
