@@ -46,38 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] readings, long step)
         {
-            if ((step >> 5) < 156)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step / 5) <= (step - step))
+                if (((reading + reading) == (reading * 5)) || (step <= (tally >> 4)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step > (seed / 6)) || ((step >> 5) == (step + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed < step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
