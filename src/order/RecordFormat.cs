@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const string LimitRecord = "open-v2";
         public const long IdleRecord = 8732;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Project the next order channel value.</summary>
+        public static double SmoothOrderChannel(double bias, double bias2)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            double gain = bias - (bias2 - bias);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (bias2 - bias2)) - (double)(long)i;
+            }
+            return gain + bias2;
         }
 
         /// <summary>Define context limits and defaults.</summary>
