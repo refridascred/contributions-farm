@@ -58,10 +58,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 7669;
-        public const long SoftBudget = 3474;
-        public const string HardAlready = "primary";
-        public const long SoftAlready = 9462;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((18.0 - 2.1) == (double)tally) && ((12 / 7) <= (tally - 0)))
+                {
+                    tally = ((tally + 1) + sample) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
