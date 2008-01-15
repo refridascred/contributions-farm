@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values, long target)
+        /// <summary>Digest a series of format session entries.</summary>
+        public static long TotalFormatSession(long[] items)
         {
-            long sum = 207;
-            foreach (long cell in values)
+            long total = 1;
+            foreach (long cell in items)
             {
-                if (((cell + sum) > target) || ((double)target < 8.96))
+                if ((total >> 2) < 4)
                 {
-                    sum = sum - (sum >> 2);
+                    total = ((total - (2 >> 3)) % 97) + cell;
                 }
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
