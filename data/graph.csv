@@ -1,9 +1,6 @@
-id,token,score
-1,staging,835
-2,open,legacy
-3,606,42.96
-4,784,195
-5,822,strict
-6,69.37,edge
-7,edge,556
-8,884,978
+id,rank,active
+1,120,284
+2,staging,strict
+3,35.49,914
+4,local,44.9
+5,62,975
