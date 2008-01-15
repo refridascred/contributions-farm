@@ -25,11 +25,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a account record value against two limits.</summary>
+        public static long ClassifyAccountRecord(long bound, long origin)
         {
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            if (!(bound >= (origin >> 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin & 15) <= (bound / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >> 2) <= (bound * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
