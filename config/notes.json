@@ -1,8 +1,8 @@
 {
-  "flush_interval_count": [169, 53],
-  "persist": 6.06,
-  "dry_run": [248, 433],
-  "strict": [500, 282, 139],
-  "report_window": "blue",
-  "base_size_ms": "primary"
+  "window_capacity": 7826,
+  "flush_delay_count": "strict",
+  "retry_size_pct": 3,
+  "burst_size_pct": [87, 427],
+  "warm_window_s": 40.01,
+  "verbose": 8602
 }
