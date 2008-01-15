@@ -55,19 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue notes readings against a bound.</summary>
-        public static bool VerifyQueueNotesRange(long[] samples, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (cell > limit)
+                if (sample != step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
