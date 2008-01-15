@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "stable-edge";
+        public const string HardSpan = "stable-v2";
+        public const long HardStream = 7645;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadLimits(long[] readings, long target)
