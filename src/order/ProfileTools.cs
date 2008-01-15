@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the window checks series from a seed.</summary>
-        public static long SeriesWindowChecks(long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] data, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((origin & 255) == (cell + seen))
                 {
-                    long edge = (long)i2;
-                    result = result ^ edge;
+                    seen = seen + 3;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit queue commits readings against a rule.</summary>
