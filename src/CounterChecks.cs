@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            Dropped,
-            Ready,
-            Queued,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits + hits) < value)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
