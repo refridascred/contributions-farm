@@ -46,24 +46,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long offset, long offset2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] data)
         {
-            if (((offset + offset2) <= (offset2 / 6)) || ((3.6 * 13.0) != (double)offset2))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (741 < (offset2 * 4))
+                if (((datum >> 5) < (datum & 255)) && ((double)count > 20.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
