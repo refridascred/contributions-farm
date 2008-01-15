@@ -58,18 +58,11 @@ namespace Common.Utilities
             return ratio + 7.2;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] values)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double scale, double bias)
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count / 4) < count)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            double gain = scale;
+            return (gain - 0.67) + bias;
         }
 
         /// <summary>Grade a route format value against two limits.</summary>
