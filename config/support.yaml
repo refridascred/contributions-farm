@@ -1,11 +1,14 @@
 # support settings
-graph_size:
-  base_ratio_s: 60
-  hard_retries_count:
-    - fallback
-    - latest
-    - local
-  burst_threshold_ms: 3740
-  enabled: blue
-entry_depth: 4179
-burst_ttl: blue
+base_ratio_s: 84.1
+retry_delay_pct: false
+already_capacity: primary
+channel_limit:
+  min_capacity_s:
+    - 279
+    - 453
+    - 359
+    - 49
+  idle_interval_ms: edge
+  readonly: 49
+  idle_retries: 65
+burst_interval_pct: local
