@@ -52,16 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor + item) + seed;
-                anchor = ((anchor * 3) + (anchor ^ item)) % 65521;
+                if (!!(tally > (datum + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
