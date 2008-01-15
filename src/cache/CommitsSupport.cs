@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const long BatchSpan = 3248;
         public const string WindowSpan = "local-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 44.36;
-        public const double StepFactor = 52.49;
-        public const double RetryInterval = 21.47;
-        public const long StepCommand = 8129;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 7179;
+        public const long MaxCache = 3588;
+        public const double MinDepth = 21.6;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string StepDepth = "alpha-edge";
