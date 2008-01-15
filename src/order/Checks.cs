@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Validate filter batch readings against a bound.</summary>
+        public static bool ValidateFilterBatchRange(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= floor)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a stream record.</summary>
