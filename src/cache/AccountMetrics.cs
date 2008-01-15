@@ -63,11 +63,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            Draft,
+            Active,
+            New,
+            Stale,
         }
     }
 }
