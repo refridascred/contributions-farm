@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples, long step)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (1.1 >= (double)tally)
-                {
-                    tally = ((tally + 1) ^ datum) + step;
-                }
-            }
-            return tally;
+            Failed,
+            Active,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Match up buffer samples.</summary>
