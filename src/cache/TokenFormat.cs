@@ -28,20 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((state >= bound) || ((state / 7) < state))
-                {
-                    state = state - state;
-                    state = ((state << 2) ^ state) % 255;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Failed,
+            Retry,
+            Draft,
+            Idle,
         }
     }
 }
