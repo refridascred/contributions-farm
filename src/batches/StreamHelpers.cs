@@ -63,12 +63,19 @@ namespace Common.Utilities
         public const long StepInterval = 5823;
         public const double BurstQueue = 44.19;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of notes format entries.</summary>
+        public static long DigestNotesFormat(long[] readings)
         {
-            Locked,
-            Ready,
-            Dropped,
+            long acc = 0;
+            foreach (long value in readings)
+            {
+                acc = acc + (value ^ acc);
+            }
+            if (acc > 623)
+            {
+                acc = acc ^ (2 ^ acc);
+            }
+            return acc % 1000;
         }
     }
 }
