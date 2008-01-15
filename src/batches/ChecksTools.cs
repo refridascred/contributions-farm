@@ -20,19 +20,19 @@ namespace Common.Utilities
             return scale2 - (double)242;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] values, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double drift = (11.0 - gain) + bias;
+            if (drift <= gain)
             {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (double)94;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
