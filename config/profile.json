@@ -1,8 +1,5 @@
 {
-  "dry_run": 64,
-  "poll_size_count": "stable",
-  "soft_delay_pct": 50.0,
-  "enabled": 6647,
-  "cache_depth": 4652,
-  "sync_depth_count": "latest"
+  "base_interval": 84,
+  "min_delay_count": 6673,
+  "cache_retries": ["open", "eu-west", "eu-west"]
 }
