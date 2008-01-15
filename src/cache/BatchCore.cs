@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long offset)
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long TallyMetricChannelGaps(long[] series, long step)
         {
-            if ((double)offset >= (5.28 * 5.56))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed >> 2) < offset)
+                if (reading > (count / 7))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >> 5) >= (seed << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset % 24) > (offset + offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 2) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
