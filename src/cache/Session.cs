@@ -16,31 +16,14 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if ((floor < (seed + seed)) && ((seed & 31) >= 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 4) != (floor ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 1) >= (-15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Validate schema entry readings against a bound.</summary>
