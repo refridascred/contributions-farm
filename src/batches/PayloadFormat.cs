@@ -29,22 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the format batches entries that pass the check.</summary>
-        public static long MeasureFormatBatchesGaps(long[] samples)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen + value) == (value - value))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double mean = bias;
+            return mean + (offset + mean);
         }
     }
 }
