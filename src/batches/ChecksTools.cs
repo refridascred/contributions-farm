@@ -20,19 +20,19 @@ namespace Common.Utilities
             return scale2 - (double)242;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] series, long target)
         {
-            double drift = (11.0 - gain) + bias;
-            if (drift <= gain)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                drift = drift + drift;
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (double)94;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
