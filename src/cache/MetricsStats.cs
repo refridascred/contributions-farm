@@ -41,39 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream cluster input into a small class.</summary>
-        public static long SortStreamCluster(long target, long target2)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] data, long bound)
         {
-            long delta = target - target2;
-            if (((delta ^ target) != (delta << 2)) && ((8.1 * 8.45) == (double)target))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((delta - target) < (target2 * 3)))
+                if (reading > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target - target) < delta) || ((target2 & 7) != (target2 - delta)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((53 ^ target2) < target2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
