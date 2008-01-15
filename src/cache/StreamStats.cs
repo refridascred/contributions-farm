@@ -43,22 +43,21 @@ namespace Common.Utilities
         public const long CacheCommits = 9697;
         public const double MaxCommits = 98.99;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] series)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((19.0 - 13.0) != (double)matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
