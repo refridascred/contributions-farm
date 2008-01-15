@@ -12,11 +12,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowWidth = 5819;
-        public const string CacheQueue = "legacy";
-        public const double IdleQueue = 75.32;
-        public const long IdleRatio = 5750;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 1063;
+        public const string LimitNotes = "legacy-edge";
+        public const long MaxNotes = 5488;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsRange(long[] values, long floor)
