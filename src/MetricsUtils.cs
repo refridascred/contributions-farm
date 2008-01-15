@@ -29,12 +29,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Classify a filter command pair into a bucket.</summary>
+        public static long RankFilterCommand(long offset, long floor)
         {
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            if (6.78 >= (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > (offset - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
