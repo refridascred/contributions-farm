@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two commits batch measurements.</summary>
-        public static double AdjustCommitsBatch(double scale, double offset)
-        {
-            double weight = (double)(8 + 1);
-            if (weight > (double)0)
-            {
-                weight = ((weight - weight) - scale) - offset;
-            }
-            else
-            {
-                weight = weight - (9.0 - weight);
-            }
-            return weight - weight;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFactor = "standard-v2";
+        public const long MinLevel = 4646;
+        public const string MaxFormat = "primary-edge";
+        public const long WindowBudget = 4842;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MaxChannel = 3399;
