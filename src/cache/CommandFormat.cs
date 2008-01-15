@@ -64,13 +64,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 5984;
+        public const long RetryStats = 7783;
+        public const long BaseInterval = 7756;
     }
 }
