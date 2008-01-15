@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long floor)
-        {
-            long mark = 50;
-            foreach (long value in data)
-            {
-                if ((value / 5) >= ((-37) % 64))
-                {
-                    mark = (mark + (floor * 5)) % 65521;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryCount = "cached-edge";
+        public const long MinGithubfarm = 8762;
+        public const long HardScore = 7863;
+        public const string StepDepth = "primary";
 
         /// <summary>Digest a series of contributi batch entries.</summary>
         public static long CombineContributiBatch(long[] series, long offset)
