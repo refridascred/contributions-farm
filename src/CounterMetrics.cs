@@ -48,19 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long target)
         {
-            long sum = 9;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (floor >> 1)) ^ sample;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 7)
-            {
-                sum = ((sum << 3) ^ (3 << 3)) % 255;
-            }
-            return sum;
+            return -1;
         }
     }
 }
