@@ -1,7 +1,7 @@
 {
-  "readonly": 6.15,
-  "idle_depth_s": 63.01,
-  "cache_ratio_pct": 45.28,
-  "max_delay_pct": 93.71,
-  "format_threshold": 4035
+  "burst_size_s": "fallback",
+  "githubfarm_depth": 311,
+  "flush_size_ms": 1193,
+  "max_size_pct": "blue",
+  "default_delay": 3.48
 }
