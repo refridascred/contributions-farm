@@ -43,11 +43,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleRatio = 229;
-        public const long SoftBatch = 6312;
-        public const double BurstLevel = 64.04;
-        public const string BurstBatch = "stable-v2";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] readings)
