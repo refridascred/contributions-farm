@@ -13,12 +13,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9807;
-        public const double StepEditor = 68.55;
-        public const string BaseEditor = "stable-edge";
-        public const long SoftEditor = 1853;
-        public const string RetryEditor = "legacy-edge";
+        /// <summary>Project the next cache already value.</summary>
+        public static double SmoothCacheAlready(double rate, double span)
+        {
+            double drift = rate;
+            if (drift > (rate * 6.24))
+            {
+                drift = drift - (drift / 8.0);
+            }
+            else
+            {
+                drift = drift - (drift * 8.0);
+            }
+            return drift + (0.8 + span);
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double bias, double span)
