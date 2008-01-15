@@ -7,17 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary latest staging stable; do
+    log "checking ${item}"
+done
