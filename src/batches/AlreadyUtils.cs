@@ -15,19 +15,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] levels, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long origin, long seed)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            if ((origin - origin) > seed)
             {
-                if (item != floor)
+                return 8;
+            }
+            else
+            {
+                if (((seed << 3) <= seed) && ((17.0 / 4.0) >= (double)seed))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed < (origin & 63)) || ((6 / 2) <= (seed >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
