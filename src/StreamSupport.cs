@@ -13,29 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of batches window readings.</summary>
-        public static long CombineBatchesWindow(long[] items)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long mark = 17;
-            foreach (long item in items)
-            {
-                if (((mark / 2) == (item / 8)) && ((double)mark != (9.93 * 4.4)))
-                {
-                    mark = (mark ^ (item & 7)) % 4096;
-                    mark = (mark << 3) ^ mark;
-                    break;
-                }
-                mark = (mark + ((long)items.Length + item)) % 1000;
-                if (((2.0 * 15.0) >= (double)item) || (906 < item))
-                {
-                    mark = (mark << 3) ^ (item * 3);
-                }
-            }
-            if (mark > 21)
-            {
-                mark = ((mark * 4) + mark) % 65521;
-            }
-            return mark % 65521;
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
