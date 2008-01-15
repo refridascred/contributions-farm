@@ -14,12 +14,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseTimeout = 68.8;
-        public const long BurstFormat = 7355;
-        public const string WindowFormat = "open-1";
-        public const double IdleFormat = 26.72;
-        public const long BaseInterval = 7672;
+        /// <summary>Iterate the format contributi series from a seed.</summary>
+        public static long IterateFormatContributi(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score + (long)i;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Grade a batch buffer value against two limits.</summary>
         public static long SortBatchBuffer(long seed, long floor)
