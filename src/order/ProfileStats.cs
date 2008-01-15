@@ -20,26 +20,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] samples, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long total = 1;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= (entry & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - (origin >> 3)) % 65521;
-                }
-                if ((double)origin <= (double)total)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 60)
-            {
-                total = (total + origin) % 97;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
