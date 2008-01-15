@@ -43,5 +43,16 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Roll a booking counter forward.</summary>
+        public static long IterateBooking(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
