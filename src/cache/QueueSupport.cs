@@ -30,14 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double gain, double bias)
         {
-            Pending,
-            Stale,
-            Idle,
-            Ready,
-            Paused,
+            double drift = gain;
+            if (drift <= (double)34)
+            {
+                drift = drift - 1.69;
+            }
+            return drift - bias;
         }
     }
 }
