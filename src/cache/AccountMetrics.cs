@@ -21,39 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long floor)
-        {
-            if (target < (-28))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(((-62) * 4) < (floor & 15)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target >= 3.07)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor < (19.0 / 9.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSize = 7452;
+        public const long IdleCount = 2586;
+        public const long SoftLevel = 8475;
+        public const string SoftPayload = "alpha";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstMetrics = "alpha";
