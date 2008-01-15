@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = 13;
-            foreach (long entry in series)
-            {
-                mix = (((mix ^ mix) % 1000) ^ entry) + limit;
-            }
-            return mix % 1000;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
