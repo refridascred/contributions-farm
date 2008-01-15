@@ -67,14 +67,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] levels, long offset)
         {
-            Stale,
-            Done,
-            Locked,
-            Paused,
-            Ready,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((value + value) > (offset + offset)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
