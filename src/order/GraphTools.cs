@@ -37,17 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
