@@ -19,20 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 3661;
+        public const long SoftRatio = 2090;
+        public const long BaseCount = 6363;
+        public const long HardDepth = 9239;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double ratio, double span)
