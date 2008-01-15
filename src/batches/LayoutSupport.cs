@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of already contributi readings.</summary>
-        public static long CompareAlreadyContributiCount(long[] levels)
+        /// <summary>Check that every token entry entry stays within the limit.</summary>
+        public static bool ValidateTokenEntryRange(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum >= seed)
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a batch summary.</summary>
