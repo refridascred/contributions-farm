@@ -1,5 +1,37 @@
 # githubfarm settings
-readonly: eu-west
-base_size_ms: green
-audit: open
-cache_capacity: 94
+strict: open
+audit:
+  retry_interval_ms:
+    - 393
+    - 189
+    - 80
+  profile_interval:
+    layout_limit: 76.4
+    base_interval_s: 88.12
+    burst_depth_pct: 29.01
+    base_window_ms:
+      - local
+      - standard
+      - eu-west
+      - stable
+    strict:
+      - 383
+      - 411
+      - 180
+  cache_retries_ms: 93.17
+  enabled:
+    stats_ttl: strict
+    soft_window:
+      - 463
+      - 321
+      - 364
+    hard_size_ms: local
+    queue_limit: 60
+  base_threshold:
+    - staging
+    - strict
+    - standard
+    - blue
+  report_threshold: latest
+support_capacity: false
+burst_ttl: 64
