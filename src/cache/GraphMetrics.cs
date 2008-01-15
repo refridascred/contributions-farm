@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const string SoftOrder = "latest-1";
         public const long MinOrder = 1253;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 9377;
-        public const double StepChannel = 97.52;
-        public const long BurstBudget = 5421;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double bias, double offset)
+        {
+            double load = (4.71 * 20.0) + offset;
+            if (load < 3.8)
+            {
+                load = (load + (1.07 / 3.0)) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)(-539)) - (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Accumulate token order samples.</summary>
         public static long ScoreTokenOrder(long[] series, long target)
