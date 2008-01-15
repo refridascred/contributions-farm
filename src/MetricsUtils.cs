@@ -29,24 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a filter command pair into a bucket.</summary>
-        public static long RankFilterCommand(long offset, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long limit)
         {
-            if (6.78 >= (double)floor)
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset > (offset - offset))
+                if (item > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
