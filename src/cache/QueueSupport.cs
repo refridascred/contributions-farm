@@ -31,12 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            Idle,
+            Draft,
+            Active,
         }
     }
 }
