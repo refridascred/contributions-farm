@@ -63,11 +63,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            Ready,
+            Active,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
