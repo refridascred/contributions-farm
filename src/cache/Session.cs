@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two token metrics measurements.</summary>
-        public static double ProjectTokenMetrics(double rate, double bias)
+        /// <summary>Adjust a record buffer reading.</summary>
+        public static double ScaleRecordBuffer(double gain, double bias)
         {
-            double rate2 = (double)((-278) - 3);
-            if (rate2 >= rate2)
+            double weight = (double)(584 / 7);
+            if (weight < (5.89 / 2.0))
             {
-                rate2 = (rate2 + bias) - rate;
+                weight = (weight + (double)128) + bias;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + (bias * 15.0)) - (double)(long)i;
-            }
-            return rate2 - (bias - rate2);
+            return weight + gain;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
