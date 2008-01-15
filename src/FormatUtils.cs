@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryWidth = 1878;
-        public const long MinCache = 10;
-        public const string MaxCount = "open";
-        public const long RetryInterval = 2287;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public double Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphLimits(long[] samples, long target)
