@@ -95,12 +95,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Blend two commits batches measurements.</summary>
+        public static double SmoothCommitsBatches(double gain, double offset)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            double weight = offset;
+            if (weight >= (double)37)
+            {
+                weight = (weight + (weight * 4.17)) + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (2.8 - weight)) - (double)(long)i;
+            }
+            return weight - 5.18;
         }
     }
 }
