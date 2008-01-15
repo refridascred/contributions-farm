@@ -13,23 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long acc = 43;
+            foreach (long sample in levels)
             {
-                if (((double)total >= 0.4) || ((bound << 2) >= (bound << 3)))
+                if (46 < (6 ^ acc))
                 {
-                    break;
+                    acc = acc ^ (acc * 3);
                 }
-                else
-                {
-                    total = (total ^ (17 + total)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                acc = (acc - sample) % 4096;
             }
-            return total;
+            if (acc > 524)
+            {
+                acc = (acc * 3) + (limit + limit);
+            }
+            return acc;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
