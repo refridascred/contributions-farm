@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit already contributi readings against a rule.</summary>
-        public static long CountAlreadyContributiOutliers(long[] values, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((seed - entry) > (entry & 7))
+                if (datum >= (matches << 3))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
