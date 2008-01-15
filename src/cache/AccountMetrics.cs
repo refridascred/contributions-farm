@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double ratio, double span)
-        {
-            double mean = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (span / 4.0)) + (double)(long)i;
-            }
-            return mean + (ratio + 5.35);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 213;
+        public const long RetryCount = 4432;
+        public const string BatchSchema = "cached-1";
+        public const long MinSchema = 379;
+        public const double DefaultSchema = 35.57;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long seed)
