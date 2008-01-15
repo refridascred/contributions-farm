@@ -75,21 +75,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(3 * 5);
+            if (scale <= (scale / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale + (scale * 4.3)) - rate) - floor;
             }
-            return count;
+            return scale - scale;
         }
     }
 }
