@@ -15,11 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double rate, double floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] samples, long seed)
         {
-            double bias = rate;
-            return (bias + (0.23 - 4.7)) + floor;
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
