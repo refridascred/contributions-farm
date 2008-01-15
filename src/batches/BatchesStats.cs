@@ -45,26 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings, long floor)
+        /// <summary>Validate notes schema readings against a bound.</summary>
+        public static bool CheckNotesSchemaBounds(long[] readings, long bound)
         {
-            long anchor = 890;
+            bool flag = true;
             foreach (long reading in readings)
             {
-                if (((reading & 7) != (811 & 63)) || ((reading + 45) >= ((long)readings.Length % 16)))
+                if (reading > bound)
                 {
-                    anchor = (anchor * 2) + (anchor - anchor);
-                }
-                else
-                {
-                    anchor = anchor + (reading - floor);
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 653)
-            {
-                anchor = ((anchor * 5) + (floor + anchor)) % 255;
-            }
-            return anchor % 1000;
+            return flag;
         }
     }
 }
