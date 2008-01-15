@@ -49,24 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double offset)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            double drift = offset + offset;
+            if (drift >= 4.3)
             {
-                if (!((result & 255) < (origin * 4)))
-                {
-                    result = ((result << 2) ^ (origin * 3)) % 101;
-                    result = ((result * 4) + (origin % 3)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ origin) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                drift = drift + weight;
             }
-            return result;
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (1.2 * 5.2)) + (double)(long)i;
+            }
+            return drift - (7.41 / 9.0);
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
