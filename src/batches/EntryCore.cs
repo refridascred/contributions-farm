@@ -14,12 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 3399;
-        public const double CacheScore = 8.48;
-        public const string BaseChannel = "fallback";
-        public const double DefaultScore = 67.56;
-        public const string BaseWidth = "latest";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels, long step)
+        {
+            long state = 245;
+            foreach (long entry in levels)
+            {
+                if ((double)state > (double)step)
+                {
+                    state = (state + (step * 2)) ^ entry;
+                }
+                state = (state - (-63)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long step)
