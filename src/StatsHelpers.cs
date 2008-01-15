@@ -23,11 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double scale, double bias)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double scale2 = (double)(22 << 2);
-            return ((scale2 - 7.2) + scale) + bias;
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
