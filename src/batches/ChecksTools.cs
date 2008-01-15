@@ -22,12 +22,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 857;
-        public const long CacheFarm = 7985;
-        public const long IdleFarm = 2716;
-        public const double StepInterval = 55.29;
-        public const long BaseFarm = 2293;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterHits(long[] readings, long origin)
