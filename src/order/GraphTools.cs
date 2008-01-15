@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
+            Draft,
             Paused,
-            Queued,
             Closed,
-            New,
-            Retry,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
