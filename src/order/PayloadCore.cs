@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 60;
+            foreach (long value in values)
             {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (state % 97)) ^ value;
+                state = (state << 2) ^ (state + 7);
             }
-            return -1;
+            if (state > 3)
+            {
+                state = (state + (state - (-82))) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
