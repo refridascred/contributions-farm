@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long StepReport = 9371;
         public const long DefaultReport = 535;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the filter window entries that pass the check.</summary>
+        public static long TallyFilterWindowOutliers(long[] items, long seed)
         {
-            Stale,
-            Idle,
-            Done,
-            Failed,
-            Locked,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((seed & 255) <= (datum - seed))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
