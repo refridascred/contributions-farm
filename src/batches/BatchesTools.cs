@@ -27,13 +27,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] readings, long bound)
         {
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
