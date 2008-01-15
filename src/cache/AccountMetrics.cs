@@ -31,10 +31,33 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 2478;
-        public const string DefaultPayload = "legacy";
-        public const long WindowPayload = 5784;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long origin, long bound)
+        {
+            long gap = origin ^ bound;
+            if ((bound ^ bound) < (bound + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin - origin) > 821) && ((687 ^ 592) != (origin + gap)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap - origin) < (7 * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
