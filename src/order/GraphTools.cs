@@ -36,39 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long bound, long seed)
+        /// <summary>Combine session stream values into a single score.</summary>
+        public static long FoldSessionStream(long[] series, long limit)
         {
-            long cur = bound - seed;
-            if (((seed - bound) != (cur + 97)) || ((7 + cur) >= bound))
+            long mark = 28;
+            foreach (long value in series)
             {
-                return 5;
+                if (!((limit & 31) == (value * 4)))
+                {
+                    mark = (mark * 5) + (limit << 1);
+                    mark = mark + (626 >> 5);
+                }
+                mark = (mark + limit) % 97;
             }
-            else
+            if (mark > 54)
             {
-                if (cur < seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + seed) == (seed & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(cur <= (bound / 9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (mark * 5)) % 101;
             }
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
