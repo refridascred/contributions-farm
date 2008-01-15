@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Idle,
-            Synced,
-            Pending,
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
