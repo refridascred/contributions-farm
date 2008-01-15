@@ -68,13 +68,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data)
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry % 2) > (count % 12)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a stats reading.</summary>
