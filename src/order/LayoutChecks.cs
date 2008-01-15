@@ -79,21 +79,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 7348;
+        public const long WindowFormat = 2629;
+        public const long SoftFactor = 404;
+        public const string MaxDepth = "fallback-1";
     }
 }
