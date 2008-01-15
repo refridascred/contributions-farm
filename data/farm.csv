@@ -1,9 +1,6 @@
-id,count,state,active
-1,84.59,787,849
-2,370,strict,30.72
-3,legacy,91.89,472
-4,edge,36.14,local
-5,666,880,831
-6,518,59.8,155
-7,16.93,58,edge
-8,828,fallback,880
+id,count,level
+1,772,997
+2,318,open
+3,legacy,752
+4,primary,85.39
+5,legacy,6.47
