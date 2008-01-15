@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const long DefaultBuffer = 7599;
         public const long SoftBuffer = 3773;
 
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long CountClusterCounterGaps(long[] samples, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((entry << 3) > entry)
+                if ((tally >> 4) != (datum >> 2))
                 {
-                    count = (count + 3) + bound;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
