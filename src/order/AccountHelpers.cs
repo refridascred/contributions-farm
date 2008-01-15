@@ -40,19 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] readings, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (entry >= bound)
+                if (cell <= step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Derive the next profile metrics value from a seed.</summary>
