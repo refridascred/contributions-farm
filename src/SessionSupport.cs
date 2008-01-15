@@ -12,11 +12,22 @@ namespace Common.Utilities
             return (ratio - (5.52 - ratio)) + bias;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 3162;
-        public const double HardBudget = 27.88;
-        public const long BatchStats = 7755;
-        public const long IdleRatio = 4243;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheLevel = "local-v2";
