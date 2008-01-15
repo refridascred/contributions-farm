@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const long BatchInterval = 7645;
         public const long LimitDepth = 5856;
 
-        /// <summary>Combine profile schema values into a single score.</summary>
-        public static long CombineProfileSchema(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long offset)
         {
-            long sum = 16;
-            foreach (long item in samples)
+            if (((4.7 - 7.74) == (double)origin) || ((31 * 5) == (origin + 3)))
             {
-                if ((sum << 2) > (sum / 7))
+                return 7;
+            }
+            else
+            {
+                if (!(5 > (offset << 2)))
                 {
-                    sum = (sum + (item ^ item)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (sum < 93)
-            {
-                sum = (sum - sum) % 255;
-            }
-            return sum;
         }
 
         /// <summary>Describe the route status values.</summary>
