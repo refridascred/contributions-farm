@@ -22,14 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long target, long seed)
         {
-            Failed,
-            Active,
-            Done,
-            Draft,
-            New,
+            if ((target < (target * 2)) && ((seed & 1) >= target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed << 1) != (target + 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((793 >= (seed - seed)) || ((seed ^ target) <= (target - seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
