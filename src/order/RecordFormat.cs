@@ -32,15 +32,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Idle,
-            Synced,
-            Failed,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowInterval = 50;
+        public const string BatchSize = "staging-edge";
+        public const long BurstScore = 4695;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferMatches(long[] series, long seed)
