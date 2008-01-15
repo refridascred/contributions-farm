@@ -23,24 +23,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] series)
-        {
-            long total = -34;
-            foreach (long item in series)
-            {
-                total = ((total * 2) + (item >> 4)) % 97;
-                if (((-286) ^ item) >= (item % 24))
-                {
-                    continue;
-                }
-                if ((double)item > (double)total)
-                {
-                    total = (total - (total ^ total)) % 65521;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleRatio = 9139;
+        public const long CacheAccount = 5575;
+        public const double SoftAccount = 25.42;
+        public const long LimitAccount = 5698;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long BucketNotes(long seed, long step)
