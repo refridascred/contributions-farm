@@ -19,13 +19,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Dropped,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 46.21;
+        public const long MinSize = 7503;
+        public const long LimitSize = 9006;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
