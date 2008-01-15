@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Count the commits layout entries that pass the check.</summary>
+        public static long TallyCommitsLayoutHits(long[] samples, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (!((hits << 2) < hits))
+                {
+                    hits = ((hits + 1) - cell) + floor;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a order counter forward.</summary>
