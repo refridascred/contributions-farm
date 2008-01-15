@@ -44,17 +44,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = floor + bound;
+            if ((step ^ step) < floor)
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((bound + step) == (floor << 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
