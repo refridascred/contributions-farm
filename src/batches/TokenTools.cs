@@ -34,11 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCount = 7961;
-        public const double RetryCommand = 62.58;
-        public const string BurstCommand = "primary";
-        public const double HardInterval = 58.65;
-        public const long BatchInterval = 3473;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) <= (63 + floor))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
