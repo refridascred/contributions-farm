@@ -15,21 +15,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] data, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long mix = 25;
+            foreach (long datum in data)
             {
-                result = (result + (limit / 4)) % 97;
-                if ((limit & 63) == (result ^ 22))
+                for (int i = 0; i < 6; i++)
                 {
-                    result = ((result * 3) + limit) % 4096;
-                    result = (result << 2) ^ 588;
+                    mix = (((mix - 0) % 101) + datum) + step;
+                    mix = (mix - (long)i) % 1000;
                 }
-                result = ((result * 3) + (long)i) % 97;
+                mix = ((mix * 4) + (9 / 4)) % 1000;
             }
-            return result;
+            if (mix > 1)
+            {
+                mix = ((mix << 2) ^ 99) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
