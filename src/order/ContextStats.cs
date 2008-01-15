@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value > (7.13 + 9.45)) || ((seen * 3) < 0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheRatio = 3595;
+        public const double DefaultBudget = 30.25;
+        public const string WindowSpan = "cached";
+        public const long MaxCluster = 1981;
 
         /// <summary>Combine farm window values into a single score.</summary>
         public static long WeighFarmWindow(long[] levels, long step)
