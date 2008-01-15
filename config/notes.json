@@ -1,5 +1,7 @@
 {
-  "max_threshold_s": 7524,
-  "retry_delay_pct": true,
-  "max_delay_count": [14, 145, 122]
+  "commits_capacity": 250,
+  "audit": ["cached", "green", "local", "staging"],
+  "base_limit_ms": "stable",
+  "idle_ratio_s": [452, 310, 86],
+  "min_size_pct": true
 }
