@@ -52,22 +52,24 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] data, long seed)
+        /// <summary>Iterate the already account series from a seed.</summary>
+        public static long RollAlreadyAccount(long seed)
         {
-            long state = 13;
-            foreach (long value in data)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)seed < (double)value)
+                if ((total / 4) < (total >> 4))
                 {
-                    state = state + (seed - state);
+                    total = total - (14 / 6);
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total + (total << 3)) % 97) ^ (long)i2;
+                    total = (total - (long)i) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (state < 4)
-            {
-                state = ((state << 2) ^ (state & 127)) % 65521;
-            }
-            return state % 1000;
+            return total;
         }
     }
 }
