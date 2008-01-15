@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double gain, double offset)
-        {
-            double ratio = 2.7;
-            if (ratio > 2.77)
-            {
-                ratio = (ratio + gain) + offset;
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseInterval = "strict";
+        public const long RetryQueue = 1809;
+        public const string CacheTimeout = "open";
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long target)
