@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many format metric samples are out of range.</summary>
-        public static long MeasureFormatMetricHits(long[] series, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((bound ^ (-9)) <= (163 + 110)) && ((bound << 2) > datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
