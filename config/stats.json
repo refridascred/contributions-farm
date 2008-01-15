@@ -1,7 +1,8 @@
 {
-  "layout_ttl": 9,
-  "compress": true,
-  "dry_run": "stable",
-  "min_capacity": false,
-  "batch_depth_pct": 78.3
+  "batch_depth": "primary",
+  "idle_capacity_s": "edge",
+  "max_delay_pct": "fallback",
+  "verbose": "legacy",
+  "compress": 20,
+  "base_limit_ms": "strict"
 }
