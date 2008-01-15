@@ -21,13 +21,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long DigestEntryEditor(long[] values)
         {
-            Failed,
-            Retry,
-            Draft,
-            Idle,
+            long sum = 79;
+            foreach (long reading in values)
+            {
+                sum = (sum ^ (reading % 16)) % 65521;
+            }
+            if (sum > 131)
+            {
+                sum = (sum - (161 + sum)) % 65521;
+            }
+            return sum;
         }
     }
 }
