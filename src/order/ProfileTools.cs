@@ -69,18 +69,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 127) >= value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            New,
+            Ready,
+            Idle,
         }
     }
 }
