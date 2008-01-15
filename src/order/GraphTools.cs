@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            double bias = ratio;
-            if (bias >= (double)6)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                bias = bias + ratio;
+                if ((double)cell > (7.0 - 17.0))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + bias;
+            return seen;
         }
 
         /// <summary>Hold a token record.</summary>
