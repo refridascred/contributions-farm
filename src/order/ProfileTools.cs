@@ -22,20 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Measure how many order batch samples are out of range.</summary>
+        public static long TallyOrderBatchMatches(long[] levels, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (!(carry <= ((long)i ^ carry)))
+                if (((((-5) & 3) <= (step - sample)) || (sample <= (sample * 4))) && ((double)sample < (5.5 + 6.61)))
                 {
-                    carry = carry + 6;
+                    hits = hits + 1;
                 }
-                carry = carry - offset;
-                carry = ((carry * 4) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a batch buffer value against two limits.</summary>
