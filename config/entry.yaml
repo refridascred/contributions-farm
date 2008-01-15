@@ -1,11 +1,13 @@
 # entry settings
-hard_size_ms: 4920
-sync_delay_count:
-  sync_interval_s: latest
-  cache_capacity_count: edge
-  idle_retries_s: 75.5
-  sync_delay_count: true
-  burst_delay_ms: local
-  burst_limit_count: fallback
-format_depth: false
-default_delay_s: true
+report_window: strict
+poll_window_pct:
+  - green
+  - primary
+editor_interval: false
+contributi_depth: 9929
+burst_depth:
+  - fallback
+  - local
+  - legacy
+  - blue
+burst_window: 3329
