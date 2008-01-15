@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const string StepSpan = "alpha";
         public const double BaseReport = 95.07;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((3.67 / 9.0) == (double)(long)i)
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
