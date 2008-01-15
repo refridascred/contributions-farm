@@ -23,18 +23,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit context githubfarm readings against a rule.</summary>
-        public static long TallyContextGithubfarmHits(long[] levels)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 59;
+            foreach (long datum in values)
             {
-                if (matches >= (864 ^ 40))
-                {
-                    matches = (matches + 3) - reading;
-                }
+                mark = ((mark + (target & 31)) % 255) ^ datum;
             }
-            return matches;
+            if (mark > 918)
+            {
+                mark = mark - (mark + target);
+            }
+            return mark % 4096;
         }
     }
 }
