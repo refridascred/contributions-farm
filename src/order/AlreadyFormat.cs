@@ -64,10 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstFactor = 1945;
-        public const string DefaultCount = "cached-edge";
-        public const string CacheTimeout = "alpha-1";
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double offset)
+        {
+            double ratio = offset;
+            return ratio - weight;
+        }
 
         /// <summary>Rank window token input into a small class.</summary>
         public static long BucketWindowToken(long seed, long origin)
