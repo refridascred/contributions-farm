@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] samples, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((double)origin != (7.39 + 0.63))
+                if (value >= origin)
                 {
+                    flag = false;
                     break;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a batch info.</summary>
