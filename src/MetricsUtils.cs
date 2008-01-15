@@ -20,39 +20,22 @@ namespace Common.Utilities
             return mean + (span * 0.7);
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long delta = offset + origin;
-            if ((delta - offset) > (750 << 3))
+            long carry = 2;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)5 <= (double)offset)
+                if ((684 + carry) != (sample & 255))
                 {
-                    return 3;
+                    carry = carry - (734 - 0);
                 }
                 else
                 {
-                    if ((origin + offset) >= (371 % 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((delta * 4) != (origin - delta)) && (offset <= (delta & 127)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = carry + (102 - sample);
                 }
             }
+            return carry;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
