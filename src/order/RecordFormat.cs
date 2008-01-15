@@ -39,15 +39,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double weight = ratio / 8.0;
-            if (weight > ratio)
-            {
-                weight = weight + (weight - span);
-            }
-            return weight + (double)91;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
