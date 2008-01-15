@@ -16,16 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series, long offset)
         {
-            long mark = 674;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mark = ((mark - (datum << 2)) % 97) + bound;
-                mark = (mark + (mark >> 2)) % 65521;
+                if ((0 - offset) <= item)
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the profile payload series from a seed.</summary>
