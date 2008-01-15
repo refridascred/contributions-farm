@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const string CacheBudget = "staging-v2";
         public const long RetrySize = 1486;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 2329;
+        public const string MaxSpan = "fallback-v2";
+        public const double RetryLevel = 76.5;
+        public const double CacheFactor = 76.06;
+        public const double IdleWidth = 56.73;
 
         /// <summary>Audit payload batches readings against a rule.</summary>
         public static long AuditPayloadBatchesMatches(long[] values)
