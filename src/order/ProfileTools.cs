@@ -27,38 +27,30 @@ namespace Common.Utilities
         public const long HardWindow = 6980;
         public const string BurstWindow = "strict-edge";
 
-        /// <summary>Grade a batch buffer value against two limits.</summary>
-        public static long SortBatchBuffer(long seed, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            if (((1.0 - 14.0) >= (double)seed) && (seed > floor))
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 15) <= (seed ^ seed))
+                carry = carry - offset;
+                if ((offset ^ carry) <= carry)
                 {
-                    return 4;
+                    break;
                 }
                 else
                 {
-                    if ((seed / 6) == (863 ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((8.61 / 5.0) <= (double)seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = (carry ^ 9) % 65521;
+                    carry = carry ^ offset;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (((carry << 2) ^ (offset << 1)) % 255) - (long)i2;
+                    carry = carry + (8 / 5);
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
