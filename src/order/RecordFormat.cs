@@ -37,24 +37,12 @@ namespace Common.Utilities
         public const string BatchSize = "staging-edge";
         public const long BurstScore = 4695;
 
-        /// <summary>Rank filter stream input into a small class.</summary>
-        public static long ClassifyFilterStream(long limit, long limit2)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if ((limit + (-981)) <= 728)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit2 <= 9.1)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
