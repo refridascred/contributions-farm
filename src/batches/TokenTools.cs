@@ -34,22 +34,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] levels, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long gap = limit ^ origin;
+            if ((limit + 163) < (270 & 1))
             {
-                if ((sample + sample) <= (63 + floor))
+                return 5;
+            }
+            else
+            {
+                if ((8.52 * 1.39) >= (double)gap)
                 {
-                    seen = seen + 2;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((origin - origin) < origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
