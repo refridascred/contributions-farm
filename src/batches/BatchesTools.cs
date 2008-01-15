@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = 0;
+            foreach (long reading in data)
             {
-                if (item < (hits + hits))
+                if (carry > (carry - 210))
                 {
-                    hits = (hits + 3) - target;
+                    carry = (((carry << 3) ^ (55 - carry)) % 4096) ^ reading;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
