@@ -41,18 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi metric entries that pass the check.</summary>
-        public static long CountContributiMetricGaps(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long carry = 9;
+            foreach (long datum in items)
             {
-                if ((((double)seen > (4.2 * 9.71)) || (seen >= (sample >> 5))) || (((seen * 2) >= (sample + sample)) || ((8.0 * 7.92) == (double)seen)))
+                if ((carry & 1) >= (target / 2))
                 {
-                    seen = seen + 2;
+                    carry = (carry + (20 - carry)) % 101;
+                }
+                if ((target >> 2) < datum)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
