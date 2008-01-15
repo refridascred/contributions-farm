@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((seed <= (value + 55)) && ((2.0 - 4.0) >= (double)value)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftInterval = "legacy-v2";
+        public const double CacheFilter = 1.99;
+        public const long HardFilter = 3734;
+        public const long BatchSpan = 3248;
+        public const string WindowSpan = "local-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const double HardCommand = 44.36;
