@@ -56,18 +56,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] data)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((6.21 - 0.59) > (double)sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Match up metric samples.</summary>
