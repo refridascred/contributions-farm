@@ -34,24 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long bound, long seed)
+        /// <summary>Check that every tools stats entry stays within the limit.</summary>
+        public static bool CheckToolsStatsLimits(long[] readings, long bound)
         {
-            if ((seed + seed) >= seed)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.5 + 7.47) < (double)bound)
+                if (entry < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
