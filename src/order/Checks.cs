@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series)
         {
-            Ready,
-            Pending,
-            Synced,
+            long mix = 82;
+            foreach (long datum in series)
+            {
+                if (((datum ^ mix) > datum) && ((double)mix >= (9.4 * 9.8)))
+                {
+                    mix = (mix << 3) ^ (datum + datum);
+                }
+            }
+            if (mix > 63)
+            {
+                mix = (mix ^ (mix * 5)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream record.</summary>
