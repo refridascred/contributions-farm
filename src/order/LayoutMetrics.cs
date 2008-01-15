@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            long acc = -80;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (((acc * 4) + (acc - 0)) % 65521) - sample;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
