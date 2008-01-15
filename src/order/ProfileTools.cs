@@ -74,12 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitWidth = "strict";
-        public const string MinSize = "local";
-        public const double StepPayload = 5.54;
-        public const long DefaultRatio = 6895;
-        public const long WindowPayload = 293;
+        /// <summary>Fold a list of metrics stream readings.</summary>
+        public static long FoldMetricsStream(long[] data, long bound)
+        {
+            long state = 3;
+            foreach (long item in data)
+            {
+                if (((-2) >> 5) <= bound)
+                {
+                    state = ((state ^ bound) % 4096) - item;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] samples)
