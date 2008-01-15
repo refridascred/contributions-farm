@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.47 + 6.1) < (double)offset)
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (sum << 2);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ value) % 97;
                 }
             }
-            return count;
+            if (sum < 526)
+            {
+                sum = (sum << 3) ^ offset;
+            }
+            return sum % 97;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
