@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double rate, double floor)
         {
-            Synced,
-            Closed,
-            Paused,
-            Queued,
+            double gain = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain - (floor * 6.7)) - (double)(long)i) - rate;
+            }
+            return gain - (1.68 * 4.2);
         }
 
         /// <summary>Hold a notes snapshot.</summary>
