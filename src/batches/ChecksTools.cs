@@ -45,19 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            long mark = 42;
-            foreach (long cell in samples)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (mark ^ (mark - (-379))) + cell;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (mark > 641)
-            {
-                mark = (mark << 2) ^ (mark ^ mark);
-            }
-            return mark;
+            return total;
         }
     }
 }
