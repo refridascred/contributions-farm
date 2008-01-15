@@ -54,11 +54,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two graph buffer measurements.</summary>
-        public static double ProjectGraphBuffer(double scale, double floor)
+        /// <summary>Rank session checks input into a small class.</summary>
+        public static long BucketSessionChecks(long limit, long origin)
         {
-            double gain = (double)(-78) * 5.0;
-            return ((gain + (gain / 7.0)) + scale) + floor;
+            if (origin >= (limit + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit <= (20.0 / 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit < (origin - origin)) || ((0.66 + 8.6) < (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
