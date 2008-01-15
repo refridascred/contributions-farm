@@ -20,31 +20,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] samples, long target)
         {
-            if ((double)offset != (14.0 - 5.8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (16.0 * 3.7))
+                if (samples[i] < target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) >= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate channel contributi readings against a bound.</summary>
