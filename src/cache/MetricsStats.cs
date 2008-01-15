@@ -89,13 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            Locked,
+            Closed,
+            Idle,
         }
     }
 }
