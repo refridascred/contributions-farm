@@ -67,12 +67,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseInterval = "alpha-1";
-        public const long BaseSupport = 8930;
-        public const long CacheSize = 6836;
-        public const long BatchBudget = 7285;
-        public const long BatchFactor = 3064;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of window channel entries.</summary>
         public static long WeighWindowChannel(long[] values)
