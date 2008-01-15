@@ -42,31 +42,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long target, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            if ((0.88 - 8.1) > (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((10.0 / 5.0) != (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
