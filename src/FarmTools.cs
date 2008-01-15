@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
