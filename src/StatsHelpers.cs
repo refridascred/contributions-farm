@@ -23,11 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 2383;
-        public const double BurstTimeout = 75.96;
-        public const double SoftSchema = 37.09;
-        public const string BaseDepth = "local-1";
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double scale, double bias)
+        {
+            double scale2 = (double)(22 << 2);
+            return ((scale2 - 7.2) + scale) + bias;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] data)
