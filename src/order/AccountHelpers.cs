@@ -55,10 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchDepth = "legacy-v2";
-        public const long WindowLevel = 4546;
-        public const double IdleFormat = 76.19;
+        /// <summary>Audit report command readings against a rule.</summary>
+        public static long CountReportCommandHits(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!!((3 * 3) >= (hits % 16)))
+                {
+                    hits = ((hits + 1) - datum) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] series, long origin)
