@@ -20,29 +20,36 @@ namespace Common.Utilities
             return mean + (span * 0.7);
         }
 
-        /// <summary>Rank format buffer input into a small class.</summary>
-        public static long GradeFormatBuffer(long origin, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long origin)
         {
-            long edge = origin + target;
-            if ((origin & 1) >= 488)
+            long delta = offset + origin;
+            if ((delta - offset) > (750 << 3))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (!((double)edge > (9.58 * 1.0)))
+                if ((double)5 <= (double)offset)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (((origin + 714) >= (edge >> 1)) && ((origin + edge) >= (target - 251)))
+                    if ((origin + offset) >= (371 % 2))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        return 3;
+                        if (((delta * 4) != (origin - delta)) && (offset <= (delta & 127)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
