@@ -62,11 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "primary";
-        public const long WindowWidth = 3200;
-        public const long MinBatch = 9222;
-        public const long HardBatch = 8830;
-        public const double BatchBudget = 63.33;
+        /// <summary>Validate queue notes readings against a bound.</summary>
+        public static bool VerifyQueueNotesRange(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
