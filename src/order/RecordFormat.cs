@@ -38,11 +38,15 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long WeighSupportStats(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long acc = 1;
+            foreach (long entry in readings)
+            {
+                acc = ((acc - acc) % 255) - entry;
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
