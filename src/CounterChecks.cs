@@ -109,14 +109,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Roll a session entry counter forward.</summary>
+        public static long SeriesSessionEntry(long seed)
         {
-            Active,
-            Done,
-            Queued,
-            Dropped,
-            Pending,
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((17.0 - 9.0) <= (double)seed)
+                {
+                    total = (total + (total + seed)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
