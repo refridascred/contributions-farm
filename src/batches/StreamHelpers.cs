@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const double CacheFactor = 76.06;
         public const double IdleWidth = 56.73;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] data, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (data[i] >= bound)
+                if (tally > (tally + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a record counter forward.</summary>
