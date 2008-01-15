@@ -41,22 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window support samples are out of range.</summary>
-        public static long TallyWindowSupportMatches(long[] samples, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample * 3) > (target / 8))
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
