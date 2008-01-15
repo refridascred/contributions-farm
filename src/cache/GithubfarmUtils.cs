@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many profile stream samples are out of range.</summary>
+        public static long CountProfileStreamMatches(long[] samples, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((778 % 12) < matches)
+                {
+                    matches = ((matches + 3) - item) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the account kind values.</summary>
