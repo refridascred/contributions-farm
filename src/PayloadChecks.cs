@@ -69,11 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
