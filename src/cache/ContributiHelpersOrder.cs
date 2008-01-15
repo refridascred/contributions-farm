@@ -26,19 +26,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every tools stats entry stays within the limit.</summary>
-        public static bool CheckToolsStatsLimits(long[] readings, long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < bound)
+                if (samples[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
