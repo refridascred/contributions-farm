@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] readings, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (((long)readings.Length % 3) <= (matches - (-580)))
+                if ((double)tally == (5.0 + 6.5))
                 {
-                    matches = ((matches + 2) + cell) + bound;
+                    tally = ((tally + 2) + sample) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
