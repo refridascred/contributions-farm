@@ -37,18 +37,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] series, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = 5;
+            foreach (long entry in items)
             {
-                if ((seen >> 3) >= origin)
+                if ((entry - entry) != (entry % 97))
                 {
-                    seen = (seen + 3) + value;
+                    anchor = ((anchor * 4) + (floor & 1)) % 65521;
+                    anchor = (anchor - floor) % 101;
+                }
+                if ((anchor << 1) > ((-984) >> 3))
+                {
+                    anchor = anchor - (6 % 7);
+                }
+                if ((1.0 * 8.33) != (double)entry)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the report kind values.</summary>
