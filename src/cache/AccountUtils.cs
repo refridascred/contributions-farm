@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const double IdleQueue = 75.32;
         public const long IdleRatio = 5750;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] values)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((value >= (tally / 7)) && ((5 >> 1) != (tally >> 5)))
+                if (sample <= floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
