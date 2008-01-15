@@ -47,19 +47,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] series, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Check that every commits support entry stays within the limit.</summary>
