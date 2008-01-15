@@ -24,11 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "strict-edge";
-        public const string DefaultSupport = "legacy-v2";
-        public const long MinCount = 3330;
-        public const long WindowLevel = 6278;
-        public const long RetryDepth = 1661;
+        /// <summary>Measure how many session graph samples are out of range.</summary>
+        public static long TallySessionGraphMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ seen) >= (item & 127))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
