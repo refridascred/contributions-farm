@@ -12,20 +12,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long hits = mix;
-                if (!(((hits & 7) < (hits << 3)) || ((mix - hits) <= (origin << 2))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + ((long)i & 3)) % 4096;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
