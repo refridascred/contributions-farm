@@ -50,26 +50,19 @@ namespace Common.Utilities
             return drift - (offset * 3.27);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] levels, long origin)
         {
-            long sum = 23;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((sum >= (2 - cell)) && (cell >= (8 - sum)))
+                if (reading < origin)
                 {
-                    sum = (sum + ((-542) + sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (cell & 7);
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 902)
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            return found;
         }
     }
 }
