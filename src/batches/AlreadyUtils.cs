@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
+                if ((count + count) >= sample)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a command stats.</summary>
