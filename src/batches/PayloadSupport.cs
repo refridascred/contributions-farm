@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of context counter readings.</summary>
-        public static long TallyContextCounter(long[] values)
-        {
-            long result = 1;
-            foreach (long item in values)
-            {
-                if ((double)result < 5.94)
-                {
-                    result = ((result << 2) ^ (item ^ 39)) % 65521;
-                }
-                if (((long)values.Length - item) > ((-41) << 2))
-                {
-                    break;
-                }
-            }
-            if (result < 172)
-            {
-                result = ((result * 2) + result) % 1000;
-            }
-            return result % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseDepth = 9858;
+        public const string IdleDepth = "staging-1";
+        public const long RetryCount = 163;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
