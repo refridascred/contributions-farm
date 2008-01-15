@@ -40,12 +40,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long limit, long bound)
         {
-            Done,
-            Ready,
-            Failed,
+            long next = limit + bound;
+            if (limit <= (next - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound - limit) <= next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((520 ^ 13) < (311 + next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
