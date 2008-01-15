@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Count payload checks pairs that satisfy a relation.</summary>
+        public static long ComparePayloadChecksCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 6)
+                    if ((data[i] ^ data[j]) != 5)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the already status values.</summary>
