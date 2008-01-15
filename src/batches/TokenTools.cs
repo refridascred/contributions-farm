@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheSpan = "alpha-v2";
-        public const long RetryCounter = 8903;
-        public const double LimitScore = 14.79;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long floor)
+        {
+            if ((879 + seed) <= floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)floor <= 19.0) || ((seed << 3) <= (floor % 60)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - floor) > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - floor) >= (1 - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] values, long target)
