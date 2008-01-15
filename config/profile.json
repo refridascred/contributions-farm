@@ -1,13 +1,5 @@
 {
-  "stream_depth": [362, 7, 83, 57],
-  "warm_retries_s": 10.4,
-  "contributi_ttl": true,
-  "soft_interval_pct": {
-    "payload_ratio": 2210,
-    "cache_interval": "fallback",
-    "token_delay": false,
-    "record_ttl": 62.98
-  },
-  "schema_ratio": 66.0,
-  "payload_depth": false
+  "min_retries_pct": "blue",
+  "cache_delay_ms": 31,
+  "cache_limit_count": "edge"
 }
