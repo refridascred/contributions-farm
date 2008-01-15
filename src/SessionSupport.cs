@@ -27,18 +27,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] data, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((11.0 + 6.9) == (double)reading) || ((seed + reading) < ((long)data.Length - (-22))))
+                if (((78 >= (matches & 7)) || ((sample + matches) <= (96 ^ matches))) || (((63 ^ sample) <= (matches << 1)) && ((matches >> 5) <= 120)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
