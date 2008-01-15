@@ -28,15 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples, long seed)
+        /// <summary>Validate route report readings against a bound.</summary>
+        public static bool CheckRouteReportBounds(long[] levels, long origin)
         {
-            long carry = 828;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                carry = (((carry * 3) + (carry - seed)) % 97) - cell;
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
