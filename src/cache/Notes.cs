@@ -39,14 +39,24 @@ namespace Common.Utilities
         public const long RetryLevel = 7174;
         public const long DefaultSession = 3870;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long origin)
         {
-            Active,
-            Locked,
-            Stale,
-            Pending,
-            Ready,
+            if ((origin - origin) < (step + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((979 - step) == (origin << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the farm mode values.</summary>
