@@ -14,18 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (4 <= (seen - 61))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
