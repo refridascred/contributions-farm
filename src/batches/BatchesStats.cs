@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinSpan = 6256;
-        public const double IdleBatches = 63.54;
-        public const string RetryDepth = "stable-v2";
-        public const long StepBatches = 6168;
+        /// <summary>Count batches metric pairs that satisfy a relation.</summary>
+        public static long MatchBatchesMetricCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenBounds(long[] levels, long limit)
