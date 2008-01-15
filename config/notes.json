@@ -1,5 +1,15 @@
 {
-  "record_depth": 1024,
-  "batch_limit_ms": 66,
-  "burst_timeout_s": "stable"
+  "hard_retries_pct": "blue",
+  "default_interval": "standard",
+  "batch_delay_s": 43,
+  "profile_threshold": 1024,
+  "poll_interval_count": {
+    "burst_limit": false,
+    "counter_threshold": true,
+    "route_size": 250,
+    "cache_timeout": "primary",
+    "sync_limit": "fallback",
+    "max_size_ms": 6407
+  },
+  "layout_limit": "legacy"
 }
