@@ -27,18 +27,17 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio2);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] samples)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count ^ count) >= (count - count))
+                if (values[i] > target)
                 {
-                    count = (count + 3) - sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
