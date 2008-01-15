@@ -66,18 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] samples, long origin)
+        /// <summary>Count the batch filter entries that pass the check.</summary>
+        public static long TallyBatchFilterMatches(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((0 & 15) != (origin + origin))
+                if (((long)samples.Length >> 5) > item)
                 {
-                    matches = (matches + 2) - sample;
+                    hits = (hits + 2) + step;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the entry kind values.</summary>
