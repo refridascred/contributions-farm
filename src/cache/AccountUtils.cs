@@ -24,18 +24,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many format metric samples are out of range.</summary>
-        public static long CountFormatMetricGaps(long[] items, long origin)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((entry << 2) < origin) && ((11 + tally) > (tally << 2)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
