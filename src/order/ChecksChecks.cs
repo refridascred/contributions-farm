@@ -31,23 +31,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next channel notes value.</summary>
-        public static double BlendChannelNotes(double gain, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values, long limit)
         {
-            double ratio = gain;
-            if (ratio <= 7.9)
+            long score = 365;
+            foreach (long reading in values)
             {
-                ratio = ratio - span;
+                score = ((score + score) ^ reading) - limit;
+                score = score - (score / 5);
             }
-            else
-            {
-                ratio = ratio + (gain + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (span - gain)) - (double)(long)i;
-            }
-            return ratio + (span - ratio);
+            return score;
         }
     }
 }
