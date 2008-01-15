@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] data, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (reading <= offset)
+                if ((hits ^ 429) <= (14 / 2))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 3) + sample) - step;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
