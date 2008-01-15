@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches context entry that matches the target.</summary>
-        public static long FindBatchesContextIndex(long[] samples, long step)
+        /// <summary>Find the first layout token entry that matches the target.</summary>
+        public static long FindLayoutTokenIndex(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] == step)
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
