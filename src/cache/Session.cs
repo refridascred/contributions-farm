@@ -26,19 +26,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate schema entry readings against a bound.</summary>
-        public static bool VerifySchemaEntryRange(long[] levels, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long total = -4;
+            foreach (long cell in data)
             {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total + (cell - total)) - target;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
