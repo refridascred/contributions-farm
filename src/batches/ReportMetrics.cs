@@ -12,21 +12,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = state ^ (state >> 1);
+                state = (state << 3) ^ (sample & 15);
+                if ((7.6 - 8.7) > (double)state)
                 {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 3) ^ (sample + sample)) % 101;
                 }
             }
-            return seen;
+            if (state > 806)
+            {
+                state = state + state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
