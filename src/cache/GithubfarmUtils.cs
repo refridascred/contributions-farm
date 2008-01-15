@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] series, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
