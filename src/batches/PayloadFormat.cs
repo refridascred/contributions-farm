@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long bound)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > bound)
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
