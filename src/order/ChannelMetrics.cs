@@ -35,13 +35,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
