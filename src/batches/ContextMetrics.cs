@@ -18,21 +18,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up batch cluster samples.</summary>
-        public static long MatchBatchClusterCount(long[] readings)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)mark < (double)(long)i)
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark * 3) + (step & 63);
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Combine route checks values into a single score.</summary>
