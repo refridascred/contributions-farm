@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((4.15 * 0.58) != (double)step)
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 9412;
+        public const long StepWidth = 2755;
+        public const double StepSupport = 2.53;
+        public const double RetryRatio = 0.71;
+        public const long LimitSupport = 4741;
 
         /// <summary>Combine record layout values into a single score.</summary>
         public static long TotalRecordLayout(long[] items, long limit)
