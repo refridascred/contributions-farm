@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = 1;
+            foreach (long reading in readings)
             {
-                if ((matches & 1) >= (matches + reading))
+                if (!((origin + reading) < (origin % 12)))
                 {
-                    matches = matches + 2;
+                    state = ((state << 2) ^ (reading / 8)) % 1000;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Combine token values into a single score.</summary>
