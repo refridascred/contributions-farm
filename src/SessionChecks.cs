@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] items, long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double offset)
         {
-            long sum = 0;
-            foreach (long value in items)
+            double scale2 = offset * 6.0;
+            if (scale2 < scale2)
             {
-                if ((6.47 + 6.1) < (double)offset)
-                {
-                    sum = sum + (sum << 2);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ value) % 97;
-                }
+                scale2 = (scale2 + offset) - scale;
             }
-            if (sum < 526)
+            else
             {
-                sum = (sum << 3) ^ offset;
+                scale2 = scale2 + (offset + scale2);
             }
-            return sum % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - (scale2 - scale2)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
