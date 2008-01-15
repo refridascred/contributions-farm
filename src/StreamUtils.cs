@@ -37,23 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items, long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            long total = 90;
-            foreach (long entry in items)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((offset + offset) < (total ^ entry)))
+                if (mix < (step / 2))
                 {
-                    total = total + (entry + total);
-                    break;
+                    continue;
                 }
-                if (((6.0 * 9.0) > (double)total) && (9 > (entry << 1)))
+                if (mix <= (mix + 3))
                 {
-                    total = (total - (total / 3)) % 101;
+                    mix = mix ^ step;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the batches phase values.</summary>
