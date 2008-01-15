@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] items, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (entry <= step)
+                if ((offset + entry) >= entry)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
