@@ -29,39 +29,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout profile input into a small class.</summary>
-        public static long RankLayoutProfile(long origin, long seed)
-        {
-            long edge = origin ^ seed;
-            if ((8 - seed) <= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)edge != (6.3 + 18.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) < seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)edge == (1.0 / 7.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 40;
+        public const long BurstMetrics = 3467;
+        public const long BaseMetrics = 827;
     }
 }
