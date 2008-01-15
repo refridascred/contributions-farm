@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate editor account readings against a bound.</summary>
-        public static bool VerifyEditorAccountBounds(long[] series, long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of notes report readings.</summary>
