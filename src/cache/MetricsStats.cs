@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
