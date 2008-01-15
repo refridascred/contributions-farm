@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinLevel = "open";
-        public const double WindowReport = 38.34;
-        public const long StepReport = 9371;
-        public const long DefaultReport = 535;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Iterate the githubfarm stream series from a seed.</summary>
         public static long IterateGithubfarmStream(long target)
