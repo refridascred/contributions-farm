@@ -61,16 +61,18 @@ namespace Common.Utilities
             return weight2 - 12.0;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Audit buffer profile readings against a rule.</summary>
+        public static long MeasureBufferProfileMatches(long[] items, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                state = ((state * 4) + (limit / 4)) % 4096;
-                state = ((state * 3) + (long)i) % 101;
+                if (!((double)datum > (10.0 * 13.0)))
+                {
+                    tally = (tally + 2) + limit;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
