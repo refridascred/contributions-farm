@@ -37,18 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] series, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double bias = (double)16 / 7.0;
+            if (bias <= (bias * 7.0))
             {
-                if (!(matches <= (reading - step)) || (matches > step))
-                {
-                    matches = matches + 2;
-                }
+                bias = (bias - (weight + 3.0)) - span;
             }
-            return matches;
+            return bias + bias;
         }
 
         /// <summary>Validate notes schema readings against a bound.</summary>
