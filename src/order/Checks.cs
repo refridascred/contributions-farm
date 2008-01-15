@@ -35,14 +35,10 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Done,
-            New,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "latest";
+        public const long MinProfile = 5340;
+        public const long CacheProfile = 5306;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] values)
