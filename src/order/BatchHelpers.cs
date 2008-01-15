@@ -23,38 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a support counter pair into a bucket.</summary>
-        public static long ClassifySupportCounter(long step, long floor)
+        /// <summary>Blend two githubfarm profile measurements.</summary>
+        public static double BlendGithubfarmProfile(double ratio, double floor)
         {
-            if (3.4 >= (double)floor)
+            double ratio2 = floor;
+            if (ratio2 >= floor)
             {
-                return 0;
+                ratio2 = ratio2 - (ratio / 6.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((floor - step) == (step + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor > (3.2 * 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((382 <= floor) || ((double)step == (5.0 * 6.22)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio2 = (ratio2 + (ratio2 / 8.0)) + (double)(long)i;
             }
+            return ratio2 + (ratio2 + ratio2);
         }
 
         /// <summary>Blend two support command measurements.</summary>
