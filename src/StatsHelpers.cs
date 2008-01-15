@@ -49,20 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((16.0 - 7.9) != (double)target) || ((1.96 - 2.25) == (double)score))
-                {
-                    score = (score ^ 6) % 101;
-                }
-                score = score - target;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Closed,
+            Active,
+            Idle,
         }
     }
 }
