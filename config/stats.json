@@ -1,5 +1,5 @@
 {
-  "strict": false,
-  "account_retries": 73,
-  "base_window": 45.57
+  "format_interval": true,
+  "idle_threshold_count": true,
+  "hard_delay_pct": 5977
 }
