@@ -54,10 +54,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchTimeout = 7341;
-        public const string MaxFarm = "cached-v2";
-        public const string IdleFactor = "standard";
-        public const long DefaultFarm = 2576;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
