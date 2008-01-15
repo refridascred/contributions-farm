@@ -69,21 +69,18 @@ namespace Common.Utilities
         public const long BatchLevel = 8610;
         public const string RetryCache = "latest-v2";
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 300;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.0 * 4.13) == (double)sample)
                 {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (anchor / 4)) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
