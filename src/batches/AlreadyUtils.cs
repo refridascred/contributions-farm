@@ -50,24 +50,21 @@ namespace Common.Utilities
         public const long StepCount = 228;
         public const string WindowBatch = "latest-v2";
 
-        /// <summary>Grade a cache farm value against two limits.</summary>
-        public static long SortCacheFarm(long offset, long offset2)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            if ((5.8 - 4.1) >= (18.0 + 9.3))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 - offset) <= offset2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
