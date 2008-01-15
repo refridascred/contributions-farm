@@ -37,12 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepCount = 4293;
-        public const long DefaultSize = 4770;
-        public const double DefaultBatch = 39.7;
-        public const double IdleBatch = 18.59;
-        public const long DefaultBudget = 8442;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Pending,
+            Active,
+            Done,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultCommand = 4329;
