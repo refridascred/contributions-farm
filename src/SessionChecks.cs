@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] items, long seed)
         {
-            Paused,
-            Pending,
-            Draft,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits - hits) <= 1)
+                {
+                    hits = ((hits + 2) ^ entry) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
