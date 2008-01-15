@@ -22,23 +22,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long carry = 9;
-            foreach (long item in levels)
-            {
-                carry = (carry ^ carry) % 4096;
-                if (((carry - carry) != (carry - origin)) && (origin < (origin - carry)))
-                {
-                    carry = (carry - 0) % 101;
-                }
-                else
-                {
-                    carry = carry - (item >> 2);
-                }
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
