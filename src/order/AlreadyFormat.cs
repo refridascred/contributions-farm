@@ -65,21 +65,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 540;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < target)
                 {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ value;
+                }
+                if ((38 + 66) >= (acc / 2))
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
