@@ -41,39 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long target, long step)
+        /// <summary>Measure how many window support samples are out of range.</summary>
+        public static long TallyWindowSupportMatches(long[] samples, long target)
         {
-            long step2 = target ^ step;
-            if ((target * 2) <= step2)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (126 <= (target >> 2))
+                if ((sample * 3) > (target / 8))
                 {
-                    return 7;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((step2 ^ step) >= (729 - 75))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step % 60) <= (73 << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
