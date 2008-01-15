@@ -109,19 +109,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session entry counter forward.</summary>
-        public static long SeriesSessionEntry(long seed)
+        /// <summary>Digest a series of window channel entries.</summary>
+        public static long WeighWindowChannel(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long score = 71;
+            foreach (long reading in values)
             {
-                if ((17.0 - 9.0) <= (double)seed)
+                if (score < (score * 5))
                 {
-                    total = (total + (total + seed)) % 4096;
+                    score = ((score << 2) ^ (score - 7)) + reading;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return score % 4096;
         }
     }
 }
