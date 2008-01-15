@@ -1,8 +1,14 @@
 {
-  "poll_ttl_s": true,
-  "compress": 250,
-  "retry_ttl_ms": 15.4,
-  "burst_threshold_s": "local",
-  "base_interval_s": false,
-  "idle_ratio_ms": "open"
+  "poll_window_count": {
+    "max_timeout": "eu-west",
+    "persist": ["latest", "legacy"],
+    "profile_timeout": "open",
+    "queue_depth": false,
+    "strict": 9.31
+  },
+  "min_interval_count": "stable",
+  "stream_ratio": "staging",
+  "min_retries_ms": 95,
+  "persist": 95.19,
+  "retry_limit": 23.01
 }
