@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = limit ^ target;
+            if (!(((-200) & 63) < edge))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (6.7 <= (double)limit)
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two checks measurements.</summary>
