@@ -1,7 +1,7 @@
-id,level,count
-1,345,710
-2,fallback,19
-3,cached,50.76
-4,legacy,strict
-5,766,618
-6,434,946
+id,weight,label,token
+1,54.27,110,edge
+2,27.78,cached,957
+3,36.26,legacy,925
+4,11.26,457,22.82
+5,edge,325,latest
+6,583,85.43,open
