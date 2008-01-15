@@ -22,11 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double span)
+        /// <summary>Look up the position of a githubfarm queue sample.</summary>
+        public static long SeekGithubfarmQueueIndex(long[] data, long origin)
         {
-            double mean = (double)7;
-            return (mean + ratio) + span;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
