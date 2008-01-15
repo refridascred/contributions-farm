@@ -85,10 +85,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinSpan = "open";
-        public const long MinScore = 1365;
-        public const long IdleRecord = 1626;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Idle,
+            Locked,
+            Done,
+            Queued,
+            New,
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double BlendFarm(double gain, double bias)
