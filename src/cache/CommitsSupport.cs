@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mean - (double)6;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double weight, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
         {
-            double ratio = (3.28 * 7.15) / 3.0;
-            for (int i = 0; i < 7; i++)
+            long acc = 97;
+            foreach (long reading in values)
             {
-                ratio = (ratio + (double)(long)i) + span;
+                acc = ((acc << 3) ^ (acc >> 3)) ^ reading;
             }
-            return ratio + weight;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
