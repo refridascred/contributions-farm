@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
