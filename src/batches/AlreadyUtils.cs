@@ -15,14 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] levels, long floor)
         {
-            Ready,
-            Closed,
-            Stale,
-            Retry,
-            Done,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
