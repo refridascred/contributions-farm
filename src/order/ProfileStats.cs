@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double rate, double floor)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            double bias = rate;
+            return (bias + (0.23 - 4.7)) + floor;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
