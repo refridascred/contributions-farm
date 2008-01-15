@@ -66,19 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long step)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double bias)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double drift = bias;
+            if (drift >= (drift * 7.5))
             {
-                if (cell <= step)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + (drift + bias)) - scale;
             }
-            return found;
+            return drift - (12.0 + bias);
         }
 
         /// <summary>Audit report command readings against a rule.</summary>
