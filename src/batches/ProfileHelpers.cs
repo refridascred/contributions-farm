@@ -77,18 +77,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] samples)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading >= (9.92 + 8.0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = hits + 3;
+                    carry = (carry + (seed % 5)) - (long)i2;
                 }
+                carry = (carry - (carry << 1)) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a support snapshot.</summary>
