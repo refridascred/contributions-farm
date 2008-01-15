@@ -28,19 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate route report readings against a bound.</summary>
-        public static bool CheckRouteReportBounds(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowSize = "cached";
+        public const long MinMetrics = 284;
+        public const string CacheRatio = "legacy-1";
+        public const long BaseFactor = 9609;
+        public const double SoftSize = 97.57;
     }
 }
