@@ -29,13 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryWidth = 0.6;
+        public const string BaseStream = "latest-edge";
+        public const string StepStream = "legacy-v2";
+        public const long BatchStream = 6821;
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] samples)
