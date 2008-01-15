@@ -51,18 +51,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window metric entries that pass the check.</summary>
-        public static long TallyWindowMetricHits(long[] readings, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if (!((bound >> 3) > 1))
             {
-                if (4.5 < (double)seen)
+                return 4;
+            }
+            else
+            {
+                if ((bound - 7) <= (bound / 2))
                 {
-                    seen = ((seen + 1) ^ reading) - floor;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
