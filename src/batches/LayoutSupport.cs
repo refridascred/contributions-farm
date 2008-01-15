@@ -21,17 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a record graph reading by value.</summary>
-        public static long SeekRecordGraphIndex(long[] values, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] == limit)
+                if ((reading - matches) > (matches * 2))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
