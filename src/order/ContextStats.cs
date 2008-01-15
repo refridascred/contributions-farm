@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long IdleTools = 8920;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long anchor = 552;
-            foreach (long entry in series)
-            {
-                if ((bound * 5) >= (anchor >> 3))
-                {
-                    anchor = ((anchor - (bound % 60)) % 255) + entry;
-                }
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
