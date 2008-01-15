@@ -35,9 +35,14 @@ namespace Common.Utilities
         public const long LimitReport = 4599;
         public const long MinReport = 1281;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 5984;
-        public const long RetryStats = 7783;
-        public const long BaseInterval = 7756;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Dropped,
+            Locked,
+            New,
+            Pending,
+            Paused,
+        }
     }
 }
