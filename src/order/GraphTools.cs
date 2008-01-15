@@ -50,15 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits token series from a seed.</summary>
-        public static long IterateCommitsToken(long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            New,
+            Done,
+            Active,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a tools stats.</summary>
