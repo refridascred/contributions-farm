@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Idle,
+            Pending,
+            Queued,
             Active,
-            Synced,
-            Closed,
-            Retry,
         }
 
         /// <summary>Validate schema entry readings against a bound.</summary>
