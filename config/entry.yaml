@@ -1,13 +1,9 @@
 # entry settings
-report_window: strict
-poll_window_pct:
-  - green
-  - primary
-editor_interval: false
-contributi_depth: 9929
-burst_depth:
-  - fallback
-  - local
+audit: local
+batch_interval:
+  - staging
+  - staging
+  - staging
   - legacy
-  - blue
-burst_window: 3329
+verbose: green
+max_threshold_count: 27.98
