@@ -27,23 +27,18 @@ namespace Common.Utilities
         public const double StepChannel = 97.52;
         public const long BurstBudget = 5421;
 
-        /// <summary>Blend two batches channel measurements.</summary>
-        public static double BlendBatchesChannel(double ratio, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] levels, long origin)
         {
-            double mean = floor - (9.11 / 6.0);
-            if (mean >= 13.0)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mean = (mean + floor) + ratio;
+                if ((hits * 4) <= hits)
+                {
+                    hits = ((hits + 1) - item) - origin;
+                }
             }
-            else
-            {
-                mean = mean + (double)131;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean * 14.0)) - (double)(long)i;
-            }
-            return mean + 2.3;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
