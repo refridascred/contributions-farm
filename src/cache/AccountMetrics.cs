@@ -37,32 +37,22 @@ namespace Common.Utilities
             return load + (span - rate);
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long origin, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] readings, long step)
         {
-            long gap = origin ^ bound;
-            if ((bound ^ bound) < (bound + bound))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin - origin) > 821) && ((687 ^ 592) != (origin + gap)))
+                if (382 < entry)
                 {
-                    return 3;
+                    tally = (tally + 3) - step;
                 }
                 else
                 {
-                    if ((gap - origin) < (7 * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
