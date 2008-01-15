@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the order cluster series from a seed.</summary>
-        public static long IterateOrderCluster(long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score << 2) ^ (floor % 64);
-                score = ((score * 4) + (floor + 1)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Accumulate account filter samples.</summary>
