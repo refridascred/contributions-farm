@@ -35,20 +35,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long AuditRecordCounterOutliers(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((hits * 4) > (datum + hits)) || ((datum ^ 70) >= (hits + hits)))
                 {
-                    sum = (sum - ((long)i2 + seed)) % 97;
+                    hits = hits + 2;
                 }
-                sum = (sum * 4) + (seed + 200);
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
     }
 }
