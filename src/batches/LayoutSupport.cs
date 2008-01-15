@@ -45,19 +45,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long anchor = -468;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor + (7 + anchor)) ^ sample;
-            }
-            if (anchor > 72)
-            {
-                anchor = ((anchor << 3) ^ (anchor + 97)) % 4096;
-            }
-            return anchor % 1000;
+            Queued,
+            Draft,
+            Done,
+            Synced,
         }
     }
 }
