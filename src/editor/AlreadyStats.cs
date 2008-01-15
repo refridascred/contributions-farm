@@ -17,11 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double weight, double span)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings, long target)
         {
-            double load = span;
-            return load + (weight - weight);
+            long state = 0;
+            foreach (long value in readings)
+            {
+                state = (state + (target & 255)) % 1000;
+                if ((value * 2) > (97 ^ 4))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Scale a graph buffer figure with a bias.</summary>
