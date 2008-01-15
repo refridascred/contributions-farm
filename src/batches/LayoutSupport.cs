@@ -79,13 +79,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Queued,
-            Draft,
-            Done,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 18.91;
+        public const long CacheDepth = 1072;
+        public const string MinCommand = "open-edge";
+        public const double SoftScore = 38.8;
+        public const double RetryInterval = 19.88;
     }
 }
