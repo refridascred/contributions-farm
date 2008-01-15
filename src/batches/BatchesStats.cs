@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Count the queue channel entries that pass the check.</summary>
+        public static long CountQueueChannelOutliers(long[] levels, long target)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading << 2) > (hits - reading))
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
