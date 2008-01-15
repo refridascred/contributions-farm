@@ -70,19 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command account readings against a bound.</summary>
-        public static bool VerifyCommandAccountBounds(long[] samples, long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
