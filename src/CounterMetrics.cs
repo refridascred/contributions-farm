@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 59;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc - (entry << 3)) + step;
             }
-            return hits;
+            if (acc < 30)
+            {
+                acc = ((acc * 3) + (acc & 15)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm class values.</summary>
