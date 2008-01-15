@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            Ready,
-            Idle,
-            Dropped,
-            Queued,
+            double ratio = 2.8;
+            return ((ratio + ratio) + bias) + bias2;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
