@@ -22,22 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window token pairs that satisfy a relation.</summary>
-        public static long PairWindowTokenCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 9377;
+        public const double StepChannel = 97.52;
+        public const long BurstBudget = 5421;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] items, long origin)
