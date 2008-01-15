@@ -30,14 +30,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Failed,
-            Synced,
-            Pending,
-            Paused,
-            Locked,
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
