@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] series, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)value != (5.8 - 1.0))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a order snapshot.</summary>
