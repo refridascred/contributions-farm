@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Ready,
-            Active,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 8588;
+        public const double LimitCommand = 19.03;
+        public const string WindowRatio = "latest-edge";
+        public const long RetryCommand = 8909;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] items)
