@@ -20,15 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a queue stream figure with a bias.</summary>
-        public static double AdjustQueueStream(double weight, double offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] data, long floor)
         {
-            double gain = (double)(5 & 1);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain - (6.7 - weight)) + (double)(long)i) + offset;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)47;
+            return -1;
         }
 
         /// <summary>Hold a token record.</summary>
