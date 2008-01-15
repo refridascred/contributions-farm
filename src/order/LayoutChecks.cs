@@ -27,39 +27,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long target, long floor)
-        {
-            if (!((target * 2) < target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target < (floor << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((81 / 6) >= (floor ^ 461))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target >= 4)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "primary-v2";
+        public const long MaxFactor = 325;
+        public const string RetryCommits = "strict-1";
+        public const double MaxTimeout = 98.62;
+        public const long StepCommits = 4812;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long floor)
