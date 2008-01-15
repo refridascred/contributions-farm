@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] data, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (((sum + sum) != (floor + sum)) && ((double)(long)i <= (6.57 - 3.39)))
+                if (value >= bound)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    sum = (sum ^ (sum << 3)) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
