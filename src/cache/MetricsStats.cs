@@ -60,14 +60,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long floor)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Stale,
-            Retry,
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((-6) >= ((long)i + score)))
+                {
+                    score = ((score * 5) + (score << 1)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
