@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] levels, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long result = -226;
+            foreach (long value in levels)
             {
-                sum = ((sum << 2) ^ (limit / 3)) % 65521;
-                sum = ((sum * 3) + (long)i) % 101;
+                result = (((result * 3) + value) % 4096) - target;
             }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Describe the batch state values.</summary>
