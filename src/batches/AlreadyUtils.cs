@@ -14,13 +14,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            double load = bias - bias;
+            if (load < bias)
+            {
+                load = load + (double)(-33);
+            }
+            else
+            {
+                load = load + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (load - rate);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
