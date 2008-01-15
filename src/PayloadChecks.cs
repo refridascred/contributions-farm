@@ -63,12 +63,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                if (series[i] > step)
                 {
                     return (long)i;
                 }
