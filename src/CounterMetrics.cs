@@ -12,14 +12,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double floor)
         {
-            Stale,
-            Synced,
-            Paused,
-            Idle,
-            Dropped,
+            double load = (double)(99 - 2);
+            if (load <= 5.0)
+            {
+                load = ((load - (6.46 / 9.0)) - weight) + floor;
+            }
+            return load + (double)36;
         }
 
         /// <summary>Describe the editor state values.</summary>
