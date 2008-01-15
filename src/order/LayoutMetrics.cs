@@ -42,21 +42,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc ^ (acc << 1)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
