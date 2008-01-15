@@ -20,20 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleSpan = "cached-1";
+        public const string LimitRecord = "open-v2";
+        public const long IdleRecord = 8732;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
