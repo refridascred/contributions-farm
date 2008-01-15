@@ -1,11 +1,12 @@
 {
-  "enabled": {
-    "channel_ttl": false,
-    "flush_ratio": 585,
-    "default_limit_count": 60,
-    "default_limit": 3599
-  },
-  "audit": "stable",
-  "report_interval": 1024,
-  "burst_ratio_pct": 41
+  "graph_window": false,
+  "cache_ratio": "open",
+  "commits_threshold": {
+    "warm_ratio_ms": "blue",
+    "soft_limit_s": 30,
+    "default_retries": ["cached", "latest", "cached", "open"],
+    "verbose": 26,
+    "cache_size": 33.12,
+    "warm_depth_pct": 8.73
+  }
 }
