@@ -36,12 +36,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "cached-v2";
+        public const long BurstInterval = 4712;
+        public const double WindowBudget = 93.61;
+        public const long BaseCount = 509;
     }
 }
