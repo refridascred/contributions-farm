@@ -26,19 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] items, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
