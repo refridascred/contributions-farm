@@ -1,9 +1,6 @@
 # githubfarm settings
-soft_retries_s:
-  - 431
-  - 116
-  - 348
-  - 66
-commits_limit: staging
-enabled: eu-west
-soft_interval: open
+dry_run: fallback
+persist:
+  - primary
+  - cached
+burst_interval: true
