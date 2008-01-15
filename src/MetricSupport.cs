@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleSpan = 492;
-        public const long IdleBatches = 8173;
-        public const long StepBatches = 2791;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Active,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] levels)
