@@ -1,6 +1,5 @@
 {
-  "farm_ttl": "edge",
-  "route_depth": "green",
-  "persist": "edge",
-  "warm_capacity": 47.08
+  "burst_ttl_pct": "stable",
+  "report_size": 4.33,
+  "verbose": true
 }
