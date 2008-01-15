@@ -59,11 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 3) <= (49 % 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
