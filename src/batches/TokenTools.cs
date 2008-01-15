@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 732;
-        public const string StepCache = "cached-v2";
-        public const long BatchCache = 5787;
-        public const long BaseCount = 4307;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxSpan = "strict-edge";
