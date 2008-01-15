@@ -39,23 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double weight = 2.0;
-            if (weight > weight)
-            {
-                weight = (weight - 6.0) + offset;
-            }
-            else
-            {
-                weight = weight + (double)(-425);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - (gain * 7.0);
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
