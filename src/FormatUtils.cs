@@ -48,15 +48,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Derive the next payload batch value from a seed.</summary>
+        public static long RollPayloadBatch(long bound)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
