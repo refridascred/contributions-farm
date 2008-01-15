@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in fallback cached; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=104
+BUFFER_LIMIT=119
 log "limit is ${BUFFER_LIMIT}"
-
-for item in standard local; do
-    log "checking ${item}"
-done
