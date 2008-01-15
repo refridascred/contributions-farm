@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate filter batch readings against a bound.</summary>
-        public static bool ValidateFilterBatchRange(long[] levels, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long anchor = 59;
+            foreach (long value in levels)
             {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((((anchor * 4) + 986) % 1000) + value) + offset;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Hold a stream record.</summary>
