@@ -1,31 +1,16 @@
 # entry settings
-default_ttl_count: 500
-readonly: true
-sync_ttl_s:
-  flush_limit:
-    - local
-    - open
-    - latest
-  cache_threshold_s:
-    enabled: 250
-    warm_delay_s: 79.22
-    format_capacity: 32.17
-    strict:
-      - 432
-      - 289
-  default_ttl_ms: 51.62
-  cache_window_count:
-    dry_run:
-      - 436
-      - 272
-    burst_timeout_s: 60
-    commits_interval: eu-west
-  poll_threshold_pct:
-    - latest
-    - staging
-    - local
-    - standard
-  farm_size: eu-west
-already_window: local
-dry_run: 63
-poll_timeout_s: true
+order_window: 13
+cache_threshold_count: local
+persist:
+  enabled: 9947
+  max_ratio:
+    session_size:
+      - 274
+      - 75
+      - 468
+    max_window:
+      - blue
+      - edge
+    soft_ratio: 30
+  stream_depth: local
+sync_size: 35.62
