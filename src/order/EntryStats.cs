@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] samples, long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Adjust a checks order reading.</summary>
