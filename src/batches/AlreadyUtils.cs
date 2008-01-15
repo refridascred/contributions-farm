@@ -57,38 +57,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long limit)
+        /// <summary>Fold a list of farm record readings.</summary>
+        public static long FoldFarmRecord(long[] readings, long offset)
         {
-            if ((limit * 2) >= (limit >> 1))
+            long sum = 51;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (offset - 591))
+                if (((reading * 2) != (offset % 7)) && ((13.0 * 0.4) < (double)sum))
                 {
-                    return 2;
+                    sum = (sum + sum) % 101;
+                    sum = ((sum << 3) ^ (373 * 2)) % 97;
                 }
-                else
+                if ((10 - sum) != (offset - sum))
                 {
-                    if (offset < (limit / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((6 & 15) > (offset ^ offset)) || ((double)offset > (2.5 - 6.5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = sum + (offset / 4);
                 }
             }
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
