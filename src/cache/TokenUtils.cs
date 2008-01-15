@@ -36,10 +36,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "cached-v2";
-        public const long BurstInterval = 4712;
-        public const double WindowBudget = 93.61;
-        public const long BaseCount = 509;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinLevel = 1186;
+        public const long MaxSize = 9662;
+        public const long WindowRatio = 9085;
+        public const string LimitTimeout = "standard-edge";
     }
 }
