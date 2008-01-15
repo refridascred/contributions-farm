@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheLevel = 3368;
-        public const string StepDepth = "local-1";
-        public const string RetrySpan = "local-edge";
-        public const double MinPayload = 94.9;
-        public const long BatchSize = 9118;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseTimeout = 7572;
