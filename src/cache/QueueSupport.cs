@@ -30,15 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double gain, double bias)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double drift = gain;
-            if (drift <= (double)34)
-            {
-                drift = drift - 1.69;
-            }
-            return drift - bias;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
