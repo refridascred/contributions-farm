@@ -41,15 +41,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long step)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            if (((floor + floor) > 530) || ((floor / 4) == (step >> 4)))
             {
-                score = ((score * 3) + (long)i) % 1000;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((floor - step) <= (step + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-4) + step) < step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
