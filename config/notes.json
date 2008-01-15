@@ -1,6 +1,20 @@
 {
-  "strict": "blue",
-  "buffer_delay": 16,
-  "persist": [339, 194, 192],
-  "cache_depth_s": 53
+  "warm_limit_count": true,
+  "soft_capacity_ms": {
+    "enabled": ["latest", "blue", "stable", "green"],
+    "poll_depth_ms": 5494,
+    "record_limit": 100,
+    "soft_depth_ms": false
+  },
+  "metrics_capacity": false,
+  "enabled": 8,
+  "cache_interval": {
+    "sync_ttl": true,
+    "persist": 3534,
+    "hard_size": "fallback",
+    "session_capacity": false,
+    "base_retries": true,
+    "buffer_window": "cached"
+  },
+  "strict": "blue"
 }
