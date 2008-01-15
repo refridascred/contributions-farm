@@ -18,18 +18,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] series)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell <= (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Combine route checks values into a single score.</summary>
