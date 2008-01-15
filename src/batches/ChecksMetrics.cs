@@ -62,21 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseTimeout = 21.09;
+        public const long RetryWindow = 5570;
+        public const long BurstWindow = 4617;
+        public const long SoftWindow = 8596;
+        public const long BatchCount = 5501;
     }
 }
