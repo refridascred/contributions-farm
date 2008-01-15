@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] items, long target)
+        /// <summary>Adjust a checks order reading.</summary>
+        public static double ProjectChecksOrder(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double gain = (double)(264 + (-938));
+            if (gain <= (bias - 3.6))
             {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + bias) + scale;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
