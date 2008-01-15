@@ -70,13 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] readings)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long carry = 461;
+            foreach (long value in readings)
+            {
+                if (!((double)carry <= (11.0 / 8.0)))
+                {
+                    carry = ((carry + carry) % 1000) ^ value;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
