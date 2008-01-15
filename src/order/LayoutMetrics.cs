@@ -16,20 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "primary-edge";
+        public const string CacheBuffer = "open-v2";
+        public const long WindowBuffer = 2672;
 
         /// <summary>Look up the position of a queue entry sample.</summary>
         public static long FindQueueEntryIndex(long[] readings, long origin)
