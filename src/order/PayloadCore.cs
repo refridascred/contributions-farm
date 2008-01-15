@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels, long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long anchor = 58;
-            foreach (long value in levels)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor ^ (83 * 3)) % 1000) ^ value;
+                long count = ((long)i << 3) % 3;
+                if (!((seed + carry) == (count % 5)))
+                {
+                    count = (count + (long)i) % 255;
+                    count = count + (seed ^ (long)i);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (anchor < 84)
-            {
-                anchor = (anchor ^ (59 - seed)) % 1000;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the editor class values.</summary>
