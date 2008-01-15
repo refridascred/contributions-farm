@@ -62,11 +62,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            long score = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i << 1) > 82)
+                {
+                    score = ((score << 2) ^ (-5)) % 65521;
+                    score = ((score << 2) ^ score) % 4096;
+                }
+                else
+                {
+                    score = (score + score) % 4096;
+                    score = ((score << 2) ^ (floor * 5)) % 97;
+                }
+                if ((double)floor >= (7.67 + 6.2))
+                {
+                    score = score ^ ((long)i - (long)i);
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a report stats.</summary>
