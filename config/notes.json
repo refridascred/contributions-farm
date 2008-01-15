@@ -1,5 +1,6 @@
 {
-  "enabled": 50.11,
-  "soft_capacity_count": [441, 40, 115],
-  "report_limit": 5704
+  "enabled": 50,
+  "max_limit_ms": 4135,
+  "max_retries_pct": "stable",
+  "retry_depth": 42.97
 }
