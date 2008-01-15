@@ -90,21 +90,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = origin ^ step;
+            if (((7.64 / 7.0) > (double)offset) && (7 < (7 + offset)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset + step) >= (origin + 99))
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
+                    return 4;
+                }
+                else
+                {
+                    if (((step - offset) != (offset & 15)) || (offset < origin))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin >= 6.3)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
