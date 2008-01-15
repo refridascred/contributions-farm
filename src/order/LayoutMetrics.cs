@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "primary-edge";
-        public const string CacheBuffer = "open-v2";
-        public const long WindowBuffer = 2672;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data, long bound)
+        {
+            long result = 347;
+            foreach (long item in data)
+            {
+                if (((-132) ^ bound) <= (244 << 1))
+                {
+                    result = (result - (bound / 3)) - item;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a queue entry sample.</summary>
         public static long FindQueueEntryIndex(long[] readings, long origin)
