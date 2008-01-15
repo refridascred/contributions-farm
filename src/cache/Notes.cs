@@ -31,22 +31,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long state = 6;
+            foreach (long item in series)
             {
-                if ((datum + count) >= datum)
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = state - (state - item);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Project the next tools value.</summary>
