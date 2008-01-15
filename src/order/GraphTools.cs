@@ -24,12 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((840 + sample) <= sample) && ((double)711 <= (double)(long)series.Length))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
