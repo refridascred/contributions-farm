@@ -28,26 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data, long bound)
+        /// <summary>Accumulate command commits samples.</summary>
+        public static long ScoreCommandCommits(long[] levels)
         {
-            long state = 11;
-            foreach (long value in data)
+            long total = 879;
+            foreach (long item in levels)
             {
-                if (value >= (state * 3))
+                if ((double)total < 3.3)
                 {
-                    state = (state + (state % 60)) % 65521;
-                }
-                else
-                {
-                    state = state - state;
+                    total = ((total << 3) ^ total) - item;
                 }
             }
-            if (state > 1)
-            {
-                state = (state * 5) + bound;
-            }
-            return state % 1000;
+            return total % 65521;
         }
     }
 }
