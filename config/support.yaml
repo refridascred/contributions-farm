@@ -1,8 +1,19 @@
 # support settings
-warm_window_pct:
-  warm_size: 31.5
-  sync_retries_ms: fallback
-  retry_retries: 24.1
-burst_depth_ms: standard
-context_limit: 250
-max_depth: 5.08
+notes_limit:
+  enabled: strict
+  persist: blue
+  strict: 30
+  max_ratio_ms: 62
+  batch_ttl_count: 82.66
+  cache_threshold: 82.86
+base_threshold: 500
+stats_interval:
+  batch_threshold_pct: 1024
+  profile_capacity: 60
+  contributi_ttl: blue
+profile_delay:
+  - local
+  - strict
+  - edge
+  - blue
+strict: local
