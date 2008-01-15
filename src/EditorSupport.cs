@@ -10,15 +10,10 @@ namespace Common.Utilities
         public const long BurstSize = 950;
         public const string LimitSize = "legacy-1";
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Idle,
-            Locked,
-            Ready,
-            Active,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "strict-1";
+        public const long LimitFactor = 7067;
+        public const long DefaultEntry = 2568;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] data, long offset)
