@@ -1,20 +1,4 @@
 # support settings
-enabled:
-  min_retries_pct: 18.94
-  verbose: 250
-  idle_retries_count: true
-  enabled:
-    retry_retries: false
-    flush_limit: 7909
-    min_ratio_s: latest
-    readonly: open
-    layout_limit: local
-    cache_timeout_count:
-      - 453
-      - 480
-  flush_capacity: 59.95
-  soft_depth_pct: eu-west
-verbose:
-  - 491
-  - 196
-dry_run: 62
+graph_delay: 1836
+hard_ttl_s: 7782
+idle_limit: false
