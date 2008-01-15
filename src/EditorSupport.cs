@@ -24,10 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstDepth = 5425;
-        public const long CacheDepth = 1023;
-        public const string CacheLevel = "staging-v2";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((((double)floor >= 9.4) && (sample >= (floor - tally))) && ((3 * 5) >= (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftRoute = 2046;
