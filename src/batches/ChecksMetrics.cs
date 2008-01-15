@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxLevel = "strict";
-        public const double SoftSize = 40.9;
-        public const long LimitSupport = 539;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] values, long limit)
