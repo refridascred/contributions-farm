@@ -55,19 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] levels, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mark = 647;
+            foreach (long cell in data)
             {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark ^ 40) ^ cell;
             }
-            return found;
+            return mark % 1000;
         }
     }
 }
