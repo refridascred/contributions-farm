@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] items, long floor)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
