@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Done,
-            Retry,
-            Failed,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 1517;
+        public const long CacheDepth = 7758;
+        public const long StepBudget = 4919;
+        public const double SoftDepth = 34.84;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] data)
