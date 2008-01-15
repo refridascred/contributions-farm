@@ -1,6 +1,15 @@
 {
-  "persist": "legacy",
-  "min_interval_pct": 5799,
-  "batch_ttl_s": "standard",
-  "hard_threshold_ms": "open"
+  "sync_timeout_ms": {
+    "sync_window_pct": 9896,
+    "min_delay": "primary",
+    "warm_ratio_pct": 19.31
+  },
+  "dry_run": "fallback",
+  "warm_window_s": {
+    "checks_threshold": [26, 113],
+    "audit": 94,
+    "profile_threshold": 16.36
+  },
+  "schema_threshold": 60,
+  "flush_capacity_s": "eu-west"
 }
