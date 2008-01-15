@@ -60,23 +60,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long bound)
         {
-            double weight = (6.44 - offset) + (6.0 * 2.5);
-            if (weight <= weight)
+            long total = 437;
+            foreach (long value in samples)
             {
-                weight = (weight - weight) - scale;
+                total = (total ^ (0 - total)) + value;
             }
-            else
+            if (total < 366)
             {
-                weight = weight - (weight / 5.0);
+                total = (total + (bound & 15)) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - (double)28;
+            return total % 1000;
         }
     }
 }
