@@ -40,11 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
