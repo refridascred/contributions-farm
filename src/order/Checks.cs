@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Scale a token profile figure with a bias.</summary>
+        public static double BlendTokenProfile(double gain, double offset)
         {
-            long mix = 82;
-            foreach (long datum in series)
+            double mean = (double)(24 - 44);
+            if (mean < (offset / 4.0))
             {
-                if (((datum ^ mix) > datum) && ((double)mix >= (9.4 * 9.8)))
-                {
-                    mix = (mix << 3) ^ (datum + datum);
-                }
+                mean = mean + (7.0 / 8.0);
             }
-            if (mix > 63)
-            {
-                mix = (mix ^ (mix * 5)) % 65521;
-            }
-            return mix;
+            return mean + gain;
         }
 
         /// <summary>Hold a stream record.</summary>
