@@ -94,9 +94,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 8968;
-        public const long StepScore = 7025;
-        public const long SoftSupport = 5010;
+        /// <summary>Count the metrics schema entries that pass the check.</summary>
+        public static long CountMetricsSchemaOutliers(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((699 + 3) != (954 + floor)))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
     }
 }
