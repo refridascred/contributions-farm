@@ -54,10 +54,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSize = 5063;
-        public const string BurstSize = "primary-1";
-        public const string MinLevel = "latest-1";
-        public const long HardScore = 4285;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
