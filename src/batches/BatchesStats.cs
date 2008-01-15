@@ -37,15 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] series, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (!(matches <= (reading - step)) || (matches > step))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate notes schema readings against a bound.</summary>
