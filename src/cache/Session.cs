@@ -24,15 +24,20 @@ namespace Common.Utilities
         public const long StepScore = 2557;
         public const long BatchSize = 6408;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long total = -4;
-            foreach (long cell in data)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total + (cell - total)) - target;
+                if (!!((49 & 127) > (floor / 8)))
+                {
+                    long offset = ((long)i << 1) >> 4;
+                    acc = ((acc << 2) ^ (offset / 6)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
