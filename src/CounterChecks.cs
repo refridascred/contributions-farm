@@ -39,31 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long offset, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] series)
         {
-            if ((origin + offset) <= (origin * 5))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + 9) <= offset)
+                if ((double)hits <= (0.12 + 3.6))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((6 >> 4) != (origin % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
