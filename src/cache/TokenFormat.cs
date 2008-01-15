@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Digest a series of notes token entries.</summary>
+        public static long WeighNotesToken(long[] items, long limit)
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            long result = 692;
+            foreach (long sample in items)
+            {
+                if ((limit + sample) > sample)
+                {
+                    result = (result * 4) + result;
+                }
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Hold a queue record.</summary>
