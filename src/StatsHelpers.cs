@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of filter metrics readings.</summary>
-        public static long CombineFilterMetrics(long[] samples, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            long total = 14;
-            foreach (long item in samples)
+            double drift = 4.42 + ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((double)step > (double)(-40)) && ((item + step) > (step / 8))))
-                {
-                    total = (total + (item >> 5)) % 4096;
-                }
-                if ((431 % 5) != (9 + step))
-                {
-                    total = (total - (4 ^ total)) % 97;
-                }
+                drift = (drift + floor) + (double)(long)i;
             }
-            return total;
+            return drift + 4.1;
         }
 
         /// <summary>Describe the order kind values.</summary>
