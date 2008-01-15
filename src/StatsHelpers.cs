@@ -23,20 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 2383;
+        public const double BurstTimeout = 75.96;
+        public const double SoftSchema = 37.09;
+        public const string BaseDepth = "local-1";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] data)
