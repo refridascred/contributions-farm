@@ -1,7 +1,15 @@
 {
-  "route_ttl": ["eu-west", "blue"],
-  "warm_ttl_s": [199, 327, 210, 34],
-  "sync_ratio_s": 2926,
-  "githubfarm_retries": 96.27,
-  "batch_threshold": "latest"
+  "persist": 18,
+  "githubfarm_depth": 1714,
+  "min_retries_s": {
+    "route_ttl": "cached",
+    "batch_ratio_ms": "eu-west",
+    "sync_ratio_s": 500,
+    "buffer_timeout": 2967,
+    "idle_retries": "fallback",
+    "flush_timeout_count": "eu-west"
+  },
+  "default_interval_count": "staging",
+  "verbose": "primary",
+  "poll_ttl": false
 }
