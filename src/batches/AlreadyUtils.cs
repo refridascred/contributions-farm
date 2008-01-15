@@ -52,13 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the window metric entries that pass the check.</summary>
+        public static long TallyWindowMetricHits(long[] readings, long floor)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (4.5 < (double)seen)
+                {
+                    seen = ((seen + 1) ^ reading) - floor;
+                }
+            }
+            return seen;
         }
     }
 }
