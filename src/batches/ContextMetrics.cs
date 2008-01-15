@@ -18,13 +18,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Match up batch cluster samples.</summary>
+        public static long MatchBatchClusterCount(long[] readings)
         {
-            Ready,
-            Paused,
-            New,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine route checks values into a single score.</summary>
