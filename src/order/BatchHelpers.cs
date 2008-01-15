@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6045;
-        public const long MaxDepth = 5836;
-        public const double StepToken = 55.84;
-        public const long DefaultDepth = 6081;
-        public const long BurstRatio = 9566;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data)
+        {
+            long sum = 4;
+            foreach (long value in data)
+            {
+                if ((1 / 5) > (sum - sum))
+                {
+                    sum = (sum - sum) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (value / 8);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Scale a checks already figure with a bias.</summary>
         public static double AdjustChecksAlready(double bias, double bias2)
