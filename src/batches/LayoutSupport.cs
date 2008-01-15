@@ -47,10 +47,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 1181;
-        public const string MaxTimeout = "alpha";
-        public const long WindowLevel = 1523;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Dropped,
+            Locked,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountMatches(long[] levels)
