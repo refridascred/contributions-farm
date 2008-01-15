@@ -53,13 +53,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Locked,
-            Ready,
-            Closed,
-            Failed,
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
