@@ -55,23 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools context entries.</summary>
-        public static long WeighToolsContext(long[] values, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            long score = 470;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                score = score + reading;
-                if ((9 + offset) < (0 + reading))
+                long prev = ((long)i + (long)i) & 1;
+                if ((origin - prev) == (926 + origin))
                 {
-                    break;
+                    continue;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (score > 7)
-            {
-                score = (score * 2) + (offset * 5);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
