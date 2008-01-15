@@ -22,17 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long step)
+        /// <summary>Derive the next githubfarm token value from a seed.</summary>
+        public static long IterateGithubfarmToken(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) == 0))
+                if ((8.25 * 4.0) < (double)sum)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (offset << 2)) % 65521;
                 }
+                else
+                {
+                    sum = sum - (143 >> 5);
+                    sum = sum + ((long)i ^ 0);
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
