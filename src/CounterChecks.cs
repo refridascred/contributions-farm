@@ -68,19 +68,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long floor)
         {
-            double weight = (double)(71 / 7);
-            if (weight <= floor)
+            long slot = bound - floor;
+            if ((slot <= (bound - bound)) || ((slot - slot) == (14 << 3)))
             {
-                weight = (weight + (weight + floor)) - gain;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - (7.57 + weight)) + (double)(long)i;
+                if ((11 ^ slot) <= (bound - 26))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((789 + slot) >= (slot & 1)) || ((floor / 3) > (slot % 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((4 << 3) >= (floor << 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return weight - 0.93;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
