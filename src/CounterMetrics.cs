@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long target, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] series, long step)
         {
-            long edge = target + step;
-            if (((double)target >= (17.0 + 5.51)) && ((15.0 * 0.1) > (double)edge))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + 780) != (target * 5))
+                if ((sample >= (step % 10)) && (seen > (sample / 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + target) > (step & 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((edge << 3) <= (32 + edge)) || ((double)step >= (6.6 - 0.35)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up checks samples.</summary>
