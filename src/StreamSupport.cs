@@ -19,18 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of layout entry entries.</summary>
-        public static long TotalLayoutEntry(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] items, long offset)
         {
-            long score = 45;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((item << 3) <= (score + (long)data.Length))
+                if (datum < offset)
                 {
-                    score = (score + 126) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
