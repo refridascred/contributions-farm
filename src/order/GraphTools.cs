@@ -28,10 +28,40 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 9260;
-        public const long BurstContributi = 2239;
-        public const long IdleContributi = 6913;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long bound, long seed)
+        {
+            long cur = bound - seed;
+            if (((seed - bound) != (cur + 97)) || ((7 + cur) >= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (cur < seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + seed) == (seed & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(cur <= (bound / 9)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] samples, long bound)
