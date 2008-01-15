@@ -34,19 +34,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long prev = origin - floor;
+            if (((8.78 + 7.86) > (double)origin) && ((floor - floor) < prev))
             {
-                if (sample <= floor)
+                return 0;
+            }
+            else
+            {
+                if ((floor > prev) || ((prev & 31) >= (origin >> 4)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
     }
 }
