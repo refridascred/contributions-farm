@@ -14,17 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate command commits samples.</summary>
