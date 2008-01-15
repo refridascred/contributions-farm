@@ -18,21 +18,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
