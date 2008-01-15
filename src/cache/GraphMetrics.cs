@@ -58,18 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] readings, long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((double)matches < 1.6))
+                if ((mix * 2) < origin)
                 {
-                    matches = ((matches + 3) ^ sample) + target;
+                    mix = ((mix << 2) ^ 15) % 97;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the report state values.</summary>
