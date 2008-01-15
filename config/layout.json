@@ -1,5 +1,8 @@
 {
-  "max_ratio_ms": "cached",
-  "readonly": true,
-  "compress": false
+  "compress": false,
+  "dry_run": 7064,
+  "audit": 89.45,
+  "default_ratio": "eu-west",
+  "burst_size_s": "green",
+  "enabled": "stable"
 }
