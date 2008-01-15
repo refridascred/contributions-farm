@@ -63,21 +63,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a order channel counter forward.</summary>
-        public static long RollOrderChannel(long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((anchor + (long)i) <= 75)
-                {
-                    anchor = (anchor + (long)i) % 101;
-                    anchor = ((anchor * 2) + (anchor + (-58))) % 101;
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
