@@ -24,11 +24,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryScore = "standard-v2";
-        public const long DefaultScore = 3456;
-        public const long BatchSpan = 7481;
-        public const double BurstFactor = 14.66;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long bound2)
+        {
+            if ((bound2 >> 1) != (677 * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((59 / 5) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] readings, long floor)
