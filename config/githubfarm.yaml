@@ -1,11 +1,8 @@
 # githubfarm settings
-cache_ttl_count: open
-already_interval: false
-audit:
-  - 440
-  - 146
-  - 467
-  - 114
-retry_limit: 24.11
-format_ratio: 79
-soft_timeout_pct: false
+burst_timeout: latest
+command_delay:
+  - 318
+  - 178
+  - 227
+already_ttl: 30
+schema_limit: primary
