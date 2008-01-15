@@ -23,12 +23,23 @@ namespace Common.Utilities
             return load + (double)36;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            Retry,
-            Draft,
-            New,
+            long acc = 51;
+            foreach (long reading in values)
+            {
+                acc = (acc ^ (reading + reading)) % 101;
+                if ((acc ^ 338) <= ((-9) + (long)values.Length))
+                {
+                    acc = (acc - (316 & 7)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - reading)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of counter cluster readings.</summary>
