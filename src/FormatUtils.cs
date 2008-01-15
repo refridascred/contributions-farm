@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long step, long seed)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
+            if ((seed + step) == (seed + 34))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 3) <= (step - 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step * 5) < (seed ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
