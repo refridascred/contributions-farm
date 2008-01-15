@@ -1,6 +1,7 @@
 {
-  "enabled": 50,
-  "max_limit_ms": 4135,
-  "max_retries_pct": "stable",
-  "retry_depth": 42.97
+  "readonly": 6.15,
+  "idle_depth_s": 63.01,
+  "cache_ratio_pct": 45.28,
+  "max_delay_pct": 93.71,
+  "format_threshold": 4035
 }
