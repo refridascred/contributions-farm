@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long acc = 97;
-            foreach (long reading in values)
-            {
-                acc = ((acc << 3) ^ (acc >> 3)) ^ reading;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
