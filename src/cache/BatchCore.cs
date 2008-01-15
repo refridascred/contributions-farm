@@ -13,22 +13,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 9807;
+        public const double StepEditor = 68.55;
+        public const string BaseEditor = "stable-edge";
+        public const long SoftEditor = 1853;
+        public const string RetryEditor = "legacy-edge";
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double bias, double span)
