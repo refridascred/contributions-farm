@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 213;
-        public const long RetryCount = 4432;
-        public const string BatchSchema = "cached-1";
-        public const long MinSchema = 379;
-        public const double DefaultSchema = 35.57;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long limit, long floor)
+        {
+            long bound = limit - floor;
+            if ((limit <= (floor + limit)) || ((limit + (-923)) > (limit % 12)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound > (double)floor) && (floor <= (bound & 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long seed)
