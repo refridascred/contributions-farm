@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] items, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= limit)
+                if ((items[i] < origin) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
