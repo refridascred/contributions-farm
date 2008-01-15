@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            if (!((15 << 3) != (origin % 8)))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.34 / 3.0) >= (double)bound)
+                if ((matches & 1) >= (matches + reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((849 + origin) > (bound & 127)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
