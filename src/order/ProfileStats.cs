@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Count the account contributi entries that pass the check.</summary>
+        public static long TallyAccountContributiMatches(long[] readings)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 7) >= 664)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter options.</summary>
