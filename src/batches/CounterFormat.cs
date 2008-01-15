@@ -33,17 +33,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long state = 11;
+            foreach (long value in data)
             {
-                carry = (carry + (8 + 93)) % 4096;
-                carry = carry + (origin >> 5);
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (value >= (state * 3))
+                {
+                    state = (state + (state % 60)) % 65521;
+                }
+                else
+                {
+                    state = state - state;
+                }
             }
-            return carry;
+            if (state > 1)
+            {
+                state = (state * 5) + bound;
+            }
+            return state % 1000;
         }
     }
 }
