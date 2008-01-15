@@ -26,17 +26,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] samples, long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Idle,
         }
     }
 }
