@@ -35,18 +35,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long AuditRecordCounterOutliers(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((hits * 4) > (datum + hits)) || ((datum ^ 70) >= (hits + hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
