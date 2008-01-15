@@ -1,6 +1,5 @@
 {
-  "default_timeout_pct": 69,
-  "profile_size": 8910,
-  "compress": false,
-  "batch_ratio_s": [211, 175, 468, 143]
+  "poll_capacity_count": "legacy",
+  "soft_timeout": "local",
+  "retry_window_pct": ["primary", "edge"]
 }
