@@ -55,15 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Failed,
-            Pending,
-            Queued,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "legacy-v2";
+        public const long MinInterval = 5373;
+        public const string IdleRatio = "fallback-edge";
+        public const long WindowChannel = 3755;
+        public const double DefaultSize = 70.43;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphGaps(long[] readings, long seed)
