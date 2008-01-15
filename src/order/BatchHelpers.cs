@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double gain, double offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            double bias = offset;
-            return (bias + bias) + gain;
+            double mean = offset + (offset * 4.0);
+            if (mean >= (offset - rate))
+            {
+                mean = mean + offset;
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean + rate;
         }
 
         /// <summary>Count the farm counter entries that pass the check.</summary>
