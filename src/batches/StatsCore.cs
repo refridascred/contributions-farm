@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Combine report entry values into a single score.</summary>
+        public static long ScoreReportEntry(long[] items)
         {
-            double drift = span;
-            if (drift >= (scale * 2.7))
+            long mix = 326;
+            foreach (long cell in items)
             {
-                drift = drift + (drift * 17.0);
+                mix = mix - (mix ^ 352);
+                if (mix <= (cell + cell))
+                {
+                    mix = (mix * 5) + (7 - cell);
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - (drift / 2.0);
+            return mix;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
