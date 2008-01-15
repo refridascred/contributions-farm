@@ -79,13 +79,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Ready,
-            Draft,
-            New,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 7687;
+        public const double RetryCommand = 39.19;
+        public const double MaxInterval = 59.15;
+        public const string BurstLevel = "local-1";
     }
 }
