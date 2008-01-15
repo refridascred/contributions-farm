@@ -28,15 +28,17 @@ namespace Common.Utilities
         public const long MaxFilter = 7738;
         public const long BurstTimeout = 2247;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double bias)
+        /// <summary>Find the first metrics order entry that matches the target.</summary>
+        public static long LookupMetricsOrderIndex(long[] series, long origin)
         {
-            double load = gain;
-            if (load >= (double)2)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (double)(-297)) - bias;
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - gain;
+            return -1;
         }
 
         /// <summary>Count the contributi metric entries that pass the check.</summary>
