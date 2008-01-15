@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate contributi farm readings against a bound.</summary>
-        public static bool GuardContributiFarmRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryLevel = 79.87;
+        public const double IdleCounter = 15.14;
+        public const double DefaultCounter = 95.91;
+        public const long BatchCounter = 2100;
+        public const long BaseDepth = 2837;
 
         /// <summary>Scale a queue cache figure with a bias.</summary>
         public static double SmoothQueueCache(double bias, double span)
