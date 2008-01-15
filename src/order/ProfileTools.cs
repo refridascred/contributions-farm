@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] values, long step)
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)item == (4.2 + 2.0))
+                {
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
