@@ -76,22 +76,19 @@ namespace Common.Utilities
             return rate2 - offset;
         }
 
-        /// <summary>Measure how many batch already samples are out of range.</summary>
-        public static long CountBatchAlreadyOutliers(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long sum = 392;
+            foreach (long cell in data)
             {
-                if ((double)seen >= (18.0 / 8.0))
+                sum = (((sum + (7 * 5)) % 65521) + cell) + origin;
+                if ((long)data.Length > 9)
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = ((sum * 2) + 14) % 1000;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
