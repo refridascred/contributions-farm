@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] data, long seed)
         {
-            if ((879 + seed) <= floor)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor <= 19.0) || ((seed << 3) <= (floor % 60)))
+                if ((sample + seed) <= (hits ^ hits))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - floor) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - floor) >= (1 - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
