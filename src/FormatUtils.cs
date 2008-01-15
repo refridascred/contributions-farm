@@ -36,36 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] levels, long floor)
         {
-            long state = 882;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                state = state - 878;
-                if ((seed + item) != (seed << 1))
+                if (floor >= (floor & 255))
                 {
-                    state = state + (item ^ seed);
-                }
-                else
-                {
-                    state = (state + (state + (long)series.Length)) % 101;
-                    state = (state + (state / 3)) % 65521;
-                }
-                if ((item + state) <= state)
-                {
-                    state = (state ^ (long)series.Length) % 4096;
-                }
-                else
-                {
-                    state = (state << 3) ^ (item / 4);
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (state > 91)
-            {
-                state = state - (seed & 127);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
