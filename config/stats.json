@@ -1,7 +1,8 @@
 {
-  "channel_limit": 65,
-  "payload_depth": 33.84,
-  "verbose": 33.61,
-  "cache_delay": 54,
-  "channel_interval": "primary"
+  "tools_timeout": 95.81,
+  "soft_threshold": 1406,
+  "githubfarm_ttl": "latest",
+  "warm_delay_ms": "cached",
+  "idle_limit": 100,
+  "retry_size_pct": [308, 35]
 }
