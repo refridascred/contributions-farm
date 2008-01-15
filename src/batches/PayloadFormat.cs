@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4921;
         public const long LimitCommits = 8898;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double bias, double offset)
+        /// <summary>Derive the next notes record value from a seed.</summary>
+        public static long StepNotesRecord(long origin)
         {
-            double mean = bias;
-            return mean + (offset + mean);
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
