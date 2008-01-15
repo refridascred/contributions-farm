@@ -34,24 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long bound2)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            if ((bound2 >> 1) != (677 * 3))
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((59 / 5) >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
