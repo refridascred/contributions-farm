@@ -28,21 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
