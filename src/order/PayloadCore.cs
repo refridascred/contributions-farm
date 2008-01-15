@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
+        public static bool GuardGithubfarmAlreadyBounds(long[] readings, long bound)
         {
-            long state = 60;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long item in readings)
             {
-                state = ((state * 2) + (state % 97)) ^ value;
-                state = (state << 2) ^ (state + 7);
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state > 3)
-            {
-                state = (state + (state - (-82))) % 97;
-            }
-            return state % 4096;
+            return found;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
