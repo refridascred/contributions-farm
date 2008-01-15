@@ -24,18 +24,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] samples, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long offset = origin + limit;
+            if ((limit + 849) < limit)
             {
-                if ((99 & 15) != (limit * 3))
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) <= (limit - offset))
                 {
-                    tally = (tally + 1) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((4.4 - 8.0) != (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit + offset) > (464 - limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
