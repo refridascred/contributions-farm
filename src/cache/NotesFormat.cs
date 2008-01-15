@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Look up the position of a order metrics sample.</summary>
+        public static long LocateOrderMetricsIndex(long[] series, long target)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
