@@ -53,15 +53,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double bias)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long origin)
         {
-            double ratio2 = (bias - bias) * 17.0;
-            if (ratio2 < bias)
+            long bound = target + origin;
+            if (((origin + (-95)) < (bound >> 1)) && ((double)bound > (3.8 + 10.0)))
             {
-                ratio2 = (ratio2 - bias) - ratio;
+                return 4;
             }
-            return ratio2 + 1.6;
+            else
+            {
+                if (((origin / 7) < (bound + 0)) && ((double)origin <= 5.4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (0.2 >= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - origin) <= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
