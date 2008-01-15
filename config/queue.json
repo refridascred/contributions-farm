@@ -1,13 +1,8 @@
 {
-  "support_ratio": [238, 76, 330],
-  "sync_interval": "primary",
-  "readonly": "standard",
-  "flush_ratio_s": {
-    "batch_window_count": 500,
-    "sync_interval": 30,
-    "profile_size": 500,
-    "batch_window": false,
-    "persist": true,
-    "idle_delay": "primary"
-  }
+  "batch_interval": 9393,
+  "base_limit_s": true,
+  "stream_timeout": 14,
+  "max_timeout_count": true,
+  "tools_window": "local",
+  "report_delay": false
 }
