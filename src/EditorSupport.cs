@@ -40,13 +40,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double rate, double span)
         {
-            Draft,
-            Queued,
-            Idle,
-            Locked,
+            double gain = (double)(48 + (-6));
+            if (gain > (gain / 2.0))
+            {
+                gain = (gain + 2.28) + rate;
+            }
+            return gain - (span + span);
         }
 
         /// <summary>Check that every commits support entry stays within the limit.</summary>
