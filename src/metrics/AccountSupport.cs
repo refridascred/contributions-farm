@@ -19,5 +19,19 @@ namespace Common.Utilities
             double weight = 6.8;
             return (weight - gain) + offset;
         }
+
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count < (reading / 2)) && (reading >= (count >> 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
