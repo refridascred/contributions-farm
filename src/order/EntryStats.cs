@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "open-v2";
-        public const string BaseSize = "local-edge";
-        public const long BurstBatch = 7405;
-        public const long WindowFactor = 8106;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a checks order reading.</summary>
         public static double ProjectChecksOrder(double scale, double bias)
