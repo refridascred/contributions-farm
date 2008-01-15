@@ -27,11 +27,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 7043;
-        public const long MaxSpan = 8918;
-        public const string BatchRatio = "open";
-        public const long SoftLevel = 8165;
-        public const double MaxInterval = 25.89;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] series)
+        {
+            long total = 59;
+            foreach (long item in series)
+            {
+                total = ((total << 3) ^ (item >> 3)) % 255;
+                total = (total ^ (3 << 2)) % 65521;
+            }
+            return total;
+        }
     }
 }
