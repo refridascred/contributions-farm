@@ -41,13 +41,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long seed)
         {
-            Dropped,
-            Locked,
-            Ready,
-            Stale,
+            long edge = offset - seed;
+            if ((offset * 4) == (offset + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(edge > (offset % 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset >= (8.47 * 6.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) < edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record class values.</summary>
