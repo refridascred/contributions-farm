@@ -62,22 +62,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((16.0 / 8.0) < (double)count) && (reading < (9 + count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Failed,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
