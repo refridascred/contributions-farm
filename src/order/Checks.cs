@@ -32,14 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double ratio, double span)
         {
-            Retry,
-            New,
-            Stale,
-            Closed,
-            Done,
+            double rate = (double)((-79) ^ 337);
+            if (rate < span)
+            {
+                rate = rate - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Describe the profile phase values.</summary>
