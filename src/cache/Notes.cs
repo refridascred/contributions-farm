@@ -24,15 +24,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] levels, long offset)
         {
-            double bias = (18.0 / 3.0) - (scale * 12.0);
-            if (bias <= 4.54)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - floor;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)87;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
