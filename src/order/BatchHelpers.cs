@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (bias + bias) + gain;
         }
 
-        /// <summary>Blend two githubfarm profile measurements.</summary>
-        public static double BlendGithubfarmProfile(double ratio, double floor)
+        /// <summary>Count the farm counter entries that pass the check.</summary>
+        public static long CountFarmCounterHits(long[] values, long limit)
         {
-            double ratio2 = floor;
-            if (ratio2 >= floor)
+            long tally = 0;
+            foreach (long value in values)
             {
-                ratio2 = ratio2 - (ratio / 6.0);
+                if (!(((618 + value) > (value / 8)) && (0.4 <= (4.44 + 4.0))))
+                {
+                    tally = (tally + 1) + limit;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 / 8.0)) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 + ratio2);
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
