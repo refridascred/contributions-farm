@@ -15,22 +15,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine already commits values into a single score.</summary>
-        public static long DigestAlreadyCommits(long[] values, long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long bound)
         {
-            long acc = 9;
-            foreach (long sample in values)
+            if (!((15 << 3) != (origin % 8)))
             {
-                if ((acc / 6) > (sample - acc))
+                return 1;
+            }
+            else
+            {
+                if ((7.34 / 3.0) >= (double)bound)
                 {
-                    acc = acc ^ offset;
+                    return 4;
+                }
+                else
+                {
+                    if (!((849 + origin) > (bound & 127)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc < 30)
-            {
-                acc = acc ^ (acc >> 1);
-            }
-            return acc;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
