@@ -22,21 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 434;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((87 - 228) < (cell ^ sum))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 3) ^ (cell + sum)) % 1000;
+                }
+                if ((sum + sum) == (cell << 3))
+                {
+                    sum = ((sum << 2) ^ (cell ^ cell)) % 101;
                 }
             }
-            return count;
+            if (sum > 9)
+            {
+                sum = ((sum << 3) ^ (sum * 4)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of graph support entries.</summary>
