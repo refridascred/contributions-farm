@@ -1,11 +1,12 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Each farm is validated before it reaches the already queue.
-The batches report groups every report by farm.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The contributi report groups every route by record.
+A batch that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Keep metric values small
-- Document new window fields
-- Prefer layout defaults
+- Keep format values small
+- Validate buffer input early
+- Document new already fields
+- Log every command change
