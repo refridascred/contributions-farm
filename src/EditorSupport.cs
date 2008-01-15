@@ -38,15 +38,14 @@ namespace Common.Utilities
         public const long BatchSpan = 2895;
         public const long MaxInterval = 8190;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double rate, double span)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double gain = (double)(48 + (-6));
-            if (gain > (gain / 2.0))
-            {
-                gain = (gain + 2.28) + rate;
-            }
-            return gain - (span + span);
+            Closed,
+            Paused,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Check that every commits support entry stays within the limit.</summary>
