@@ -23,21 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of context metrics readings.</summary>
-        public static long PairContextMetricsCount(long[] samples)
+        /// <summary>Count the metric metrics entries that pass the check.</summary>
+        public static long MeasureMetricMetricsOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((double)seen >= (9.62 + 3.12)) || ((double)seen == (6.7 - 20.0))) && ((9.5 / 8.0) < (double)seen))
                 {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
