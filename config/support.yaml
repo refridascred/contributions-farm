@@ -1,7 +1,10 @@
 # support settings
-githubfarm_ratio: 9275
-flush_threshold_count: 5332
-retry_retries: 5677
-strict: 4416
-queue_retries: cached
-hard_ratio_count: false
+hard_retries: 42.54
+readonly: false
+batch_interval: 2595
+counter_ttl:
+  - staging
+  - standard
+  - cached
+  - local
+flush_window_pct: 3089
