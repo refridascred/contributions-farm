@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long WindowLevel = 6123;
         public const long DefaultBudget = 8624;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] readings, long target)
         {
-            Retry,
-            Failed,
-            Queued,
-            Locked,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up filter samples.</summary>
