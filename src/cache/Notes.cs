@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const long DefaultReport = 8326;
         public const long IdleLevel = 5366;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long limit, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] levels)
         {
-            if (!((origin * 3) <= 8))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 3) <= (limit << 2))
+                if ((item + item) >= (item ^ seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + origin) == (origin / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit < (limit * 4)) || ((2.2 * 8.0) >= (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two schema measurements.</summary>
