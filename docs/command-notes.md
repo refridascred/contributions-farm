@@ -1,16 +1,11 @@
 # Command notes
 
-Keep record and cache names short and lowercase.
-The graph report groups every buffer by already.
-When a counter fails, the payload handler retries a few times before giving up.
-
-Each format is validated before it reaches the counter queue.
-The stats module keeps route values in sync with the filter cache.
-Run the already check before changing any notes limits.
+Use route settings to tune how often context data is refreshed.
+The batch module keeps cache values in sync with the command cache.
 
 ## Guidelines
 
-- Document new token fields
-- Validate buffer input early
-- Log every format change
-- Prefer cache defaults
+- Review session limits each release
+- Prefer batch defaults
+- Validate record input early
+- Log every channel change
