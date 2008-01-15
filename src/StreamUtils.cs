@@ -56,13 +56,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Synced,
-            Active,
-            Idle,
-            Pending,
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
