@@ -50,21 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout token readings.</summary>
-        public static long PairLayoutTokenCount(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < bound)
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
