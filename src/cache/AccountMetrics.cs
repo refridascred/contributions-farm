@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
