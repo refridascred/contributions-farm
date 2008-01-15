@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data)
+        /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
+        public static long OverlapClusterProfileCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)cell > (double)count) && ((double)cell != (3.15 * 1.99)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the commits state values.</summary>
