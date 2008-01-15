@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 17;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = state + state;
+                if ((4.32 * 0.2) <= (double)value)
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - (-11)) % 4096;
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Derive the next githubfarm token value from a seed.</summary>
