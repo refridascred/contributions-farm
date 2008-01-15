@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long bound)
         {
-            long anchor = 2;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor > cell) && (cell <= 99))
+                if (values[i] == bound)
                 {
-                    anchor = (anchor - cell) % 97;
-                }
-                if (((cell - anchor) < (anchor * 2)) || (cell < anchor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 24)
-            {
-                anchor = anchor ^ (27 & 1);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next session value.</summary>
