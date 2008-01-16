@@ -57,22 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] readings, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((((923 % 12) >= (tally >> 4)) && ((6.6 * 1.6) != (double)tally)) && (entry <= (entry + 3)))
-                {
-                    tally = (tally + 1) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
