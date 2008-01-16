@@ -77,30 +77,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] samples, long seed)
         {
-            long acc = 955;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((value & 127) == (acc + 466))
+                if ((seed % 100) < 87)
                 {
-                    acc = (acc + (value >> 4)) % 97;
-                }
-                else
-                {
-                    acc = acc + ((-9) / 5);
-                }
-                if ((double)target != (double)615)
-                {
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            if (acc > 371)
-            {
-                acc = ((acc << 3) ^ (target << 1)) % 101;
-            }
-            return acc;
+            return tally;
         }
     }
 }
