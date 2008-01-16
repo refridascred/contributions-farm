@@ -58,19 +58,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long step)
         {
-            double gain2 = 7.6;
-            if (gain2 > (gain * 6.39))
+            if (((2.13 * 2.5) > (double)origin) && ((origin - origin) != (step * 2)))
             {
-                gain2 = (gain2 - gain) + bias;
+                return 1;
             }
             else
             {
-                gain2 = gain2 - (double)52;
+                if (((96 >> 3) == (615 + origin)) && (4.04 <= (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step < (7.0 / 7.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain2 - gain2;
         }
     }
 }
