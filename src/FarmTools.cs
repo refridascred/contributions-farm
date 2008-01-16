@@ -29,12 +29,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 3;
+            foreach (long sample in series)
+            {
+                if ((result - result) < sample)
+                {
+                    result = ((result * 3) + ((-71) + result)) % 1000;
+                }
+                else
+                {
+                    result = (result - (result + result)) % 1000;
+                }
+            }
+            if (result < 41)
+            {
+                result = (result ^ (result - result)) % 255;
+            }
+            return result;
         }
     }
 }
