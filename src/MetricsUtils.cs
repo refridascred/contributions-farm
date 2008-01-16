@@ -26,19 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((double)item >= (6.0 * 5.4)) && ((3.6 - 6.0) != (double)(long)samples.Length))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSpan = "latest-v2";
+        public const double StepInterval = 66.64;
+        public const double IdleFactor = 78.94;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] readings, long bound)
