@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Synced,
-            Ready,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowInterval = 472;
+        public const long MaxBuffer = 8147;
+        public const long BatchBuffer = 3791;
 
         /// <summary>Project the next cluster value.</summary>
         public static double SmoothCluster(double bias, double floor)
