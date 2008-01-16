@@ -35,13 +35,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
