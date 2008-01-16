@@ -29,13 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Pending,
-            Paused,
-            Stale,
             Active,
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
