@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate metrics window readings against a bound.</summary>
-        public static bool GuardMetricsWindowBounds(long[] data, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long anchor = 670;
+            foreach (long entry in series)
             {
-                if (cell <= origin)
+                if ((20.0 / 9.0) >= (double)anchor)
                 {
-                    valid = false;
-                    break;
+                    anchor = (((anchor << 3) ^ (anchor * 2)) ^ entry) - step;
+                }
+                else
+                {
+                    anchor = anchor + (anchor << 3);
                 }
             }
-            return valid;
+            if (anchor < 9)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the batches kind values.</summary>
