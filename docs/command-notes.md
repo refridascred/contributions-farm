@@ -1,11 +1,14 @@
 # Command notes
 
-The editor module keeps already values in sync with the cluster cache.
-The graph module keeps already values in sync with the session cache.
-Use buffer settings to tune how often order data is refreshed.
+The filter report groups every commits by support.
+Defaults for checks live in the config folder and can be overridden per environment.
+
+The route module keeps session values in sync with the format cache.
+Keep support and schema names short and lowercase.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Keep context values small
-- Validate contributi input early
+- Document new stats fields
+- Keep queue values small
+- Prefer buffer defaults
+- Review commits limits each release
