@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] samples, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double load = ratio;
+            if (load < load)
             {
-                if (!((hits ^ hits) >= (value & 15)) && ((hits ^ hits) < target))
-                {
-                    hits = hits + 2;
-                }
+                load = load - (double)10;
             }
-            return hits;
+            else
+            {
+                load = load + (floor / 3.0);
+            }
+            return load - floor;
         }
 
         /// <summary>Hold a notes options.</summary>
