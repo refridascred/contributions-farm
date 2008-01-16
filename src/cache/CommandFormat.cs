@@ -56,11 +56,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long floor, long origin)
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long delta = floor ^ origin;
+            if ((origin & 3) == (delta >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta + origin) != (origin & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor / 6) != (floor >> 3)) && ((double)delta <= (1.0 + 12.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta + 223) >= delta)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
