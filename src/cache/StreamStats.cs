@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const double HardGraph = 10.82;
         public const long StepFactor = 262;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] data)
         {
-            Done,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (matches < (datum % 64))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
