@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor * 2) + (anchor >> 1)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a schema info.</summary>
