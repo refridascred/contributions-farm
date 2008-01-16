@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
