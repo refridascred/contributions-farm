@@ -15,19 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally >= (item / 2))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 1790;
+        public const double CacheTools = 9.33;
+        public const double MinTools = 76.73;
+        public const long HardBudget = 8518;
+        public const string WindowBudget = "local";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string StepScore = "primary-v2";
