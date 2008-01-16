@@ -1,7 +1,17 @@
 {
-  "readonly": true,
-  "sync_timeout": "open",
-  "idle_ttl_pct": "staging",
-  "audit": false,
-  "sync_ttl_s": 30.44
+  "strict": "stable",
+  "base_interval_ms": {
+    "burst_capacity_ms": 9,
+    "base_delay": {
+      "batch_window_count": 374,
+      "hard_size_pct": [76, 57],
+      "retry_delay_s": true
+    },
+    "strict": 250,
+    "dry_run": 64.47,
+    "hard_interval_ms": [451, 373],
+    "cache_retries_s": 93
+  },
+  "burst_ttl_ms": true,
+  "poll_ttl_pct": 87.09
 }
