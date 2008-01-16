@@ -16,12 +16,19 @@ namespace Common.Utilities
         public const string RetrySize = "strict-edge";
         public const double BurstWidth = 19.54;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long floor)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
