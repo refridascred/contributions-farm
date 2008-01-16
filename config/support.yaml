@@ -1,20 +1,22 @@
 # support settings
-readonly: true
-hard_delay: stable
-flush_ttl_ms:
-  compress: 6114
-  audit: true
-  graph_interval:
-    enabled: stable
-    min_size:
-      - open
-      - edge
-      - cached
-    max_depth_ms:
-      - 280
-      - 31
-      - 60
-    warm_size_count: 73.21
-    context_retries: 25
-  warm_interval_count: false
-  editor_ratio: 67
+idle_retries_s:
+  retry_limit_pct:
+    - eu-west
+    - green
+    - green
+  metrics_ttl:
+    retry_threshold: true
+    cache_interval: 500
+    persist: 54.32
+  strict:
+    cache_delay: edge
+    command_ratio: 100
+    enabled: fallback
+    compress: true
+    record_timeout: true
+  poll_timeout_count: staging
+batch_timeout_s: local
+githubfarm_threshold:
+  - primary
+  - local
+  - eu-west
