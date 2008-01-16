@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "alpha-v2";
-        public const long WindowFactor = 7481;
-        public const long StepAccount = 822;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "stable-v2";
+        public const long BatchFilter = 1170;
+        public const double StepWidth = 87.03;
+        public const string WindowRatio = "standard";
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] readings, long seed)
