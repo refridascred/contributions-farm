@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload command entry stays within the limit.</summary>
-        public static bool VerifyPayloadCommandBounds(long[] values, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Combine order values into a single score.</summary>
