@@ -29,18 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] samples, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((-149) <= (value & 15))
+                if (reading > bound)
                 {
-                    matches = (matches + 1) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count batches stream pairs that satisfy a relation.</summary>
