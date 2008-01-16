@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a token metric reading.</summary>
-        public static double SmoothTokenMetric(double gain, double floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double mean = 1.68 / 6.0;
-            if (mean < (6.8 - gain))
-            {
-                mean = (mean + gain) - floor;
-            }
-            return mean + 5.0;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up entry format samples.</summary>
