@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a stream editor pair into a bucket.</summary>
-        public static long SortStreamEditor(long limit, long bound)
+        /// <summary>Derive the next metrics batch value from a seed.</summary>
+        public static long IterateMetricsBatch(long bound)
         {
-            if (((90 & 3) < limit) || ((limit ^ limit) > bound))
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > (8.0 + 5.0))
+                double scale = (double)acc - (double)bound;
+                if (!(scale <= (scale - scale)))
                 {
-                    return 5;
+                    scale = scale - scale;
                 }
-                else
-                {
-                    if (limit < (73 >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
