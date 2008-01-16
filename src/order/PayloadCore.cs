@@ -31,23 +31,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double scale, double bias)
+        /// <summary>Check that every context metrics entry stays within the limit.</summary>
+        public static bool GuardContextMetricsBounds(long[] levels, long seed)
         {
-            double ratio = bias;
-            if (ratio <= scale)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                ratio = ratio - bias;
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (20.0 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (scale - scale)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return found;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
