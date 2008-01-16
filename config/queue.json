@@ -1,6 +1,8 @@
 {
-  "sync_limit": 100,
-  "hard_interval_pct": 7,
-  "poll_ratio": "legacy",
-  "flush_size_s": 30
+  "context_capacity": [45, 407, 91, 7],
+  "sync_retries_s": "eu-west",
+  "githubfarm_size": 78.54,
+  "retry_ttl": false,
+  "idle_threshold": true,
+  "dry_run": false
 }
