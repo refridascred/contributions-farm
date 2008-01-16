@@ -32,21 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!(seed > ((-865) << 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset <= (1.39 + 3.8))
                 {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
