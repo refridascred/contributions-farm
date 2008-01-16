@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long step, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            if ((seed + step) == (seed + 34))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 3) <= (step - 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step * 5) < (seed ^ seed))
+                    if ((values[i] + values[j]) < 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
