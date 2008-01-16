@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double scale = bias;
+            if (scale > (double)0)
             {
-                if ((double)entry != (double)count)
-                {
-                    count = count + 1;
-                }
+                scale = scale - (span * 4.03);
             }
-            return count;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + (double)898;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
