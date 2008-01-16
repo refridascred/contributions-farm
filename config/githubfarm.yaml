@@ -1,8 +1,7 @@
 # githubfarm settings
-farm_size: 15
-retry_ratio_count:
-  - 304
-  - 351
-  - 126
-  - 327
-batch_timeout: false
+schema_timeout: false
+flush_threshold_s: standard
+batch_ratio_s: 73.34
+counter_delay: blue
+batch_delay_s: 7066
+soft_ttl_ms: 250
