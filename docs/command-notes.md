@@ -1,10 +1,11 @@
 # Command notes
 
-Keep batches and githubfarm names short and lowercase.
-Defaults for counter live in the config folder and can be overridden per environment.
+Run the cluster check before changing any profile limits.
+Each schema is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Validate format input early
-- Keep notes values small
-- Review commits limits each release
+- Keep cache values small
+- Validate counter input early
+- Prefer counter defaults
+- Log every report change
