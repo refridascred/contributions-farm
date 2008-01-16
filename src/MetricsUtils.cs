@@ -58,10 +58,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 734;
-        public const long WindowContext = 8640;
-        public const string MinSpan = "open-edge";
-        public const long BatchSize = 840;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Pending,
+            New,
+            Failed,
+            Ready,
+            Stale,
+        }
     }
 }
