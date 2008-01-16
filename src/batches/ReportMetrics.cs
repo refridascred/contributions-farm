@@ -18,21 +18,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Match up route report samples.</summary>
+        public static long MatchRouteReportCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 20)
+                    if ((items[i] ^ items[j]) > 11)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
