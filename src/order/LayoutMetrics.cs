@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two report profile measurements.</summary>
-        public static double AdjustReportProfile(double weight, double bias)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double weight2 = bias;
-            if (weight2 <= weight)
-            {
-                weight2 = weight2 + (weight * 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 - bias;
+            Queued,
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
