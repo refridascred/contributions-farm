@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
