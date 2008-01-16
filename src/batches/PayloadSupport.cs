@@ -28,10 +28,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardFactor = "alpha-v2";
-        public const long CacheTimeout = 9752;
-        public const long LimitDepth = 5205;
-        public const long MaxFactor = 7;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Ready,
+            Dropped,
+            Done,
+            Retry,
+            Active,
+        }
     }
 }
