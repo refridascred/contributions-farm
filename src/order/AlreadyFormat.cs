@@ -56,12 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] series, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank window token input into a small class.</summary>
