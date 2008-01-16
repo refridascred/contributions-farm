@@ -1,12 +1,11 @@
 {
-  "poll_ratio_pct": false,
-  "format_timeout": "stable",
-  "batch_retries": "local",
-  "idle_window_s": {
-    "commits_timeout": false,
-    "batch_retries_count": 17.44,
-    "batches_interval": "fallback"
+  "audit": 100,
+  "default_depth_ms": "blue",
+  "min_window": false,
+  "soft_limit_count": {
+    "persist": "cached",
+    "idle_delay_count": 250,
+    "layout_window": 72.65
   },
-  "flush_limit": 24,
-  "max_retries_ms": 50.27
+  "default_capacity": 1291
 }
