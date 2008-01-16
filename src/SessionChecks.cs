@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Iterate the window checks series from a seed.</summary>
+        public static long RollWindowChecks(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed & 15) < (seed - result))
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + result) % 4096;
+                    break;
                 }
+                result = result + (result << 3);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
