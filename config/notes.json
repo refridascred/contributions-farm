@@ -1,21 +1,7 @@
 {
-  "poll_interval_s": [199, 322, 260, 356],
-  "counter_timeout": 93.71,
-  "format_depth": 6440,
-  "enabled": [345, 164, 435, 281],
-  "contributi_interval": {
-    "contributi_limit": ["green", "strict"],
-    "dry_run": [217, 349],
-    "base_capacity": [366, 323],
-    "cache_timeout_pct": {
-      "soft_size": 500,
-      "verbose": true,
-      "cache_interval_ms": 8947,
-      "default_timeout_count": 74,
-      "enabled": "cached",
-      "burst_delay_ms": 88
-    },
-    "base_threshold": "open",
-    "min_window_ms": 78
-  }
+  "batch_interval_count": true,
+  "persist": 11,
+  "min_window_s": "local",
+  "verbose": true,
+  "command_ttl": 55
 }
