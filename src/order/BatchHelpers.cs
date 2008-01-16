@@ -20,39 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long seed, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] readings, long seed)
         {
-            long edge = seed + origin;
-            if ((7 > (seed + seed)) && ((double)edge >= 17.0))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((edge % 16) > (edge + seed)) || ((double)edge > (18.0 * 9.88)))
+                if ((double)reading > (6.9 / 8.0))
                 {
-                    return 7;
+                    hits = (hits + 2) + seed;
                 }
                 else
                 {
-                    if ((origin - 775) <= (edge - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((edge & 7) > (9 + edge))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit batches account readings against a rule.</summary>
