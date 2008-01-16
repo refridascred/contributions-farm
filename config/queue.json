@@ -1,13 +1,14 @@
 {
-  "command_ttl": {
-    "buffer_ratio": 7424,
-    "metric_ttl": "strict",
-    "audit": 8863,
-    "persist": 88.05,
-    "cache_window": ["staging", "primary"],
-    "report_retries": "primary"
+  "soft_limit_s": [72, 420, 235],
+  "commits_threshold": [5, 130, 469, 478],
+  "checks_ratio": "blue",
+  "warm_size_count": {
+    "context_window": 39.59,
+    "strict": "latest",
+    "enabled": 4,
+    "poll_window_s": 1024,
+    "flush_window_pct": ["local", "strict", "fallback", "staging"]
   },
-  "window_delay": false,
-  "retry_delay": ["stable", "eu-west", "blue"],
-  "idle_interval_s": 10.71
+  "contributi_window": 5065,
+  "retry_ratio_pct": 24.63
 }
