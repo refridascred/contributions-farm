@@ -27,19 +27,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every stats session entry stays within the limit.</summary>
-        public static bool VerifyStatsSessionRange(long[] levels, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= step)
+                if (readings[i] <= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
