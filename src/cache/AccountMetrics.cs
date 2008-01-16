@@ -36,18 +36,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] series, long step)
+        /// <summary>Find the first session cluster entry that matches the target.</summary>
+        public static long LookupSessionClusterIndex(long[] items, long floor)
         {
-            long sum = 390;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step ^ (long)series.Length) >= (sample / 9))
+                if (items[i] >= floor)
                 {
-                    sum = (sum ^ step) % 1000;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
