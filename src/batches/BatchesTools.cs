@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double rate, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] series, long origin)
         {
-            double mean = (span / 8.0) * 18.0;
-            return (mean - (span - span)) + rate;
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
