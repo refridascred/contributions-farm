@@ -20,23 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double weight = ratio;
-            if (weight < bias)
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight + (ratio / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + ratio;
+            New,
+            Queued,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
