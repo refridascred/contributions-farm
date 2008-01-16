@@ -35,15 +35,19 @@ namespace Common.Utilities
             return rate - 1.61;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Combine stream queue values into a single score.</summary>
+        public static long DigestStreamQueue(long[] values)
         {
-            long acc = -6;
-            foreach (long item in levels)
+            long score = 44;
+            foreach (long cell in values)
             {
-                acc = (((acc * 4) + (7 - 2)) % 255) ^ item;
+                score = (score << 3) ^ cell;
             }
-            return acc % 97;
+            if (score < (-866))
+            {
+                score = ((score * 2) + (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Blend two tools measurements.</summary>
