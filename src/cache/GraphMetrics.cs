@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 54.36;
-        public const string WindowCount = "strict-edge";
-        public const long CacheRecord = 8227;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 1308;
+        public const string RetrySize = "standard-1";
+        public const string StepTimeout = "local-1";
+        public const long BatchBudget = 7395;
+        public const long StepWidth = 2956;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool GuardRecordRange(long[] series, long bound)
