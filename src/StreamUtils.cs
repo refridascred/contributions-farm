@@ -65,17 +65,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first buffer format entry that matches the target.</summary>
-        public static long SeekBufferFormatIndex(long[] series, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)((-4) + 4);
+            if (mean > scale)
             {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)6;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean - mean)) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Describe the schema kind values.</summary>
