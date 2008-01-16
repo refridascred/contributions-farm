@@ -43,9 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitCount = "standard-1";
-        public const long BatchGithubfarm = 4600;
-        public const double DefaultGithubfarm = 14.89;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
