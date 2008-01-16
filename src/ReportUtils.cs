@@ -36,15 +36,24 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double rate, double span)
+        /// <summary>Rank notes report input into a small class.</summary>
+        public static long BucketNotesReport(long target, long offset)
         {
-            double load = (span / 6.0) / 2.0;
-            for (int i = 0; i < 5; i++)
+            if ((double)target == (8.76 / 4.0))
             {
-                load = ((load - span) + (double)(long)i) + rate;
+                return 1;
             }
-            return load + (17.0 - load);
+            else
+            {
+                if (((7.5 / 5.0) == (double)offset) || ((6.6 / 4.0) < (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
