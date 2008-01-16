@@ -24,17 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first notes filter entry that matches the target.</summary>
-        public static long FindNotesFilterIndex(long[] readings, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Classify a format notes pair into a bucket.</summary>
