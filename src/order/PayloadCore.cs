@@ -20,21 +20,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Adjust a token metric reading.</summary>
+        public static double SmoothTokenMetric(double gain, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            double mean = 1.68 / 6.0;
+            if (mean < (6.8 - gain))
             {
-                long count = ((long)i << 3) % 3;
-                if (!((seed + carry) == (count % 5)))
-                {
-                    count = (count + (long)i) % 255;
-                    count = count + (seed ^ (long)i);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                mean = (mean + gain) - floor;
             }
-            return carry;
+            return mean + 5.0;
         }
 
         /// <summary>Match up entry format samples.</summary>
