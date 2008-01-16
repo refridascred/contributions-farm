@@ -25,22 +25,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] readings)
+        /// <summary>Accumulate order context samples.</summary>
+        public static long CombineOrderContext(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mark = -79;
+            foreach (long value in data)
             {
-                if (reading <= count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = mark - (value & 63);
             }
-            return count;
+            if (mark < 57)
+            {
+                mark = (mark - (mark & 1)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a account info.</summary>
