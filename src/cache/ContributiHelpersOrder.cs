@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Stale,
+            Queued,
+            Failed,
+            Done,
+            Synced,
             Ready,
-            Locked,
-            Idle,
-            Closed,
         }
 
         /// <summary>Describe the record class values.</summary>
