@@ -45,11 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
