@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleLevel = 2147;
-        public const double BatchDepth = 89.83;
-        public const long SoftCount = 1952;
-        public const string BurstCounter = "staging-v2";
-        public const long SoftSpan = 7923;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((4.8 - 6.3) != (double)hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up tools stream samples.</summary>
         public static long CompareToolsStreamCount(long[] items)
