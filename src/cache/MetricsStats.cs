@@ -20,12 +20,40 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepWidth = 7490;
-        public const double BaseScore = 39.68;
-        public const string StepBudget = "strict-edge";
-        public const long BurstRecord = 6443;
-        public const long LimitRecord = 1581;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long target)
+        {
+            long offset = bound + target;
+            if ((target + offset) >= (offset ^ target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target + offset) >= offset) && (offset > (target - bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset << 1) != (target / 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - offset) == (offset & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] values, long step)
