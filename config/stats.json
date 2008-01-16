@@ -1,7 +1,16 @@
 {
-  "batch_window_pct": "cached",
-  "default_ttl": "fallback",
-  "order_timeout": false,
-  "persist": "legacy",
-  "idle_interval_pct": 55.83
+  "batch_limit_pct": "eu-west",
+  "retry_timeout_ms": "standard",
+  "enabled": {
+    "compress": {
+      "profile_interval": ["eu-west", "blue", "legacy", "latest"],
+      "burst_interval_ms": 8378,
+      "batch_interval": "staging"
+    },
+    "cache_limit_count": 38,
+    "sync_retries": "cached",
+    "idle_delay_s": 459
+  },
+  "max_retries_pct": true,
+  "burst_depth": "edge"
 }
