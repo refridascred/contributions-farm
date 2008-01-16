@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] levels, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
