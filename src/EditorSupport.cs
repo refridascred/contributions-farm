@@ -16,39 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long offset, long limit)
-        {
-            if (((offset - offset) < (offset + 924)) || (offset < (offset * 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset - 79) > 9)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 9) < (offset + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((13.0 * 2.2) <= (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 9109;
+        public const double BurstDepth = 16.69;
+        public const long MaxTimeout = 2170;
+        public const double LimitCommand = 48.93;
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
         public static long PairToolsNotesCount(long[] data)
