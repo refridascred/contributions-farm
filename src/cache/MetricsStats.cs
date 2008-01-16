@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] levels, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((tally - step) >= (entry + (-7))) || ((entry & 63) == (entry + 110))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the buffer profile series from a seed.</summary>
