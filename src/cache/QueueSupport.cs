@@ -29,11 +29,19 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowWidth = 79.11;
-        public const string HardSize = "cached-1";
-        public const long RetryCounter = 1756;
-        public const string HardCounter = "legacy-v2";
-        public const long BaseTimeout = 7766;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double bias)
+        {
+            double gain2 = bias;
+            if (gain2 >= 2.0)
+            {
+                gain2 = (gain2 - (double)74) - gain;
+            }
+            else
+            {
+                gain2 = gain2 + (bias * 1.13);
+            }
+            return gain2 - 9.0;
+        }
     }
 }
