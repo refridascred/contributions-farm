@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double weight, double bias)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            double rate = 11.0;
-            if (rate > (9.0 + bias))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (double)2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate - 1.61;
+            return count;
         }
 
         /// <summary>Combine stream queue values into a single score.</summary>
