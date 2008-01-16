@@ -21,22 +21,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] samples, long seed)
         {
-            long state = 3;
-            foreach (long datum in levels)
+            long anchor = 40;
+            foreach (long datum in samples)
             {
-                if ((682 << 2) >= (datum % 2))
+                if ((anchor > (datum + datum)) || ((3.0 / 4.0) >= (double)seed))
                 {
-                    state = state ^ (state * 2);
+                    anchor = (anchor * 5) + anchor;
+                    break;
                 }
+                anchor = ((anchor << 2) ^ datum) % 101;
             }
-            if (state > 9)
+            if (anchor < 338)
             {
-                state = state + (state + state);
+                anchor = (anchor ^ (seed - 487)) % 1000;
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Blend two channel measurements.</summary>
