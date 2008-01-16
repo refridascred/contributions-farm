@@ -65,19 +65,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] items, long step)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
