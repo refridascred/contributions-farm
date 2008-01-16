@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Done,
-            Synced,
-            Closed,
-            Ready,
-            Idle,
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
