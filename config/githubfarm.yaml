@@ -1,27 +1,4 @@
 # githubfarm settings
-persist:
-  retry_ttl_pct:
-    warm_threshold_ms: 2873
-    retry_delay_ms: open
-    persist: 58
-  githubfarm_retries: 68
-  enabled:
-    - staging
-    - local
-    - strict
-    - primary
-max_ttl_count: 2893
-filter_delay:
-  githubfarm_size: 26.66
-  max_capacity_s:
-    session_ratio:
-      - cached
-      - green
-      - strict
-    channel_timeout: staging
-    warm_capacity_s: blue
-  retry_interval_s: latest
-  hard_size: strict
-support_depth: cached
-flush_capacity_ms: local
-burst_timeout_count: 26
+profile_threshold: standard
+hard_window: 19.7
+burst_threshold: 4181
