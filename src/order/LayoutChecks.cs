@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] samples, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 99;
+            foreach (long datum in items)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 3) ^ (carry + datum)) - offset;
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
