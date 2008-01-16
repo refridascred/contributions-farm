@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double bias)
         {
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            double mean = (rate * 3.94) / 7.0;
+            return mean - (rate - bias);
         }
 
         /// <summary>Grade a already value against two limits.</summary>
