@@ -43,13 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowScore = 2185;
+        public const long MaxRatio = 8404;
+        public const double HardScore = 90.0;
+        public const long WindowTimeout = 2563;
+        public const long MaxCommits = 2847;
 
         /// <summary>Iterate the token counter series from a seed.</summary>
         public static long RollTokenCounter(long offset)
