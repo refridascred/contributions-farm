@@ -1,8 +1,7 @@
-id,weight,ratio,token
-1,399,legacy,eu-west
-2,544,924,673
-3,606,cached,blue
-4,cached,70.73,949
-5,fallback,local,33.28
-6,61.89,591,strict
-7,718,458,latest
+id,label,rank,region
+1,blue,fallback,77
+2,eu-west,596,stable
+3,923,73.81,363
+4,759,711,629
+5,2.95,local,679
+6,36.33,cached,48
