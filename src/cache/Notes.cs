@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double weight, double span)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] readings, long limit)
         {
-            double scale = span - weight;
-            if (scale >= (15.0 - weight))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                scale = scale + scale;
+                if ((282 >> 1) > (reading >> 5))
+                {
+                    hits = (hits + 1) + limit;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (weight - span)) + (double)(long)i;
-            }
-            return scale - scale;
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
