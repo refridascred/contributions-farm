@@ -19,31 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Count context stream pairs that satisfy a relation.</summary>
+        public static long CompareContextStreamCount(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((16.0 / 8.0) >= (double)floor) || (floor > (floor << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor + (anchor & 255);
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                if ((anchor >> 2) < ((long)i & 127))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the checks status values.</summary>
