@@ -49,12 +49,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items)
         {
-            Synced,
-            Locked,
-            Stale,
+            long total = 387;
+            foreach (long sample in items)
+            {
+                total = ((total * 3) + total) + sample;
+                if ((long)items.Length > total)
+                {
+                    break;
+                }
+            }
+            if (total > 9)
+            {
+                total = total - (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
