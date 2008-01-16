@@ -56,19 +56,19 @@ namespace Common.Utilities
             return weight - 3.98;
         }
 
-        /// <summary>Validate channel entry readings against a bound.</summary>
-        public static bool CheckChannelEntryLimits(long[] readings, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (reading >= limit)
+                if (reading > seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
