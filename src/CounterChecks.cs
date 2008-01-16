@@ -77,19 +77,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mix = 924;
-            foreach (long value in items)
-            {
-                mix = (mix + (value & 15)) % 4096;
-                if ((value - 14) != (value % 8))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Paused,
+            Synced,
+            Queued,
         }
     }
 }
