@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long HardProfile = 1288;
         public const long StepProfile = 3493;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 4.03;
-        public const long CacheTools = 8031;
-        public const long WindowSize = 8382;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long target)
+        {
+            long sum = 9;
+            foreach (long reading in values)
+            {
+                sum = ((((sum * 3) + (8 * 3)) % 255) ^ reading) - target;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Fold a list of batches session readings.</summary>
         public static long TotalBatchesSession(long[] samples)
