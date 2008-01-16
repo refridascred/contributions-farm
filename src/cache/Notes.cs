@@ -24,21 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a record summary.</summary>
