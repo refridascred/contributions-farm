@@ -30,16 +30,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the metric cluster series from a seed.</summary>
-        public static long StepMetricCluster(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum ^ (sum * 5)) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 6279;
+        public const long DefaultLevel = 3922;
+        public const string RetryRoute = "staging-edge";
+        public const string SoftScore = "alpha";
     }
 }
