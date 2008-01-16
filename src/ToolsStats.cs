@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >> 2) == (count << 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
