@@ -20,18 +20,31 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long floor, long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if ((double)floor < (13.0 + 6.17))
             {
-                if ((double)cell == (double)count)
+                return 4;
+            }
+            else
+            {
+                if ((target * 4) <= target)
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((((-786) + target) < floor) || ((floor >> 2) < (floor + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
