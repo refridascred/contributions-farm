@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "strict-edge";
-        public const long BatchRecord = 1403;
-        public const double WindowSize = 20.26;
-        public const long CacheScore = 8272;
-        public const long StepRecord = 4600;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long bound, long limit)
