@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultWidth = 12.79;
+        public const long MinRatio = 9513;
+        public const long CacheSchema = 671;
+        public const long SoftSchema = 3404;
 
         /// <summary>Digest a series of farm graph entries.</summary>
         public static long WeighFarmGraph(long[] readings, long target)
