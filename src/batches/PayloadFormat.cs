@@ -27,21 +27,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Locate a contributi checks reading by value.</summary>
+        public static long FindContributiChecksIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] >= bound)
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
