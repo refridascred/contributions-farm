@@ -40,22 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long anchor = -885;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell != (1.0 + 4.2)))
-                {
-                    anchor = anchor ^ cell;
-                }
-            }
-            if (anchor < (-402))
-            {
-                anchor = (anchor * 4) + (anchor & 255);
-            }
-            return anchor;
+            Synced,
+            Pending,
+            Failed,
         }
     }
 }
