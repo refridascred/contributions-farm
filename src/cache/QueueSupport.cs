@@ -33,9 +33,21 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowInterval = "cached-edge";
-        public const long LimitContributi = 8674;
-        public const string HardBudget = "cached";
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
