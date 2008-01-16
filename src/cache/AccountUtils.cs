@@ -22,18 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mark = 13;
-            foreach (long cell in readings)
-            {
-                if (!(6.6 <= (double)cell))
-                {
-                    mark = (mark * 4) + (mark + mark);
-                }
-            }
-            return mark;
+            Failed,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
