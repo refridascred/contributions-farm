@@ -16,22 +16,14 @@ namespace Common.Utilities
             return rate - (floor / 8.0);
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] levels)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches * 5) > (datum & 255))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
