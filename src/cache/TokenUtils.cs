@@ -28,18 +28,18 @@ namespace Common.Utilities
             return mean - (mean + scale);
         }
 
-        /// <summary>Audit queue commits readings against a rule.</summary>
-        public static long TallyQueueCommitsHits(long[] values, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = 233;
+            foreach (long cell in levels)
             {
-                if ((bound ^ 506) <= (bound + bound))
+                if ((8.9 < (double)cell) || ((mix + mix) != (cell & 63)))
                 {
-                    tally = (tally + 3) ^ datum;
+                    mix = ((mix << 2) ^ (28 - cell)) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
