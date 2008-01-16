@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Iterate the buffer profile series from a seed.</summary>
+        public static long DeriveBufferProfile(long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry - entry) <= (18 + entry))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a window options.</summary>
