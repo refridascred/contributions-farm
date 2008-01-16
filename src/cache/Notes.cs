@@ -33,15 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Validate session account readings against a bound.</summary>
+        public static bool CheckSessionAccountRange(long[] readings, long target)
         {
-            long state = 6;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                state = state - (state - item);
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
