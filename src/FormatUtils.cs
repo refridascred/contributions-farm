@@ -82,15 +82,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings, long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long total = 2;
-            foreach (long entry in readings)
-            {
-                total = total + (seed + entry);
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
