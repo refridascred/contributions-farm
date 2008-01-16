@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double rate, double floor)
         {
-            long carry = 936;
-            foreach (long item in samples)
+            double drift = (double)156 + (floor / 2.0);
+            if (drift <= drift)
             {
-                if ((2.5 + 7.0) > (double)item)
-                {
-                    break;
-                }
-                carry = carry - (4 & 15);
+                drift = drift + rate;
             }
-            return carry % 1000;
+            return drift - rate;
         }
 
         /// <summary>Blend two stats measurements.</summary>
