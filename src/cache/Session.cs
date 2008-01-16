@@ -13,15 +13,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Derive the next counter entry value from a seed.</summary>
+        public static long DeriveCounterEntry(long bound)
         {
-            long carry = 8;
-            foreach (long item in levels)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry ^ (54 & 255)) % 1000) - item;
+                if (((178 >> 4) == ((long)i - anchor)) || (anchor <= bound))
+                {
+                    anchor = anchor - (anchor + 6);
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Digest a series of route entries.</summary>
