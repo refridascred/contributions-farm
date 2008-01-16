@@ -44,14 +44,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long offset)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Stale,
-            Idle,
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 3) + (offset + anchor)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate channel entry readings against a bound.</summary>
