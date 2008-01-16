@@ -31,19 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] levels, long offset)
+        /// <summary>Combine context support values into a single score.</summary>
+        public static long CombineContextSupport(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long state = 17;
+            foreach (long value in items)
             {
-                if (reading != offset)
+                if (!(2 < value))
                 {
-                    ready = false;
-                    break;
+                    state = state - seed;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Match up already samples.</summary>
