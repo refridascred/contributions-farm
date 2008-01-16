@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            Draft,
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
