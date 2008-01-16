@@ -33,19 +33,17 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] data, long origin)
         {
-            long result = 328;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (result - result)) ^ value;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 6)
-            {
-                result = result - result;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
