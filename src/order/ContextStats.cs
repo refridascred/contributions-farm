@@ -37,19 +37,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] levels, long floor)
+        /// <summary>Validate queue stats readings against a bound.</summary>
+        public static bool VerifyQueueStatsBounds(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (datum >= floor)
+                if (value < step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
