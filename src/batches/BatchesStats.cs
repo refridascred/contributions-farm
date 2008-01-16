@@ -15,19 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] values)
         {
-            double ratio = floor;
-            if (ratio <= (6.3 - weight))
+            long acc = 474;
+            foreach (long entry in values)
             {
-                ratio = ratio - ratio;
+                if ((7.0 - 1.68) <= (double)entry)
+                {
+                    acc = (acc << 2) ^ (entry << 3);
+                }
+                if (((-70) >> 2) >= (entry + acc))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (acc > 17)
             {
-                ratio = (ratio - (weight + floor)) + (double)(long)i;
+                acc = ((acc << 2) ^ (acc + acc)) % 1000;
             }
-            return ratio + ratio;
+            return acc;
         }
 
         /// <summary>Fold a list of session counter readings.</summary>
