@@ -91,22 +91,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Validate payload account readings against a bound.</summary>
+        public static bool ValidatePayloadAccountRange(long[] series, long offset)
         {
-            long anchor = 21;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (((anchor & 255) <= (anchor * 5)) || ((value + value) >= (anchor - value)))
+                if (sample != offset)
                 {
-                    anchor = anchor + anchor;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 72)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor;
+            return flag;
         }
     }
 }
