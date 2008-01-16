@@ -16,21 +16,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((offset - offset) < (offset + 924)) || (offset < (offset * 4)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset - 79) > 9)
                 {
-                    if ((values[i] + values[j]) > 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset / 9) < (offset + offset))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((13.0 * 2.2) <= (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
