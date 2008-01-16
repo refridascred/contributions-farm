@@ -37,10 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinWidth = 2027;
-        public const long BatchMetric = 2777;
-        public const long BurstFactor = 9539;
-        public const long IdleSpan = 2116;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Queued,
+            Locked,
+            Retry,
+        }
     }
 }
