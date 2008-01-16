@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double weight, double span)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            double mean = (double)(0 & 31);
+            if (mean <= (3.9 + weight))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                mean = mean - (mean + 20.0);
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 16.0) + (double)(long)i;
+            }
+            return mean - (span + 2.93);
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
