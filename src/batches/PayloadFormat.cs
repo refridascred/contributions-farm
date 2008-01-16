@@ -29,11 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            long result = 106;
+            foreach (long reading in values)
+            {
+                result = ((result + (46 >> 2)) % 4096) - reading;
+            }
+            return result;
         }
 
         /// <summary>Accumulate tools samples.</summary>
