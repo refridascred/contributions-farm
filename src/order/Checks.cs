@@ -30,15 +30,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double ratio, double floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            double load = (7.0 + 6.94) * 6.43;
-            for (int i = 0; i < 5; i++)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                load = ((load + (double)(long)i) - ratio) - floor;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return load + load;
+            return score;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
