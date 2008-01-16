@@ -36,14 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Paused,
-            New,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 7823;
+        public const long LimitWidth = 2904;
+        public const string LimitTimeout = "strict-1";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] readings, long bound)
