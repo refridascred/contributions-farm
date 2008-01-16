@@ -15,19 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] items, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long offset)
         {
-            long mark = 6;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark % 10) > (entry - mark))
+                if (levels[i] >= offset)
                 {
-                    mark = mark - (limit + mark);
+                    return (long)i;
                 }
-                mark = ((mark << 3) ^ (entry + entry)) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
