@@ -32,11 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a support metrics figure with a bias.</summary>
-        public static double AdjustSupportMetrics(double weight, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] values, long origin)
         {
-            double scale = 2.06 + (7.4 / 2.0);
-            return ((scale - (scale * 8.0)) + weight) + floor;
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
