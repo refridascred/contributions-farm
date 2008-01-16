@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Blend two report profile measurements.</summary>
+        public static double AdjustReportProfile(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double weight2 = bias;
+            if (weight2 <= weight)
             {
-                if (!((matches ^ matches) < value))
-                {
-                    matches = matches + 1;
-                }
+                weight2 = weight2 + (weight * 7.0);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
