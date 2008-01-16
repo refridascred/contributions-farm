@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Project the next schema support value.</summary>
+        public static double BlendSchemaSupport(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            double bias3 = bias2;
+            return bias3 + bias;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
