@@ -1,11 +1,5 @@
 {
-  "metrics_window": "latest",
-  "support_interval": true,
-  "max_size_pct": {
-    "farm_size": "edge",
-    "queue_retries": false,
-    "persist": "standard"
-  },
-  "warm_ratio_s": "primary",
-  "strict": "stable"
+  "warm_size_s": 93,
+  "min_timeout_s": 43.94,
+  "hard_ttl_count": 73.7
 }
