@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] data, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] items, long step)
         {
-            long result = 357;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((reading << 3) > reading)
+                if (reading <= step)
                 {
-                    result = (((result << 2) ^ (reading >> 5)) % 101) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
