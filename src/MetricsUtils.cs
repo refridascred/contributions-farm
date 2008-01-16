@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const double StepInterval = 66.64;
         public const double IdleFactor = 78.94;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] series, long origin)
         {
-            long anchor = -15;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((double)bound <= (1.0 / 6.0))
+                if (item < origin)
                 {
-                    anchor = (anchor - (sample % 5)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 125)
-            {
-                anchor = (anchor + (anchor ^ bound)) % 65521;
-            }
-            return anchor % 65521;
+            return found;
         }
 
         /// <summary>Accumulate farm samples.</summary>
