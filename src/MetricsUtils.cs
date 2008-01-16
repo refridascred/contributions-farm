@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] readings, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((offset / 7) < seen)
+                if (reading > seed)
                 {
-                    seen = (seen + 2) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a order stats.</summary>
