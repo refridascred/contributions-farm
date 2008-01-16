@@ -29,18 +29,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] samples)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!!((count + item) <= (count << 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate queue stats readings against a bound.</summary>
