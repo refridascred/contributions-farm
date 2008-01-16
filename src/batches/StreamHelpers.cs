@@ -50,13 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            Failed,
-            Ready,
-            Idle,
-            Stale,
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor ^ seed;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
