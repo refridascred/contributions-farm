@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] levels, long offset)
+        /// <summary>Project the next report farm value.</summary>
+        public static double ProjectReportFarm(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double rate = bias;
+            if (rate > (double)1)
             {
-                if (((double)seen <= (9.78 - 9.51)) || (((18.0 / 3.0) >= (double)offset) || (6.0 > (double)seen)))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate + (double)32) + floor;
             }
-            return seen;
+            else
+            {
+                rate = rate - 7.1;
+            }
+            return rate + (rate - bias);
         }
 
         /// <summary>Project the next filter value.</summary>
