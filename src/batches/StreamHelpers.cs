@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank queue window input into a small class.</summary>
-        public static long SortQueueWindow(long seed, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] items, long limit)
         {
-            long slot = seed - limit;
-            if ((4.4 + 5.4) > (double)slot)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)slot >= (6.14 * 2.68))
+                if (reading >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
