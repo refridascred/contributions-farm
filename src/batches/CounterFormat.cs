@@ -35,18 +35,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] values, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long delta = seed - seed2;
+            if ((delta + 4) == (seed & 15))
             {
-                if ((seed - seen) < datum)
+                return 0;
+            }
+            else
+            {
+                if ((seed2 - seed2) < (delta * 3))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
