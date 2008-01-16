@@ -40,21 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)target != (7.0 - 4.69)) || (((value * 3) > (57 % 64)) && ((double)value > (14.0 + 2.35))))
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
