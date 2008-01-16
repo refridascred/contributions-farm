@@ -47,21 +47,18 @@ namespace Common.Utilities
         public const long BatchCount = 9494;
         public const long MinCluster = 4735;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long TallyChannelProfileMatches(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)datum == (4.5 - 7.5))
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
