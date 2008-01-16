@@ -74,14 +74,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            Locked,
-            Stale,
-            Closed,
-            Idle,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
