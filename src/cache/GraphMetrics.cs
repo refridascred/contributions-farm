@@ -60,13 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
