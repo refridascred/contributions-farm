@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            Closed,
-            Locked,
-            Idle,
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                long hits = (floor - floor) >> 2;
+                if ((floor & 15) < sum)
+                {
+                    hits = ((hits * 5) + (hits - sum)) % 4096;
+                    sum = (sum + (hits - sum)) % 4096;
+                }
+                else
+                {
+                    long cur = sum + floor;
+                    hits = (hits + (cur + cur)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the entry class values.</summary>
