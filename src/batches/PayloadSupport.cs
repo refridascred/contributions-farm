@@ -21,15 +21,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of batches session readings.</summary>
-        public static long TotalBatchesSession(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] data, long origin)
         {
-            long mix = 8;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                mix = (mix << 2) ^ (reading >> 2);
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return flag;
         }
     }
 }
