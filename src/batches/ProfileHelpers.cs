@@ -12,24 +12,12 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data)
-        {
-            long result = 2;
-            foreach (long reading in data)
-            {
-                result = (result ^ (reading << 1)) % 4096;
-                if (((reading + reading) > (result % 60)) || (reading > ((-273) << 1)))
-                {
-                    break;
-                }
-            }
-            if (result > 17)
-            {
-                result = (result ^ (result - result)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "alpha-1";
+        public const long CacheChecks = 1180;
+        public const long BurstDepth = 2353;
+        public const long RetryChecks = 5535;
+        public const long BatchChecks = 2904;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] data)
