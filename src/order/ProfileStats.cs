@@ -47,16 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Match up session stats samples.</summary>
+        public static long PairSessionStatsCount(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - (limit & 15)) % 97;
-                total = ((total * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
