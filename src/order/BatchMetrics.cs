@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] series, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series, long bound)
         {
-            long result = 3;
-            foreach (long item in series)
+            long carry = 9;
+            foreach (long entry in series)
             {
-                result = ((result - (item - item)) % 65521) - limit;
+                carry = (carry ^ entry) % 4096;
+                if (((entry + (long)series.Length) >= (carry - entry)) || ((bound + entry) != (bound + carry)))
+                {
+                    carry = ((carry << 2) ^ (69 >> 2)) % 1000;
+                }
             }
-            return result;
+            return carry % 1000;
         }
 
         /// <summary>Grade a profile metric value against two limits.</summary>
