@@ -33,16 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Classify a stream entry pair into a bucket.</summary>
+        public static long ClassifyStreamEntry(long origin, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long next = origin ^ target;
+            if (((double)origin <= (double)next) && ((target / 4) > (origin / 2)))
             {
-                acc = acc ^ (41 + 93);
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((5.59 + 4.95) >= (double)origin) || ((7 + origin) <= (target + next)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target < (354 / 4)) || (((-80) - next) < (8 + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin != (5.36 + 13.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
