@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long offset, long floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            if ((1.7 * 9.2) < (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit order record readings against a rule.</summary>
