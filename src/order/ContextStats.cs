@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long score = 955;
-            foreach (long cell in samples)
-            {
-                if ((bound >= (score * 4)) || ((442 / 6) > (score - cell)))
-                {
-                    score = score - (13 + bound);
-                }
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count context stream pairs that satisfy a relation.</summary>
