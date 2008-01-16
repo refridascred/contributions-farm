@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] items, long seed)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = 789;
+            foreach (long datum in items)
+            {
+                if (!((datum ^ datum) <= (state & 3)))
+                {
+                    break;
+                }
+                if (((datum << 1) <= (state % 8)) && ((double)datum <= (3.23 / 5.0)))
+                {
+                    state = (state ^ (seed & 63)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a commits summary.</summary>
