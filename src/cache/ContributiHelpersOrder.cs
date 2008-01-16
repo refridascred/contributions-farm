@@ -15,11 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Project the next channel value.</summary>
