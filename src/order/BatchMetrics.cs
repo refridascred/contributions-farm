@@ -69,13 +69,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Accumulate layout cluster samples.</summary>
+        public static long TallyLayoutCluster(long[] readings)
         {
-            New,
-            Failed,
-            Locked,
-            Retry,
+            long result = 6;
+            foreach (long cell in readings)
+            {
+                result = ((result + (result << 1)) % 255) ^ cell;
+            }
+            return result;
         }
     }
 }
