@@ -52,15 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Derive the next token profile value from a seed.</summary>
+        public static long SeriesTokenProfile(long offset)
         {
             long mark = offset;
             for (int i = 0; i < 13; i++)
             {
-                mark = ((mark << 3) ^ (mark + 37)) % 65521;
-                mark = ((mark << 3) ^ (offset & 15)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (((mark % 12) != (89 / 6)) && ((offset - mark) != (18 ^ 386)))
+                {
+                    mark = mark + offset;
+                    continue;
+                }
+                mark = mark + (mark ^ mark);
+                mark = ((mark * 3) + (long)i) % 97;
             }
             return mark;
         }
