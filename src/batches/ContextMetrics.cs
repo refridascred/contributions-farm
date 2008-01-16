@@ -21,12 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Look up the position of a counter batch sample.</summary>
+        public static long SeekCounterBatchIndex(long[] levels, long target)
         {
-            Queued,
-            Retry,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
