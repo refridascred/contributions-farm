@@ -23,14 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Draft,
-            Failed,
-            New,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 40.5;
+        public const long BatchFactor = 2152;
+        public const long BurstFactor = 9011;
+        public const double BaseBudget = 0.17;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
