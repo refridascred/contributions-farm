@@ -61,12 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] levels)
         {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((348 - count) <= (count >> 2)) || ((count - 52) <= (count + reading)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
