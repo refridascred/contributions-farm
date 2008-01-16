@@ -27,19 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel contributi readings against a bound.</summary>
-        public static bool CheckChannelContributiBounds(long[] data, long offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
