@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            Dropped,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Roll a order counter forward.</summary>
