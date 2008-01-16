@@ -15,20 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items, long seed)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long seed)
         {
-            long score = 68;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 4) + score) % 101;
-                score = (score ^ (datum - seed)) % 101;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 1)
-            {
-                score = score + (8 + score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
