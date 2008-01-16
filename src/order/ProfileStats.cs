@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a support info.</summary>
