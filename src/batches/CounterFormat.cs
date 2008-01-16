@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long anchor = -484;
-            foreach (long reading in readings)
+            long sum = 8;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor - (reading * 2)) % 101) ^ (long)i;
-                }
-                anchor = anchor + anchor;
+                sum = (sum + (sum + item)) % 1000;
             }
-            return anchor;
+            if (sum < 78)
+            {
+                sum = (sum * 5) + (sum + 20);
+            }
+            return sum;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
