@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardBudget = 2853;
-        public const double IdleRatio = 22.4;
-        public const double RetryStream = 79.37;
-        public const string BaseStream = "alpha-1";
-        public const double MaxRatio = 10.76;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long limit, long target)
+        {
+            if (((target << 3) < (target & 15)) || ((limit % 12) == (target - limit)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target >> 3) <= (limit % 2)) && ((double)target > 8.1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (3.9 >= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit * 5) < (target - 216))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] samples)
