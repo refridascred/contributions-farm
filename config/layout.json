@@ -1,19 +1,12 @@
 {
-  "githubfarm_delay": "staging",
-  "readonly": {
-    "graph_depth": "fallback",
-    "max_size": 9.59,
-    "max_ttl_pct": 14.48,
-    "max_limit_ms": {
-      "persist": 6.82,
-      "payload_capacity": 7368,
-      "channel_ttl": false,
-      "batch_retries_s": true,
-      "batch_delay_pct": 18,
-      "poll_threshold_count": 500
-    }
+  "verbose": "cached",
+  "account_depth": {
+    "cluster_depth": true,
+    "order_depth": "latest",
+    "sync_threshold_s": 9415,
+    "metrics_size": "primary",
+    "poll_capacity_count": [9, 179]
   },
-  "sync_interval": 1701,
-  "audit": 30,
-  "payload_window": "fallback"
+  "idle_window_count": 54.03,
+  "githubfarm_ratio": ["latest", "local", "open"]
 }
