@@ -1,9 +1,6 @@
 # support settings
-hard_ttl: false
-retry_timeout: false
-hard_delay: staging
-verbose: 935
-audit:
+compress: 56
+min_timeout_s: 9376
+hard_ratio:
   - legacy
-  - edge
-cache_size_ms: standard
+  - green
