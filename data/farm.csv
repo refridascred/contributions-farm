@@ -1,10 +1,6 @@
-id,owner,weight,ratio
-1,open,legacy,eu-west
-2,855,local,19.4
-3,985,cached,201
-4,98.45,841,15.78
-5,200,green,653
-6,586,972,44.93
-7,70.98,65.91,68.89
-8,15.7,74.97,eu-west
-9,standard,819,23.31
+id,level,region,score,ratio
+1,latest,blue,45.18,245
+2,505,551,local,58
+3,primary,625,960,29.17
+4,816,strict,739,378
+5,legacy,primary,open,241
