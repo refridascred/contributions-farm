@@ -52,13 +52,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Rank report account input into a small class.</summary>
+        public static long SortReportAccount(long bound, long floor)
         {
-            Active,
-            Paused,
-            Synced,
-            Idle,
+            if ((9.5 + 9.6) > (14.0 - 0.9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor <= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
