@@ -1,32 +1,4 @@
 # githubfarm settings
-retry_ttl_pct: 3.85
-cluster_timeout:
-  batches_ratio: 30
-  base_interval:
-    max_interval_pct: false
-    cache_depth_pct: 250
-    flush_threshold_pct:
-      - local
-      - eu-west
-      - cached
-      - edge
-    dry_run: 4.86
-    idle_limit: 43.55
-    base_timeout: 266
-  readonly: 500
-retry_limit_s:
-  max_depth_ms: staging
-  default_ratio_count:
-    warm_ratio: 58
-    hard_limit_count: primary
-    retry_window_count: 500
-    warm_capacity:
-      - stable
-      - legacy
-    poll_timeout_pct: eu-west
-    support_limit: 95
-  flush_capacity:
-    - 33
-    - 76
-  soft_interval: cached
-idle_size: 100
+soft_size_count: blue
+graph_size: 21
+readonly: primary
