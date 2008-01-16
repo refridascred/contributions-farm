@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] readings, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mix = 36;
-            foreach (long cell in readings)
-            {
-                if ((mix * 5) > (mix << 3))
-                {
-                    mix = ((mix ^ (cell << 1)) % 1000) + origin;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (-803)) % 4096;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix * 5) + (mix + 963);
-            }
-            return mix % 4096;
+            Active,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
