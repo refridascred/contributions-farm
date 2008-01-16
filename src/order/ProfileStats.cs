@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8652;
+        public const string HardLevel = "cached";
+        public const double IdleCount = 11.18;
+        public const long BurstGithubfarm = 2663;
+        public const string SoftSize = "alpha-edge";
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] series)
