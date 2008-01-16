@@ -15,12 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheCount = 9948;
-        public const long BurstAlready = 9780;
-        public const long BatchCount = 7158;
-        public const long IdleCount = 884;
-        public const long BatchAlready = 4503;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 1747;
+        public const string MinEditor = "alpha-edge";
+        public const string CacheEditor = "local-edge";
+        public const long StepEditor = 3066;
+        public const long MaxEditor = 6341;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
