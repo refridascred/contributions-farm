@@ -58,17 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] levels, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -30;
+            foreach (long value in levels)
             {
-                if (levels[i] == step)
+                mix = (((mix << 2) ^ (origin & 63)) % 97) + value;
+                if (((8.0 / 9.0) == (double)mix) || ((origin & 255) == (origin & 7)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > (-60))
+            {
+                mix = (mix ^ (-4)) % 255;
+            }
+            return mix % 65521;
         }
     }
 }
