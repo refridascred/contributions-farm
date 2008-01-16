@@ -67,19 +67,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            double scale2 = floor + floor;
-            if (scale2 > (1.3 * 17.0))
+            long mix = 735;
+            foreach (long cell in levels)
             {
-                scale2 = scale2 - (floor / 6.0);
+                mix = ((mix * 5) + (799 * 5)) + cell;
+                mix = (mix ^ (5 + 452)) % 255;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 - (scale / 2.0);
+            return mix % 4096;
         }
     }
 }
