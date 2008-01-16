@@ -35,19 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (entry <= target)
+                if (!((bound ^ datum) > (bound - bound)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
