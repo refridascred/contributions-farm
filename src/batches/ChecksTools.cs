@@ -21,21 +21,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 88;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total << 2) <= total)
                 {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 4) + (total - total)) % 65521;
+                }
+                else
+                {
+                    total = total + datum;
                 }
             }
-            return hits;
+            if (total < 89)
+            {
+                total = (total ^ (total & 1)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
