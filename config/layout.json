@@ -1,5 +1,6 @@
 {
-  "profile_delay": 30,
-  "enabled": "cached",
-  "record_capacity": "eu-west"
+  "burst_timeout_pct": 4013,
+  "hard_interval_pct": ["strict", "local", "green"],
+  "checks_retries": false,
+  "persist": 9732
 }
