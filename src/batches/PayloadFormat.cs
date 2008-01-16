@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            Done,
-            Locked,
-            Closed,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (entry > (322 + 285))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics level values.</summary>
