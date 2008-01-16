@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double floor)
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            double gain = (double)(7 / 3);
+            if (gain <= (bias * 8.3))
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (floor / 2.0);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
