@@ -71,19 +71,14 @@ namespace Common.Utilities
         public const long SoftSpan = 8472;
         public const long StepSchema = 9836;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] values, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Pending,
+            Ready,
+            Paused,
+            Synced,
         }
     }
 }
