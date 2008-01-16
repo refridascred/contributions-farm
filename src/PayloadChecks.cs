@@ -64,14 +64,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Grade a tools commits value against two limits.</summary>
+        public static long SortToolsCommits(long origin, long limit)
         {
-            Queued,
-            Closed,
-            Draft,
-            Dropped,
-            Stale,
+            long delta = origin + limit;
+            if (8 <= (delta << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(origin <= (origin & 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta + delta) >= ((-233) >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
