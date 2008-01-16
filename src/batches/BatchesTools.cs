@@ -35,19 +35,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheSpan = "strict-edge";
+        public const long MinEntry = 4785;
+        public const double StepEntry = 30.87;
+        public const string StepCount = "local-1";
     }
 }
