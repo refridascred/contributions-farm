@@ -35,18 +35,11 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((88 ^ 9) > (cell * 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
