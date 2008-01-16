@@ -29,22 +29,11 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items, long origin)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (double)origin)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
