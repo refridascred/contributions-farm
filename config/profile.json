@@ -1,10 +1,6 @@
 {
-  "stream_retries": {
-    "order_ratio": 5826,
-    "audit": "cached",
-    "burst_ttl": "staging",
-    "layout_ratio": 60
-  },
-  "idle_ratio_s": false,
-  "base_size": ["local", "green", "fallback", "primary"]
+  "cache_retries": ["latest", "standard", "staging"],
+  "entry_interval": "legacy",
+  "profile_window": 81.74,
+  "soft_ttl": 1024
 }
