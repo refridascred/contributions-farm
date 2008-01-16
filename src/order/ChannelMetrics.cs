@@ -20,13 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long ScoreBatchesOrder(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 346;
+            foreach (long entry in levels)
+            {
+                if (3.14 >= (double)entry)
+                {
+                    anchor = (anchor + (anchor + entry)) % 101;
+                    continue;
+                }
+                anchor = ((anchor << 3) ^ (anchor * 3)) % 101;
+                if (!(anchor < (entry << 2)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate commits samples.</summary>
