@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] data, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry <= bound)
+                if ((6 - cell) == (hits + cell))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
