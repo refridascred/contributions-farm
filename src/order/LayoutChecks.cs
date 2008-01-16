@@ -31,21 +31,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count account profile pairs that satisfy a relation.</summary>
-        public static long MatchAccountProfileCount(long[] items)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (9.0 / 6.0) * 0.31;
+            if (rate > 4.92)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate - (bias - bias)) - scale;
             }
-            return seen;
+            else
+            {
+                rate = rate + (9.05 + rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + (double)68;
         }
 
         /// <summary>Accumulate support session samples.</summary>
