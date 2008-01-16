@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
