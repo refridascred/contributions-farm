@@ -27,18 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Measure how many session counter samples are out of range.</summary>
+        public static long MeasureSessionCounterGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((long)readings.Length >> 4) <= (reading >> 3))
+                if (matches <= (sample - (long)data.Length))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit format notes readings against a rule.</summary>
