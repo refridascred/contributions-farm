@@ -21,15 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double load = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load - (load / 8.0)) + (double)(long)i) - span;
-            }
-            return load - load;
+            public bool Count { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
