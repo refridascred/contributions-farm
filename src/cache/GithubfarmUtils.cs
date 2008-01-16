@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] levels, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor - (anchor << 3)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of farm graph entries.</summary>
