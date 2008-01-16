@@ -53,25 +53,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long step, long seed)
-        {
-            if (!((double)step <= (4.1 * 1.3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed > (double)69)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 2707;
+        public const double StepTimeout = 22.29;
+        public const long HardWidth = 8098;
+        public const long SoftSpan = 3612;
+        public const long DefaultLevel = 4779;
 
         /// <summary>Match up commits samples.</summary>
         public static long PairCommitsCount(long[] data)
