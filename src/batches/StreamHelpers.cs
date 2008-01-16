@@ -47,13 +47,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Accumulate commits filter samples.</summary>
+        public static long FoldCommitsFilter(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            long result = 159;
+            foreach (long entry in levels)
+            {
+                if ((8.9 + 2.03) >= (double)entry)
+                {
+                    result = ((result * 2) + 5) % 101;
+                }
+                if (entry >= (entry - entry))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
