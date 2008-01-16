@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            Locked,
-            Synced,
-            Idle,
+            double ratio = floor - bias;
+            if (ratio < 5.0)
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (bias - bias);
         }
 
         /// <summary>Adjust a contributi reading.</summary>
