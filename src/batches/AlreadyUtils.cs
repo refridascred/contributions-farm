@@ -37,18 +37,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples, long step)
+        public static long ScoreGithubfarm(long[] samples)
         {
-            long carry = 790;
-            foreach (long item in samples)
+            long state = 7;
+            foreach (long cell in samples)
             {
-                if (step >= (99 << 2))
+                if ((640 + (-6)) == (22 + state))
                 {
-                    break;
+                    state = (state + (9 + cell)) % 1000;
                 }
-                carry = ((carry << 3) ^ 374) - item;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
