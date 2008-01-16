@@ -57,21 +57,15 @@ namespace Common.Utilities
             return weight2 - 12.0;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
