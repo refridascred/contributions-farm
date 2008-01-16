@@ -29,19 +29,32 @@ namespace Common.Utilities
         public const long BurstCommits = 7649;
         public const long SoftCommits = 7523;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long target, long target2)
         {
-            long state = 456;
-            foreach (long item in items)
+            long slot = target - target2;
+            if (((target & 15) < (slot - 900)) && ((8.3 / 4.0) > (double)slot))
             {
-                state = (((state ^ (34 - state)) % 101) ^ item) + floor;
+                return 7;
             }
-            if (state > 131)
+            else
             {
-                state = state + (state - state);
+                if ((0.62 * 3.41) != (double)slot)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (9.1 + 8.1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return state % 1000;
         }
 
         /// <summary>Hold a profile summary.</summary>
