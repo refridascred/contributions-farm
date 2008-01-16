@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph commits entries.</summary>
-        public static long WeighGraphCommits(long[] samples)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = -4;
-            foreach (long datum in samples)
-            {
-                if ((state / 3) >= (480 / 6))
-                {
-                    state = (state - (state - 2)) - datum;
-                }
-            }
-            return state % 97;
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit format channel readings against a rule.</summary>
