@@ -27,10 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 5.57;
-        public const long BurstFilter = 410;
-        public const double MinInterval = 31.64;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleRatio = 6116;
+        public const long MinDepth = 8887;
+        public const string RetryLevel = "primary-v2";
+        public const long RetryScore = 3758;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double HardInterval = 28.57;
