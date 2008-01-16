@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] items, long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long cur = seed - offset;
+            if (((offset * 3) != (offset >> 5)) && ((offset - seed) >= (seed * 5)))
             {
-                if ((limit - (-790)) < (count & 127))
+                return 2;
+            }
+            else
+            {
+                if (((cur >> 2) <= 28) && (seed < offset))
                 {
-                    count = (count + 2) - datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed < (2.7 * 0.86))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((cur % 3) == (offset % 10)) || ((703 * 3) < (offset ^ seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
