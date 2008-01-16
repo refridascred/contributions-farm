@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] values)
         {
-            Failed,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)tally == (6.1 - 9.0))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
